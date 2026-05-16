@@ -32,12 +32,23 @@
       "PairedControlledVocabularyEntry": "Concept",
       "NonDdiIdentifier": "Identifier",
       "Identifier": "Identifier",
-      "Statistic": "Statistic"
+      "InternationalIdentifier": "String",
+      "Statistic": "Statistic",
+      "CombinedDate": "String",
+      "DateRange": "String",
+      "NonIsoDate": "String",
+      "Email": "String",
+      "PointFormat": "String",
+      "Reference": "Reference"
     },
     "excludeDatatypes": [
       "BibliographicName",
       "RationaleDefinition",
-      "Selector"
+      "Selector",
+      "CatalogDetails",
+      "ContactInformation",
+      "ElectronicMessageSystem",
+      "SpecializationRole"
     ]
   },
   "package": [
@@ -258,9 +269,7 @@
         "sourceClass": "PhysicalDataSet",
         "targetPackage": "Distribution",
         "targetClass": "DataDownload",
-        "generalization": [
-          "AbstractDistribution"
-        ],
+        "generalization": ["AbstractDistribution"],
         "definition": "schema:DataDownload - a downloadable file distribution of a Dataset. Inherits identifier/name/description from AbstractDistribution.",
         "attribute": [
           {
@@ -358,9 +367,7 @@
         "mappingType": "new",
         "targetPackage": "Distribution",
         "targetClass": "WebAPI",
-        "generalization": [
-          "AbstractDistribution"
-        ],
+        "generalization": ["AbstractDistribution"],
         "definition": "schema:WebAPI - an API distribution endpoint. Used as an alternative to schema:DataDownload for service-mediated access. Inherits identifier/name/description from AbstractDistribution.",
         "attribute": [
           {
@@ -424,9 +431,7 @@
         "sourceClass": "Individual",
         "targetPackage": "Classes",
         "targetClass": "Person",
-        "generalization": [
-          "Agent"
-        ],
+        "generalization": ["Agent"],
         "definition": "schema:Person - a human agent (creator, contributor, publisher, etc.). Inherits identifier and name from Agent.",
         "attribute": [
           {
@@ -515,9 +520,7 @@
         "sourceClass": "Organization",
         "targetPackage": "Classes",
         "targetClass": "Organization",
-        "generalization": [
-          "Agent"
-        ],
+        "generalization": ["Agent"],
         "definition": "schema:Organization - an organisational agent. Inherits identifier and name from Agent.",
         "attribute": [
           {
