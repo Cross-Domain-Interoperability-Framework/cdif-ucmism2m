@@ -1,0 +1,271 @@
+{
+  "ddicdiActivity": {
+    "class": "Activity",
+    "cdi_props_root": [
+      "cdi:name",
+      "cdi:description",
+      "cdi:definition",
+      "cdi:displayLabel",
+      "cdi:identifier",
+      "cdi:entityUsed",
+      "cdi:entityProduced",
+      "cdi:standardModelMapping",
+      "cdi:start",
+      "cdi:end",
+      "cdi:hasSubActivity",
+      "cdi:has_Step",
+      "cdi:hasInternal"
+    ],
+    "required": [
+      "cdi:name"
+    ]
+  },
+  "ddicdiAgent": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiCodeList": {
+    "class": "CodeList",
+    "cdi_props_root": [
+      "cdi:allowsDuplicates",
+      "cdi:has_CodePosition",
+      "cdi:has_Code",
+      "cdi:identifier",
+      "cdi:name",
+      "cdi:uses",
+      "cdi:references",
+      "cdi:isDefinedBy",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiCollections": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiControlledVocabularyEntry": {
+    "class": "ControlledVocabularyEntry",
+    "cdi_props_root": [
+      "cdi:entryReference",
+      "cdi:entryValue",
+      "cdi:name",
+      "cdi:valueForOther",
+      "cdi:vocabulary"
+    ],
+    "required": []
+  },
+  "ddicdiDataStructure": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiDataStructureComponent": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiDataTypes": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiEnumerationDomain": {
+    "class": "EnumerationDomain",
+    "cdi_props_root": [
+      "cdi:identifier",
+      "cdi:name",
+      "cdi:uses",
+      "cdi:references",
+      "cdi:isDefinedBy",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiIndividual": {
+    "class": "Individual",
+    "cdi_props_root": [
+      "cdi:individualName",
+      "cdi:contactInformation",
+      "cdi:identifier",
+      "cdi:image",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiInstanceVariable": {
+    "class": "InstanceVariable",
+    "cdi_props_root": [
+      "cdi:physicalDataType",
+      "cdi:platformType",
+      "cdi:source",
+      "cdi:variableFunction",
+      "cdi:describedUnitOfMeasure",
+      "cdi:hasIntendedDataType",
+      "cdi:takesSentinelValuesFrom",
+      "cdi:takesSubstantiveValuesFrom",
+      "cdi:simpleUnitOfMeasure",
+      "cdi:descriptiveText",
+      "cdi:takesSentinelConceptsFrom",
+      "cdi:takesSubstantiveConceptsFrom",
+      "cdi:measures",
+      "cdi:unitOfMeasureKind",
+      "cdi:definition",
+      "cdi:displayLabel",
+      "cdi:externalDefinition",
+      "cdi:identifier",
+      "cdi:name",
+      "cdi:uses"
+    ],
+    "required": []
+  },
+  "ddicdiKeyValueStructure": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiLogicalRecord": {
+    "class": "LogicalRecord",
+    "cdi_props_root": [
+      "cdi:identifier",
+      "cdi:organizes",
+      "cdi:isDefinedBy",
+      "cdi:has"
+    ],
+    "required": []
+  },
+  "ddicdiLogicalRecordRepository": {
+    "class": "LogicalRecordRepository",
+    "cdi_props_root": [
+      "cdi:aboutMissing",
+      "cdi:allowsDuplicates",
+      "cdi:characterSet",
+      "cdi:repositoryType",
+      "cdi:identifier",
+      "cdi:name",
+      "cdi:purpose",
+      "cdi:recordCount",
+      "cdi:isDefinedBy",
+      "cdi:has_LogicalRecord"
+    ],
+    "required": []
+  },
+  "ddicdiMachine": {
+    "class": "Machine",
+    "cdi_props_root": [
+      "cdi:accessLocation",
+      "cdi:function",
+      "cdi:machineInterface",
+      "cdi:name",
+      "cdi:ownerOperatorContact",
+      "cdi:typeOfMachine",
+      "cdi:identifier",
+      "cdi:image",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiOrganization": {
+    "class": "Organization",
+    "cdi_props_root": [
+      "cdi:organizationName",
+      "cdi:contactInformation",
+      "cdi:identifier",
+      "cdi:image",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiPhysicalDataSet": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiPhysicalMapping": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiPresentationalVariable": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiProcessingAgent": {
+    "class": "ProcessingAgent",
+    "cdi_props_root": [
+      "cdi:performs",
+      "cdi:operatesOn",
+      "cdi:identifier",
+      "cdi:image",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiRepresentedVariable": {
+    "class": "RepresentedVariable",
+    "cdi_props_root": [
+      "cdi:describedUnitOfMeasure",
+      "cdi:hasIntendedDataType",
+      "cdi:takesSentinelValuesFrom",
+      "cdi:takesSubstantiveValuesFrom",
+      "cdi:simpleUnitOfMeasure",
+      "cdi:descriptiveText",
+      "cdi:takesSentinelConceptsFrom",
+      "cdi:takesSubstantiveConceptsFrom",
+      "cdi:measures",
+      "cdi:unitOfMeasureKind",
+      "cdi:definition",
+      "cdi:displayLabel",
+      "cdi:externalDefinition",
+      "cdi:identifier",
+      "cdi:name",
+      "cdi:uses"
+    ],
+    "required": []
+  },
+  "ddicdiStatisticalClassification": {
+    "class": "StatisticalClassification",
+    "cdi_props_root": [
+      "cdi:allowsDuplicates",
+      "cdi:availableLanguage",
+      "cdi:changeFromBase",
+      "cdi:copyright",
+      "cdi:displayLabel",
+      "cdi:isCurrent",
+      "cdi:isFloating",
+      "cdi:isMaintainedBy",
+      "cdi:isIndexedBy",
+      "cdi:isVariantOf",
+      "cdi:isSuccessorOf",
+      "cdi:isPredecessorOf",
+      "cdi:has_ClassificationItemPosition",
+      "cdi:has_ClassificationItem",
+      "cdi:has_LevelStructure",
+      "cdi:purposeOfVariant",
+      "cdi:rationale",
+      "cdi:releaseDate",
+      "cdi:updateChanges",
+      "cdi:usage",
+      "cdi:validDates",
+      "cdi:identifier",
+      "cdi:name",
+      "cdi:uses",
+      "cdi:references",
+      "cdi:isDefinedBy",
+      "cdi:purpose"
+    ],
+    "required": []
+  },
+  "ddicdiStatistics": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  },
+  "ddicdiValueDomain": {
+    "class": null,
+    "cdi_props_root": [],
+    "required": []
+  }
+}

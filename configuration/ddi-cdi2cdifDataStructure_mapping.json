@@ -1,0 +1,141 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIFDataStructureProfile/CDIFDataStructureProfileSchema.json. This is the most DDI-CDI-aligned profile: the JSON schema essentially exposes DDI-CDI's DataStructure / Component / RepresentedVariable / ValueDomain hierarchy. Strategy: heavy use of mappingType=map (with class rename when needed) and association renames - the same pattern as the existing DDSC example (ddi-cdi2ddsc_mapping.json). Target class names follow the JSON schema vocabulary (cdi:DataStructure, cdi:WideDataStructure, cdi:IdentifierComponent, etc.) which happen to match DDI-CDI's class names directly. The cdi:isStructuredBy hook from Distribution -> DataStructure is the key Distribution-level addition and is represented as a new association.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF Data Structure Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "CDIFDataStructure",
+      "modelTitle": "UML Model for the CDIF Data Structure Profile",
+      "subTitle": "Full DDI-CDI structural complexity for tabular, long, and dimensional datasets",
+      "majorVersion": "0",
+      "minorVersion": "1",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/data_structure/1.0/xmi/",
+      "definition": "CDIF Data Structure profile - extends Data Description with the full DDI-CDI structural complexity. Distributions carry cdi:isStructuredBy pointing at a Data Structure node. Conforms-to: https://w3id.org/cdif/data_structure/1.0.",
+      "mainPackage": "CDIFDataStructure",
+      "mainPackageDefinition": "Data Structure profile: DataStructure subclasses, Components, RepresentedVariable, ValueDomain.",
+      "dataTypesPackage": "CDIFDataStructure"
+    }
+  },
+  "package": [
+    { "name": "DataStructures", "parent": "CDIFDataStructure", "definition": "DataStructure umbrella class and its Dimensional/Long/Wide subclasses." },
+    { "name": "Components", "parent": "CDIFDataStructure", "definition": "DataStructureComponent subclasses: Identifier, Measure, Attribute, Dimension, VariableValue, VariableDescriptor; ComponentPosition; PrimaryKey." },
+    { "name": "Variables", "parent": "CDIFDataStructure", "definition": "RepresentedVariable, ReferenceVariable, DescriptorVariable plus reuse of InstanceVariable from Data Description." },
+    { "name": "ValueDomains", "parent": "CDIFDataStructure", "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain." }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "Umbrella DataStructure - mapped 1:1.",
+        "mappingType": "map",
+        "sourceClass": "DataStructure",
+        "targetPackage": "DataStructures",
+        "targetClass": "DataStructure"
+      },
+      { "mappingType": "map", "sourceClass": "WideDataStructure", "targetPackage": "DataStructures", "targetClass": "WideDataStructure" },
+      { "mappingType": "map", "sourceClass": "LongDataStructure", "targetPackage": "DataStructures", "targetClass": "LongDataStructure" },
+      { "mappingType": "map", "sourceClass": "DimensionalDataStructure", "targetPackage": "DataStructures", "targetClass": "DimensionalDataStructure" },
+
+      { "mappingType": "map", "sourceClass": "DataStructureComponent", "targetPackage": "Components", "targetClass": "DataStructureComponent" },
+      { "mappingType": "map", "sourceClass": "IdentifierComponent", "targetPackage": "Components", "targetClass": "IdentifierComponent" },
+      { "mappingType": "map", "sourceClass": "MeasureComponent", "targetPackage": "Components", "targetClass": "MeasureComponent" },
+      { "mappingType": "map", "sourceClass": "AttributeComponent", "targetPackage": "Components", "targetClass": "AttributeComponent" },
+      { "mappingType": "map", "sourceClass": "DimensionComponent", "targetPackage": "Components", "targetClass": "DimensionComponent" },
+      { "mappingType": "map", "sourceClass": "VariableValueComponent", "targetPackage": "Components", "targetClass": "VariableValueComponent" },
+      { "mappingType": "map", "sourceClass": "VariableDescriptorComponent", "targetPackage": "Components", "targetClass": "VariableDescriptorComponent" },
+
+      {
+        "mappingType": "map",
+        "sourceClass": "ComponentPosition",
+        "targetPackage": "Components",
+        "targetClass": "ComponentPosition",
+        "attribute": [
+          { "name": "value", "multiplicity": { "lower": "1", "upper": "1" } }
+        ]
+      },
+      { "mappingType": "map", "sourceClass": "PrimaryKey", "targetPackage": "Components", "targetClass": "PrimaryKey" },
+      { "mappingType": "map", "sourceClass": "PrimaryKeyComponent", "targetPackage": "Components", "targetClass": "PrimaryKeyComponent" },
+
+      {
+        "mappingType": "map",
+        "sourceClass": "RepresentedVariable",
+        "targetPackage": "Variables",
+        "targetClass": "RepresentedVariable",
+        "attribute": [
+          { "name": "name", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "definition", "multiplicity": { "lower": "1", "upper": "1" } }
+        ]
+      },
+      { "mappingType": "map", "sourceClass": "ReferenceVariable", "targetPackage": "Variables", "targetClass": "ReferenceVariable" },
+      { "mappingType": "map", "sourceClass": "DescriptorVariable", "targetPackage": "Variables", "targetClass": "DescriptorVariable" },
+      {
+        "_comment": "InstanceVariable is used by DataStructure components as well as by Discovery's variableMeasured. Included here for self-contained Data Structure UML.",
+        "mappingType": "map",
+        "sourceClass": "InstanceVariable",
+        "targetPackage": "Variables",
+        "targetClass": "InstanceVariable",
+        "attribute": [
+          { "name": "name", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "definition", "multiplicity": { "lower": "1", "upper": "1" } }
+        ]
+      },
+
+      { "mappingType": "map", "sourceClass": "SubstantiveValueDomain", "targetPackage": "ValueDomains", "targetClass": "SubstantiveValueDomain" },
+      { "mappingType": "map", "sourceClass": "SentinelValueDomain", "targetPackage": "ValueDomains", "targetClass": "SentinelValueDomain" },
+      { "mappingType": "map", "sourceClass": "DescriptorValueDomain", "targetPackage": "ValueDomains", "targetClass": "DescriptorValueDomain" },
+      { "mappingType": "map", "sourceClass": "EnumerationDomain", "targetPackage": "ValueDomains", "targetClass": "EnumerationDomain" }
+    ],
+    "association": [
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "WideDataStructure_has_IdentifierComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "WideDataStructure_has_MeasureComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "WideDataStructure_has_AttributeComponent", "objectClassMultiplicity": { "lower": "0", "upper": "*" } },
+
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "LongDataStructure_has_IdentifierComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "LongDataStructure_has_VariableDescriptorComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "LongDataStructure_has_VariableValueComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "LongDataStructure_has_AttributeComponent", "objectClassMultiplicity": { "lower": "0", "upper": "*" } },
+
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "DimensionalDataStructure_has_IdentifierComponent", "objectClassMultiplicity": { "lower": "0", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "DimensionalDataStructure_has_DimensionComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "DimensionalDataStructure_has_MeasureComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "DataStructure_has_DataStructureComponent", "targetAssociationName": "DimensionalDataStructure_has_AttributeComponent", "objectClassMultiplicity": { "lower": "0", "upper": "*" } },
+
+      { "sourceAssociationName": "DataStructure_has_ComponentPosition", "targetAssociationName": "DimensionalDataStructure_has_ComponentPosition", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "ComponentPosition_indexes_DataStructureComponent", "targetAssociationName": "ComponentPosition_indexes_DimensionComponent", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+
+      { "sourceAssociationName": "DataStructure_has_PrimaryKey", "targetAssociationName": "WideDataStructure_has_PrimaryKey", "objectClassMultiplicity": { "lower": "0", "upper": "1" } },
+      { "sourceAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent", "targetAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent", "objectClassMultiplicity": { "lower": "1", "upper": "*" } },
+      { "sourceAssociationName": "PrimaryKeyComponent_correspondsTo_DataStructureComponent", "targetAssociationName": "PrimaryKeyComponent_correspondsTo_IdentifierComponent", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+
+      { "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable", "targetAssociationName": "IdentifierComponent_isDefinedBy_RepresentedVariable", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+      { "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable", "targetAssociationName": "MeasureComponent_isDefinedBy_RepresentedVariable", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+      { "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable", "targetAssociationName": "AttributeComponent_isDefinedBy_RepresentedVariable", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+      { "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable", "targetAssociationName": "DimensionComponent_isDefinedBy_RepresentedVariable", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+      { "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable", "targetAssociationName": "VariableValueComponent_isDefinedBy_ReferenceVariable", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+      { "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable", "targetAssociationName": "VariableDescriptorComponent_isDefinedBy_DescriptorVariable", "objectClassMultiplicity": { "lower": "1", "upper": "1" } },
+
+      {
+        "_comment": "Refined per audit_cdif_vs_ddi.py: cdi:takesSubstantiveValuesFrom in CDIF restricts the target type to SubstantiveValueDomain (rather than the bare ValueDomain DDI-CDI permits). Source association RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain already encodes this restriction in the source XMI - keep target identical.",
+        "sourceAssociationName": "RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain",
+        "targetAssociationName": "RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain"
+      },
+      {
+        "_comment": "Same audit note for cdi:takesSentinelValuesFrom (restricted to SentinelValueDomain in CDIF).",
+        "sourceAssociationName": "RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain",
+        "targetAssociationName": "RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain"
+      },
+      {
+        "_comment": "cdi:qualifies association on AttributeComponent. DDI-CDI has AttributeComponent_qualifies_DataStructureComponent; CDIF's DataStructure profile narrows the qualifies target to MeasureComponent per the cdifDataStructureComponent BB. Renamed accordingly.",
+        "sourceAssociationName": "AttributeComponent_qualifies_DataStructureComponent",
+        "targetAssociationName": "AttributeComponent_qualifies_MeasureComponent",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      }
+    ]
+  }
+}

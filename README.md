@@ -1,8 +1,21 @@
 # UCMIS M2M Transformation — Project Documentation
 
-**Version:** 1.0  
-**Last Updated:** 2026-03-05  
-**Compatibility:** Eclipse 2025-12 · QVTo 3.11.1 · Java 21
+**Version:** 1.0
+**Last Updated:** 2026-05-15
+**Compatibility:** Eclipse 2025-12 · QVTo 3.11.1 · Java 21 (Eclipse path) — or any Python 3.10+ (alternative path)
+
+---
+
+## At a glance — two ways to run the transformation
+
+There are now **two interchangeable implementations** of the transformation described below. Both take the same inputs (DDI-CDI canonical Eclipse UML2 XMI + a JSON configuration that conforms to `configuration/ucmis_mapping_configuration.schema.json`) and produce the same kind of output (Eclipse UML2 XMI 2.5.1 for a profile model). Choose whichever fits your environment:
+
+| Path | Status | Toolchain | Use when |
+|---|---|---|---|
+| **Eclipse / QVTo application** | In development — described in sections 1–3 below | Java 21 + Eclipse Tycho + QVTo 3.11.1 (build) | You want the long-term canonical tool, run from a packaged Eclipse RCP binary |
+| **Python generator** | Working today — see [section 4](#4-alternative-python-generator-using-uml_to_schemapy) | Python 3.10+ with `pyyaml` and `jsonschema` | You want to generate profile UML right now, on any platform, without an Eclipse build |
+
+Both paths read the same configuration files (`configuration/ddi-cdi2*.json`) and the same source model (`model/ddi-cdi_canonical-unique-names-eclipse.xmi`). The five CDIF profile UML files in `generated/` were produced by the Python path; the Eclipse application will produce equivalent output once built.
 
 ---
 
@@ -176,3 +189,71 @@ Output model saved: /data/models/DDSC.uml
 ```
 
 If the transformation fails, an error and stack trace are printed to standard error and the process exits with code 1.
+
+---
+
+## 4. Alternative: Python generator using `uml_to_schema.py`
+
+Sibling repository `metadataBuildingBlocks/tools/uml_to_schema.py` contains a Python implementation that already does the same kind of UML transformation work for a different downstream purpose (DDI-CDI UML → CDIF building-block JSON Schemas). It has been augmented to ALSO emit Eclipse UML2 XMI for a profile, driven by the same ucmism2m JSON configuration files in `configuration/`. The five CDIF profile UML files in `generated/` were produced by this path.
+
+### 4.1 Why a Python path exists
+
+- Bypasses the Eclipse + Tycho + QVTo + Java 21 build chain. Useful for quick iteration on profile design and for environments where setting up the Eclipse toolchain is impractical.
+- Reuses the parser, generalisation flattening, multiplicity handling, and type-closure logic already proven by the JSON Schema generation pathway.
+- Output is canonical Eclipse UML2 XMI 2.5.1 — byte-compatible with the source DDI-CDI canonical XMI shape, openable in Papyrus, Magic Draw, and (via XMI 2.5.1 import) Enterprise Architect.
+
+### 4.2 Requirements
+
+| Requirement | Version | Notes |
+|---|---|---|
+| Python | 3.10 or later | Tested on 3.12 |
+| `pyyaml` | any recent | Required by the existing schema-emit code path |
+| `jsonschema` | any recent | Used to validate configs against the schema |
+
+Install dependencies:
+
+```bash
+pip install pyyaml jsonschema
+```
+
+### 4.3 Running
+
+From any working directory:
+
+```bash
+python <repo>/metadataBuildingBlocks/tools/uml_to_schema.py \
+  --xmi    <repo>/ucmism2m/model/ddi-cdi_canonical-unique-names-eclipse.xmi \
+  --config <repo>/ucmism2m/configuration/ddi-cdi2cdifCodelist_mapping.json \
+  --emit-uml <repo>/ucmism2m/generated/cdifCodelist.xmi
+```
+
+Arguments:
+
+| Argument | Required | Description |
+|---|---|---|
+| `--xmi PATH` | Yes | Canonical Eclipse UML2 XMI 2.5.1 source (DDI-CDI). The shipped source is `ucmism2m/model/ddi-cdi_canonical-unique-names-eclipse.xmi`. |
+| `--config PATH` | Yes (for profile UML emit) | A ucmism2m JSON configuration file from `configuration/`. |
+| `--emit-uml PATH` | Yes (for profile UML emit) | Output path. Any extension works; `.xmi` is conventional, `.uml` is also fine. |
+
+The `--config` flag short-circuits the JSON-Schema-emit pathway; you do not need to supply `--class`, `--bb-name`, or `--out-dir` when generating a profile UML.
+
+The Python generator also has an Enterprise Architect XMI 1.1 emitter (`--emit-ea-xmi PATH`) for direct import into EA. As of this writing the EA-flavoured output imports the class and attribute structure correctly but EA v16.1 does not consistently resolve DataType references on attribute types. Use the canonical XMI 2.5.1 output (`--emit-uml`) for now, even when importing into EA — EA reads canonical XMI well.
+
+### 4.4 Output and interpretation
+
+The Python generator writes a single Eclipse UML2 XMI file containing:
+
+- `uml:Model` with the profile's name and URI
+- One `uml:Package` carrying the profile's classes, plus transitively-referenced DataTypes and Enumerations from the source DDI-CDI model
+- For each target class: a `uml:Class` packagedElement with `ownedAttribute` properties (multiplicity, doc, type ref or primitive)
+- For each association edge: a top-level `uml:Association` packagedElement with `memberEnd` / `ownedEnd` references
+
+The closure walker pulls in only the types the selected classes actually use. Run-time warnings on `stderr` flag associations whose source or target class lives in a different profile (e.g., `Dataset_variableMeasured_VariableMeasured` in the DataDescription config when `Dataset` is part of Core, not DataDescription — these associations are skipped and noted).
+
+### 4.5 What the Python path does NOT yet do
+
+- **Provenance Dependency** (`Client_dependsOn_Supplier`) elements described in the original ucmism2m `concept/requirements.txt` — only the underlying mapping is emitted; the SSSOM block in the config is read but not yet surfaced as a UML ownedComment or RDF Turtle block on the target class.
+- **Cross-profile composition** — each profile UML is a standalone file. Associations whose subject or object class lives in a different profile (e.g., references from DataDescription to Core's `Dataset`) are dropped with a warning, not emitted as foreign-class references.
+- **EA XMI 1.1 datatype resolution** — see note in section 4.3.
+
+These are tracked as Phase 3 work; the Eclipse / QVTo path is expected to address them in its long-term implementation.

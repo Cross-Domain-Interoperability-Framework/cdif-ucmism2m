@@ -1,0 +1,169 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF Data Description profile UML. Sources: metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIFDataDescriptionProfile/CDIFDataDescriptionProfileSchema.json and ../../cdifProperties/cdifDataDescription/cdifDataDescriptionSchema.json. Data Description composes Core + cdifDataDescription. On top of Discovery's variableMeasured, this profile adds variable-level physicalDataType, distribution-level file characterization (characterSet, fileSize), plus the cdif:hasPrimaryKey and cdif:statistics extension points. This config defines the additions only; the full UML is assembled by composing CDIFCore + CDIFDiscovery + this profile. Conforms-to: https://w3id.org/cdif/data_description/1.0.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF Data Description Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "CDIFDataDescription",
+      "modelTitle": "UML Model for the CDIF Data Description Profile",
+      "subTitle": "Data-description additions over CDIF Discovery: variable physicalDataType, file characterization, primary key, statistics",
+      "majorVersion": "0",
+      "minorVersion": "1",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/data_description/1.0/xmi/",
+      "definition": "CDIF Data Description profile - extends Discovery with detailed variable descriptions (physicalDataType), distribution file characterization (character set, file size), primary key declarations, and statistical summaries.",
+      "mainPackage": "CDIFDataDescription",
+      "mainPackageDefinition": "Data Description profile additions on top of Core + Discovery.",
+      "dataTypesPackage": "CDIFDataDescription"
+    }
+  },
+  "package": [
+    { "name": "Variables", "parent": "CDIFDataDescription", "definition": "Variable description classes (InstanceVariable subset used in Data Description)." },
+    { "name": "Distribution", "parent": "CDIFDataDescription", "definition": "Distribution-level extensions (file characterization)." },
+    { "name": "Keys", "parent": "CDIFDataDescription", "definition": "PrimaryKey and PrimaryKeyComponent for cdif:hasPrimaryKey." },
+    { "name": "Statistics", "parent": "CDIFDataDescription", "definition": "Statistic and CategoryStatistic for cdif:statistics." }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "InstanceVariable as referenced by schema:variableMeasured at the Data Description level. Adds physicalDataType, describedUnitOfMeasure, unitOfMeasureKind, role. Mapped from DDI-CDI InstanceVariable directly.",
+        "mappingType": "map",
+        "sourceClass": "InstanceVariable",
+        "targetPackage": "Variables",
+        "targetClass": "InstanceVariable",
+        "attribute": [
+          { "name": "name", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "definition", "multiplicity": { "lower": "1", "upper": "1" } },
+          {
+            "_comment": "Flatten DDI-CDI ControlledVocabularyEntry source type to a skos:Concept reference (CDIF profile policy).",
+            "name": "describedUnitOfMeasure", "dataType": "Concept",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "_comment": "Flatten DDI-CDI ControlledVocabularyEntry source type to a skos:Concept reference (CDIF profile policy).",
+            "name": "unitOfMeasureKind", "dataType": "Concept",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "VariableMeasured wrapper that the Data Description profile uses as the value of schema:variableMeasured. Holds the cdif:physicalDataType required at this profile level.",
+        "mappingType": "new",
+        "sourceClass": "InstanceVariable",
+        "targetPackage": "Variables",
+        "targetClass": "VariableMeasured",
+        "definition": "schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role.",
+        "attribute": [
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - URI for this variable description.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "name", "dataType": "String", "definition": "schema:name - short variable name.", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "description", "dataType": "String", "definition": "schema:description - human-readable description.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "propertyId", "dataType": "XsdAnyUri", "definition": "schema:propertyID - URI of the property concept.", "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "unitText", "dataType": "String", "definition": "schema:unitText - unit of measure as text.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "unitCode", "dataType": "XsdAnyUri", "definition": "schema:unitCode - URI for the unit.", "multiplicity": { "lower": "0", "upper": "1" } },
+          {
+            "_comment": "Per CDIF profile policy: DDI-CDI's cdi:physicalDataType (originally a ControlledVocabularyEntry / PairedControlledVocabularyEntry structured DataType) is implemented as a skos:Concept reference. The Concept stub lives in this profile so the type is locally resolvable; the canonical SKOS Concept definition lives in the CDIFCodelist profile (cross-profile linked in the HTML).",
+            "name": "physicalDataType", "dataType": "Concept",
+            "definition": "cdif:physicalDataType / cdi:physicalDataType - XSD-style data type for the physical representation, expressed as a reference to a skos:Concept in a controlled vocabulary (e.g. XSD-types scheme). Required at the Data Description level.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          { "name": "role", "dataType": "String", "definition": "cdif:role - role of this variable in the data set (Identifier / Measure / Attribute / Dimension). At the Data Structure level this lives on the component class instead.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ]
+      },
+      {
+        "_comment": "PhysicalDataSet-based file characterization. Mapped from DDI-CDI PhysicalDataSet with file-level attributes.",
+        "mappingType": "new",
+        "sourceClass": "PhysicalDataSet",
+        "targetPackage": "Distribution",
+        "targetClass": "DataDownload",
+        "definition": "schema:DataDownload extended for the Data Description profile - adds character-set and file-size attributes required at this profile level. Composes with the core DataDownload at the model-composition step.",
+        "attribute": [
+          { "name": "characterSet", "dataType": "String", "definition": "cdi:characterSet - character encoding of a text-based distribution (e.g. UTF-8). Required by CDIF Data Description for text distributions.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "fileSize", "dataType": "Integer", "definition": "cdi:fileSize - file size of this distribution as a number.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "fileSizeUofM", "dataType": "String", "definition": "cdi:fileSizeUofM - unit of measure for fileSize (e.g. 'byte', 'KB', 'MB').", "multiplicity": { "lower": "0", "upper": "1" } }
+        ]
+      },
+      {
+        "_comment": "PrimaryKey - target of cdif:hasPrimaryKey on the dataset.",
+        "mappingType": "map",
+        "sourceClass": "PrimaryKey",
+        "targetPackage": "Keys",
+        "targetClass": "PrimaryKey"
+      },
+      {
+        "mappingType": "map",
+        "sourceClass": "PrimaryKeyComponent",
+        "targetPackage": "Keys",
+        "targetClass": "PrimaryKeyComponent"
+      },
+      {
+        "_comment": "Statistic - target of cdif:statistics on the dataset. DDI-CDI 1.1beta has CategoryStatistics (renamed from CategoryStatistic in 1.0); mapped here with class rename.",
+        "mappingType": "map",
+        "sourceClass": "CategoryStatistics",
+        "targetPackage": "Statistics",
+        "targetClass": "Statistic"
+      },
+      {
+        "_comment": "skos:Concept stub. Local target class so attributes typed as 'Concept' (e.g. InstanceVariable.physicalDataType) resolve inside this profile. The canonical SKOS Concept definition lives in the CDIFCodelist profile; cross-profile HTML links point readers there. DDI-CDI's PairedControlledVocabularyEntry / ControlledVocabularyEntry are implemented across CDIF profiles as references to skos:Concept.",
+        "mappingType": "new",
+        "sourceClass": "ControlledVocabularyEntry",
+        "targetPackage": "Classes",
+        "targetClass": "Concept",
+        "definition": "skos:Concept (stub). A reference to a controlled-vocabulary term defined in a SKOS ConceptScheme; full definition in CDIFCodelist::Concept.",
+        "attribute": [
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - resolvable URI for this concept.", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "prefLabel",  "dataType": "String",    "definition": "skos:prefLabel - preferred lexical label.",         "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "inScheme",   "dataType": "XsdAnyUri", "definition": "skos:inScheme - URI of the owning ConceptScheme.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ],
+        "sssom": {
+          "subject_label": "DDI-CDI ControlledVocabularyEntry / PairedControlledVocabularyEntry",
+          "object_label":  "CDIF profile skos:Concept reference (skos:Concept)",
+          "predicate_id":  "skos:closeMatch",
+          "confidence":    0.85,
+          "comment":       "CDIF profiles flatten the DDI-CDI scheme+term DataType into a plain skos:Concept reference. The Concept definition itself lives in CDIFCodelist."
+        }
+      }
+    ],
+    "association": [
+      {
+        "targetAssociationName": "Dataset_variableMeasured_VariableMeasured",
+        "subjectClass": "Dataset",
+        "objectClass": "VariableMeasured",
+        "definition": "schema:variableMeasured - variables described at the Data Description level (with cdif:physicalDataType).",
+        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
+      },
+      {
+        "targetAssociationName": "VariableMeasured_describes_InstanceVariable",
+        "subjectClass": "VariableMeasured",
+        "objectClass": "InstanceVariable",
+        "definition": "Links the schema:variableMeasured wrapper to the DDI-CDI InstanceVariable being described.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "targetAssociationName": "Dataset_hasPrimaryKey_PrimaryKey",
+        "subjectClass": "Dataset",
+        "objectClass": "PrimaryKey",
+        "definition": "cdif:hasPrimaryKey - the primary key declared for the dataset.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "targetAssociationName": "Dataset_statistics_Statistic",
+        "subjectClass": "Dataset",
+        "objectClass": "Statistic",
+        "_comment": "cdif:statistics - target class Statistic is the renamed DDI-CDI CategoryStatistic.",
+        "definition": "cdif:statistics - statistical summaries reported on the dataset.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "sourceAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent",
+        "targetAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent",
+        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
+      }
+    ]
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF Discovery profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIFDiscoveryProfile/CDIFDiscoveryProfileSchema.json. The Discovery profile composes Core with five discovery-oriented additions: measurementTechnique, variableMeasured, spatialCoverage, temporalCoverage, hasQualityMeasurement. This config focuses on those additions PLUS the Core classes Dataset and CatalogRecord (re-declared to keep this UML standalone). Core's Dataset/CatalogRecord/Person/Organization/etc. attribute sets are inherited verbatim from CDIFCore in spirit; this config restates Dataset (the discovery extension point) and CatalogRecord (whose conformsTo must be https://w3id.org/cdif/discovery/1.0) and adds the discovery vocabulary. Higher-level composition (Discovery extends Core) is left to the model build process.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF Discovery Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "CDIFDiscovery",
+      "modelTitle": "UML Model for the CDIF Discovery Profile",
+      "subTitle": "Discovery-oriented metadata extending CDIF Core",
+      "majorVersion": "0",
+      "minorVersion": "1",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/discovery/1.0/xmi/",
+      "definition": "CDIF Discovery profile - extends CDIF Core with discovery-oriented properties: measurement technique, variables measured, spatial and temporal coverage, quality measurements. Conforms-to identifier: https://w3id.org/cdif/discovery/1.0.",
+      "mainPackage": "CDIFDiscovery",
+      "mainPackageDefinition": "Discovery profile additions on top of CDIF Core.",
+      "dataTypesPackage": "CDIFDiscovery"
+    }
+  },
+  "package": [
+    { "name": "Classes", "parent": "CDIFDiscovery", "definition": "Dataset (with discovery additions) and the discovery-specific value classes." },
+    { "name": "Coverage", "parent": "CDIFDiscovery", "definition": "Spatial and temporal extent classes." },
+    { "name": "Quality", "parent": "CDIFDiscovery", "definition": "Quality measurement classes (DQV)." }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "schema:Dataset, extended with discovery additions (variableMeasured, spatialCoverage, temporalCoverage, measurementTechnique, hasQualityMeasurement). The Core-level attributes are deliberately omitted here; the build pipeline is expected to merge this profile UML with CDIFCore.",
+        "mappingType": "new",
+        "sourceClass": "DataStore",
+        "targetPackage": "Classes",
+        "targetClass": "Dataset",
+        "definition": "schema:Dataset extended with Discovery-profile discovery properties. (Core attributes are inherited from CDIFCore at the model-composition step.)",
+        "attribute": [
+          { "name": "measurementTechnique", "dataType": "String", "definition": "schema:measurementTechnique - technique, technology, or methodology used.", "multiplicity": { "lower": "0", "upper": "*" } }
+        ]
+      },
+      {
+        "_comment": "schema:variableMeasured payload (used by Discovery). DDI-CDI provenance: InstanceVariable.",
+        "mappingType": "new",
+        "sourceClass": "InstanceVariable",
+        "targetPackage": "Classes",
+        "targetClass": "VariableMeasured",
+        "definition": "schema:variableMeasured / cdifVariableMeasured - description of what the dataset measures (e.g. temperature, pressure). In Discovery this is a flat description; in DataStructure it gains role and structural references.",
+        "attribute": [
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - URI for this variable description.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "name", "dataType": "String", "definition": "schema:name - variable name (short, machine-friendly).", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "description", "dataType": "String", "definition": "schema:description - human-readable description of the variable.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "propertyId", "dataType": "XsdAnyUri", "definition": "schema:propertyID - URI of the property concept (e.g. an ontology term).", "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "unitText", "dataType": "String", "definition": "schema:unitText - unit of measure as text. Maps to DDI-CDI cdi:simpleUnitOfMeasure (string).", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "unitCode", "dataType": "XsdAnyUri", "definition": "schema:unitCode - URI for the unit (e.g. UCUM, QUDT). For full DDI-CDI fidelity prefer cdi:describedUnitOfMeasure (skos:Concept reference).", "multiplicity": { "lower": "0", "upper": "1" } },
+          {
+            "_comment": "Per CDIF profile policy: cdi:describedUnitOfMeasure (originally a DDI-CDI ControlledVocabularyEntry / PairedControlledVocabularyEntry) is implemented here as a skos:Concept reference. The SKOS Concept stub lives in this profile as a target class so the type is locally resolvable; the canonical concept definition lives in the CDIFCodelist profile (see field-level-documentation/CDIFCodelist/Classes/Concept.html).",
+            "name": "describedUnitOfMeasure", "dataType": "Concept",
+            "definition": "DDI-CDI cdi:describedUnitOfMeasure - unit expressed as a reference to a skos:Concept in a controlled vocabulary.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ],
+        "sssom": {
+          "subject_label": "DDI-CDI InstanceVariable",
+          "object_label": "CDIF Discovery VariableMeasured (schema:variableMeasured)",
+          "predicate_id": "skos:closeMatch",
+          "confidence": 0.8
+        }
+      },
+      {
+        "_comment": "SpatialExtent. No direct DDI-CDI counterpart; plain new. Uses GeoSPARQL well-known-text where bounding-box geometries are needed.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "SpatialExtent",
+        "definition": "schema:spatialCoverage payload - a schema:Place with name and/or geo (point/box/line) describing the geographic extent of the resource.",
+        "attribute": [
+          { "name": "name", "dataType": "String", "definition": "schema:name - place name.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id / schema:identifier - gazetteer URI.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "geometry", "dataType": "String", "definition": "geosparql:asWKT - well-known-text geometry (point, box, polygon).", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "box", "dataType": "String", "definition": "schema:box - 'minLat minLon maxLat maxLon' bounding box.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ]
+      },
+      {
+        "_comment": "TemporalExtent. DDI-CDI's DateRange is a DataType (not a Class), so no sourceClass; SSSOM records the relation.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "TemporalExtent",
+        "definition": "schema:temporalCoverage payload - the temporal extent of the resource as an ISO 8601 interval (start/end or duration).",
+        "attribute": [
+          { "name": "startDate", "dataType": "XsdDate", "definition": "Start of the temporal coverage.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "endDate", "dataType": "XsdDate", "definition": "End of the temporal coverage.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "duration", "dataType": "String", "definition": "ISO 8601 duration form (e.g. P1Y) when the coverage is expressed as duration.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ],
+        "sssom": {
+          "subject_label": "DDI-CDI DateRange",
+          "object_label": "CDIF Discovery TemporalExtent (schema:temporalCoverage payload)",
+          "predicate_id": "skos:closeMatch",
+          "confidence": 0.85
+        }
+      },
+      {
+        "_comment": "QualityMeasure (DQV). No direct DDI-CDI counterpart at this level (Statistic is closer to actual statistical results than quality assertions).",
+        "mappingType": "new",
+        "targetPackage": "Quality",
+        "targetClass": "QualityMeasure",
+        "definition": "dqv:QualityMeasurement - a single quality measurement reported on the resource (e.g. completeness, accuracy, timeliness) per the W3C Data Quality Vocabulary.",
+        "attribute": [
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - URI for this measurement.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "metric", "dataType": "XsdAnyUri", "definition": "dqv:isMeasurementOf - URI of the quality metric being reported.", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "value", "dataType": "String", "definition": "dqv:value - the measurement value (literal).", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "unit", "dataType": "XsdAnyUri", "definition": "Optional unit of measure for the value.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ]
+      },
+      {
+        "_comment": "skos:Concept stub. Local target class so attributes typed as 'Concept' resolve inside this profile. The canonical SKOS Concept definition (with full alt/hidden labels, scopeNote, history/change notes, etc.) lives in the CDIFCodelist profile; cross-profile HTML links point readers there. DDI-CDI's PairedControlledVocabularyEntry / ControlledVocabularyEntry are implemented across CDIF profiles as references to skos:Concept.",
+        "mappingType": "new",
+        "sourceClass": "ControlledVocabularyEntry",
+        "targetPackage": "Classes",
+        "targetClass": "Concept",
+        "definition": "skos:Concept (stub). A reference to a controlled-vocabulary term defined in a SKOS ConceptScheme; full definition in CDIFCodelist::Concept.",
+        "attribute": [
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - resolvable URI for this concept.", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "prefLabel",  "dataType": "String",    "definition": "skos:prefLabel - preferred lexical label.",         "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "inScheme",   "dataType": "XsdAnyUri", "definition": "skos:inScheme - URI of the owning ConceptScheme.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ],
+        "sssom": {
+          "subject_label": "DDI-CDI ControlledVocabularyEntry / PairedControlledVocabularyEntry",
+          "object_label":  "CDIF profile skos:Concept reference (skos:Concept)",
+          "predicate_id":  "skos:closeMatch",
+          "confidence":    0.85,
+          "comment":       "CDIF profiles flatten the DDI-CDI scheme+term DataType into a plain skos:Concept reference. The Concept definition itself lives in CDIFCodelist."
+        }
+      }
+    ],
+    "association": [
+      {
+        "targetAssociationName": "Dataset_variableMeasured_VariableMeasured",
+        "subjectClass": "Dataset",
+        "objectClass": "VariableMeasured",
+        "definition": "schema:variableMeasured - variables described by this dataset.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "targetAssociationName": "Dataset_spatialCoverage_SpatialExtent",
+        "subjectClass": "Dataset",
+        "objectClass": "SpatialExtent",
+        "definition": "schema:spatialCoverage - geographic extent of resource content.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "targetAssociationName": "Dataset_temporalCoverage_TemporalExtent",
+        "subjectClass": "Dataset",
+        "objectClass": "TemporalExtent",
+        "definition": "schema:temporalCoverage - temporal extent of resource content.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "targetAssociationName": "Dataset_hasQualityMeasurement_QualityMeasure",
+        "subjectClass": "Dataset",
+        "objectClass": "QualityMeasure",
+        "definition": "dqv:hasQualityMeasurement - quality measurements reported on the resource.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      }
+    ]
+  }
+}
