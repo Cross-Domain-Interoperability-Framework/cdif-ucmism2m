@@ -20,7 +20,10 @@
       "definition": "CDIF Discovery profile - extends CDIF Core with discovery-oriented properties: measurement technique, variables measured, spatial and temporal coverage, quality measurements. Conforms-to identifier: https://w3id.org/cdif/discovery/1.0.",
       "mainPackage": "CDIFDiscovery",
       "mainPackageDefinition": "Discovery profile additions on top of CDIF Core.",
-      "dataTypesPackage": "CDIFDiscovery"
+      "dataTypesPackage": "CDIFDiscovery",
+      "composes": [
+        "ddi-cdi2cdifCore_mapping.json"
+      ]
     }
   },
   "package": [

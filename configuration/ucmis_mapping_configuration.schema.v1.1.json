@@ -12,6 +12,7 @@
 		"CHANGE: sssom_type.properties.confidence accepts string OR number, with numeric in the 0..1 range matching the SSSOM specification.",
 		"ADD: optional 'isAbstract' (boolean) on map/new/merge class mappings. Default false. Sets the UML Class.isAbstract flag so the emitted class is rendered as abstract (italicized in EA, has the {abstract} stereotype in PlantUML). Use for parent classes in a generalization hierarchy (e.g. Agent as a parent of Person/Organization).",
 		"ADD: optional 'generalization' (array of targetClass names, defaults to []) on map/new/merge class mappings. Each entry must be the targetClass name of another mapping in the same configuration. The engine resolves these names to target-class xmi:ids and emits one <generalization><general xmi:idref=...>...</generalization> child per entry inside the class packagedElement. Inherited attributes from the parent are automatically pulled in by the emit pipeline and deduplicated by (name, type, primitive).",
+		"ADD: optional 'composes' (array of relative config filenames, defaults to []) on transformation.targetModel. Mirrors the JSON Schema allOf composition pattern: a profile that extends another (e.g. Discovery extends Core; DataDescription extends Discovery) declares its base configs here. Composition is recursive and merges class attribute lists (local wins on name conflicts) plus associations. Lets each extension profile carry only its delta; the rendered UML and HTML browser show the full composed graph.",
 		"NOTE: All v1.0 configurations validate unchanged under v1.1."
 	],
 	"$comment": "Some details on UCMIS. UCMIS uses the following classes from the UML metamodel: Association, Classifier, Comment, Dependency, Element, Enumeration, Generalization, MultiplicityElement, NamedElement, Package, Property, StructuredClassifier, TypedElement. UCMIS uses the following XMI types: Association, Class, Comment, DataType, Dependency, Enumeration, EnumerationLiteral, Generalization, LiteralInteger, LiteralString, LiteralUnlimitedNatural, Model, Package, PrimitiveType, Property. This configuration addresses only a subset of them. UCMIS uses single inheritance. UCMIS uses binary associations, which can be understood as a triple, consisting of the subject class, the association name as the predicate, and the object class. Associations are located in the package of the object class.",
@@ -94,7 +95,14 @@
 				"definition": { "title": "Definition", "type": "string" },
 				"mainPackage": { "title": "Main package name", "description": "The main package in the target model that contains all the mentioned classes and associations, including those within its subpackages.", "$ref": "#/$defs/elementName_type" },
 				"mainPackageDefinition": { "type": "string" },
-				"dataTypesPackage": { "title": "Main package name for data types", "description": "The data types package in the target model that contains all required data types according to the structure in the source model, including those within its subpackages.", "$ref": "#/$defs/elementName_type" }
+				"dataTypesPackage": { "title": "Main package name for data types", "description": "The data types package in the target model that contains all required data types according to the structure in the source model, including those within its subpackages.", "$ref": "#/$defs/elementName_type" },
+				"composes": {
+					"title": "Base configurations this profile composes (v1.1)",
+					"description": "Array of paths to other ucmism2m configuration files (relative to this file) whose target classes and associations are merged into this profile before emit. Mirrors the JSON Schema allOf composition: a CDIF extension profile (Discovery extends Core; DataDescription extends Discovery; DataStructure extends DataDescription) declares its base in this field. Composition is recursive — Discovery -> Core also pulls in Core's composes if present. Merge rules: classes with the same targetClass union their attribute lists (local wins on name conflicts); associations are added when not already present by targetAssociationName.",
+					"type": "array",
+					"items": { "type": "string" },
+					"default": []
+				}
 			},
 			"required": ["acronym", "modelTitle", "subTitle", "majorVersion", "minorVersion", "language", "uri", "definition", "mainPackage", "mainPackageDefinition", "dataTypesPackage"],
 			"additionalProperties": false

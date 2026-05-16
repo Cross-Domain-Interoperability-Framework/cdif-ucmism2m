@@ -20,7 +20,10 @@
       "definition": "CDIF Data Description profile - extends Discovery with detailed variable descriptions (physicalDataType), distribution file characterization (character set, file size), primary key declarations, and statistical summaries.",
       "mainPackage": "CDIFDataDescription",
       "mainPackageDefinition": "Data Description profile additions on top of Core + Discovery.",
-      "dataTypesPackage": "CDIFDataDescription"
+      "dataTypesPackage": "CDIFDataDescription",
+      "composes": [
+        "ddi-cdi2cdifDiscovery_mapping.json"
+      ]
     }
   },
   "package": [

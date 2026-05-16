@@ -230,6 +230,51 @@ python $tool --xmi $xmi `
 2. Add an entry to the `$profiles` array in `ucmism2m/script/build-docs.ps1`.
 3. Run `build-docs.ps1`. Outputs land in `ucmism2m/generated/` and `metadataBuildingBlocks/build/`.
 
+## Profile composition (`composes`)
+
+CDIF profiles compose: Discovery extends Core; DataDescription extends Discovery; DataStructure extends DataDescription. In the JSON Schema world this is expressed by `allOf` over the base profile's schema. In the ucmism2m world it is expressed by the v1.1 **`composes`** field on `transformation.targetModel`:
+
+```jsonc
+"transformation": {
+  "targetModel": {
+    "acronym": "CDIFDiscovery",
+    ...
+    "composes": ["ddi-cdi2cdifCore_mapping.json"]
+  }
+}
+```
+
+The current chain is:
+
+| Config | composes |
+|---|---|
+| `ddi-cdi2cdifCore_mapping.json` | — (base) |
+| `ddi-cdi2cdifDiscovery_mapping.json` | Core |
+| `ddi-cdi2cdifDataDescription_mapping.json` | Discovery (→ Core transitively) |
+| `ddi-cdi2cdifDataStructure_mapping.json` | DataDescription (→ Discovery → Core transitively) |
+| `ddi-cdi2cdifCodelist_mapping.json` | — (standalone profile; composes the SKOS BBs in the JSON Schema layer, not a CDIF profile) |
+
+### Composition rules
+
+`emit_uml_from_config` calls `_load_with_composition(config_path)` which:
+
+1. Recursively expands every base config named in `composes` (depth-first, deduped).
+2. **Classes**: same `targetClass` → union the attribute lists (local wins on name conflict). Generalizations are unioned. Other fields (`sourceClass`, `definition`, `isAbstract`) take the local value when present.
+3. **Associations**: added when `targetAssociationName` isn't already present (first wins).
+4. **Packages**: added when `name` isn't already present, with `parent` rewritten to the local profile's mainPackage.
+
+Each extension profile's config therefore needs to carry only its delta. The full composed graph is materialised at emit time and reflected in the rendered UML, PlantUML diagrams, and HTML model browser.
+
+### HTML browser composition affordances
+
+The per-profile HTML browser surfaces composition in three places:
+
+- **Per-profile `index.html`** shows a green "Composes" banner listing the base profiles (with cross-profile links), and the class/datatype counts mark how many entries are inherited.
+- **Folder index pages** (`Classes/index.html`, `DataTypes/index.html`) tag inherited entries with an `inherited` badge.
+- **Per-class pages** show an `inherited from <profile>` badge next to the class name, with a link to the canonical definition in the originating profile.
+
+The full graph matches what the JSON Schema `resolvedSchema.json` for the same profile shows after `$ref` resolution.
+
 ## Union-type policy (UML attribute type ↔ JSON Schema)
 
 JSON Schema admits union types (`anyOf` / `oneOf`) freely; UML does not have a first-class union type, and the GeoSciML/ISO ShapeChange `<<union>>` stereotype workaround is not adopted here. CDIF profiles instead use the policy below, which reduces every JSON union shape to a single canonical UML attribute type. The UML model browser shows the canonical type; the JSON Schema implementations admit the surface alternatives.
