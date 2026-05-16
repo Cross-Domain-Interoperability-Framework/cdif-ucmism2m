@@ -6,11 +6,17 @@ configuration files in this directory.
 
 ## The starting points
 
-| Input | Path | Purpose |
-| --- | --- | --- |
-| **DDI-CDI canonical UML** | `ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi` (DDI-CDI 1.1beta — current source of truth, used by the build) | The authoritative DDI-CDI class model in Eclipse UML2 / XMI 2.5.1 form. Provides class names, attributes, datatypes, enumerations and associations that profile transformations map *from*. A 1.0 version remains at `CDIF/ucmism2m/model/ddi-cdi_canonical-unique-names-eclipse.xmi` for reference; switching back is one line in `build-docs.ps1`. |
-| **CDIF building-block profiles** | `CDIF/metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIF{Codelist,Core,Discovery,DataDescription,DataStructure,complete}Profile/` | The authoritative JSON-LD implementation of each profile. Each profile directory ships: `CDIF{Name}ProfileSchema.json` (composite), `resolvedSchema.json`, `schema.yaml`, `context.jsonld` (prefix-only), `rules.shacl`, `examples.yaml`, sample instance documents. |
-| **CDIF release repos** (downstream consumers) | `CDIF/Discovery/`, `CDIF/cdif-core/`, `CDIF/codelist/`, `CDIF/datadescription/`, `CDIF/data-structure-description/` | Each release repo ships a JSON-LD frame (`CDIF{Profile}-frame.jsonld`) and a copy of the rules SHACL. These are consumed by `FrameAndValidate.py` in the release repo to validate instance JSON-LD. |
+- **DDI-CDI canonical UML**
+  Path: `ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi` (DDI-CDI 1.1beta — current source of truth, used by the build).
+  The authoritative DDI-CDI class model in Eclipse UML2 / XMI 2.5.1 form. Provides class names, attributes, datatypes, enumerations and associations that profile transformations map *from*. A 1.0 version remains at `CDIF/ucmism2m/model/ddi-cdi_canonical-unique-names-eclipse.xmi` for reference; switching back is one line in `build-docs.ps1`.
+
+- **CDIF building-block profiles**
+  Path: `CDIF/metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIF*Profile/` (one directory per profile: `CDIFCodelist`, `CDIFCore`, `CDIFDiscovery`, `CDIFDataDescription`, `CDIFDataStructure`, `CDIFcomplete`).
+  The authoritative JSON-LD implementation of each profile. Each profile directory ships: `CDIF{Name}ProfileSchema.json` (composite), `resolvedSchema.json`, `schema.yaml`, `context.jsonld` (prefix-only), `rules.shacl`, `examples.yaml`, and sample instance documents.
+
+- **CDIF release repos** (downstream consumers)
+  Paths: `CDIF/Discovery/`, `CDIF/cdif-core/`, `CDIF/codelist/`, `CDIF/datadescription/`, `CDIF/data-structure-description/`.
+  Each release repo ships a JSON-LD frame (`CDIF{Profile}-frame.jsonld`) and a copy of the rules SHACL. These are consumed by `FrameAndValidate.py` in the release repo to validate instance JSON-LD.
 
 ## What already existed before this workflow was built
 
@@ -24,12 +30,21 @@ These are produced by the **metadataBuildingBlocks** tooling (`bblocks-config.ya
 
 ## What this workflow adds
 
-| Output | Path | How |
-| --- | --- | --- |
-| **Profile UML model (XMI 2.5.1)** | `ucmism2m/generated/cdif{Profile}.xmi` | Generated from DDI-CDI XMI + a ucmism2m JSON config |
-| **PlantUML class diagrams** | `metadataBuildingBlocks/cdif-uml-model/_plantuml/cdif{Profile}/{Classes,DataTypes}/*.pu` + `index.pu` | Walks the profile UML closure; one `.pu` per class plus an overview |
-| **Rendered SVGs** | sibling `.svg` next to each `.pu` | `java -jar plantuml.jar -tsvg` |
-| **HTML field-level documentation** | `metadataBuildingBlocks/cdif-uml-model/CDIF{Profile}/{Classes,DataTypes}/*.html` + per-profile `index.html` + top-level `index.html` | Self-contained static site with per-class pages, embedded SVG diagrams, attribute/association tables, cross-profile links |
+- **Profile UML model (XMI 2.5.1)**
+  Path: `ucmism2m/generated/cdif{Profile}.xmi`.
+  Generated from the DDI-CDI XMI plus a ucmism2m JSON config.
+
+- **PlantUML class diagrams**
+  Path: `metadataBuildingBlocks/cdif-uml-model/_plantuml/cdif{Profile}/{Classes,DataTypes}/*.pu` plus a per-profile `index.pu`.
+  Walks the profile UML closure; one `.pu` per class plus an overview.
+
+- **Rendered SVGs**
+  Path: sibling `.svg` next to each `.pu`.
+  Produced by `java -jar plantuml.jar -tsvg`.
+
+- **HTML field-level documentation**
+  Path: `metadataBuildingBlocks/cdif-uml-model/CDIF{Profile}/{Classes,DataTypes}/*.html` plus per-profile `index.html` and a top-level `index.html`.
+  Self-contained static site with per-class pages, embedded SVG diagrams, attribute/association tables, and cross-profile links.
 
 ## The ucmism2m JSON configs are the bridge
 
