@@ -35,12 +35,26 @@ CONFIG_DIR = Path(__file__).resolve().parents[1] / "configuration"
 # ---------------------------------------------------------------------------
 
 # Attribute names whose BB shape is `Identifier | @id-ref | string`
-# (schema:PropertyValue or shorter forms).
+# (schema:PropertyValue used in the identifier role — see
+# CDIFDiscovery/CDIFDiscoveryImplementationGuide.md "Polymorphism of
+# PropertyValue"). The plain string is a shorthand for the bare identifier
+# value. NOTE: schema:PropertyValue is used in TWO other roles in CDIF where
+# the string shorthand is NOT permitted:
+#   * VariableMeasured  — a measured variable description (own target class)
+#   * AdditionalProperty — a key/value extension property (own target class)
+# Both of those have to stay as their distinct UML type so the union rule
+# isn't applied to them. Only the identifier-role attributes go here.
 IDENTIFIER_ATTRS = {
     "identifier",
     "sameAs",
+}
+
+# Attribute names whose BB shape is `AdditionalProperty | @id-ref` (NO plain
+# string). schema:PropertyValue in the key/value extension role: instances
+# carry both a propertyID (the scheme/key) and a value, so a bare string is
+# not enough information to identify the property being asserted.
+ADDITIONAL_PROPERTY_ATTRS = {
     "additionalProperty",
-    "propertyID",          # propertyID is itself sometimes structured
 }
 
 # Attribute names whose BB shape is `DefinedTerm | string` (controlled term
@@ -97,6 +111,8 @@ def retype_attribute(attr: dict, *, owner_class: str, profile: str) -> bool:
     new_type = None
     if name in IDENTIFIER_ATTRS:
         new_type = "Identifier"
+    elif name in ADDITIONAL_PROPERTY_ATTRS:
+        new_type = "AdditionalProperty"
     elif name in DEFINED_TERM_ATTRS:
         new_type = "DefinedTerm"
     elif name in REFERENCE_ATTRS:
@@ -227,6 +243,18 @@ def add_stub_class(cfg: dict, target_name: str, package: str = "Support") -> boo
                 {"name": "url",         "dataType": "XsdAnyUri", "definition": "schema:url - resolvable URL (when distinct from the @id).",   "multiplicity": {"lower": "0", "upper": "1"}},
             ],
         },
+        "AdditionalProperty": {
+            "_comment": "AdditionalProperty (schema:PropertyValue in the key/value extension role) stub. Distinct from Identifier (also a schema:PropertyValue but in the identifier role). For AdditionalProperty the JSON instance MUST be an inline object or an @id-reference - a plain string is not enough because both the property name and the value are required to identify the assertion.",
+            "mappingType": "new", "targetPackage": package, "targetClass": "AdditionalProperty",
+            "definition": "schema:PropertyValue in the AdditionalProperty role (extension property key/value pair). Carries a propertyID (the property identifier or name) and a value. Distinct from Identifier (schema:PropertyValue in the identifier role) because the string shorthand permitted for Identifier does not work here - a bare string cannot convey both the property name and the value.",
+            "attribute": [
+                {"name": "propertyId",     "dataType": "String",    "definition": "schema:propertyID - identifier of the property being asserted (e.g. 'horsepower', 'serialNumber'). Either a literal string or a URI from a known vocabulary.", "multiplicity": {"lower": "1", "upper": "1"}},
+                {"name": "name",           "dataType": "String",    "definition": "schema:name - human-readable label for the property (often equal to propertyID).",                                                                              "multiplicity": {"lower": "0", "upper": "1"}},
+                {"name": "value",          "dataType": "String",    "definition": "schema:value - the property value (literal).",                                                                                                                    "multiplicity": {"lower": "1", "upper": "1"}},
+                {"name": "unitText",       "dataType": "String",    "definition": "schema:unitText - unit of measure for the value (textual).",                                                                                                      "multiplicity": {"lower": "0", "upper": "1"}},
+                {"name": "unitCode",       "dataType": "XsdAnyUri", "definition": "schema:unitCode - unit of measure for the value (URI from a known vocabulary, e.g. UCUM, QUDT).",                                                                "multiplicity": {"lower": "0", "upper": "1"}},
+            ],
+        },
     }
     stub = stubs.get(target_name)
     if stub:
@@ -263,7 +291,7 @@ def process(cfg_path: Path, check: bool) -> dict:
 
     # Step 3: add stub classes if any retype now needs an undefined target
     added_stubs = []
-    for name in ("Identifier", "DefinedTerm", "Reference"):
+    for name in ("Identifier", "DefinedTerm", "Reference", "AdditionalProperty"):
         if add_stub_class(cfg, name):
             added_stubs.append(name)
 

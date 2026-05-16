@@ -254,6 +254,22 @@ A survey across all CDIF profile resolvedSchemas (run via `ucmism2m/script/surve
 | `AttributeComponent ↔ DimensionComponent ↔ IdentifierComponent ↔ MeasureComponent ↔ …` (DDI-CDI structural-component subclasses) | `cdi:DataStructureComponent` (their common DDI-CDI parent) | The closure pulls the parent via inheritance; concrete component subclasses generalize from it in the source XMI. |
 | `DataStructure ↔ DimensionalDataStructure ↔ LongDataStructure ↔ WideDataStructure` | `cdi:DataStructure` (already abstract in DDI-CDI) | Same pattern; the parent is the DDI-CDI canonical type. |
 
+### Polymorphism of schema:PropertyValue
+
+`schema:PropertyValue` is used in three distinct roles in CDIF profiles, and the union-type-policy reduction differs for each. See the CDIF Discovery implementation guide: [Polymorphism of PropertyValue](https://github.com/Cross-Domain-Interoperability-Framework/discovery/blob/main/CDIFDiscoveryImplementationGuide.md#polymorphism-of-propertyvalue).
+
+| Role | Property names | UML attribute type | JSON shorthand permitted? |
+|---|---|---|---|
+| **Identifier role** — PropertyValue used to assert an identifier of the parent resource | `schema:identifier`, `schema:sameAs` | `Identifier` | **Yes — plain string** (interpreted as the bare identifier value), and `@id`-ref |
+| **VariableMeasured role** — PropertyValue used to describe a variable being measured | `schema:variableMeasured` | `VariableMeasured` (its own target class) | **No plain string.** `@id`-ref or inline object only — a variable description requires structured properties (name, unitText / unitCode, propertyID), not a bare label |
+| **AdditionalProperty role** — PropertyValue used as a key/value extension property | `schema:additionalProperty` | `AdditionalProperty` (its own target class) | **No plain string.** `@id`-ref or inline object only — both the property name (`schema:propertyID`) and the `schema:value` are required to identify the assertion |
+
+The three CDIF UML classes are separate so the union-type reduction can be applied per-role:
+- `Identifier` is the only one of the three where the JSON instance may be a plain string.
+- `VariableMeasured` and `AdditionalProperty` are structurally PropertyValue (same `schema:PropertyValue` `@type` in JSON-LD) but represent distinct usages where a bare string is meaningless.
+
+The retype script (`script/retype_to_union_canonical.py`) maps `identifier` / `sameAs` → `Identifier`, but `additionalProperty` → `AdditionalProperty` (a distinct target class with `propertyId` + `value` + optional units, no string-substitution rule).
+
 ### Writing notes that surface in the model browser
 
 Where a UML attribute type carries the "string alternative permitted" convention (Identifier, PropertyValue, DefinedTerm, ProperInterval), the description on the BB JSON Schema (and ideally on the UML attribute documentation in the config) calls this out explicitly so readers of the HTML model browser understand the JSON surface differs from the UML type.

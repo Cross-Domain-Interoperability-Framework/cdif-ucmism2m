@@ -695,7 +695,68 @@
         }
       },
       {
-        "_comment": "Reference (the cdif:Reference type — local UML class matching the cdifProperties/cdifReference building block). Renamed from the previous 'LabeledLink' stub. Used wherever the JSON schema admits 'cdif:Reference | @id-ref | string' shape (license, conditionsOfAccess, publishingPrinciples, documentation, termsOfService, relatedLink, subjectOf).",
+        "_comment": "AdditionalProperty (schema:PropertyValue in the key/value extension role). Distinct from Identifier (also schema:PropertyValue but in the identifier role). The string shorthand permitted for Identifier does NOT apply here - both the property name (propertyID) and the value are required to identify the assertion, so a bare string would be ambiguous. JSON instance MUST be an inline object or @id-reference.",
+        "mappingType": "new",
+        "targetPackage": "Support",
+        "targetClass": "AdditionalProperty",
+        "definition": "schema:PropertyValue in the AdditionalProperty role - a key/value extension property carrying a propertyID (property name) and a value, optionally with a unit. Used wherever schema:additionalProperty appears. See CDIFDiscoveryImplementationGuide.md (Polymorphism of PropertyValue) for the distinction from Identifier.",
+        "attribute": [
+          {
+            "name": "propertyId",
+            "dataType": "String",
+            "definition": "schema:propertyID - identifier of the property being asserted (e.g. 'horsepower', 'serialNumber'). Either a literal string or a URI from a known vocabulary.",
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-readable label for the property (often equal to propertyID).",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "value",
+            "dataType": "String",
+            "definition": "schema:value - the property value (literal).",
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "unitText",
+            "dataType": "String",
+            "definition": "schema:unitText - unit of measure for the value (textual).",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "unitCode",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:unitCode - unit of measure for the value (URI from a known vocabulary, e.g. UCUM, QUDT).",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        ],
+        "sssom": {
+          "subject_label": "(no direct DDI-CDI source class)",
+          "object_label": "CDIF Core AdditionalProperty (schema:PropertyValue in the AdditionalProperty role)",
+          "predicate_id": "skos:closeMatch",
+          "confidence": 0.8,
+          "comment": "Distinct from Identifier so the union-type policy does not collapse it to a string. See CDIFDiscoveryImplementationGuide.md Polymorphism of PropertyValue."
+        }
+      },
+      {
+        "_comment": "Reference (the cdif:Reference type â€” local UML class matching the cdifProperties/cdifReference building block). Renamed from the previous 'LabeledLink' stub. Used wherever the JSON schema admits 'cdif:Reference | @id-ref | string' shape (license, conditionsOfAccess, publishingPrinciples, documentation, termsOfService, relatedLink, subjectOf).",
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Reference",
