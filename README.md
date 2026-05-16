@@ -15,7 +15,56 @@ There are now **two interchangeable implementations** of the transformation desc
 | **Eclipse / QVTo application** | In development — described in sections 1–3 below | Java 21 + Eclipse Tycho + QVTo 3.11.1 (build) | You want the long-term canonical tool, run from a packaged Eclipse RCP binary |
 | **Python generator** | Working today — see [section 4](#4-alternative-python-generator-using-uml_to_schemapy) | Python 3.10+ with `pyyaml` and `jsonschema` | You want to generate profile UML right now, on any platform, without an Eclipse build |
 
-Both paths read the same configuration files (`configuration/ddi-cdi2*.json`) and the same source model (`model/ddi-cdi_canonical-unique-names-eclipse.xmi`). The five CDIF profile UML files in `generated/` were produced by the Python path; the Eclipse application will produce equivalent output once built.
+Both paths read the same configuration files (`configuration/ddi-cdi2*.json`) and the same source model (`model/ddi-cdi_canonical-unique-names-eclipse.xmi`, or `ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi` for the current DDI-CDI 1.1beta source used by the Python path). The five CDIF profile UML files in `generated/` were produced by the Python path; the Eclipse application will produce equivalent output once built.
+
+---
+
+## About this fork
+
+This repository is a CDIF fork of Joachim Wackerow's UCMIS-M2M project (https://bitbucket.org/wackerow/ucmis.m2t/, retained as the `upstream` git remote in local clones). The CDIF fork extends the v1.0 mapping-configuration schema with a small set of backwards-compatible enhancements to handle modelling situations that arose when applying the original tool to the CDIF profiles. The full rationale and reference tables live in [`workflowDescription.md`](workflowDescription.md); the summary:
+
+### v1.1 schema additions
+
+| Field | Where | Purpose |
+|---|---|---|
+| `$schema` at top level | every config | enables editor validation |
+| `fromSourceAttributeName` | map attributes | rename a source attribute (`cdi:name` → `skos:prefLabel`) |
+| Optional `sourceAssociationName` | associations | brand-new associations don't need a DDI-CDI source |
+| Optional `sourceClass` on `new` mappings | class mappings | record provenance Dependency without forcing source attrs |
+| `sssom` as object **or** array | sssom blocks | accept both forms |
+| `confidence` as number **or** string | sssom blocks | match the SSSOM 0..1 numeric form |
+| `isAbstract` | class mappings | emit `uml:Class isAbstract="true"` (used for `Agent`, `AbstractDistribution`, `AbstractGeometry`) |
+| `generalization` | class mappings | emit `<generalization><general …/></generalization>`; inherited attrs flow through the closure walker |
+| `composes` | `targetModel` | recursive profile composition mirroring JSON Schema `allOf` (Discovery → Core; DataDescription → Discovery → Core; DataStructure → DataDescription → Discovery → Core) |
+| `datatypeSubstitutions` | `transformation` | rewrite synthetic target class properties whose type points at a named source DataType (`InternationalString` → `String`, `ControlledVocabularyEntry` → `Concept`, `NonDdiIdentifier` → `Identifier`, …); applied in two places (synthetic targets + transitive closure walker); cascades through `composes` |
+| `excludeDatatypes` | `transformation` | drop properties typed by named source DataTypes (`BibliographicName`, `RationaleDefinition`, `Selector`, …) |
+
+### The union-type problem — and the CDIF solution
+
+JSON Schema admits union types (`anyOf` / `oneOf`); UML 2 does not have first-class union types. A survey across the five CDIF profile resolvedSchemas (see [`script/survey_union_types.py`](script/survey_union_types.py)) found **900+ union-shape occurrences** that needed reconciling. Rather than adopting the ShapeChange/GeoSciML `<<union>>` stereotype workaround (which CDIF stakeholders rejected), we chose to reduce every JSON union to a **single canonical UML attribute type**, with the simpler JSON forms (string, `@id`-only ref) treated as **serialization shorthand for the canonical type**.
+
+The rules:
+
+- **Coded-term unions** (`X | string`, where X is `Concept` / `SkosConcept` / `DefinedTerm`) → UML attribute typed `X`. The plain string is a shorthand for `X.prefLabel` or `X.@id`.
+- **Identifier unions** (`Identifier | @id-ref | string`) → UML attribute typed `Identifier` (`schema:PropertyValue`). The plain string is a shorthand for the bare identifier value.
+- **Reference unions** (`cdif:Reference | @id-ref | string`) → UML attribute typed `cdif:Reference`. The plain string is a shorthand URL.
+- **Multilingual-string unions** (`LanguageTaggedValue | string | array<…>`) → UML attribute typed `String`. JSON-LD `@language` tags carry the multilingualism. A future "language-localized" profile family will treat every string as a `{@value, @language}` object.
+- **Polymorphic class unions** → UML attribute typed by an abstract supertype:
+  - `Person | Organization` → `Agent`
+  - `DataDownload | WebAPI` → `AbstractDistribution`
+  - `GeoCoordinates | GeoShape` → `AbstractGeometry`
+  - `AttributeComponent | DimensionComponent | …` → `cdi:DataStructureComponent`
+- **`Concept` is special** — a Concept value MUST be a controlled-vocabulary entry (object or `@id`-ref). Plain strings are **not** permitted because vocabulary identity cannot be recovered from an unscoped string label.
+- **`schema:PropertyValue` is polymorphic across three roles** ([CDIF Discovery Implementation Guide](https://github.com/Cross-Domain-Interoperability-Framework/discovery/blob/main/CDIFDiscoveryImplementationGuide.md#polymorphism-of-propertyvalue)). Three distinct target classes exist so the union-rule reduction applies per-role:
+  - `Identifier` (for `schema:identifier`, `schema:sameAs`) — string shorthand permitted
+  - `VariableMeasured` (for `schema:variableMeasured`) — no string shorthand
+  - `AdditionalProperty` (for `schema:additionalProperty`) — no string shorthand (both `propertyID` and `value` are required)
+
+The `datatypeSubstitutions` and `excludeDatatypes` fields automate the source-DataType side of the policy. Putting them in `configuration/ddi-cdi2cdifCore_mapping.json` (cascades via `composes`) sets a project-wide policy that every CDIF profile inherits.
+
+### Round-trip with Wackerow's v1.0 tool
+
+The v1.0 base-schema parts of the configs (sourceModel / targetModel skeleton, basic `map`/`new`/`merge` mappings, attributes, associations, sssom blocks in object form) are unchanged and would still be processed correctly by Wackerow's QVTo/Acceleo tool. The v1.1 extensions (`composes`, `isAbstract`, `generalization`, `datatypeSubstitutions`, `excludeDatatypes`, plus numeric `confidence` and top-level `$schema`) are not understood by the v1.0 tool. If you ran the configs through Wackerow's tool, you would get the basic profile UML structure but lose the abstract supertypes, profile composition, polymorphic-association collapse, and DataType-policy flattening. To round-trip, either strip the v1.1 fields with a small script or contribute the v1.1 semantics upstream.
 
 ---
 

@@ -245,6 +245,77 @@ python $tool --xmi $xmi `
 2. Add an entry to the `$profiles` array in `ucmism2m/script/build-docs.ps1`.
 3. Run `build-docs.ps1`. Outputs land in `ucmism2m/generated/` and `metadataBuildingBlocks/build/`.
 
+## Modifications from Wackerow's v1.0 schema
+
+This work began as a fork of Joachim Wackerow's UCMIS-M2M project at https://bitbucket.org/wackerow/ucmis.m2t/ (now mirrored as `Cross-Domain-Interoperability-Framework/cdif-ucmism2m`; the original Wackerow remote is retained as the `upstream` remote in the local clone). The fork extends the v1.0 mapping-configuration schema in three backwards-compatible directions, each driven by a specific need that surfaced when applying the original tool to CDIF profiles.
+
+### Direction 1 — minor ergonomic additions (the easy ones)
+
+| v1.1 field | Where it lives | Why |
+|---|---|---|
+| `$schema` at top level | every config | v1.0 forbade unknown top-level keys via `additionalProperties: false`; allowing `$schema` lets editors pick up validation automatically |
+| `fromSourceAttributeName` on map attributes | `mapAttribute_type` | Lets a CDIF target attribute use a different name from its DDI-CDI source (e.g. DDI-CDI `cdi:name` → SKOS `skos:prefLabel`) |
+| Optional `sourceAssociationName` on associations | `association_type` | A brand-new association declared between two new target classes doesn't have a DDI-CDI source to rename |
+| Optional `sourceClass` on `new` class mappings | `class_type` | Records a provenance Dependency without forcing the DDI-CDI attribute vocabulary onto the new class |
+| `sssom` may be object **or** array | `sssom_type` | v1.0 schema said object, v1.0 example used array; the v1.1 schema accepts both |
+| `confidence` may be number **or** string | `sssom_type` | SSSOM spec uses a numeric 0..1; v1.0 only allowed string |
+
+### Direction 2 — structural enhancements for CDIF's UML choices
+
+CDIF profiles use abstract supertypes and profile composition in ways v1.0 didn't model. Three new fields encode these:
+
+- **`isAbstract`** (boolean, on map/new/merge class mappings) — marks the emitted `uml:Class` with `isAbstract="true"`. Used for `Agent` (parent of `Person` and `Organization`), `AbstractDistribution` (parent of `DataDownload` and `WebAPI`), and `AbstractGeometry` (parent of `GeoCoordinates` and `GeoShape`).
+
+- **`generalization`** (array of `targetClass` names, on map/new/merge class mappings) — emits a `<generalization><general xmi:idref="…"/></generalization>` child for each named parent. The parent must be another `targetClass` defined in the same effective config (after composition). Inherited attributes flow through the closure walker's `collect_inherited_properties` and dedupe by name.
+
+- **`composes`** (array of relative config filenames, on `transformation.targetModel`) — mirrors JSON Schema's `allOf` for profile inheritance. Discovery composes Core; DataDescription composes Discovery → Core; DataStructure composes DataDescription → Discovery → Core. Composition is recursive: classes with the same `targetClass` union their attribute lists (local wins on name conflict); associations are added when not already present; packages are added when not already present; the inherited class names are tracked so the HTML model browser can badge them.
+
+### Direction 3 — the union-type problem
+
+This is the substantial one. JSON Schema admits arbitrary union types via `anyOf` / `oneOf` ("a value may be a plain string, a structured object, or an `@id`-only reference"). UML 2 has no first-class union type. ShapeChange-style `<<union>>` stereotypes exist in the GeoSciML / ISO world but are not adopted by the DDI-CDI community, so we needed a different reconciliation.
+
+#### The problem we faced
+
+Across the five CDIF profile resolvedSchemas, a survey via [`script/survey_union_types.py`](script/survey_union_types.py) found **902 union-shape occurrences** clustering into a handful of patterns. The two biggest categories were:
+
+1. **Coded values** — `Concept | string`, `DefinedTerm | string`, `SkosConcept | string` etc. (over 200 occurrences). A JSON instance may carry either a plain string label OR a full controlled-vocabulary term object.
+2. **Identifiers / references** — `Identifier | @id-ref | string`, `cdif:Reference | @id-ref | string` (over 70 occurrences). A JSON instance may carry either a bare URI string OR an `@id`-only pointer OR a structured PropertyValue / Reference object.
+
+Plus polymorphism cases: `Person | Organization`, `DataDownload | WebAPI`, `GeoCoordinates | GeoShape`, the DDI-CDI structural-component family, and the multilingual-string family (`LanguageTaggedValue | string | array<...>`).
+
+#### Our solution — reduce every union to a single canonical UML attribute type
+
+For each JSON union shape, we picked the **richest type in the union** as the UML attribute type, and treat the simpler forms as JSON serialization shorthand. The full reduction table lives in the [Union-type policy](#union-type-policy-uml-attribute-type--json-schema) section below; the key rules:
+
+- `X | string` where `X` is a coded term → UML attribute typed `X` (string is shorthand for `X.prefLabel` or `X.@id`)
+- `X | string | @id-ref` where `X` is `Identifier` → UML typed `Identifier` (string is shorthand for the bare identifier value)
+- `cdif:Reference | string | @id-ref` → UML typed `cdif:Reference`
+- `LanguageTaggedValue | string` → UML typed `string` (multilingualism carried via JSON-LD `@language` tags; a future "language-localized" profile family will treat all strings as `{@value, @language}` objects)
+- `Concept` (skos:Concept) → **plain string is NOT permitted** — a Concept value must be either an inline object or an `@id`-reference into a known scheme (vocabulary identity cannot be recovered from an unscoped string label)
+- Polymorphic agents / distributions / geometries / structural components → UML typed by an **abstract supertype** we introduced (`Agent`, `AbstractDistribution`, `AbstractGeometry`, `cdi:DataStructureComponent`)
+
+#### Mechanism in the config schema
+
+Two new optional fields on `transformation` automate the source-DataType side of the reduction:
+
+- **`datatypeSubstitutions`** (map of source DataType name → target type) rewrites every synthetic target class property whose type points at a source DataType named in the map. The target may be a UML primitive (`String`, `Integer`, `Boolean`, `Real`) or the `targetClass` name of another mapping. Applied in two places: (a) on the synthetic target classes before the closure walker runs, and (b) inside the closure walker itself as it transitively walks DataType internals, so chains like `source Identifier.versionRationale → RationaleDefinition` don't pull excluded DataTypes through the back door.
+
+- **`excludeDatatypes`** (array of source DataType names) drops every property typed by a named source DataType. Used for DDI-CDI structured types with no CDIF surface at all (`BibliographicName`, `RationaleDefinition`, `Selector`, `CatalogDetails`, `ContactInformation`, `ElectronicMessageSystem`, `SpecializationRole`).
+
+Both fields participate in `composes`: substitutions and excludes from a base config cascade into composing profiles (local wins on substitution-key conflict; excludes are unioned). Putting the project-wide policy in `ddi-cdi2cdifCore_mapping.json` means every CDIF profile inherits it.
+
+#### PropertyValue polymorphism — a special case
+
+`schema:PropertyValue` is used in three semantically distinct roles in CDIF profiles ([CDIFDiscoveryImplementationGuide.md](https://github.com/Cross-Domain-Interoperability-Framework/discovery/blob/main/CDIFDiscoveryImplementationGuide.md#polymorphism-of-propertyvalue)), and the union rule differs per role. To prevent the substitution policy from blindly conflating them, three distinct target classes exist (all `mappingType: new`):
+
+- **`Identifier`** — for `schema:identifier`, `schema:sameAs`. Plain-string shorthand permitted.
+- **`VariableMeasured`** — for `schema:variableMeasured`. No plain string (a bare label cannot describe a measured variable).
+- **`AdditionalProperty`** — for `schema:additionalProperty`. No plain string (both `propertyID` and `value` are required to identify a key/value assertion).
+
+### Compatibility with Wackerow's tool
+
+Configs that use v1.1 fields would either be silently lossy or rejected by Wackerow's v1.0 QVTo/Acceleo tool. See `workflowDescription.md` answer regarding round-trip in the chat history (the gist: lose `composes`/`isAbstract`/`generalization`/`datatypeSubstitutions`/`excludeDatatypes` semantics; the basic class/attribute/association structure still works). This is why this fork's CI publishes both UML XMI and the rendered HTML model browser — the v1.1 features are part of the cdif-ucmism2m + metadataBuildingBlocks toolchain, not the upstream Wackerow path.
+
 ## Profile composition (`composes`)
 
 CDIF profiles compose: Discovery extends Core; DataDescription extends Discovery; DataStructure extends DataDescription. In the JSON Schema world this is expressed by `allOf` over the base profile's schema. In the ucmism2m world it is expressed by the v1.1 **`composes`** field on `transformation.targetModel`:
