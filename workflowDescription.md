@@ -179,10 +179,20 @@ Use the orchestration script — it handles all five profiles, builds the cross-
 
 What it does, in order:
 
+0. **Run the OGC bblocks postprocessor** (Docker) on `metadataBuildingBlocks/_sources/` to regenerate per-BB `resolvedSchema.json`, `generateddocs/` (json-full + markdown), `register.json`, `bblocks.jsonld`, `bblocks.ttl`, and the SHACL/JSON-Schema validation reports. This step is skipped when `build-local/register.json` is newer than every `_sources/**` file. Force with `-ForceBblocks`; bypass entirely with `-SkipBblocks`. Output goes to `metadataBuildingBlocks/build-local/` (gitignored — the committed `build/` is populated by the CI publish workflow, not local runs).
 1. **Emit XMI + PUML + SVG** for each of the 5 profiles (`uml_to_schema.py --emit-uml --emit-puml --plantuml-jar ...`)
 2. **Scan all configs** to build a `{className: profileName}` registry of every class and datatype, written to `metadataBuildingBlocks/build/field-level-documentation/_registry.json`
-3. **Emit HTML** for each profile with that registry so a reference to e.g. `Dataset` from `CDIFDataDescription/Classes/Statistic.html` links to `CDIFCore/Classes/Dataset.html`
+3. **Emit HTML** for each profile with that registry so a reference to e.g. `Dataset` from `CDIFDataDescription/Classes/Statistic.html` links to `CDIFCore/Classes/Dataset.html`. The HTML emitter sweeps stale per-class `.html` / `.pu` / `.svg` files in the target Classes/ and DataTypes/ folders before regenerating, so removed classes don't linger as orphans.
 4. **Open** `field-level-documentation/index.html` in the default browser
+
+### Two output trees, two pipelines
+
+| Pipeline | Output | Purpose |
+| --- | --- | --- |
+| **bblocks postprocessor** (Step 0) | `metadataBuildingBlocks/build-local/` (local) or `metadataBuildingBlocks/build/` (CI publish) | Per-BB resolved JSON Schemas, JSON-LD context, markdown docs, SHACL validation reports, the master `register.json`. Reflects edits to `_sources/**/schema.yaml`, `bblock.json`, examples, rules.shacl. |
+| **uml_to_schema.py** (Steps 1-3) | `metadataBuildingBlocks/build/{plantuml,field-level-documentation}/` | Per-CDIF-profile UML XMI + PlantUML diagrams + HTML model browser. Reflects edits to `ucmism2m/configuration/*.json` and the DDI-CDI source XMI. |
+
+The two pipelines are independent — edits to BB schemas do **not** appear in the field-level model browser, and edits to ucmism2m configs do **not** appear in the BB-rendered docs. Together they cover both the JSON Schema implementation surface (the BBs) and the UML/conceptual model (the profile UMLs).
 
 To serve over HTTP instead of `file://` (recommended for SVG embedding):
 

@@ -1,5 +1,10 @@
 # Build the CDIF profile model browser end-to-end.
 #
+#   0. (optional) Run the OGC bblocks postprocessor on metadataBuildingBlocks/_sources/
+#      via Docker. Regenerates resolvedSchema.json files, generateddocs/, and
+#      the bblocks register. Only runs if any _sources/ file is newer than
+#      build/register.json, unless -ForceBblocks is set. Skip with -SkipBblocks
+#      (useful when iterating only on ucmism2m configs).
 #   1. Run uml_to_schema.py for each of the 5 profiles to produce:
 #        ucmism2m/generated/<profile>.xmi        (canonical UML XMI 2.5)
 #        metadataBuildingBlocks/build/plantuml/<profile>/*.pu
@@ -11,11 +16,14 @@
 #
 # Requires: miniconda Python on PATH (or update $python), Java 11+,
 #           plantuml.jar (default: ../../metadataBuildingBlocks/tools/plantuml.jar).
+#           Step 0 additionally needs Docker Desktop running.
 [CmdletBinding()]
 param(
     [string]$JavaExe = "C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe",
     [string]$PlantUmlJar = "$PSScriptRoot\..\..\metadataBuildingBlocks\tools\plantuml.jar",
-    [switch]$NoOpen
+    [switch]$NoOpen,
+    [switch]$SkipBblocks,
+    [switch]$ForceBblocks
 )
 
 $ErrorActionPreference = "Stop"
@@ -36,6 +44,42 @@ $profiles = @(
     @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription" },
     @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure" }
 )
+
+$mbbDir = Join-Path $repoRoot "metadataBuildingBlocks"
+$mbbSources = Join-Path $mbbDir "_sources"
+# bblocks-postprocess writes to build-local/ by default (gitignored, regenerable);
+# the committed build/ is populated by the CI publish workflow. We track the
+# local register for staleness so iterating on _sources/ triggers a rebuild.
+$mbbRegister = Join-Path $mbbDir "build-local\register.json"
+
+function Test-BblocksStale {
+    if (-not (Test-Path $mbbRegister)) { return $true }
+    $regTime = (Get-Item $mbbRegister).LastWriteTime
+    # Any source file newer than the register => stale
+    $newer = Get-ChildItem -Path $mbbSources -Recurse -File `
+        -Include *.yaml,*.yml,*.json,*.md,*.shacl -ErrorAction SilentlyContinue |
+        Where-Object { $_.LastWriteTime -gt $regTime } |
+        Select-Object -First 1
+    return $null -ne $newer
+}
+
+if (-not $SkipBblocks) {
+    $needs = $ForceBblocks -or (Test-BblocksStale)
+    if ($needs) {
+        Write-Host "==> Step 0: run OGC bblocks postprocessor (Docker) on metadataBuildingBlocks/_sources/"
+        # Mirror build.sh; Docker handles the volume mount via the host path.
+        $hostPath = $mbbDir -replace '\\','/'
+        & docker run --pull=always --rm --workdir /workspace `
+            -v "${hostPath}:/workspace" `
+            ghcr.io/opengeospatial/bblocks-postprocess `
+            --clean true --base-url "http://localhost:9090/register/"
+        if ($LASTEXITCODE -ne 0) { throw "bblocks postprocessor failed (exit $LASTEXITCODE). Re-run with -SkipBblocks to bypass, or check Docker Desktop is running." }
+    } else {
+        Write-Host "==> Step 0: bblocks register up to date; skipping (force with -ForceBblocks)"
+    }
+} else {
+    Write-Host "==> Step 0: bblocks build skipped (-SkipBblocks)"
+}
 
 Write-Host "==> Step 1: emit XMI + PlantUML + SVG for each profile"
 foreach ($p in $profiles) {

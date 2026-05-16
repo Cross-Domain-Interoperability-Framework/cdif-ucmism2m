@@ -134,22 +134,14 @@
         "generalization": ["Agent"],
         "definition": "schema:Person - a human agent (creator, contributor, publisher, etc.). Inherits identifier and name from Agent.",
         "attribute": [
-          { "name": "givenName", "dataType": "String", "definition": "schema:givenName - first/given name.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "familyName", "dataType": "String", "definition": "schema:familyName - family/last name.", "multiplicity": { "lower": "0", "upper": "1" } },
-          {
-            "_comment": "Refined: structured DDI-CDI IndividualName DataType. Use when the metadata producer wants surface-level givenName/familyName along with the DDI-CDI structured form.",
-            "name": "individualName", "dataType": "IndividualName",
-            "definition": "DDI-CDI cdi:individualName - structured name (prefix, given, family, suffix, full form).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          { "name": "email", "dataType": "String", "definition": "schema:email - email address.", "multiplicity": { "lower": "0", "upper": "1" } },
-          {
-            "_comment": "Refined: DDI-CDI cdi:contactInformation (Address + Email + Telephone + WebLink). Heavier structured alternative to flat email/affiliation.",
-            "name": "contactInformation", "dataType": "ContactInformation",
-            "definition": "DDI-CDI cdi:contactInformation - composite contact block (Address, Email, Telephone, WebLink).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          { "name": "affiliation", "dataType": "String", "definition": "schema:affiliation - organisational affiliation.", "multiplicity": { "lower": "0", "upper": "*" } }
+          { "name": "givenName",     "dataType": "String",    "definition": "schema:givenName - first/given name.",                                                        "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "familyName",    "dataType": "String",    "definition": "schema:familyName - family/last name.",                                                       "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "additionalName","dataType": "String",    "definition": "schema:additionalName - middle name, patronymic, or other non-primary name component.",       "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "honorificPrefix","dataType": "String",   "definition": "schema:honorificPrefix - title before the name (e.g. Dr., Prof.).",                            "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "honorificSuffix","dataType": "String",   "definition": "schema:honorificSuffix - title after the name (e.g. PhD, Jr.).",                               "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "email",         "dataType": "String",    "definition": "schema:email - email address.",                                                               "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "telephone",     "dataType": "String",    "definition": "schema:telephone - telephone number (E.164 or human-readable).",                              "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "affiliation",   "dataType": "String",    "definition": "schema:affiliation - organisational affiliation (string label; use the @id-reference form on the association end for a structured link).", "multiplicity": { "lower": "0", "upper": "*" } }
         ],
         "sssom": {
           "subject_label": "DDI-CDI Individual",
@@ -167,20 +159,11 @@
         "generalization": ["Agent"],
         "definition": "schema:Organization - an organisational agent. Inherits identifier and name from Agent.",
         "attribute": [
-          {
-            "_comment": "Refined: DDI-CDI cdi:organizationName structured DataType.",
-            "name": "organizationName", "dataType": "OrganizationName",
-            "definition": "DDI-CDI cdi:organizationName - structured organisation name (legal name, acronym, alternative forms).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          { "name": "url", "dataType": "XsdAnyUri", "definition": "schema:url - organisation homepage.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "email", "dataType": "String", "definition": "schema:email - contact email.", "multiplicity": { "lower": "0", "upper": "1" } },
-          {
-            "_comment": "Refined: DDI-CDI cdi:contactInformation structured DataType.",
-            "name": "contactInformation", "dataType": "ContactInformation",
-            "definition": "DDI-CDI cdi:contactInformation - composite contact block.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
+          { "name": "legalName",     "dataType": "String",    "definition": "schema:legalName - the official legal name of the organisation (where it differs from schema:name).",                                "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "alternateName", "dataType": "String",    "definition": "schema:alternateName - acronym, abbreviation, or other alternative forms of the organisation's name.",                                "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "url",           "dataType": "XsdAnyUri", "definition": "schema:url - organisation homepage.",                                                                                                  "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "email",         "dataType": "String",    "definition": "schema:email - contact email.",                                                                                                       "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "telephone",     "dataType": "String",    "definition": "schema:telephone - contact telephone number (E.164 or human-readable).",                                                              "multiplicity": { "lower": "0", "upper": "1" } }
         ],
         "sssom": {
           "subject_label": "DDI-CDI Organization",
