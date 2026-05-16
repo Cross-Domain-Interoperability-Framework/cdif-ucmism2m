@@ -34,8 +34,12 @@ $tool = Join-Path $repoRoot "metadataBuildingBlocks\tools\uml_to_schema.py"
 $xmi  = "C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
 $configDir = Join-Path $repoRoot "ucmism2m\configuration"
 $genDir = Join-Path $repoRoot "ucmism2m\generated"
-$pumlOut = Join-Path $repoRoot "metadataBuildingBlocks\build\plantuml"
-$htmlOut = Join-Path $repoRoot "metadataBuildingBlocks\build\field-level-documentation"
+# Outputs go OUTSIDE metadataBuildingBlocks/build/ so the OGC bblocks
+# postprocess workflow (which manages build/) can't accidentally wipe them.
+# The cdif-uml-model/ tree at repo root is the published model browser; its
+# _plantuml/ subdir holds the intermediate .pu/.svg sources for diagram embed.
+$pumlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model\_plantuml"
+$htmlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model"
 
 $profiles = @(
     @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist" },

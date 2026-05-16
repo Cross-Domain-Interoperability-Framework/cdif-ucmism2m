@@ -27,9 +27,9 @@ These are produced by the **metadataBuildingBlocks** tooling (`bblocks-config.ya
 | Output | Path | How |
 | --- | --- | --- |
 | **Profile UML model (XMI 2.5.1)** | `ucmism2m/generated/cdif{Profile}.xmi` | Generated from DDI-CDI XMI + a ucmism2m JSON config |
-| **PlantUML class diagrams** | `metadataBuildingBlocks/build/plantuml/cdif{Profile}/{Classes,DataTypes}/*.pu` + `index.pu` | Walks the profile UML closure; one `.pu` per class plus an overview |
+| **PlantUML class diagrams** | `metadataBuildingBlocks/cdif-uml-model/_plantuml/cdif{Profile}/{Classes,DataTypes}/*.pu` + `index.pu` | Walks the profile UML closure; one `.pu` per class plus an overview |
 | **Rendered SVGs** | sibling `.svg` next to each `.pu` | `java -jar plantuml.jar -tsvg` |
-| **HTML field-level documentation** | `metadataBuildingBlocks/build/field-level-documentation/CDIF{Profile}/{Classes,DataTypes}/*.html` + per-profile `index.html` + top-level `index.html` | Self-contained static site with per-class pages, embedded SVG diagrams, attribute/association tables, cross-profile links |
+| **HTML field-level documentation** | `metadataBuildingBlocks/cdif-uml-model/CDIF{Profile}/{Classes,DataTypes}/*.html` + per-profile `index.html` + top-level `index.html` | Self-contained static site with per-class pages, embedded SVG diagrams, attribute/association tables, cross-profile links |
 
 ## The ucmism2m JSON configs are the bridge
 
@@ -120,12 +120,12 @@ the mapping rationale is traceable.
            └───────────────────────────┘  └────────┬─────────────────────┘
                                                    │
                                                    ▼
-   ┌────────────────────┐  ┌────────────────────┐  ┌─────────────────────────┐
-   │ Profile UML XMI    │  │ PlantUML + SVG     │  │ HTML model browser      │
-   │ ucmism2m/generated │  │ mBB/build/plantuml │  │ mBB/build/field-level-  │
-   │  cdifCore.xmi …    │  │  cdifCore/*.pu     │  │   documentation/        │
-   │                    │  │  cdifCore/*.svg    │  │  CDIFCore/Classes/*.html│
-   └────────────────────┘  └────────────────────┘  └─────────────────────────┘
+   ┌────────────────────┐  ┌─────────────────────────────┐  ┌─────────────────────────┐
+   │ Profile UML XMI    │  │ PlantUML + SVG              │  │ HTML model browser      │
+   │ ucmism2m/generated │  │ mBB/cdif-uml-model/_plantuml│  │ mBB/cdif-uml-model/     │
+   │  cdifCore.xmi …    │  │  cdifCore/*.pu              │  │  CDIFCore/index.html    │
+   │                    │  │  cdifCore/*.svg             │  │  CDIFCore/Classes/*.html│
+   └────────────────────┘  └─────────────────────────────┘  └─────────────────────────┘
                                                                 │
                                                                 ▼
                                                   served via local HTTP
@@ -167,7 +167,7 @@ curl -L -o "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlock
 
 PlantUML 1.2024+ requires Java 11 or later. The build script picks up `C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe` by default.
 
-GitHub Pages deployment of `build/field-level-documentation/` needs only the rendered HTML and SVG files — it does **not** require Java or `plantuml.jar` at serve time.
+GitHub Pages deployment of `cdif-uml-model/` needs only the rendered HTML and SVG files — it does **not** require Java or `plantuml.jar` at serve time.
 
 ## Running the full build
 
@@ -181,23 +181,23 @@ What it does, in order:
 
 0. **Run the OGC bblocks postprocessor** (Docker) on `metadataBuildingBlocks/_sources/` to regenerate per-BB `resolvedSchema.json`, `generateddocs/` (json-full + markdown), `register.json`, `bblocks.jsonld`, `bblocks.ttl`, and the SHACL/JSON-Schema validation reports. This step is skipped when `build-local/register.json` is newer than every `_sources/**` file. Force with `-ForceBblocks`; bypass entirely with `-SkipBblocks`. Output goes to `metadataBuildingBlocks/build-local/` (gitignored — the committed `build/` is populated by the CI publish workflow, not local runs).
 1. **Emit XMI + PUML + SVG** for each of the 5 profiles (`uml_to_schema.py --emit-uml --emit-puml --plantuml-jar ...`)
-2. **Scan all configs** to build a `{className: profileName}` registry of every class and datatype, written to `metadataBuildingBlocks/build/field-level-documentation/_registry.json`
+2. **Scan all configs** to build a `{className: profileName}` registry of every class and datatype, written to `metadataBuildingBlocks/cdif-uml-model/_registry.json`
 3. **Emit HTML** for each profile with that registry so a reference to e.g. `Dataset` from `CDIFDataDescription/Classes/Statistic.html` links to `CDIFCore/Classes/Dataset.html`. The HTML emitter sweeps stale per-class `.html` / `.pu` / `.svg` files in the target Classes/ and DataTypes/ folders before regenerating, so removed classes don't linger as orphans.
-4. **Open** `field-level-documentation/index.html` in the default browser
+4. **Open** `cdif-uml-model/index.html` in the default browser
 
 ### Two output trees, two pipelines
 
 | Pipeline | Output | Purpose |
 | --- | --- | --- |
 | **bblocks postprocessor** (Step 0) | `metadataBuildingBlocks/build-local/` (local) or `metadataBuildingBlocks/build/` (CI publish) | Per-BB resolved JSON Schemas, JSON-LD context, markdown docs, SHACL validation reports, the master `register.json`. Reflects edits to `_sources/**/schema.yaml`, `bblock.json`, examples, rules.shacl. |
-| **uml_to_schema.py** (Steps 1-3) | `metadataBuildingBlocks/build/{plantuml,field-level-documentation}/` | Per-CDIF-profile UML XMI + PlantUML diagrams + HTML model browser. Reflects edits to `ucmism2m/configuration/*.json` and the DDI-CDI source XMI. |
+| **uml_to_schema.py** (Steps 1-3) | `metadataBuildingBlocks/cdif-uml-model/ (HTML browser; intermediate .pu/.svg at cdif-uml-model/_plantuml/)` | Per-CDIF-profile UML XMI + PlantUML diagrams + HTML model browser. Reflects edits to `ucmism2m/configuration/*.json` and the DDI-CDI source XMI. |
 
 The two pipelines are independent — edits to BB schemas do **not** appear in the field-level model browser, and edits to ucmism2m configs do **not** appear in the BB-rendered docs. Together they cover both the JSON Schema implementation surface (the BBs) and the UML/conceptual model (the profile UMLs).
 
 To serve over HTTP instead of `file://` (recommended for SVG embedding):
 
 ```powershell
-cd C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\field-level-documentation
+cd C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model
 python -m http.server 8765
 # then: http://localhost:8765/index.html
 ```
@@ -215,10 +215,10 @@ $java = "C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe"
 python $tool --xmi $xmi `
     --config "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\configuration\ddi-cdi2cdifCore_mapping.json" `
     --emit-uml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\generated\cdifCore.xmi" `
-    --emit-puml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\plantuml\cdifCore" `
-    --emit-html "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\field-level-documentation" `
-    --puml-dir "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\plantuml\cdifCore" `
-    --cross-profile-registry "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\field-level-documentation\_registry.json" `
+    --emit-puml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
+    --emit-html "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model" `
+    --puml-dir "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
+    --cross-profile-registry "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_registry.json" `
     --plantuml-jar $jar --java-exe $java
 ```
 
