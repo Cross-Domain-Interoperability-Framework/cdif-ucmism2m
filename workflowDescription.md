@@ -230,6 +230,40 @@ python $tool --xmi $xmi `
 2. Add an entry to the `$profiles` array in `ucmism2m/script/build-docs.ps1`.
 3. Run `build-docs.ps1`. Outputs land in `ucmism2m/generated/` and `metadataBuildingBlocks/build/`.
 
+## Union-type policy (UML attribute type ↔ JSON Schema)
+
+JSON Schema admits union types (`anyOf` / `oneOf`) freely; UML does not have a first-class union type, and the GeoSciML/ISO ShapeChange `<<union>>` stereotype workaround is not adopted here. CDIF profiles instead use the policy below, which reduces every JSON union shape to a single canonical UML attribute type. The UML model browser shows the canonical type; the JSON Schema implementations admit the surface alternatives.
+
+A survey across all CDIF profile resolvedSchemas (run via `ucmism2m/script/survey_union_types.py`) found 900+ union-shape occurrences; they cluster into the patterns below.
+
+### Reductions
+
+| JSON union shape | UML attribute type | Notes |
+|---|---|---|
+| `X` ↔ `string` where X is a **coded term** (DefinedTerm) | `schema:DefinedTerm` | The string is a shorthand for `DefinedTerm.name` or `DefinedTerm.termCode`. |
+| `X` ↔ `string` where X is **skos:Concept** | `skos:Concept` | **Plain strings are NOT permitted for Concept.** A Concept must be a controlled-vocabulary term — either an `@id`-reference into a known scheme or a full inline `skos:Concept` node. Vocabulary identity cannot be recovered from an unscoped string label. |
+| `X` ↔ `string` ↔ `@id`-ref where X is **Identifier / PropertyValue** | `schema:PropertyValue` | The string is a shorthand for the bare identifier value (e.g. a DOI or ORCID). |
+| `X` ↔ `string` ↔ `@id`-ref where X is **cdif:Reference / LabeledLink** | `cdif:Reference` | The string is a shorthand URL. |
+| `LanguageTaggedValue` ↔ `string` ↔ array thereof | `string` | Multilingualism carried via JSON-LD `@language` tags. Same policy as `cdi:InternationalString` / `cdi:LabelForDisplay` / `cdi:ObjectName`, all of which flatten to `String` here. *Future:* a separate "language-localized" profile family in which every string becomes a JSON-LD object with `@value` + `@language`. |
+| `ProperInterval` ↔ `string` | `string` | An ISO 8601 interval string is the canonical form; the structured `time:ProperInterval` object is an alternative encoding. |
+| `inline-X` ↔ `@id`-only ref | `X` | Inline-vs-reference is a JSON-LD serialization choice, not a type variant. The UML attribute always targets `X`; the JSON instance may carry either the inline object or `{"@id": "..."}`. |
+| `X ↔ array<X>` (cardinality variation) | `X` with multiplicity `0..*` or `1..*` | Cardinality variation in JSON Schema becomes multiplicity in UML. |
+| `Person ↔ Organization` (any envelope) | `Agent` (abstract supertype) | Already wired; `Person`, `Organization` both generalize `Agent`. The four role associations (`creator`, `publisher`, `contributor`-via-Contributor, `funder`-via-MonetaryGrant) target `Agent`. |
+| `DataDownload ↔ WebAPI` (distribution kinds) | `AbstractDistribution` (abstract supertype) | New in the union-type-policy branch. `DataDownload` and `WebAPI` both generalize `AbstractDistribution`. `Dataset.distribution` targets `AbstractDistribution`. JSON instances carry the concrete `schema:DataDownload` or `schema:WebAPI` in `@type`. |
+| `GeoCoordinates ↔ GeoShape` (geometry kinds) | `AbstractGeometry` (abstract supertype) | New in the union-type-policy branch. `GeoCoordinates` (point) and `GeoShape` (box / polygon / line) both generalize `AbstractGeometry`. `SpatialExtent.geo` targets `AbstractGeometry`. JSON instances carry the concrete `schema:GeoCoordinates` or `schema:GeoShape` in `@type`. |
+| `AttributeComponent ↔ DimensionComponent ↔ IdentifierComponent ↔ MeasureComponent ↔ …` (DDI-CDI structural-component subclasses) | `cdi:DataStructureComponent` (their common DDI-CDI parent) | The closure pulls the parent via inheritance; concrete component subclasses generalize from it in the source XMI. |
+| `DataStructure ↔ DimensionalDataStructure ↔ LongDataStructure ↔ WideDataStructure` | `cdi:DataStructure` (already abstract in DDI-CDI) | Same pattern; the parent is the DDI-CDI canonical type. |
+
+### Writing notes that surface in the model browser
+
+Where a UML attribute type carries the "string alternative permitted" convention (Identifier, PropertyValue, DefinedTerm, ProperInterval), the description on the BB JSON Schema (and ideally on the UML attribute documentation in the config) calls this out explicitly so readers of the HTML model browser understand the JSON surface differs from the UML type.
+
+### Future work
+
+- **v1.2 config field `jsonAlternativeTypes`** on attributes, listing the JSON-side surface alternatives the implementation accepts. Currently the policy lives in this document; making it machine-readable would let a future "JSON Schema from config" emitter (or a SHACL-from-config emitter) derive both sides from one source.
+- **HTML model browser column** showing the JSON alternatives next to the UML type, so readers don't have to consult the BB JSON Schema separately.
+- **Language-localized profile family** where every string-typed property becomes a JSON-LD object with `@value` + `@language`.
+
 ## Cross-references and provenance
 
 - The audit of what exists vs. what is missing is in

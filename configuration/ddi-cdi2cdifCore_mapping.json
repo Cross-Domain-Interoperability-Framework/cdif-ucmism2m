@@ -64,25 +64,43 @@
         }
       },
       {
-        "_comment": "schema:DataDownload - file-based distribution. DDI-CDI PhysicalDataSet is the closest provenance anchor (it represents the byte-level realization of a dataset).",
+        "_comment": "AbstractDistribution - abstract supertype of DataDownload and WebAPI (union-type-policy: v1.1 generalization). Lets the Dataset_distribution association target a single end instead of one per concrete kind. Carries the attributes common to both (identifier, name, description). Concrete subclasses keep the kind-specific attributes and the appropriate multiplicity for url.",
+        "mappingType": "new",
+        "isAbstract": true,
+        "targetPackage": "Distribution",
+        "targetClass": "AbstractDistribution",
+        "definition": "Abstract supertype for resource distributions (DataDownload for files, WebAPI for service endpoints). Use the concrete subclass that matches the access method.",
+        "attribute": [
+          { "name": "identifier",  "dataType": "XsdAnyUri", "definition": "@id - URI for this distribution.",                                  "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "name",        "dataType": "String",    "definition": "schema:name - human-readable name for this distribution.",          "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "description", "dataType": "String",    "definition": "schema:description - short summary of this distribution.",          "multiplicity": { "lower": "0", "upper": "1" } }
+        ],
+        "sssom": {
+          "subject_label": "(no direct DDI-CDI source class)",
+          "object_label":  "CDIF Core AbstractDistribution (polymorphic over schema:DataDownload + schema:WebAPI)",
+          "predicate_id":  "skos:closeMatch",
+          "confidence":    0.8,
+          "comment":       "Introduced as an abstract parent so the Dataset_distribution association can target one end. JSON instances always use the concrete schema:DataDownload or schema:WebAPI in @type."
+        }
+      },
+      {
+        "_comment": "schema:DataDownload - file-based distribution. DDI-CDI PhysicalDataSet is the closest provenance anchor (it represents the byte-level realization of a dataset). Inherits identifier, name, description from AbstractDistribution.",
         "mappingType": "new",
         "sourceClass": "PhysicalDataSet",
         "targetPackage": "Distribution",
         "targetClass": "DataDownload",
-        "definition": "schema:DataDownload - a downloadable file distribution of a Dataset.",
+        "generalization": ["AbstractDistribution"],
+        "definition": "schema:DataDownload - a downloadable file distribution of a Dataset. Inherits identifier/name/description from AbstractDistribution.",
         "attribute": [
-          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - URI for this DataDownload.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "name", "dataType": "String", "definition": "schema:name - human-readable name for this distribution.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "description", "dataType": "String", "definition": "schema:description - short summary of this distribution.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "contentUrl", "dataType": "XsdAnyUri", "definition": "schema:contentUrl - direct URL to fetch the bytes.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "url", "dataType": "XsdAnyUri", "definition": "schema:url - URL to a landing page for this distribution if contentUrl is not direct.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "encodingFormat", "dataType": "String", "definition": "schema:encodingFormat - MIME type or other media-type identifier.", "multiplicity": { "lower": "0", "upper": "*" } },
-          { "name": "contentSize", "dataType": "String", "definition": "schema:contentSize - byte size or human-readable size.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "dateModified", "dataType": "XsdDate", "definition": "schema:dateModified - last-modified date of this distribution.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "datePublished", "dataType": "XsdDate", "definition": "schema:datePublished - publication date of this distribution.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "license", "dataType": "XsdAnyUri", "definition": "schema:license - license for this distribution (may differ from dataset-level).", "multiplicity": { "lower": "0", "upper": "*" } },
-          { "name": "conditionsOfAccess", "dataType": "String", "definition": "schema:conditionsOfAccess - access conditions for this distribution.", "multiplicity": { "lower": "0", "upper": "*" } },
-          { "name": "checksum", "dataType": "String", "definition": "spdx:checksum / schema:checksum - integrity hash for the bytes.", "multiplicity": { "lower": "0", "upper": "*" } }
+          { "name": "contentUrl",         "dataType": "XsdAnyUri", "definition": "schema:contentUrl - direct URL to fetch the bytes.",                                              "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "url",                "dataType": "XsdAnyUri", "definition": "schema:url - URL to a landing page for this distribution if contentUrl is not direct.",            "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "encodingFormat",     "dataType": "String",    "definition": "schema:encodingFormat - MIME type or other media-type identifier.",                                "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "contentSize",        "dataType": "String",    "definition": "schema:contentSize - byte size or human-readable size.",                                           "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "dateModified",       "dataType": "XsdDate",   "definition": "schema:dateModified - last-modified date of this distribution.",                                   "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "datePublished",      "dataType": "XsdDate",   "definition": "schema:datePublished - publication date of this distribution.",                                    "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "license",            "dataType": "XsdAnyUri", "definition": "schema:license - license for this distribution (may differ from dataset-level).",                  "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "conditionsOfAccess", "dataType": "String",    "definition": "schema:conditionsOfAccess - access conditions for this distribution.",                              "multiplicity": { "lower": "0", "upper": "*" } },
+          { "name": "checksum",           "dataType": "String",    "definition": "spdx:checksum / schema:checksum - integrity hash for the bytes.",                                  "multiplicity": { "lower": "0", "upper": "*" } }
         ],
         "sssom": {
           "subject_label": "DDI-CDI PhysicalDataSet",
@@ -93,17 +111,15 @@
         }
       },
       {
-        "_comment": "schema:WebAPI - API distribution. No DDI-CDI counterpart; pure schema.org concept. Plain new.",
+        "_comment": "schema:WebAPI - API distribution. No DDI-CDI counterpart; pure schema.org concept. Inherits identifier, name, description from AbstractDistribution.",
         "mappingType": "new",
         "targetPackage": "Distribution",
         "targetClass": "WebAPI",
-        "definition": "schema:WebAPI - an API distribution endpoint. Used as an alternative to schema:DataDownload for service-mediated access.",
+        "generalization": ["AbstractDistribution"],
+        "definition": "schema:WebAPI - an API distribution endpoint. Used as an alternative to schema:DataDownload for service-mediated access. Inherits identifier/name/description from AbstractDistribution.",
         "attribute": [
-          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id - URI for this WebAPI.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "name", "dataType": "String", "definition": "schema:name - name of the API.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "description", "dataType": "String", "definition": "schema:description - description of the API.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "documentation", "dataType": "XsdAnyUri", "definition": "schema:documentation - URL of API documentation.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "url", "dataType": "XsdAnyUri", "definition": "schema:url - endpoint URL.", "multiplicity": { "lower": "1", "upper": "1" } }
+          { "name": "documentation", "dataType": "XsdAnyUri", "definition": "schema:documentation - URL of API documentation.",                       "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "url",           "dataType": "XsdAnyUri", "definition": "schema:url - endpoint URL. Required for WebAPI distributions.",         "multiplicity": { "lower": "1", "upper": "1" } }
         ]
       },
       {
@@ -319,17 +335,11 @@
     ],
     "association": [
       {
-        "targetAssociationName": "Dataset_distribution_DataDownload",
+        "_comment": "schema:distribution - single association on the AbstractDistribution supertype; replaces the previous Dataset_distribution_DataDownload + Dataset_distribution_WebAPI pair. Instance @type carries the concrete kind (schema:DataDownload or schema:WebAPI).",
+        "targetAssociationName": "Dataset_distribution_AbstractDistribution",
         "subjectClass": "Dataset",
-        "objectClass": "DataDownload",
-        "definition": "schema:distribution - file-based distributions of the dataset.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
-      },
-      {
-        "targetAssociationName": "Dataset_distribution_WebAPI",
-        "subjectClass": "Dataset",
-        "objectClass": "WebAPI",
-        "definition": "schema:distribution - API distributions of the dataset.",
+        "objectClass": "AbstractDistribution",
+        "definition": "schema:distribution - distributions of the dataset. The AbstractDistribution supertype admits schema:DataDownload (file-based) or schema:WebAPI (service endpoint).",
         "objectClassMultiplicity": { "lower": "0", "upper": "*" }
       },
       {

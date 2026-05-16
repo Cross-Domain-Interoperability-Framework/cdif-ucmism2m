@@ -70,16 +70,59 @@
         }
       },
       {
-        "_comment": "SpatialExtent. No direct DDI-CDI counterpart; plain new. Uses GeoSPARQL well-known-text where bounding-box geometries are needed.",
+        "_comment": "SpatialExtent. No direct DDI-CDI counterpart; plain new. Carries name + identifier and a polymorphic geo end on AbstractGeometry (point, shape).",
         "mappingType": "new",
         "targetPackage": "Coverage",
         "targetClass": "SpatialExtent",
-        "definition": "schema:spatialCoverage payload - a schema:Place with name and/or geo (point/box/line) describing the geographic extent of the resource.",
+        "definition": "schema:spatialCoverage payload - a schema:Place with name and/or a geo (point or shape) describing the geographic extent of the resource.",
         "attribute": [
           { "name": "name", "dataType": "String", "definition": "schema:name - place name.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id / schema:identifier - gazetteer URI.", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "geometry", "dataType": "String", "definition": "geosparql:asWKT - well-known-text geometry (point, box, polygon).", "multiplicity": { "lower": "0", "upper": "1" } },
-          { "name": "box", "dataType": "String", "definition": "schema:box - 'minLat minLon maxLat maxLon' bounding box.", "multiplicity": { "lower": "0", "upper": "1" } }
+          { "name": "identifier", "dataType": "XsdAnyUri", "definition": "@id / schema:identifier - gazetteer URI.", "multiplicity": { "lower": "0", "upper": "1" } }
+        ]
+      },
+      {
+        "_comment": "AbstractGeometry - abstract supertype of GeoCoordinates and GeoShape (union-type-policy: v1.1 generalization). Lets SpatialExtent.geo target a single end instead of one per concrete geometry kind. The JSON instance carries the concrete schema:GeoCoordinates or schema:GeoShape in @type.",
+        "mappingType": "new",
+        "isAbstract": true,
+        "targetPackage": "Coverage",
+        "targetClass": "AbstractGeometry",
+        "definition": "Abstract supertype for geographic geometry payloads (point coordinates or named/bounded shape). Concrete subclasses: GeoCoordinates, GeoShape.",
+        "attribute": [
+          { "name": "crs", "dataType": "XsdAnyUri", "definition": "geosparql:crs - coordinate reference system URI (defaults to WGS 84 / EPSG:4326 when omitted).", "multiplicity": { "lower": "0", "upper": "1" } }
+        ],
+        "sssom": {
+          "subject_label": "(no direct DDI-CDI source class)",
+          "object_label":  "CDIF Discovery AbstractGeometry (polymorphic over schema:GeoCoordinates + schema:GeoShape)",
+          "predicate_id":  "skos:closeMatch",
+          "confidence":    0.8,
+          "comment":       "Introduced as an abstract parent so SpatialExtent.geo can target one end. Concrete subclasses align with schema.org's GeoCoordinates (point) and GeoShape (box / line / polygon)."
+        }
+      },
+      {
+        "_comment": "schema:GeoCoordinates - a point geometry (lat/lon and optional elevation). Inherits crs from AbstractGeometry.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "GeoCoordinates",
+        "generalization": ["AbstractGeometry"],
+        "definition": "schema:GeoCoordinates - a single point expressed as latitude + longitude (and optional elevation). Use GeoShape for bounding boxes, polygons, or lines.",
+        "attribute": [
+          { "name": "latitude",  "dataType": "String", "definition": "schema:latitude - decimal degrees, WGS 84 unless overridden by crs.",  "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "longitude", "dataType": "String", "definition": "schema:longitude - decimal degrees, WGS 84 unless overridden by crs.", "multiplicity": { "lower": "1", "upper": "1" } },
+          { "name": "elevation", "dataType": "String", "definition": "schema:elevation - elevation above sea level (metres unless overridden).", "multiplicity": { "lower": "0", "upper": "1" } }
+        ]
+      },
+      {
+        "_comment": "schema:GeoShape - a non-point geometry: box, polygon, or line. Inherits crs from AbstractGeometry. Concrete shape carried as WKT in geometry OR one of the schema.org native shape attributes.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "GeoShape",
+        "generalization": ["AbstractGeometry"],
+        "definition": "schema:GeoShape - a non-point geometry: box, polygon, or line. May be expressed either as a WKT literal (geometry) or as the schema.org native attributes (box, polygon, line).",
+        "attribute": [
+          { "name": "geometry", "dataType": "String", "definition": "geosparql:asWKT - well-known-text geometry literal (POINT/LINESTRING/POLYGON/...). Preferred over the schema.org native attributes for non-rectangular shapes.", "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "box",      "dataType": "String", "definition": "schema:box - 'minLat minLon maxLat maxLon' bounding box.",                                                  "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "polygon",  "dataType": "String", "definition": "schema:polygon - polygon as a space-separated list of lat/lon pairs.",                                       "multiplicity": { "lower": "0", "upper": "1" } },
+          { "name": "line",     "dataType": "String", "definition": "schema:line - line as a space-separated list of lat/lon pairs.",                                             "multiplicity": { "lower": "0", "upper": "1" } }
         ]
       },
       {
@@ -148,6 +191,14 @@
         "objectClass": "SpatialExtent",
         "definition": "schema:spatialCoverage - geographic extent of resource content.",
         "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "_comment": "schema:geo - polymorphic geo end on AbstractGeometry. Replaces flat geometry/box string attributes that previously lived on SpatialExtent. JSON instance carries the concrete schema:GeoCoordinates or schema:GeoShape in @type.",
+        "targetAssociationName": "SpatialExtent_geo_AbstractGeometry",
+        "subjectClass": "SpatialExtent",
+        "objectClass": "AbstractGeometry",
+        "definition": "schema:geo - the geometry of this spatial extent. AbstractGeometry admits GeoCoordinates (point) or GeoShape (box, polygon, line).",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
       },
       {
         "targetAssociationName": "Dataset_temporalCoverage_TemporalExtent",
