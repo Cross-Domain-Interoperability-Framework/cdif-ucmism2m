@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmi:XMI xmlns:StandardProfile="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+   <uml:Model xmi:id="CDIFCodelist.CDIFCodelist" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#CDIFCodelist">
+      <ownedComment xmi:id="CDIFCodelist.CDIFCodelist-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#CDIFCodelist-ownedComment" xmi:type="uml:Comment">
+         <annotatedElement xmi:idref="CDIFCodelist.CDIFCodelist"/>
+         <body>CDIF profile for controlled-vocabulary codelists implemented as SKOS ConceptSchemes. Each concept must have a resolvable @id, skos:inScheme, skos:definition and skos:prefLabel. The scheme must declare skos:hasTopConcept; concepts in a hierarchy must declare both skos:narrower (downward) and skos:broader (upward). CDIF metadata properties (schema:identifier, schema:dateModified, schema:license or schema:conditionsOfAccess) take precedence over the equivalent dcterms properties from the base skosConceptScheme building block. Required attributes per the profile JSON schema and rules.shacl: ConceptScheme @id, schema:identifier, schema:dateModified, skos:hasTopConcept, plus (license OR conditionsOfAccess); Concept @id, skos:inScheme, skos:definition, skos:prefLabel.</body>
+      </ownedComment>
+      <name>CDIFCodelist</name>
+      <URI>https://w3id.org/cdif/codelist/1.0/xmi/</URI>
+      <packagedElement xmi:id="CDIFCodelist.CDIFCodelistPackage" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#CDIFCodelist-package" xmi:type="uml:Package">
+         <ownedComment xmi:id="CDIFCodelist.CDIFCodelistPackage-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#CDIFCodelist-package-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFCodelist.CDIFCodelistPackage"/>
+            <body>Profile for controlled-vocabulary codelists as SKOS ConceptSchemes.</body>
+         </ownedComment>
+         <name>CDIFCodelist</name>
+         <packagedElement xmi:id="CDIFCodelist.String" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#String" xmi:type="uml:PrimitiveType">
+            <name>String</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.XsdDate" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#XsdDate" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFCodelist.XsdDate-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#XsdDate-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFCodelist.XsdDate"/>
+               <body>Primitive data type "date" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of date consists of top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day (in each timezone), i.e. '00:00:00', up to but not including '24:00:00' (which is identical with '00:00:00' of the next day). For nontimezoned values, the top-open intervals disjointly cover the nontimezoned timeline, one per day. For timezoned values, the intervals begin at every minute and therefore overlap." For details see https://www.w3.org/TR/xmlschema-2/#date.</body>
+            </ownedComment>
+            <name>XsdDate</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#XsdAnyUri" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFCodelist.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFCodelist.XsdAnyUri"/>
+               <body>Primitive data type "anyURI" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents a Uniform Resource Identifier Reference (URI). An "anyURI" value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI.</body>
+            </ownedComment>
+            <name>XsdAnyUri</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Classes" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Classes-package" xmi:type="uml:Package">
+            <ownedComment xmi:id="CDIFCodelist.Classes-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Classes-package-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFCodelist.Classes"/>
+               <body>Target classes of the CDIF profile.</body>
+            </ownedComment>
+            <name>Classes</name>
+            <packagedElement xmi:id="CDIFCodelist.ConceptScheme" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCodelist.ConceptScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme"/>
+                  <body>A SKOS Concept Scheme - an aggregation of one or more SKOS Concepts, forming a controlled vocabulary or codelist. CDIF requires a resolvable @id, schema:identifier, schema:dateModified, and skos:hasTopConcept, plus either schema:license or schema:conditionsOfAccess.</body>
+               </ownedComment>
+               <name>ConceptScheme</name>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-prefLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-prefLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-prefLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-prefLabel"/>
+                     <body>skos:prefLabel - the preferred lexical label for the concept scheme. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-prefLabel-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-prefLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>prefLabel</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-altLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-altLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-altLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-altLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-altLabel"/>
+                     <body>skos:altLabel - alternative lexical labels (acronyms, abbreviations, variants).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-altLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-altLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-altLabel-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-altLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>altLabel</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-hiddenLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hiddenLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-hiddenLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hiddenLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-hiddenLabel"/>
+                     <body>skos:hiddenLabel - labels accessible to free-text search but not displayed.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-hiddenLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hiddenLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-hiddenLabel-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hiddenLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hiddenLabel</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-definition" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-definition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-definition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-definition"/>
+                     <body>skos:definition - formal explanation of the meaning or purpose of this concept scheme. DDI-CDI cdi:purpose carries the same semantics.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-definition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-definition-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-definition-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>definition</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-notation" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-notation" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-notation-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-notation"/>
+                     <body>skos:notation - classification code or notation for this concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-notation-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-notation-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-notation-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>notation</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-note" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-note" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-note-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-note-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-note"/>
+                     <body>skos:note - general note about the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-note-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-note-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-note-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-note-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>note</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-scopeNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-scopeNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-scopeNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-scopeNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-scopeNote"/>
+                     <body>skos:scopeNote - note clarifying the intended scope of the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-scopeNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-scopeNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-scopeNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-scopeNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>scopeNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-historyNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-historyNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-historyNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-historyNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-historyNote"/>
+                     <body>skos:historyNote - note about the history of the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-historyNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-historyNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-historyNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-historyNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>historyNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-changeNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-changeNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-changeNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-changeNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-changeNote"/>
+                     <body>skos:changeNote - note documenting a change to the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-changeNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-changeNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-changeNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-changeNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>changeNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-editorialNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-editorialNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-editorialNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-editorialNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-editorialNote"/>
+                     <body>skos:editorialNote - note for editors, translators, and maintainers.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-editorialNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-editorialNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-editorialNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-editorialNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>editorialNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-example" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-example" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-example-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-example-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-example"/>
+                     <body>skos:example - example of the use of this concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-example-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-example-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-example-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-example-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>example</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-identifier"/>
+                     <body>schema:identifier - primary CDIF identifier for the codelist (URI). Required by the CDIF Codelist profile.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFCodelist.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-dateModified" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-dateModified" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-dateModified-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-dateModified-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-dateModified"/>
+                     <body>schema:dateModified - ISO 8601 date the codelist was last modified. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-dateModified-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-dateModified-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-dateModified-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-dateModified-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>dateModified</name>
+                  <type xmi:idref="CDIFCodelist.XsdDate"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-datePublished" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-datePublished" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-datePublished-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-datePublished-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-datePublished"/>
+                     <body>dcterms:created / schema:datePublished - date the concept scheme was created.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-datePublished-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-datePublished-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-datePublished-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-datePublished-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>datePublished</name>
+                  <type xmi:idref="CDIFCodelist.XsdDate"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-url" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-url" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-url-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-url-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-url"/>
+                     <body>schema:url - web location of a page describing the codelist.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-url-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-url-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-url-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-url-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>url</name>
+                  <type xmi:idref="CDIFCodelist.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-license" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-license" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-license-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-license-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-license"/>
+                     <body>schema:license - license for the codelist. Either license or conditionsOfAccess is required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-license-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-license-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-license-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-license-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>license</name>
+                  <type xmi:idref="CDIFCodelist.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-conditionsOfAccess" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-conditionsOfAccess-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-conditionsOfAccess"/>
+                     <body>schema:conditionsOfAccess - text statement of access conditions. Either license or conditionsOfAccess is required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-conditionsOfAccess-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-conditionsOfAccess-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>conditionsOfAccess</name>
+                  <type xmi:idref="CDIFCodelist.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-version" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-version" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-version-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-version-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-version"/>
+                     <body>schema:version - version identifier for the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-version-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-version-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-version-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-version-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>version</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hasTopConcept" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hasTopConcept-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-hasTopConcept"/>
+                     <body>skos:hasTopConcept. Top-level concepts that have no skos:broader in this scheme. Required for hierarchical codelists; the array must be non-empty.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hasTopConcept-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme-hasTopConcept-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasTopConcept</name>
+                  <type xmi:idref="CDIFCodelist.Concept"/>
+                  <association xmi:idref="CDIFCodelist.ConceptScheme_hasTopConcept_Concept"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCodelist.Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCodelist.Concept-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCodelist.Concept"/>
+                  <body>A SKOS Concept constrained for CDIF codelist use. Must have a resolvable @id, skos:inScheme, skos:definition, and skos:prefLabel.</body>
+               </ownedComment>
+               <name>Concept</name>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-prefLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-prefLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-prefLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-prefLabel"/>
+                     <body>skos:prefLabel - preferred lexical label for this concept. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-prefLabel-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-prefLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>prefLabel</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-altLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-altLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-altLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-altLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-altLabel"/>
+                     <body>skos:altLabel - alternative lexical labels (acronyms, abbreviations, variants).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-altLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-altLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-altLabel-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-altLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>altLabel</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-hiddenLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-hiddenLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-hiddenLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-hiddenLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-hiddenLabel"/>
+                     <body>skos:hiddenLabel - labels accessible to free-text search but not displayed.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-hiddenLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-hiddenLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-hiddenLabel-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-hiddenLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hiddenLabel</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-notation" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-notation" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-notation-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-notation"/>
+                     <body>skos:notation - classification code for this concept within a scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-notation-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-notation-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-notation-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>notation</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-definition" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-definition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-definition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-definition"/>
+                     <body>skos:definition - formal explanation of the meaning of this concept. Required by CDIF.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-definition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-definition-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-definition-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>definition</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-scopeNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-scopeNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-scopeNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-scopeNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-scopeNote"/>
+                     <body>skos:scopeNote - note clarifying meaning and/or intended use.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-scopeNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-scopeNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-scopeNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-scopeNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>scopeNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-note" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-note" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-note-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-note-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-note"/>
+                     <body>skos:note - general note about this concept.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-note-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-note-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-note-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-note-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>note</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-historyNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-historyNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-historyNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-historyNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-historyNote"/>
+                     <body>skos:historyNote - note about past state or use.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-historyNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-historyNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-historyNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-historyNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>historyNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-changeNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-changeNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-changeNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-changeNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-changeNote"/>
+                     <body>skos:changeNote - note documenting a change.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-changeNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-changeNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-changeNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-changeNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>changeNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-editorialNote" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-editorialNote" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-editorialNote-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-editorialNote-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-editorialNote"/>
+                     <body>skos:editorialNote - note for editors and maintainers.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-editorialNote-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-editorialNote-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-editorialNote-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-editorialNote-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>editorialNote</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-example" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-example" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-example-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-example-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-example"/>
+                     <body>skos:example - example of use of this concept.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-example-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-example-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-example-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-example-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>example</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-identifier"/>
+                     <body>@id - resolvable URI identifier for this concept. Required by CDIF.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFCodelist.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-inScheme" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-inScheme"/>
+                     <body>skos:inScheme. The concept scheme this concept belongs to. Required for CDIF codelist concepts.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-inScheme-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-inScheme-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-inScheme-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-inScheme-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>inScheme</name>
+                  <type xmi:idref="CDIFCodelist.ConceptScheme"/>
+                  <association xmi:idref="CDIFCodelist.Concept_inScheme_ConceptScheme"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-broader" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-broader" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-broader-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-broader-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-broader"/>
+                     <body>skos:broader. Broader (parent) concepts in the hierarchy.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-broader-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-broader-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-broader-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-broader-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>broader</name>
+                  <type xmi:idref="CDIFCodelist.Concept"/>
+                  <association xmi:idref="CDIFCodelist.Concept_broader_Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-narrower" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-narrower" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-narrower-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-narrower-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-narrower"/>
+                     <body>skos:narrower. Narrower (child) concepts in the hierarchy.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-narrower-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-narrower-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-narrower-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-narrower-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>narrower</name>
+                  <type xmi:idref="CDIFCodelist.Concept"/>
+                  <association xmi:idref="CDIFCodelist.Concept_narrower_Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-related" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-related" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-related-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-related-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-related"/>
+                     <body>skos:related. Associatively related concepts.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-related-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-related-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-related-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-related-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>related</name>
+                  <type xmi:idref="CDIFCodelist.Concept"/>
+                  <association xmi:idref="CDIFCodelist.Concept_related_Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-exactMatch" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-exactMatch" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-exactMatch-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-exactMatch-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-exactMatch"/>
+                     <body>skos:exactMatch. Concept in another scheme with equivalent meaning.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-exactMatch-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-exactMatch-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-exactMatch-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-exactMatch-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>exactMatch</name>
+                  <type xmi:idref="CDIFCodelist.Concept"/>
+                  <association xmi:idref="CDIFCodelist.Concept_exactMatch_Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Concept-closeMatch" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-closeMatch" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Concept-closeMatch-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-closeMatch-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Concept-closeMatch"/>
+                     <body>skos:closeMatch. Concept in another scheme with similar meaning.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Concept-closeMatch-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-closeMatch-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Concept-closeMatch-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept-closeMatch-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>closeMatch</name>
+                  <type xmi:idref="CDIFCodelist.Concept"/>
+                  <association xmi:idref="CDIFCodelist.Concept_closeMatch_Concept"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCodelist.Identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCodelist.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCodelist.Identifier"/>
+                  <body>schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.</body>
+               </ownedComment>
+               <name>Identifier</name>
+               <ownedAttribute xmi:id="CDIFCodelist.Identifier-propertyId" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-propertyId" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Identifier-propertyId-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-propertyId-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Identifier-propertyId"/>
+                     <body>schema:propertyID - the identifier scheme (e.g. DOI, Handle, ROR).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Identifier-propertyId-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-propertyId-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Identifier-propertyId-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-propertyId-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>propertyId</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Identifier-value" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Identifier-value-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Identifier-value"/>
+                     <body>schema:value - the identifier value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Identifier-value-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-value-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Identifier-value-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-value-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>value</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Identifier-url" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-url" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Identifier-url-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-url-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Identifier-url"/>
+                     <body>schema:url - resolvable form of the identifier.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Identifier-url-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-url-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Identifier-url-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Identifier-url-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>url</name>
+                  <type xmi:idref="CDIFCodelist.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCodelist.Reference" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCodelist.Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCodelist.Reference"/>
+                  <body>cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifProperties/cdifReference.</body>
+               </ownedComment>
+               <name>Reference</name>
+               <ownedAttribute xmi:id="CDIFCodelist.Reference-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Reference-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Reference-identifier"/>
+                     <body>@id - URI of the referenced resource.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Reference-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Reference-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFCodelist.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Reference-name" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Reference-name-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Reference-name"/>
+                     <body>schema:name - human-readable label for the URI.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Reference-name-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Reference-name-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Reference-description" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Reference-description-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Reference-description"/>
+                     <body>schema:description - short summary of the referenced resource.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Reference-description-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Reference-description-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:idref="CDIFCodelist.String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCodelist.Reference-url" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-url" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCodelist.Reference-url-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-url-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.Reference-url"/>
+                     <body>schema:url - resolvable URL (when distinct from the @id).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCodelist.Reference-url-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-url-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCodelist.Reference-url-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-url-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>url</name>
+                  <type xmi:idref="CDIFCodelist.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.ConceptScheme_hasTopConcept_Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme_hasTopConcept_Concept" xmi:type="uml:Association">
+            <name>ConceptScheme_hasTopConcept_Concept</name>
+            <memberEnd xmi:idref="CDIFCodelist.ConceptScheme-hasTopConcept"/>
+            <ownedEnd xmi:id="CDIFCodelist.ConceptScheme_hasTopConcept_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#ConceptScheme_hasTopConcept_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.Concept"/>
+               <association xmi:idref="CDIFCodelist.ConceptScheme_hasTopConcept_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.ConceptScheme_hasTopConcept_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Concept_inScheme_ConceptScheme" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_inScheme_ConceptScheme" xmi:type="uml:Association">
+            <name>Concept_inScheme_ConceptScheme</name>
+            <memberEnd xmi:idref="CDIFCodelist.Concept-inScheme"/>
+            <ownedEnd xmi:id="CDIFCodelist.Concept_inScheme_ConceptScheme-ConceptSchemeEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_inScheme_ConceptScheme-ConceptSchemeEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.ConceptScheme"/>
+               <association xmi:idref="CDIFCodelist.Concept_inScheme_ConceptScheme"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.Concept_inScheme_ConceptScheme-ConceptSchemeEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Concept_broader_Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_broader_Concept" xmi:type="uml:Association">
+            <name>Concept_broader_Concept</name>
+            <memberEnd xmi:idref="CDIFCodelist.Concept-broader"/>
+            <ownedEnd xmi:id="CDIFCodelist.Concept_broader_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_broader_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.Concept"/>
+               <association xmi:idref="CDIFCodelist.Concept_broader_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.Concept_broader_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Concept_narrower_Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_narrower_Concept" xmi:type="uml:Association">
+            <name>Concept_narrower_Concept</name>
+            <memberEnd xmi:idref="CDIFCodelist.Concept-narrower"/>
+            <ownedEnd xmi:id="CDIFCodelist.Concept_narrower_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_narrower_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.Concept"/>
+               <association xmi:idref="CDIFCodelist.Concept_narrower_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.Concept_narrower_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Concept_related_Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_related_Concept" xmi:type="uml:Association">
+            <name>Concept_related_Concept</name>
+            <memberEnd xmi:idref="CDIFCodelist.Concept-related"/>
+            <ownedEnd xmi:id="CDIFCodelist.Concept_related_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_related_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.Concept"/>
+               <association xmi:idref="CDIFCodelist.Concept_related_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.Concept_related_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Concept_exactMatch_Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_exactMatch_Concept" xmi:type="uml:Association">
+            <name>Concept_exactMatch_Concept</name>
+            <memberEnd xmi:idref="CDIFCodelist.Concept-exactMatch"/>
+            <ownedEnd xmi:id="CDIFCodelist.Concept_exactMatch_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_exactMatch_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.Concept"/>
+               <association xmi:idref="CDIFCodelist.Concept_exactMatch_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.Concept_exactMatch_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCodelist.Concept_closeMatch_Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_closeMatch_Concept" xmi:type="uml:Association">
+            <name>Concept_closeMatch_Concept</name>
+            <memberEnd xmi:idref="CDIFCodelist.Concept-closeMatch"/>
+            <ownedEnd xmi:id="CDIFCodelist.Concept_closeMatch_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Concept_closeMatch_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCodelist.Concept"/>
+               <association xmi:idref="CDIFCodelist.Concept_closeMatch_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCodelist.Concept_closeMatch_Concept-ConceptEnd"/>
+         </packagedElement>
+      </packagedElement>
+   </uml:Model>
+</xmi:XMI>

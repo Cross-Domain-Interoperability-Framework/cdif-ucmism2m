@@ -1,0 +1,38 @@
+# mapping_set_id: https://w3id.org/cdif/mappings/ddi-cdi-to-cdif
+# mapping_set_title: DDI-CDI to CDIF profile classes and properties
+# mapping_set_version: 0.1
+# mapping_set_description: Class and attribute crosswalks from DDI-CDI 1.1beta to the five CDIF profiles (Codelist, Core, Discovery, DataDescription, DataStructure). Generated from ucmism2m mapping configurations.
+# license: https://creativecommons.org/licenses/by/4.0/
+# mapping_date: 2026-05-16
+# mapping_tool: ucmism2m/script/emit_sssom.py
+# mapping_provider: CDIF metadataBuildingBlocks
+# curie_map:
+#   skos: http://www.w3.org/2004/02/skos/core#
+#   schema: http://schema.org/
+#   dcterms: http://purl.org/dc/terms/
+#   dcat: http://www.w3.org/ns/dcat#
+#   prov: http://www.w3.org/ns/prov#
+#   dqv: http://www.w3.org/ns/dqv#
+#   spdx: http://spdx.org/rdf/terms#
+#   geosparql: http://www.opengis.net/ont/geosparql#
+#   time: http://www.w3.org/2006/time#
+#   csvw: http://www.w3.org/ns/csvw#
+#   cdi: http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/
+#   cdif: https://cdif.org/0.1/
+#   owl: http://www.w3.org/2002/07/owl#
+#   semapv: https://w3id.org/semapv/vocab/
+subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	confidence	subject_category	object_category	mapping_provider	comment
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/ConceptSystem	DDI-CDI ConceptSystem	skos:closeMatch	http://www.w3.org/2004/02/skos/core#ConceptScheme	CDIF Codelist ConceptScheme (skos:ConceptScheme)	semapv:ManualMappingCuration	0.9	owl:Class	owl:Class	ucmism2m config CDIFCodelist	Class semantics align. Attribute vocabulary is SKOS + CDIF rather than DDI-CDI.
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept	DDI-CDI Concept	skos:closeMatch	http://www.w3.org/2004/02/skos/core#Concept	CDIF Codelist Concept (skos:Concept)	semapv:ManualMappingCuration	0.95	owl:Class	owl:Class	ucmism2m config CDIFCodelist	Class name matches; attribute vocabulary is SKOS rather than DDI-CDI structured types.
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/DataStore	DDI-CDI DataStore	skos:closeMatch	http://schema.org/Dataset	CDIF Core Dataset (schema:Dataset)	semapv:ManualMappingCuration	0.7	owl:Class	owl:Class	ucmism2m config CDIFCore	schema:Dataset is broader than DDI-CDI DataStore; DataStore in DDI-CDI excludes the metadata-about-the-dataset semantics that schema:Dataset implies. Mapping is conceptual only.
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/PhysicalDataSet	DDI-CDI PhysicalDataSet	skos:closeMatch	http://schema.org/DataDownload	CDIF Core DataDownload (schema:DataDownload)	semapv:ManualMappingCuration	0.85	owl:Class	owl:Class	ucmism2m config CDIFCore	DataDownload is the schema.org expression of a downloadable physical realization of a dataset.
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Individual	DDI-CDI Individual	skos:closeMatch	http://schema.org/Person	CDIF Core Person (schema:Person)	semapv:ManualMappingCuration	0.9	owl:Class	owl:Class	ucmism2m config CDIFCore	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Organization	DDI-CDI Organization	skos:exactMatch	http://schema.org/Organization	CDIF Core Organization (schema:Organization)	semapv:ManualMappingCuration	0.95	owl:Class	owl:Class	ucmism2m config CDIFCore	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/AgentInRole	DDI-CDI AgentInRole (DataType)	skos:closeMatch	https://w3id.org/cdif/core/1.0/xmi/Contributor	CDIF Core Contributor (schema:Role pattern)	semapv:ManualMappingCuration	0.8	owl:Class	owl:Class	ucmism2m config CDIFCore	Conceptually similar; DDI-CDI AgentInRole is a DataType so cannot be sourceClass.
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept	DDI-CDI Concept	skos:broadMatch	http://schema.org/DefinedTerm	CDIF Core DefinedTerm (schema:DefinedTerm)	semapv:ManualMappingCuration	0.6	owl:Class	owl:Class	ucmism2m config CDIFCore	DefinedTerm is a flat schema.org notion; DDI-CDI Concept is richer (placed in a ConceptSystem).
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Identifier	DDI-CDI Identifier (DataType)	skos:closeMatch	https://w3id.org/cdif/core/1.0/xmi/Identifier	CDIF Core Identifier (schema:PropertyValue pattern)	semapv:ManualMappingCuration	0.8	owl:Class	owl:Class	ucmism2m config CDIFCore	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/FundingInformation	DDI-CDI FundingInformation	skos:closeMatch	http://schema.org/MonetaryGrant	CDIF Core MonetaryGrant (schema:MonetaryGrant)	semapv:ManualMappingCuration	0.85	owl:Class	owl:Class	ucmism2m config CDIFCore	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Activity	DDI-CDI Activity	skos:exactMatch	http://www.w3.org/ns/prov#Activity	CDIF Core ProvActivity (prov:Activity)	semapv:ManualMappingCuration	0.9	owl:Class	owl:Class	ucmism2m config CDIFCore	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/CatalogDetails	DDI-CDI CatalogDetails	skos:closeMatch	https://w3id.org/cdif/core/1.0/xmi/CatalogRecord	CDIF Core CatalogRecord (schema:subjectOf target)	semapv:ManualMappingCuration	0.75	owl:Class	owl:Class	ucmism2m config CDIFCore	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/InstanceVariable	DDI-CDI InstanceVariable	skos:closeMatch	http://schema.org/variableMeasured	CDIF Discovery VariableMeasured (schema:variableMeasured)	semapv:ManualMappingCuration	0.8	owl:Class	owl:Class	ucmism2m config CDIFDiscovery	
+http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/DateRange	DDI-CDI DateRange	skos:closeMatch	https://w3id.org/cdif/discovery/1.0/xmi/TemporalExtent	CDIF Discovery TemporalExtent (schema:temporalCoverage payload)	semapv:ManualMappingCuration	0.85	owl:Class	owl:Class	ucmism2m config CDIFDiscovery	

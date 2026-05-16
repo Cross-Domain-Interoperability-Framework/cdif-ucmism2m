@@ -55,7 +55,12 @@ Thumbs.db
 *.out
 
 # Generated Files
-generated/
+# generated/ XMI + SSSOM + README + diagram are tracked so the team can see
+# the current emitter output without re-running the pipeline. Large binary
+# scratch files (Enterprise Architect project files) stay excluded.
+generated/*.feap
+generated/*.eapx
+generated/*.qea
 *.log
 
 # Local backup
