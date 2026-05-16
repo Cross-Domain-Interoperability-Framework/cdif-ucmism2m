@@ -27,9 +27,9 @@ These are produced by the **metadataBuildingBlocks** tooling (`bblocks-config.ya
 | Output | Path | How |
 | --- | --- | --- |
 | **Profile UML model (XMI 2.5.1)** | `ucmism2m/generated/cdif{Profile}.xmi` | Generated from DDI-CDI XMI + a ucmism2m JSON config |
-| **PlantUML class diagrams** | `metadataBuildingBlocks/build/plantuml/cdif{Profile}/{Classes,DataTypes}/*.pu` + `index.pu` | Walks the profile UML closure; one `.pu` per class plus an overview |
+| **PlantUML class diagrams** | `metadataBuildingBlocks/cdif-uml-model/_plantuml/cdif{Profile}/{Classes,DataTypes}/*.pu` + `index.pu` | Walks the profile UML closure; one `.pu` per class plus an overview |
 | **Rendered SVGs** | sibling `.svg` next to each `.pu` | `java -jar plantuml.jar -tsvg` |
-| **HTML field-level documentation** | `metadataBuildingBlocks/build/field-level-documentation/CDIF{Profile}/{Classes,DataTypes}/*.html` + per-profile `index.html` + top-level `index.html` | Self-contained static site with per-class pages, embedded SVG diagrams, attribute/association tables, cross-profile links |
+| **HTML field-level documentation** | `metadataBuildingBlocks/cdif-uml-model/CDIF{Profile}/{Classes,DataTypes}/*.html` + per-profile `index.html` + top-level `index.html` | Self-contained static site with per-class pages, embedded SVG diagrams, attribute/association tables, cross-profile links |
 
 ## The ucmism2m JSON configs are the bridge
 
@@ -120,12 +120,12 @@ the mapping rationale is traceable.
            └───────────────────────────┘  └────────┬─────────────────────┘
                                                    │
                                                    ▼
-   ┌────────────────────┐  ┌────────────────────┐  ┌─────────────────────────┐
-   │ Profile UML XMI    │  │ PlantUML + SVG     │  │ HTML model browser      │
-   │ ucmism2m/generated │  │ mBB/build/plantuml │  │ mBB/build/field-level-  │
-   │  cdifCore.xmi …    │  │  cdifCore/*.pu     │  │   documentation/        │
-   │                    │  │  cdifCore/*.svg    │  │  CDIFCore/Classes/*.html│
-   └────────────────────┘  └────────────────────┘  └─────────────────────────┘
+   ┌────────────────────┐  ┌─────────────────────────────┐  ┌─────────────────────────┐
+   │ Profile UML XMI    │  │ PlantUML + SVG              │  │ HTML model browser      │
+   │ ucmism2m/generated │  │ mBB/cdif-uml-model/_plantuml│  │ mBB/cdif-uml-model/     │
+   │  cdifCore.xmi …    │  │  cdifCore/*.pu              │  │  CDIFCore/index.html    │
+   │                    │  │  cdifCore/*.svg             │  │  CDIFCore/Classes/*.html│
+   └────────────────────┘  └─────────────────────────────┘  └─────────────────────────┘
                                                                 │
                                                                 ▼
                                                   served via local HTTP
@@ -167,7 +167,7 @@ curl -L -o "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlock
 
 PlantUML 1.2024+ requires Java 11 or later. The build script picks up `C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe` by default.
 
-GitHub Pages deployment of `build/field-level-documentation/` needs only the rendered HTML and SVG files — it does **not** require Java or `plantuml.jar` at serve time.
+GitHub Pages deployment of `cdif-uml-model/` needs only the rendered HTML and SVG files — it does **not** require Java or `plantuml.jar` at serve time.
 
 ## Running the full build
 
@@ -181,23 +181,23 @@ What it does, in order:
 
 0. **Run the OGC bblocks postprocessor** (Docker) on `metadataBuildingBlocks/_sources/` to regenerate per-BB `resolvedSchema.json`, `generateddocs/` (json-full + markdown), `register.json`, `bblocks.jsonld`, `bblocks.ttl`, and the SHACL/JSON-Schema validation reports. This step is skipped when `build-local/register.json` is newer than every `_sources/**` file. Force with `-ForceBblocks`; bypass entirely with `-SkipBblocks`. Output goes to `metadataBuildingBlocks/build-local/` (gitignored — the committed `build/` is populated by the CI publish workflow, not local runs).
 1. **Emit XMI + PUML + SVG** for each of the 5 profiles (`uml_to_schema.py --emit-uml --emit-puml --plantuml-jar ...`)
-2. **Scan all configs** to build a `{className: profileName}` registry of every class and datatype, written to `metadataBuildingBlocks/build/field-level-documentation/_registry.json`
+2. **Scan all configs** to build a `{className: profileName}` registry of every class and datatype, written to `metadataBuildingBlocks/cdif-uml-model/_registry.json`
 3. **Emit HTML** for each profile with that registry so a reference to e.g. `Dataset` from `CDIFDataDescription/Classes/Statistic.html` links to `CDIFCore/Classes/Dataset.html`. The HTML emitter sweeps stale per-class `.html` / `.pu` / `.svg` files in the target Classes/ and DataTypes/ folders before regenerating, so removed classes don't linger as orphans.
-4. **Open** `field-level-documentation/index.html` in the default browser
+4. **Open** `cdif-uml-model/index.html` in the default browser
 
 ### Two output trees, two pipelines
 
 | Pipeline | Output | Purpose |
 | --- | --- | --- |
 | **bblocks postprocessor** (Step 0) | `metadataBuildingBlocks/build-local/` (local) or `metadataBuildingBlocks/build/` (CI publish) | Per-BB resolved JSON Schemas, JSON-LD context, markdown docs, SHACL validation reports, the master `register.json`. Reflects edits to `_sources/**/schema.yaml`, `bblock.json`, examples, rules.shacl. |
-| **uml_to_schema.py** (Steps 1-3) | `metadataBuildingBlocks/build/{plantuml,field-level-documentation}/` | Per-CDIF-profile UML XMI + PlantUML diagrams + HTML model browser. Reflects edits to `ucmism2m/configuration/*.json` and the DDI-CDI source XMI. |
+| **uml_to_schema.py** (Steps 1-3) | `metadataBuildingBlocks/cdif-uml-model/ (HTML browser; intermediate .pu/.svg at cdif-uml-model/_plantuml/)` | Per-CDIF-profile UML XMI + PlantUML diagrams + HTML model browser. Reflects edits to `ucmism2m/configuration/*.json` and the DDI-CDI source XMI. |
 
 The two pipelines are independent — edits to BB schemas do **not** appear in the field-level model browser, and edits to ucmism2m configs do **not** appear in the BB-rendered docs. Together they cover both the JSON Schema implementation surface (the BBs) and the UML/conceptual model (the profile UMLs).
 
 To serve over HTTP instead of `file://` (recommended for SVG embedding):
 
 ```powershell
-cd C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\field-level-documentation
+cd C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model
 python -m http.server 8765
 # then: http://localhost:8765/index.html
 ```
@@ -215,10 +215,10 @@ $java = "C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe"
 python $tool --xmi $xmi `
     --config "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\configuration\ddi-cdi2cdifCore_mapping.json" `
     --emit-uml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\generated\cdifCore.xmi" `
-    --emit-puml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\plantuml\cdifCore" `
-    --emit-html "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\field-level-documentation" `
-    --puml-dir "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\plantuml\cdifCore" `
-    --cross-profile-registry "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\build\field-level-documentation\_registry.json" `
+    --emit-puml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
+    --emit-html "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model" `
+    --puml-dir "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
+    --cross-profile-registry "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_registry.json" `
     --plantuml-jar $jar --java-exe $java
 ```
 
@@ -229,6 +229,132 @@ python $tool --xmi $xmi `
 1. Author a new config under `ucmism2m/configuration/ddi-cdi2{newProfile}_mapping.json` — copy any existing one as a template; verify it validates against `ucmis_mapping_configuration.schema.v1.1.json`.
 2. Add an entry to the `$profiles` array in `ucmism2m/script/build-docs.ps1`.
 3. Run `build-docs.ps1`. Outputs land in `ucmism2m/generated/` and `metadataBuildingBlocks/build/`.
+
+## Profile composition (`composes`)
+
+CDIF profiles compose: Discovery extends Core; DataDescription extends Discovery; DataStructure extends DataDescription. In the JSON Schema world this is expressed by `allOf` over the base profile's schema. In the ucmism2m world it is expressed by the v1.1 **`composes`** field on `transformation.targetModel`:
+
+```jsonc
+"transformation": {
+  "targetModel": {
+    "acronym": "CDIFDiscovery",
+    ...
+    "composes": ["ddi-cdi2cdifCore_mapping.json"]
+  }
+}
+```
+
+The current chain is:
+
+| Config | composes |
+|---|---|
+| `ddi-cdi2cdifCore_mapping.json` | — (base) |
+| `ddi-cdi2cdifDiscovery_mapping.json` | Core |
+| `ddi-cdi2cdifDataDescription_mapping.json` | Discovery (→ Core transitively) |
+| `ddi-cdi2cdifDataStructure_mapping.json` | DataDescription (→ Discovery → Core transitively) |
+| `ddi-cdi2cdifCodelist_mapping.json` | — (standalone profile; composes the SKOS BBs in the JSON Schema layer, not a CDIF profile) |
+
+### Datatype substitution policy (`datatypeSubstitutions`, `excludeDatatypes`)
+
+Some DDI-CDI source DataTypes don't map to anything in CDIF (drop them), and some collapse to a simpler CDIF type (substitute). The v1.1 schema adds two optional fields on `transformation`:
+
+```jsonc
+"transformation": {
+  "datatypeSubstitutions": {
+    "InternationalString":  "String",
+    "LabelForDisplay":      "String",
+    "ObjectName":           "String",
+    "LanguageString":       "String",
+    "InternationalRegistrationDataIdentifier": "String",
+    "ControlledVocabularyEntry":       "Concept",
+    "PairedControlledVocabularyEntry": "Concept",
+    "NonDdiIdentifier":     "Identifier",
+    "Identifier":           "Identifier",
+    "Statistic":            "Statistic"
+  },
+  "excludeDatatypes": ["BibliographicName", "RationaleDefinition", "Selector"]
+}
+```
+
+The right side of each substitution is either a UML primitive name (`String`, `Integer`, `Boolean`, `Real`) or the `targetClass` name of another class in the profile (a local stub like `Concept`, `Identifier`, or `Statistic`). The substitutions are applied in **two places**:
+
+1. **On synthetic target class properties** before the closure walker runs — so any attribute on a synthetic target class typed as a substituted source DataType is rewritten to the substitution target (and the original source DataType is not pulled into the closure).
+2. **Inside the closure walker itself** — when transitively walking a pulled source DataType's own properties, the same substitution and exclude rules apply, so chains of source DataType references (e.g. source `Identifier.versionRationale` → `RationaleDefinition`) don't pull excluded types through the back door.
+
+`excludeDatatypes` causes any property whose type points at a named source DataType to be dropped entirely (no UML attribute emitted; no DataType pulled).
+
+Both fields participate in v1.1 composition: substitutions and excludes from base configs cascade into composing profiles (local wins on substitution-key conflict; excludes are unioned). Putting the global policy in `ddi-cdi2cdifCore_mapping.json` lets every composing profile inherit it.
+
+### Composition rules
+
+`emit_uml_from_config` calls `_load_with_composition(config_path)` which:
+
+1. Recursively expands every base config named in `composes` (depth-first, deduped).
+2. **Classes**: same `targetClass` → union the attribute lists (local wins on name conflict). Generalizations are unioned. Other fields (`sourceClass`, `definition`, `isAbstract`) take the local value when present.
+3. **Associations**: added when `targetAssociationName` isn't already present (first wins).
+4. **Packages**: added when `name` isn't already present, with `parent` rewritten to the local profile's mainPackage.
+
+Each extension profile's config therefore needs to carry only its delta. The full composed graph is materialised at emit time and reflected in the rendered UML, PlantUML diagrams, and HTML model browser.
+
+### HTML browser composition affordances
+
+The per-profile HTML browser surfaces composition in three places:
+
+- **Per-profile `index.html`** shows a green "Composes" banner listing the base profiles (with cross-profile links), and the class/datatype counts mark how many entries are inherited.
+- **Folder index pages** (`Classes/index.html`, `DataTypes/index.html`) tag inherited entries with an `inherited` badge.
+- **Per-class pages** show an `inherited from <profile>` badge next to the class name, with a link to the canonical definition in the originating profile.
+
+The full graph matches what the JSON Schema `resolvedSchema.json` for the same profile shows after `$ref` resolution.
+
+## Union-type policy (UML attribute type ↔ JSON Schema)
+
+JSON Schema admits union types (`anyOf` / `oneOf`) freely; UML does not have a first-class union type, and the GeoSciML/ISO ShapeChange `<<union>>` stereotype workaround is not adopted here. CDIF profiles instead use the policy below, which reduces every JSON union shape to a single canonical UML attribute type. The UML model browser shows the canonical type; the JSON Schema implementations admit the surface alternatives.
+
+A survey across all CDIF profile resolvedSchemas (run via `ucmism2m/script/survey_union_types.py`) found 900+ union-shape occurrences; they cluster into the patterns below.
+
+### Reductions
+
+| JSON union shape | UML attribute type | Notes |
+|---|---|---|
+| `X` ↔ `string` where X is a **coded term** (DefinedTerm) | `schema:DefinedTerm` | The string is a shorthand for `DefinedTerm.name` or `DefinedTerm.termCode`. |
+| `X` ↔ `string` where X is **skos:Concept** | `skos:Concept` | **Plain strings are NOT permitted for Concept.** A Concept must be a controlled-vocabulary term — either an `@id`-reference into a known scheme or a full inline `skos:Concept` node. Vocabulary identity cannot be recovered from an unscoped string label. |
+| `X` ↔ `string` ↔ `@id`-ref where X is **Identifier / PropertyValue** | `schema:PropertyValue` | The string is a shorthand for the bare identifier value (e.g. a DOI or ORCID). |
+| `X` ↔ `string` ↔ `@id`-ref where X is **cdif:Reference / LabeledLink** | `cdif:Reference` | The string is a shorthand URL. |
+| `LanguageTaggedValue` ↔ `string` ↔ array thereof | `string` | Multilingualism carried via JSON-LD `@language` tags. Same policy as `cdi:InternationalString` / `cdi:LabelForDisplay` / `cdi:ObjectName`, all of which flatten to `String` here. *Future:* a separate "language-localized" profile family in which every string becomes a JSON-LD object with `@value` + `@language`. |
+| `ProperInterval` ↔ `string` | `string` | An ISO 8601 interval string is the canonical form; the structured `time:ProperInterval` object is an alternative encoding. |
+| `inline-X` ↔ `@id`-only ref | `X` | Inline-vs-reference is a JSON-LD serialization choice, not a type variant. The UML attribute always targets `X`; the JSON instance may carry either the inline object or `{"@id": "..."}`. |
+| `X ↔ array<X>` (cardinality variation) | `X` with multiplicity `0..*` or `1..*` | Cardinality variation in JSON Schema becomes multiplicity in UML. |
+| `Person ↔ Organization` (any envelope) | `Agent` (abstract supertype) | Already wired; `Person`, `Organization` both generalize `Agent`. The four role associations (`creator`, `publisher`, `contributor`-via-Contributor, `funder`-via-MonetaryGrant) target `Agent`. |
+| `DataDownload ↔ WebAPI` (distribution kinds) | `AbstractDistribution` (abstract supertype) | New in the union-type-policy branch. `DataDownload` and `WebAPI` both generalize `AbstractDistribution`. `Dataset.distribution` targets `AbstractDistribution`. JSON instances carry the concrete `schema:DataDownload` or `schema:WebAPI` in `@type`. |
+| `GeoCoordinates ↔ GeoShape` (geometry kinds) | `AbstractGeometry` (abstract supertype) | New in the union-type-policy branch. `GeoCoordinates` (point) and `GeoShape` (box / polygon / line) both generalize `AbstractGeometry`. `SpatialExtent.geo` targets `AbstractGeometry`. JSON instances carry the concrete `schema:GeoCoordinates` or `schema:GeoShape` in `@type`. |
+| `AttributeComponent ↔ DimensionComponent ↔ IdentifierComponent ↔ MeasureComponent ↔ …` (DDI-CDI structural-component subclasses) | `cdi:DataStructureComponent` (their common DDI-CDI parent) | The closure pulls the parent via inheritance; concrete component subclasses generalize from it in the source XMI. |
+| `DataStructure ↔ DimensionalDataStructure ↔ LongDataStructure ↔ WideDataStructure` | `cdi:DataStructure` (already abstract in DDI-CDI) | Same pattern; the parent is the DDI-CDI canonical type. |
+
+### Polymorphism of schema:PropertyValue
+
+`schema:PropertyValue` is used in three distinct roles in CDIF profiles, and the union-type-policy reduction differs for each. See the CDIF Discovery implementation guide: [Polymorphism of PropertyValue](https://github.com/Cross-Domain-Interoperability-Framework/discovery/blob/main/CDIFDiscoveryImplementationGuide.md#polymorphism-of-propertyvalue).
+
+| Role | Property names | UML attribute type | JSON shorthand permitted? |
+|---|---|---|---|
+| **Identifier role** — PropertyValue used to assert an identifier of the parent resource | `schema:identifier`, `schema:sameAs` | `Identifier` | **Yes — plain string** (interpreted as the bare identifier value), and `@id`-ref |
+| **VariableMeasured role** — PropertyValue used to describe a variable being measured | `schema:variableMeasured` | `VariableMeasured` (its own target class) | **No plain string.** `@id`-ref or inline object only — a variable description requires structured properties (name, unitText / unitCode, propertyID), not a bare label |
+| **AdditionalProperty role** — PropertyValue used as a key/value extension property | `schema:additionalProperty` | `AdditionalProperty` (its own target class) | **No plain string.** `@id`-ref or inline object only — both the property name (`schema:propertyID`) and the `schema:value` are required to identify the assertion |
+
+The three CDIF UML classes are separate so the union-type reduction can be applied per-role:
+- `Identifier` is the only one of the three where the JSON instance may be a plain string.
+- `VariableMeasured` and `AdditionalProperty` are structurally PropertyValue (same `schema:PropertyValue` `@type` in JSON-LD) but represent distinct usages where a bare string is meaningless.
+
+The retype script (`script/retype_to_union_canonical.py`) maps `identifier` / `sameAs` → `Identifier`, but `additionalProperty` → `AdditionalProperty` (a distinct target class with `propertyId` + `value` + optional units, no string-substitution rule).
+
+### Writing notes that surface in the model browser
+
+Where a UML attribute type carries the "string alternative permitted" convention (Identifier, PropertyValue, DefinedTerm, ProperInterval), the description on the BB JSON Schema (and ideally on the UML attribute documentation in the config) calls this out explicitly so readers of the HTML model browser understand the JSON surface differs from the UML type.
+
+### Future work
+
+- **v1.2 config field `jsonAlternativeTypes`** on attributes, listing the JSON-side surface alternatives the implementation accepts. Currently the policy lives in this document; making it machine-readable would let a future "JSON Schema from config" emitter (or a SHACL-from-config emitter) derive both sides from one source.
+- **HTML model browser column** showing the JSON alternatives next to the UML type, so readers don't have to consult the BB JSON Schema separately.
+- **Language-localized profile family** where every string-typed property becomes a JSON-LD object with `@value` + `@language`.
 
 ## Cross-references and provenance
 

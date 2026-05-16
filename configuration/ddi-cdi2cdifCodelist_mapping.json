@@ -28,6 +28,11 @@
       "name": "Classes",
       "parent": "CDIFCodelist",
       "definition": "Classes of the CDIF Codelist profile: ConceptScheme (the codelist) and Concept (the codes)."
+    },
+    {
+      "name": "Support",
+      "parent": "CDIFCodelist",
+      "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
     }
   ],
   "mapping": {
@@ -44,110 +49,164 @@
             "name": "prefLabel",
             "dataType": "String",
             "definition": "skos:prefLabel - the preferred lexical label for the concept scheme. Required.",
-            "multiplicity": { "lower": "1", "upper": "*" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            }
           },
           {
             "name": "altLabel",
             "dataType": "String",
             "definition": "skos:altLabel - alternative lexical labels (acronyms, abbreviations, variants).",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "hiddenLabel",
             "dataType": "String",
             "definition": "skos:hiddenLabel - labels accessible to free-text search but not displayed.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "_comment": "Per ddicdiCodeList: DDI-CDI uses cdi:purpose (InternationalString) for the scheme-level explanation. Flattened here to String per CDIF profile policy; @language tags carry the locale.",
             "name": "definition",
             "dataType": "String",
             "definition": "skos:definition - formal explanation of the meaning or purpose of this concept scheme. DDI-CDI cdi:purpose carries the same semantics.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "notation",
             "dataType": "String",
             "definition": "skos:notation - classification code or notation for this concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "note",
             "dataType": "String",
             "definition": "skos:note - general note about the concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "scopeNote",
             "dataType": "String",
             "definition": "skos:scopeNote - note clarifying the intended scope of the concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "historyNote",
             "dataType": "String",
             "definition": "skos:historyNote - note about the history of the concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "changeNote",
             "dataType": "String",
             "definition": "skos:changeNote - note documenting a change to the concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "editorialNote",
             "dataType": "String",
             "definition": "skos:editorialNote - note for editors, translators, and maintainers.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "example",
             "dataType": "String",
             "definition": "skos:example - example of the use of this concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "identifier",
-            "dataType": "XsdAnyUri",
+            "dataType": "Identifier",
             "definition": "schema:identifier - primary CDIF identifier for the codelist (URI). Required by the CDIF Codelist profile.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
           },
           {
             "name": "dateModified",
             "dataType": "XsdDate",
             "definition": "schema:dateModified - ISO 8601 date the codelist was last modified. Required.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
           },
           {
             "name": "datePublished",
             "dataType": "XsdDate",
             "definition": "dcterms:created / schema:datePublished - date the concept scheme was created.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
           },
           {
             "name": "url",
             "dataType": "XsdAnyUri",
             "definition": "schema:url - web location of a page describing the codelist.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
           },
           {
             "name": "license",
-            "dataType": "XsdAnyUri",
+            "dataType": "Reference",
             "definition": "schema:license - license for the codelist. Either license or conditionsOfAccess is required.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "conditionsOfAccess",
-            "dataType": "String",
+            "dataType": "Reference",
             "definition": "schema:conditionsOfAccess - text statement of access conditions. Either license or conditionsOfAccess is required.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "version",
             "dataType": "String",
             "definition": "schema:version - version identifier for the concept scheme.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
           }
         ],
         "sssom": {
@@ -171,73 +230,109 @@
             "name": "prefLabel",
             "dataType": "String",
             "definition": "skos:prefLabel - preferred lexical label for this concept. Required.",
-            "multiplicity": { "lower": "1", "upper": "*" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            }
           },
           {
             "name": "altLabel",
             "dataType": "String",
             "definition": "skos:altLabel - alternative lexical labels (acronyms, abbreviations, variants).",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "hiddenLabel",
             "dataType": "String",
             "definition": "skos:hiddenLabel - labels accessible to free-text search but not displayed.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "notation",
             "dataType": "String",
             "definition": "skos:notation - classification code for this concept within a scheme.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "definition",
             "dataType": "String",
             "definition": "skos:definition - formal explanation of the meaning of this concept. Required by CDIF.",
-            "multiplicity": { "lower": "1", "upper": "*" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            }
           },
           {
             "name": "scopeNote",
             "dataType": "String",
             "definition": "skos:scopeNote - note clarifying meaning and/or intended use.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "note",
             "dataType": "String",
             "definition": "skos:note - general note about this concept.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "historyNote",
             "dataType": "String",
             "definition": "skos:historyNote - note about past state or use.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "changeNote",
             "dataType": "String",
             "definition": "skos:changeNote - note documenting a change.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "editorialNote",
             "dataType": "String",
             "definition": "skos:editorialNote - note for editors and maintainers.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "example",
             "dataType": "String",
             "definition": "skos:example - example of use of this concept.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
           },
           {
             "name": "identifier",
-            "dataType": "XsdAnyUri",
+            "dataType": "Identifier",
             "definition": "@id - resolvable URI identifier for this concept. Required by CDIF.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
           }
         ],
         "sssom": {
@@ -248,6 +343,87 @@
           "confidence": 0.95,
           "comment": "Class name matches; attribute vocabulary is SKOS rather than DDI-CDI structured types."
         }
+      },
+      {
+        "_comment": "Identifier (schema:PropertyValue) stub. Local target class so attributes typed as 'Identifier' resolve inside this profile; the canonical definition lives in the CDIFCore profile.",
+        "mappingType": "new",
+        "targetPackage": "Support",
+        "targetClass": "Identifier",
+        "definition": "schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.",
+        "attribute": [
+          {
+            "name": "propertyId",
+            "dataType": "String",
+            "definition": "schema:propertyID - the identifier scheme (e.g. DOI, Handle, ROR).",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "value",
+            "dataType": "String",
+            "definition": "schema:value - the identifier value.",
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "url",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:url - resolvable form of the identifier.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        ]
+      },
+      {
+        "_comment": "Reference (cdif:Reference) stub. Local target class so attributes typed as 'Reference' resolve inside this profile; the canonical definition lives in the CDIFCore profile and the cdifProperties/cdifReference building block.",
+        "mappingType": "new",
+        "targetPackage": "Support",
+        "targetClass": "Reference",
+        "definition": "cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifProperties/cdifReference.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - URI of the referenced resource.",
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-readable label for the URI.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - short summary of the referenced resource.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "url",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:url - resolvable URL (when distinct from the @id).",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        ]
       }
     ],
     "association": [
@@ -257,7 +433,10 @@
         "subjectClass": "ConceptScheme",
         "objectClass": "Concept",
         "definition": "skos:hasTopConcept. Top-level concepts that have no skos:broader in this scheme. Required for hierarchical codelists; the array must be non-empty.",
-        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "*"
+        }
       },
       {
         "_comment": "skos:inScheme - every Concept declares its containing ConceptScheme. Required by CDIF.",
@@ -265,7 +444,10 @@
         "subjectClass": "Concept",
         "objectClass": "ConceptScheme",
         "definition": "skos:inScheme. The concept scheme this concept belongs to. Required for CDIF codelist concepts.",
-        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "*"
+        }
       },
       {
         "_comment": "skos:broader - upward hierarchy navigation. Required on any concept appearing as a skos:narrower value of another.",
@@ -273,7 +455,10 @@
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:broader. Broader (parent) concepts in the hierarchy.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
       },
       {
         "_comment": "skos:narrower - downward hierarchy navigation.",
@@ -281,7 +466,10 @@
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:narrower. Narrower (child) concepts in the hierarchy.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
       },
       {
         "_comment": "skos:related - associative (non-hierarchical) relation.",
@@ -289,7 +477,10 @@
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:related. Associatively related concepts.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
       },
       {
         "_comment": "skos:exactMatch / closeMatch / broadMatch / narrowMatch / relatedMatch are cross-scheme mapping properties. Modeling all five as separate UCMIS associations would produce five Concept_*_Concept lines; here we represent exactMatch and closeMatch only as the most commonly used.",
@@ -297,14 +488,20 @@
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:exactMatch. Concept in another scheme with equivalent meaning.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
       },
       {
         "targetAssociationName": "Concept_closeMatch_Concept",
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:closeMatch. Concept in another scheme with similar meaning.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
       }
     ]
   }
