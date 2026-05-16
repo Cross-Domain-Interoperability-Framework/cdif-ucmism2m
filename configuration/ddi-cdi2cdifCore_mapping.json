@@ -21,7 +21,24 @@
       "mainPackage": "CDIFCore",
       "mainPackageDefinition": "Core schema.org-aligned metadata for FAIR resource description.",
       "dataTypesPackage": "CDIFCore"
-    }
+    },
+    "datatypeSubstitutions": {
+      "InternationalString": "String",
+      "LabelForDisplay": "String",
+      "ObjectName": "String",
+      "LanguageString": "String",
+      "InternationalRegistrationDataIdentifier": "String",
+      "ControlledVocabularyEntry": "Concept",
+      "PairedControlledVocabularyEntry": "Concept",
+      "NonDdiIdentifier": "Identifier",
+      "Identifier": "Identifier",
+      "Statistic": "Statistic"
+    },
+    "excludeDatatypes": [
+      "BibliographicName",
+      "RationaleDefinition",
+      "Selector"
+    ]
   },
   "package": [
     {

@@ -45,7 +45,24 @@
 				"description": { "type": "string" },
 				"version": { "description": "The version of this mapping configuration.", "type": "string" },
 				"sourceModel": { "$ref": "#/$defs/sourceModel_type" },
-				"targetModel": { "$ref": "#/$defs/targetModel_type" }
+				"targetModel": { "$ref": "#/$defs/targetModel_type" },
+				"datatypeSubstitutions": {
+					"title": "Source DataType substitutions (v1.1)",
+					"description": "Map of source-model DataType names to canonical CDIF target types. Applied to every synthetic target class's property whose type points at the named source DataType. The target value may be a UML primitive ('String', 'Integer', 'Boolean', 'Real') or the targetClass name of another mapping (e.g. 'Concept', 'Identifier'). Composition (v1.1 composes) inherits substitutions from base configs and merges them (local wins on key conflict). Use to map DDI-CDI structured DataTypes that are simpler in CDIF: InternationalString/LabelForDisplay/ObjectName -> String (multilingualism via JSON-LD @language tags), ControlledVocabularyEntry/PairedControlledVocabularyEntry -> Concept (skos:Concept reference), NonDdiIdentifier -> Identifier (schema:PropertyValue).",
+					"type": "object",
+					"patternProperties": {
+						"^[A-Z][a-zA-Z]*$": { "$ref": "#/$defs/elementName_type" }
+					},
+					"additionalProperties": false,
+					"default": {}
+				},
+				"excludeDatatypes": {
+					"title": "Source DataTypes to drop entirely (v1.1)",
+					"description": "Source-model DataType names whose corresponding properties on synthetic target classes are dropped. Use for DDI-CDI structured types that have no CDIF representation at all: e.g. BibliographicName, RationaleDefinition, Selector. Composition (v1.1 composes) inherits the union of excludes across the chain.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/elementName_type" },
+					"default": []
+				}
 			},
 			"required": ["description", "version", "sourceModel", "targetModel"],
 			"additionalProperties": false

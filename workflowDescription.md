@@ -254,6 +254,37 @@ The current chain is:
 | `ddi-cdi2cdifDataStructure_mapping.json` | DataDescription (→ Discovery → Core transitively) |
 | `ddi-cdi2cdifCodelist_mapping.json` | — (standalone profile; composes the SKOS BBs in the JSON Schema layer, not a CDIF profile) |
 
+### Datatype substitution policy (`datatypeSubstitutions`, `excludeDatatypes`)
+
+Some DDI-CDI source DataTypes don't map to anything in CDIF (drop them), and some collapse to a simpler CDIF type (substitute). The v1.1 schema adds two optional fields on `transformation`:
+
+```jsonc
+"transformation": {
+  "datatypeSubstitutions": {
+    "InternationalString":  "String",
+    "LabelForDisplay":      "String",
+    "ObjectName":           "String",
+    "LanguageString":       "String",
+    "InternationalRegistrationDataIdentifier": "String",
+    "ControlledVocabularyEntry":       "Concept",
+    "PairedControlledVocabularyEntry": "Concept",
+    "NonDdiIdentifier":     "Identifier",
+    "Identifier":           "Identifier",
+    "Statistic":            "Statistic"
+  },
+  "excludeDatatypes": ["BibliographicName", "RationaleDefinition", "Selector"]
+}
+```
+
+The right side of each substitution is either a UML primitive name (`String`, `Integer`, `Boolean`, `Real`) or the `targetClass` name of another class in the profile (a local stub like `Concept`, `Identifier`, or `Statistic`). The substitutions are applied in **two places**:
+
+1. **On synthetic target class properties** before the closure walker runs — so any attribute on a synthetic target class typed as a substituted source DataType is rewritten to the substitution target (and the original source DataType is not pulled into the closure).
+2. **Inside the closure walker itself** — when transitively walking a pulled source DataType's own properties, the same substitution and exclude rules apply, so chains of source DataType references (e.g. source `Identifier.versionRationale` → `RationaleDefinition`) don't pull excluded types through the back door.
+
+`excludeDatatypes` causes any property whose type points at a named source DataType to be dropped entirely (no UML attribute emitted; no DataType pulled).
+
+Both fields participate in v1.1 composition: substitutions and excludes from base configs cascade into composing profiles (local wins on substitution-key conflict; excludes are unioned). Putting the global policy in `ddi-cdi2cdifCore_mapping.json` lets every composing profile inherit it.
+
 ### Composition rules
 
 `emit_uml_from_config` calls `_load_with_composition(config_path)` which:
