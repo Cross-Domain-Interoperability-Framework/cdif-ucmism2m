@@ -98,6 +98,14 @@ UNION_POLICY = {
     "languagetaggedvalue", "conceptref", "id-reference",
     # $def wrapper names emitted by the resolver (not real classes)
     "cdifinstancevariable", "cdifinstancevariable_definedterm", "cdifcodelistconcept",
+    # WebAPI / schema.org Action service-description machinery (cdifOpenApi) -
+    # deliberately NOT modelled in the UML (decision: keep the WebAPI class
+    # itself but not the potentialAction/EntryPoint/PropertyValueSpecification tree)
+    "propertyvaluespecification", "entrypoint", "potentialaction", "result",
+    "target", "object", "urltemplate", "httpmethod", "contenttype",
+    "query-input", "valuename", "valuepattern", "valuerequired",
+    # schema:LinkRole hyperlink machinery (collapsed)
+    "linkrelationship",
 }
 
 # Known naming differences between schema local-name and the UML class name,
@@ -106,6 +114,8 @@ ALIASES = {
     "activity": "provactivity",       # prov:Activity ~ ProvActivity
     "place": "spatialextent",         # schema:Place wrapper ~ SpatialExtent
     "properinterval": "temporalextent",  # time:ProperInterval ~ TemporalExtent
+    "key": "primarykey",              # cdif:Key ~ DDI-CDI PrimaryKey (kept name)
+    "componentposition": "primarykeycomponent",  # cdi:ComponentPosition ~ PrimaryKeyComponent
 }
 
 
@@ -212,6 +222,10 @@ def classify(orig: str, covered: set[str]) -> str:
     prefix = orig.split(":", 1)[0] if ":" in orig else ""
     if prefix == "skos" or n in {"concept", "conceptscheme", "skosconcept", "conceptref"}:
         return "vocabulary"
+    # dcterms:* alternates are intentionally not modelled - CDIF prefers the
+    # schema: equivalents (dcterms:conformsTo is the exception and is modelled).
+    if prefix == "dcterms":
+        return "datatype"
     if prefix == "xsd" or n in DATATYPE_POLICY:
         return "datatype"
     if n in UNION_POLICY:

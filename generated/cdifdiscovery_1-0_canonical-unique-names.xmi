@@ -377,6 +377,34 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>keywords</name>
                   <type xmi:idref="CDIFDiscovery.DefinedTerm"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-includedInDataCatalog" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-includedInDataCatalog" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-includedInDataCatalog-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-includedInDataCatalog-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-includedInDataCatalog"/>
+                     <body>schema:includedInDataCatalog - the data catalog the dataset is listed in (URI or labeled reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-includedInDataCatalog-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-includedInDataCatalog-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-includedInDataCatalog-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-includedInDataCatalog-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>includedInDataCatalog</name>
+                  <type xmi:idref="CDIFDiscovery.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-relatedLink" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-relatedLink" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-relatedLink-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-relatedLink-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-relatedLink"/>
+                     <body>schema:relatedLink - a related resource link.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-relatedLink-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-relatedLink-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-relatedLink-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-relatedLink-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>relatedLink</name>
+                  <type xmi:idref="CDIFDiscovery.Reference"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDiscovery.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-variableMeasured" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDiscovery.Dataset-variableMeasured"/>
@@ -436,6 +464,36 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>hasQualityMeasurement</name>
                   <type xmi:idref="CDIFDiscovery.QualityMeasurement"/>
                   <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-maintainer" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-maintainer" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-maintainer-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-maintainer-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-maintainer"/>
+                     <body>schema:maintainer - the agent responsible for maintaining the dataset. The Agent supertype admits Person or Organization.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-maintainer-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-maintainer-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-maintainer-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-maintainer-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>maintainer</name>
+                  <type xmi:idref="CDIFDiscovery.Agent"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_maintainer_Agent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-provider" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-provider" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-provider-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-provider-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-provider"/>
+                     <body>schema:provider - the agent providing access to the dataset. The Agent supertype admits Person or Organization.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-provider-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-provider-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-provider-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-provider-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>provider</name>
+                  <type xmi:idref="CDIFDiscovery.Agent"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_provider_Agent"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDiscovery.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-distribution" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
@@ -1696,6 +1754,34 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>url</name>
                   <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.WebAPI-termsOfService" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-termsOfService" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.WebAPI-termsOfService-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-termsOfService-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.WebAPI-termsOfService"/>
+                     <body>schema:termsOfService - terms of service for using the API (URI or labeled reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.WebAPI-termsOfService-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-termsOfService-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.WebAPI-termsOfService-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-termsOfService-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>termsOfService</name>
+                  <type xmi:idref="CDIFDiscovery.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.WebAPI-serviceType" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-serviceType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.WebAPI-serviceType-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-serviceType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.WebAPI-serviceType"/>
+                     <body>schema:serviceType - the type of the web API service.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.WebAPI-serviceType-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-serviceType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.WebAPI-serviceType-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-serviceType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>serviceType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDiscovery.WebAPI-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.WebAPI-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#WebAPI-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDiscovery.WebAPI-identifier"/>
@@ -2362,6 +2448,20 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>endedAtTime</name>
                   <type xmi:idref="CDIFDiscovery.XsdDate"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.ProvActivity-used" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ProvActivity-used" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.ProvActivity-used-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ProvActivity-used-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.ProvActivity-used"/>
+                     <body>prov:used - an entity (by URI) that this activity used.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.ProvActivity-used-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ProvActivity-used-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.ProvActivity-used-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ProvActivity-used-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>used</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDiscovery.DerivedFrom" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DerivedFrom" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDiscovery.DerivedFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DerivedFrom-ownedComment" xmi:type="uml:Comment">
@@ -2474,6 +2574,35 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>inLanguage</name>
                   <type xmi:idref="CDIFDiscovery.XsdLanguage"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.CatalogRecord-sdDatePublished" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-sdDatePublished" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.CatalogRecord-sdDatePublished-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-sdDatePublished-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.CatalogRecord-sdDatePublished"/>
+                     <body>schema:sdDatePublished - date the structured data (this metadata record) was published.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.CatalogRecord-sdDatePublished-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-sdDatePublished-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.CatalogRecord-sdDatePublished-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-sdDatePublished-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>sdDatePublished</name>
+                  <type xmi:idref="CDIFDiscovery.XsdDate"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-about" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.CatalogRecord-about"/>
+                     <body>schema:about - the resource this metadata record (CatalogRecord) describes.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.CatalogRecord-about-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-about-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>about</name>
+                  <type xmi:idref="CDIFDiscovery.Dataset"/>
+                  <association xmi:idref="CDIFDiscovery.CatalogRecord_about_Dataset"/>
+               </ownedAttribute>
             </packagedElement>
          </packagedElement>
          <packagedElement xmi:id="CDIFDiscovery.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
@@ -2511,6 +2640,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_maintainer_Agent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_maintainer_Agent" xmi:type="uml:Association">
+            <name>Dataset_maintainer_Agent</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-maintainer"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_maintainer_Agent-AgentEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_maintainer_Agent-AgentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.Agent"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_maintainer_Agent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_maintainer_Agent-AgentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_provider_Agent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_provider_Agent" xmi:type="uml:Association">
+            <name>Dataset_provider_Agent</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-provider"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_provider_Agent-AgentEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_provider_Agent-AgentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.Agent"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_provider_Agent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_provider_Agent-AgentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDiscovery.Dataset_distribution_AbstractDistribution" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_distribution_AbstractDistribution" xmi:type="uml:Association">
             <name>Dataset_distribution_AbstractDistribution</name>
@@ -2664,6 +2811,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <association xmi:idref="CDIFDiscovery.MonetaryGrant_funder_Agent"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDiscovery.MonetaryGrant_funder_Agent-AgentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.CatalogRecord_about_Dataset" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord_about_Dataset" xmi:type="uml:Association">
+            <name>CatalogRecord_about_Dataset</name>
+            <memberEnd xmi:idref="CDIFDiscovery.CatalogRecord-about"/>
+            <ownedEnd xmi:id="CDIFDiscovery.CatalogRecord_about_Dataset-DatasetEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord_about_Dataset-DatasetEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.Dataset"/>
+               <association xmi:idref="CDIFDiscovery.CatalogRecord_about_Dataset"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.CatalogRecord_about_Dataset-DatasetEnd"/>
          </packagedElement>
       </packagedElement>
    </uml:Model>

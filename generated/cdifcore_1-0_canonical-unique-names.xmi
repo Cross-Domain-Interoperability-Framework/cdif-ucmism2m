@@ -363,6 +363,64 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>keywords</name>
                   <type xmi:idref="CDIFCore.DefinedTerm"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Dataset-includedInDataCatalog" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-includedInDataCatalog" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Dataset-includedInDataCatalog-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-includedInDataCatalog-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Dataset-includedInDataCatalog"/>
+                     <body>schema:includedInDataCatalog - the data catalog the dataset is listed in (URI or labeled reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Dataset-includedInDataCatalog-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-includedInDataCatalog-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Dataset-includedInDataCatalog-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-includedInDataCatalog-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>includedInDataCatalog</name>
+                  <type xmi:idref="CDIFCore.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Dataset-relatedLink" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-relatedLink" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Dataset-relatedLink-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-relatedLink-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Dataset-relatedLink"/>
+                     <body>schema:relatedLink - a related resource link.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Dataset-relatedLink-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-relatedLink-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Dataset-relatedLink-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-relatedLink-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>relatedLink</name>
+                  <type xmi:idref="CDIFCore.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Dataset-maintainer" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-maintainer" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Dataset-maintainer-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-maintainer-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Dataset-maintainer"/>
+                     <body>schema:maintainer - the agent responsible for maintaining the dataset. The Agent supertype admits Person or Organization.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Dataset-maintainer-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-maintainer-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Dataset-maintainer-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-maintainer-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>maintainer</name>
+                  <type xmi:idref="CDIFCore.Agent"/>
+                  <association xmi:idref="CDIFCore.Dataset_maintainer_Agent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Dataset-provider" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-provider" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Dataset-provider-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-provider-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Dataset-provider"/>
+                     <body>schema:provider - the agent providing access to the dataset. The Agent supertype admits Person or Organization.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Dataset-provider-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-provider-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Dataset-provider-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-provider-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>provider</name>
+                  <type xmi:idref="CDIFCore.Agent"/>
+                  <association xmi:idref="CDIFCore.Dataset_provider_Agent"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFCore.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-distribution" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCore.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCore.Dataset-distribution"/>
@@ -777,6 +835,34 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   </upperValue>
                   <name>url</name>
                   <type xmi:idref="CDIFCore.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.WebAPI-termsOfService" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-termsOfService" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.WebAPI-termsOfService-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-termsOfService-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.WebAPI-termsOfService"/>
+                     <body>schema:termsOfService - terms of service for using the API (URI or labeled reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.WebAPI-termsOfService-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-termsOfService-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.WebAPI-termsOfService-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-termsOfService-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>termsOfService</name>
+                  <type xmi:idref="CDIFCore.Reference"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.WebAPI-serviceType" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-serviceType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.WebAPI-serviceType-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-serviceType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.WebAPI-serviceType"/>
+                     <body>schema:serviceType - the type of the web API service.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.WebAPI-serviceType-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-serviceType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.WebAPI-serviceType-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-serviceType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>serviceType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFCore.WebAPI-identifier" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCore.WebAPI-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1556,6 +1642,20 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>endedAtTime</name>
                   <type xmi:idref="CDIFCore.XsdDate"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.ProvActivity-used" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ProvActivity-used" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.ProvActivity-used-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ProvActivity-used-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.ProvActivity-used"/>
+                     <body>prov:used - an entity (by URI) that this activity used.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.ProvActivity-used-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ProvActivity-used-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.ProvActivity-used-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ProvActivity-used-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>used</name>
+                  <type xmi:idref="CDIFCore.XsdAnyUri"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFCore.DerivedFrom" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#DerivedFrom" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFCore.DerivedFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#DerivedFrom-ownedComment" xmi:type="uml:Comment">
@@ -1668,7 +1768,54 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>inLanguage</name>
                   <type xmi:idref="CDIFCore.XsdLanguage"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.CatalogRecord-sdDatePublished" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-sdDatePublished" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.CatalogRecord-sdDatePublished-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-sdDatePublished-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.CatalogRecord-sdDatePublished"/>
+                     <body>schema:sdDatePublished - date the structured data (this metadata record) was published.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.CatalogRecord-sdDatePublished-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-sdDatePublished-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.CatalogRecord-sdDatePublished-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-sdDatePublished-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>sdDatePublished</name>
+                  <type xmi:idref="CDIFCore.XsdDate"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-about" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.CatalogRecord-about"/>
+                     <body>schema:about - the resource this metadata record (CatalogRecord) describes.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.CatalogRecord-about-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord-about-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>about</name>
+                  <type xmi:idref="CDIFCore.Dataset"/>
+                  <association xmi:idref="CDIFCore.CatalogRecord_about_Dataset"/>
+               </ownedAttribute>
             </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.Dataset_maintainer_Agent" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset_maintainer_Agent" xmi:type="uml:Association">
+            <name>Dataset_maintainer_Agent</name>
+            <memberEnd xmi:idref="CDIFCore.Dataset-maintainer"/>
+            <ownedEnd xmi:id="CDIFCore.Dataset_maintainer_Agent-AgentEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset_maintainer_Agent-AgentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.Agent"/>
+               <association xmi:idref="CDIFCore.Dataset_maintainer_Agent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.Dataset_maintainer_Agent-AgentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.Dataset_provider_Agent" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset_provider_Agent" xmi:type="uml:Association">
+            <name>Dataset_provider_Agent</name>
+            <memberEnd xmi:idref="CDIFCore.Dataset-provider"/>
+            <ownedEnd xmi:id="CDIFCore.Dataset_provider_Agent-AgentEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset_provider_Agent-AgentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.Agent"/>
+               <association xmi:idref="CDIFCore.Dataset_provider_Agent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.Dataset_provider_Agent-AgentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFCore.Dataset_distribution_AbstractDistribution" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset_distribution_AbstractDistribution" xmi:type="uml:Association">
             <name>Dataset_distribution_AbstractDistribution</name>
@@ -1777,6 +1924,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <association xmi:idref="CDIFCore.MonetaryGrant_funder_Agent"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFCore.MonetaryGrant_funder_Agent-AgentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.CatalogRecord_about_Dataset" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord_about_Dataset" xmi:type="uml:Association">
+            <name>CatalogRecord_about_Dataset</name>
+            <memberEnd xmi:idref="CDIFCore.CatalogRecord-about"/>
+            <ownedEnd xmi:id="CDIFCore.CatalogRecord_about_Dataset-DatasetEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CatalogRecord_about_Dataset-DatasetEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.Dataset"/>
+               <association xmi:idref="CDIFCore.CatalogRecord_about_Dataset"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.CatalogRecord_about_Dataset-DatasetEnd"/>
          </packagedElement>
       </packagedElement>
    </uml:Model>

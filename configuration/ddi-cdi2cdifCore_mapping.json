@@ -208,6 +208,18 @@
               "lower": "0",
               "upper": "*"
             }
+          },
+          {
+            "name": "includedInDataCatalog",
+            "dataType": "Reference",
+            "definition": "schema:includedInDataCatalog - the data catalog the dataset is listed in (URI or labeled reference).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "relatedLink",
+            "dataType": "Reference",
+            "definition": "schema:relatedLink - a related resource link.",
+            "multiplicity": { "lower": "0", "upper": "*" }
           }
         ],
         "sssom": {
@@ -387,6 +399,18 @@
               "lower": "1",
               "upper": "1"
             }
+          },
+          {
+            "name": "termsOfService",
+            "dataType": "Reference",
+            "definition": "schema:termsOfService - terms of service for using the API (URI or labeled reference).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "serviceType",
+            "dataType": "String",
+            "definition": "schema:serviceType - the type of the web API service.",
+            "multiplicity": { "lower": "0", "upper": "1" }
           }
         ]
       },
@@ -909,6 +933,12 @@
               "lower": "0",
               "upper": "1"
             }
+          },
+          {
+            "name": "used",
+            "dataType": "XsdAnyUri",
+            "definition": "prov:used - an entity (by URI) that this activity used.",
+            "multiplicity": { "lower": "0", "upper": "*" }
           }
         ],
         "sssom": {
@@ -996,6 +1026,12 @@
               "lower": "0",
               "upper": "1"
             }
+          },
+          {
+            "name": "sdDatePublished",
+            "dataType": "XsdDate",
+            "definition": "schema:sdDatePublished - date the structured data (this metadata record) was published.",
+            "multiplicity": { "lower": "0", "upper": "1" }
           }
         ],
         "sssom": {
@@ -1007,6 +1043,27 @@
       }
     ],
     "association": [
+      {
+        "targetAssociationName": "Dataset_maintainer_Agent",
+        "subjectClass": "Dataset",
+        "objectClass": "Agent",
+        "definition": "schema:maintainer - the agent responsible for maintaining the dataset. The Agent supertype admits Person or Organization.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "targetAssociationName": "Dataset_provider_Agent",
+        "subjectClass": "Dataset",
+        "objectClass": "Agent",
+        "definition": "schema:provider - the agent providing access to the dataset. The Agent supertype admits Person or Organization.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "targetAssociationName": "CatalogRecord_about_Dataset",
+        "subjectClass": "CatalogRecord",
+        "objectClass": "Dataset",
+        "definition": "schema:about - the resource this metadata record (CatalogRecord) describes.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
       {
         "_comment": "schema:distribution - single association on the AbstractDistribution supertype; replaces the previous Dataset_distribution_DataDownload + Dataset_distribution_WebAPI pair. Instance @type carries the concrete kind (schema:DataDownload or schema:WebAPI).",
         "targetAssociationName": "Dataset_distribution_AbstractDistribution",
