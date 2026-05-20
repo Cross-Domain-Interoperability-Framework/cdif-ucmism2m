@@ -24,6 +24,9 @@
       "composes": [
         "ddi-cdi2cdifDataDescription_mapping.json"
       ]
+    },
+    "datatypeSubstitutions": {
+      "TypedString": "String"
     }
   },
   "package": [
@@ -45,7 +48,12 @@
     {
       "name": "ValueDomains",
       "parent": "CDIFDataStructure",
-      "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain."
+      "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain; Substantive/SentinelConceptualDomain, ConceptSystem, ValueAndConceptDescription."
+    },
+    {
+      "name": "Physical",
+      "parent": "CDIFDataStructure",
+      "definition": "PhysicalDataSet and its subtypes (TabularTextDataSet, StructuredDataSet) - the byte-level realization a distribution is structured by."
     }
   ],
   "mapping": {
@@ -224,6 +232,72 @@
         "sourceClass": "EnumerationDomain",
         "targetPackage": "ValueDomains",
         "targetClass": "EnumerationDomain"
+      },
+      {
+        "_comment": "ForeignKey - a key whose components reference the PrimaryKey of another DataStructure (cdi:ForeignKey).",
+        "mappingType": "map",
+        "sourceClass": "ForeignKey",
+        "targetPackage": "Components",
+        "targetClass": "ForeignKey"
+      },
+      {
+        "mappingType": "map",
+        "sourceClass": "ForeignKeyComponent",
+        "targetPackage": "Components",
+        "targetClass": "ForeignKeyComponent"
+      },
+      {
+        "_comment": "ConceptSystem - the system of concepts a conceptual domain draws from (cdi:ConceptSystem).",
+        "mappingType": "map",
+        "sourceClass": "ConceptSystem",
+        "targetPackage": "ValueDomains",
+        "targetClass": "ConceptSystem"
+      },
+      {
+        "_comment": "SubstantiveConceptualDomain - the conceptual (as opposed to value) domain of substantive values (cdi:SubstantiveConceptualDomain).",
+        "mappingType": "map",
+        "sourceClass": "SubstantiveConceptualDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SubstantiveConceptualDomain"
+      },
+      {
+        "mappingType": "map",
+        "sourceClass": "SentinelConceptualDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SentinelConceptualDomain"
+      },
+      {
+        "_comment": "ValueAndConceptDescription - description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, etc.",
+        "mappingType": "map",
+        "sourceClass": "ValueAndConceptDescription",
+        "targetPackage": "ValueDomains",
+        "targetClass": "ValueAndConceptDescription"
+      },
+      {
+        "_comment": "UnitType - the type of unit a (conceptual/represented) variable measures (cdi:UnitType).",
+        "mappingType": "map",
+        "sourceClass": "UnitType",
+        "targetPackage": "Variables",
+        "targetClass": "UnitType"
+      },
+      {
+        "_comment": "PhysicalDataSet - byte-level realization of a dataset that a distribution is structured by (cdi:PhysicalDataSet). Subtypes: TabularTextDataSet, StructuredDataSet.",
+        "mappingType": "map",
+        "sourceClass": "PhysicalDataSet",
+        "targetPackage": "Physical",
+        "targetClass": "PhysicalDataSet"
+      },
+      {
+        "mappingType": "map",
+        "sourceClass": "TabularTextDataSet",
+        "targetPackage": "Physical",
+        "targetClass": "TabularTextDataSet"
+      },
+      {
+        "mappingType": "map",
+        "sourceClass": "StructuredDataSet",
+        "targetPackage": "Physical",
+        "targetClass": "StructuredDataSet"
       }
     ],
     "association": [
@@ -421,6 +495,105 @@
           "lower": "0",
           "upper": "*"
         }
+      },
+      {
+        "sourceAssociationName": "DataStructure_has_ForeignKey",
+        "targetAssociationName": "DataStructure_has_ForeignKey",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "sourceAssociationName": "ForeignKey_isComposedOf_ForeignKeyComponent",
+        "targetAssociationName": "ForeignKey_isComposedOf_ForeignKeyComponent",
+        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
+      },
+      {
+        "sourceAssociationName": "ForeignKeyComponent_correspondsTo_DataStructureComponent",
+        "targetAssociationName": "ForeignKeyComponent_correspondsTo_DataStructureComponent",
+        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
+      },
+      {
+        "sourceAssociationName": "ForeignKeyComponent_references_PrimaryKeyComponent",
+        "targetAssociationName": "ForeignKeyComponent_references_PrimaryKeyComponent",
+        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
+      },
+      {
+        "_comment": "cdi:takesSubstantiveConceptsFrom - the value domain's conceptual counterpart.",
+        "sourceAssociationName": "SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain",
+        "targetAssociationName": "SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "sourceAssociationName": "SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain",
+        "targetAssociationName": "SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "sourceAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "targetAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "sourceAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "targetAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdi:takesConceptsFrom - the conceptual domain draws its concepts from a ConceptSystem.",
+        "targetAssociationName": "SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem",
+        "subjectClass": "SubstantiveConceptualDomain",
+        "objectClass": "ConceptSystem",
+        "definition": "cdi:takesConceptsFrom - the ConceptSystem providing the substantive concepts.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "targetAssociationName": "SentinelConceptualDomain_takesConceptsFrom_ConceptSystem",
+        "subjectClass": "SentinelConceptualDomain",
+        "objectClass": "ConceptSystem",
+        "definition": "cdi:takesConceptsFrom - the ConceptSystem providing the sentinel concepts.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "sourceAssociationName": "ConceptSystem_has_Concept",
+        "targetAssociationName": "ConceptSystem_has_Concept",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "_comment": "cdi:isStructuredBy - a distribution typed as a PhysicalDataSet points at the DataStructure that describes its layout. New association (DDI-CDI carries it on DataSet).",
+        "targetAssociationName": "PhysicalDataSet_isStructuredBy_DataStructure",
+        "subjectClass": "PhysicalDataSet",
+        "objectClass": "DataStructure",
+        "definition": "cdi:isStructuredBy - the DataStructure describing this physical dataset's layout.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdi:measures - the unit type a represented variable measures. New association (DDI-CDI carries measures on ConceptualVariable).",
+        "targetAssociationName": "RepresentedVariable_measures_UnitType",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "UnitType",
+        "definition": "cdi:measures - the UnitType this represented variable measures.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdif:isDefinedBy - the enumeration domain is defined by a Concept. Mapped from the DDI-CDI source association.",
+        "sourceAssociationName": "EnumerationDomain_isDefinedBy_Concept",
+        "targetAssociationName": "EnumerationDomain_isDefinedBy_Concept",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdi:takesSubstantiveConceptsFrom - a represented variable's substantive conceptual domain. New association (DDI-CDI carries it on ConceptualVariable).",
+        "targetAssociationName": "RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "SubstantiveConceptualDomain",
+        "definition": "cdi:takesSubstantiveConceptsFrom - the substantive conceptual domain for this represented variable.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdi:takesSentinelConceptsFrom - a represented variable's sentinel conceptual domain. New association (DDI-CDI carries it on ConceptualVariable).",
+        "targetAssociationName": "RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "SentinelConceptualDomain",
+        "definition": "cdi:takesSentinelConceptsFrom - the sentinel conceptual domain for this represented variable.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
       }
     ]
   }

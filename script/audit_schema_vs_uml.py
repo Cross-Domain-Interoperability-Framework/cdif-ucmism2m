@@ -21,6 +21,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -28,6 +29,7 @@ REPO = SCRIPT_DIR.parents[1]                       # .../CDIF
 MBB = REPO / "metadataBuildingBlocks"
 TOOLS = MBB / "tools"
 CONFIG_DIR = REPO / "ucmism2m" / "configuration"
+GENERATED_DIR = REPO / "ucmism2m" / "generated"
 SOURCES = MBB / "_sources"
 
 sys.path.insert(0, str(TOOLS))
@@ -98,6 +100,7 @@ UNION_POLICY = {
     "languagetaggedvalue", "conceptref", "id-reference",
     # $def wrapper names emitted by the resolver (not real classes)
     "cdifinstancevariable", "cdifinstancevariable_definedterm", "cdifcodelistconcept",
+    "ddicdifdatatypes_identifier", "ddicdifdatatypes_reference",
     # WebAPI / schema.org Action service-description machinery (cdifOpenApi) -
     # deliberately NOT modelled in the UML (decision: keep the WebAPI class
     # itself but not the potentialAction/EntryPoint/PropertyValueSpecification tree)
@@ -137,12 +140,15 @@ def canon(name: str) -> str:
 
 
 def datatype_policy() -> set[str]:
-    """Source DataTypes the policy substitutes or excludes (project-wide policy
-    lives in the Core config and cascades). These are intentionally not modelled
-    as their own classes in any profile UML."""
-    core = json.loads((CONFIG_DIR / "ddi-cdi2cdifCore_mapping.json").read_text(encoding="utf-8"))
-    tr = core.get("transformation", {})
-    names = set(tr.get("datatypeSubstitutions", {}).keys()) | set(tr.get("excludeDatatypes", []))
+    """Source DataTypes the policy substitutes or excludes, unioned across all
+    profile configs (the project-wide policy lives in Core and cascades, but a
+    profile may add its own, e.g. DataStructure's TypedString). These are
+    intentionally flattened, not modelled as their own classes."""
+    names: set[str] = set()
+    for cfg_path in CONFIG_DIR.glob("ddi-cdi2cdif*_mapping.json"):
+        tr = json.loads(cfg_path.read_text(encoding="utf-8")).get("transformation", {})
+        names |= set(tr.get("datatypeSubstitutions", {}).keys())
+        names |= set(tr.get("excludeDatatypes", []))
     return {canon(n) for n in names}
 
 
@@ -212,6 +218,31 @@ def covered_from_config(cfg: dict) -> set[str]:
     return out
 
 
+def covered_from_xmi(xmi_path: Path) -> set[str]:
+    """Names actually present in the generated UML XMI: every <name> (classes,
+    datatypes, attributes, packages, associations). Captures attributes that
+    bare 'map' classes copy from the source (which the config does not list).
+    Association names (Owner_role_Target) also contribute role / role_Target."""
+    out: set[str] = set()
+    if not xmi_path.exists():
+        return out
+    root = ET.parse(xmi_path).getroot()
+    for nm in root.iter("name"):
+        text = (nm.text or "").strip()
+        if not text:
+            continue
+        out.add(canon(text))
+        parts = text.split("_")
+        if len(parts) >= 3:
+            role = "_".join(parts[1:-1])
+            obj = parts[-1]
+            out.add(canon(role))
+            out.add(canon(obj))
+            out.add(canon(parts[0]))
+            out.add(canon(f"{role}_{obj}"))
+    return out
+
+
 def classify(orig: str, covered: set[str]) -> str:
     """Bucket a schema name: 'covered', 'vocabulary' (SKOS/Concept, defined in
     Codelist), 'datatype' (policy-substituted/excluded source DataType or xsd),
@@ -236,7 +267,9 @@ def classify(orig: str, covered: set[str]) -> str:
 def audit_one(slug: str) -> dict:
     config_path, resolved_path = PROFILES[slug]
     cfg, _inherited = _load_with_composition(config_path)
-    covered = covered_from_config(cfg)
+    tm = cfg["transformation"]["targetModel"]
+    xmi_name = f"{tm['acronym'].lower()}_{tm['majorVersion']}-{tm['minorVersion']}_canonical-unique-names.xmi"
+    covered = covered_from_config(cfg) | covered_from_xmi(GENERATED_DIR / xmi_name)
 
     schema = json.loads(resolved_path.read_text(encoding="utf-8"))
     props: set[str] = set()
