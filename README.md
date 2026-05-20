@@ -40,6 +40,25 @@ This repository is a CDIF fork of Joachim Wackerow's UCMIS-M2M project (https://
 | `datatypeSubstitutions` | `transformation` | rewrite synthetic target class properties whose type points at a named source DataType (`InternationalString` → `String`, `ControlledVocabularyEntry` → `Concept`, `NonDdiIdentifier` → `Identifier`, …); applied in two places (synthetic targets + transitive closure walker); cascades through `composes` |
 | `excludeDatatypes` | `transformation` | drop properties typed by named source DataTypes (`BibliographicName`, `RationaleDefinition`, `Selector`, …) |
 
+### Canonical Eclipse-XMI conventions (generator behavior)
+
+Beyond the config fields above, the emitter applies three Eclipse-XMI conventions (from Joachim Wackerow's review of the generated XMI):
+
+- **Primitive types by href** — primitive-typed attributes reference Eclipse's standard `PrimitiveTypes.xmi` (`<type xmi:type="uml:PrimitiveType" href="…/PrimitiveTypes.xmi#String"/>`) rather than a profile-local primitive stub.
+- **`ModelIdentification` DataType** — each model carries a model-level `ModelIdentification` `uml:DataType` (read-only `prefix`/`majorVersion`/`minorVersion`/`title`/`language`/`uri`), driven by the config `targetModel` fields.
+- **Canonical filenames** — outputs are named `<lower-acronym>_<major>-<minor>_canonical-unique-names.xmi` (e.g. `cdifcodelist_1-0_canonical-unique-names.xmi`), derived from the config acronym + version.
+
+### Keeping the UML in step with the building-block schemas
+
+UML generation is **config-driven, not schema-driven** — the emitter reads the DDI-CDI source XMI + the per-profile ucmism2m config, never the profile's JSON Schema. So when a building block is added to a profile's `schema.yaml`, the UML config must be updated to match. To catch that drift, run the coverage audit:
+
+```powershell
+python script/audit_schema_vs_uml.py            # all profiles
+python script/audit_schema_vs_uml.py cdifDataDescription   # one profile
+```
+
+It diffs each profile's composed `resolvedSchema.json` against the **generated XMI** and buckets findings into **real gaps** vs intentionally-absent (union-type policy, datatype policy, SKOS vocabulary defined in Codelist). When extending a profile, drive the real-gaps list down to its intentional residue. See [`AGENTS.md`](AGENTS.md) for the full add-a-profile loop.
+
 ### The union-type problem — and the CDIF solution
 
 JSON Schema admits union types (`anyOf` / `oneOf`); UML 2 does not have first-class union types. A survey across the five CDIF profile resolvedSchemas (see [`script/survey_union_types.py`](script/survey_union_types.py)) found **900+ union-shape occurrences** that needed reconciling. Rather than adopting the ShapeChange/GeoSciML `<<union>>` stereotype workaround (which CDIF stakeholders rejected), we chose to reduce every JSON union to a **single canonical UML attribute type**, with the simpler JSON forms (string, `@id`-only ref) treated as **serialization shorthand for the canonical type**.

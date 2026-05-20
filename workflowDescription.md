@@ -407,7 +407,7 @@ A survey across all CDIF profile resolvedSchemas (run via `ucmism2m/script/surve
 | `X` ↔ `string` ↔ `@id`-ref where X is **Identifier / PropertyValue** | `schema:PropertyValue` | The string is a shorthand for the bare identifier value (e.g. a DOI or ORCID). |
 | `X` ↔ `string` ↔ `@id`-ref where X is **cdif:Reference / LabeledLink** | `cdif:Reference` | The string is a shorthand URL. |
 | `LanguageTaggedValue` ↔ `string` ↔ array thereof | `string` | Multilingualism carried via JSON-LD `@language` tags. Same policy as `cdi:InternationalString` / `cdi:LabelForDisplay` / `cdi:ObjectName`, all of which flatten to `String` here. *Future:* a separate "language-localized" profile family in which every string becomes a JSON-LD object with `@value` + `@language`. |
-| `ProperInterval` ↔ `string` | `string` | An ISO 8601 interval string is the canonical form; the structured `time:ProperInterval` object is an alternative encoding. |
+| `ProperInterval` ↔ `string` | `string` (+ structured classes) | An ISO 8601 interval string is the canonical short form; the structured `time:ProperInterval` is an alternative encoding. **Exception (Discovery):** to faithfully include the OWL-Time content the `temporalExtent` BB defines (named-era and numeric-age bounds), `TemporalExtent` *also* carries the structured form — `intervalStartedBy`/`intervalFinishedBy` plus `hasBeginning`/`hasEnd` → `Instant` → `inTimePosition` → `TimePosition`. Likewise `geosparql:hasGeometry` is modelled as a `Geometry` class, not only the WKT string. |
 | `inline-X` ↔ `@id`-only ref | `X` | Inline-vs-reference is a JSON-LD serialization choice, not a type variant. The UML attribute always targets `X`; the JSON instance may carry either the inline object or `{"@id": "..."}`. |
 | `X ↔ array<X>` (cardinality variation) | `X` with multiplicity `0..*` or `1..*` | Cardinality variation in JSON Schema becomes multiplicity in UML. |
 | `Person ↔ Organization` (any envelope) | `Agent` (abstract supertype) | Already wired; `Person`, `Organization` both generalize `Agent`. The four role associations (`creator`, `publisher`, `contributor`-via-Contributor, `funder`-via-MonetaryGrant) target `Agent`. |
@@ -441,6 +441,48 @@ Where a UML attribute type carries the "string alternative permitted" convention
 - **v1.2 config field `jsonAlternativeTypes`** on attributes, listing the JSON-side surface alternatives the implementation accepts. Currently the policy lives in this document; making it machine-readable would let a future "JSON Schema from config" emitter (or a SHACL-from-config emitter) derive both sides from one source.
 - **HTML model browser column** showing the JSON alternatives next to the UML type, so readers don't have to consult the BB JSON Schema separately.
 - **Language-localized profile family** where every string-typed property becomes a JSON-LD object with `@value` + `@language`.
+
+## Schema-vs-UML coverage audit
+
+UML generation is **config-driven, not schema-driven**: `uml_to_schema.py --emit-uml`
+reads the DDI-CDI source XMI plus the per-profile ucmism2m config, and never the
+profile's JSON Schema. This is deliberate — the config carries the union-type
+reductions, abstract supertypes, DDI-CDI `sourceClass` provenance and SSSOM
+crosswalks that the JSON Schema cannot express. The cost is **drift**: when a
+building block is added to a profile's `schema.yaml`, the UML config does not
+follow automatically.
+
+`script/audit_schema_vs_uml.py` is the drift detector. It compares each profile's
+composed `resolvedSchema.json` (produced by the bblocks postprocessor) against the
+**generated XMI** (so attributes that bare-`map` classes copy from the source count
+as covered), and reports schema properties / `$defs` / `@type` classes with no
+corresponding UML class, attribute, or association.
+
+```powershell
+python script/audit_schema_vs_uml.py            # all profiles
+python script/audit_schema_vs_uml.py cdifDataStructure -v   # one profile, show intentional buckets
+```
+
+Findings are bucketed:
+
+- **REAL GAPS** — schema content genuinely missing from the UML. Drive this to zero (or to a documented residue) when extending a profile.
+- **union policy** — schema.org/JSON unions deliberately collapsed (Action/`potentialAction` machinery, `Person|Organization`→`Agent`, `LanguageTaggedValue`, …).
+- **datatype policy** — source DataTypes substituted/excluded (`InternationalString`→`String`, `TypedString`, etc.), unioned across all configs.
+- **SKOS vocabulary** — `skos:`/Concept terms whose canonical definition lives in the Codelist profile.
+
+The audit knows the `Owner_role_Target` association naming convention and a few
+naming aliases (`schema:Place`~`SpatialExtent`, `time:ProperInterval`~`TemporalExtent`,
+`cdif:Key`~`PrimaryKey`, `prov:Activity`~`ProvActivity`). Current state: Codelist /
+Core / Discovery have **0** real gaps; DataDescription has 1 (`cdi:indexes`, part of
+the Key/ComponentPosition structure kept as `PrimaryKey`); DataStructure's residue is
+DDI-CDI datatype-internal flattening, association naming variants, and one
+out-of-profile reference (`refersTo` → ReferenceValue).
+
+### Modelling decisions captured this round
+
+- **WebAPI / OpenAPI action machinery** (`potentialAction` → `EntryPoint` / `PropertyValueSpecification`) is **not** modelled — the `WebAPI` class plus `termsOfService`/`serviceType` are kept, but the schema.org service-description tree is treated as intentional union-policy absence.
+- **Keys** keep the DDI-CDI `PrimaryKey` / `PrimaryKeyComponent` naming (shared with DataStructure's `correspondsTo` wiring) rather than the BB's `cdif:Key` / `ComponentPosition`.
+- **`dcterms:*` alternates** (`relation`/`created`/`modified`/`rights`) are not modelled — CDIF prefers the `schema:` equivalents (`dcterms:conformsTo` is the modelled exception).
 
 ## Cross-references and provenance
 
