@@ -31,7 +31,7 @@ $python = "C:\Users\smrTu\miniconda3\python.exe"
 $repoRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
 $tool = Join-Path $repoRoot "metadataBuildingBlocks\tools\uml_to_schema.py"
 # DDI-CDI 1.1beta canonical UML (sourced from the UCMIS-M2T reference repo).
-$xmi  = "C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
+$xmi  = "C:\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
 $configDir = Join-Path $repoRoot "ucmism2m\configuration"
 $genDir = Join-Path $repoRoot "ucmism2m\generated"
 # Outputs go OUTSIDE metadataBuildingBlocks/build/ so the OGC bblocks

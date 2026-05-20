@@ -8,12 +8,12 @@
 #   .\stage-xmis-to-m2t.ps1
 #   .\stage-xmis-to-m2t.ps1 -M2tRoot "C:\path\to\ucmis.m2t"
 #
-# The default M2tRoot is C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t
+# The default M2tRoot is C:\GithubC\ucmis.m2t
 # (matching the user's local clone).
 
 [CmdletBinding()]
 param(
-    [string]$M2tRoot = "C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t",
+    [string]$M2tRoot = "C:\GithubC\ucmis.m2t",
     [string]$GeneratedDir
 )
 

@@ -176,7 +176,7 @@ Relevant flags for this workflow:
 `plantuml.jar` is a build-time binary; it is **not** committed to the repo (see `metadataBuildingBlocks/.gitignore`). Download once into the expected location:
 
 ```powershell
-curl -L -o "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\tools\plantuml.jar" `
+curl -L -o "C:\GithubC\CDIF\metadataBuildingBlocks\tools\plantuml.jar" `
      "https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar"
 ```
 
@@ -189,7 +189,7 @@ GitHub Pages deployment of `cdif-uml-model/` needs only the rendered HTML and SV
 Use the orchestration script — it handles all five profiles, builds the cross-profile registry, renders SVGs, and opens the browser:
 
 ```powershell
-& "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\script\build-docs.ps1"
+& "C:\GithubC\CDIF\ucmism2m\script\build-docs.ps1"
 ```
 
 What it does, in order:
@@ -212,7 +212,7 @@ The two pipelines are independent — edits to BB schemas do **not** appear in t
 To serve over HTTP instead of `file://` (recommended for SVG embedding):
 
 ```powershell
-cd C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model
+cd C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model
 python -m http.server 8765
 # then: http://localhost:8765/index.html
 ```
@@ -222,18 +222,18 @@ python -m http.server 8765
 For iterative work on a single profile (e.g. tweaking the Core config and re-checking the result):
 
 ```powershell
-$tool = "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\tools\uml_to_schema.py"
-$xmi  = "C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
-$jar  = "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\tools\plantuml.jar"
+$tool = "C:\GithubC\CDIF\metadataBuildingBlocks\tools\uml_to_schema.py"
+$xmi  = "C:\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
+$jar  = "C:\GithubC\CDIF\metadataBuildingBlocks\tools\plantuml.jar"
 $java = "C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe"
 
 python $tool --xmi $xmi `
-    --config "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\configuration\ddi-cdi2cdifCore_mapping.json" `
-    --emit-uml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\generated\cdifCore.xmi" `
-    --emit-puml "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
-    --emit-html "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model" `
-    --puml-dir "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
-    --cross-profile-registry "C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_registry.json" `
+    --config "C:\GithubC\CDIF\ucmism2m\configuration\ddi-cdi2cdifCore_mapping.json" `
+    --emit-uml "C:\GithubC\CDIF\ucmism2m\generated\cdifCore.xmi" `
+    --emit-puml "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
+    --emit-html "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model" `
+    --puml-dir "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
+    --cross-profile-registry "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_registry.json" `
     --plantuml-jar $jar --java-exe $java
 ```
 
@@ -460,7 +460,7 @@ The `sssom` blocks across all configs can be consolidated into a single
 [SSSOM TSV](https://mapping-commons.github.io/sssom/dev/spec-model/) file:
 
 ```powershell
-python C:\Users\smrTu\OneDrive\Documents\GithubC\CDIF\ucmism2m\script\emit_sssom.py
+python C:\GithubC\CDIF\ucmism2m\script\emit_sssom.py
 ```
 
 Writes `ucmism2m/generated/cdif-ddi-cdi-mappings.sssom.tsv` — YAML metadata

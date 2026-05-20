@@ -1,7 +1,7 @@
 # Feeding the five generated CDIF profile XMIs through UCMIS-M2T
 
 This guide reflects the **actual** workflow after inspecting the local clone at
-`C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t\`. (An earlier draft of
+`C:\GithubC\ucmis.m2t\`. (An earlier draft of
 this file guessed at a Tycho RCP-product structure — that was wrong; the real
 project is an Eclipse Acceleo project run via `.launch` configurations.)
 
@@ -86,7 +86,7 @@ Run it any time you regenerate the XMIs:
 .\ucmism2m\script\stage-xmis-to-m2t.ps1
 ```
 
-The script defaults to `C:\Users\smrTu\OneDrive\Documents\GithubC\ucmis.m2t`;
+The script defaults to `C:\GithubC\ucmis.m2t`;
 pass `-M2tRoot <path>` if your clone lives elsewhere.
 
 Note: the existing `cdifcodelist_canonical-unique-names-eclipse.xmi` in

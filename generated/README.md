@@ -49,7 +49,7 @@ These files are not committed for human editing — they are output. Re-create t
 $base = "<repository-root>"
 foreach ($c in 'cdifCodelist','cdifCore','cdifDiscovery','cdifDataDescription','cdifDataStructure') {
     python "$base\metadataBuildingBlocks\tools\uml_to_schema.py" `
-        --xmi    "$base\ucmism2m\model\ddi-cdi_canonical-unique-names-eclipse.xmi" `
+        --xmi    "$base\..\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi" `
         --config "$base\ucmism2m\configuration\ddi-cdi2${c}_mapping.json" `
         --emit-uml "$base\ucmism2m\generated\${c}.xmi"
 }
@@ -61,7 +61,7 @@ POSIX equivalent:
 base="<repository-root>"
 for c in cdifCodelist cdifCore cdifDiscovery cdifDataDescription cdifDataStructure; do
     python "$base/metadataBuildingBlocks/tools/uml_to_schema.py" \
-        --xmi    "$base/ucmism2m/model/ddi-cdi_canonical-unique-names-eclipse.xmi" \
+        --xmi    "$base/../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi" \
         --config "$base/ucmism2m/configuration/ddi-cdi2${c}_mapping.json" \
         --emit-uml "$base/ucmism2m/generated/${c}.xmi"
 done
