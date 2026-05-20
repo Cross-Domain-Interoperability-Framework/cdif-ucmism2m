@@ -1591,6 +1591,9 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <body>Use of a represented variable within a data set.</body>
                </ownedComment>
                <name>InstanceVariable</name>
+               <generalization xmi:id="CDIFDataStructure.InstanceVariable-generalization-AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-generalization-AbstractVariable" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.AbstractVariable"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-name"/>
@@ -1790,6 +1793,20 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>takesSentinelValuesFrom</name>
                   <type xmi:idref="CDIFDataStructure.SentinelValueDomain"/>
                   <association xmi:idref="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-identifier"/>
+                     <body>@id - URI for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataStructure.Identifier"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain" xmi:type="uml:Class">
@@ -3372,12 +3389,50 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.conformsTo"/>
                </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable" xmi:type="uml:Class" isAbstract="true">
+               <ownedComment xmi:id="CDIFDataStructure.AbstractVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.AbstractVariable"/>
+                  <body>Abstract supertype for the value of schema:variableMeasured - either a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable. Concrete subclasses: VariableMeasured, InstanceVariable.</body>
+               </ownedComment>
+               <name>AbstractVariable</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.AbstractVariable-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.AbstractVariable-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.AbstractVariable-identifier"/>
+                     <body>@id - URI for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.AbstractVariable-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.AbstractVariable-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataStructure.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.AbstractVariable-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.AbstractVariable-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.AbstractVariable-name"/>
+                     <body>schema:name / cdi:name - variable name.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.AbstractVariable-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.AbstractVariable-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractVariable-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.VariableMeasured"/>
-                  <body>schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role.</body>
+                  <body>schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role. Generalizes AbstractVariable.</body>
                </ownedComment>
                <name>VariableMeasured</name>
+               <generalization xmi:id="CDIFDataStructure.VariableMeasured-generalization-AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-generalization-AbstractVariable" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.AbstractVariable"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableMeasured-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableMeasured-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableMeasured-identifier"/>
@@ -4704,7 +4759,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-variableMeasured" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.Dataset-variableMeasured"/>
-                     <body>schema:variableMeasured - variables described at the Data Description level (with cdif:physicalDataType).</body>
+                     <body>schema:variableMeasured - variables described at the Data Description level. The AbstractVariable supertype admits a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -4713,8 +4768,8 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>variableMeasured</name>
-                  <type xmi:idref="CDIFDataStructure.VariableMeasured"/>
-                  <association xmi:idref="CDIFDataStructure.Dataset_variableMeasured_VariableMeasured"/>
+                  <type xmi:idref="CDIFDataStructure.AbstractVariable"/>
+                  <association xmi:idref="CDIFDataStructure.Dataset_variableMeasured_AbstractVariable"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-hasPrimaryKey" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -6996,14 +7051,14 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
-            <name>Dataset_variableMeasured_VariableMeasured</name>
+         <packagedElement xmi:id="CDIFDataStructure.Dataset_variableMeasured_AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_variableMeasured_AbstractVariable" xmi:type="uml:Association">
+            <name>Dataset_variableMeasured_AbstractVariable</name>
             <memberEnd xmi:idref="CDIFDataStructure.Dataset-variableMeasured"/>
-            <ownedEnd xmi:id="CDIFDataStructure.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.VariableMeasured"/>
-               <association xmi:idref="CDIFDataStructure.Dataset_variableMeasured_VariableMeasured"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Dataset_variableMeasured_AbstractVariable-AbstractVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_variableMeasured_AbstractVariable-AbstractVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.AbstractVariable"/>
+               <association xmi:idref="CDIFDataStructure.Dataset_variableMeasured_AbstractVariable"/>
             </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd"/>
+            <memberEnd xmi:idref="CDIFDataStructure.Dataset_variableMeasured_AbstractVariable-AbstractVariableEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.Dataset_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>Dataset_hasPrimaryKey_PrimaryKey</name>

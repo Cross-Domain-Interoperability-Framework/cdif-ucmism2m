@@ -161,12 +161,50 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                <body>Target classes of the CDIF profile.</body>
             </ownedComment>
             <name>Classes</name>
+            <packagedElement xmi:id="CDIFDataDescription.AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable" xmi:type="uml:Class" isAbstract="true">
+               <ownedComment xmi:id="CDIFDataDescription.AbstractVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.AbstractVariable"/>
+                  <body>Abstract supertype for the value of schema:variableMeasured - either a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable. Concrete subclasses: VariableMeasured, InstanceVariable.</body>
+               </ownedComment>
+               <name>AbstractVariable</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.AbstractVariable-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.AbstractVariable-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.AbstractVariable-identifier"/>
+                     <body>@id - URI for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.AbstractVariable-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.AbstractVariable-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.AbstractVariable-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.AbstractVariable-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.AbstractVariable-name"/>
+                     <body>schema:name / cdi:name - variable name.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.AbstractVariable-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.AbstractVariable-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractVariable-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable"/>
                   <body>Use of a represented variable within a data set.</body>
                </ownedComment>
                <name>InstanceVariable</name>
+               <generalization xmi:id="CDIFDataDescription.InstanceVariable-generalization-AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-generalization-AbstractVariable" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractVariable"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-name"/>
@@ -367,13 +405,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                   <type xmi:idref="CDIFDataDescription.SentinelValueDomain"/>
                   <association xmi:idref="CDIFDataDescription.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-identifier"/>
+                     <body>@id - URI for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.Identifier"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataDescription.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataDescription.VariableMeasured"/>
-                  <body>schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role.</body>
+                  <body>schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role. Generalizes AbstractVariable.</body>
                </ownedComment>
                <name>VariableMeasured</name>
+               <generalization xmi:id="CDIFDataDescription.VariableMeasured-generalization-AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-generalization-AbstractVariable" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractVariable"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataDescription.VariableMeasured-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.VariableMeasured-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataDescription.VariableMeasured-identifier"/>
@@ -1908,7 +1963,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                <ownedAttribute xmi:id="CDIFDataDescription.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataDescription.Dataset-variableMeasured"/>
-                     <body>schema:variableMeasured - variables described at the Data Description level (with cdif:physicalDataType).</body>
+                     <body>schema:variableMeasured - variables described at the Data Description level. The AbstractVariable supertype admits a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataDescription.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -1917,8 +1972,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>*</value>
                   </upperValue>
                   <name>variableMeasured</name>
-                  <type xmi:idref="CDIFDataDescription.VariableMeasured"/>
-                  <association xmi:idref="CDIFDataDescription.Dataset_variableMeasured_VariableMeasured"/>
+                  <type xmi:idref="CDIFDataDescription.AbstractVariable"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_variableMeasured_AbstractVariable"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Dataset-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-hasPrimaryKey" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Dataset-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -3840,14 +3895,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataDescription.PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataDescription.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
-            <name>Dataset_variableMeasured_VariableMeasured</name>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_variableMeasured_AbstractVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_variableMeasured_AbstractVariable" xmi:type="uml:Association">
+            <name>Dataset_variableMeasured_AbstractVariable</name>
             <memberEnd xmi:idref="CDIFDataDescription.Dataset-variableMeasured"/>
-            <ownedEnd xmi:id="CDIFDataDescription.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataDescription.VariableMeasured"/>
-               <association xmi:idref="CDIFDataDescription.Dataset_variableMeasured_VariableMeasured"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_variableMeasured_AbstractVariable-AbstractVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_variableMeasured_AbstractVariable-AbstractVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.AbstractVariable"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_variableMeasured_AbstractVariable"/>
             </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataDescription.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd"/>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_variableMeasured_AbstractVariable-AbstractVariableEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.Dataset_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>Dataset_hasPrimaryKey_PrimaryKey</name>

@@ -61,11 +61,34 @@
   "mapping": {
     "class": [
       {
-        "_comment": "InstanceVariable as referenced by schema:variableMeasured at the Data Description level. Adds physicalDataType, describedUnitOfMeasure, unitOfMeasureKind, role. Mapped from DDI-CDI InstanceVariable directly.",
+        "_comment": "AbstractVariable - abstract supertype of VariableMeasured (schema:PropertyValue form) and InstanceVariable (cdi:InstanceVariable form). The Dataset_variableMeasured association targets this single end; the JSON instance carries the concrete schema:PropertyValue or cdi:InstanceVariable in @type. Value domains and statistics attach to the concrete InstanceVariable; the lightweight schema.org wrapper attributes live on VariableMeasured.",
+        "mappingType": "new",
+        "isAbstract": true,
+        "targetPackage": "Variables",
+        "targetClass": "AbstractVariable",
+        "definition": "Abstract supertype for the value of schema:variableMeasured - either a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable. Concrete subclasses: VariableMeasured, InstanceVariable.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "Identifier",
+            "definition": "@id - URI for the variable.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name / cdi:name - variable name.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "InstanceVariable as referenced by schema:variableMeasured at the Data Description level. Adds physicalDataType, describedUnitOfMeasure, unitOfMeasureKind, role. Mapped from DDI-CDI InstanceVariable directly. Generalizes AbstractVariable; value domains and statistics attach here.",
         "mappingType": "map",
         "sourceClass": "InstanceVariable",
         "targetPackage": "Variables",
         "targetClass": "InstanceVariable",
+        "generalization": ["AbstractVariable"],
         "attribute": [
           {
             "name": "name",
@@ -143,7 +166,8 @@
         "sourceClass": "InstanceVariable",
         "targetPackage": "Variables",
         "targetClass": "VariableMeasured",
-        "definition": "schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role.",
+        "generalization": ["AbstractVariable"],
+        "definition": "schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role. Generalizes AbstractVariable.",
         "attribute": [
           {
             "name": "identifier",
@@ -677,10 +701,11 @@
     ],
     "association": [
       {
+        "_comment": "schema:variableMeasured targets the AbstractVariable supertype (either a VariableMeasured/schema:PropertyValue or a cdi:InstanceVariable). targetAssociationName is kept as ..._VariableMeasured so it overrides (dedups) the Discovery profile's Dataset_variableMeasured_VariableMeasured at composition; objectClass retargets the actual end to AbstractVariable, so the emitted association is Dataset_variableMeasured_AbstractVariable.",
         "targetAssociationName": "Dataset_variableMeasured_VariableMeasured",
         "subjectClass": "Dataset",
-        "objectClass": "VariableMeasured",
-        "definition": "schema:variableMeasured - variables described at the Data Description level (with cdif:physicalDataType).",
+        "objectClass": "AbstractVariable",
+        "definition": "schema:variableMeasured - variables described at the Data Description level. The AbstractVariable supertype admits a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable.",
         "objectClassMultiplicity": {
           "lower": "1",
           "upper": "*"
