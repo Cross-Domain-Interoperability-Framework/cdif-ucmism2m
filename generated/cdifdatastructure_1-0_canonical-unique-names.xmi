@@ -7,21 +7,127 @@
       </ownedComment>
       <name>CDIFDataStructure</name>
       <URI>https://w3id.org/cdif/data_structure/1.0/xmi/</URI>
+      <packagedElement xmi:id="CDIFDataStructure.ModelIdentification" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification" xmi:type="uml:DataType">
+         <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification"/>
+            <body>Identification metadata for this profile model: constant, read-only attributes carrying the model's prefix, version, title, language and URI.</body>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="CDIFDataStructure.ModelIdentification-prefix" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-prefix" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-prefix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-prefix-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification-prefix"/>
+               <body>Namespace prefix of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataStructure.ModelIdentification-prefix-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-prefix-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataStructure.ModelIdentification-prefix-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-prefix-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>prefix</name>
+            <defaultValue xmi:id="CDIFDataStructure.ModelIdentification-prefix-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-prefix-defaultValue" xmi:type="uml:LiteralString">
+               <value>cdif</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataStructure.ModelIdentification-majorVersion" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-majorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-majorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-majorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification-majorVersion"/>
+               <body>Major version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataStructure.ModelIdentification-majorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-majorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataStructure.ModelIdentification-majorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-majorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>majorVersion</name>
+            <defaultValue xmi:id="CDIFDataStructure.ModelIdentification-majorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-majorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataStructure.ModelIdentification-minorVersion" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-minorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-minorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-minorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification-minorVersion"/>
+               <body>Minor version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataStructure.ModelIdentification-minorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-minorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataStructure.ModelIdentification-minorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-minorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>minorVersion</name>
+            <defaultValue xmi:id="CDIFDataStructure.ModelIdentification-minorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-minorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>0</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataStructure.ModelIdentification-title" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-title" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-title-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-title-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification-title"/>
+               <body>Title of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataStructure.ModelIdentification-title-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-title-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataStructure.ModelIdentification-title-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-title-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>title</name>
+            <defaultValue xmi:id="CDIFDataStructure.ModelIdentification-title-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-title-defaultValue" xmi:type="uml:LiteralString">
+               <value>UML Model for the CDIF Data Structure Profile</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataStructure.ModelIdentification-language" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-language" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-language-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-language-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification-language"/>
+               <body>Primary language of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataStructure.ModelIdentification-language-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-language-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataStructure.ModelIdentification-language-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-language-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>language</name>
+            <defaultValue xmi:id="CDIFDataStructure.ModelIdentification-language-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-language-defaultValue" xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataStructure.ModelIdentification-uri" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-uri" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataStructure.ModelIdentification-uri-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-uri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataStructure.ModelIdentification-uri"/>
+               <body>Namespace URI of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataStructure.ModelIdentification-uri-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-uri-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataStructure.ModelIdentification-uri-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-uri-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>uri</name>
+            <defaultValue xmi:id="CDIFDataStructure.ModelIdentification-uri-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ModelIdentification-uri-defaultValue" xmi:type="uml:LiteralString">
+               <value>https://w3id.org/cdif/data_structure/1.0/xmi/</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
       <packagedElement xmi:id="CDIFDataStructure.CDIFDataStructurePackage" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CDIFDataStructure-package" xmi:type="uml:Package">
          <ownedComment xmi:id="CDIFDataStructure.CDIFDataStructurePackage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CDIFDataStructure-package-ownedComment" xmi:type="uml:Comment">
             <annotatedElement xmi:idref="CDIFDataStructure.CDIFDataStructurePackage"/>
             <body>Data Structure profile: DataStructure subclasses, Components, RepresentedVariable, ValueDomain.</body>
          </ownedComment>
          <name>CDIFDataStructure</name>
-         <packagedElement xmi:id="CDIFDataStructure.Boolean" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Boolean" xmi:type="uml:PrimitiveType">
-            <name>Boolean</name>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.Integer" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Integer" xmi:type="uml:PrimitiveType">
-            <name>Integer</name>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.String" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#String" xmi:type="uml:PrimitiveType">
-            <name>String</name>
-         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#XsdAnyUri" xmi:type="uml:DataType">
             <ownedComment xmi:id="CDIFDataStructure.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
                <annotatedElement xmi:idref="CDIFDataStructure.XsdAnyUri"/>
@@ -437,7 +543,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>*</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.MeasureComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MeasureComponent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.MeasureComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MeasureComponent-identifier-ownedComment" xmi:type="uml:Comment">
@@ -556,7 +662,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>categoricalAdditivity</name>
-                  <type xmi:idref="CDIFDataStructure.Boolean"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Boolean"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionComponent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionComponent-identifier-ownedComment" xmi:type="uml:Comment">
@@ -708,7 +814,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataStructure.Integer"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.ComponentPosition-indexes" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ComponentPosition-indexes" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.ComponentPosition-indexes-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ComponentPosition-indexes-lowerValue" xmi:type="uml:LiteralInteger">
@@ -804,7 +910,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-definition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-definition-ownedComment" xmi:type="uml:Comment">
@@ -818,7 +924,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>definition</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSubstantiveValuesFrom" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSubstantiveValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
@@ -959,7 +1065,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>simpleUnitOfMeasure</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.ReferenceVariable-descriptiveText" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-descriptiveText" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ReferenceVariable-descriptiveText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-descriptiveText-ownedComment" xmi:type="uml:Comment">
@@ -973,7 +1079,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>descriptiveText</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.ReferenceVariable-unitOfMeasureKind" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-unitOfMeasureKind" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ReferenceVariable-unitOfMeasureKind-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-unitOfMeasureKind-ownedComment" xmi:type="uml:Comment">
@@ -1001,7 +1107,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>definition</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.ReferenceVariable-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-displayLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ReferenceVariable-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-displayLabel-ownedComment" xmi:type="uml:Comment">
@@ -1015,7 +1121,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>displayLabel</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.ReferenceVariable-externalDefinition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-externalDefinition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ReferenceVariable-externalDefinition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-externalDefinition-ownedComment" xmi:type="uml:Comment">
@@ -1057,7 +1163,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.DescriptorVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable" xmi:type="uml:Class">
@@ -1176,7 +1282,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>simpleUnitOfMeasure</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-descriptiveText" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-descriptiveText" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-descriptiveText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-descriptiveText-ownedComment" xmi:type="uml:Comment">
@@ -1190,7 +1296,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>descriptiveText</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-unitOfMeasureKind" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-unitOfMeasureKind-ownedComment" xmi:type="uml:Comment">
@@ -1218,7 +1324,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>definition</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-displayLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-displayLabel-ownedComment" xmi:type="uml:Comment">
@@ -1232,7 +1338,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>displayLabel</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-externalDefinition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-externalDefinition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-externalDefinition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-externalDefinition-ownedComment" xmi:type="uml:Comment">
@@ -1274,7 +1380,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable" xmi:type="uml:Class">
@@ -1295,7 +1401,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-definition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-definition-ownedComment" xmi:type="uml:Comment">
@@ -1309,7 +1415,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>definition</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-describedUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-describedUnitOfMeasure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-describedUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-describedUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
@@ -1358,7 +1464,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>displayLabel</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1423,7 +1529,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>displayLabel</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1472,7 +1578,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>displayLabel</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorValueDomain-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1535,7 +1641,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.EnumerationDomain-purpose" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-purpose" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.EnumerationDomain-purpose-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-purpose-ownedComment" xmi:type="uml:Comment">
@@ -1549,7 +1655,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>purpose</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured" xmi:type="uml:Class">
@@ -1584,7 +1690,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableMeasured-description" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableMeasured-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-description-ownedComment" xmi:type="uml:Comment">
@@ -1598,7 +1704,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableMeasured-propertyId" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-propertyId" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableMeasured-propertyId-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-propertyId-ownedComment" xmi:type="uml:Comment">
@@ -1626,7 +1732,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>unitText</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableMeasured-unitCode" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-unitCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableMeasured-unitCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-unitCode-ownedComment" xmi:type="uml:Comment">
@@ -1668,7 +1774,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>role</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableMeasured-describedUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-describedUnitOfMeasure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableMeasured-describedUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured-describedUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
@@ -1721,7 +1827,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>characterSet</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-fileSize" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSize" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-fileSize-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSize-ownedComment" xmi:type="uml:Comment">
@@ -1735,7 +1841,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>fileSize</name>
-                  <type xmi:idref="CDIFDataStructure.Integer"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-fileSizeUofM" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSizeUofM" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-fileSizeUofM-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSizeUofM-ownedComment" xmi:type="uml:Comment">
@@ -1749,7 +1855,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>fileSizeUofM</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-contentUrl" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-contentUrl" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-contentUrl-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-contentUrl-ownedComment" xmi:type="uml:Comment">
@@ -1805,7 +1911,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>contentSize</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-dateModified" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-dateModified" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-dateModified-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-dateModified-ownedComment" xmi:type="uml:Comment">
@@ -1875,7 +1981,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>checksum</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1903,7 +2009,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-description" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-description-ownedComment" xmi:type="uml:Comment">
@@ -1917,7 +2023,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.Statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic" xmi:type="uml:Class">
@@ -2001,7 +2107,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>prefLabel</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Concept-inScheme" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
@@ -2018,7 +2124,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.Identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier" xmi:type="uml:Class">
+            <packagedElement xmi:id="CDIFDataStructure.Identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataStructure.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.Identifier"/>
                   <body>schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.</body>
@@ -2036,7 +2142,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>propertyId</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Identifier-value" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier-value" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Identifier-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier-value-ownedComment" xmi:type="uml:Comment">
@@ -2050,7 +2156,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Identifier-url" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Identifier-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Identifier-url-ownedComment" xmi:type="uml:Comment">
@@ -2099,7 +2205,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DefinedTerm-termCode" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DefinedTerm-termCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-termCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DefinedTerm-termCode-ownedComment" xmi:type="uml:Comment">
@@ -2113,7 +2219,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>termCode</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DefinedTerm-inDefinedTermSet" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DefinedTerm-inDefinedTermSet" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-inDefinedTermSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DefinedTerm-inDefinedTermSet-ownedComment" xmi:type="uml:Comment">
@@ -2176,7 +2282,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-description" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-description-ownedComment" xmi:type="uml:Comment">
@@ -2190,7 +2296,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-additionalType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-additionalType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-additionalType-ownedComment" xmi:type="uml:Comment">
@@ -2232,7 +2338,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>version</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-inLanguage" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-inLanguage" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-inLanguage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-inLanguage-ownedComment" xmi:type="uml:Comment">
@@ -2605,7 +2711,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SpatialExtent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SpatialExtent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SpatialExtent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SpatialExtent-identifier-ownedComment" xmi:type="uml:Comment">
@@ -2679,7 +2785,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>latitude</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoCoordinates-longitude" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoCoordinates-longitude" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoCoordinates-longitude-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoCoordinates-longitude-ownedComment" xmi:type="uml:Comment">
@@ -2693,7 +2799,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>longitude</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoCoordinates-elevation" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoCoordinates-elevation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoCoordinates-elevation-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoCoordinates-elevation-ownedComment" xmi:type="uml:Comment">
@@ -2707,7 +2813,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>elevation</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoCoordinates-crs" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoCoordinates-crs" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoCoordinates-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoCoordinates-crs-ownedComment" xmi:type="uml:Comment">
@@ -2745,7 +2851,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>geometry</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoShape-box" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-box" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoShape-box-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-box-ownedComment" xmi:type="uml:Comment">
@@ -2759,7 +2865,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>box</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoShape-polygon" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-polygon" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoShape-polygon-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-polygon-ownedComment" xmi:type="uml:Comment">
@@ -2773,7 +2879,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>polygon</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoShape-line" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-line" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoShape-line-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-line-ownedComment" xmi:type="uml:Comment">
@@ -2787,7 +2893,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>line</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.GeoShape-crs" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-crs" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.GeoShape-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#GeoShape-crs-ownedComment" xmi:type="uml:Comment">
@@ -2850,7 +2956,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>duration</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#QualityMeasure" xmi:type="uml:Class">
@@ -2899,7 +3005,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.QualityMeasure-unit" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#QualityMeasure-unit" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.QualityMeasure-unit-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#QualityMeasure-unit-ownedComment" xmi:type="uml:Comment">
@@ -2948,7 +3054,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.AbstractDistribution-description" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractDistribution-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AbstractDistribution-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AbstractDistribution-description-ownedComment" xmi:type="uml:Comment">
@@ -2962,7 +3068,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.WebAPI" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WebAPI" xmi:type="uml:Class">
@@ -3028,7 +3134,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.WebAPI-description" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WebAPI-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.WebAPI-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WebAPI-description-ownedComment" xmi:type="uml:Comment">
@@ -3042,7 +3148,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.Agent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Agent" xmi:type="uml:Class" isAbstract="true">
@@ -3077,7 +3183,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.Person" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person" xmi:type="uml:Class">
@@ -3101,7 +3207,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>givenName</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-familyName" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-familyName" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-familyName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-familyName-ownedComment" xmi:type="uml:Comment">
@@ -3115,7 +3221,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>familyName</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-additionalName" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-additionalName" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-additionalName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-additionalName-ownedComment" xmi:type="uml:Comment">
@@ -3129,7 +3235,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>additionalName</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-honorificPrefix" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-honorificPrefix" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-honorificPrefix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-honorificPrefix-ownedComment" xmi:type="uml:Comment">
@@ -3143,7 +3249,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>honorificPrefix</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-honorificSuffix" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-honorificSuffix" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-honorificSuffix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-honorificSuffix-ownedComment" xmi:type="uml:Comment">
@@ -3157,7 +3263,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>honorificSuffix</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-email" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-email" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-email-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-email-ownedComment" xmi:type="uml:Comment">
@@ -3171,7 +3277,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>email</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-telephone" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-telephone" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-telephone-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-telephone-ownedComment" xmi:type="uml:Comment">
@@ -3185,7 +3291,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>telephone</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-affiliation" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-affiliation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-affiliation-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-affiliation-ownedComment" xmi:type="uml:Comment">
@@ -3199,7 +3305,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>affiliation</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Person-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Person-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Person-identifier-ownedComment" xmi:type="uml:Comment">
@@ -3227,7 +3333,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.Organization" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization" xmi:type="uml:Class">
@@ -3251,7 +3357,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>legalName</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Organization-alternateName" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-alternateName" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Organization-alternateName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-alternateName-ownedComment" xmi:type="uml:Comment">
@@ -3265,7 +3371,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>alternateName</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Organization-url" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Organization-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-url-ownedComment" xmi:type="uml:Comment">
@@ -3293,7 +3399,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>email</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Organization-telephone" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-telephone" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Organization-telephone-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-telephone-ownedComment" xmi:type="uml:Comment">
@@ -3307,7 +3413,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>telephone</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Organization-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Organization-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Organization-identifier-ownedComment" xmi:type="uml:Comment">
@@ -3335,7 +3441,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.Contributor" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Contributor" xmi:type="uml:Class">
@@ -3420,7 +3526,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>propertyId</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.AdditionalProperty-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AdditionalProperty-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-name-ownedComment" xmi:type="uml:Comment">
@@ -3434,7 +3540,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.AdditionalProperty-value" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-value" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AdditionalProperty-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-value-ownedComment" xmi:type="uml:Comment">
@@ -3448,7 +3554,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.AdditionalProperty-unitText" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-unitText" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AdditionalProperty-unitText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-unitText-ownedComment" xmi:type="uml:Comment">
@@ -3462,7 +3568,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>unitText</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.AdditionalProperty-unitCode" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-unitCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AdditionalProperty-unitCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AdditionalProperty-unitCode-ownedComment" xmi:type="uml:Comment">
@@ -3479,7 +3585,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.Reference" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference" xmi:type="uml:Class">
+            <packagedElement xmi:id="CDIFDataStructure.Reference" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataStructure.Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.Reference"/>
                   <body>A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifProperties/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.</body>
@@ -3511,7 +3617,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Reference-description" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Reference-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference-description-ownedComment" xmi:type="uml:Comment">
@@ -3525,7 +3631,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Reference-url" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Reference-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Reference-url-ownedComment" xmi:type="uml:Comment">
@@ -3574,7 +3680,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.MonetaryGrant-amount" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MonetaryGrant-amount" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.MonetaryGrant-amount-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MonetaryGrant-amount-ownedComment" xmi:type="uml:Comment">
@@ -3588,7 +3694,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>amount</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.MonetaryGrant-funder" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MonetaryGrant-funder" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.MonetaryGrant-funder-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MonetaryGrant-funder-ownedComment" xmi:type="uml:Comment">
@@ -3638,7 +3744,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.ProvActivity-startedAtTime" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ProvActivity-startedAtTime" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ProvActivity-startedAtTime-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ProvActivity-startedAtTime-ownedComment" xmi:type="uml:Comment">
@@ -3701,7 +3807,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataStructure.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CatalogRecord" xmi:type="uml:Class">

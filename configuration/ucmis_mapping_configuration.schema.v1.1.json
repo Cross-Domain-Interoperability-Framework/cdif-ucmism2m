@@ -11,6 +11,7 @@
 		"CHANGE: sssom_type now accepts either an object (v1.0 schema) or an array of objects (v1.0 example). Both forms validate.",
 		"CHANGE: sssom_type.properties.confidence accepts string OR number, with numeric in the 0..1 range matching the SSSOM specification.",
 		"ADD: optional 'isAbstract' (boolean) on map/new/merge class mappings. Default false. Sets the UML Class.isAbstract flag so the emitted class is rendered as abstract (italicized in EA, has the {abstract} stereotype in PlantUML). Use for parent classes in a generalization hierarchy (e.g. Agent as a parent of Person/Organization).",
+		"ADD: optional 'isDataType' (boolean) on map/new/merge class mappings. Default false. When true the class mapping is emitted as a UML DataType (<packagedElement xmi:type='uml:DataType'>) instead of a uml:Class. Use for value types with no identity that are referenced as attribute types, e.g. Identifier and Reference.",
 		"ADD: optional 'generalization' (array of targetClass names, defaults to []) on map/new/merge class mappings. Each entry must be the targetClass name of another mapping in the same configuration. The engine resolves these names to target-class xmi:ids and emits one <generalization><general xmi:idref=...>...</generalization> child per entry inside the class packagedElement. Inherited attributes from the parent are automatically pulled in by the emit pipeline and deduplicated by (name, type, primitive).",
 		"ADD: optional 'composes' (array of relative config filenames, defaults to []) on transformation.targetModel. Mirrors the JSON Schema allOf composition pattern: a profile that extends another (e.g. Discovery extends Core; DataDescription extends Discovery) declares its base configs here. Composition is recursive and merges class attribute lists (local wins on name conflicts) plus associations. Lets each extension profile carry only its delta; the rendered UML and HTML browser show the full composed graph.",
 		"NOTE: All v1.0 configurations validate unchanged under v1.1."
@@ -177,6 +178,7 @@
 							"targetClass": { "title": "Target class", "$ref": "#/$defs/elementName_type" },
 							"definitionFrom": { "title": "Source class of definition", "description": "The name of the source class whose definition should be used for the target class definition.", "$ref": "#/$defs/elementName_type" },
 							"isAbstract": { "$ref": "#/$defs/isAbstract_type" },
+							"isDataType": { "$ref": "#/$defs/isDataType_type" },
 							"generalization": { "$ref": "#/$defs/generalization_type" },
 							"attribute": { "$ref": "#/$defs/mapAttribute_type" },
 							"sssom": { "title": "SSSOM Details", "description": "subject_id and object_id are set by the transformation.", "$ref": "#/$defs/sssom_type" }
@@ -198,6 +200,7 @@
 							"targetClass": { "title": "Target class", "$ref": "#/$defs/elementName_type" },
 							"definition": { "title": "Definition", "type": "string" },
 							"isAbstract": { "$ref": "#/$defs/isAbstract_type" },
+							"isDataType": { "$ref": "#/$defs/isDataType_type" },
 							"generalization": { "$ref": "#/$defs/generalization_type" },
 							"attribute": { "$ref": "#/$defs/newAttribute_type" },
 							"sssom": { "title": "SSSOM Details", "description": "subject_id and object_id are set by the transformation.", "$ref": "#/$defs/sssom_type" }
@@ -222,6 +225,7 @@
 							"targetClass": { "title": "Target class", "$ref": "#/$defs/elementName_type" },
 							"definitionFrom": { "title": "Source class of definition", "description": "The name of the source class whose definition should be used for the target class definition.", "$ref": "#/$defs/elementName_type" },
 							"isAbstract": { "$ref": "#/$defs/isAbstract_type" },
+							"isDataType": { "$ref": "#/$defs/isDataType_type" },
 							"generalization": { "$ref": "#/$defs/generalization_type" },
 							"attribute": { "$ref": "#/$defs/mergeAttribute_type" },
 							"sssom": { "title": "SSSOM Details", "description": "subject_id and object_id are set by the transformation.", "$ref": "#/$defs/sssom_type" }
@@ -298,6 +302,12 @@
 		"isAbstract_type": {
 			"title": "Abstract flag (v1.1)",
 			"description": "When true the emitted UML class is marked abstract (Class.isAbstract = true). Default false. Use for hierarchy parents like Agent (parent of Person/Organization).",
+			"type": "boolean",
+			"default": false
+		},
+		"isDataType_type": {
+			"title": "DataType flag (v1.1)",
+			"description": "When true the class mapping is emitted as a UML DataType (<packagedElement xmi:type='uml:DataType'>) rather than a uml:Class. Default false. Use for value types with no identity that are referenced as attribute types, e.g. Identifier and Reference.",
 			"type": "boolean",
 			"default": false
 		},

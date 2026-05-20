@@ -138,7 +138,7 @@ the mapping rationale is traceable.
    ┌────────────────────┐  ┌─────────────────────────────┐  ┌─────────────────────────┐
    │ Profile UML XMI    │  │ PlantUML + SVG              │  │ HTML model browser      │
    │ ucmism2m/generated │  │ mBB/cdif-uml-model/_plantuml│  │ mBB/cdif-uml-model/     │
-   │  cdifCore.xmi …    │  │  cdifCore/*.pu              │  │  CDIFCore/index.html    │
+   │ cdifcore_1-0_*.xmi │  │  cdifCore/*.pu              │  │  CDIFCore/index.html    │
    │                    │  │  cdifCore/*.svg             │  │  CDIFCore/Classes/*.html│
    └────────────────────┘  └─────────────────────────────┘  └─────────────────────────┘
                                                                 │
@@ -229,7 +229,7 @@ $java = "C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe"
 
 python $tool --xmi $xmi `
     --config "C:\GithubC\CDIF\ucmism2m\configuration\ddi-cdi2cdifCore_mapping.json" `
-    --emit-uml "C:\GithubC\CDIF\ucmism2m\generated\cdifCore.xmi" `
+    --emit-uml "C:\GithubC\CDIF\ucmism2m\generated\cdifcore_1-0_canonical-unique-names.xmi" `
     --emit-puml "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `
     --emit-html "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model" `
     --puml-dir "C:\GithubC\CDIF\metadataBuildingBlocks\cdif-uml-model\_plantuml\cdifCore" `

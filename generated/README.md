@@ -4,15 +4,17 @@ This folder holds Eclipse UML2 XMI 2.5.1 files produced by running the UCMIS M2M
 
 ## Current contents
 
+Filenames follow the canonical pattern `<lower-acronym>_<major>-<minor>_canonical-unique-names.xmi`.
+
 | File | Source configuration | Approx. size | Classes |
 |---|---|---:|---:|
-| `cdifCodelist.xmi` | `ddi-cdi2cdifCodelist_mapping.json` | 110 KB | 2 (ConceptScheme, Concept) plus 10 DataTypes |
-| `cdifCore.xmi` | `ddi-cdi2cdifCore_mapping.json` | 287 KB | 13 (Dataset, Person, Organization, DataDownload, WebAPI, Contributor, MonetaryGrant, ProvActivity, CatalogRecord, DefinedTerm, Identifier, LabeledLink, DerivedFrom) plus 24 DataTypes |
-| `cdifDiscovery.xmi` | `ddi-cdi2cdifDiscovery_mapping.json` | 92 KB | 5 (Dataset, VariableMeasured, SpatialExtent, TemporalExtent, QualityMeasure) plus 10 DataTypes |
-| `cdifDataDescription.xmi` | `ddi-cdi2cdifDataDescription_mapping.json` | 133 KB | 5 (InstanceVariable, VariableMeasured, DataDownload, PrimaryKey, PrimaryKeyComponent, Statistic) plus 17 DataTypes |
-| `cdifDataStructure.xmi` | `ddi-cdi2cdifDataStructure_mapping.json` | 429 KB | 22 (full DDI-CDI structural tree: DataStructure + variants, all 6 Component subclasses, RepresentedVariable, ReferenceVariable, DescriptorVariable, InstanceVariable, the 4 ValueDomain subclasses, PrimaryKey, PrimaryKeyComponent, ComponentPosition) plus 36 DataTypes |
+| `cdifcodelist_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifCodelist_mapping.json` | 84 KB | ConceptScheme, Concept (plus Identifier/Reference DataTypes and the XSD DataTypes) |
+| `cdifcore_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifCore_mapping.json` | 160 KB | Dataset, Person, Organization, DataDownload, WebAPI, Contributor, MonetaryGrant, ProvActivity, CatalogRecord, DefinedTerm, DerivedFrom (Identifier and Reference are emitted as DataTypes) |
+| `cdifdiscovery_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifDiscovery_mapping.json` | 224 KB | Dataset, VariableMeasured, SpatialExtent, TemporalExtent, QualityMeasure (+ composed Core) |
+| `cdifdatadescription_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifDataDescription_mapping.json` | 264 KB | InstanceVariable, VariableMeasured, DataDownload, PrimaryKey, PrimaryKeyComponent, Statistic (+ composed Discovery/Core) |
+| `cdifdatastructure_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifDataStructure_mapping.json` | 432 KB | full DDI-CDI structural tree: DataStructure + variants, the Component subclasses, RepresentedVariable, ReferenceVariable, DescriptorVariable, InstanceVariable, the ValueDomain subclasses, PrimaryKey, PrimaryKeyComponent, ComponentPosition (+ composed DataDescription/Discovery/Core) |
 
-All five validate as canonical Eclipse UML2 (XMI 2.5.1) and round-trip cleanly through the tool's own parser. The DataDescription file currently silences three cross-profile associations (`Dataset_variableMeasured_VariableMeasured`, `Dataset_hasPrimaryKey_PrimaryKey`, `Dataset_statistics_Statistic`) because `Dataset` lives in Core, not DataDescription; the generator emits warnings naming each skipped association.
+All five validate as well-formed canonical Eclipse UML2 (XMI 2.5.1) and round-trip cleanly through the tool's own parser. Each model carries a model-level `ModelIdentification` DataType (constant, read-only prefix/version/title/language/uri); primitive-typed attributes reference Eclipse's standard `PrimitiveTypes.xmi` by href; and value types `Identifier` and `Reference` are emitted as `uml:DataType`. The DataDescription file currently silences three cross-profile associations (`Dataset_variableMeasured_VariableMeasured`, `Dataset_hasPrimaryKey_PrimaryKey`, `Dataset_statistics_Statistic`) because `Dataset` lives in Core, not DataDescription; the generator emits warnings naming each skipped association.
 
 ## Format
 
@@ -48,10 +50,11 @@ These files are not committed for human editing — they are output. Re-create t
 ```powershell
 $base = "<repository-root>"
 foreach ($c in 'cdifCodelist','cdifCore','cdifDiscovery','cdifDataDescription','cdifDataStructure') {
+    $out = "$($c.ToLower())_1-0_canonical-unique-names.xmi"
     python "$base\metadataBuildingBlocks\tools\uml_to_schema.py" `
         --xmi    "$base\..\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi" `
         --config "$base\ucmism2m\configuration\ddi-cdi2${c}_mapping.json" `
-        --emit-uml "$base\ucmism2m\generated\${c}.xmi"
+        --emit-uml "$base\ucmism2m\generated\$out"
 }
 ```
 
@@ -60,10 +63,11 @@ POSIX equivalent:
 ```bash
 base="<repository-root>"
 for c in cdifCodelist cdifCore cdifDiscovery cdifDataDescription cdifDataStructure; do
+    out="$(echo "$c" | tr '[:upper:]' '[:lower:]')_1-0_canonical-unique-names.xmi"
     python "$base/metadataBuildingBlocks/tools/uml_to_schema.py" \
         --xmi    "$base/../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi" \
         --config "$base/ucmism2m/configuration/ddi-cdi2${c}_mapping.json" \
-        --emit-uml "$base/ucmism2m/generated/${c}.xmi"
+        --emit-uml "$base/ucmism2m/generated/$out"
 done
 ```
 

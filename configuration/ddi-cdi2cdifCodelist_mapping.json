@@ -13,8 +13,8 @@
       "acronym": "CDIFCodelist",
       "modelTitle": "UML Model for the CDIF Codelist Profile",
       "subTitle": "Controlled vocabulary codelists expressed as SKOS Concept Schemes",
-      "majorVersion": "0",
-      "minorVersion": "1",
+      "majorVersion": "1",
+      "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/codelist/1.0/xmi/",
       "definition": "CDIF profile for controlled-vocabulary codelists implemented as SKOS ConceptSchemes. Each concept must have a resolvable @id, skos:inScheme, skos:definition and skos:prefLabel. The scheme must declare skos:hasTopConcept; concepts in a hierarchy must declare both skos:narrower (downward) and skos:broader (upward). CDIF metadata properties (schema:identifier, schema:dateModified, schema:license or schema:conditionsOfAccess) take precedence over the equivalent dcterms properties from the base skosConceptScheme building block. Required attributes per the profile JSON schema and rules.shacl: ConceptScheme @id, schema:identifier, schema:dateModified, skos:hasTopConcept, plus (license OR conditionsOfAccess); Concept @id, skos:inScheme, skos:definition, skos:prefLabel.",
@@ -349,6 +349,7 @@
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Identifier",
+        "isDataType": true,
         "definition": "schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.",
         "attribute": [
           {
@@ -385,6 +386,7 @@
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Reference",
+        "isDataType": true,
         "definition": "cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifProperties/cdifReference.",
         "attribute": [
           {

@@ -33,11 +33,11 @@ if (-not (Test-Path $ModelDir)) {
 # the existing launch configs use: lowercase, no camel case, with the canonical
 # suffix). Add new profiles here as more are authored.
 $Mapping = @{
-    "cdifCodelist.xmi"        = "cdifcodelist_canonical-unique-names-eclipse.xmi"
-    "cdifCore.xmi"            = "cdifcore_canonical-unique-names-eclipse.xmi"
-    "cdifDiscovery.xmi"       = "cdifdiscovery_canonical-unique-names-eclipse.xmi"
-    "cdifDataDescription.xmi" = "cdifdatadescription_canonical-unique-names-eclipse.xmi"
-    "cdifDataStructure.xmi"   = "cdifdatastructure_canonical-unique-names-eclipse.xmi"
+    "cdifcodelist_1-0_canonical-unique-names.xmi"        = "cdifcodelist_canonical-unique-names-eclipse.xmi"
+    "cdifcore_1-0_canonical-unique-names.xmi"            = "cdifcore_canonical-unique-names-eclipse.xmi"
+    "cdifdiscovery_1-0_canonical-unique-names.xmi"       = "cdifdiscovery_canonical-unique-names-eclipse.xmi"
+    "cdifdatadescription_1-0_canonical-unique-names.xmi" = "cdifdatadescription_canonical-unique-names-eclipse.xmi"
+    "cdifdatastructure_1-0_canonical-unique-names.xmi"   = "cdifdatastructure_canonical-unique-names-eclipse.xmi"
 }
 
 Write-Host "Source:  $GeneratedDir"

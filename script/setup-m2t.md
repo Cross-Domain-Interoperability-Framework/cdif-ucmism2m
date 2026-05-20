@@ -73,11 +73,11 @@ from `ucmism2m/generated/` into `ucmis.m2t/model/`, renaming them to the
 convention the launch configs expect:
 
 ```
-cdifCodelist.xmi         -> cdifcodelist_canonical-unique-names-eclipse.xmi
-cdifCore.xmi             -> cdifcore_canonical-unique-names-eclipse.xmi
-cdifDiscovery.xmi        -> cdifdiscovery_canonical-unique-names-eclipse.xmi
-cdifDataDescription.xmi  -> cdifdatadescription_canonical-unique-names-eclipse.xmi
-cdifDataStructure.xmi    -> cdifdatastructure_canonical-unique-names-eclipse.xmi
+cdifcodelist_1-0_canonical-unique-names.xmi         -> cdifcodelist_canonical-unique-names-eclipse.xmi
+cdifcore_1-0_canonical-unique-names.xmi             -> cdifcore_canonical-unique-names-eclipse.xmi
+cdifdiscovery_1-0_canonical-unique-names.xmi        -> cdifdiscovery_canonical-unique-names-eclipse.xmi
+cdifdatadescription_1-0_canonical-unique-names.xmi  -> cdifdatadescription_canonical-unique-names-eclipse.xmi
+cdifdatastructure_1-0_canonical-unique-names.xmi    -> cdifdatastructure_canonical-unique-names-eclipse.xmi
 ```
 
 Run it any time you regenerate the XMIs:

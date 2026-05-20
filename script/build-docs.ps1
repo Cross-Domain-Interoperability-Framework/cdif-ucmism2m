@@ -88,9 +88,14 @@ if (-not $SkipBblocks) {
 Write-Host "==> Step 1: emit XMI + PlantUML + SVG for each profile"
 foreach ($p in $profiles) {
     $cfg = Join-Path $configDir $p.config
-    $xmiOut = Join-Path $genDir "$($p.slug).xmi"
+    # Canonical filename: lowercase acronym + major-minor version + fixed suffix,
+    # e.g. cdifcodelist_1-0_canonical-unique-names.xmi
+    $tm = (Get-Content $cfg -Raw | ConvertFrom-Json).transformation.targetModel
+    $xmiName = "{0}_{1}-{2}_canonical-unique-names.xmi" -f `
+        $tm.acronym.ToLower(), $tm.majorVersion, $tm.minorVersion
+    $xmiOut = Join-Path $genDir $xmiName
     $puDir = Join-Path $pumlOut $p.slug
-    Write-Host "    $($p.slug) ..."
+    Write-Host "    $($p.slug) -> $xmiName ..."
     & $python $tool --xmi $xmi --config $cfg `
         --emit-uml $xmiOut `
         --emit-puml $puDir `

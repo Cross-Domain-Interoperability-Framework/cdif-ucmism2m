@@ -13,8 +13,8 @@
       "acronym": "CDIFCore",
       "modelTitle": "UML Model for the CDIF Core Profile",
       "subTitle": "Core schema.org-based metadata properties for any CDIF-described resource",
-      "majorVersion": "0",
-      "minorVersion": "1",
+      "majorVersion": "1",
+      "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/core/1.0/xmi/",
       "definition": "CDIF Core profile - the foundational schema.org-based metadata properties applicable to any resource type (default schema:Dataset). Composed by every higher CDIF profile (Discovery, DataDescription, DataStructure, Codelist, complete). Anchors: schema:Dataset (data resource), schema:DataDownload / schema:WebAPI (distributions), schema:Person / schema:Organization (agents), schema:subjectOf -> CdifCatalogRecord (metadata-about-the-metadata), prov:wasGeneratedBy -> prov:Activity, prov:wasDerivedFrom (sources).",
@@ -677,6 +677,7 @@
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Identifier",
+        "isDataType": true,
         "definition": "schema:PropertyValue used as schema:identifier - a structured identifier with type, value, and URL.",
         "attribute": [
           {
@@ -780,6 +781,7 @@
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Reference",
+        "isDataType": true,
         "definition": "A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifProperties/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.",
         "attribute": [
           {

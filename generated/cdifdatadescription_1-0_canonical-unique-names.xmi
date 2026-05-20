@@ -7,18 +7,127 @@
       </ownedComment>
       <name>CDIFDataDescription</name>
       <URI>https://w3id.org/cdif/data_description/1.0/xmi/</URI>
+      <packagedElement xmi:id="CDIFDataDescription.ModelIdentification" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification" xmi:type="uml:DataType">
+         <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification"/>
+            <body>Identification metadata for this profile model: constant, read-only attributes carrying the model's prefix, version, title, language and URI.</body>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-prefix" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-prefix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-prefix"/>
+               <body>Namespace prefix of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-prefix-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-prefix-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>prefix</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-prefix-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-defaultValue" xmi:type="uml:LiteralString">
+               <value>cdif</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-majorVersion" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-majorVersion"/>
+               <body>Major version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>majorVersion</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-minorVersion" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-minorVersion"/>
+               <body>Minor version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>minorVersion</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>0</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-title" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-title-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-title"/>
+               <body>Title of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-title-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-title-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>title</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-title-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-defaultValue" xmi:type="uml:LiteralString">
+               <value>UML Model for the CDIF Data Description Profile</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-language" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-language-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-language"/>
+               <body>Primary language of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-language-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-language-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>language</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-language-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-defaultValue" xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-uri" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-uri-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-uri"/>
+               <body>Namespace URI of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-uri-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-uri-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>uri</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-uri-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-defaultValue" xmi:type="uml:LiteralString">
+               <value>https://w3id.org/cdif/data_description/1.0/xmi/</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
       <packagedElement xmi:id="CDIFDataDescription.CDIFDataDescriptionPackage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CDIFDataDescription-package" xmi:type="uml:Package">
          <ownedComment xmi:id="CDIFDataDescription.CDIFDataDescriptionPackage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CDIFDataDescription-package-ownedComment" xmi:type="uml:Comment">
             <annotatedElement xmi:idref="CDIFDataDescription.CDIFDataDescriptionPackage"/>
             <body>Data Description profile additions on top of Core + Discovery.</body>
          </ownedComment>
          <name>CDIFDataDescription</name>
-         <packagedElement xmi:id="CDIFDataDescription.Integer" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Integer" xmi:type="uml:PrimitiveType">
-            <name>Integer</name>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataDescription.String" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#String" xmi:type="uml:PrimitiveType">
-            <name>String</name>
-         </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#XsdAnyUri" xmi:type="uml:DataType">
             <ownedComment xmi:id="CDIFDataDescription.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
                <annotatedElement xmi:idref="CDIFDataDescription.XsdAnyUri"/>
@@ -70,7 +179,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-definition" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-definition-ownedComment" xmi:type="uml:Comment">
@@ -84,7 +193,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>definition</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-describedUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-describedUnitOfMeasure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-describedUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-describedUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
@@ -147,7 +256,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.VariableMeasured-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.VariableMeasured-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-description-ownedComment" xmi:type="uml:Comment">
@@ -161,7 +270,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.VariableMeasured-propertyId" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-propertyId" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.VariableMeasured-propertyId-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-propertyId-ownedComment" xmi:type="uml:Comment">
@@ -189,7 +298,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>unitText</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.VariableMeasured-unitCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-unitCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.VariableMeasured-unitCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-unitCode-ownedComment" xmi:type="uml:Comment">
@@ -231,7 +340,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>role</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.VariableMeasured-describedUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-describedUnitOfMeasure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.VariableMeasured-describedUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#VariableMeasured-describedUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
@@ -284,7 +393,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>characterSet</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-fileSize" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fileSize" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DataDownload-fileSize-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fileSize-ownedComment" xmi:type="uml:Comment">
@@ -298,7 +407,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>fileSize</name>
-                  <type xmi:idref="CDIFDataDescription.Integer"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-fileSizeUofM" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fileSizeUofM" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DataDownload-fileSizeUofM-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fileSizeUofM-ownedComment" xmi:type="uml:Comment">
@@ -312,7 +421,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>fileSizeUofM</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-contentUrl" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-contentUrl" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DataDownload-contentUrl-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-contentUrl-ownedComment" xmi:type="uml:Comment">
@@ -368,7 +477,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>contentSize</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-dateModified" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-dateModified" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DataDownload-dateModified-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-dateModified-ownedComment" xmi:type="uml:Comment">
@@ -438,7 +547,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>*</value>
                   </upperValue>
                   <name>checksum</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DataDownload-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-identifier-ownedComment" xmi:type="uml:Comment">
@@ -466,7 +575,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DataDownload-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-description-ownedComment" xmi:type="uml:Comment">
@@ -480,7 +589,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey" xmi:type="uml:Class">
@@ -617,7 +726,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>prefLabel</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Concept-inScheme" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
@@ -634,7 +743,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                   <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="CDIFDataDescription.Identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier" xmi:type="uml:Class">
+            <packagedElement xmi:id="CDIFDataDescription.Identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataDescription.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataDescription.Identifier"/>
                   <body>schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.</body>
@@ -652,7 +761,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>propertyId</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Identifier-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier-value" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Identifier-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier-value-ownedComment" xmi:type="uml:Comment">
@@ -666,7 +775,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Identifier-url" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Identifier-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Identifier-url-ownedComment" xmi:type="uml:Comment">
@@ -715,7 +824,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DefinedTerm-termCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DefinedTerm-termCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DefinedTerm-termCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DefinedTerm-termCode-ownedComment" xmi:type="uml:Comment">
@@ -729,7 +838,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>termCode</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.DefinedTerm-inDefinedTermSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DefinedTerm-inDefinedTermSet" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.DefinedTerm-inDefinedTermSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DefinedTerm-inDefinedTermSet-ownedComment" xmi:type="uml:Comment">
@@ -792,7 +901,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Dataset-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Dataset-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-description-ownedComment" xmi:type="uml:Comment">
@@ -806,7 +915,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Dataset-additionalType" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-additionalType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Dataset-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-additionalType-ownedComment" xmi:type="uml:Comment">
@@ -848,7 +957,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>version</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Dataset-inLanguage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-inLanguage" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Dataset-inLanguage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-inLanguage-ownedComment" xmi:type="uml:Comment">
@@ -1221,7 +1330,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.SpatialExtent-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SpatialExtent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.SpatialExtent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SpatialExtent-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1295,7 +1404,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>latitude</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoCoordinates-longitude" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoCoordinates-longitude" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoCoordinates-longitude-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoCoordinates-longitude-ownedComment" xmi:type="uml:Comment">
@@ -1309,7 +1418,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>longitude</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoCoordinates-elevation" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoCoordinates-elevation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoCoordinates-elevation-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoCoordinates-elevation-ownedComment" xmi:type="uml:Comment">
@@ -1323,7 +1432,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>elevation</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoCoordinates-crs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoCoordinates-crs" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoCoordinates-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoCoordinates-crs-ownedComment" xmi:type="uml:Comment">
@@ -1361,7 +1470,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>geometry</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoShape-box" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-box" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoShape-box-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-box-ownedComment" xmi:type="uml:Comment">
@@ -1375,7 +1484,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>box</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoShape-polygon" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-polygon" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoShape-polygon-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-polygon-ownedComment" xmi:type="uml:Comment">
@@ -1389,7 +1498,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>polygon</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoShape-line" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-line" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoShape-line-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-line-ownedComment" xmi:type="uml:Comment">
@@ -1403,7 +1512,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>line</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.GeoShape-crs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-crs" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.GeoShape-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#GeoShape-crs-ownedComment" xmi:type="uml:Comment">
@@ -1466,7 +1575,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>duration</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#QualityMeasure" xmi:type="uml:Class">
@@ -1515,7 +1624,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.QualityMeasure-unit" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#QualityMeasure-unit" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.QualityMeasure-unit-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#QualityMeasure-unit-ownedComment" xmi:type="uml:Comment">
@@ -1564,7 +1673,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.AbstractDistribution-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDistribution-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.AbstractDistribution-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDistribution-description-ownedComment" xmi:type="uml:Comment">
@@ -1578,7 +1687,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI" xmi:type="uml:Class">
@@ -1644,7 +1753,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.WebAPI-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.WebAPI-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-description-ownedComment" xmi:type="uml:Comment">
@@ -1658,7 +1767,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.Agent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Agent" xmi:type="uml:Class" isAbstract="true">
@@ -1693,7 +1802,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.Person" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person" xmi:type="uml:Class">
@@ -1717,7 +1826,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>givenName</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-familyName" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-familyName" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-familyName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-familyName-ownedComment" xmi:type="uml:Comment">
@@ -1731,7 +1840,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>familyName</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-additionalName" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-additionalName" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-additionalName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-additionalName-ownedComment" xmi:type="uml:Comment">
@@ -1745,7 +1854,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>*</value>
                   </upperValue>
                   <name>additionalName</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-honorificPrefix" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-honorificPrefix" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-honorificPrefix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-honorificPrefix-ownedComment" xmi:type="uml:Comment">
@@ -1759,7 +1868,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>honorificPrefix</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-honorificSuffix" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-honorificSuffix" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-honorificSuffix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-honorificSuffix-ownedComment" xmi:type="uml:Comment">
@@ -1773,7 +1882,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>honorificSuffix</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-email" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-email" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-email-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-email-ownedComment" xmi:type="uml:Comment">
@@ -1787,7 +1896,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>email</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-telephone" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-telephone" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-telephone-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-telephone-ownedComment" xmi:type="uml:Comment">
@@ -1801,7 +1910,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>telephone</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-affiliation" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-affiliation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-affiliation-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-affiliation-ownedComment" xmi:type="uml:Comment">
@@ -1815,7 +1924,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>*</value>
                   </upperValue>
                   <name>affiliation</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Person-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Person-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Person-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1843,7 +1952,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.Organization" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization" xmi:type="uml:Class">
@@ -1867,7 +1976,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>legalName</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Organization-alternateName" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-alternateName" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Organization-alternateName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-alternateName-ownedComment" xmi:type="uml:Comment">
@@ -1881,7 +1990,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>*</value>
                   </upperValue>
                   <name>alternateName</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Organization-url" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Organization-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-url-ownedComment" xmi:type="uml:Comment">
@@ -1909,7 +2018,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>email</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Organization-telephone" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-telephone" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Organization-telephone-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-telephone-ownedComment" xmi:type="uml:Comment">
@@ -1923,7 +2032,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>telephone</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Organization-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Organization-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Organization-identifier-ownedComment" xmi:type="uml:Comment">
@@ -1951,7 +2060,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.Contributor" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Contributor" xmi:type="uml:Class">
@@ -2036,7 +2145,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>propertyId</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.AdditionalProperty-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.AdditionalProperty-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-name-ownedComment" xmi:type="uml:Comment">
@@ -2050,7 +2159,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.AdditionalProperty-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-value" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.AdditionalProperty-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-value-ownedComment" xmi:type="uml:Comment">
@@ -2064,7 +2173,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.AdditionalProperty-unitText" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-unitText" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.AdditionalProperty-unitText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-unitText-ownedComment" xmi:type="uml:Comment">
@@ -2078,7 +2187,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>unitText</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.AdditionalProperty-unitCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-unitCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.AdditionalProperty-unitCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AdditionalProperty-unitCode-ownedComment" xmi:type="uml:Comment">
@@ -2095,7 +2204,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                   <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="CDIFDataDescription.Reference" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference" xmi:type="uml:Class">
+            <packagedElement xmi:id="CDIFDataDescription.Reference" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataDescription.Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataDescription.Reference"/>
                   <body>A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifProperties/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.</body>
@@ -2127,7 +2236,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Reference-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Reference-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference-description-ownedComment" xmi:type="uml:Comment">
@@ -2141,7 +2250,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.Reference-url" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.Reference-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Reference-url-ownedComment" xmi:type="uml:Comment">
@@ -2190,7 +2299,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.MonetaryGrant-amount" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#MonetaryGrant-amount" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.MonetaryGrant-amount-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#MonetaryGrant-amount-ownedComment" xmi:type="uml:Comment">
@@ -2204,7 +2313,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>amount</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.MonetaryGrant-funder" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#MonetaryGrant-funder" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.MonetaryGrant-funder-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#MonetaryGrant-funder-ownedComment" xmi:type="uml:Comment">
@@ -2254,7 +2363,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataDescription.ProvActivity-startedAtTime" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ProvActivity-startedAtTime" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataDescription.ProvActivity-startedAtTime-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ProvActivity-startedAtTime-ownedComment" xmi:type="uml:Comment">
@@ -2317,7 +2426,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
                      <value>1</value>
                   </upperValue>
                   <name>name</name>
-                  <type xmi:idref="CDIFDataDescription.String"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord" xmi:type="uml:Class">

@@ -34,6 +34,7 @@ This repository is a CDIF fork of Joachim Wackerow's UCMIS-M2M project (https://
 | `sssom` as object **or** array | sssom blocks | accept both forms |
 | `confidence` as number **or** string | sssom blocks | match the SSSOM 0..1 numeric form |
 | `isAbstract` | class mappings | emit `uml:Class isAbstract="true"` (used for `Agent`, `AbstractDistribution`, `AbstractGeometry`) |
+| `isDataType` | class mappings | emit the mapping as `<packagedElement xmi:type="uml:DataType">` instead of `uml:Class` (used for value types `Identifier`, `Reference`); cascades through `composes` |
 | `generalization` | class mappings | emit `<generalization><general …/></generalization>`; inherited attrs flow through the closure walker |
 | `composes` | `targetModel` | recursive profile composition mirroring JSON Schema `allOf` (Discovery → Core; DataDescription → Discovery → Core; DataStructure → DataDescription → Discovery → Core) |
 | `datatypeSubstitutions` | `transformation` | rewrite synthetic target class properties whose type points at a named source DataType (`InternationalString` → `String`, `ControlledVocabularyEntry` → `Concept`, `NonDdiIdentifier` → `Identifier`, …); applied in two places (synthetic targets + transitive closure walker); cascades through `composes` |
@@ -273,7 +274,7 @@ From any working directory:
 python <repo>/metadataBuildingBlocks/tools/uml_to_schema.py \
   --xmi    <repo>/../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi \
   --config <repo>/ucmism2m/configuration/ddi-cdi2cdifCodelist_mapping.json \
-  --emit-uml <repo>/ucmism2m/generated/cdifCodelist.xmi
+  --emit-uml <repo>/ucmism2m/generated/cdifcodelist_1-0_canonical-unique-names.xmi
 ```
 
 Arguments:
