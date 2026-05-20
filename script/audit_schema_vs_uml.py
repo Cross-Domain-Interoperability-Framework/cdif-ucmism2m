@@ -96,6 +96,8 @@ UNION_POLICY = {
     "relationship",
     # union / JSON-LD serialization artifacts
     "languagetaggedvalue", "conceptref", "id-reference",
+    # $def wrapper names emitted by the resolver (not real classes)
+    "cdifinstancevariable", "cdifinstancevariable_definedterm", "cdifcodelistconcept",
 }
 
 # Known naming differences between schema local-name and the UML class name,
@@ -183,9 +185,14 @@ def covered_from_config(cfg: dict) -> set[str]:
         nm = a.get("targetAssociationName") or a.get("sourceAssociationName") or ""
         parts = nm.split("_")
         if len(parts) >= 3:
-            out.add(canon("_".join(parts[1:-1])))   # role
-            out.add(canon(parts[-1]))               # object class
+            role = "_".join(parts[1:-1])
+            obj = parts[-1]
+            out.add(canon(role))                    # role
+            out.add(canon(obj))                     # object class
             out.add(canon(parts[0]))                # subject class
+            # role_Target convention: BB splits polymorphic associations into
+            # target-suffixed property names (cdif:has_Statistics, formats_X).
+            out.add(canon(f"{role}_{obj}"))
         if a.get("objectClass"):
             out.add(canon(a["objectClass"]))
         if a.get("subjectClass"):

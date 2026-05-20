@@ -1445,6 +1445,120 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>unitOfMeasureKind</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-function" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-function" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-function-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-function-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-function"/>
+                     <body>cdi:function - immutable characteristic of the variable (geographic designator, weight, temporal designation, ...).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-function-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-function-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-function-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-function-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>function</name>
+                  <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-platformType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-platformType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-platformType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-platformType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-platformType"/>
+                     <body>cdi:platformType - the application/technical system context in which the variable was realized.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-platformType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-platformType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-platformType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-platformType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>platformType</name>
+                  <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-source" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-source" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-source-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-source-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-source"/>
+                     <body>cdi:source - provenance information for this InstanceVariable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-source-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-source-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-source-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-source-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>source</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-hasIntendedDataType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-hasIntendedDataType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-hasIntendedDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-hasIntendedDataType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-hasIntendedDataType"/>
+                     <body>cdi:hasIntendedDataType - the data type intended for this variable, independent of its physical representation.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-hasIntendedDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-hasIntendedDataType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-hasIntendedDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-hasIntendedDataType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasIntendedDataType</name>
+                  <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-simpleUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-simpleUnitOfMeasure" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-simpleUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-simpleUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-simpleUnitOfMeasure"/>
+                     <body>cdif:simpleUnitOfMeasure - plain-string unit of measure (use describedUnitOfMeasure for a controlled-vocabulary unit).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-simpleUnitOfMeasure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-simpleUnitOfMeasure-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-simpleUnitOfMeasure-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-simpleUnitOfMeasure-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>simpleUnitOfMeasure</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-uses" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-uses-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-uses"/>
+                     <body>cdif:uses - concept(s) this variable measures or represents (akin to schema:propertyID).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-uses-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-uses-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>uses</name>
+                  <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-isDescribedBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-isDescribedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-isDescribedBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-isDescribedBy"/>
+                     <body>cdif:isDescribedBy_StatisticsCollection - the StatisticsCollection holding summary / category statistics for this InstanceVariable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-isDescribedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-isDescribedBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isDescribedBy</name>
+                  <type xmi:idref="CDIFDataStructure.StatisticsCollection"/>
+                  <association xmi:idref="CDIFDataStructure.InstanceVariable_isDescribedBy_StatisticsCollection"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-qualifies" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-qualifies" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-qualifies-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-qualifies-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-qualifies"/>
+                     <body>cdi:qualifies - reference to another instance variable that this variable qualifies.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-qualifies-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-qualifies-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-qualifies-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-qualifies-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>qualifies</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.InstanceVariable_qualifies_InstanceVariable"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom"/>
@@ -1485,44 +1599,30 @@ An example would be age categories. Five-year age categories can be collapsed in
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-displayLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-displayLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveValueDomain-displayLabel"/>
-                     <body>A human-readable display label for the object. Supports the use of multiple languages. Repeat for labels with different content, for example, labels with differing length limitations.</body>
+                     <body>cdif:displayLabel - human-readable display label for the value domain.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-displayLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-displayLabel-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-displayLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
+                  <upperValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-displayLabel-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
                   </upperValue>
                   <name>displayLabel</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveValueDomain-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="CDIFDataStructure.Identifier"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-recommendedDataType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-recommendedDataType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-recommendedDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-recommendedDataType-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveValueDomain-recommendedDataType"/>
-                     <body>The data types that are recommended for use with this domain.</body>
+                     <body>cdif:recommendedDataType - the data type(s) recommended for use with this domain (xsd type token).</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-recommendedDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-recommendedDataType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-recommendedDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-recommendedDataType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>recommendedDataType</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesValuesFrom" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
@@ -1542,63 +1642,33 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <body>Value domain for a sentinel conceptual domain.</body>
                </ownedComment>
                <name>SentinelValueDomain</name>
-               <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-platformType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-platformType" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-platformType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-platformType-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SentinelValueDomain-platformType"/>
-                     <body>The type of platform under which sentinel codes will be used. Statistical software platforms use different sets of codes to indicate missing values. The external controlled vocabulary should list platform types and a description of the allowed missing value types. A sample list would be:
-
-- BlankString - A Blank string indicates missing. Comparison is based on lexical order. - EmptyString - An empty string indicates missing. Use in comparisons returns missing. - Rstyle - Codes drawn from NA and the IEEE 754 values of NaN -Inf +Inf. Comparisons return NA. - SASNumeric - codes drawn from . ._ .A .B .C .D .E .F .G .H .I .J .K .L .M .N .O .P .Q .R .S .T .U .V .W .X .Y .Z Sentinel code treated as less than any substantive value - SPSSstyle - System missing (a dot) a set of individual values drawn from the same datatype as the SubstantiveValueDomain, and a range of values drawn from the same datatype as the SubstantiveValueDomain. Comparisons return system missing. Some functions substitute with valid values (e.g. SUM replaces missing values with 0). - StataNumeric - codes drawn from . ._ .A .B .C .D .E .F .G .H .I .J .K .L .M .N .O .P .Q .R .S .T .U .V .W .X .Y .Z Sentinel code treated as greater than any substantive value - Unrestricted - No restrictions on codes for sentinel values. Use in comparisons is indeterminate.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-platformType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-platformType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-platformType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-platformType-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>platformType</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-displayLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-displayLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SentinelValueDomain-displayLabel"/>
-                     <body>A human-readable display label for the object. Supports the use of multiple languages. Repeat for labels with different content, for example, labels with differing length limitations.</body>
+                     <body>cdif:displayLabel - human-readable display label for the value domain.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-displayLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-displayLabel-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-displayLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
+                  <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-displayLabel-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
                   </upperValue>
                   <name>displayLabel</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SentinelValueDomain-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="CDIFDataStructure.Identifier"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-recommendedDataType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-recommendedDataType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-recommendedDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-recommendedDataType-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SentinelValueDomain-recommendedDataType"/>
-                     <body>The data types that are recommended for use with this domain.</body>
+                     <body>cdif:recommendedDataType - the data type(s) recommended for use with this domain (xsd type token).</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-recommendedDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-recommendedDataType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-recommendedDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-recommendedDataType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>recommendedDataType</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesValuesFrom" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
@@ -1670,10 +1740,10 @@ An example would be age categories. Five-year age categories can be collapsed in
                <ownedAttribute xmi:id="CDIFDataStructure.EnumerationDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.EnumerationDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.EnumerationDomain-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
+                     <body>cdif:identifier - identifier for this enumerated (categorical) domain.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.EnumerationDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.EnumerationDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -1684,24 +1754,38 @@ An example would be age categories. Five-year age categories can be collapsed in
                <ownedAttribute xmi:id="CDIFDataStructure.EnumerationDomain-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.EnumerationDomain-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.EnumerationDomain-name"/>
-                     <body>Human understandable name (linguistic signifier, word, phrase, or mnemonic). May follow ISO/IEC 11179-5 naming principles, and have context provided to specify usage.</body>
+                     <body>schema:name - human-understandable name of the enumeration domain.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.EnumerationDomain-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-name-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.EnumerationDomain-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-name-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
+                  <upperValue xmi:id="CDIFDataStructure.EnumerationDomain-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
                   </upperValue>
                   <name>name</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.EnumerationDomain-references" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-references" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.EnumerationDomain-references-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-references-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.EnumerationDomain-references"/>
+                     <body>cdif:references - URI of the SKOS ConceptScheme that contains the concepts defining the allowed values of this enumeration domain.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.EnumerationDomain-references-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-references-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.EnumerationDomain-references-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-references-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>references</name>
+                  <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.EnumerationDomain-purpose" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-purpose" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.EnumerationDomain-purpose-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-purpose-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.EnumerationDomain-purpose"/>
-                     <body>Intent or reason for the object/the description of the object.</body>
+                     <body>cdif:purpose - intent or reason for the object / the description of the object.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.EnumerationDomain-purpose-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-purpose-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.EnumerationDomain-purpose-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#EnumerationDomain-purpose-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2093,53 +2177,341 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.Statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic" xmi:type="uml:Class">
+            <packagedElement xmi:id="CDIFDataStructure.Statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataStructure.Statistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.Statistic"/>
-                  <body>Statistics related to a specific category of an instance variable within a data set.</body>
+                  <body>cdi:Statistic - a single computed statistical value. A value object carried inline inside a Statistics or CategoryStatistics bundle.</body>
                </ownedComment>
                <name>Statistic</name>
-               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.Statistic-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-computationBase" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-computationBase" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistic-computationBase-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-computationBase-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-computationBase"/>
+                     <body>cdi:computationBase - cases included in the statistic: Total, ValidOnly, or MissingOnly.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.Statistic-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistic-computationBase-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-computationBase-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.Statistic-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.Statistic-computationBase-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-computationBase-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="CDIFDataStructure.Identifier"/>
+                  <name>computationBase</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-statistic" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.Statistic-statistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-statistic-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-statistic"/>
-                     <body>The value of the identified type of statistic. May be repeated to provide unweighted or weighted values and different computation bases.</body>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-content" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-content" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistic-content-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-content-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-content"/>
+                     <body>cdi:content - the value of the statistic expressed as a real number.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.Statistic-statistic-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-statistic-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.Statistic-content-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-content-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Statistic-content-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-content-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>content</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Real"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-isWeighted" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-isWeighted" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistic-isWeighted-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-isWeighted-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-isWeighted"/>
+                     <body>cdi:isWeighted - true if the statistic was computed using a weighting variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistic-isWeighted-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-isWeighted-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Statistic-isWeighted-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-isWeighted-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isWeighted</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Boolean"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-typeOfNumericValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfNumericValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistic-typeOfNumericValue-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfNumericValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-typeOfNumericValue"/>
+                     <body>cdi:typeOfNumericValue - the type of numeric value in content (decimal, float, double).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistic-typeOfNumericValue-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfNumericValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Statistic-typeOfNumericValue-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfNumericValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>typeOfNumericValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.Statistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataStructure.Statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.Statistics"/>
+                  <body>cdi:Statistics - a named bundle of Statistic value objects for an instance variable.</body>
+               </ownedComment>
+               <name>Statistics</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistics-typeOfStatistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-typeOfStatistic" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistics-typeOfStatistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-typeOfStatistic-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistics-typeOfStatistic"/>
+                     <body>cdi:typeOfStatistic - controlled-vocabulary entry naming the kind of statistic (mean, median, count, sum, stdDev ...).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistics-typeOfStatistic-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-typeOfStatistic-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Statistics-typeOfStatistic-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-typeOfStatistic-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>typeOfStatistic</name>
+                  <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistics-statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-statistic" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistics-statistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-statistic-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistics-statistic"/>
+                     <body>cdi:statistic - ordered list of Statistic value objects carried by this bundle.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistics-statistic-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-statistic-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.Statistic-statistic-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-statistic-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.Statistics-statistic-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-statistic-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>statistic</name>
                   <type xmi:idref="CDIFDataStructure.Statistic"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.Statistic-typeOfStatistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfStatistic" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.Statistic-typeOfStatistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfStatistic-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.Statistic-typeOfStatistic"/>
-                     <body>Type of summary statistics (e.g. count, mean, mode, median, etc.) or category statistics for the associated instance variable</body>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistics-appliesTo" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-appliesTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistics-appliesTo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-appliesTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistics-appliesTo"/>
+                     <body>cdif:appliesTo - the InstanceVariable(s) this Statistics bundle summarizes.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.Statistic-typeOfStatistic-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfStatistic-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.Statistics-appliesTo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-appliesTo-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.Statistic-typeOfStatistic-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistic-typeOfStatistic-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.Statistics-appliesTo-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-appliesTo-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>appliesTo</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.Statistics_appliesTo_InstanceVariable"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistics-hasWeight" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-hasWeight" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistics-hasWeight-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-hasWeight-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistics-hasWeight"/>
+                     <body>cdi:hasWeight - the InstanceVariable whose values were used as weights when computing the statistics.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistics-hasWeight-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-hasWeight-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Statistics-hasWeight-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-hasWeight-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasWeight</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.Statistics_hasWeight_InstanceVariable"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Statistics-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-has" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Statistics-has-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-has-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Statistics-has"/>
+                     <body>cdif:has_CategoryStatistics - CategoryStatistics entries breaking this Statistics bundle down by Category.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Statistics-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-has-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Statistics-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>has</name>
+                  <type xmi:idref="CDIFDataStructure.CategoryStatistics"/>
+                  <association xmi:idref="CDIFDataStructure.Statistics_has_CategoryStatistics"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.CategoryStatistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataStructure.CategoryStatistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.CategoryStatistics"/>
+                  <body>cdi:CategoryStatistics - statistics for a specific Category of an instance variable within a data set.</body>
+               </ownedComment>
+               <name>CategoryStatistics</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.CategoryStatistics-typeOfStatistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-typeOfStatistic" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CategoryStatistics-typeOfStatistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-typeOfStatistic-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CategoryStatistics-typeOfStatistic"/>
+                     <body>cdi:typeOfStatistic - controlled-vocabulary entry naming the kind of statistic.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CategoryStatistics-typeOfStatistic-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-typeOfStatistic-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CategoryStatistics-typeOfStatistic-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-typeOfStatistic-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>typeOfStatistic</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.CategoryStatistics-statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-statistic" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CategoryStatistics-statistic-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-statistic-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CategoryStatistics-statistic"/>
+                     <body>cdi:statistic - per-category Statistic value objects.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CategoryStatistics-statistic-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-statistic-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CategoryStatistics-statistic-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-statistic-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>statistic</name>
+                  <type xmi:idref="CDIFDataStructure.Statistic"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.CategoryStatistics-for" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-for" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CategoryStatistics-for-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-for-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CategoryStatistics-for"/>
+                     <body>cdi:for - the Category this CategoryStatistics is for.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CategoryStatistics-for-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-for-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CategoryStatistics-for-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-for-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>for</name>
+                  <type xmi:idref="CDIFDataStructure.Category"/>
+                  <association xmi:idref="CDIFDataStructure.CategoryStatistics_for_Category"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.CategoryStatistics-hasWeight" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-hasWeight" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CategoryStatistics-hasWeight-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-hasWeight-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CategoryStatistics-hasWeight"/>
+                     <body>cdi:hasWeight - the InstanceVariable whose values were used as weights.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CategoryStatistics-hasWeight-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-hasWeight-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CategoryStatistics-hasWeight-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics-hasWeight-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasWeight</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.CategoryStatistics_hasWeight_InstanceVariable"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.StatisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataStructure.StatisticsCollection-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.StatisticsCollection"/>
+                  <body>cdi:StatisticsCollection - groups one or more Statistics nodes for an instance variable.</body>
+               </ownedComment>
+               <name>StatisticsCollection</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.StatisticsCollection-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.StatisticsCollection-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.StatisticsCollection-identifier"/>
+                     <body>@id - identifier for this StatisticsCollection node.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.StatisticsCollection-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.StatisticsCollection-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataStructure.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.StatisticsCollection-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-has" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.StatisticsCollection-has-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-has-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.StatisticsCollection-has"/>
+                     <body>cdif:has_Statistics - the Statistics nodes carried by this collection.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.StatisticsCollection-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-has-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.StatisticsCollection-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>has</name>
+                  <type xmi:idref="CDIFDataStructure.Statistics"/>
+                  <association xmi:idref="CDIFDataStructure.StatisticsCollection_has_Statistics"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.StatisticsCollection-indexedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-indexedBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.StatisticsCollection-indexedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-indexedBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.StatisticsCollection-indexedBy"/>
+                     <body>cdif:indexedBy - the InstanceVariable(s) the contained Statistics index.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.StatisticsCollection-indexedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-indexedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.StatisticsCollection-indexedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-indexedBy-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>indexedBy</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.StatisticsCollection_indexedBy_InstanceVariable"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.StatisticsCollection-hasWeight" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-hasWeight" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.StatisticsCollection-hasWeight-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-hasWeight-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.StatisticsCollection-hasWeight"/>
+                     <body>cdi:hasWeight - the InstanceVariable whose values were used as weights.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.StatisticsCollection-hasWeight-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-hasWeight-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.StatisticsCollection-hasWeight-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection-hasWeight-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasWeight</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.StatisticsCollection_hasWeight_InstanceVariable"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.Category" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataStructure.Category-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.Category"/>
+                  <body>cdi:Category - a category of an instance variable, as the subject of CategoryStatistics.</body>
+               </ownedComment>
+               <name>Category</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.Category-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Category-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Category-name"/>
+                     <body>cdif:name - human-understandable name(s). CDIF-simplified from DDI-CDI Category.name (ObjectName).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Category-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Category-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-name-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Category-descriptiveText" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-descriptiveText" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Category-descriptiveText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-descriptiveText-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Category-descriptiveText"/>
+                     <body>cdif:descriptiveText - short natural-language account of the category.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Category-descriptiveText-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-descriptiveText-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Category-descriptiveText-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-descriptiveText-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>descriptiveText</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Category-definition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-definition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Category-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-definition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Category-definition"/>
+                     <body>cdif:definition - natural-language definition of the category.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Category-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-definition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Category-definition-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-definition-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>definition</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Category-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-displayLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Category-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-displayLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Category-displayLabel"/>
+                     <body>cdif:displayLabel - human-readable display label(s).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Category-displayLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-displayLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Category-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Category-displayLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>displayLabel</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.PhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping" xmi:type="uml:Class">
@@ -2728,7 +3100,7 @@ An example would be age categories. Five-year age categories can be collapsed in
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-statistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.Dataset-statistics"/>
-                     <body>cdif:statistics - statistical summaries reported on the dataset.</body>
+                     <body>cdif:statistics - Statistics bundles (one or more Statistic value objects) reported on the dataset.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.Dataset-statistics-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2737,8 +3109,23 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>*</value>
                   </upperValue>
                   <name>statistics</name>
-                  <type xmi:idref="CDIFDataStructure.Statistic"/>
-                  <association xmi:idref="CDIFDataStructure.Dataset_statistics_Statistic"/>
+                  <type xmi:idref="CDIFDataStructure.Statistics"/>
+                  <association xmi:idref="CDIFDataStructure.Dataset_statistics_Statistics"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.Dataset-statistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Dataset-statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Dataset-statistics"/>
+                     <body>cdif:statistics - StatisticsCollections grouping several Statistics nodes reported on the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.Dataset-statistics-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.Dataset-statistics-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>statistics</name>
+                  <type xmi:idref="CDIFDataStructure.StatisticsCollection"/>
+                  <association xmi:idref="CDIFDataStructure.Dataset_statistics_StatisticsCollection"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-spatialCoverage" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-spatialCoverage" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-spatialCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-spatialCoverage-ownedComment" xmi:type="uml:Comment">
@@ -4356,6 +4743,24 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_isDescribedBy_StatisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_isDescribedBy_StatisticsCollection" xmi:type="uml:Association">
+            <name>InstanceVariable_isDescribedBy_StatisticsCollection</name>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-isDescribedBy"/>
+            <ownedEnd xmi:id="CDIFDataStructure.InstanceVariable_isDescribedBy_StatisticsCollection-StatisticsCollectionEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_isDescribedBy_StatisticsCollection-StatisticsCollectionEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.StatisticsCollection"/>
+               <association xmi:idref="CDIFDataStructure.InstanceVariable_isDescribedBy_StatisticsCollection"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable_isDescribedBy_StatisticsCollection-StatisticsCollectionEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_qualifies_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_qualifies_InstanceVariable" xmi:type="uml:Association">
+            <name>InstanceVariable_qualifies_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-qualifies"/>
+            <ownedEnd xmi:id="CDIFDataStructure.InstanceVariable_qualifies_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_qualifies_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.InstanceVariable_qualifies_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable_qualifies_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:type="uml:Association">
             <name>InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain</name>
             <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom"/>
@@ -4410,6 +4815,78 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping-PhysicalMappingEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.Statistics_appliesTo_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics_appliesTo_InstanceVariable" xmi:type="uml:Association">
+            <name>Statistics_appliesTo_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.Statistics-appliesTo"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Statistics_appliesTo_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics_appliesTo_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.Statistics_appliesTo_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.Statistics_appliesTo_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.Statistics_hasWeight_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics_hasWeight_InstanceVariable" xmi:type="uml:Association">
+            <name>Statistics_hasWeight_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.Statistics-hasWeight"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Statistics_hasWeight_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics_hasWeight_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.Statistics_hasWeight_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.Statistics_hasWeight_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.Statistics_has_CategoryStatistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics_has_CategoryStatistics" xmi:type="uml:Association">
+            <name>Statistics_has_CategoryStatistics</name>
+            <memberEnd xmi:idref="CDIFDataStructure.Statistics-has"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Statistics_has_CategoryStatistics-CategoryStatisticsEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Statistics_has_CategoryStatistics-CategoryStatisticsEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.CategoryStatistics"/>
+               <association xmi:idref="CDIFDataStructure.Statistics_has_CategoryStatistics"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.Statistics_has_CategoryStatistics-CategoryStatisticsEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.CategoryStatistics_for_Category" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics_for_Category" xmi:type="uml:Association">
+            <name>CategoryStatistics_for_Category</name>
+            <memberEnd xmi:idref="CDIFDataStructure.CategoryStatistics-for"/>
+            <ownedEnd xmi:id="CDIFDataStructure.CategoryStatistics_for_Category-CategoryEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics_for_Category-CategoryEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.Category"/>
+               <association xmi:idref="CDIFDataStructure.CategoryStatistics_for_Category"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.CategoryStatistics_for_Category-CategoryEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.CategoryStatistics_hasWeight_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics_hasWeight_InstanceVariable" xmi:type="uml:Association">
+            <name>CategoryStatistics_hasWeight_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.CategoryStatistics-hasWeight"/>
+            <ownedEnd xmi:id="CDIFDataStructure.CategoryStatistics_hasWeight_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#CategoryStatistics_hasWeight_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.CategoryStatistics_hasWeight_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.CategoryStatistics_hasWeight_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.StatisticsCollection_has_Statistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection_has_Statistics" xmi:type="uml:Association">
+            <name>StatisticsCollection_has_Statistics</name>
+            <memberEnd xmi:idref="CDIFDataStructure.StatisticsCollection-has"/>
+            <ownedEnd xmi:id="CDIFDataStructure.StatisticsCollection_has_Statistics-StatisticsEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection_has_Statistics-StatisticsEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.Statistics"/>
+               <association xmi:idref="CDIFDataStructure.StatisticsCollection_has_Statistics"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.StatisticsCollection_has_Statistics-StatisticsEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.StatisticsCollection_indexedBy_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection_indexedBy_InstanceVariable" xmi:type="uml:Association">
+            <name>StatisticsCollection_indexedBy_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.StatisticsCollection-indexedBy"/>
+            <ownedEnd xmi:id="CDIFDataStructure.StatisticsCollection_indexedBy_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection_indexedBy_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.StatisticsCollection_indexedBy_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.StatisticsCollection_indexedBy_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.StatisticsCollection_hasWeight_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection_hasWeight_InstanceVariable" xmi:type="uml:Association">
+            <name>StatisticsCollection_hasWeight_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.StatisticsCollection-hasWeight"/>
+            <ownedEnd xmi:id="CDIFDataStructure.StatisticsCollection_hasWeight_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#StatisticsCollection_hasWeight_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.StatisticsCollection_hasWeight_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.StatisticsCollection_hasWeight_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping_formats_InstanceVariable" xmi:type="uml:Association">
             <name>PhysicalMapping_formats_InstanceVariable</name>
             <memberEnd xmi:idref="CDIFDataStructure.PhysicalMapping-formats"/>
@@ -4437,14 +4914,23 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.Dataset_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.Dataset_statistics_Statistic" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_Statistic" xmi:type="uml:Association">
-            <name>Dataset_statistics_Statistic</name>
+         <packagedElement xmi:id="CDIFDataStructure.Dataset_statistics_Statistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_Statistics" xmi:type="uml:Association">
+            <name>Dataset_statistics_Statistics</name>
             <memberEnd xmi:idref="CDIFDataStructure.Dataset-statistics"/>
-            <ownedEnd xmi:id="CDIFDataStructure.Dataset_statistics_Statistic-StatisticEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_Statistic-StatisticEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.Statistic"/>
-               <association xmi:idref="CDIFDataStructure.Dataset_statistics_Statistic"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Dataset_statistics_Statistics-StatisticsEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_Statistics-StatisticsEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.Statistics"/>
+               <association xmi:idref="CDIFDataStructure.Dataset_statistics_Statistics"/>
             </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.Dataset_statistics_Statistic-StatisticEnd"/>
+            <memberEnd xmi:idref="CDIFDataStructure.Dataset_statistics_Statistics-StatisticsEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.Dataset_statistics_StatisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_StatisticsCollection" xmi:type="uml:Association">
+            <name>Dataset_statistics_StatisticsCollection</name>
+            <memberEnd xmi:idref="CDIFDataStructure.Dataset-statistics"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Dataset_statistics_StatisticsCollection-StatisticsCollectionEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_StatisticsCollection-StatisticsCollectionEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.StatisticsCollection"/>
+               <association xmi:idref="CDIFDataStructure.Dataset_statistics_StatisticsCollection"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.Dataset_statistics_StatisticsCollection-StatisticsCollectionEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.Dataset_spatialCoverage_SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_spatialCoverage_SpatialExtent" xmi:type="uml:Association">
             <name>Dataset_spatialCoverage_SpatialExtent</name>

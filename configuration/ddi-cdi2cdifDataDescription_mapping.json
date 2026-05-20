@@ -45,7 +45,7 @@
     {
       "name": "Statistics",
       "parent": "CDIFDataDescription",
-      "definition": "Statistic and CategoryStatistic for cdif:statistics."
+      "definition": "Statistic value object plus Statistics, CategoryStatistics, StatisticsCollection and Category for cdif:statistics (cdifProperties/cdifStatistics)."
     },
     {
       "name": "ValueDomains",
@@ -98,6 +98,42 @@
               "lower": "0",
               "upper": "1"
             }
+          },
+          {
+            "name": "function",
+            "dataType": "Concept",
+            "definition": "cdi:function - immutable characteristic of the variable (geographic designator, weight, temporal designation, ...).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "platformType",
+            "dataType": "Concept",
+            "definition": "cdi:platformType - the application/technical system context in which the variable was realized.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "source",
+            "dataType": "String",
+            "definition": "cdi:source - provenance information for this InstanceVariable.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "hasIntendedDataType",
+            "dataType": "Concept",
+            "definition": "cdi:hasIntendedDataType - the data type intended for this variable, independent of its physical representation.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "simpleUnitOfMeasure",
+            "dataType": "String",
+            "definition": "cdif:simpleUnitOfMeasure - plain-string unit of measure (use describedUnitOfMeasure for a controlled-vocabulary unit).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "uses",
+            "dataType": "Concept",
+            "definition": "cdif:uses - concept(s) this variable measures or represents (akin to schema:propertyID).",
+            "multiplicity": { "lower": "0", "upper": "*" }
           }
         ]
       },
@@ -235,32 +271,208 @@
         "targetClass": "PrimaryKeyComponent"
       },
       {
-        "_comment": "Statistic - target of cdif:statistics on the dataset. DDI-CDI 1.1beta has CategoryStatistics (renamed from CategoryStatistic in 1.0); mapped here with class rename.",
-        "mappingType": "map",
+        "_comment": "Statistic value object - a single computed value (mean, count, median ...). DDI-CDI Statistic dataType; no identity, carried inline inside a Statistics/CategoryStatistics bundle. isDataType:true per the value-type policy. From cdifProperties/cdifStatistics.",
+        "mappingType": "new",
+        "sourceClass": "Statistic",
+        "targetPackage": "Statistics",
+        "targetClass": "Statistic",
+        "isDataType": true,
+        "definition": "cdi:Statistic - a single computed statistical value. A value object carried inline inside a Statistics or CategoryStatistics bundle.",
+        "attribute": [
+          {
+            "name": "computationBase",
+            "dataType": "String",
+            "definition": "cdi:computationBase - cases included in the statistic: Total, ValidOnly, or MissingOnly.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "content",
+            "dataType": "Real",
+            "definition": "cdi:content - the value of the statistic expressed as a real number.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "isWeighted",
+            "dataType": "Boolean",
+            "definition": "cdi:isWeighted - true if the statistic was computed using a weighting variable.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "typeOfNumericValue",
+            "dataType": "String",
+            "definition": "cdi:typeOfNumericValue - the type of numeric value in content (decimal, float, double).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "Statistics - a named bundle of one or more Statistic value objects for an instance variable, optionally weighted, optionally broken down by Category. Target of cdif:statistics. From cdifProperties/cdifStatistics.",
+        "mappingType": "new",
+        "sourceClass": "Statistics",
+        "targetPackage": "Statistics",
+        "targetClass": "Statistics",
+        "definition": "cdi:Statistics - a named bundle of Statistic value objects for an instance variable.",
+        "attribute": [
+          {
+            "name": "typeOfStatistic",
+            "dataType": "Concept",
+            "definition": "cdi:typeOfStatistic - controlled-vocabulary entry naming the kind of statistic (mean, median, count, sum, stdDev ...).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "statistic",
+            "dataType": "Statistic",
+            "definition": "cdi:statistic - ordered list of Statistic value objects carried by this bundle.",
+            "multiplicity": { "lower": "1", "upper": "*" }
+          }
+        ]
+      },
+      {
+        "_comment": "CategoryStatistics - statistics for a specific Category of an instance variable. From cdifProperties/cdifStatistics.",
+        "mappingType": "new",
         "sourceClass": "CategoryStatistics",
         "targetPackage": "Statistics",
-        "targetClass": "Statistic"
+        "targetClass": "CategoryStatistics",
+        "definition": "cdi:CategoryStatistics - statistics for a specific Category of an instance variable within a data set.",
+        "attribute": [
+          {
+            "name": "typeOfStatistic",
+            "dataType": "Concept",
+            "definition": "cdi:typeOfStatistic - controlled-vocabulary entry naming the kind of statistic.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "statistic",
+            "dataType": "Statistic",
+            "definition": "cdi:statistic - per-category Statistic value objects.",
+            "multiplicity": { "lower": "1", "upper": "*" }
+          }
+        ]
+      },
+      {
+        "_comment": "StatisticsCollection - groups one or more Statistics nodes for an instance variable (e.g. row-count / mean / stddev per measured variable). Target of cdif:statistics. From cdifProperties/cdifStatistics.",
+        "mappingType": "new",
+        "sourceClass": "StatisticsCollection",
+        "targetPackage": "Statistics",
+        "targetClass": "StatisticsCollection",
+        "definition": "cdi:StatisticsCollection - groups one or more Statistics nodes for an instance variable.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "Identifier",
+            "definition": "@id - identifier for this StatisticsCollection node.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "Category - minimal Category shape used as a CategoryStatistics target. CDIF simplifies the DDI-CDI InternationalString/LabelForDisplay/ObjectName valued properties to plain strings. From cdifProperties/cdifStatistics.",
+        "mappingType": "new",
+        "sourceClass": "Category",
+        "targetPackage": "Statistics",
+        "targetClass": "Category",
+        "definition": "cdi:Category - a category of an instance variable, as the subject of CategoryStatistics.",
+        "attribute": [
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "cdif:name - human-understandable name(s). CDIF-simplified from DDI-CDI Category.name (ObjectName).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "descriptiveText",
+            "dataType": "String",
+            "definition": "cdif:descriptiveText - short natural-language account of the category.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "definition",
+            "dataType": "String",
+            "definition": "cdif:definition - natural-language definition of the category.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "displayLabel",
+            "dataType": "String",
+            "definition": "cdif:displayLabel - human-readable display label(s).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
       },
       {
         "_comment": "SubstantiveValueDomain - the set of valid, meaningful values for a variable (cdi:takesSubstantiveValuesFrom). From cdifProperties/cdifValueDomain. At the Data Description level value domains attach to the InstanceVariable directly; at the Data Structure level they attach to the RepresentedVariable instead. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "SubstantiveValueDomain",
         "targetPackage": "ValueDomains",
-        "targetClass": "SubstantiveValueDomain"
+        "targetClass": "SubstantiveValueDomain",
+        "attribute": [
+          {
+            "name": "displayLabel",
+            "dataType": "String",
+            "definition": "cdif:displayLabel - human-readable display label for the value domain.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "recommendedDataType",
+            "dataType": "String",
+            "definition": "cdif:recommendedDataType - the data type(s) recommended for use with this domain (xsd type token).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
       },
       {
         "_comment": "SentinelValueDomain - missing / not-applicable value codes for a variable (cdi:takesSentinelValuesFrom). From cdifProperties/cdifValueDomain. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "SentinelValueDomain",
         "targetPackage": "ValueDomains",
-        "targetClass": "SentinelValueDomain"
+        "targetClass": "SentinelValueDomain",
+        "attribute": [
+          {
+            "name": "displayLabel",
+            "dataType": "String",
+            "definition": "cdif:displayLabel - human-readable display label for the value domain.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "recommendedDataType",
+            "dataType": "String",
+            "definition": "cdif:recommendedDataType - the data type(s) recommended for use with this domain (xsd type token).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
       },
       {
         "_comment": "EnumerationDomain - the enumerated set of codes a value domain draws from (cdif:takesValuesFrom). From cdifProperties/cdifEnumerationDomain. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "EnumerationDomain",
         "targetPackage": "ValueDomains",
-        "targetClass": "EnumerationDomain"
+        "targetClass": "EnumerationDomain",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "Identifier",
+            "definition": "cdif:identifier - identifier for this enumerated (categorical) domain.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-understandable name of the enumeration domain.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "references",
+            "dataType": "XsdAnyUri",
+            "definition": "cdif:references - URI of the SKOS ConceptScheme that contains the concepts defining the allowed values of this enumeration domain.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          {
+            "name": "purpose",
+            "dataType": "String",
+            "definition": "cdif:purpose - intent or reason for the object / the description of the object.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
       },
       {
         "_comment": "PhysicalMapping - per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifProperties/cdifPhysicalMapping. mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta (DDI-CDI splits this across ValueMapping / PhysicalSegmentLayout); CDIF flattens it.",
@@ -495,14 +707,125 @@
         }
       },
       {
-        "targetAssociationName": "Dataset_statistics_Statistic",
+        "_comment": "cdif:statistics - a dataset reports statistical summaries as Statistics bundles ...",
+        "targetAssociationName": "Dataset_statistics_Statistics",
         "subjectClass": "Dataset",
-        "objectClass": "Statistic",
-        "_comment": "cdif:statistics - target class Statistic is the renamed DDI-CDI CategoryStatistic.",
-        "definition": "cdif:statistics - statistical summaries reported on the dataset.",
+        "objectClass": "Statistics",
+        "definition": "cdif:statistics - Statistics bundles (one or more Statistic value objects) reported on the dataset.",
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
+        }
+      },
+      {
+        "_comment": "cdif:statistics - ... or as StatisticsCollections grouping several Statistics nodes.",
+        "targetAssociationName": "Dataset_statistics_StatisticsCollection",
+        "subjectClass": "Dataset",
+        "objectClass": "StatisticsCollection",
+        "definition": "cdif:statistics - StatisticsCollections grouping several Statistics nodes reported on the dataset.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
+      },
+      {
+        "targetAssociationName": "Statistics_appliesTo_InstanceVariable",
+        "subjectClass": "Statistics",
+        "objectClass": "InstanceVariable",
+        "definition": "cdif:appliesTo - the InstanceVariable(s) this Statistics bundle summarizes.",
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "*"
+        }
+      },
+      {
+        "targetAssociationName": "Statistics_hasWeight_InstanceVariable",
+        "subjectClass": "Statistics",
+        "objectClass": "InstanceVariable",
+        "definition": "cdi:hasWeight - the InstanceVariable whose values were used as weights when computing the statistics.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "Statistics_has_CategoryStatistics",
+        "subjectClass": "Statistics",
+        "objectClass": "CategoryStatistics",
+        "definition": "cdif:has_CategoryStatistics - CategoryStatistics entries breaking this Statistics bundle down by Category.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
+      },
+      {
+        "targetAssociationName": "CategoryStatistics_for_Category",
+        "subjectClass": "CategoryStatistics",
+        "objectClass": "Category",
+        "definition": "cdi:for - the Category this CategoryStatistics is for.",
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "CategoryStatistics_hasWeight_InstanceVariable",
+        "subjectClass": "CategoryStatistics",
+        "objectClass": "InstanceVariable",
+        "definition": "cdi:hasWeight - the InstanceVariable whose values were used as weights.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "StatisticsCollection_has_Statistics",
+        "subjectClass": "StatisticsCollection",
+        "objectClass": "Statistics",
+        "definition": "cdif:has_Statistics - the Statistics nodes carried by this collection.",
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "*"
+        }
+      },
+      {
+        "targetAssociationName": "StatisticsCollection_indexedBy_InstanceVariable",
+        "subjectClass": "StatisticsCollection",
+        "objectClass": "InstanceVariable",
+        "definition": "cdif:indexedBy - the InstanceVariable(s) the contained Statistics index.",
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "*"
+        }
+      },
+      {
+        "targetAssociationName": "StatisticsCollection_hasWeight_InstanceVariable",
+        "subjectClass": "StatisticsCollection",
+        "objectClass": "InstanceVariable",
+        "definition": "cdi:hasWeight - the InstanceVariable whose values were used as weights.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "InstanceVariable_isDescribedBy_StatisticsCollection",
+        "subjectClass": "InstanceVariable",
+        "objectClass": "StatisticsCollection",
+        "definition": "cdif:isDescribedBy_StatisticsCollection - the StatisticsCollection holding summary / category statistics for this InstanceVariable.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "InstanceVariable_qualifies_InstanceVariable",
+        "subjectClass": "InstanceVariable",
+        "objectClass": "InstanceVariable",
+        "definition": "cdi:qualifies - reference to another instance variable that this variable qualifies.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
         }
       },
       {
