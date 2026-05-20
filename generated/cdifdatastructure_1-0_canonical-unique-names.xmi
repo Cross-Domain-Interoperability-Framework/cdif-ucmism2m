@@ -1445,6 +1445,36 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>unitOfMeasureKind</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom"/>
+                     <body>cdi:takesSubstantiveValuesFrom - the substantive value domain (the set of valid, meaningful values) for this variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>takesSubstantiveValuesFrom</name>
+                  <type xmi:idref="CDIFDataStructure.SubstantiveValueDomain"/>
+                  <association xmi:idref="CDIFDataStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-takesSentinelValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-takesSentinelValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-takesSentinelValuesFrom"/>
+                     <body>cdi:takesSentinelValuesFrom - the sentinel (missing / not-applicable) value domain(s) for this variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-takesSentinelValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-takesSentinelValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>takesSentinelValuesFrom</name>
+                  <type xmi:idref="CDIFDataStructure.SentinelValueDomain"/>
+                  <association xmi:idref="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-ownedComment" xmi:type="uml:Comment">
@@ -1493,6 +1523,17 @@ An example would be age categories. Five-year age categories can be collapsed in
                   </upperValue>
                   <name>recommendedDataType</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesValuesFrom" xmi:type="uml:Property">
+                  <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesValuesFrom-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>takesValuesFrom</name>
+                  <type xmi:idref="CDIFDataStructure.EnumerationDomain"/>
+                  <association xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.SentinelValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain" xmi:type="uml:Class">
@@ -1558,6 +1599,17 @@ An example would be age categories. Five-year age categories can be collapsed in
                   </upperValue>
                   <name>recommendedDataType</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesValuesFrom" xmi:type="uml:Property">
+                  <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesValuesFrom-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>takesValuesFrom</name>
+                  <type xmi:idref="CDIFDataStructure.EnumerationDomain"/>
+                  <association xmi:idref="CDIFDataStructure.SentinelValueDomain_takesValuesFrom_EnumerationDomain"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.DescriptorValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorValueDomain" xmi:type="uml:Class">
@@ -1983,6 +2035,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>checksum</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-hasPhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-hasPhysicalMapping" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-hasPhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-hasPhysicalMapping-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-hasPhysicalMapping"/>
+                     <body>cdif:hasPhysicalMapping - per-field physical mappings linking the variables measured by this distribution to their physical representation in the file.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-hasPhysicalMapping-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-hasPhysicalMapping-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.DataDownload-hasPhysicalMapping-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-hasPhysicalMapping-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasPhysicalMapping</name>
+                  <type xmi:idref="CDIFDataStructure.PhysicalMapping"/>
+                  <association xmi:idref="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-identifier"/>
@@ -2073,6 +2140,182 @@ An example would be age categories. Five-year age categories can be collapsed in
                   </upperValue>
                   <name>typeOfStatistic</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.PhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping"/>
+                  <body>Per-field physical mapping linking a variable measured by a distribution to its physical representation in the file - column index, format, physical data type, length, null sequence, etc. (cdif:hasPhysicalMapping items).</body>
+               </ownedComment>
+               <name>PhysicalMapping</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-index" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-index" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-index-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-index-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-index"/>
+                     <body>cdif:index - non-negative integer that orders the fields in the data structure (column number).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-index-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-index-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-index-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-index-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>index</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-format" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-format" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-format-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-format-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-format"/>
+                     <body>cdif:format - format for a number expressed as a string, or a date format such as YYYY/MM or MM-DD-YY.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-format-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-format-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-format-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-format-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>format</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-physicalDataType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-physicalDataType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-physicalDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-physicalDataType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-physicalDataType"/>
+                     <body>cdif:physicalDataType - physical data type of the column, expressed as a string.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-physicalDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-physicalDataType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-physicalDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-physicalDataType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>physicalDataType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-length" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-length" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-length-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-length-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-length"/>
+                     <body>cdi:length - the column width if the tabular text is fixed width.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-length-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-length-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-length-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-length-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>length</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-nullSequence" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-nullSequence" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-nullSequence-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-nullSequence-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-nullSequence"/>
+                     <body>cdi:nullSequence - the value used as the null annotation for the described column.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-nullSequence-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-nullSequence-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-nullSequence-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-nullSequence-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>nullSequence</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-defaultValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-defaultValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-defaultValue-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-defaultValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-defaultValue"/>
+                     <body>cdi:defaultValue - default string to substitute for an empty string.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-defaultValue-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-defaultValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-defaultValue-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-defaultValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>defaultValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-scale" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-scale" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-scale-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-scale-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-scale"/>
+                     <body>cdi:scale - scale of the numeric value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-scale-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-scale-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-scale-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-scale-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>scale</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-decimalPositions" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-decimalPositions" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-decimalPositions-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-decimalPositions-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-decimalPositions"/>
+                     <body>cdi:decimalPositions - number of decimal positions.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-decimalPositions-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-decimalPositions-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-decimalPositions-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-decimalPositions-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>decimalPositions</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-minimumLength" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-minimumLength" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-minimumLength-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-minimumLength-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-minimumLength"/>
+                     <body>cdi:minimumLength - minimum length of the column value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-minimumLength-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-minimumLength-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-minimumLength-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-minimumLength-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>minimumLength</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-maximumLength" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-maximumLength" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-maximumLength-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-maximumLength-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-maximumLength"/>
+                     <body>cdi:maximumLength - maximum length of the column value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-maximumLength-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-maximumLength-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-maximumLength-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-maximumLength-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>maximumLength</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-isRequired" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-isRequired" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-isRequired-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-isRequired-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-isRequired"/>
+                     <body>cdi:isRequired - whether a value is required for this column.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-isRequired-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-isRequired-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-isRequired-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-isRequired-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isRequired</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Boolean"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalMapping-formats" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-formats" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PhysicalMapping-formats-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-formats-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalMapping-formats"/>
+                     <body>cdif:formats_InstanceVariable - reference to the variable defined in schema:variableMeasured that this physical mapping formats.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PhysicalMapping-formats-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-formats-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PhysicalMapping-formats-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping-formats-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>formats</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.Concept" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Concept" xmi:type="uml:Class">
@@ -4113,6 +4356,42 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:type="uml:Association">
+            <name>InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain</name>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-takesSubstantiveValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain-SubstantiveValueDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain-SubstantiveValueDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.SubstantiveValueDomain"/>
+               <association xmi:idref="CDIFDataStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain-SubstantiveValueDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain" xmi:type="uml:Association">
+            <name>InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain</name>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-takesSentinelValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.SentinelValueDomain"/>
+               <association xmi:idref="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain_takesValuesFrom_EnumerationDomain" xmi:type="uml:Association">
+            <name>SubstantiveValueDomain_takesValuesFrom_EnumerationDomain</name>
+            <memberEnd xmi:idref="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.EnumerationDomain"/>
+               <association xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.SentinelValueDomain_takesValuesFrom_EnumerationDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain_takesValuesFrom_EnumerationDomain" xmi:type="uml:Association">
+            <name>SentinelValueDomain_takesValuesFrom_EnumerationDomain</name>
+            <memberEnd xmi:idref="CDIFDataStructure.SentinelValueDomain-takesValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataStructure.SentinelValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.EnumerationDomain"/>
+               <association xmi:idref="CDIFDataStructure.SentinelValueDomain_takesValuesFrom_EnumerationDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.SentinelValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.VariableMeasured_describes_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured_describes_InstanceVariable" xmi:type="uml:Association">
             <name>VariableMeasured_describes_InstanceVariable</name>
             <memberEnd xmi:idref="CDIFDataStructure.VariableMeasured-describes"/>
@@ -4121,6 +4400,24 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.VariableMeasured_describes_InstanceVariable"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.VariableMeasured_describes_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload_hasPhysicalMapping_PhysicalMapping" xmi:type="uml:Association">
+            <name>DataDownload_hasPhysicalMapping_PhysicalMapping</name>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-hasPhysicalMapping"/>
+            <ownedEnd xmi:id="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping-PhysicalMappingEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload_hasPhysicalMapping_PhysicalMapping-PhysicalMappingEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.PhysicalMapping"/>
+               <association xmi:idref="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping-PhysicalMappingEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping_formats_InstanceVariable" xmi:type="uml:Association">
+            <name>PhysicalMapping_formats_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.PhysicalMapping-formats"/>
+            <ownedEnd xmi:id="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
             <name>Dataset_variableMeasured_VariableMeasured</name>

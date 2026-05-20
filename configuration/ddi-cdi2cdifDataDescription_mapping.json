@@ -48,6 +48,11 @@
       "definition": "Statistic and CategoryStatistic for cdif:statistics."
     },
     {
+      "name": "ValueDomains",
+      "parent": "CDIFDataDescription",
+      "definition": "SubstantiveValueDomain, SentinelValueDomain and EnumerationDomain for the value domains an InstanceVariable draws its values from (cdifProperties/cdifValueDomain)."
+    },
+    {
       "name": "Support",
       "parent": "CDIFDataDescription",
       "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
@@ -237,6 +242,102 @@
         "targetClass": "Statistic"
       },
       {
+        "_comment": "SubstantiveValueDomain - the set of valid, meaningful values for a variable (cdi:takesSubstantiveValuesFrom). From cdifProperties/cdifValueDomain. At the Data Description level value domains attach to the InstanceVariable directly; at the Data Structure level they attach to the RepresentedVariable instead. Mapped 1:1 from DDI-CDI.",
+        "mappingType": "map",
+        "sourceClass": "SubstantiveValueDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SubstantiveValueDomain"
+      },
+      {
+        "_comment": "SentinelValueDomain - missing / not-applicable value codes for a variable (cdi:takesSentinelValuesFrom). From cdifProperties/cdifValueDomain. Mapped 1:1 from DDI-CDI.",
+        "mappingType": "map",
+        "sourceClass": "SentinelValueDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SentinelValueDomain"
+      },
+      {
+        "_comment": "EnumerationDomain - the enumerated set of codes a value domain draws from (cdif:takesValuesFrom). From cdifProperties/cdifEnumerationDomain. Mapped 1:1 from DDI-CDI.",
+        "mappingType": "map",
+        "sourceClass": "EnumerationDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "EnumerationDomain"
+      },
+      {
+        "_comment": "PhysicalMapping - per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifProperties/cdifPhysicalMapping. mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta (DDI-CDI splits this across ValueMapping / PhysicalSegmentLayout); CDIF flattens it.",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "PhysicalMapping",
+        "definition": "Per-field physical mapping linking a variable measured by a distribution to its physical representation in the file - column index, format, physical data type, length, null sequence, etc. (cdif:hasPhysicalMapping items).",
+        "attribute": [
+          {
+            "name": "index",
+            "dataType": "Integer",
+            "definition": "cdif:index - non-negative integer that orders the fields in the data structure (column number).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "format",
+            "dataType": "String",
+            "definition": "cdif:format - format for a number expressed as a string, or a date format such as YYYY/MM or MM-DD-YY.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "physicalDataType",
+            "dataType": "String",
+            "definition": "cdif:physicalDataType - physical data type of the column, expressed as a string.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "length",
+            "dataType": "Integer",
+            "definition": "cdi:length - the column width if the tabular text is fixed width.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "nullSequence",
+            "dataType": "String",
+            "definition": "cdi:nullSequence - the value used as the null annotation for the described column.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "defaultValue",
+            "dataType": "String",
+            "definition": "cdi:defaultValue - default string to substitute for an empty string.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "scale",
+            "dataType": "Integer",
+            "definition": "cdi:scale - scale of the numeric value.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "decimalPositions",
+            "dataType": "Integer",
+            "definition": "cdi:decimalPositions - number of decimal positions.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "minimumLength",
+            "dataType": "Integer",
+            "definition": "cdi:minimumLength - minimum length of the column value.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "maximumLength",
+            "dataType": "Integer",
+            "definition": "cdi:maximumLength - maximum length of the column value.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "isRequired",
+            "dataType": "Boolean",
+            "definition": "cdi:isRequired - whether a value is required for this column.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
         "_comment": "skos:Concept stub. Local target class so attributes typed as 'Concept' (e.g. InstanceVariable.physicalDataType) resolve inside this profile. The canonical SKOS Concept definition lives in the CDIFCodelist profile; cross-profile HTML links point readers there. DDI-CDI's PairedControlledVocabularyEntry / ControlledVocabularyEntry are implemented across CDIF profiles as references to skos:Concept.",
         "mappingType": "new",
         "sourceClass": "ControlledVocabularyEntry",
@@ -410,6 +511,68 @@
         "objectClassMultiplicity": {
           "lower": "1",
           "upper": "*"
+        }
+      },
+      {
+        "_comment": "cdi:takesSubstantiveValuesFrom. DDI-CDI carries this on RepresentedVariable; at the Data Description profile level CDIF attaches the value domain to the InstanceVariable directly, so this is declared as a new association (no DDI-CDI source association from InstanceVariable).",
+        "targetAssociationName": "InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain",
+        "subjectClass": "InstanceVariable",
+        "objectClass": "SubstantiveValueDomain",
+        "definition": "cdi:takesSubstantiveValuesFrom - the substantive value domain (the set of valid, meaningful values) for this variable.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "_comment": "cdi:takesSentinelValuesFrom. As above, attached to InstanceVariable at the Data Description level; declared as a new association.",
+        "targetAssociationName": "InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain",
+        "subjectClass": "InstanceVariable",
+        "objectClass": "SentinelValueDomain",
+        "definition": "cdi:takesSentinelValuesFrom - the sentinel (missing / not-applicable) value domain(s) for this variable.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
+      },
+      {
+        "_comment": "cdif:takesValuesFrom - a substantive value domain draws its values from an enumerated set. Mapped 1:1 from the DDI-CDI source association.",
+        "sourceAssociationName": "SubstantiveValueDomain_takesValuesFrom_EnumerationDomain",
+        "targetAssociationName": "SubstantiveValueDomain_takesValuesFrom_EnumerationDomain",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "_comment": "cdif:takesValuesFrom - a sentinel value domain draws its values from an enumerated set. Mapped 1:1 from the DDI-CDI source association.",
+        "sourceAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
+        "targetAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "_comment": "cdif:hasPhysicalMapping - per-field physical mappings for a DataDownload distribution typed as a physical data set. New association (CDIF flattening; no DDI-CDI source association).",
+        "targetAssociationName": "DataDownload_hasPhysicalMapping_PhysicalMapping",
+        "subjectClass": "DataDownload",
+        "objectClass": "PhysicalMapping",
+        "definition": "cdif:hasPhysicalMapping - per-field physical mappings linking the variables measured by this distribution to their physical representation in the file.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
+      },
+      {
+        "_comment": "cdif:formats_InstanceVariable - the variable in schema:variableMeasured that this physical mapping formats. New association (CDIF flattening of DDI-CDI ValueMapping_formats_DataPoint / InstanceVariable_has_ValueMapping).",
+        "targetAssociationName": "PhysicalMapping_formats_InstanceVariable",
+        "subjectClass": "PhysicalMapping",
+        "objectClass": "InstanceVariable",
+        "definition": "cdif:formats_InstanceVariable - reference to the variable defined in schema:variableMeasured that this physical mapping formats.",
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "1"
         }
       }
     ]
