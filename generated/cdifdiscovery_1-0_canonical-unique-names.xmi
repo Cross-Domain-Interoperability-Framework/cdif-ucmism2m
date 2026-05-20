@@ -434,8 +434,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                      <value>*</value>
                   </upperValue>
                   <name>hasQualityMeasurement</name>
-                  <type xmi:idref="CDIFDiscovery.QualityMeasure"/>
-                  <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure"/>
+                  <type xmi:idref="CDIFDiscovery.QualityMeasurement"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDiscovery.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-distribution" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
@@ -692,6 +692,34 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>describedUnitOfMeasure</name>
                   <type xmi:idref="CDIFDiscovery.Concept"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-minValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-minValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-minValue-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-minValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-minValue"/>
+                     <body>schema:minValue - lower value of the measured variable's range.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-minValue-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-minValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-minValue-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-minValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>minValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-maxValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-maxValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-maxValue-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-maxValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-maxValue"/>
+                     <body>schema:maxValue - upper value of the measured variable's range.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-maxValue-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-maxValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-maxValue-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-maxValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>maxValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDiscovery.SpatialExtent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-ownedComment" xmi:type="uml:Comment">
@@ -727,6 +755,34 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>identifier</name>
                   <type xmi:idref="CDIFDiscovery.Identifier"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.SpatialExtent-additionalType" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-additionalType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-additionalType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent-additionalType"/>
+                     <body>schema:additionalType - domain-specific type classification(s) for this place.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.SpatialExtent-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.SpatialExtent-additionalType-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-additionalType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>additionalType</name>
+                  <type xmi:idref="CDIFDiscovery.DefinedTerm"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.SpatialExtent-alternateName" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-alternateName" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-alternateName-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-alternateName-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent-alternateName"/>
+                     <body>schema:alternateName - alternate or abbreviated name(s) for this place.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.SpatialExtent-alternateName-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-alternateName-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.SpatialExtent-alternateName-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-alternateName-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>alternateName</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDiscovery.SpatialExtent-geo" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-geo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-geo-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-geo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent-geo"/>
@@ -741,6 +797,21 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>geo</name>
                   <type xmi:idref="CDIFDiscovery.AbstractGeometry"/>
                   <association xmi:idref="CDIFDiscovery.SpatialExtent_geo_AbstractGeometry"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.SpatialExtent-hasGeometry" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-hasGeometry" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-hasGeometry-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-hasGeometry-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent-hasGeometry"/>
+                     <body>geosparql:hasGeometry - an exact (WKT) geometry for this spatial extent.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.SpatialExtent-hasGeometry-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-hasGeometry-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.SpatialExtent-hasGeometry-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-hasGeometry-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasGeometry</name>
+                  <type xmi:idref="CDIFDiscovery.Geometry"/>
+                  <association xmi:idref="CDIFDiscovery.SpatialExtent_hasGeometry_Geometry"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDiscovery.AbstractGeometry" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#AbstractGeometry" xmi:type="uml:Class" isAbstract="true">
@@ -913,13 +984,13 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFDiscovery.TemporalExtent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent"/>
-                  <body>schema:temporalCoverage payload - the temporal extent of the resource as an ISO 8601 interval (start/end or duration).</body>
+                  <body>schema:temporalCoverage payload - the temporal extent of the resource as a time:ProperInterval (named-era or numeric-age bounds) or a simple ISO 8601 interval string.</body>
                </ownedComment>
                <name>TemporalExtent</name>
                <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-startDate" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-startDate-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-startDate"/>
-                     <body>Start of the temporal coverage.</body>
+                     <body>Start of the temporal coverage (simple ISO 8601 form).</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-startDate-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -933,7 +1004,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-endDate" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-endDate-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-endDate"/>
-                     <body>End of the temporal coverage.</body>
+                     <body>End of the temporal coverage (simple ISO 8601 form).</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-endDate-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -958,64 +1029,242 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <name>duration</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="CDIFDiscovery.QualityMeasure" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure" xmi:type="uml:Class">
-               <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure"/>
-                  <body>dqv:QualityMeasurement - a single quality measurement reported on the resource (e.g. completeness, accuracy, timeliness) per the W3C Data Quality Vocabulary.</body>
-               </ownedComment>
-               <name>QualityMeasure</name>
-               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasure-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure-identifier"/>
-                     <body>@id - URI for this measurement.</body>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-description" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-description-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-description"/>
+                     <body>schema:description - free-text description of the temporal interval.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasure-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-description-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-description-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDiscovery.QualityMeasure-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-description-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-intervalStartedBy" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalStartedBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-intervalStartedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalStartedBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-intervalStartedBy"/>
+                     <body>time:intervalStartedBy - identifier for a named time ordinal era that is the older bound of the interval (e.g. a geologic age).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-intervalStartedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalStartedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-intervalStartedBy-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalStartedBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>intervalStartedBy</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-intervalFinishedBy" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalFinishedBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-intervalFinishedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalFinishedBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-intervalFinishedBy"/>
+                     <body>time:intervalFinishedBy - identifier for a named time ordinal era that is the younger bound of the interval.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-intervalFinishedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalFinishedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-intervalFinishedBy-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-intervalFinishedBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>intervalFinishedBy</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-hasBeginning" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasBeginning" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-hasBeginning-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasBeginning-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-hasBeginning"/>
+                     <body>time:hasBeginning - the beginning instant of the interval (numeric-age form).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-hasBeginning-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasBeginning-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-hasBeginning-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasBeginning-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasBeginning</name>
+                  <type xmi:idref="CDIFDiscovery.Instant"/>
+                  <association xmi:idref="CDIFDiscovery.TemporalExtent_hasBeginning_Instant"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-hasEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasEnd" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-hasEnd-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasEnd-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-hasEnd"/>
+                     <body>time:hasEnd - the end instant of the interval (numeric-age form).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-hasEnd-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasEnd-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-hasEnd-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-hasEnd-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasEnd</name>
+                  <type xmi:idref="CDIFDiscovery.Instant"/>
+                  <association xmi:idref="CDIFDiscovery.TemporalExtent_hasEnd_Instant"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.Instant" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.Instant-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.Instant"/>
+                  <body>time:Instant - a temporal instant used as the beginning or end bound of a TemporalExtent (time:ProperInterval).</body>
+               </ownedComment>
+               <name>Instant</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.Instant-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Instant-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Instant-identifier"/>
+                     <body>@id - identifier for this instant.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Instant-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Instant-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Instant-inTimePosition" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-inTimePosition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Instant-inTimePosition-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-inTimePosition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Instant-inTimePosition"/>
+                     <body>time:inTimePosition - the numeric temporal position of this instant.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Instant-inTimePosition-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-inTimePosition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Instant-inTimePosition-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant-inTimePosition-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>inTimePosition</name>
+                  <type xmi:idref="CDIFDiscovery.TimePosition"/>
+                  <association xmi:idref="CDIFDiscovery.Instant_inTimePosition_TimePosition"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.TimePosition" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.TimePosition-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.TimePosition"/>
+                  <body>time:TimePosition - a numeric temporal position expressed against a temporal reference system (e.g. millions of years before present).</body>
+               </ownedComment>
+               <name>TimePosition</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.TimePosition-hasTRS" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-hasTRS" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TimePosition-hasTRS-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-hasTRS-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TimePosition-hasTRS"/>
+                     <body>time:hasTRS - identifier for the temporal reference system (default: chronometric geologic time).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TimePosition-hasTRS-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-hasTRS-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TimePosition-hasTRS-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-hasTRS-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasTRS</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.TimePosition-numericPosition" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-numericPosition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TimePosition-numericPosition-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-numericPosition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TimePosition-numericPosition"/>
+                     <body>time:numericPosition - the numeric position in the temporal reference system.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TimePosition-numericPosition-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-numericPosition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TimePosition-numericPosition-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TimePosition-numericPosition-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>numericPosition</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Real"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.Geometry" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.Geometry-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.Geometry"/>
+                  <body>geosparql Geometry (OGC Simple Feature) - an exact geometry for the spatial extent, expressed as a WKT literal.</body>
+               </ownedComment>
+               <name>Geometry</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.Geometry-asWKT" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-asWKT" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Geometry-asWKT-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-asWKT-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Geometry-asWKT"/>
+                     <body>geosparql:asWKT - a WKT geometry literal, e.g. 'POINT(-76 -18)'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Geometry-asWKT-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-asWKT-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Geometry-asWKT-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-asWKT-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>asWKT</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Geometry-crs" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-crs" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Geometry-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-crs-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Geometry-crs"/>
+                     <body>geosparql:crs - identifier for the coordinate reference system (e.g. CRS84).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Geometry-crs-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-crs-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Geometry-crs-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Geometry-crs-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>crs</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.QualityMeasurement" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.QualityMeasurement-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasurement"/>
+                  <body>dqv:QualityMeasurement - a single quality measurement reported on the resource (e.g. completeness, accuracy, timeliness) per the W3C Data Quality Vocabulary.</body>
+               </ownedComment>
+               <name>QualityMeasurement</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasurement-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasurement-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasurement-identifier"/>
+                     <body>@id - URI for this measurement.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasurement-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.QualityMeasurement-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-identifier-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>identifier</name>
                   <type xmi:idref="CDIFDiscovery.Identifier"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasure-metric" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-metric-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure-metric"/>
+               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasurement-isMeasurementOf" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-isMeasurementOf" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasurement-isMeasurementOf-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-isMeasurementOf-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasurement-isMeasurementOf"/>
                      <body>dqv:isMeasurementOf - URI of the quality metric being reported.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasure-metric-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasurement-isMeasurementOf-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-isMeasurementOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDiscovery.QualityMeasure-metric-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDiscovery.QualityMeasurement-isMeasurementOf-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-isMeasurementOf-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
-                  <name>metric</name>
+                  <name>isMeasurementOf</name>
                   <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasure-value" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-value-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure-value"/>
+               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasurement-value" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasurement-value-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasurement-value"/>
                      <body>dqv:value - the measurement value (literal).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasure-value-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasurement-value-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-value-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDiscovery.QualityMeasure-value-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDiscovery.QualityMeasurement-value-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-value-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasure-unit" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-unit" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-unit-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-unit-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure-unit"/>
+               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasurement-unit" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-unit" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasurement-unit-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-unit-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasurement-unit"/>
                      <body>Optional unit of measure for the value.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasure-unit-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-unit-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasurement-unit-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-unit-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDiscovery.QualityMeasure-unit-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-unit-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDiscovery.QualityMeasurement-unit-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasurement-unit-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>unit</name>
@@ -2254,14 +2503,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDiscovery.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_hasQualityMeasurement_QualityMeasure" xmi:type="uml:Association">
-            <name>Dataset_hasQualityMeasurement_QualityMeasure</name>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_hasQualityMeasurement_QualityMeasurement" xmi:type="uml:Association">
+            <name>Dataset_hasQualityMeasurement_QualityMeasurement</name>
             <memberEnd xmi:idref="CDIFDiscovery.Dataset-hasQualityMeasurement"/>
-            <ownedEnd xmi:id="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDiscovery.QualityMeasure"/>
-               <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.QualityMeasurement"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement"/>
             </ownedEnd>
-            <memberEnd xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd"/>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDiscovery.Dataset_distribution_AbstractDistribution" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_distribution_AbstractDistribution" xmi:type="uml:Association">
             <name>Dataset_distribution_AbstractDistribution</name>
@@ -2361,6 +2610,42 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <association xmi:idref="CDIFDiscovery.SpatialExtent_geo_AbstractGeometry"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDiscovery.SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.SpatialExtent_hasGeometry_Geometry" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent_hasGeometry_Geometry" xmi:type="uml:Association">
+            <name>SpatialExtent_hasGeometry_Geometry</name>
+            <memberEnd xmi:idref="CDIFDiscovery.SpatialExtent-hasGeometry"/>
+            <ownedEnd xmi:id="CDIFDiscovery.SpatialExtent_hasGeometry_Geometry-GeometryEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent_hasGeometry_Geometry-GeometryEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.Geometry"/>
+               <association xmi:idref="CDIFDiscovery.SpatialExtent_hasGeometry_Geometry"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.SpatialExtent_hasGeometry_Geometry-GeometryEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.TemporalExtent_hasBeginning_Instant" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent_hasBeginning_Instant" xmi:type="uml:Association">
+            <name>TemporalExtent_hasBeginning_Instant</name>
+            <memberEnd xmi:idref="CDIFDiscovery.TemporalExtent-hasBeginning"/>
+            <ownedEnd xmi:id="CDIFDiscovery.TemporalExtent_hasBeginning_Instant-InstantEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent_hasBeginning_Instant-InstantEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.Instant"/>
+               <association xmi:idref="CDIFDiscovery.TemporalExtent_hasBeginning_Instant"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.TemporalExtent_hasBeginning_Instant-InstantEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.TemporalExtent_hasEnd_Instant" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent_hasEnd_Instant" xmi:type="uml:Association">
+            <name>TemporalExtent_hasEnd_Instant</name>
+            <memberEnd xmi:idref="CDIFDiscovery.TemporalExtent-hasEnd"/>
+            <ownedEnd xmi:id="CDIFDiscovery.TemporalExtent_hasEnd_Instant-InstantEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent_hasEnd_Instant-InstantEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.Instant"/>
+               <association xmi:idref="CDIFDiscovery.TemporalExtent_hasEnd_Instant"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.TemporalExtent_hasEnd_Instant-InstantEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Instant_inTimePosition_TimePosition" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant_inTimePosition_TimePosition" xmi:type="uml:Association">
+            <name>Instant_inTimePosition_TimePosition</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Instant-inTimePosition"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Instant_inTimePosition_TimePosition-TimePositionEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Instant_inTimePosition_TimePosition-TimePositionEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.TimePosition"/>
+               <association xmi:idref="CDIFDiscovery.Instant_inTimePosition_TimePosition"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Instant_inTimePosition_TimePosition-TimePositionEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDiscovery.Contributor_agent_Agent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Contributor_agent_Agent" xmi:type="uml:Association">
             <name>Contributor_agent_Agent</name>

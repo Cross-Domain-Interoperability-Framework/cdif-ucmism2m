@@ -103,7 +103,9 @@ UNION_POLICY = {
 # Known naming differences between schema local-name and the UML class name,
 # so they aren't reported as false-positive gaps.
 ALIASES = {
-    "activity": "provactivity",   # prov:Activity ~ ProvActivity
+    "activity": "provactivity",       # prov:Activity ~ ProvActivity
+    "place": "spatialextent",         # schema:Place wrapper ~ SpatialExtent
+    "properinterval": "temporalextent",  # time:ProperInterval ~ TemporalExtent
 }
 
 

@@ -35,7 +35,7 @@
     {
       "name": "Coverage",
       "parent": "CDIFDiscovery",
-      "definition": "Spatial and temporal extent classes."
+      "definition": "Spatial and temporal extent classes: SpatialExtent + AbstractGeometry/GeoCoordinates/GeoShape/Geometry; TemporalExtent + Instant/TimePosition."
     },
     {
       "name": "Quality",
@@ -140,6 +140,18 @@
               "lower": "0",
               "upper": "1"
             }
+          },
+          {
+            "name": "minValue",
+            "dataType": "String",
+            "definition": "schema:minValue - lower value of the measured variable's range.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "maxValue",
+            "dataType": "String",
+            "definition": "schema:maxValue - upper value of the measured variable's range.",
+            "multiplicity": { "lower": "0", "upper": "1" }
           }
         ],
         "sssom": {
@@ -173,6 +185,18 @@
               "lower": "0",
               "upper": "1"
             }
+          },
+          {
+            "name": "additionalType",
+            "dataType": "DefinedTerm",
+            "definition": "schema:additionalType - domain-specific type classification(s) for this place.",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "alternateName",
+            "dataType": "String",
+            "definition": "schema:alternateName - alternate or abbreviated name(s) for this place.",
+            "multiplicity": { "lower": "0", "upper": "*" }
           }
         ]
       },
@@ -290,16 +314,16 @@
         ]
       },
       {
-        "_comment": "TemporalExtent. DDI-CDI's DateRange is a DataType (not a Class), so no sourceClass; SSSOM records the relation.",
+        "_comment": "TemporalExtent represents the schema:temporalCoverage payload, i.e. a time:ProperInterval (or a simple ISO 8601 string). Carries both the simple string form (startDate/endDate/duration) and the OWL-Time structured forms: named-era bounds (intervalStartedBy/intervalFinishedBy) and numeric-age bounds (hasBeginning/hasEnd -> Instant -> TimePosition).",
         "mappingType": "new",
         "targetPackage": "Coverage",
         "targetClass": "TemporalExtent",
-        "definition": "schema:temporalCoverage payload - the temporal extent of the resource as an ISO 8601 interval (start/end or duration).",
+        "definition": "schema:temporalCoverage payload - the temporal extent of the resource as a time:ProperInterval (named-era or numeric-age bounds) or a simple ISO 8601 interval string.",
         "attribute": [
           {
             "name": "startDate",
             "dataType": "XsdDate",
-            "definition": "Start of the temporal coverage.",
+            "definition": "Start of the temporal coverage (simple ISO 8601 form).",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -308,7 +332,7 @@
           {
             "name": "endDate",
             "dataType": "XsdDate",
-            "definition": "End of the temporal coverage.",
+            "definition": "End of the temporal coverage (simple ISO 8601 form).",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -322,6 +346,24 @@
               "lower": "0",
               "upper": "1"
             }
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - free-text description of the temporal interval.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "intervalStartedBy",
+            "dataType": "XsdAnyUri",
+            "definition": "time:intervalStartedBy - identifier for a named time ordinal era that is the older bound of the interval (e.g. a geologic age).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "intervalFinishedBy",
+            "dataType": "XsdAnyUri",
+            "definition": "time:intervalFinishedBy - identifier for a named time ordinal era that is the younger bound of the interval.",
+            "multiplicity": { "lower": "0", "upper": "1" }
           }
         ],
         "sssom": {
@@ -332,10 +374,67 @@
         }
       },
       {
-        "_comment": "QualityMeasure (DQV). No direct DDI-CDI counterpart at this level (Statistic is closer to actual statistical results than quality assertions).",
+        "_comment": "time:Instant - an instant bounding a ProperInterval (numeric-age form). Carries a TimePosition via inTimePosition. From schemaorgProperties/temporalExtent.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "Instant",
+        "definition": "time:Instant - a temporal instant used as the beginning or end bound of a TemporalExtent (time:ProperInterval).",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - identifier for this instant.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "time:TimePosition - a numeric temporal position with a temporal reference system (TRS). From schemaorgProperties/temporalExtent.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "TimePosition",
+        "definition": "time:TimePosition - a numeric temporal position expressed against a temporal reference system (e.g. millions of years before present).",
+        "attribute": [
+          {
+            "name": "hasTRS",
+            "dataType": "XsdAnyUri",
+            "definition": "time:hasTRS - identifier for the temporal reference system (default: chronometric geologic time).",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          {
+            "name": "numericPosition",
+            "dataType": "Real",
+            "definition": "time:numericPosition - the numeric position in the temporal reference system.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "geosparql Geometry (sf SimpleFeature) - WKT geometry attached to a SpatialExtent via geosparql:hasGeometry, distinct from the schema:geo point/box/line forms (AbstractGeometry). From schemaorgProperties/spatialExtent.",
+        "mappingType": "new",
+        "targetPackage": "Coverage",
+        "targetClass": "Geometry",
+        "definition": "geosparql Geometry (OGC Simple Feature) - an exact geometry for the spatial extent, expressed as a WKT literal.",
+        "attribute": [
+          {
+            "name": "asWKT",
+            "dataType": "String",
+            "definition": "geosparql:asWKT - a WKT geometry literal, e.g. 'POINT(-76 -18)'.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "crs",
+            "dataType": "XsdAnyUri",
+            "definition": "geosparql:crs - identifier for the coordinate reference system (e.g. CRS84).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "dqv:QualityMeasurement (DQV). No direct DDI-CDI counterpart at this level (Statistic is closer to actual statistical results than quality assertions).",
         "mappingType": "new",
         "targetPackage": "Quality",
-        "targetClass": "QualityMeasure",
+        "targetClass": "QualityMeasurement",
         "definition": "dqv:QualityMeasurement - a single quality measurement reported on the resource (e.g. completeness, accuracy, timeliness) per the W3C Data Quality Vocabulary.",
         "attribute": [
           {
@@ -348,7 +447,7 @@
             }
           },
           {
-            "name": "metric",
+            "name": "isMeasurementOf",
             "dataType": "XsdAnyUri",
             "definition": "dqv:isMeasurementOf - URI of the quality metric being reported.",
             "multiplicity": {
@@ -545,13 +644,53 @@
         }
       },
       {
-        "targetAssociationName": "Dataset_hasQualityMeasurement_QualityMeasure",
+        "targetAssociationName": "Dataset_hasQualityMeasurement_QualityMeasurement",
         "subjectClass": "Dataset",
-        "objectClass": "QualityMeasure",
+        "objectClass": "QualityMeasurement",
         "definition": "dqv:hasQualityMeasurement - quality measurements reported on the resource.",
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
+        }
+      },
+      {
+        "targetAssociationName": "SpatialExtent_hasGeometry_Geometry",
+        "subjectClass": "SpatialExtent",
+        "objectClass": "Geometry",
+        "definition": "geosparql:hasGeometry - an exact (WKT) geometry for this spatial extent.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "TemporalExtent_hasBeginning_Instant",
+        "subjectClass": "TemporalExtent",
+        "objectClass": "Instant",
+        "definition": "time:hasBeginning - the beginning instant of the interval (numeric-age form).",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "TemporalExtent_hasEnd_Instant",
+        "subjectClass": "TemporalExtent",
+        "objectClass": "Instant",
+        "definition": "time:hasEnd - the end instant of the interval (numeric-age form).",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "targetAssociationName": "Instant_inTimePosition_TimePosition",
+        "subjectClass": "Instant",
+        "objectClass": "TimePosition",
+        "definition": "time:inTimePosition - the numeric temporal position of this instant.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
         }
       }
     ]
