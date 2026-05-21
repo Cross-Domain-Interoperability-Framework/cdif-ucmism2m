@@ -8,7 +8,7 @@ Filenames follow the canonical pattern `<lower-acronym>_<major>-<minor>_canonica
 
 | File | Source configuration | Approx. size | Classes |
 |---|---|---:|---:|
-| `cdifcodelist_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifCodelist_mapping.json` | 84 KB | ConceptScheme, Concept (plus Identifier/Reference DataTypes and the XSD DataTypes) |
+| `cdifcodelist_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifCodelist_mapping.json` | 70 KB | ConceptScheme, Concept (plus Identifier/Reference DataTypes and the XSD DataTypes) |
 | `cdifcore_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifCore_mapping.json` | 172 KB | Dataset, Agent/Person/Organization, AbstractDistribution/DataDownload/WebAPI, Contributor, MonetaryGrant, ProvActivity, CatalogRecord, DefinedTerm, AdditionalProperty, DerivedFrom (Identifier and Reference are emitted as DataTypes) |
 | `cdifdiscovery_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifDiscovery_mapping.json` | 264 KB | Dataset, VariableMeasured, SpatialExtent, AbstractGeometry/GeoCoordinates/GeoShape/Geometry, TemporalExtent/Instant/TimePosition, QualityMeasurement (+ composed Core) |
 | `cdifdatadescription_1-0_canonical-unique-names.xmi` | `ddi-cdi2cdifDataDescription_mapping.json` | 412 KB | AbstractVariable (abstract parent of VariableMeasured + InstanceVariable), VariableMeasured, InstanceVariable, DataDownload, PrimaryKey, PrimaryKeyComponent, Statistic, Statistics, CategoryStatistics, StatisticsCollection, Category, SubstantiveValueDomain, SentinelValueDomain, EnumerationDomain, PhysicalMapping (+ composed Discovery/Core) |
