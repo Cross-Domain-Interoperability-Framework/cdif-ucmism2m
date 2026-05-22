@@ -3606,7 +3606,7 @@ An example would be age categories. Five-year age categories can be collapsed in
             <packagedElement xmi:id="CDIFDataStructure.DataDownload" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DataDownload-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DataDownload"/>
-                  <body>schema:DataDownload extended for the Data Description profile - adds character-set and file-size attributes required at this profile level. Composes with the core DataDownload at the model-composition step.</body>
+                  <body>schema:DataDownload extended for the Data Description profile - adds the character-set attribute and the per-field physical mappings (cdif:hasPhysicalMapping). File size is carried by the Core schema:contentSize attribute. Composes with the core DataDownload at the model-composition step.</body>
                </ownedComment>
                <name>DataDownload</name>
                <generalization xmi:id="CDIFDataStructure.DataDownload-generalization-AbstractDistribution" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-generalization-AbstractDistribution" xmi:type="uml:Generalization">
@@ -3624,34 +3624,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                      <value>1</value>
                   </upperValue>
                   <name>characterSet</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-fileSize" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSize" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-fileSize-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSize-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-fileSize"/>
-                     <body>cdi:fileSize - file size of this distribution as a number.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-fileSize-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSize-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataDownload-fileSize-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSize-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>fileSize</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-fileSizeUofM" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSizeUofM" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-fileSizeUofM-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSizeUofM-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-fileSizeUofM"/>
-                     <body>cdi:fileSizeUofM - unit of measure for fileSize (e.g. 'byte', 'KB', 'MB').</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-fileSizeUofM-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSizeUofM-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataDownload-fileSizeUofM-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-fileSizeUofM-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>fileSizeUofM</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-contentUrl" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-contentUrl" xmi:type="uml:Property">
