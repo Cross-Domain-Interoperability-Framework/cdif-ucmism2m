@@ -100,7 +100,6 @@ UNION_POLICY = {
     "languagetaggedvalue", "conceptref", "id-reference",
     # $def wrapper names emitted by the resolver (not real classes)
     "cdifinstancevariable", "cdifinstancevariable_definedterm", "cdifcodelistconcept",
-    "ddicdifdatatypes_identifier", "ddicdifdatatypes_reference",
     # WebAPI / schema.org Action service-description machinery (cdifOpenApi) -
     # deliberately NOT modelled in the UML (decision: keep the WebAPI class
     # itself but not the potentialAction/EntryPoint/PropertyValueSpecification tree)
@@ -259,6 +258,12 @@ def classify(orig: str, covered: set[str]) -> str:
         return "datatype"
     if prefix == "xsd" or n in DATATYPE_POLICY:
         return "datatype"
+    # $def wrappers the resolver emits for each BB's local id-reference / cdif:Reference
+    # serialization-shorthand defs (e.g. CdifRepresentedVariable_id-reference,
+    # CdifRepresentedVariable_Reference). The union-type policy collapses these to the
+    # canonical @id-ref / cdif:Reference type; they are never standalone UML classes.
+    if n.endswith("_id-reference") or n.endswith("_reference"):
+        return "union"
     if n in UNION_POLICY:
         return "union"
     return "gap"
