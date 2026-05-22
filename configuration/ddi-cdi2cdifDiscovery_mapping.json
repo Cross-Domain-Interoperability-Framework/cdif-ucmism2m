@@ -448,8 +448,8 @@
           },
           {
             "name": "isMeasurementOf",
-            "dataType": "XsdAnyUri",
-            "definition": "dqv:isMeasurementOf - URI of the quality metric being reported.",
+            "dataType": "DefinedTerm",
+            "definition": "dqv:isMeasurementOf - the quality measure being reported, given by name, by @id reference, or as a schema:DefinedTerm (string and @id-reference are JSON shorthands for the DefinedTerm).",
             "multiplicity": {
               "lower": "1",
               "upper": "1"
@@ -457,8 +457,8 @@
           },
           {
             "name": "value",
-            "dataType": "String",
-            "definition": "dqv:value - the measurement value (literal).",
+            "dataType": "DefinedTerm",
+            "definition": "dqv:value - the reported result of the quality measure, either as a string or a schema:DefinedTerm from a vocabulary (string is a JSON shorthand for the DefinedTerm).",
             "multiplicity": {
               "lower": "1",
               "upper": "1"

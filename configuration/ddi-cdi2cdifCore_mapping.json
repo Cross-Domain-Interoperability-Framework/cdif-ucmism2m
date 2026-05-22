@@ -210,12 +210,6 @@
             }
           },
           {
-            "name": "includedInDataCatalog",
-            "dataType": "Reference",
-            "definition": "schema:includedInDataCatalog - the data catalog the dataset is listed in (URI or labeled reference).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          },
-          {
             "name": "relatedLink",
             "dataType": "Reference",
             "definition": "schema:relatedLink - a related resource link.",
@@ -294,15 +288,6 @@
             }
           },
           {
-            "name": "url",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:url - URL to a landing page for this distribution if contentUrl is not direct.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
             "name": "encodingFormat",
             "dataType": "DefinedTerm",
             "definition": "schema:encodingFormat - MIME type or other media-type identifier.",
@@ -314,52 +299,25 @@
           {
             "name": "contentSize",
             "dataType": "String",
-            "definition": "schema:contentSize - byte size or human-readable size.",
+            "definition": "schema:contentSize - file size of this distribution (e.g. '2.5 MB' or a byte count).",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
-          },
-          {
-            "name": "dateModified",
-            "dataType": "XsdDate",
-            "definition": "schema:dateModified - last-modified date of this distribution.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "datePublished",
-            "dataType": "XsdDate",
-            "definition": "schema:datePublished - publication date of this distribution.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "license",
-            "dataType": "Reference",
-            "definition": "schema:license - license for this distribution (may differ from dataset-level).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "conditionsOfAccess",
-            "dataType": "Reference",
-            "definition": "schema:conditionsOfAccess - access conditions for this distribution.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
             }
           },
           {
             "name": "checksum",
             "dataType": "String",
             "definition": "spdx:checksum / schema:checksum - integrity hash for the bytes.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            }
+          },
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - @id of a standard or specification this distribution conforms to.",
             "multiplicity": {
               "lower": "0",
               "upper": "*"
@@ -392,15 +350,6 @@
             }
           },
           {
-            "name": "url",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:url - endpoint URL. Required for WebAPI distributions.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
             "name": "termsOfService",
             "dataType": "Reference",
             "definition": "schema:termsOfService - terms of service for using the API (URI or labeled reference).",
@@ -411,6 +360,12 @@
             "dataType": "String",
             "definition": "schema:serviceType - the type of the web API service.",
             "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "potentialAction",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:potentialAction - @id reference to a schema:Action that can be invoked via the API.",
+            "multiplicity": { "lower": "0", "upper": "*" }
           }
         ]
       },
@@ -450,7 +405,7 @@
         }
       },
       {
-        "_comment": "schema:Person - human agent. DDI-CDI provenance anchor: Individual (the data-type/agent class for natural persons). Inherits identifier and name from Agent.",
+        "_comment": "schema:Person - human agent. DDI-CDI provenance anchor: Individual (the data-type/agent class for natural persons). Attribute set follows the CDIF Person building block (_sources/schemaorgProperties/person/schema.yaml): description, alternateName, affiliation (a schema:Organization), contactPoint (email only), sameAs. identifier and name are inherited from Agent. The full schema.org Person vocabulary (givenName/familyName/honorificPrefix/honorificSuffix/telephone/...) is intentionally NOT part of the restricted CDIF profile.",
         "mappingType": "new",
         "sourceClass": "Individual",
         "targetPackage": "Classes",
@@ -459,63 +414,18 @@
         "definition": "schema:Person - a human agent (creator, contributor, publisher, etc.). Inherits identifier and name from Agent.",
         "attribute": [
           {
-            "name": "givenName",
+            "name": "description",
             "dataType": "String",
-            "definition": "schema:givenName - first/given name.",
+            "definition": "schema:description - short textual description of the person.",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
             }
           },
           {
-            "name": "familyName",
+            "name": "alternateName",
             "dataType": "String",
-            "definition": "schema:familyName - family/last name.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "additionalName",
-            "dataType": "String",
-            "definition": "schema:additionalName - middle name, patronymic, or other non-primary name component.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "honorificPrefix",
-            "dataType": "String",
-            "definition": "schema:honorificPrefix - title before the name (e.g. Dr., Prof.).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "honorificSuffix",
-            "dataType": "String",
-            "definition": "schema:honorificSuffix - title after the name (e.g. PhD, Jr.).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "email",
-            "dataType": "String",
-            "definition": "schema:email - email address.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "telephone",
-            "dataType": "String",
-            "definition": "schema:telephone - telephone number (E.164 or human-readable).",
+            "definition": "schema:alternateName - other labels by which the person might be known.",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -523,8 +433,26 @@
           },
           {
             "name": "affiliation",
-            "dataType": "String",
-            "definition": "schema:affiliation - organisational affiliation (string label; use the @id-reference form on the association end for a structured link).",
+            "dataType": "Organization",
+            "definition": "schema:affiliation - organisational affiliation; per the CDIF profile the value must be a schema:Organization.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "contactPoint",
+            "dataType": "ContactPoint",
+            "definition": "schema:contactPoint - contact point for the person; the CDIF profile restricts this to email only.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "sameAs",
+            "dataType": "Identifier",
+            "definition": "schema:sameAs - other identifiers for the person, each a string or an @id object reference.",
             "multiplicity": {
               "lower": "0",
               "upper": "*"
@@ -539,6 +467,24 @@
         }
       },
       {
+        "_comment": "schema:ContactPoint - restricted to email only per the CDIF Person building block (schema.org also allows telephone/postal). Used by Person.contactPoint. No DDI-CDI source class.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "ContactPoint",
+        "definition": "schema:ContactPoint - a contact point for an agent. The CDIF profile restricts this to email only.",
+        "attribute": [
+          {
+            "name": "email",
+            "dataType": "String",
+            "definition": "schema:email - email address.",
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            }
+          }
+        ]
+      },
+      {
         "_comment": "schema:Organization - institutional agent. DDI-CDI has Organization as a class. Inherits identifier and name from Agent.",
         "mappingType": "new",
         "sourceClass": "Organization",
@@ -548,12 +494,12 @@
         "definition": "schema:Organization - an organisational agent. Inherits identifier and name from Agent.",
         "attribute": [
           {
-            "name": "legalName",
-            "dataType": "String",
-            "definition": "schema:legalName - the official legal name of the organisation (where it differs from schema:name).",
+            "name": "additionalType",
+            "dataType": "DefinedTerm",
+            "definition": "schema:additionalType - a controlled-vocabulary subtype of the organisation (string or DefinedTerm).",
             "multiplicity": {
               "lower": "0",
-              "upper": "1"
+              "upper": "*"
             }
           },
           {
@@ -566,30 +512,21 @@
             }
           },
           {
-            "name": "url",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:url - organisation homepage.",
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - short textual description of the organisation.",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
             }
           },
           {
-            "name": "email",
-            "dataType": "String",
-            "definition": "schema:email - contact email.",
+            "name": "sameAs",
+            "dataType": "Identifier",
+            "definition": "schema:sameAs - other identifiers for the organisation, each a string or an @id object reference.",
             "multiplicity": {
               "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "telephone",
-            "dataType": "String",
-            "definition": "schema:telephone - contact telephone number (E.164 or human-readable).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
+              "upper": "*"
             }
           }
         ],
@@ -605,7 +542,7 @@
         "mappingType": "new",
         "targetPackage": "Classes",
         "targetClass": "Contributor",
-        "definition": "schema:Role / Contributor pattern. Pairs a Person or Organization with a roleName (e.g. principalInvestigator, curator, dataCollector) and optional dates.",
+        "definition": "schema:Role / Contributor pattern. Pairs a Person or Organization (the contributor) with a roleName (e.g. principalInvestigator, curator, dataCollector).",
         "attribute": [
           {
             "name": "roleName",
@@ -613,24 +550,6 @@
             "definition": "schema:roleName - the role played by this agent (DDI Lifecycle role term recommended).",
             "multiplicity": {
               "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "startDate",
-            "dataType": "XsdDate",
-            "definition": "schema:startDate - when this role began.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "endDate",
-            "dataType": "XsdDate",
-            "definition": "schema:endDate - when this role ended.",
-            "multiplicity": {
-              "lower": "0",
               "upper": "1"
             }
           }
@@ -705,7 +624,7 @@
         "definition": "schema:PropertyValue used as schema:identifier - a structured identifier with type, value, and URL.",
         "attribute": [
           {
-            "name": "propertyId",
+            "name": "propertyID",
             "dataType": "String",
             "definition": "schema:propertyID - the identifier scheme (e.g. 'DOI', 'Handle', 'ROR').",
             "multiplicity": {
@@ -747,7 +666,7 @@
         "definition": "schema:PropertyValue in the AdditionalProperty role - a key/value extension property carrying a propertyID (property name) and a value, optionally with a unit. Used wherever schema:additionalProperty appears. See CDIFDiscoveryImplementationGuide.md (Polymorphism of PropertyValue) for the distinction from Identifier.",
         "attribute": [
           {
-            "name": "propertyId",
+            "name": "propertyID",
             "dataType": "String",
             "definition": "schema:propertyID - identifier of the property being asserted (e.g. 'horsepower', 'serialNumber'). Either a literal string or a URI from a known vocabulary.",
             "multiplicity": {
@@ -809,18 +728,9 @@
         "definition": "A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifProperties/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.",
         "attribute": [
           {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI of the referenced resource.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
             "name": "name",
             "dataType": "String",
-            "definition": "schema:name - human-readable label for the URI.",
+            "definition": "schema:name - human-readable label for the reference.",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -838,7 +748,25 @@
           {
             "name": "url",
             "dataType": "XsdAnyUri",
-            "definition": "schema:url - resolvable URL (when distinct from the @id).",
+            "definition": "schema:url - presentation URL for the referenced resource.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "relation",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:relation - canonical URI of the related resource (distinct from schema:url, the presentation URL).",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "hadRole",
+            "dataType": "DefinedTerm",
+            "definition": "dcat:hadRole - role of the related resource, as a controlled term (SKOS Concept / DefinedTerm).",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -872,9 +800,9 @@
             }
           },
           {
-            "name": "amount",
+            "name": "description",
             "dataType": "String",
-            "definition": "schema:amount - monetary amount (with currency).",
+            "definition": "schema:description - description of the funding or grant.",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -889,55 +817,17 @@
         }
       },
       {
-        "_comment": "prov:Activity (a.k.a. CDIF GeneratedBy / ProvActivity). DDI-CDI anchor: Activity.",
+        "_comment": "prov:Activity as used by CDIF Core via prov:wasGeneratedBy. Core uses the provProperties/generatedBy building block, which models the activity with ONLY prov:used (a brief reference to instruments/software/protocols). The richer PROV-O activity (provProperties/provActivity) and the schema.org-extended cdifProvActivity BB are used only by the cdifComplete / cdifXAS profiles, NOT by Core/Discovery/DataDescription/DataStructure. Do not add name/description/startedAtTime/etc. here.",
         "mappingType": "new",
         "sourceClass": "Activity",
         "targetPackage": "Provenance",
         "targetClass": "ProvActivity",
-        "definition": "prov:Activity - the activity that generated this resource. Used as the object of prov:wasGeneratedBy.",
+        "definition": "prov:Activity - the activity that generated this resource (object of prov:wasGeneratedBy). Per the provProperties/generatedBy building block used by Core, modelled with only prov:used.",
         "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI for the activity.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "description",
-            "dataType": "String",
-            "definition": "schema:description / prov: - human-readable description of the activity.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "_comment": "Refined per ddicdiActivity BB: DDI-CDI uses cdi:start (not prov:startedAtTime). prov: serialisation rename happens in JSON-LD context; UML attribute name aligned with cdi: source.",
-            "name": "startedAtTime",
-            "dataType": "XsdDate",
-            "definition": "prov:startedAtTime / cdi:start - when the activity began.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "_comment": "Refined: DDI-CDI cdi:end.",
-            "name": "endedAtTime",
-            "dataType": "XsdDate",
-            "definition": "prov:endedAtTime / cdi:end - when the activity ended.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
           {
             "name": "used",
             "dataType": "XsdAnyUri",
-            "definition": "prov:used - an entity (by URI) that this activity used.",
+            "definition": "prov:used - an entity (instrument, software, or protocol, by URI) that this activity used.",
             "multiplicity": { "lower": "0", "upper": "*" }
           }
         ],
@@ -953,21 +843,48 @@
         "mappingType": "new",
         "targetPackage": "Provenance",
         "targetClass": "DerivedFrom",
-        "definition": "prov:wasDerivedFrom payload - reference to an upstream resource the dataset was derived from.",
+        "definition": "prov:wasDerivedFrom payload - a cdif:Reference to an upstream resource the dataset was derived from (the JSON also admits a bare string or @id). Mirrors the cdifProperties/cdifReference building block.",
         "attribute": [
           {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI of the source resource.",
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-readable label for the source.",
             "multiplicity": {
-              "lower": "1",
+              "lower": "0",
               "upper": "1"
             }
           },
           {
-            "name": "name",
+            "name": "description",
             "dataType": "String",
-            "definition": "schema:name - label for the source.",
+            "definition": "schema:description - short summary of the source resource.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "url",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:url - presentation URL for the source resource.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "relation",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:relation - canonical URI of the source resource.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "hadRole",
+            "dataType": "DefinedTerm",
+            "definition": "dcat:hadRole - role of the source resource, as a controlled term (SKOS Concept / DefinedTerm).",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -983,12 +900,12 @@
         "definition": "schema:subjectOf target - the metadata-record-about-the-metadata. Carries dcterms:conformsTo (with @id constant https://w3id.org/cdif/core/1.0 in this profile), dateCreated, dateModified, identifier.",
         "attribute": [
           {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI of the metadata record.",
+            "name": "additionalType",
+            "dataType": "DefinedTerm",
+            "definition": "schema:additionalType - additional type assertions for the catalog record node; dcat:CatalogRecord is required.",
             "multiplicity": {
-              "lower": "0",
-              "upper": "1"
+              "lower": "1",
+              "upper": "*"
             }
           },
           {
@@ -1001,36 +918,15 @@
             }
           },
           {
-            "name": "dateCreated",
-            "dataType": "XsdDate",
-            "definition": "schema:dateCreated - when the metadata record was created.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "dateModified",
-            "dataType": "XsdDate",
-            "definition": "schema:dateModified - when the metadata record was last modified.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "inLanguage",
-            "dataType": "XsdLanguage",
-            "definition": "schema:inLanguage - language of the metadata record.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
             "name": "sdDatePublished",
             "dataType": "XsdDate",
-            "definition": "schema:sdDatePublished - date the structured data (this metadata record) was published.",
+            "definition": "schema:sdDatePublished - date the structured data (this metadata record) was published / last updated.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "includedInDataCatalog",
+            "dataType": "Reference",
+            "definition": "schema:includedInDataCatalog - the source data catalog the metadata record originates from (a schema:DataCatalog reference).",
             "multiplicity": { "lower": "0", "upper": "1" }
           }
         ],
@@ -1043,13 +939,6 @@
       }
     ],
     "association": [
-      {
-        "targetAssociationName": "Dataset_maintainer_Agent",
-        "subjectClass": "Dataset",
-        "objectClass": "Agent",
-        "definition": "schema:maintainer - the agent responsible for maintaining the dataset. The Agent supertype admits Person or Organization.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
-      },
       {
         "targetAssociationName": "Dataset_provider_Agent",
         "subjectClass": "Dataset",
@@ -1097,11 +986,11 @@
         }
       },
       {
-        "_comment": "The agent (Person or Organization) playing this contributor role. Single association on the Agent supertype; replaces the previous Contributor_agent_Person + Contributor_agent_Organization pair.",
-        "targetAssociationName": "Contributor_agent_Agent",
+        "_comment": "schema:contributor - the Agent (Person or Organization) playing this role (the agentInRole BB names this slot 'contributor'). Single association on the Agent supertype; replaces the previous Contributor_agent_Person + Contributor_agent_Organization pair.",
+        "targetAssociationName": "Contributor_contributor_Agent",
         "subjectClass": "Contributor",
         "objectClass": "Agent",
-        "definition": "The Agent (Person or Organization) playing this contributor role.",
+        "definition": "schema:contributor - the Agent (Person or Organization) playing this contributor role.",
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "1"
@@ -1187,6 +1076,28 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
+        }
+      },
+      {
+        "_comment": "schema:provider on DataDownload (per the dataDownload BB). The Agent supertype admits Person or Organization.",
+        "targetAssociationName": "DataDownload_provider_Agent",
+        "subjectClass": "DataDownload",
+        "objectClass": "Agent",
+        "definition": "schema:provider - the agent that maintains this particular distribution option.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        }
+      },
+      {
+        "_comment": "schema:maintainer on CatalogRecord (per the cdifCatalogRecord BB). The Agent supertype admits Person or Organization.",
+        "targetAssociationName": "CatalogRecord_maintainer_Agent",
+        "subjectClass": "CatalogRecord",
+        "objectClass": "Agent",
+        "definition": "schema:maintainer - the agent that maintains the metadata record.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
         }
       }
     ]
