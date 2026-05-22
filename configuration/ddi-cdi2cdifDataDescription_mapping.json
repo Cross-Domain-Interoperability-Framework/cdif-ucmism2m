@@ -250,30 +250,12 @@
         "sourceClass": "PhysicalDataSet",
         "targetPackage": "Distribution",
         "targetClass": "DataDownload",
-        "definition": "schema:DataDownload extended for the Data Description profile - adds character-set and file-size attributes required at this profile level. Composes with the core DataDownload at the model-composition step.",
+        "definition": "schema:DataDownload extended for the Data Description profile - adds the character-set attribute and the per-field physical mappings (cdif:hasPhysicalMapping). File size is carried by the Core schema:contentSize attribute. Composes with the core DataDownload at the model-composition step.",
         "attribute": [
           {
             "name": "characterSet",
             "dataType": "String",
             "definition": "cdi:characterSet - character encoding of a text-based distribution (e.g. UTF-8). Required by CDIF Data Description for text distributions.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "fileSize",
-            "dataType": "Integer",
-            "definition": "cdi:fileSize - file size of this distribution as a number.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "fileSizeUofM",
-            "dataType": "String",
-            "definition": "cdi:fileSizeUofM - unit of measure for fileSize (e.g. 'byte', 'KB', 'MB').",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
