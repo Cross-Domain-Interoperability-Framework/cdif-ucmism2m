@@ -112,11 +112,36 @@ naming convention, so an association named `X_has_Y` covers the BB property
   derives the canonical filename.
 - **Generator behaviors (not config):** primitives by Eclipse `PrimitiveTypes.xmi`
   href; a model-level `ModelIdentification` DataType from `targetModel` fields.
+- **Model browser (HTML/SVG, `build-docs.ps1` Steps 1-3):** a class-typed attribute
+  renders as a linked **association box** (not just inline text), so e.g.
+  `DefinedTerm`/`Identifier`/`Reference` show as boxes; datatypes stay as `..>`
+  dependencies. The union classes (`DefinedTerm`, `Identifier`, `Reference`,
+  `AdditionalProperty`) carry a **"JSON serialization" note** on their detail page
+  (a plain string and/or `@id` reference may substitute for the object). SVG
+  re-render is **content-hash gated**: `render_puml_to_svg` re-renders a `.pu` only
+  when its content hash differs from `_render_cache.json` (one per profile under
+  `cdif-uml-model/_plantuml/<slug>/`, **gitignored**), and records only successful
+  renders so a failed batch is retried. (The previous mtime check could silently
+  commit a stale `.svg`.) A fresh clone with no cache renders everything once.
 
 ## Decisions in force (don't silently reverse)
 
-- **WebAPI/OpenAPI action machinery NOT modelled** (`potentialAction`/`EntryPoint`/
-  `PropertyValueSpecification`) — kept as intentional union-policy absence.
+- **Configs are aligned to their building blocks.** Each Core UML class's attribute
+  set matches its BB (`_sources/.../<bb>/schema.yaml` / `resolvedProperties.json`) —
+  drop schema.org/DDI properties the restricted CDIF profile doesn't include, add the
+  ones it does. (Sept/May 2026 pass realigned all 17 Core classes, e.g. Person,
+  Organization, DataDownload, CatalogRecord; added the `ContactPoint` class.) When in
+  doubt, compare config attrs+associations (incl. inherited) against the BB.
+- **ProvActivity in Core = only `prov:used`.** Core's `prov:wasGeneratedBy` uses the
+  `provProperties/generatedBy` BB (just `prov:used`). The richer `provProperties/
+  provActivity` and the schema.org-extended `cdifProvActivity` belong to the
+  cdifComplete / cdifXAS profiles — do NOT add name/description/startedAtTime/etc. to
+  ProvActivity in Core/Discovery/DataDescription/DataStructure.
+- **WebAPI/OpenAPI action machinery NOT modelled in the UML** (`potentialAction`/
+  `EntryPoint`/`PropertyValueSpecification`) — kept as intentional union-policy
+  absence in the *UML model*. (The JSON-schema/BB side *does* model action/result —
+  see metadataBuildingBlocks `agents.md`, "WebAPI result physical realization", and
+  the `actionResult` BB — but that is not reflected in the profile XMIs.)
 - **Keys keep DDI-CDI `PrimaryKey`/`PrimaryKeyComponent` naming**, not `cdif:Key`/`ComponentPosition`.
 - **`dcterms:*` alternates not modelled** — CDIF prefers `schema:` equivalents (`dcterms:conformsTo` is the exception, modelled on `CatalogRecord`).
 - **OWL-Time and geosparql geometry ARE modelled as classes** in Discovery

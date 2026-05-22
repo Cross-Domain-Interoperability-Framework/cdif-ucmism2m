@@ -59,6 +59,10 @@ python script/audit_schema_vs_uml.py cdifDataDescription   # one profile
 
 It diffs each profile's composed `resolvedSchema.json` against the **generated XMI** and buckets findings into **real gaps** vs intentionally-absent (union-type policy, datatype policy, SKOS vocabulary defined in Codelist). When extending a profile, drive the real-gaps list down to its intentional residue. See [`AGENTS.md`](AGENTS.md) for the full add-a-profile loop.
 
+Beyond *presence*, each class's **attribute set should match its building block** — not the fuller schema.org/DDI vocabulary. A 2026 pass realigned all Core classes to their BBs (e.g. Person, Organization, DataDownload, CatalogRecord; `ProvActivity` is just `prov:used` because Core uses the `generatedBy` BB, not the richer `provActivity`/`cdifProvActivity` reserved for cdifComplete/cdifXAS). The throwaway helper `script/_audit_core_vs_bb.py` compares a config's attributes + associations + inheritance against the BB `resolvedProperties.json`.
+
+The model browser (`build-docs.ps1` Steps 1-3 → `metadataBuildingBlocks/cdif-uml-model/`) renders class-typed attributes as **linked association boxes** and adds a JSON-serialization note to the union classes (DefinedTerm/Identifier/Reference/AdditionalProperty). SVG re-render is **content-hash gated** via a gitignored `_render_cache.json` per profile (an earlier mtime check silently committed stale diagrams), so a `.pu` re-renders only when its content actually changes.
+
 ### The union-type problem — and the CDIF solution
 
 JSON Schema admits union types (`anyOf` / `oneOf`); UML 2 does not have first-class union types. A survey across the five CDIF profile resolvedSchemas (see [`script/survey_union_types.py`](script/survey_union_types.py)) found **900+ union-shape occurrences** that needed reconciling. Rather than adopting the ShapeChange/GeoSciML `<<union>>` stereotype workaround (which CDIF stakeholders rejected), we chose to reduce every JSON union to a **single canonical UML attribute type**, with the simpler JSON forms (string, `@id`-only ref) treated as **serialization shorthand for the canonical type**.
