@@ -127,7 +127,11 @@ foreach ($p in $profiles) {
 }
 $registryPath = Join-Path $htmlOut "_registry.json"
 New-Item -ItemType Directory -Force -Path $htmlOut | Out-Null
-$registry | ConvertTo-Json -Depth 3 | Set-Content -Path $registryPath -Encoding utf8
+# Emit with keys sorted so the file is byte-stable across runs (PowerShell
+# hashtable enumeration order is otherwise non-deterministic -> spurious diffs).
+$orderedRegistry = [ordered]@{}
+foreach ($k in ($registry.Keys | Sort-Object)) { $orderedRegistry[$k] = $registry[$k] }
+$orderedRegistry | ConvertTo-Json -Depth 3 | Set-Content -Path $registryPath -Encoding utf8
 Write-Host "    Wrote registry with $($registry.Count) entries: $registryPath"
 
 Write-Host "==> Step 3: emit HTML browser for each profile (with cross-profile links)"
@@ -141,6 +145,27 @@ foreach ($p in $profiles) {
         --cross-profile-registry $registryPath
     if ($LASTEXITCODE -ne 0) { throw "Failed HTML: $($p.slug)" }
 }
+
+Write-Host "==> Step 4: normalize generated text files to LF"
+# The Python emitter (write_text) and PowerShell (Set-Content) write CRLF on
+# Windows, but metadataBuildingBlocks/.gitattributes declares `* text=auto
+# eol=lf`, so every regenerated file shows as modified (CRLF -> LF) even when
+# the content is identical. Rewrite the generated text tree to LF so the working
+# tree matches the repo's LF policy and only real content changes show up.
+$lfExtensions = @('.html', '.pu', '.svg', '.json', '.css', '.js')
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+$normalized = 0
+Get-ChildItem -Path $htmlOut -Recurse -File |
+    Where-Object { $lfExtensions -contains $_.Extension } |
+    ForEach-Object {
+        $raw = [System.IO.File]::ReadAllText($_.FullName)
+        $lf = $raw.Replace("`r`n", "`n")
+        if ($lf -ne $raw) {
+            [System.IO.File]::WriteAllText($_.FullName, $lf, $utf8NoBom)
+            $normalized++
+        }
+    }
+Write-Host "    Normalized $normalized file(s) to LF under $htmlOut"
 
 $indexPath = Join-Path $htmlOut "index.html"
 Write-Host ""
