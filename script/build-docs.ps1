@@ -85,7 +85,36 @@ if (-not $SkipBblocks) {
     Write-Host "==> Step 0: bblocks build skipped (-SkipBblocks)"
 }
 
-Write-Host "==> Step 1: emit XMI + PlantUML + SVG for each profile"
+# Write the registry to $registryPath with keys sorted so the file is
+# byte-stable across runs (PowerShell hashtable order is otherwise
+# non-deterministic -> spurious diffs).
+function Write-Registry($reg, $path) {
+    $ordered = [ordered]@{}
+    foreach ($k in ($reg.Keys | Sort-Object)) { $ordered[$k] = $reg[$k] }
+    $ordered | ConvertTo-Json -Depth 3 | Set-Content -Path $path -Encoding utf8
+}
+
+$registryPath = Join-Path $htmlOut "_registry.json"
+New-Item -ItemType Directory -Force -Path $htmlOut | Out-Null
+
+# Step 1 builds the class->origin-profile registry from the configs FIRST, so it
+# can be fed to the PlantUML emit (Step 2) for per-profile box coloring and the
+# simplified "hide inherited" overview. Datatypes (Step 3) need the generated
+# .pu files, so they are added after emit.
+Write-Host "==> Step 1: build class-origin registry from configs"
+$registry = @{}
+foreach ($p in $profiles) {
+    $cfg = Join-Path $configDir $p.config
+    $json = Get-Content $cfg -Raw | ConvertFrom-Json
+    foreach ($m in $json.mapping.class) {
+        $name = $m.targetClass
+        if ($name) { $registry[$name] = $p.umlName }
+    }
+}
+Write-Registry $registry $registryPath
+Write-Host "    Wrote class registry with $($registry.Count) entries: $registryPath"
+
+Write-Host "==> Step 2: emit XMI + PlantUML + SVG for each profile (boxes colored by origin)"
 foreach ($p in $profiles) {
     $cfg = Join-Path $configDir $p.config
     # Canonical filename: lowercase acronym + major-minor version + fixed suffix,
@@ -99,23 +128,15 @@ foreach ($p in $profiles) {
     & $python $tool --xmi $xmi --config $cfg `
         --emit-uml $xmiOut `
         --emit-puml $puDir `
+        --cross-profile-registry $registryPath `
         --plantuml-jar $PlantUmlJar `
         --java-exe $JavaExe
     if ($LASTEXITCODE -ne 0) { throw "Failed: $($p.slug)" }
 }
 
-Write-Host "==> Step 2: build cross-profile class registry"
-$registry = @{}
-foreach ($p in $profiles) {
-    $cfg = Join-Path $configDir $p.config
-    $json = Get-Content $cfg -Raw | ConvertFrom-Json
-    foreach ($m in $json.mapping.class) {
-        $name = $m.targetClass
-        if ($name) { $registry[$name] = $p.umlName }
-    }
-}
+Write-Host "==> Step 3: augment registry with datatypes (from generated .pu)"
 # DataTypes shared across profiles: scan generated .pu DataType files (each
-# profile pulls in only the datatypes it actually references).
+# profile pulls in only the datatypes it actually references). First-seen wins.
 foreach ($p in $profiles) {
     $dtDir = Join-Path $pumlOut "$($p.slug)\DataTypes"
     if (Test-Path $dtDir) {
@@ -125,16 +146,10 @@ foreach ($p in $profiles) {
         }
     }
 }
-$registryPath = Join-Path $htmlOut "_registry.json"
-New-Item -ItemType Directory -Force -Path $htmlOut | Out-Null
-# Emit with keys sorted so the file is byte-stable across runs (PowerShell
-# hashtable enumeration order is otherwise non-deterministic -> spurious diffs).
-$orderedRegistry = [ordered]@{}
-foreach ($k in ($registry.Keys | Sort-Object)) { $orderedRegistry[$k] = $registry[$k] }
-$orderedRegistry | ConvertTo-Json -Depth 3 | Set-Content -Path $registryPath -Encoding utf8
-Write-Host "    Wrote registry with $($registry.Count) entries: $registryPath"
+Write-Registry $registry $registryPath
+Write-Host "    Registry now has $($registry.Count) entries (with datatypes)"
 
-Write-Host "==> Step 3: emit HTML browser for each profile (with cross-profile links)"
+Write-Host "==> Step 4: emit HTML browser for each profile (with cross-profile links)"
 foreach ($p in $profiles) {
     $cfg = Join-Path $configDir $p.config
     $puDir = Join-Path $pumlOut $p.slug
@@ -146,7 +161,7 @@ foreach ($p in $profiles) {
     if ($LASTEXITCODE -ne 0) { throw "Failed HTML: $($p.slug)" }
 }
 
-Write-Host "==> Step 4: normalize generated text files to LF"
+Write-Host "==> Step 5: normalize generated text files to LF"
 # The Python emitter (write_text) and PowerShell (Set-Content) write CRLF on
 # Windows, but metadataBuildingBlocks/.gitattributes declares `* text=auto
 # eol=lf`, so every regenerated file shows as modified (CRLF -> LF) even when
