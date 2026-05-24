@@ -558,12 +558,20 @@
         "objectClassMultiplicity": { "lower": "0", "upper": "*" }
       },
       {
-        "_comment": "cdi:isStructuredBy - a distribution typed as a PhysicalDataSet points at the DataStructure that describes its layout. New association (DDI-CDI carries it on DataSet).",
-        "targetAssociationName": "PhysicalDataSet_isStructuredBy_DataStructure",
-        "subjectClass": "PhysicalDataSet",
+        "_comment": "cdi:isStructuredBy - the distribution carries it. In the instance the distribution object is co-typed schema:DataDownload + cdi:PhysicalDataSet; the association is anchored on DataDownload so it renders on the distribution class readers recognize. (WebAPI also carries isStructuredBy, but only on its potentialAction.result, which CDIF does not model.) New association (DDI-CDI carries it on DataSet/PhysicalDataSet).",
+        "targetAssociationName": "DataDownload_isStructuredBy_DataStructure",
+        "subjectClass": "DataDownload",
         "objectClass": "DataStructure",
-        "definition": "cdi:isStructuredBy - the DataStructure describing this physical dataset's layout.",
+        "definition": "cdi:isStructuredBy - the DataStructure describing this distribution's physical layout.",
         "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdif:uses - the InstanceVariable references the RepresentedVariable it instantiates; the represented-variable-level properties live on the RepresentedVariable and are not duplicated on the InstanceVariable. The instance @id targets a RepresentedVariable or one of its subtypes (DescriptorVariable/ReferenceVariable). New association (no DDI-CDI source association from InstanceVariable).",
+        "targetAssociationName": "InstanceVariable_uses_RepresentedVariable",
+        "subjectClass": "InstanceVariable",
+        "objectClass": "RepresentedVariable",
+        "definition": "cdif:uses - the RepresentedVariable this InstanceVariable instantiates.",
+        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
       },
       {
         "_comment": "cdi:measures - the unit type a represented variable measures. New association (DDI-CDI carries measures on ConceptualVariable).",

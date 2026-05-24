@@ -1734,6 +1734,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>uses</name>
                   <type xmi:idref="CDIFDataStructure.Concept"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-uses" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-uses-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-uses"/>
+                     <body>cdif:uses - the RepresentedVariable this InstanceVariable instantiates.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.InstanceVariable-uses-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.InstanceVariable-uses-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-uses-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>uses</name>
+                  <type xmi:idref="CDIFDataStructure.RepresentedVariable"/>
+                  <association xmi:idref="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.InstanceVariable-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-isDescribedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.InstanceVariable-isDescribedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable-isDescribedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.InstanceVariable-isDescribedBy"/>
@@ -2743,21 +2758,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>standard</name>
                   <type xmi:idref="CDIFDataStructure.conformsTo"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.PhysicalDataSet-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalDataSet-isStructuredBy" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.PhysicalDataSet-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalDataSet-isStructuredBy-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.PhysicalDataSet-isStructuredBy"/>
-                     <body>cdi:isStructuredBy - the DataStructure describing this physical dataset's layout.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.PhysicalDataSet-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalDataSet-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.PhysicalDataSet-isStructuredBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalDataSet-isStructuredBy-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>isStructuredBy</name>
-                  <type xmi:idref="CDIFDataStructure.DataStructure"/>
-                  <association xmi:idref="CDIFDataStructure.PhysicalDataSet_isStructuredBy_DataStructure"/>
-               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.TabularTextDataSet" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#TabularTextDataSet" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.TabularTextDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#TabularTextDataSet-ownedComment" xmi:type="uml:Comment">
@@ -3695,6 +3695,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   </upperValue>
                   <name>conformsTo</name>
                   <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-isStructuredBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-isStructuredBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+                     <body>cdi:isStructuredBy - the DataStructure describing this distribution's physical layout.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-isStructuredBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isStructuredBy</name>
+                  <type xmi:idref="CDIFDataStructure.DataStructure"/>
+                  <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_DataStructure"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-hasPhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-hasPhysicalMapping" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-hasPhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload-hasPhysicalMapping-ownedComment" xmi:type="uml:Comment">
@@ -6630,6 +6645,15 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_uses_RepresentedVariable" xmi:type="uml:Association">
+            <name>InstanceVariable_uses_RepresentedVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-uses"/>
+            <ownedEnd xmi:id="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable-RepresentedVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_uses_RepresentedVariable-RepresentedVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.RepresentedVariable"/>
+               <association xmi:idref="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable-RepresentedVariableEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_isDescribedBy_StatisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_isDescribedBy_StatisticsCollection" xmi:type="uml:Association">
             <name>InstanceVariable_isDescribedBy_StatisticsCollection</name>
             <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-isDescribedBy"/>
@@ -6783,15 +6807,6 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.SentinelConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.PhysicalDataSet_isStructuredBy_DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalDataSet_isStructuredBy_DataStructure" xmi:type="uml:Association">
-            <name>PhysicalDataSet_isStructuredBy_DataStructure</name>
-            <memberEnd xmi:idref="CDIFDataStructure.PhysicalDataSet-isStructuredBy"/>
-            <ownedEnd xmi:id="CDIFDataStructure.PhysicalDataSet_isStructuredBy_DataStructure-DataStructureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PhysicalDataSet_isStructuredBy_DataStructure-DataStructureEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.DataStructure"/>
-               <association xmi:idref="CDIFDataStructure.PhysicalDataSet_isStructuredBy_DataStructure"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.PhysicalDataSet_isStructuredBy_DataStructure-DataStructureEnd"/>
-         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.VariableMeasured_describes_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableMeasured_describes_InstanceVariable" xmi:type="uml:Association">
             <name>VariableMeasured_describes_InstanceVariable</name>
             <memberEnd xmi:idref="CDIFDataStructure.VariableMeasured-describes"/>
@@ -6800,6 +6815,15 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.VariableMeasured_describes_InstanceVariable"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.VariableMeasured_describes_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload_isStructuredBy_DataStructure" xmi:type="uml:Association">
+            <name>DataDownload_isStructuredBy_DataStructure</name>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+            <ownedEnd xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_DataStructure-DataStructureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload_isStructuredBy_DataStructure-DataStructureEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.DataStructure"/>
+               <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_DataStructure"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_DataStructure-DataStructureEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataDownload_hasPhysicalMapping_PhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataDownload_hasPhysicalMapping_PhysicalMapping" xmi:type="uml:Association">
             <name>DataDownload_hasPhysicalMapping_PhysicalMapping</name>
