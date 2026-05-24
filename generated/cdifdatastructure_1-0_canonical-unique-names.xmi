@@ -343,6 +343,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>has</name>
+                  <type xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+                  <association xmi:idref="CDIFDataStructure.DataStructure_has_DataStructureComponent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has" xmi:type="uml:Property">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>has</name>
+                  <type xmi:idref="CDIFDataStructure.PrimaryKey"/>
+                  <association xmi:idref="CDIFDataStructure.DataStructure_has_PrimaryKey"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has" xmi:type="uml:Property">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.DataStructure-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
@@ -359,6 +381,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Structure of a wide dataset (organized collection of wide data). It is described by identifier, measure and attribute components.</body>
                </ownedComment>
                <name>WideDataStructure</name>
+               <generalization xmi:id="CDIFDataStructure.WideDataStructure-generalization-DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure-generalization-DataStructure" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructure"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-identifier"/>
@@ -420,17 +445,6 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                   <association xmi:idref="CDIFDataStructure.WideDataStructure_has_AttributeComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure-has" xmi:type="uml:Property">
-                  <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure-has-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.WideDataStructure-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure-has-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>has</name>
-                  <type xmi:idref="CDIFDataStructure.PrimaryKey"/>
-                  <association xmi:idref="CDIFDataStructure.WideDataStructure_has_PrimaryKey"/>
-               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.LongDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#LongDataStructure" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#LongDataStructure-ownedComment" xmi:type="uml:Comment">
@@ -438,6 +452,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Structure of a long dataset (organized collection of long data). It is described by identifier, measure, attribute, variable descriptor and variable value components.</body>
                </ownedComment>
                <name>LongDataStructure</name>
+               <generalization xmi:id="CDIFDataStructure.LongDataStructure-generalization-DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#LongDataStructure-generalization-DataStructure" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructure"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#LongDataStructure-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#LongDataStructure-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-identifier"/>
@@ -517,6 +534,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Structure of a dimensional data set (organized collection of multidimensional data). It is described by dimension, measure and attribute components.</body>
                </ownedComment>
                <name>DimensionalDataStructure</name>
+               <generalization xmi:id="CDIFDataStructure.DimensionalDataStructure-generalization-DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionalDataStructure-generalization-DataStructure" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructure"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionalDataStructure-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionalDataStructure-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-identifier"/>
@@ -601,7 +621,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_has_ComponentPosition"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructureComponent" xmi:type="uml:Class">
+            <packagedElement xmi:id="CDIFDataStructure.DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructureComponent" xmi:type="uml:Class" isAbstract="true">
                <ownedComment xmi:id="CDIFDataStructure.DataStructureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructureComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DataStructureComponent"/>
                   <body>Role given to a represented variable in the context of a data structure.</body>
@@ -642,6 +662,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Role given to a represented variable in the context of a long or wide data structure to identify the units associated to data points, and in dimensional and key value data structures to provide identifying fields for the instance values.</body>
                </ownedComment>
                <name>IdentifierComponent</name>
+               <generalization xmi:id="CDIFDataStructure.IdentifierComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#IdentifierComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.IdentifierComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#IdentifierComponent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.IdentifierComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#IdentifierComponent-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.IdentifierComponent-identifier"/>
@@ -688,6 +711,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Role given to a represented variable in the context of a data structure to hold the observed/derived values.</body>
                </ownedComment>
                <name>MeasureComponent</name>
+               <generalization xmi:id="CDIFDataStructure.MeasureComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MeasureComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.MeasureComponent-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MeasureComponent-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.MeasureComponent-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#MeasureComponent-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.MeasureComponent-name"/>
@@ -748,6 +774,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Role given to a represented variable in the context of a data structure to qualify observations or provide other types of supplementary information.</body>
                </ownedComment>
                <name>AttributeComponent</name>
+               <generalization xmi:id="CDIFDataStructure.AttributeComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AttributeComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.AttributeComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AttributeComponent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AttributeComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#AttributeComponent-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.AttributeComponent-identifier"/>
@@ -805,6 +834,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <body>Role given to a represented variable in the context of a dimensional data structure to identify the universes associated with data points. The variable acts as a field in the compound identifier (the key structure) to disambiguate the cells in the multi-dimensional "cube".</body>
                </ownedComment>
                <name>DimensionComponent</name>
+               <generalization xmi:id="CDIFDataStructure.DimensionComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionComponent-categoricalAdditivity" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionComponent-categoricalAdditivity" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionComponent-categoricalAdditivity-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DimensionComponent-categoricalAdditivity-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionComponent-categoricalAdditivity"/>
@@ -867,6 +899,9 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <body>Role given to a represented variable in the context of a data structure to record values of multiple variables.</body>
                </ownedComment>
                <name>VariableValueComponent</name>
+               <generalization xmi:id="CDIFDataStructure.VariableValueComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableValueComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableValueComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableValueComponent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableValueComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableValueComponent-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableValueComponent-identifier"/>
@@ -913,6 +948,9 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <body>Role given to a represented variable in the context of a data structure to provide codes for variable identification.</body>
                </ownedComment>
                <name>VariableDescriptorComponent</name>
+               <generalization xmi:id="CDIFDataStructure.VariableDescriptorComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               </generalization>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableDescriptorComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableDescriptorComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableDescriptorComponent-identifier"/>
@@ -6384,6 +6422,24 @@ An example would be age categories. Five-year age categories can be collapsed in
                </ownedAttribute>
             </packagedElement>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.DataStructure_has_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure_has_DataStructureComponent" xmi:type="uml:Association">
+            <name>DataStructure_has_DataStructureComponent</name>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-has"/>
+            <ownedEnd xmi:id="CDIFDataStructure.DataStructure_has_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure_has_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.DataStructureComponent"/>
+               <association xmi:idref="CDIFDataStructure.DataStructure_has_DataStructureComponent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure_has_DataStructureComponent-DataStructureComponentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.DataStructure_has_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure_has_PrimaryKey" xmi:type="uml:Association">
+            <name>DataStructure_has_PrimaryKey</name>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-has"/>
+            <ownedEnd xmi:id="CDIFDataStructure.DataStructure_has_PrimaryKey-PrimaryKeyEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure_has_PrimaryKey-PrimaryKeyEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.PrimaryKey"/>
+               <association xmi:idref="CDIFDataStructure.DataStructure_has_PrimaryKey"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure_has_PrimaryKey-PrimaryKeyEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataStructure_has_ForeignKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DataStructure_has_ForeignKey" xmi:type="uml:Association">
             <name>DataStructure_has_ForeignKey</name>
             <memberEnd xmi:idref="CDIFDataStructure.DataStructure-has"/>
@@ -6419,15 +6475,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.WideDataStructure_has_AttributeComponent"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure_has_AttributeComponent-AttributeComponentEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.WideDataStructure_has_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure_has_PrimaryKey" xmi:type="uml:Association">
-            <name>WideDataStructure_has_PrimaryKey</name>
-            <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure-has"/>
-            <ownedEnd xmi:id="CDIFDataStructure.WideDataStructure_has_PrimaryKey-PrimaryKeyEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#WideDataStructure_has_PrimaryKey-PrimaryKeyEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.PrimaryKey"/>
-               <association xmi:idref="CDIFDataStructure.WideDataStructure_has_PrimaryKey"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure_has_PrimaryKey-PrimaryKeyEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.LongDataStructure_has_IdentifierComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#LongDataStructure_has_IdentifierComponent" xmi:type="uml:Association">
             <name>LongDataStructure_has_IdentifierComponent</name>

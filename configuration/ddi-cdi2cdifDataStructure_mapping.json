@@ -66,64 +66,76 @@
         "targetClass": "DataStructure"
       },
       {
+        "_comment": "Concrete variants generalize the generic DataStructure so the distribution's cdi:isStructuredBy (which targets DataStructure) propagates to them in the diagram.",
         "mappingType": "map",
         "sourceClass": "WideDataStructure",
         "targetPackage": "DataStructures",
-        "targetClass": "WideDataStructure"
+        "targetClass": "WideDataStructure",
+        "generalization": ["DataStructure"]
       },
       {
         "mappingType": "map",
         "sourceClass": "LongDataStructure",
         "targetPackage": "DataStructures",
-        "targetClass": "LongDataStructure"
+        "targetClass": "LongDataStructure",
+        "generalization": ["DataStructure"]
       },
       {
         "mappingType": "map",
         "sourceClass": "DimensionalDataStructure",
         "targetPackage": "DataStructures",
-        "targetClass": "DimensionalDataStructure"
+        "targetClass": "DimensionalDataStructure",
+        "generalization": ["DataStructure"]
       },
       {
+        "_comment": "Abstract supertype of the component types (cdi:DataStructureComponent). Target of the generic DataStructure_has_DataStructureComponent; the concrete components generalize it.",
         "mappingType": "map",
         "sourceClass": "DataStructureComponent",
         "targetPackage": "Components",
-        "targetClass": "DataStructureComponent"
+        "targetClass": "DataStructureComponent",
+        "isAbstract": true
       },
       {
         "mappingType": "map",
         "sourceClass": "IdentifierComponent",
         "targetPackage": "Components",
-        "targetClass": "IdentifierComponent"
+        "targetClass": "IdentifierComponent",
+        "generalization": ["DataStructureComponent"]
       },
       {
         "mappingType": "map",
         "sourceClass": "MeasureComponent",
         "targetPackage": "Components",
-        "targetClass": "MeasureComponent"
+        "targetClass": "MeasureComponent",
+        "generalization": ["DataStructureComponent"]
       },
       {
         "mappingType": "map",
         "sourceClass": "AttributeComponent",
         "targetPackage": "Components",
-        "targetClass": "AttributeComponent"
+        "targetClass": "AttributeComponent",
+        "generalization": ["DataStructureComponent"]
       },
       {
         "mappingType": "map",
         "sourceClass": "DimensionComponent",
         "targetPackage": "Components",
-        "targetClass": "DimensionComponent"
+        "targetClass": "DimensionComponent",
+        "generalization": ["DataStructureComponent"]
       },
       {
         "mappingType": "map",
         "sourceClass": "VariableValueComponent",
         "targetPackage": "Components",
-        "targetClass": "VariableValueComponent"
+        "targetClass": "VariableValueComponent",
+        "generalization": ["DataStructureComponent"]
       },
       {
         "mappingType": "map",
         "sourceClass": "VariableDescriptorComponent",
         "targetPackage": "Components",
-        "targetClass": "VariableDescriptorComponent"
+        "targetClass": "VariableDescriptorComponent",
+        "generalization": ["DataStructureComponent"]
       },
       {
         "mappingType": "map",
@@ -302,6 +314,12 @@
     ],
     "association": [
       {
+        "_comment": "Generic cdi:has at the DataStructure level: every data structure has 1..* DataStructureComponent (the abstract supertype). The concrete per-variant component requirements are the WideDataStructure_has_*/Long.../Dimensional... associations below; the variants generalize DataStructure so this generic association applies to all of them.",
+        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
+        "targetAssociationName": "DataStructure_has_DataStructureComponent",
+        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
+      },
+      {
         "sourceAssociationName": "DataStructure_has_DataStructureComponent",
         "targetAssociationName": "WideDataStructure_has_IdentifierComponent",
         "objectClassMultiplicity": {
@@ -406,8 +424,9 @@
         }
       },
       {
+        "_comment": "cdi:has PrimaryKey at the generic DataStructure level (any data structure can have one); variants inherit it via generalization.",
         "sourceAssociationName": "DataStructure_has_PrimaryKey",
-        "targetAssociationName": "WideDataStructure_has_PrimaryKey",
+        "targetAssociationName": "DataStructure_has_PrimaryKey",
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "1"
