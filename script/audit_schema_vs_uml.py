@@ -118,6 +118,7 @@ ALIASES = {
     "properinterval": "temporalextent",  # time:ProperInterval ~ TemporalExtent
     "key": "primarykey",              # cdif:Key ~ DDI-CDI PrimaryKey (kept name)
     "componentposition": "primarykeycomponent",  # cdi:ComponentPosition ~ PrimaryKeyComponent
+    "cdifphysicalmapping": "physicalmapping",  # resolver $def wrapper for the cdifPhysicalMapping BB ~ PhysicalMapping class
 }
 
 

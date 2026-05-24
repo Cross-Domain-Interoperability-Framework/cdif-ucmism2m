@@ -35,7 +35,7 @@
     {
       "name": "Distribution",
       "parent": "CDIFDataDescription",
-      "definition": "Distribution-level extensions (file characterization)."
+      "definition": "Distribution-level extensions: file characterization, the PhysicalDataSet subclasses (TabularTextDataSet, StructuredDataSet), the physical-mapping family (PhysicalMapping, TextMapping, LocatorMapping), and the DataFingerprint datatype."
     },
     {
       "name": "Keys",
@@ -250,12 +250,21 @@
         "sourceClass": "PhysicalDataSet",
         "targetPackage": "Distribution",
         "targetClass": "DataDownload",
-        "definition": "schema:DataDownload extended for the Data Description profile - adds the character-set attribute and the per-field physical mappings (cdif:hasPhysicalMapping). File size is carried by the Core schema:contentSize attribute. Composes with the core DataDownload at the model-composition step.",
+        "definition": "schema:DataDownload extended for the Data Description profile - adds the character-set attribute, the per-field physical mappings (cdif:hasPhysicalMapping), and a data fingerprint (cdi:fingerprint). File size is carried by the Core schema:contentSize attribute. Co-typed cdi:PhysicalDataSet in instances; TabularTextDataSet and StructuredDataSet specialize it for text-tabular and structured serializations. Composes with the core DataDownload at the model-composition step.",
         "attribute": [
           {
             "name": "characterSet",
             "dataType": "String",
             "definition": "cdi:characterSet - character encoding of a text-based distribution (e.g. UTF-8). Required by CDIF Data Description for text distributions.",
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          {
+            "name": "fingerprint",
+            "dataType": "DataFingerprint",
+            "definition": "cdi:fingerprint - a fingerprint (checksum/hash) of the physical dataset, used to verify integrity.",
             "multiplicity": {
               "lower": "0",
               "upper": "1"
@@ -481,11 +490,11 @@
         ]
       },
       {
-        "_comment": "PhysicalMapping - per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifProperties/cdifPhysicalMapping. mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta (DDI-CDI splits this across ValueMapping / PhysicalSegmentLayout); CDIF flattens it.",
+        "_comment": "PhysicalMapping - serialization-agnostic base for the per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifProperties/cdifPhysicalMapping. The text-format specifics (column width, decimal/digit-group separators, display label) live on the TextMapping subclass; locator-based addressing lives on the LocatorMapping subclass (both generalize PhysicalMapping). mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta.",
         "mappingType": "new",
         "targetPackage": "Distribution",
         "targetClass": "PhysicalMapping",
-        "definition": "Per-field physical mapping linking a variable measured by a distribution to its physical representation in the file - column index, format, physical data type, length, null sequence, etc. (cdif:hasPhysicalMapping items).",
+        "definition": "Per-field physical mapping linking a variable measured by a distribution to its physical representation in the file - column index, format, physical data type, number pattern, null sequence, etc. (cdif:hasPhysicalMapping items). TextMapping and LocatorMapping specialize it for text-tabular and structured (locator) data respectively.",
         "attribute": [
           {
             "name": "index",
@@ -506,9 +515,9 @@
             "multiplicity": { "lower": "0", "upper": "1" }
           },
           {
-            "name": "length",
-            "dataType": "Integer",
-            "definition": "cdi:length - the column width if the tabular text is fixed width.",
+            "name": "numberPattern",
+            "dataType": "String",
+            "definition": "cdi:numberPattern - number format pattern for the field (PhysicalMapping.numberPattern). Column width and decimal/digit-group separators live on the TextMapping subclass.",
             "multiplicity": { "lower": "0", "upper": "1" }
           },
           {
@@ -551,6 +560,241 @@
             "name": "isRequired",
             "dataType": "Boolean",
             "definition": "cdi:isRequired - whether a value is required for this column.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "TextMapping - per-field physical mapping for a variable in a delimited or fixed-width text data set. DDI-CDI TextMapping, a subclass of PhysicalMapping; adds column width and number-formatting detail. From cdifProperties/cdifTextMapping (allOf cdifPhysicalMapping). cdif:formats_InstanceVariable and the base mapping attributes are inherited from PhysicalMapping.",
+        "mappingType": "new",
+        "sourceClass": "TextMapping",
+        "targetPackage": "Distribution",
+        "targetClass": "TextMapping",
+        "generalization": ["PhysicalMapping"],
+        "definition": "DDI-CDI TextMapping - physical mapping for a variable in a delimited or fixed-width text data set, extending PhysicalMapping with column width and number-formatting properties.",
+        "attribute": [
+          {
+            "name": "length",
+            "dataType": "Integer",
+            "definition": "cdi:length - the column width if the tabular text is fixed width (TextMapping.length).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "defaultDecimalSeparator",
+            "dataType": "String",
+            "definition": "cdi:defaultDecimalSeparator - decimal separator used when not otherwise specified (TextMapping.defaultDecimalSeparator).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "defaultDigitGroupSeparator",
+            "dataType": "String",
+            "definition": "cdi:defaultDigitGroupSeparator - digit-group (thousands) separator (TextMapping.defaultDigitGroupSeparator).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "displayLabel",
+            "dataType": "String",
+            "definition": "cdif:displayLabel - human-readable label(s) for display. CDIF simplification (plain string) of DDI-CDI TextMapping.displayLabel (LabelForDisplay).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
+      },
+      {
+        "_comment": "LocatorMapping - locates a variable's value(s) within a structured (hierarchical) data set (XML/JSON) via a locator expression. DDI-CDI LocatorMapping, a subclass of PhysicalMapping. From cdifProperties/cdifLocatorMapping. Used in place of column-index/text mappings for cdi:StructuredDataSet distributions; cdif:formats_InstanceVariable is inherited from PhysicalMapping.",
+        "mappingType": "new",
+        "sourceClass": "LocatorMapping",
+        "targetPackage": "Distribution",
+        "targetClass": "LocatorMapping",
+        "generalization": ["PhysicalMapping"],
+        "definition": "DDI-CDI LocatorMapping - locates a variable's value(s) in a structured document (XPath, JSONPath, pointer, ...) for a cdi:StructuredDataSet distribution.",
+        "attribute": [
+          {
+            "name": "locator",
+            "dataType": "String",
+            "definition": "cdi:locator - expression locating the variable's value(s) in the structured document (XPath, JSONPath, pointer, etc.). LocatorMapping.locator.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "TabularTextDataSet - dataset-level physical layout of a delimited or fixed-width text data set (CSV/TSV/fixed-width). DDI-CDI TabularTextDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Carried as a co-type on the distribution. From cdifProperties/cdifTabularTextDataSet. Per-field mappings are TextMapping (on cdif:hasPhysicalMapping, inherited from DataDownload).",
+        "mappingType": "new",
+        "sourceClass": "TabularTextDataSet",
+        "targetPackage": "Distribution",
+        "targetClass": "TabularTextDataSet",
+        "generalization": ["DataDownload"],
+        "definition": "DDI-CDI TabularTextDataSet - dataset-level physical layout properties of a delimited or fixed-width text distribution; a subclass of PhysicalDataSet (= schema:DataDownload).",
+        "attribute": [
+          {
+            "name": "arrayBase",
+            "dataType": "Integer",
+            "definition": "cdi:arrayBase - index of the first element/column (TabularTextDataSet.arrayBase).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "commentPrefix",
+            "dataType": "String",
+            "definition": "cdi:commentPrefix - character(s) that mark a line as a comment.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "delimiter",
+            "dataType": "String",
+            "definition": "cdi:delimiter - field delimiter (e.g. ',' or tab).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "escapeCharacter",
+            "dataType": "String",
+            "definition": "cdi:escapeCharacter - character used to escape the delimiter or quote within a field.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "hasHeader",
+            "dataType": "Boolean",
+            "definition": "cdi:hasHeader - whether the file has a header row.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "headerIsCaseSensitive",
+            "dataType": "Boolean",
+            "definition": "cdi:headerIsCaseSensitive - whether header matching is case sensitive.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "headerRowCount",
+            "dataType": "Integer",
+            "definition": "cdi:headerRowCount - number of header rows.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "isDelimited",
+            "dataType": "Boolean",
+            "definition": "cdi:isDelimited - whether the file is delimited.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "isFixedWidth",
+            "dataType": "Boolean",
+            "definition": "cdi:isFixedWidth - whether the file is fixed-width.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "lineTerminator",
+            "dataType": "String",
+            "definition": "cdi:lineTerminator - allowed line terminators, in order (default [CRLF, LF]).",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "nullSequence",
+            "dataType": "String",
+            "definition": "cdi:nullSequence - value interpreted as null at the dataset level.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "quoteCharacter",
+            "dataType": "String",
+            "definition": "cdi:quoteCharacter - character used to quote fields.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "skipBlankRows",
+            "dataType": "Boolean",
+            "definition": "cdi:skipBlankRows - whether blank rows are skipped.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "skipDataColumns",
+            "dataType": "Integer",
+            "definition": "cdi:skipDataColumns - number of leading data columns to skip.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "skipInitialSpace",
+            "dataType": "Boolean",
+            "definition": "cdi:skipInitialSpace - whether to skip whitespace after the delimiter.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "skipRows",
+            "dataType": "Integer",
+            "definition": "cdi:skipRows - number of leading rows to skip.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "tableDirection",
+            "dataType": "String",
+            "definition": "cdi:tableDirection - direction in which columns are arranged in each row (TableDirectionValues enumeration: Auto, Ltr, Rtl).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "textDirection",
+            "dataType": "String",
+            "definition": "cdi:textDirection - reading order of text within cells (TextDirectionValues enumeration: Auto, Inherit, Ltr, Rtl).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "treatConsecutiveDelimitersAsOne",
+            "dataType": "Boolean",
+            "definition": "cdi:treatConsecutiveDelimitersAsOne - whether consecutive delimiters are treated as a single delimiter.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "trim",
+            "dataType": "String",
+            "definition": "cdi:trim - which spaces to remove from a data value (TrimValues enumeration: Both, End, Neither, Start).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "StructuredDataSet - dataset-level marker for a structured (hierarchical) data set (XML/JSON). DDI-CDI StructuredDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Fields are located with LocatorMapping rather than column-index/text mappings. From cdifProperties/cdifStructuredDataSet.",
+        "mappingType": "new",
+        "sourceClass": "StructuredDataSet",
+        "targetPackage": "Distribution",
+        "targetClass": "StructuredDataSet",
+        "generalization": ["DataDownload"],
+        "definition": "DDI-CDI StructuredDataSet - dataset-level marker for a structured (hierarchical) distribution; a subclass of PhysicalDataSet (= schema:DataDownload). Fields are addressed with LocatorMapping.",
+        "attribute": [
+          {
+            "name": "encoding",
+            "dataType": "String",
+            "definition": "cdif:encoding - character encoding / serialization of the structured document (e.g. utf-8, application/json). CDIF simplification (plain charset string) of DDI-CDI PhysicalDataSet.encoding (ControlledVocabularyEntry).",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "DataFingerprint - a fingerprint (checksum/hash) of a physical dataset, used to verify integrity. DDI-CDI DataFingerprint datatype (StructuredDataTypes); carried inline on a DataDownload via cdi:fingerprint. isDataType:true per the value-type policy. From cdifProperties/cdifDataFingerprint.",
+        "mappingType": "new",
+        "sourceClass": "DataFingerprint",
+        "targetPackage": "Distribution",
+        "targetClass": "DataFingerprint",
+        "isDataType": true,
+        "definition": "DDI-CDI DataFingerprint - a fingerprint (checksum/hash) of a physical dataset, used to verify integrity.",
+        "attribute": [
+          {
+            "name": "value",
+            "dataType": "String",
+            "definition": "cdi:value - the fingerprint value (e.g. the hex digest). DataFingerprint.value.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          {
+            "name": "algorithmSpecification",
+            "dataType": "String",
+            "definition": "cdi:algorithmSpecification - identifier or name of the algorithm specification (e.g. SHA-256, MD5). DataFingerprint.algorithmSpecification.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "algorithmVersion",
+            "dataType": "String",
+            "definition": "cdi:algorithmVersion - version of the fingerprint algorithm/specification. DataFingerprint.algorithmVersion.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "typeOfFingerprint",
+            "dataType": "String",
+            "definition": "cdi:typeOfFingerprint - the kind of fingerprint (e.g. checksum, hash, digest). DataFingerprint.typeOfFingerprint.",
             "multiplicity": { "lower": "0", "upper": "1" }
           }
         ]
