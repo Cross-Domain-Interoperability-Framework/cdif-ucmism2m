@@ -80,11 +80,10 @@ GENERIC_PROPS = {
 # Names the UML deliberately does NOT model as separate classes because the
 # union-type policy collapses them to a single canonical type / supertype.
 UNION_POLICY = {
-    # schema.org Action polymorphism (schema:potentialAction) - not modelled
-    "action", "assessaction", "consumeaction", "controlaction", "createaction",
+    # schema.org Action subtype polymorphism collapses to the modelled Action base
+    "assessaction", "consumeaction", "controlaction", "createaction",
     "deleteaction", "findaction", "interactaction", "moveaction", "playaction",
-    "searchaction", "transferaction", "updateaction", "entrypoint",
-    "propertyvaluespecification",
+    "searchaction", "transferaction", "updateaction",
     # schema:PropertyValue split into Identifier / VariableMeasured / AdditionalProperty
     "propertyvalue",
     # Agent / Organization polymorphism -> Agent supertype
@@ -100,12 +99,11 @@ UNION_POLICY = {
     "languagetaggedvalue", "conceptref", "id-reference",
     # $def wrapper names emitted by the resolver (not real classes)
     "cdifinstancevariable", "cdifinstancevariable_definedterm", "cdifcodelistconcept",
-    # WebAPI / schema.org Action service-description machinery (cdifOpenApi) -
-    # deliberately NOT modelled in the UML (decision: keep the WebAPI class
-    # itself but not the potentialAction/EntryPoint/PropertyValueSpecification tree)
-    "propertyvaluespecification", "entrypoint", "potentialaction", "result",
-    "target", "object", "urltemplate", "httpmethod", "contenttype",
-    "query-input", "valuename", "valuepattern", "valuerequired",
+    # schema:object on an Action is open-ended (schema:Thing) and not modelled.
+    # The rest of the Action machinery (Action / EntryPoint / ActionResult /
+    # PropertyValueSpecification + potentialAction/target/result/query-input)
+    # IS now modelled in Core.
+    "object",
     # schema:LinkRole hyperlink machinery (collapsed)
     "linkrelationship",
 }
@@ -119,6 +117,7 @@ ALIASES = {
     "key": "primarykey",              # cdif:Key ~ DDI-CDI PrimaryKey (kept name)
     "componentposition": "primarykeycomponent",  # cdi:ComponentPosition ~ PrimaryKeyComponent
     "cdifphysicalmapping": "physicalmapping",  # resolver $def wrapper for the cdifPhysicalMapping BB ~ PhysicalMapping class
+    "query-input": "queryinput",      # schema:query-input ~ Action_queryInput_PropertyValueSpecification role
 }
 
 

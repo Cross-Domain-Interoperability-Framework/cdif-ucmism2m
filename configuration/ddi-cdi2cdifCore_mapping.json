@@ -360,12 +360,126 @@
             "dataType": "String",
             "definition": "schema:serviceType - the type of the web API service.",
             "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "schema:Action - an operation (typically an HTTP request) invocable via a WebAPI distribution. Pure schema.org concept (no DDI-CDI counterpart), adapted from the schema.org Actions pattern. Carried by schema:potentialAction on WebAPI. target defines the endpoint/syntax (EntryPoint); result defines the response serialization (ActionResult); query-input documents the urlTemplate parameters (PropertyValueSpecification). schema:object (the resource acted upon) is open-ended (schema:Thing) and superfluous for WebAPI distributions, so it is not modelled.",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "Action",
+        "definition": "schema:Action - an operation invocable via a WebAPI (schema:Action or a subtype such as SearchAction, FindAction, AssessAction, ...).",
+        "attribute": [
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - text label for the action.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          }
+        ]
+      },
+      {
+        "_comment": "schema:EntryPoint - the request target (endpoint + syntax) for an Action. Target of schema:target.",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "EntryPoint",
+        "definition": "schema:EntryPoint - documents the URL endpoint and request syntax used to invoke an Action.",
+        "attribute": [
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - description of the entry point.",
+            "multiplicity": { "lower": "0", "upper": "1" }
           },
           {
-            "name": "potentialAction",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:potentialAction - @id reference to a schema:Action that can be invoked via the API.",
+            "name": "urlTemplate",
+            "dataType": "String",
+            "definition": "schema:urlTemplate - templated URL (RFC 6570); curly-brace parameters are documented in the Action's query-input.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          {
+            "name": "httpMethod",
+            "dataType": "String",
+            "definition": "schema:httpMethod - HTTP method(s) (GET, PUT, POST, PATCH, DELETE, ...); applicable when the protocol is HTTP.",
             "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "contentType",
+            "dataType": "String",
+            "definition": "schema:contentType - supported MIME content type(s) for the endpoint response.",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
+      },
+      {
+        "_comment": "Action result descriptor (schema:DataDownload form) - the actionResult building block. Target of schema:result. Describes the response serialization (encodingFormat, conformsTo) without a per-request contentUrl/contentSize.",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "ActionResult",
+        "definition": "Action result - the expected representation of an Action response (schema:DataDownload): encoding format and conformance, but no contentUrl/contentSize (generated per request). From the actionResult building block.",
+        "attribute": [
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - label for the result/response format.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - description of the result representation.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "encodingFormat",
+            "dataType": "String",
+            "definition": "schema:encodingFormat - MIME type(s) of the response serialization.",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          },
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - identifier(s) of a standard/specification the response conforms to.",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
+      },
+      {
+        "_comment": "schema:PropertyValueSpecification - documents a parameter used in the Action EntryPoint urlTemplate. Target of schema:query-input.",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "PropertyValueSpecification",
+        "definition": "schema:PropertyValueSpecification - an explanation of a parameter used in the target URL template of an Action.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "Identifier",
+            "definition": "@id - identifier for this parameter specification.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "valueName",
+            "dataType": "String",
+            "definition": "schema:valueName - the parameter name as used in the urlTemplate.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - description of the parameter.",
+            "multiplicity": { "lower": "1", "upper": "1" }
+          },
+          {
+            "name": "valueRequired",
+            "dataType": "Boolean",
+            "definition": "schema:valueRequired - whether the parameter is required.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "valuePattern",
+            "dataType": "String",
+            "definition": "schema:valuePattern - a regular expression constraining the parameter value.",
+            "multiplicity": { "lower": "0", "upper": "1" }
           }
         ]
       },
@@ -939,6 +1053,38 @@
       }
     ],
     "association": [
+      {
+        "_comment": "schema:potentialAction - the Action(s) that can be invoked via this WebAPI distribution.",
+        "targetAssociationName": "WebAPI_potentialAction_Action",
+        "subjectClass": "WebAPI",
+        "objectClass": "Action",
+        "definition": "schema:potentialAction - an Action (operation) invocable via this WebAPI.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
+        "_comment": "schema:target - the EntryPoint (endpoint + request syntax) for the Action.",
+        "targetAssociationName": "Action_target_EntryPoint",
+        "subjectClass": "Action",
+        "objectClass": "EntryPoint",
+        "definition": "schema:target - the request target (endpoint and syntax) used to invoke the Action.",
+        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
+      },
+      {
+        "_comment": "schema:result - the ActionResult describing the Action response serialization.",
+        "targetAssociationName": "Action_result_ActionResult",
+        "subjectClass": "Action",
+        "objectClass": "ActionResult",
+        "definition": "schema:result - the expected representation (encoding format, conformance) of the Action response.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "schema:query-input - the parameter specifications for the Action urlTemplate.",
+        "targetAssociationName": "Action_queryInput_PropertyValueSpecification",
+        "subjectClass": "Action",
+        "objectClass": "PropertyValueSpecification",
+        "definition": "schema:query-input - explanations of the parameters used in the target URL template.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
       {
         "targetAssociationName": "Dataset_provider_Agent",
         "subjectClass": "Dataset",

@@ -165,11 +165,17 @@ Browser features:
   provActivity` and the schema.org-extended `cdifProvActivity` belong to the
   cdifComplete / cdifXAS profiles — do NOT add name/description/startedAtTime/etc. to
   ProvActivity in Core/Discovery/DataDescription/DataStructure.
-- **WebAPI/OpenAPI action machinery NOT modelled in the UML** (`potentialAction`/
-  `EntryPoint`/`PropertyValueSpecification`) — kept as intentional union-policy
-  absence in the *UML model*. (The JSON-schema/BB side *does* model action/result —
-  see metadataBuildingBlocks `agents.md`, "WebAPI result physical realization", and
-  the `actionResult` BB — but that is not reflected in the profile XMIs.)
+- **WebAPI action machinery IS modelled in Core** (May 2026; reverses the earlier
+  "not modelled" decision). `WebAPI.potentialAction` is an association to a real
+  **`Action`** class (was an `XsdAnyUri` stub), and `Action` ramifies into
+  **`EntryPoint`** (`schema:target`), **`ActionResult`** (`schema:result`; the
+  `actionResult` BB), and **`PropertyValueSpecification`** (`schema:query-input`).
+  All four live in Core's `Distribution` package, so they propagate to Discovery/
+  DataDescription/DataStructure. The Action subtypes (SearchAction, FindAction, …)
+  stay union-collapsed to the `Action` base, and `schema:object` (open-ended
+  `schema:Thing`) is still not modelled. Mirrors the `action`/`actionResult`/`webAPI`
+  BBs. Audit: `query-input` ~ `Action_queryInput_PropertyValueSpecification` (ALIAS,
+  since association names can't contain `-`).
 - **Keys keep DDI-CDI `PrimaryKey`/`PrimaryKeyComponent` naming**, not `cdif:Key`/`ComponentPosition`.
 - **DataStructure hierarchy via generalization, not duplication.** `DataStructureComponent`
   is abstract with the component types (`Identifier`/`Measure`/`Attribute`/`Dimension`/

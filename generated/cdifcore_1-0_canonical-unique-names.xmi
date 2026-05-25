@@ -783,7 +783,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFCore.WebAPI-potentialAction" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-potentialAction" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCore.WebAPI-potentialAction-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-potentialAction-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCore.WebAPI-potentialAction"/>
-                     <body>schema:potentialAction - @id reference to a schema:Action that can be invoked via the API.</body>
+                     <body>schema:potentialAction - an Action (operation) invocable via this WebAPI.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCore.WebAPI-potentialAction-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-potentialAction-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -792,7 +792,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                      <value>*</value>
                   </upperValue>
                   <name>potentialAction</name>
-                  <type xmi:idref="CDIFCore.XsdAnyUri"/>
+                  <type xmi:idref="CDIFCore.Action"/>
+                  <association xmi:idref="CDIFCore.WebAPI_potentialAction_Action"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFCore.WebAPI-identifier" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCore.WebAPI-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI-identifier-ownedComment" xmi:type="uml:Comment">
@@ -834,6 +835,275 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                      <value>1</value>
                   </upperValue>
                   <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCore.Action" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCore.Action-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCore.Action"/>
+                  <body>schema:Action - an operation invocable via a WebAPI (schema:Action or a subtype such as SearchAction, FindAction, AssessAction, ...).</body>
+               </ownedComment>
+               <name>Action</name>
+               <ownedAttribute xmi:id="CDIFCore.Action-name" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Action-name-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Action-name"/>
+                     <body>schema:name - text label for the action.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Action-name-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Action-name-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Action-target" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-target" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Action-target-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-target-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Action-target"/>
+                     <body>schema:target - the request target (endpoint and syntax) used to invoke the Action.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Action-target-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-target-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Action-target-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-target-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>target</name>
+                  <type xmi:idref="CDIFCore.EntryPoint"/>
+                  <association xmi:idref="CDIFCore.Action_target_EntryPoint"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Action-result" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-result" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Action-result-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-result-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Action-result"/>
+                     <body>schema:result - the expected representation (encoding format, conformance) of the Action response.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Action-result-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-result-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Action-result-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-result-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>result</name>
+                  <type xmi:idref="CDIFCore.ActionResult"/>
+                  <association xmi:idref="CDIFCore.Action_result_ActionResult"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.Action-queryInput" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-queryInput" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Action-queryInput-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-queryInput-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Action-queryInput"/>
+                     <body>schema:query-input - explanations of the parameters used in the target URL template.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.Action-queryInput-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-queryInput-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.Action-queryInput-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action-queryInput-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>queryInput</name>
+                  <type xmi:idref="CDIFCore.PropertyValueSpecification"/>
+                  <association xmi:idref="CDIFCore.Action_queryInput_PropertyValueSpecification"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCore.EntryPoint" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCore.EntryPoint-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCore.EntryPoint"/>
+                  <body>schema:EntryPoint - documents the URL endpoint and request syntax used to invoke an Action.</body>
+               </ownedComment>
+               <name>EntryPoint</name>
+               <ownedAttribute xmi:id="CDIFCore.EntryPoint-description" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.EntryPoint-description-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.EntryPoint-description"/>
+                     <body>schema:description - description of the entry point.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.EntryPoint-description-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.EntryPoint-description-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.EntryPoint-urlTemplate" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-urlTemplate" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.EntryPoint-urlTemplate-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-urlTemplate-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.EntryPoint-urlTemplate"/>
+                     <body>schema:urlTemplate - templated URL (RFC 6570); curly-brace parameters are documented in the Action's query-input.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.EntryPoint-urlTemplate-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-urlTemplate-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.EntryPoint-urlTemplate-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-urlTemplate-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>urlTemplate</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.EntryPoint-httpMethod" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-httpMethod" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.EntryPoint-httpMethod-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-httpMethod-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.EntryPoint-httpMethod"/>
+                     <body>schema:httpMethod - HTTP method(s) (GET, PUT, POST, PATCH, DELETE, ...); applicable when the protocol is HTTP.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.EntryPoint-httpMethod-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-httpMethod-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.EntryPoint-httpMethod-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-httpMethod-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>httpMethod</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.EntryPoint-contentType" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-contentType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.EntryPoint-contentType-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-contentType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.EntryPoint-contentType"/>
+                     <body>schema:contentType - supported MIME content type(s) for the endpoint response.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.EntryPoint-contentType-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-contentType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.EntryPoint-contentType-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#EntryPoint-contentType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>contentType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCore.ActionResult" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCore.ActionResult-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCore.ActionResult"/>
+                  <body>Action result - the expected representation of an Action response (schema:DataDownload): encoding format and conformance, but no contentUrl/contentSize (generated per request). From the actionResult building block.</body>
+               </ownedComment>
+               <name>ActionResult</name>
+               <ownedAttribute xmi:id="CDIFCore.ActionResult-name" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.ActionResult-name-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.ActionResult-name"/>
+                     <body>schema:name - label for the result/response format.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.ActionResult-name-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.ActionResult-name-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.ActionResult-description" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.ActionResult-description-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.ActionResult-description"/>
+                     <body>schema:description - description of the result representation.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.ActionResult-description-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.ActionResult-description-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.ActionResult-encodingFormat" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-encodingFormat" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.ActionResult-encodingFormat-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-encodingFormat-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.ActionResult-encodingFormat"/>
+                     <body>schema:encodingFormat - MIME type(s) of the response serialization.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.ActionResult-encodingFormat-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-encodingFormat-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.ActionResult-encodingFormat-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-encodingFormat-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>encodingFormat</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.ActionResult-conformsTo" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-conformsTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.ActionResult-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-conformsTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.ActionResult-conformsTo"/>
+                     <body>dcterms:conformsTo - identifier(s) of a standard/specification the response conforms to.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.ActionResult-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.ActionResult-conformsTo-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#ActionResult-conformsTo-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>conformsTo</name>
+                  <type xmi:idref="CDIFCore.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFCore.PropertyValueSpecification" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFCore.PropertyValueSpecification-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCore.PropertyValueSpecification"/>
+                  <body>schema:PropertyValueSpecification - an explanation of a parameter used in the target URL template of an Action.</body>
+               </ownedComment>
+               <name>PropertyValueSpecification</name>
+               <ownedAttribute xmi:id="CDIFCore.PropertyValueSpecification-identifier" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.PropertyValueSpecification-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.PropertyValueSpecification-identifier"/>
+                     <body>@id - identifier for this parameter specification.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.PropertyValueSpecification-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.PropertyValueSpecification-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFCore.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.PropertyValueSpecification-valueName" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueName" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.PropertyValueSpecification-valueName-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueName-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.PropertyValueSpecification-valueName"/>
+                     <body>schema:valueName - the parameter name as used in the urlTemplate.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.PropertyValueSpecification-valueName-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueName-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.PropertyValueSpecification-valueName-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueName-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>valueName</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.PropertyValueSpecification-description" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.PropertyValueSpecification-description-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.PropertyValueSpecification-description"/>
+                     <body>schema:description - description of the parameter.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.PropertyValueSpecification-description-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.PropertyValueSpecification-description-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.PropertyValueSpecification-valueRequired" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueRequired" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.PropertyValueSpecification-valueRequired-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueRequired-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.PropertyValueSpecification-valueRequired"/>
+                     <body>schema:valueRequired - whether the parameter is required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.PropertyValueSpecification-valueRequired-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueRequired-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.PropertyValueSpecification-valueRequired-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valueRequired-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>valueRequired</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Boolean"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFCore.PropertyValueSpecification-valuePattern" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valuePattern" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.PropertyValueSpecification-valuePattern-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valuePattern-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.PropertyValueSpecification-valuePattern"/>
+                     <body>schema:valuePattern - a regular expression constraining the parameter value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.PropertyValueSpecification-valuePattern-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valuePattern-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.PropertyValueSpecification-valuePattern-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#PropertyValueSpecification-valuePattern-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>valuePattern</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
@@ -1760,6 +2030,42 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <association xmi:idref="CDIFCore.DataDownload_provider_Agent"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFCore.DataDownload_provider_Agent-AgentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.WebAPI_potentialAction_Action" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI_potentialAction_Action" xmi:type="uml:Association">
+            <name>WebAPI_potentialAction_Action</name>
+            <memberEnd xmi:idref="CDIFCore.WebAPI-potentialAction"/>
+            <ownedEnd xmi:id="CDIFCore.WebAPI_potentialAction_Action-ActionEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#WebAPI_potentialAction_Action-ActionEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.Action"/>
+               <association xmi:idref="CDIFCore.WebAPI_potentialAction_Action"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.WebAPI_potentialAction_Action-ActionEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.Action_target_EntryPoint" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action_target_EntryPoint" xmi:type="uml:Association">
+            <name>Action_target_EntryPoint</name>
+            <memberEnd xmi:idref="CDIFCore.Action-target"/>
+            <ownedEnd xmi:id="CDIFCore.Action_target_EntryPoint-EntryPointEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action_target_EntryPoint-EntryPointEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.EntryPoint"/>
+               <association xmi:idref="CDIFCore.Action_target_EntryPoint"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.Action_target_EntryPoint-EntryPointEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.Action_result_ActionResult" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action_result_ActionResult" xmi:type="uml:Association">
+            <name>Action_result_ActionResult</name>
+            <memberEnd xmi:idref="CDIFCore.Action-result"/>
+            <ownedEnd xmi:id="CDIFCore.Action_result_ActionResult-ActionResultEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action_result_ActionResult-ActionResultEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.ActionResult"/>
+               <association xmi:idref="CDIFCore.Action_result_ActionResult"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.Action_result_ActionResult-ActionResultEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFCore.Action_queryInput_PropertyValueSpecification" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action_queryInput_PropertyValueSpecification" xmi:type="uml:Association">
+            <name>Action_queryInput_PropertyValueSpecification</name>
+            <memberEnd xmi:idref="CDIFCore.Action-queryInput"/>
+            <ownedEnd xmi:id="CDIFCore.Action_queryInput_PropertyValueSpecification-PropertyValueSpecificationEnd" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Action_queryInput_PropertyValueSpecification-PropertyValueSpecificationEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFCore.PropertyValueSpecification"/>
+               <association xmi:idref="CDIFCore.Action_queryInput_PropertyValueSpecification"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFCore.Action_queryInput_PropertyValueSpecification-PropertyValueSpecificationEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFCore.Contributor_contributor_Agent" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Contributor_contributor_Agent" xmi:type="uml:Association">
             <name>Contributor_contributor_Agent</name>
