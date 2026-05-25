@@ -1097,6 +1097,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.SentinelValueDomain"/>
                   <association xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-uses" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-uses" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-uses-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-uses-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-uses"/>
+                     <body>cdif:uses - the concept(s) this represented variable measures or represents, as references to skos:Concept entries.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-uses-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-uses-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.RepresentedVariable-uses-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-uses-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>uses</name>
+                  <type xmi:idref="CDIFDataStructure.Concept"/>
+                  <association xmi:idref="CDIFDataStructure.RepresentedVariable_uses_Concept"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-measures" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-measures" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-measures-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-measures-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-measures"/>
@@ -6847,6 +6862,15 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.RepresentedVariable_uses_Concept" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_uses_Concept" xmi:type="uml:Association">
+            <name>RepresentedVariable_uses_Concept</name>
+            <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable-uses"/>
+            <ownedEnd xmi:id="CDIFDataStructure.RepresentedVariable_uses_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_uses_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.Concept"/>
+               <association xmi:idref="CDIFDataStructure.RepresentedVariable_uses_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_uses_Concept-ConceptEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.RepresentedVariable_measures_UnitType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_measures_UnitType" xmi:type="uml:Association">
             <name>RepresentedVariable_measures_UnitType</name>

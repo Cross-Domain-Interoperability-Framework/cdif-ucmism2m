@@ -481,6 +481,14 @@
         "targetAssociationName": "RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain"
       },
       {
+        "_comment": "cdif:uses_Concept - the controlled-vocabulary skos:Concept(s) the RepresentedVariable represents/measures (akin to schema:propertyID). New association (CDIF-specific; no DDI-CDI source association).",
+        "targetAssociationName": "RepresentedVariable_uses_Concept",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "Concept",
+        "definition": "cdif:uses - the concept(s) this represented variable measures or represents, as references to skos:Concept entries.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+      },
+      {
         "_comment": "cdi:qualifies association on AttributeComponent. DDI-CDI has AttributeComponent_qualifies_DataStructureComponent; CDIF's DataStructure profile narrows the qualifies target to MeasureComponent per the cdifDataStructureComponent BB. Renamed accordingly.",
         "sourceAssociationName": "AttributeComponent_qualifies_DataStructureComponent",
         "targetAssociationName": "AttributeComponent_qualifies_MeasureComponent",
