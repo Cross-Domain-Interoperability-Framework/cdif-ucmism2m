@@ -47,7 +47,7 @@
     {
       "name": "Variables",
       "parent": "CDIFDataStructure",
-      "definition": "RepresentedVariable, ReferenceVariable, DescriptorVariable plus reuse of InstanceVariable from Data Description."
+      "definition": "RepresentedVariable, DescriptorVariable plus reuse of InstanceVariable from Data Description. (DDI-CDI ReferenceVariable collapses to RepresentedVariable in CDIF.)"
     },
     {
       "name": "ValueDomains",
@@ -135,11 +135,11 @@
         "generalization": ["DataStructureComponent"]
       },
       {
+        "_comment": "VariableDescriptorComponent is the descriptor (parameter-name) column of a long-format data structure. Unlike the other components it is defined by a DescriptorVariable (not a RepresentedVariable), so it is modelled standalone rather than generalizing the abstract DataStructureComponent (which carries isDefinedBy_RepresentedVariable). It keeps its own identifier/semantic/refersTo via the source map.",
         "mappingType": "map",
         "sourceClass": "VariableDescriptorComponent",
         "targetPackage": "Components",
-        "targetClass": "VariableDescriptorComponent",
-        "generalization": ["DataStructureComponent"]
+        "targetClass": "VariableDescriptorComponent"
       },
       {
         "mappingType": "map",
@@ -189,12 +189,6 @@
             }
           }
         ]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "ReferenceVariable",
-        "targetPackage": "Variables",
-        "targetClass": "ReferenceVariable"
       },
       {
         "_comment": "DescriptorVariable - in the CDIF profile a descriptor variable carries only an identifier, a name, and the DescriptorValueDomain enumerating the codes it can take (cdif:hasValuesFrom). The richer DDI-CDI DescriptorVariable attributes (function, role, unit of measure, data type, etc.) are NOT part of the CDIF building block, so this is a curated 'new' class rather than a bare map of the source. From cdifProperties/cdifDescriptorVariable.",
@@ -469,48 +463,22 @@
         }
       },
       {
+        "_comment": "cdif:isDefinedBy_RepresentedVariable - declared once on the abstract DataStructureComponent so every concrete component (IdentifierComponent, MeasureComponent, AttributeComponent, DimensionComponent, VariableValueComponent) inherits it. The DDI-CDI ReferenceVariable that defines a VariableValueComponent is just a RepresentedVariable in the CDIF schema. VariableDescriptorComponent is the exception (defined by a DescriptorVariable) and is modelled standalone, not as a DataStructureComponent.",
         "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "IdentifierComponent_isDefinedBy_RepresentedVariable",
+        "targetAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
+        "subjectClass": "DataStructureComponent",
+        "objectClass": "RepresentedVariable",
         "objectClassMultiplicity": {
           "lower": "1",
           "upper": "1"
         }
       },
       {
-        "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "MeasureComponent_isDefinedBy_RepresentedVariable",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "AttributeComponent_isDefinedBy_RepresentedVariable",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "DimensionComponent_isDefinedBy_RepresentedVariable",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "VariableValueComponent_isDefinedBy_ReferenceVariable",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
+        "_comment": "cdif:isDefinedBy_DescriptorVariable - VariableDescriptorComponent (the descriptor column) is defined by a DescriptorVariable, not a RepresentedVariable, so it is modelled standalone (not generalizing DataStructureComponent) and carries its own isDefinedBy association.",
         "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
         "targetAssociationName": "VariableDescriptorComponent_isDefinedBy_DescriptorVariable",
+        "subjectClass": "VariableDescriptorComponent",
+        "objectClass": "DescriptorVariable",
         "objectClassMultiplicity": {
           "lower": "1",
           "upper": "1"
@@ -621,7 +589,7 @@
         "objectClassMultiplicity": { "lower": "0", "upper": "1" }
       },
       {
-        "_comment": "cdif:uses - the InstanceVariable references the RepresentedVariable it instantiates; the represented-variable-level properties live on the RepresentedVariable and are not duplicated on the InstanceVariable. The instance @id targets a RepresentedVariable or one of its subtypes (DescriptorVariable/ReferenceVariable). New association (no DDI-CDI source association from InstanceVariable).",
+        "_comment": "cdif:uses - the InstanceVariable references the RepresentedVariable it instantiates; the represented-variable-level properties live on the RepresentedVariable and are not duplicated on the InstanceVariable. The instance @id targets a RepresentedVariable. New association (no DDI-CDI source association from InstanceVariable).",
         "targetAssociationName": "InstanceVariable_uses_RepresentedVariable",
         "subjectClass": "InstanceVariable",
         "objectClass": "RepresentedVariable",
