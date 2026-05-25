@@ -1104,36 +1104,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.UnitType"/>
                   <association xmi:idref="CDIFDataStructure.RepresentedVariable_measures_UnitType"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveConceptsFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSubstantiveConceptsFrom" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveConceptsFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSubstantiveConceptsFrom-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-takesSubstantiveConceptsFrom"/>
-                     <body>cdi:takesSubstantiveConceptsFrom - the substantive conceptual domain for this represented variable.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveConceptsFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSubstantiveConceptsFrom-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveConceptsFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSubstantiveConceptsFrom-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>takesSubstantiveConceptsFrom</name>
-                  <type xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain"/>
-                  <association xmi:idref="CDIFDataStructure.RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelConceptsFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSentinelConceptsFrom" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelConceptsFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSentinelConceptsFrom-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-takesSentinelConceptsFrom"/>
-                     <body>cdi:takesSentinelConceptsFrom - the sentinel conceptual domain for this represented variable.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelConceptsFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSentinelConceptsFrom-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelConceptsFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-takesSentinelConceptsFrom-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>takesSentinelConceptsFrom</name>
-                  <type xmi:idref="CDIFDataStructure.SentinelConceptualDomain"/>
-                  <association xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain"/>
-               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.ReferenceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.ReferenceVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ReferenceVariable-ownedComment" xmi:type="uml:Comment">
@@ -6415,6 +6385,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>conformsTo</name>
                   <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.ActionResult-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ActionResult-isStructuredBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.ActionResult-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ActionResult-isStructuredBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.ActionResult-isStructuredBy"/>
+                     <body>cdi:isStructuredBy - the DataStructure describing the physical layout of this Action result representation.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.ActionResult-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ActionResult-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.ActionResult-isStructuredBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ActionResult-isStructuredBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isStructuredBy</name>
+                  <type xmi:idref="CDIFDataStructure.DataStructure"/>
+                  <association xmi:idref="CDIFDataStructure.ActionResult_isStructuredBy_DataStructure"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.PropertyValueSpecification" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PropertyValueSpecification" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.PropertyValueSpecification-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PropertyValueSpecification-ownedComment" xmi:type="uml:Comment">
@@ -7449,24 +7434,6 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_measures_UnitType-UnitTypeEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain" xmi:type="uml:Association">
-            <name>RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain</name>
-            <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable-takesSubstantiveConceptsFrom"/>
-            <ownedEnd xmi:id="CDIFDataStructure.RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain-SubstantiveConceptualDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain-SubstantiveConceptualDomainEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain"/>
-               <association xmi:idref="CDIFDataStructure.RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain-SubstantiveConceptualDomainEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain" xmi:type="uml:Association">
-            <name>RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain</name>
-            <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable-takesSentinelConceptsFrom"/>
-            <ownedEnd xmi:id="CDIFDataStructure.RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.SentinelConceptualDomain"/>
-               <association xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd"/>
-         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_uses_RepresentedVariable" xmi:type="uml:Association">
             <name>InstanceVariable_uses_RepresentedVariable</name>
             <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable-uses"/>
@@ -8060,6 +8027,15 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.Action_queryInput_PropertyValueSpecification"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.Action_queryInput_PropertyValueSpecification-PropertyValueSpecificationEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.ActionResult_isStructuredBy_DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ActionResult_isStructuredBy_DataStructure" xmi:type="uml:Association">
+            <name>ActionResult_isStructuredBy_DataStructure</name>
+            <memberEnd xmi:idref="CDIFDataStructure.ActionResult-isStructuredBy"/>
+            <ownedEnd xmi:id="CDIFDataStructure.ActionResult_isStructuredBy_DataStructure-DataStructureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ActionResult_isStructuredBy_DataStructure-DataStructureEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.DataStructure"/>
+               <association xmi:idref="CDIFDataStructure.ActionResult_isStructuredBy_DataStructure"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.ActionResult_isStructuredBy_DataStructure-DataStructureEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.Contributor_contributor_Agent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Contributor_contributor_Agent" xmi:type="uml:Association">
             <name>Contributor_contributor_Agent</name>

@@ -63,6 +63,13 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/elementName_type" },
 					"default": []
+				},
+				"excludeProperties": {
+					"title": "Owner properties to drop (v1.1)",
+					"description": "List of 'ClassName.propertyName' specs. The named property is removed from the target class before the closure/diagram/XMI emit, so a source-map property that is not part of the CDIF profile (e.g. 'RepresentedVariable.takesSubstantiveConceptsFrom') does not appear on the class, in its context diagram, or in the exported XMI. Matched by property name on the named target class.",
+					"type": "array",
+					"items": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*\\.[A-Za-z][A-Za-z0-9]*$" },
+					"default": []
 				}
 			},
 			"required": ["description", "version", "sourceModel", "targetModel"],

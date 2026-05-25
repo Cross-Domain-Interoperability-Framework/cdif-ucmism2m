@@ -27,7 +27,11 @@
     },
     "datatypeSubstitutions": {
       "TypedString": "String"
-    }
+    },
+    "excludeProperties": [
+      "RepresentedVariable.takesSubstantiveConceptsFrom",
+      "RepresentedVariable.takesSentinelConceptsFrom"
+    ]
   },
   "package": [
     {
@@ -577,11 +581,19 @@
         "objectClassMultiplicity": { "lower": "0", "upper": "*" }
       },
       {
-        "_comment": "cdi:isStructuredBy - the distribution carries it. In the instance the distribution object is co-typed schema:DataDownload + cdi:PhysicalDataSet; the association is anchored on DataDownload so it renders on the distribution class readers recognize. (WebAPI also carries isStructuredBy, but only on its potentialAction.result, which CDIF does not model.) New association (DDI-CDI carries it on DataSet/PhysicalDataSet).",
+        "_comment": "cdi:isStructuredBy - the distribution carries it. In the instance the distribution object is co-typed schema:DataDownload + cdi:PhysicalDataSet; the association is anchored on DataDownload so it renders on the distribution class readers recognize. (A WebAPI carries it on its Action result instead - see ActionResult_isStructuredBy_DataStructure.) New association (DDI-CDI carries it on DataSet/PhysicalDataSet).",
         "targetAssociationName": "DataDownload_isStructuredBy_DataStructure",
         "subjectClass": "DataDownload",
         "objectClass": "DataStructure",
         "definition": "cdi:isStructuredBy - the DataStructure describing this distribution's physical layout.",
+        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+      },
+      {
+        "_comment": "cdi:isStructuredBy on a WebAPI Action result. The Action response (ActionResult) is the per-request representation a WebAPI distribution returns; its physical layout is described by a DataStructure, mirroring DataDownload_isStructuredBy_DataStructure. New association (ActionResult is defined in CDIFCore).",
+        "targetAssociationName": "ActionResult_isStructuredBy_DataStructure",
+        "subjectClass": "ActionResult",
+        "objectClass": "DataStructure",
+        "definition": "cdi:isStructuredBy - the DataStructure describing the physical layout of this Action result representation.",
         "objectClassMultiplicity": { "lower": "0", "upper": "1" }
       },
       {
