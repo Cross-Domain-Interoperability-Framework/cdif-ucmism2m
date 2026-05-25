@@ -457,6 +457,13 @@
         ]
       },
       {
+        "_comment": "ValueAndConceptDescription - formal description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, regular/logical expressions, etc. Target of cdi:isDescribedBy on the substantive/sentinel value domains. From cdifProperties/cdifValueDomain.",
+        "mappingType": "map",
+        "sourceClass": "ValueAndConceptDescription",
+        "targetPackage": "ValueDomains",
+        "targetClass": "ValueAndConceptDescription"
+      },
+      {
         "_comment": "EnumerationDomain - the enumerated set of codes a value domain draws from (cdif:takesValuesFrom). From cdifProperties/cdifEnumerationDomain. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "EnumerationDomain",
@@ -1122,6 +1129,24 @@
         "_comment": "cdif:takesValuesFrom - a sentinel value domain draws its values from an enumerated set. Mapped 1:1 from the DDI-CDI source association.",
         "sourceAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
         "targetAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "_comment": "cdi:isDescribedBy - a substantive value domain is described by a ValueAndConceptDescription (ranges, patterns, classification level, expressions). Mapped 1:1 from the DDI-CDI source association.",
+        "sourceAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "targetAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
+        "_comment": "cdi:isDescribedBy - a sentinel value domain is described by a ValueAndConceptDescription. Mapped 1:1 from the DDI-CDI source association.",
+        "sourceAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "targetAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "1"

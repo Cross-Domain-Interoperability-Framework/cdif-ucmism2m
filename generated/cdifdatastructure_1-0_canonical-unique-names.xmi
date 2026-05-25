@@ -1436,17 +1436,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>recommendedDataType</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesConceptsFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesConceptsFrom" xmi:type="uml:Property">
-                  <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesConceptsFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesConceptsFrom-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesConceptsFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-takesConceptsFrom-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>takesConceptsFrom</name>
-                  <type xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain"/>
-                  <association xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-isDescribedBy" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -1503,17 +1492,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                   </upperValue>
                   <name>recommendedDataType</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-takesConceptsFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesConceptsFrom" xmi:type="uml:Property">
-                  <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-takesConceptsFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesConceptsFrom-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelValueDomain-takesConceptsFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-takesConceptsFrom-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>takesConceptsFrom</name>
-                  <type xmi:idref="CDIFDataStructure.SentinelConceptualDomain"/>
-                  <association xmi:idref="CDIFDataStructure.SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-isDescribedBy" xmi:type="uml:Property">
                   <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
@@ -1734,194 +1712,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <name>references</name>
                   <type xmi:idref="CDIFDataStructure.PrimaryKeyComponent"/>
                   <association xmi:idref="CDIFDataStructure.ForeignKeyComponent_references_PrimaryKeyComponent"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.ConceptSystem" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem" xmi:type="uml:Class">
-               <ownedComment xmi:id="CDIFDataStructure.ConceptSystem-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="CDIFDataStructure.ConceptSystem"/>
-                  <body>Set of concepts structured by the relations among them [GSIM 1.1].</body>
-               </ownedComment>
-               <name>ConceptSystem</name>
-               <ownedAttribute xmi:id="CDIFDataStructure.ConceptSystem-allowsDuplicates" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-allowsDuplicates" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.ConceptSystem-allowsDuplicates-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-allowsDuplicates-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.ConceptSystem-allowsDuplicates"/>
-                     <body>If value is False, the members are unique within the collection - if True, there may be duplicates. (Note that a mathematical “bag” permits duplicates and is unordered - a “set” does not have duplicates and may be ordered.)</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.ConceptSystem-allowsDuplicates-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-allowsDuplicates-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.ConceptSystem-allowsDuplicates-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-allowsDuplicates-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>allowsDuplicates</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Boolean"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.ConceptSystem-externalDefinition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-externalDefinition" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.ConceptSystem-externalDefinition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-externalDefinition-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.ConceptSystem-externalDefinition"/>
-                     <body>A reference to an external definition of a concept (that is, a concept which is described outside the content of the DDI-CDI metadata description). An example is a SKOS concept. The definition property is assumed to duplicate the external one referenced if externalDefinition is used. Other corresponding properties are assumed to be included unchanged if used.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.ConceptSystem-externalDefinition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-externalDefinition-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.ConceptSystem-externalDefinition-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-externalDefinition-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>externalDefinition</name>
-                  <type xmi:idref="CDIFDataStructure.Reference"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.ConceptSystem-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.ConceptSystem-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.ConceptSystem-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.ConceptSystem-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.ConceptSystem-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="CDIFDataStructure.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.ConceptSystem-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-name" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.ConceptSystem-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-name-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.ConceptSystem-name"/>
-                     <body>Human understandable name (linguistic signifier, word, phrase, or mnemonic). May follow ISO/IEC 11179-5 naming principles, and have context provided to specify usage.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.ConceptSystem-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-name-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.ConceptSystem-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-name-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>name</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.ConceptSystem-purpose" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-purpose" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.ConceptSystem-purpose-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-purpose-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.ConceptSystem-purpose"/>
-                     <body>Intent or reason for the object/the description of the object.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.ConceptSystem-purpose-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-purpose-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.ConceptSystem-purpose-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-purpose-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>purpose</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.ConceptSystem-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-has" xmi:type="uml:Property">
-                  <lowerValue xmi:id="CDIFDataStructure.ConceptSystem-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-has-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.ConceptSystem-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>has</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-                  <association xmi:idref="CDIFDataStructure.ConceptSystem_has_Concept"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.SubstantiveConceptualDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain" xmi:type="uml:Class">
-               <ownedComment xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain"/>
-                  <body>Conceptual domain of substantive concepts.</body>
-               </ownedComment>
-               <name>SubstantiveConceptualDomain</name>
-               <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-displayLabel" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-displayLabel-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain-displayLabel"/>
-                     <body>A human-readable display label for the object. Supports the use of multiple languages. Repeat for labels with different content, for example, labels with differing length limitations.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-displayLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-displayLabel-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-displayLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>displayLabel</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="CDIFDataStructure.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-takesConceptsFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-takesConceptsFrom" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-takesConceptsFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-takesConceptsFrom-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain-takesConceptsFrom"/>
-                     <body>cdi:takesConceptsFrom - the ConceptSystem providing the substantive concepts.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-takesConceptsFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-takesConceptsFrom-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SubstantiveConceptualDomain-takesConceptsFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain-takesConceptsFrom-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>takesConceptsFrom</name>
-                  <type xmi:idref="CDIFDataStructure.ConceptSystem"/>
-                  <association xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="CDIFDataStructure.SentinelConceptualDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain" xmi:type="uml:Class">
-               <ownedComment xmi:id="CDIFDataStructure.SentinelConceptualDomain-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="CDIFDataStructure.SentinelConceptualDomain"/>
-                  <body>Conceptual domain of sentinel concepts.</body>
-               </ownedComment>
-               <name>SentinelConceptualDomain</name>
-               <ownedAttribute xmi:id="CDIFDataStructure.SentinelConceptualDomain-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-displayLabel" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SentinelConceptualDomain-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-displayLabel-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SentinelConceptualDomain-displayLabel"/>
-                     <body>A human-readable display label for the object. Supports the use of multiple languages. Repeat for labels with different content, for example, labels with differing length limitations.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SentinelConceptualDomain-displayLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-displayLabel-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelConceptualDomain-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-displayLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>displayLabel</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SentinelConceptualDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SentinelConceptualDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SentinelConceptualDomain-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SentinelConceptualDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelConceptualDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="CDIFDataStructure.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.SentinelConceptualDomain-takesConceptsFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-takesConceptsFrom" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.SentinelConceptualDomain-takesConceptsFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-takesConceptsFrom-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.SentinelConceptualDomain-takesConceptsFrom"/>
-                     <body>cdi:takesConceptsFrom - the ConceptSystem providing the sentinel concepts.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.SentinelConceptualDomain-takesConceptsFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-takesConceptsFrom-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.SentinelConceptualDomain-takesConceptsFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain-takesConceptsFrom-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>takesConceptsFrom</name>
-                  <type xmi:idref="CDIFDataStructure.ConceptSystem"/>
-                  <association xmi:idref="CDIFDataStructure.SentinelConceptualDomain_takesConceptsFrom_ConceptSystem"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.ValueAndConceptDescription" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ValueAndConceptDescription" xmi:type="uml:Class">
@@ -7121,15 +6911,6 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain" xmi:type="uml:Association">
-            <name>SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain</name>
-            <memberEnd xmi:idref="CDIFDataStructure.SubstantiveValueDomain-takesConceptsFrom"/>
-            <ownedEnd xmi:id="CDIFDataStructure.SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain-SubstantiveConceptualDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain-SubstantiveConceptualDomainEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain"/>
-               <association xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain-SubstantiveConceptualDomainEnd"/>
-         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:type="uml:Association">
             <name>SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription</name>
             <memberEnd xmi:idref="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy"/>
@@ -7147,15 +6928,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain" xmi:type="uml:Association">
-            <name>SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain</name>
-            <memberEnd xmi:idref="CDIFDataStructure.SentinelValueDomain-takesConceptsFrom"/>
-            <ownedEnd xmi:id="CDIFDataStructure.SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.SentinelConceptualDomain"/>
-               <association xmi:idref="CDIFDataStructure.SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain-SentinelConceptualDomainEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.SentinelValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:type="uml:Association">
             <name>SentinelValueDomain_isDescribedBy_ValueAndConceptDescription</name>
@@ -7210,33 +6982,6 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.ForeignKeyComponent_references_PrimaryKeyComponent"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.ForeignKeyComponent_references_PrimaryKeyComponent-PrimaryKeyComponentEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.ConceptSystem_has_Concept" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem_has_Concept" xmi:type="uml:Association">
-            <name>ConceptSystem_has_Concept</name>
-            <memberEnd xmi:idref="CDIFDataStructure.ConceptSystem-has"/>
-            <ownedEnd xmi:id="CDIFDataStructure.ConceptSystem_has_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ConceptSystem_has_Concept-ConceptEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.Concept"/>
-               <association xmi:idref="CDIFDataStructure.ConceptSystem_has_Concept"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.ConceptSystem_has_Concept-ConceptEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem" xmi:type="uml:Association">
-            <name>SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem</name>
-            <memberEnd xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain-takesConceptsFrom"/>
-            <ownedEnd xmi:id="CDIFDataStructure.SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.ConceptSystem"/>
-               <association xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.SentinelConceptualDomain_takesConceptsFrom_ConceptSystem" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain_takesConceptsFrom_ConceptSystem" xmi:type="uml:Association">
-            <name>SentinelConceptualDomain_takesConceptsFrom_ConceptSystem</name>
-            <memberEnd xmi:idref="CDIFDataStructure.SentinelConceptualDomain-takesConceptsFrom"/>
-            <ownedEnd xmi:id="CDIFDataStructure.SentinelConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#SentinelConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd" xmi:type="uml:Property">
-               <type xmi:idref="CDIFDataStructure.ConceptSystem"/>
-               <association xmi:idref="CDIFDataStructure.SentinelConceptualDomain_takesConceptsFrom_ConceptSystem"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.SentinelConceptualDomain_takesConceptsFrom_ConceptSystem-ConceptSystemEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.TabularTextDataSet_isStructuredBy_DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#TabularTextDataSet_isStructuredBy_DataStructure" xmi:type="uml:Association">
             <name>TabularTextDataSet_isStructuredBy_DataStructure</name>

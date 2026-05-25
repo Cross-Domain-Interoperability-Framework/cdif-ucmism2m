@@ -27,11 +27,7 @@
     },
     "datatypeSubstitutions": {
       "TypedString": "String"
-    },
-    "excludeProperties": [
-      "RepresentedVariable.takesSubstantiveConceptsFrom",
-      "RepresentedVariable.takesSentinelConceptsFrom"
-    ]
+    }
   },
   "package": [
     {
@@ -52,7 +48,7 @@
     {
       "name": "ValueDomains",
       "parent": "CDIFDataStructure",
-      "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain; Substantive/SentinelConceptualDomain, ConceptSystem, ValueAndConceptDescription."
+      "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain, ValueAndConceptDescription."
     },
     {
       "name": "Physical",
@@ -272,26 +268,8 @@
         "targetPackage": "Components",
         "targetClass": "ForeignKeyComponent"
       },
-      {
-        "_comment": "ConceptSystem - the system of concepts a conceptual domain draws from (cdi:ConceptSystem).",
-        "mappingType": "map",
-        "sourceClass": "ConceptSystem",
-        "targetPackage": "ValueDomains",
-        "targetClass": "ConceptSystem"
-      },
-      {
-        "_comment": "SubstantiveConceptualDomain - the conceptual (as opposed to value) domain of substantive values (cdi:SubstantiveConceptualDomain).",
-        "mappingType": "map",
-        "sourceClass": "SubstantiveConceptualDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "SubstantiveConceptualDomain"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "SentinelConceptualDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "SentinelConceptualDomain"
-      },
+
+      
       {
         "_comment": "ValueAndConceptDescription - description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, etc.",
         "mappingType": "map",
@@ -531,17 +509,7 @@
         "targetAssociationName": "ForeignKeyComponent_references_PrimaryKeyComponent",
         "objectClassMultiplicity": { "lower": "1", "upper": "1" }
       },
-      {
-        "_comment": "cdi:takesSubstantiveConceptsFrom - the value domain's conceptual counterpart.",
-        "sourceAssociationName": "SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain",
-        "targetAssociationName": "SubstantiveValueDomain_takesConceptsFrom_SubstantiveConceptualDomain",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-      {
-        "sourceAssociationName": "SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain",
-        "targetAssociationName": "SentinelValueDomain_takesConceptsFrom_SentinelConceptualDomain",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
+
       {
         "sourceAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
         "targetAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
@@ -552,26 +520,7 @@
         "targetAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
         "objectClassMultiplicity": { "lower": "0", "upper": "1" }
       },
-      {
-        "_comment": "cdi:takesConceptsFrom - the conceptual domain draws its concepts from a ConceptSystem.",
-        "targetAssociationName": "SubstantiveConceptualDomain_takesConceptsFrom_ConceptSystem",
-        "subjectClass": "SubstantiveConceptualDomain",
-        "objectClass": "ConceptSystem",
-        "definition": "cdi:takesConceptsFrom - the ConceptSystem providing the substantive concepts.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-      {
-        "targetAssociationName": "SentinelConceptualDomain_takesConceptsFrom_ConceptSystem",
-        "subjectClass": "SentinelConceptualDomain",
-        "objectClass": "ConceptSystem",
-        "definition": "cdi:takesConceptsFrom - the ConceptSystem providing the sentinel concepts.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-      {
-        "sourceAssociationName": "ConceptSystem_has_Concept",
-        "targetAssociationName": "ConceptSystem_has_Concept",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
-      },
+
       {
         "_comment": "cdi:isStructuredBy - the distribution carries it. In the instance the distribution object is co-typed schema:DataDownload + cdi:PhysicalDataSet; the association is anchored on DataDownload so it renders on the distribution class readers recognize. (A WebAPI carries it on its Action result instead - see ActionResult_isStructuredBy_DataStructure.) New association (DDI-CDI carries it on DataSet/PhysicalDataSet).",
         "targetAssociationName": "DataDownload_isStructuredBy_DataStructure",
@@ -608,22 +557,6 @@
         "_comment": "cdif:isDefinedBy - the enumeration domain is defined by a Concept. Mapped from the DDI-CDI source association.",
         "sourceAssociationName": "EnumerationDomain_isDefinedBy_Concept",
         "targetAssociationName": "EnumerationDomain_isDefinedBy_Concept",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-      {
-        "_comment": "cdi:takesSubstantiveConceptsFrom - a represented variable's substantive conceptual domain. New association (DDI-CDI carries it on ConceptualVariable).",
-        "targetAssociationName": "RepresentedVariable_takesSubstantiveConceptsFrom_SubstantiveConceptualDomain",
-        "subjectClass": "RepresentedVariable",
-        "objectClass": "SubstantiveConceptualDomain",
-        "definition": "cdi:takesSubstantiveConceptsFrom - the substantive conceptual domain for this represented variable.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-      {
-        "_comment": "cdi:takesSentinelConceptsFrom - a represented variable's sentinel conceptual domain. New association (DDI-CDI carries it on ConceptualVariable).",
-        "targetAssociationName": "RepresentedVariable_takesSentinelConceptsFrom_SentinelConceptualDomain",
-        "subjectClass": "RepresentedVariable",
-        "objectClass": "SentinelConceptualDomain",
-        "definition": "cdi:takesSentinelConceptsFrom - the sentinel conceptual domain for this represented variable.",
         "objectClassMultiplicity": { "lower": "0", "upper": "1" }
       }
     ]

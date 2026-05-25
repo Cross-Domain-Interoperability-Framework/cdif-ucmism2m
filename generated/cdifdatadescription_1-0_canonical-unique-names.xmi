@@ -137,6 +137,41 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             </ownedComment>
             <name>XsdAnyUri</name>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.TypedString" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFDataDescription.TypedString-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.TypedString"/>
+               <body>TypedString combines a type with content defined as a simple string. May be used wherever a simple string needs to support a type definition to clarify its content.</body>
+            </ownedComment>
+            <name>TypedString</name>
+            <ownedAttribute xmi:id="CDIFDataDescription.TypedString-content" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-content" xmi:type="uml:Property">
+               <ownedComment xmi:id="CDIFDataDescription.TypedString-content-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-content-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.TypedString-content"/>
+                  <body>Content of the property expressed as a simple string.</body>
+               </ownedComment>
+               <lowerValue xmi:id="CDIFDataDescription.TypedString-content-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-content-lowerValue" xmi:type="uml:LiteralInteger">
+                  <value>1</value>
+               </lowerValue>
+               <upperValue xmi:id="CDIFDataDescription.TypedString-content-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-content-upperValue" xmi:type="uml:LiteralInteger">
+                  <value>1</value>
+               </upperValue>
+               <name>content</name>
+               <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="CDIFDataDescription.TypedString-typeOfContent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-typeOfContent" xmi:type="uml:Property">
+               <ownedComment xmi:id="CDIFDataDescription.TypedString-typeOfContent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-typeOfContent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.TypedString-typeOfContent"/>
+                  <body>Optional use of a controlled vocabulary to specifically type the associated content.</body>
+               </ownedComment>
+               <lowerValue xmi:id="CDIFDataDescription.TypedString-typeOfContent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-typeOfContent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <value>1</value>
+               </lowerValue>
+               <upperValue xmi:id="CDIFDataDescription.TypedString-typeOfContent-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TypedString-typeOfContent-upperValue" xmi:type="uml:LiteralInteger">
+                  <value>1</value>
+               </upperValue>
+               <name>typeOfContent</name>
+               <type xmi:idref="DDICDIModels-DDICDILibrary-DataTypes-StructuredDataTypes-ControlledVocabularyEntry"/>
+            </ownedAttribute>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.XsdLanguage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#XsdLanguage" xmi:type="uml:DataType">
             <ownedComment xmi:id="CDIFDataDescription.XsdLanguage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#XsdLanguage-ownedComment" xmi:type="uml:Comment">
                <annotatedElement xmi:idref="CDIFDataDescription.XsdLanguage"/>
@@ -154,6 +189,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "language" represen
 Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of date consists of top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day (in each timezone), i.e. '00:00:00', up to but not including '24:00:00' (which is identical with '00:00:00' of the next day). For nontimezoned values, the top-open intervals disjointly cover the nontimezoned timeline, one per day. For timezoned values, the intervals begin at every minute and therefore overlap." For details see https://www.w3.org/TR/xmlschema-2/#date.</body>
             </ownedComment>
             <name>XsdDate</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.CategoryRelationCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode" xmi:type="uml:Enumeration">
+            <ownedComment xmi:id="CDIFDataDescription.CategoryRelationCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.CategoryRelationCode"/>
+               <body>Indicates the type of relationship, nominal, ordinal, interval, ratio, or continuous. Use where appropriate for the representation type.</body>
+            </ownedComment>
+            <name>CategoryRelationCode</name>
+            <ownedLiteral xmi:id="CDIFDataDescription.CategoryRelationCode-Continuous" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode-Continuous" xmi:type="uml:EnumerationLiteral">
+               <name>Continuous</name>
+            </ownedLiteral>
+            <ownedLiteral xmi:id="CDIFDataDescription.CategoryRelationCode-Interval" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode-Interval" xmi:type="uml:EnumerationLiteral">
+               <name>Interval</name>
+            </ownedLiteral>
+            <ownedLiteral xmi:id="CDIFDataDescription.CategoryRelationCode-Nominal" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode-Nominal" xmi:type="uml:EnumerationLiteral">
+               <name>Nominal</name>
+            </ownedLiteral>
+            <ownedLiteral xmi:id="CDIFDataDescription.CategoryRelationCode-Ordinal" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode-Ordinal" xmi:type="uml:EnumerationLiteral">
+               <name>Ordinal</name>
+            </ownedLiteral>
+            <ownedLiteral xmi:id="CDIFDataDescription.CategoryRelationCode-Ratio" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CategoryRelationCode-Ratio" xmi:type="uml:EnumerationLiteral">
+               <name>Ratio</name>
+            </ownedLiteral>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.Classes" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Classes-package" xmi:type="uml:Package">
             <ownedComment xmi:id="CDIFDataDescription.Classes-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Classes-package-ownedComment" xmi:type="uml:Comment">
@@ -1214,6 +1271,17 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataDescription.EnumerationDomain"/>
                   <association xmi:idref="CDIFDataDescription.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.SubstantiveValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-isDescribedBy" xmi:type="uml:Property">
+                  <lowerValue xmi:id="CDIFDataDescription.SubstantiveValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.SubstantiveValueDomain-isDescribedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-isDescribedBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isDescribedBy</name>
+                  <type xmi:idref="CDIFDataDescription.ValueAndConceptDescription"/>
+                  <association xmi:idref="CDIFDataDescription.SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.SentinelValueDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataDescription.SentinelValueDomain-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-ownedComment" xmi:type="uml:Comment">
@@ -1259,6 +1327,164 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>takesValuesFrom</name>
                   <type xmi:idref="CDIFDataDescription.EnumerationDomain"/>
                   <association xmi:idref="CDIFDataDescription.SentinelValueDomain_takesValuesFrom_EnumerationDomain"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.SentinelValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-isDescribedBy" xmi:type="uml:Property">
+                  <lowerValue xmi:id="CDIFDataDescription.SentinelValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.SentinelValueDomain-isDescribedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-isDescribedBy-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isDescribedBy</name>
+                  <type xmi:idref="CDIFDataDescription.ValueAndConceptDescription"/>
+                  <association xmi:idref="CDIFDataDescription.SentinelValueDomain_isDescribedBy_ValueAndConceptDescription"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.ValueAndConceptDescription" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription"/>
+                  <body>Formal description of a set of values.</body>
+               </ownedComment>
+               <name>ValueAndConceptDescription</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-classificationLevel" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-classificationLevel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-classificationLevel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-classificationLevel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-classificationLevel"/>
+                     <body>Indicates the type of relationship, nominal, ordinal, interval, ratio, or continuous. Use where appropriate for the representation type.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-classificationLevel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-classificationLevel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-classificationLevel-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-classificationLevel-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>classificationLevel</name>
+                  <type xmi:idref="CDIFDataDescription.CategoryRelationCode"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-description"/>
+                     <body>A formal description of the set of values in human-readable language.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-description-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-description-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-formatPattern" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-formatPattern" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-formatPattern-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-formatPattern-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-formatPattern"/>
+                     <body>A pattern for a number as described in Unicode Locale Data Markup Language (LDML) (http://www.unicode.org/reports/tr35/tr35.html) Part 3: Numbers (http://www.unicode.org/reports/tr35/tr35-numbers.html#Number_Format_Patterns) and Part 4. Dates (http://www.unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns) . Examples would be #,##0.### to describe the pattern for a decimal number, or yyyy.MM.dd G 'at' HH:mm:ss zzz for a datetime pattern.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-formatPattern-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-formatPattern-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-formatPattern-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-formatPattern-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>formatPattern</name>
+                  <type xmi:idref="CDIFDataDescription.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-identifier"/>
+                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-logicalExpression" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-logicalExpression" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-logicalExpression-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-logicalExpression-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-logicalExpression"/>
+                     <body>A logical expression where the values of "x" making the expression true are the members of the set of valid values. For example, "(all reals x such that x &gt; 0)" describes the real numbers greater than 0.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-logicalExpression-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-logicalExpression-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-logicalExpression-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-logicalExpression-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>logicalExpression</name>
+                  <type xmi:idref="CDIFDataDescription.Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueExclusive" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueExclusive" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueExclusive-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueExclusive-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-maximumValueExclusive"/>
+                     <body>A string denoting the maximum possible value (excluding this value). From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "maxExclusive: An atomic property that contains a single number or string that is the maximum valid value (exclusive). The value of this property becomes the maximum exclusive annotation for the described datatype. See Value Constraints in [tabular-data-model] for details."</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueExclusive-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueExclusive-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueExclusive-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueExclusive-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>maximumValueExclusive</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueInclusive" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueInclusive" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueInclusive-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueInclusive-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-maximumValueInclusive"/>
+                     <body>A string denoting the maximum possible value. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "maximum: An atomic property that contains a single number or string that is the maximum valid value (inclusive); equivalent to maxInclusive. The value of this property becomes the maximum annotation for the described datatype. See Value Constraints in [tabular-data-model] for details."</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueInclusive-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueInclusive-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-maximumValueInclusive-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-maximumValueInclusive-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>maximumValueInclusive</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueExclusive" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueExclusive" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueExclusive-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueExclusive-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-minimumValueExclusive"/>
+                     <body>A string denoting the minimum possible value (excluding this value). From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "minExclusive: An atomic property that contains a single number or string that is the minimum valid value (exclusive). The value of this property becomes the minimum exclusive annotation for the described datatype. See Value Constraints in [tabular-data-model] for details."</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueExclusive-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueExclusive-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueExclusive-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueExclusive-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>minimumValueExclusive</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueInclusive" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueInclusive" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueInclusive-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueInclusive-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-minimumValueInclusive"/>
+                     <body>A string denoting the minimum possible value. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "minimum: An atomic property that contains a single number or string that is the minimum valid value (inclusive); equivalent to minInclusive. The value of this property becomes the minimum annotation for the described datatype. See Value Constraints in [tabular-data-model] for details."</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueInclusive-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueInclusive-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-minimumValueInclusive-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-minimumValueInclusive-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>minimumValueInclusive</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ValueAndConceptDescription-regularExpression" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-regularExpression" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ValueAndConceptDescription-regularExpression-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-regularExpression-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ValueAndConceptDescription-regularExpression"/>
+                     <body>A regular expression where strings matching the expression belong to the set of valid values. Use typeOfContent to specify the syntax of the regularExpression found in content.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-regularExpression-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-regularExpression-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ValueAndConceptDescription-regularExpression-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ValueAndConceptDescription-regularExpression-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>regularExpression</name>
+                  <type xmi:idref="CDIFDataDescription.TypedString"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataDescription.EnumerationDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#EnumerationDomain" xmi:type="uml:Class">
@@ -5155,6 +5381,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataDescription.SubstantiveValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:type="uml:Association">
+            <name>SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription</name>
+            <memberEnd xmi:idref="CDIFDataDescription.SubstantiveValueDomain-isDescribedBy"/>
+            <ownedEnd xmi:id="CDIFDataDescription.SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription-ValueAndConceptDescriptionEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription-ValueAndConceptDescriptionEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.ValueAndConceptDescription"/>
+               <association xmi:idref="CDIFDataDescription.SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription-ValueAndConceptDescriptionEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.SentinelValueDomain_takesValuesFrom_EnumerationDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain_takesValuesFrom_EnumerationDomain" xmi:type="uml:Association">
             <name>SentinelValueDomain_takesValuesFrom_EnumerationDomain</name>
             <memberEnd xmi:idref="CDIFDataDescription.SentinelValueDomain-takesValuesFrom"/>
@@ -5163,6 +5398,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <association xmi:idref="CDIFDataDescription.SentinelValueDomain_takesValuesFrom_EnumerationDomain"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataDescription.SentinelValueDomain_takesValuesFrom_EnumerationDomain-EnumerationDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.SentinelValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain_isDescribedBy_ValueAndConceptDescription" xmi:type="uml:Association">
+            <name>SentinelValueDomain_isDescribedBy_ValueAndConceptDescription</name>
+            <memberEnd xmi:idref="CDIFDataDescription.SentinelValueDomain-isDescribedBy"/>
+            <ownedEnd xmi:id="CDIFDataDescription.SentinelValueDomain_isDescribedBy_ValueAndConceptDescription-ValueAndConceptDescriptionEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain_isDescribedBy_ValueAndConceptDescription-ValueAndConceptDescriptionEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.ValueAndConceptDescription"/>
+               <association xmi:idref="CDIFDataDescription.SentinelValueDomain_isDescribedBy_ValueAndConceptDescription"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.SentinelValueDomain_isDescribedBy_ValueAndConceptDescription-ValueAndConceptDescriptionEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.PhysicalMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping_formats_InstanceVariable" xmi:type="uml:Association">
             <name>PhysicalMapping_formats_InstanceVariable</name>
