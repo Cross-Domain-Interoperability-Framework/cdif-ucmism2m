@@ -1325,198 +1325,16 @@ An example would be age categories. Five-year age categories can be collapsed in
             <packagedElement xmi:id="CDIFDataStructure.DescriptorVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable"/>
-                  <body>Variable that provides codes for variable identification in the context of a data structure. Variable playing the role of a variable descriptor component.</body>
+                  <body>cdi:DescriptorVariable - names the descriptor codes used in a long-format data structure; each code is paired (via the DescriptorValueDomain) with the RepresentedVariable it names.</body>
                </ownedComment>
                <name>DescriptorVariable</name>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-function" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-function" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-function-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-function-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-function"/>
-                     <body>Immutable characteristic of the variable such as geographic designator, weight, temporal designation, etc.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-function-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-function-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-function-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-function-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>function</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-physicalDataType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-physicalDataType" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-physicalDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-physicalDataType-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-physicalDataType"/>
-                     <body>The base datatype of the physical representation. An integer instance variable might, for example, be stored as a floating point number. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) Inherited 5.7: "datatype: An atomic property that contains either a single string that is the main datatype of the values of the cell or a datatype description object. If the value of this property is a string, it MUST be the name of one of the built-in datatypes defined in section 5.11.1 Built-in Datatypes and this value is normalized to an object whose base property is the original string value. If it is an object then it describes a more specialized datatype. If a cell contains a sequence (i.e. the separator property is specified and not null) then this property specifies the datatype of each value within that sequence. See 5.11 Datatypes and Parsing Cells in [tabular-data-model] for more details. The normalized value of this property becomes the datatype annotation for the described column."</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-physicalDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-physicalDataType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-physicalDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-physicalDataType-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>physicalDataType</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-platformType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-platformType" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-platformType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-platformType-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-platformType"/>
-                     <body>Describes the application or technical system context in which the variable has been realized. Typically a statistical processing package or other processing environment.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-platformType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-platformType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-platformType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-platformType-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>platformType</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-role" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-role" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-role-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-role-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-role"/>
-                     <body>Role of the variable when no reusable data structure is available or necessary. The role can be any of the types of data structure components supported, e.g. identifier, measure, dimension, attribute, etc. (that means the data structure is not reused across physical data sets)</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-role-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-role-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-role-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-role-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>role</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-source" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-source" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-source-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-source-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-source"/>
-                     <body>Reference capturing provenance information of the instance variable.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-source-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-source-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-source-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-source-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>source</name>
-                  <type xmi:idref="CDIFDataStructure.Reference"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-describedUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-describedUnitOfMeasure" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-describedUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-describedUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-describedUnitOfMeasure"/>
-                     <body>The unit in which the data values are measured (kg, pound, euro), expressed as a value from a controlled system of entries (i.e., QDT). Supports the provision of an identifier for the entry in the authoritative source (a URI, etc.), and the specific vocabulary.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-describedUnitOfMeasure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-describedUnitOfMeasure-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-describedUnitOfMeasure-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-describedUnitOfMeasure-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>describedUnitOfMeasure</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-hasIntendedDataType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasIntendedDataType" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-hasIntendedDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasIntendedDataType-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-hasIntendedDataType"/>
-                     <body>The data type intended to be used by this variable. Supports the optional use of an external controlled vocabulary.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-hasIntendedDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasIntendedDataType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-hasIntendedDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasIntendedDataType-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>hasIntendedDataType</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-simpleUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-simpleUnitOfMeasure" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-simpleUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-simpleUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-simpleUnitOfMeasure"/>
-                     <body>The unit in which the data values are measured (kg, pound, euro), expressed as a simple string, in cases where no additional information is available (in the legacy system) or needed (as in the case of broad agreement within the community of use [i.e., ISO country codes, currencies, etc. in SDMX])</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-simpleUnitOfMeasure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-simpleUnitOfMeasure-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-simpleUnitOfMeasure-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-simpleUnitOfMeasure-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>simpleUnitOfMeasure</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-descriptiveText" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-descriptiveText" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-descriptiveText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-descriptiveText-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-descriptiveText"/>
-                     <body>A short natural language account of the characteristics of the object.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-descriptiveText-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-descriptiveText-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-descriptiveText-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-descriptiveText-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>descriptiveText</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-unitOfMeasureKind" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-unitOfMeasureKind-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind"/>
-                     <body>Kind of unit of measure, so that it may be prone to translation to equivalent UOMs. Example values include "acceleration," "temperature," "salinity", etc. This description exists at the conceptual level, indicating a limitation on the type of representations which may be used for the variable as it is made more concrete.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-unitOfMeasureKind-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-unitOfMeasureKind-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-unitOfMeasureKind-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>unitOfMeasureKind</name>
-                  <type xmi:idref="CDIFDataStructure.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-definition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-definition" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-definition-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-definition"/>
-                     <body>Natural language statement conveying the meaning of a concept, differentiating it from other concepts. Supports the use of multiple languages and structured text. 'externalDefinition' can't be used if 'definition' is used.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-definition-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-definition-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-definition-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>definition</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-displayLabel" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-displayLabel" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-displayLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-displayLabel-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-displayLabel"/>
-                     <body>A human-readable display label for the object. Supports the use of multiple languages. Repeat for labels with different content, for example, labels with differing length limitations.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-displayLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-displayLabel-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-displayLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-displayLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>displayLabel</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-externalDefinition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-externalDefinition" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-externalDefinition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-externalDefinition-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-externalDefinition"/>
-                     <body>A reference to an external definition of a concept (that is, a concept which is described outside the content of the DDI-CDI metadata description). An example is a SKOS concept. The definition property is assumed to duplicate the external one referenced if externalDefinition is used. Other corresponding properties are assumed to be included unchanged if used.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-externalDefinition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-externalDefinition-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-externalDefinition-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-externalDefinition-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>externalDefinition</name>
-                  <type xmi:idref="CDIFDataStructure.Reference"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-identifier"/>
-                     <body>Identifier for objects requiring short- or long-lasting referencing and management.</body>
+                     <body>@id - identifier for this descriptor variable.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-identifier-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -1527,16 +1345,31 @@ An example would be age categories. Five-year age categories can be collapsed in
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-name"/>
-                     <body>Human understandable name (linguistic signifier, word, phrase, or mnemonic). May follow ISO/IEC 11179-5 naming principles, and have context provided to specify usage.</body>
+                     <body>cdif:name - human-understandable name(s) of the descriptor variable.</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-name-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
+                     <value>0</value>
                   </lowerValue>
                   <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-name-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>name</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasValuesFrom" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasValuesFrom-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-hasValuesFrom"/>
+                     <body>cdif:hasValuesFrom - the DescriptorValueDomain enumerating the codes that can appear in the descriptor column.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable-hasValuesFrom-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasValuesFrom</name>
+                  <type xmi:idref="CDIFDataStructure.DescriptorValueDomain"/>
+                  <association xmi:idref="CDIFDataStructure.DescriptorVariable_hasValuesFrom_DescriptorValueDomain"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable" xmi:type="uml:Class">
@@ -7433,6 +7266,15 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.RepresentedVariable_measures_UnitType"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable_measures_UnitType-UnitTypeEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.DescriptorVariable_hasValuesFrom_DescriptorValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable_hasValuesFrom_DescriptorValueDomain" xmi:type="uml:Association">
+            <name>DescriptorVariable_hasValuesFrom_DescriptorValueDomain</name>
+            <memberEnd xmi:idref="CDIFDataStructure.DescriptorVariable-hasValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataStructure.DescriptorVariable_hasValuesFrom_DescriptorValueDomain-DescriptorValueDomainEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#DescriptorVariable_hasValuesFrom_DescriptorValueDomain-DescriptorValueDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.DescriptorValueDomain"/>
+               <association xmi:idref="CDIFDataStructure.DescriptorVariable_hasValuesFrom_DescriptorValueDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.DescriptorVariable_hasValuesFrom_DescriptorValueDomain-DescriptorValueDomainEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.InstanceVariable_uses_RepresentedVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#InstanceVariable_uses_RepresentedVariable" xmi:type="uml:Association">
             <name>InstanceVariable_uses_RepresentedVariable</name>

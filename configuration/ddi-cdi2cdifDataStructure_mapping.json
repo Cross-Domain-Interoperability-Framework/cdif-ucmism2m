@@ -197,10 +197,26 @@
         "targetClass": "ReferenceVariable"
       },
       {
-        "mappingType": "map",
+        "_comment": "DescriptorVariable - in the CDIF profile a descriptor variable carries only an identifier, a name, and the DescriptorValueDomain enumerating the codes it can take (cdif:hasValuesFrom). The richer DDI-CDI DescriptorVariable attributes (function, role, unit of measure, data type, etc.) are NOT part of the CDIF building block, so this is a curated 'new' class rather than a bare map of the source. From cdifProperties/cdifDescriptorVariable.",
+        "mappingType": "new",
         "sourceClass": "DescriptorVariable",
         "targetPackage": "Variables",
-        "targetClass": "DescriptorVariable"
+        "targetClass": "DescriptorVariable",
+        "definition": "cdi:DescriptorVariable - names the descriptor codes used in a long-format data structure; each code is paired (via the DescriptorValueDomain) with the RepresentedVariable it names.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "Identifier",
+            "definition": "@id - identifier for this descriptor variable.",
+            "multiplicity": { "lower": "0", "upper": "1" }
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "cdif:name - human-understandable name(s) of the descriptor variable.",
+            "multiplicity": { "lower": "0", "upper": "*" }
+          }
+        ]
       },
       {
         "_comment": "InstanceVariable is used by DataStructure components as well as by Discovery's variableMeasured. Included here for self-contained Data Structure UML.",
@@ -499,6 +515,14 @@
           "lower": "1",
           "upper": "1"
         }
+      },
+      {
+        "_comment": "cdif:hasValuesFrom - the DescriptorValueDomain enumerating the codes the descriptor variable can take; each code is paired (via cdif:isDefinedBy) with the RepresentedVariable it names. New association (CDIF-specific; required on cdifDescriptorVariable).",
+        "targetAssociationName": "DescriptorVariable_hasValuesFrom_DescriptorValueDomain",
+        "subjectClass": "DescriptorVariable",
+        "objectClass": "DescriptorValueDomain",
+        "definition": "cdif:hasValuesFrom - the DescriptorValueDomain enumerating the codes that can appear in the descriptor column.",
+        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
       },
       {
         "_comment": "Refined per audit_cdif_vs_ddi.py: cdi:takesSubstantiveValuesFrom in CDIF restricts the target type to SubstantiveValueDomain (rather than the bare ValueDomain DDI-CDI permits). Source association RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain already encodes this restriction in the source XMI - keep target identical.",
