@@ -976,8 +976,8 @@
         }
       },
       {
-        "_comment": "cdif:statistics - ... or as StatisticsCollections grouping several Statistics nodes.",
-        "targetAssociationName": "Dataset_statistics_StatisticsCollection",
+        "_comment": "cdif:statistics - ... or as StatisticsCollections grouping several Statistics nodes. Role named statisticsCollection to distinguish the diagram edge from Dataset_statistics_Statistics (both serialize as cdif:statistics).",
+        "targetAssociationName": "Dataset_statisticsCollection_StatisticsCollection",
         "subjectClass": "Dataset",
         "objectClass": "StatisticsCollection",
         "definition": "cdif:statistics - StatisticsCollections grouping several Statistics nodes reported on the dataset.",
@@ -1092,6 +1092,17 @@
         "objectClassMultiplicity": {
           "lower": "1",
           "upper": "*"
+        }
+      },
+      {
+        "_comment": "cdi:indexes - the InstanceVariable this PrimaryKeyComponent (cdi:ComponentPosition wrapper) places in the key; cdi:value records its position. From cdifKey/cdifProperties resolvedSchema.",
+        "targetAssociationName": "PrimaryKeyComponent_indexes_InstanceVariable",
+        "subjectClass": "PrimaryKeyComponent",
+        "objectClass": "InstanceVariable",
+        "definition": "cdi:indexes - the InstanceVariable indexed at this position in the primary key.",
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "1"
         }
       },
       {

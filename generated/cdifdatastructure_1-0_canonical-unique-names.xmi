@@ -1055,6 +1055,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.IdentifierComponent"/>
                   <association xmi:idref="CDIFDataStructure.PrimaryKeyComponent_correspondsTo_IdentifierComponent"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.PrimaryKeyComponent-indexes" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PrimaryKeyComponent-indexes" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.PrimaryKeyComponent-indexes-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PrimaryKeyComponent-indexes-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.PrimaryKeyComponent-indexes"/>
+                     <body>cdi:indexes - the InstanceVariable indexed at this position in the primary key.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.PrimaryKeyComponent-indexes-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PrimaryKeyComponent-indexes-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.PrimaryKeyComponent-indexes-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PrimaryKeyComponent-indexes-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>indexes</name>
+                  <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataStructure.PrimaryKeyComponent_indexes_InstanceVariable"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.RepresentedVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable-ownedComment" xmi:type="uml:Comment">
@@ -4704,20 +4719,20 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.Statistics"/>
                   <association xmi:idref="CDIFDataStructure.Dataset_statistics_Statistics"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.Dataset-statistics" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.Dataset-statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.Dataset-statistics"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.Dataset-statisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statisticsCollection" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.Dataset-statisticsCollection-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statisticsCollection-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.Dataset-statisticsCollection"/>
                      <body>cdif:statistics - StatisticsCollections grouping several Statistics nodes reported on the dataset.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.Dataset-statistics-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.Dataset-statisticsCollection-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statisticsCollection-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.Dataset-statistics-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statistics-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.Dataset-statisticsCollection-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-statisticsCollection-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
-                  <name>statistics</name>
+                  <name>statisticsCollection</name>
                   <type xmi:idref="CDIFDataStructure.StatisticsCollection"/>
-                  <association xmi:idref="CDIFDataStructure.Dataset_statistics_StatisticsCollection"/>
+                  <association xmi:idref="CDIFDataStructure.Dataset_statisticsCollection_StatisticsCollection"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.Dataset-spatialCoverage" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-spatialCoverage" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.Dataset-spatialCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset-spatialCoverage-ownedComment" xmi:type="uml:Comment">
@@ -6869,6 +6884,15 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.PrimaryKeyComponent_correspondsTo_IdentifierComponent-IdentifierComponentEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.PrimaryKeyComponent_indexes_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PrimaryKeyComponent_indexes_InstanceVariable" xmi:type="uml:Association">
+            <name>PrimaryKeyComponent_indexes_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataStructure.PrimaryKeyComponent-indexes"/>
+            <ownedEnd xmi:id="CDIFDataStructure.PrimaryKeyComponent_indexes_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#PrimaryKeyComponent_indexes_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.InstanceVariable"/>
+               <association xmi:idref="CDIFDataStructure.PrimaryKeyComponent_indexes_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.PrimaryKeyComponent_indexes_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:type="uml:Association">
             <name>RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain</name>
             <memberEnd xmi:idref="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom"/>
@@ -7247,14 +7271,14 @@ An example would be age categories. Five-year age categories can be collapsed in
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.Dataset_statistics_Statistics-StatisticsEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="CDIFDataStructure.Dataset_statistics_StatisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_StatisticsCollection" xmi:type="uml:Association">
-            <name>Dataset_statistics_StatisticsCollection</name>
-            <memberEnd xmi:idref="CDIFDataStructure.Dataset-statistics"/>
-            <ownedEnd xmi:id="CDIFDataStructure.Dataset_statistics_StatisticsCollection-StatisticsCollectionEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statistics_StatisticsCollection-StatisticsCollectionEnd" xmi:type="uml:Property">
+         <packagedElement xmi:id="CDIFDataStructure.Dataset_statisticsCollection_StatisticsCollection" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statisticsCollection_StatisticsCollection" xmi:type="uml:Association">
+            <name>Dataset_statisticsCollection_StatisticsCollection</name>
+            <memberEnd xmi:idref="CDIFDataStructure.Dataset-statisticsCollection"/>
+            <ownedEnd xmi:id="CDIFDataStructure.Dataset_statisticsCollection_StatisticsCollection-StatisticsCollectionEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_statisticsCollection_StatisticsCollection-StatisticsCollectionEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.StatisticsCollection"/>
-               <association xmi:idref="CDIFDataStructure.Dataset_statistics_StatisticsCollection"/>
+               <association xmi:idref="CDIFDataStructure.Dataset_statisticsCollection_StatisticsCollection"/>
             </ownedEnd>
-            <memberEnd xmi:idref="CDIFDataStructure.Dataset_statistics_StatisticsCollection-StatisticsCollectionEnd"/>
+            <memberEnd xmi:idref="CDIFDataStructure.Dataset_statisticsCollection_StatisticsCollection-StatisticsCollectionEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.Dataset_spatialCoverage_SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#Dataset_spatialCoverage_SpatialExtent" xmi:type="uml:Association">
             <name>Dataset_spatialCoverage_SpatialExtent</name>
