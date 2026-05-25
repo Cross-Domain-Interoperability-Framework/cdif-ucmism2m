@@ -944,6 +944,21 @@ An example would be age categories. Five-year age categories can be collapsed in
                   <type xmi:idref="CDIFDataStructure.DescriptorVariable"/>
                   <association xmi:idref="CDIFDataStructure.VariableDescriptorComponent_isDefinedBy_DescriptorVariable"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-refersTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-refersTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.VariableDescriptorComponent-refersTo"/>
+                     <body>cdi:refersTo - the VariableValueComponent in the same data structure whose values the descriptor codes identify.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-refersTo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent-refersTo-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>refersTo</name>
+                  <type xmi:idref="CDIFDataStructure.VariableValueComponent"/>
+                  <association xmi:idref="CDIFDataStructure.VariableDescriptorComponent_refersTo_VariableValueComponent"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFDataStructure.ComponentPosition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ComponentPosition" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.ComponentPosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ComponentPosition-ownedComment" xmi:type="uml:Comment">
@@ -6817,6 +6832,15 @@ An example would be age categories. Five-year age categories can be collapsed in
                <association xmi:idref="CDIFDataStructure.VariableDescriptorComponent_isDefinedBy_DescriptorVariable"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFDataStructure.VariableDescriptorComponent_isDefinedBy_DescriptorVariable-DescriptorVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataStructure.VariableDescriptorComponent_refersTo_VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent_refersTo_VariableValueComponent" xmi:type="uml:Association">
+            <name>VariableDescriptorComponent_refersTo_VariableValueComponent</name>
+            <memberEnd xmi:idref="CDIFDataStructure.VariableDescriptorComponent-refersTo"/>
+            <ownedEnd xmi:id="CDIFDataStructure.VariableDescriptorComponent_refersTo_VariableValueComponent-VariableValueComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#VariableDescriptorComponent_refersTo_VariableValueComponent-VariableValueComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataStructure.VariableValueComponent"/>
+               <association xmi:idref="CDIFDataStructure.VariableDescriptorComponent_refersTo_VariableValueComponent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataStructure.VariableDescriptorComponent_refersTo_VariableValueComponent-VariableValueComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.ComponentPosition_indexes_DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/xmi/#ComponentPosition_indexes_DimensionComponent" xmi:type="uml:Association">
             <name>ComponentPosition_indexes_DimensionComponent</name>

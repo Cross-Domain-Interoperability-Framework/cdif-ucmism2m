@@ -463,6 +463,17 @@
         }
       },
       {
+        "_comment": "cdi:refersTo - the descriptor column refers to the VariableValueComponent whose values its descriptor codes identify. Modelled as an @id object reference in JSON; the target type is also enforced by SHACL (cdifVariableDescriptorComponentShape). New association (CDIF-specific typing).",
+        "targetAssociationName": "VariableDescriptorComponent_refersTo_VariableValueComponent",
+        "subjectClass": "VariableDescriptorComponent",
+        "objectClass": "VariableValueComponent",
+        "definition": "cdi:refersTo - the VariableValueComponent in the same data structure whose values the descriptor codes identify.",
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        }
+      },
+      {
         "_comment": "cdif:hasValuesFrom - the DescriptorValueDomain enumerating the codes the descriptor variable can take; each code is paired (via cdif:isDefinedBy) with the RepresentedVariable it names. New association (CDIF-specific; required on cdifDescriptorVariable).",
         "targetAssociationName": "DescriptorVariable_hasValuesFrom_DescriptorValueDomain",
         "subjectClass": "DescriptorVariable",
