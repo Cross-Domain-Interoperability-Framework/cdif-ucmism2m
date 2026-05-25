@@ -101,6 +101,11 @@ naming convention, so an association named `X_has_Y` covers the BB property
   primitive or local stub) and `excludeDatatypes` (drop). Project-wide policy
   lives in the **Core** config and cascades; a profile may add its own (e.g.
   DataStructure's `TypedString → String`).
+- **Property exclusion:** `transformation.excludeProperties` (v1.1) is a list of
+  `"ClassName.propertyName"` removed from the target class before the closure /
+  diagram / XMI emit. Use to drop a source-`map` property that is not part of the
+  CDIF building block. (`emit_uml_from_config` prunes the target class; also fed to
+  `ctx.exclude_property_specs`.)
 - **Composition (`composes`)** dedups associations by `targetAssociationName`
   (local wins). To **override** a base profile's association while retargeting it,
   keep the base's `targetAssociationName` and change `objectClass` — the emitted
@@ -146,6 +151,15 @@ Browser features:
 - Class-typed attributes render as linked **association boxes**; the union classes
   (`DefinedTerm`/`Identifier`/`Reference`/`AdditionalProperty`) carry a
   **"JSON serialization" note** (a plain string / `@id` ref may substitute).
+- **Own-members-only (May 2026):** a class's context diagram/table and the overview
+  show only members *specific to that class* — outgoing associations and class/datatype
+  attribute-refs **inherited from an ancestor are not duplicated** (they show on the
+  parent, reachable via the generalization arrow). Helpers `_ancestor_ids`,
+  `_inherited_assoc_keys` (by `(role, target)`), `_inherited_prop_names`. The
+  `(role,target)`/name match (not prop-id) is required because a bare `map` copies the
+  source's *inherited* attributes onto each subclass as if own; per-variant overrides
+  that reuse a role with a different target are preserved. Incoming associations +
+  generalization arrows always shown.
 - Interactive diagrams (zoom/pan/copy) are clipped to their box via
   `position:relative` + `contain:paint` on `.diagram-viewport`, so panning never
   paints the graph over surrounding text or the sticky controls.
@@ -179,17 +193,30 @@ Browser features:
 - **Keys keep DDI-CDI `PrimaryKey`/`PrimaryKeyComponent` naming**, not `cdif:Key`/`ComponentPosition`.
 - **DataStructure hierarchy via generalization, not duplication.** `DataStructureComponent`
   is abstract with the component types (`Identifier`/`Measure`/`Attribute`/`Dimension`/
-  `VariableValue`/`VariableDescriptor`) generalizing it; `Wide`/`Long`/`DimensionalDataStructure`
-  generalize the generic (concrete) `DataStructure`. So `cdi:isStructuredBy` and the generic
-  `has DataStructureComponent`/`PrimaryKey`/`ForeignKey` apply to every variant via inheritance,
-  with per-variant `has_*` associations kept for the specific component requirements. These are
-  real DDI-CDI generalizations declared in the config (`generalization`/`isAbstract`), not
-  diagram-only fictions.
+  `VariableValue`) generalizing it; `Wide`/`Long`/`DimensionalDataStructure` generalize the
+  generic (concrete) `DataStructure`. So `cdi:isStructuredBy`, the generic
+  `has DataStructureComponent`/`PrimaryKey`/`ForeignKey`, AND
+  `cdif:isDefinedBy_RepresentedVariable` (declared once on the abstract) apply to every variant/
+  component via inheritance, with per-variant `has_*` associations kept for the specific
+  component requirements. **`VariableDescriptorComponent` is the exception:** it is defined by a
+  `DescriptorVariable` (not a RepresentedVariable), so it is modelled **standalone** (does NOT
+  generalize `DataStructureComponent`) with its own `isDefinedBy_DescriptorVariable` and a
+  `refersTo` → `VariableValueComponent` (target type also enforced by SHACL). Real DDI-CDI
+  generalizations declared in the config (`generalization`/`isAbstract`), not diagram fictions.
+- **ReferenceVariable collapses to RepresentedVariable; conceptual domains dropped.** CDIF has
+  no ReferenceVariable — a `VariableValueComponent` is defined by a plain `RepresentedVariable`.
+  CDIF also drops the whole conceptual-domain side: no `Substantive/SentinelConceptualDomain`,
+  no `takesConceptsFrom`, no `ConceptSystem`. A `ValueDomain` carries `takesValuesFrom`
+  (→ EnumerationDomain) and **`isDescribedBy` → `ValueAndConceptDescription`** (defined in the
+  DataDescription config, in cdifValueDomain on the JSON side). `RepresentedVariable` carries
+  `uses` → `Concept` (`cdif:uses_Concept`) and `measures` → `UnitType`. `DescriptorVariable` is
+  curated to its BB (id + name + `hasValuesFrom` → DescriptorValueDomain), not a bare source map.
 - **`cdi:isStructuredBy` is anchored on `DataDownload`** (the distribution, co-typed
-  `cdi:PhysicalDataSet` in instances) — not on `AbstractDistribution`, because WebAPI carries
-  it only via its un-modelled `potentialAction.result`. **`cdif:uses` is
-  `InstanceVariable → RepresentedVariable`** in the DataStructure profile (the IV instantiates
-  the RV that supplies its represented-variable-level properties).
+  `cdi:PhysicalDataSet` in instances) — not on `AbstractDistribution`. A WebAPI carries it on
+  its Action result instead: `ActionResult → DataStructure : isStructuredBy` (now that the
+  Action subtree is modelled). **`cdif:uses` is `InstanceVariable → RepresentedVariable`** in the
+  DataStructure profile (the IV instantiates the RV that supplies its represented-variable-level
+  properties); the RV in turn `uses → Concept`.
 - **`dcterms:*` alternates not modelled** — CDIF prefers `schema:` equivalents (`dcterms:conformsTo` is the exception, modelled on `CatalogRecord`).
 - **OWL-Time and geosparql geometry ARE modelled as classes** in Discovery
   (`Instant`/`TimePosition`/`Geometry`) — an intentional exception to the
