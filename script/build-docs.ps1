@@ -42,13 +42,13 @@ $pumlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model\_plantuml"
 $htmlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model"
 
 $profiles = @(
-    @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist" },
-    @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore" },
-    @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "CDIFDiscovery" },
-    @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription" },
-    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure" },
-    @{ slug = "cdifArchive";         config = "ddi-cdi2cdifArchive_mapping.json";         umlName = "CDIFArchive" },
-    @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance" }
+    @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist";        kind = "module" },
+    @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore";            kind = "module" },
+    @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "CDIFDiscovery";       kind = "composite" },
+    @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription"; kind = "composite" },
+    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure";   kind = "composite" },
+    @{ slug = "cdifArchive";         config = "ddi-cdi2cdifArchive_mapping.json";         umlName = "CDIFArchive";         kind = "module" },
+    @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance";      kind = "module" }
 )
 
 $mbbDir = Join-Path $repoRoot "metadataBuildingBlocks"
@@ -97,7 +97,18 @@ function Write-Registry($reg, $path) {
 }
 
 $registryPath = Join-Path $htmlOut "_registry.json"
+$categoriesPath = Join-Path $htmlOut "_categories.json"
 New-Item -ItemType Directory -Force -Path $htmlOut | Out-Null
+
+# Write per-profile category map (umlName -> 'composite' | 'module') so the
+# Python root-index emitter can split profiles into 'Composite Profiles' and
+# 'Profiles' sections. Re-written every build.
+$categories = [ordered]@{}
+foreach ($p in ($profiles | Sort-Object { $_.umlName })) {
+    $categories[$p.umlName] = $p.kind
+}
+$categories | ConvertTo-Json | Set-Content -Path $categoriesPath -Encoding utf8
+Write-Host "    Wrote category map for $($categories.Count) profiles: $categoriesPath"
 
 # Step 1 builds the class->origin-profile registry from the configs FIRST, so it
 # can be fed to the PlantUML emit (Step 2) for per-profile box coloring and the
