@@ -187,7 +187,9 @@ Browser features:
   All four live in Core's `Distribution` package, so they propagate to Discovery/
   DataDescription/DataStructure. The Action subtypes (SearchAction, FindAction, …)
   stay union-collapsed to the `Action` base, and `schema:object` (open-ended
-  `schema:Thing`) is still not modelled. Mirrors the `action`/`actionResult`/`webAPI`
+  `schema:Thing`) is still not modelled — revisit when the prov profile incorporates
+  `_sources/cdifProperties/cdifProvActivity/`, where `Action.object` becomes relevant
+  (future work). Mirrors the `action`/`actionResult`/`webAPI`
   BBs. Audit: `query-input` ~ `Action_queryInput_PropertyValueSpecification` (ALIAS,
   since association names can't contain `-`).
 - **Keys keep DDI-CDI `PrimaryKey`/`PrimaryKeyComponent` naming**, not `cdif:Key`/`ComponentPosition`.
