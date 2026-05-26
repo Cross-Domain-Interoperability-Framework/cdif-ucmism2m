@@ -46,7 +46,9 @@ $profiles = @(
     @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore" },
     @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "CDIFDiscovery" },
     @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription" },
-    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure" }
+    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure" },
+    @{ slug = "cdifArchive";         config = "ddi-cdi2cdifArchive_mapping.json";         umlName = "CDIFArchive" },
+    @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance" }
 )
 
 $mbbDir = Join-Path $repoRoot "metadataBuildingBlocks"

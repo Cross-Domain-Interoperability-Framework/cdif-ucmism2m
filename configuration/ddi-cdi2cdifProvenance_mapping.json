@@ -1,0 +1,180 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF Provenance profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifProvenance/cdifProvenanceSchema.json with the value class at metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/cdifProvActivitySchema.json. The Provenance profile module defines prov:wasGeneratedBy as an array of ProvActivity items describing how the dataset was generated. ProvActivity is a richly attributed activity class: prov:used (with optional schema:instrument sub-key for instruments), schema:agent / schema:participant (Person/Organization/AgentInRole), schema:object (input entities, supports action chaining via @id back-references), schema:result, schema:actionStatus / startTime / endTime / location / actionProcess / error / additionalProperty. Conforms-to identifier: https://w3id.org/cdif/provenance/1.0. Person/Organization/AgentInRole/Identifier are referenced from CDIFCore (cross-profile registry); Instrument is restated here as a local class. The DDI-CDI source provenance is Activity in the v1.1beta XMI (sourceClass=Activity preserves that provenance link).",
+  "transformation": {
+    "description": "DDI-CDI to CDIF Provenance Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "CDIFProvenance",
+      "modelTitle": "UML Model for the CDIF Provenance Profile",
+      "subTitle": "Provenance activities describing how a dataset was generated: agents, instruments, temporal bounds, methodology, action chaining",
+      "majorVersion": "1",
+      "minorVersion": "0",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/provenance/1.0/xmi/",
+      "definition": "CDIF Provenance profile module - documents prov:wasGeneratedBy on a Dataset as a sequence of ProvActivity items. Each ProvActivity extends the minimal prov:Activity with schema.org Action vocabulary (instruments, agents, temporal bounds, action chaining via schema:object back-references to earlier activities' schema:result). Conforms-to identifier: https://w3id.org/cdif/provenance/1.0.",
+      "mainPackage": "CDIFProvenance",
+      "mainPackageDefinition": "Provenance activities, instruments, and action chaining for CDIF metadata records.",
+      "dataTypesPackage": "CDIFProvenance",
+      "composes": [
+        "ddi-cdi2cdifCore_mapping.json"
+      ]
+    }
+  },
+  "package": [
+    {
+      "name": "Classes",
+      "parent": "CDIFProvenance",
+      "definition": "Provenance classes: ProvActivity (the activity) and Instrument (used by activities)."
+    }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "ProvActivity - the activity that generated the described resource. Dual-typed @type must include both prov:Activity (PROV) and schema:Action (schema.org Action vocabulary for instruments/agents/temporal/chaining). DDI-CDI sourceClass=Activity preserves the provenance Dependency. Person, Organization, AgentInRole, and Identifier are not redeclared here; they are cross-profile links to CDIFCore. Instrument is a local class because it carries provenance-specific attribute shape.",
+        "mappingType": "new",
+        "sourceClass": "Activity",
+        "targetPackage": "Classes",
+        "targetClass": "ProvActivity",
+        "definition": "An activity that generated the described resource. Combines prov:Activity (temporal bounds, used/wasAssociatedWith semantics) with schema:Action (instruments, methodology, agents in named roles, action chaining). Supports linking earlier activities to later ones via schema:object back-references to prior schema:result @ids.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - identifier for this activity, used as target of schema:object back-references when chaining activities.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-readable name for the activity.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - text description of what the activity did.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "actionStatus",
+            "dataType": "String",
+            "definition": "schema:actionStatus - status of the activity (CompletedActionStatus, ActiveActionStatus, etc.). A schema.org ActionStatusType enumeration value (URI string).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "startTime",
+            "dataType": "XsdDateTime",
+            "definition": "schema:startTime / prov:startedAtTime - when the activity began.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "endTime",
+            "dataType": "XsdDateTime",
+            "definition": "schema:endTime / prov:endedAtTime - when the activity ended.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "location",
+            "dataType": "String",
+            "definition": "schema:location - location where the activity took place (string, geo:Place URI, or PostalAddress; modeled as string here, dereference via @id).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "actionProcess",
+            "dataType": "String",
+            "definition": "schema:actionProcess - reference to a HowTo / methodology resource (URI string).",
+            "multiplicity": {"lower": "0", "upper": "*"}
+          },
+          {
+            "name": "error",
+            "dataType": "String",
+            "definition": "schema:error - description of any error or failure mode in the activity.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "Instrument - the software/instrument/tool used by a provenance activity (inline under prov:used items via the schema:instrument sub-key). Records identifier, label, descriptive metadata, and optional propertyID/value attributes that describe the instrument configuration.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "Instrument",
+        "definition": "An instrument or tool used by a provenance activity. Typically a software package or piece of equipment; recorded inline under prov:used items via the schema:instrument sub-key. Carries identifier, label, optional version, and free-form descriptive properties.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the instrument.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-readable label.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - short description.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "version",
+            "dataType": "String",
+            "definition": "schema:softwareVersion / schema:version - version identifier of the instrument or software.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      }
+    ],
+    "association": [
+      {
+        "_comment": "Dataset -> ProvActivity via prov:wasGeneratedBy. The Dataset (defined in CDIFCore) carries this association; cross-profile linkage via the registry. Composition: activities are documentation of how the Dataset came to be.",
+        "targetAssociationName": "Dataset_wasGeneratedBy_ProvActivity",
+        "subjectClass": "Dataset",
+        "objectClass": "ProvActivity",
+        "definition": "prov:wasGeneratedBy - the provenance activities that generated this Dataset. Array; order is not significant but action chaining may be encoded via schema:object back-references on later activities.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ProvActivity -> Instrument via prov:used + schema:instrument. The prov:used item is an object with a schema:instrument sub-key; the diagram collapses this to a direct ProvActivity_uses_Instrument association.",
+        "targetAssociationName": "ProvActivity_uses_Instrument",
+        "subjectClass": "ProvActivity",
+        "objectClass": "Instrument",
+        "definition": "prov:used (with schema:instrument sub-key on the use item) - instruments or tools used by this activity.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "ProvActivity -> Person via schema:agent. Person is defined in CDIFCore (cross-profile link). schema:agent is the primary responsible agent; maps to prov:wasAssociatedWith.",
+        "targetAssociationName": "ProvActivity_agent_Person",
+        "subjectClass": "ProvActivity",
+        "objectClass": "Person",
+        "definition": "schema:agent - primary responsible agent (Person). May alternatively be Organization or AgentInRole (CDIFCore). Maps to prov:wasAssociatedWith semantics.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "ProvActivity -> Organization via schema:agent (alternative to Person).",
+        "targetAssociationName": "ProvActivity_agent_Organization",
+        "subjectClass": "ProvActivity",
+        "objectClass": "Organization",
+        "definition": "schema:agent - primary responsible agent (Organization). Alternative to Person.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "ProvActivity -> Person via schema:participant (additional participants beyond the primary agent).",
+        "targetAssociationName": "ProvActivity_participant_Person",
+        "subjectClass": "ProvActivity",
+        "objectClass": "Person",
+        "definition": "schema:participant - additional participants in the activity beyond the primary schema:agent.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      }
+    ]
+  }
+}

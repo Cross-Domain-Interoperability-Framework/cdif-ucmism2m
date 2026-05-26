@@ -1,0 +1,174 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF Archive profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifArchive/cdifArchiveSchema.json (with the archive distribution wrapper at metadataBuildingBlocks/_sources/cdifDataType/cdifArchiveDistribution/cdifArchiveDistributionSchema.json). The Archive profile module documents how schema:hasPart describes component files inside an archive distribution (e.g. ZIP). It composes cdifCore (the host schema:Dataset + schema:DataDownload distribution shape); the archive-specific content is ArchiveDistribution (the host download, narrated as a sub-shape of CDIFCore::DataDownload in its definition text) and the ArchivePart items inside it (typed as schema:MediaObject). No direct DDI-CDI source classes apply, so every targetClass is mappingType=new. @id is modeled as the 'identifier' attribute per the cdifCore convention; @type is implied by the UML class name and is not modeled as an attribute. Generalization is documented narratively because the parent (DataDownload) lives in CDIFCore, not in this config.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF Archive Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "CDIFArchive",
+      "modelTitle": "UML Model for the CDIF Archive Profile",
+      "subTitle": "Archive-distribution structure: a DataDownload that bundles component files (schema:hasPart -> schema:MediaObject)",
+      "majorVersion": "1",
+      "minorVersion": "0",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/archive/1.0/xmi/",
+      "definition": "CDIF Archive profile module - documents the archive-distribution pattern: a schema:DataDownload whose schema:hasPart enumerates component files (schema:MediaObject items) inside the archive (e.g. ZIP). Each ArchivePart records filename, MIME type(s), size, optional spdx:checksum, optional schema:about back-reference, and may carry data-description extensions (cdifTabularData, cdifDataCube). The composite cdifComplete profile pulls this module in. Conforms-to identifier: https://w3id.org/cdif/manifest/1.0.",
+      "mainPackage": "CDIFArchive",
+      "mainPackageDefinition": "Archive distribution structure: bundling component files inside a single download.",
+      "dataTypesPackage": "CDIFArchive",
+      "composes": [
+        "ddi-cdi2cdifCore_mapping.json"
+      ]
+    }
+  },
+  "package": [
+    {
+      "name": "Classes",
+      "parent": "CDIFArchive",
+      "definition": "Archive-distribution classes: ArchiveDistribution (host) and ArchivePart (components)."
+    },
+    {
+      "name": "DataTypes",
+      "parent": "CDIFArchive",
+      "definition": "Supporting value-object datatypes: QuantitativeValue (file size), Checksum (spdx)."
+    }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "ArchiveDistribution - a schema:DataDownload that bundles multiple component files via schema:hasPart. Conceptually a sub-shape of CDIFCore::DataDownload (which carries the contentUrl/contentSize/encodingFormat attributes); CDIF adds only the schema:hasPart -> ArchivePart[] association. Modeled here as a standalone class because UML single-inheritance across profile configs is not directly expressed in the same config file; cross-profile reference is provided via the cross-profile registry.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "ArchiveDistribution",
+        "definition": "A schema:DataDownload distribution that is an archive file (e.g. ZIP, TAR) containing multiple component files described by schema:hasPart. The archive itself is independently accessible (contentUrl); its component files are NOT independently accessible and are typed as schema:MediaObject (not DataDownload). Inherits the standard DataDownload attributes (name, description, contentUrl, contentSize, encodingFormat, conformsTo) from CDIFCore::DataDownload (see that page); this UML restates only the archive-specific surface area.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the archive distribution itself.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "ArchivePart - a single component file inside an archive distribution. Typed schema:MediaObject (not DataDownload, since these files are not independently fetchable). Required attributes per the JSON schema: @type (implicit), schema:name, schema:encodingFormat. Optional: description, size (QuantitativeValue), about (back-reference to a data file when this part is a metadata sidecar), spdx:checksum. May also carry CDIF data-description extensions (cdifTabularData, cdifDataCube) when the part is a tabular or cube data file inside the archive.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "ArchivePart",
+        "definition": "A component file within an archive distribution. Typed as schema:MediaObject; carries filename, MIME type(s), optional size and checksum, and optional schema:about back-references when the part is a sidecar metadata file.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - identifier for this part, typically a hash-anchor (e.g. '#abc123'). Used as the target of schema:about back-references from sidecar metadata files inside the same archive.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - filename of the component file within the archive.",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          },
+          {
+            "name": "description",
+            "dataType": "String",
+            "definition": "schema:description - short description of the file content.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "encodingFormat",
+            "dataType": "String",
+            "definition": "schema:encodingFormat - MIME type(s) of this file.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "QuantitativeValue - inline value-object for schema:size on an ArchivePart. Generic numeric value with unit text. isDataType:true because identity is borne by the ArchivePart, not by this nested object.",
+        "mappingType": "new",
+        "targetPackage": "DataTypes",
+        "targetClass": "QuantitativeValue",
+        "isDataType": true,
+        "definition": "schema:QuantitativeValue - a numeric value with a unit, used here for schema:size on an ArchivePart. The value and unit are recorded inline; there is no independent identity.",
+        "attribute": [
+          {
+            "name": "value",
+            "dataType": "Real",
+            "definition": "schema:value - the numeric size value.",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          },
+          {
+            "name": "unitText",
+            "dataType": "String",
+            "definition": "schema:unitText - unit of measure for the size (e.g. 'byte').",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "Checksum - inline value-object on an ArchivePart for integrity verification. Uses SPDX vocabulary (spdx:Checksum / spdx:algorithm / spdx:checksumValue). isDataType:true (no independent identity).",
+        "mappingType": "new",
+        "targetPackage": "DataTypes",
+        "targetClass": "Checksum",
+        "isDataType": true,
+        "definition": "spdx:Checksum - inline checksum payload on an ArchivePart for integrity verification. Records the algorithm name and the digest value.",
+        "attribute": [
+          {
+            "name": "algorithm",
+            "dataType": "String",
+            "definition": "spdx:algorithm - checksum algorithm identifier (e.g. 'spdx:checksumAlgorithm_sha256').",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          },
+          {
+            "name": "checksumValue",
+            "dataType": "String",
+            "definition": "spdx:checksumValue - the digest value as a hex string.",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          }
+        ]
+      }
+    ],
+    "association": [
+      {
+        "_comment": "ArchiveDistribution -> ArchivePart via schema:hasPart. Composition: the parts have no independent existence outside the archive distribution.",
+        "targetAssociationName": "ArchiveDistribution_hasPart_ArchivePart",
+        "subjectClass": "ArchiveDistribution",
+        "objectClass": "ArchivePart",
+        "definition": "schema:hasPart - the component files inside this archive distribution.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ArchivePart -> ArchivePart via schema:about. A sidecar metadata file inside the archive can reference (via @id) another data file inside the same archive that it describes.",
+        "targetAssociationName": "ArchivePart_about_ArchivePart",
+        "subjectClass": "ArchivePart",
+        "objectClass": "ArchivePart",
+        "definition": "schema:about - when this ArchivePart is a metadata sidecar, references the data ArchivePart this sidecar describes (typically via @id).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "ArchivePart -> Checksum via spdx:checksum. Composition: the Checksum value object has no independent identity.",
+        "targetAssociationName": "ArchivePart_checksum_Checksum",
+        "subjectClass": "ArchivePart",
+        "objectClass": "Checksum",
+        "definition": "spdx:checksum - integrity-verification digest for this component file.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ArchivePart -> QuantitativeValue via schema:size. Composition.",
+        "targetAssociationName": "ArchivePart_size_QuantitativeValue",
+        "subjectClass": "ArchivePart",
+        "objectClass": "QuantitativeValue",
+        "definition": "schema:size - file size as a QuantitativeValue (value + unitText).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      }
+    ]
+  }
+}
