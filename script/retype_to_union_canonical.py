@@ -141,7 +141,7 @@ def rename_labeled_link_class(cfg: dict) -> int:
             cls["targetClass"] = "Reference"
             cls["_comment"] = (
                 "Reference (the cdif:Reference type — local UML class matching "
-                "the cdifProperties/cdifReference building block). Renamed from "
+                "the cdifDataType/cdifReference building block). Renamed from "
                 "the previous 'LabeledLink' stub. Used wherever the JSON schema "
                 "admits 'cdif:Reference | @id-ref | string' shape (license, "
                 "conditionsOfAccess, publishingPrinciples, documentation, "
@@ -151,7 +151,7 @@ def rename_labeled_link_class(cfg: dict) -> int:
                 "A typed reference to an external entity (cdif:Reference). "
                 "Provides a labeled link surface (name, description, url) plus "
                 "the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic "
-                "describing the role). See the cdifProperties/cdifReference "
+                "describing the role). See the cdifDataType/cdifReference "
                 "building block for the full definition; this is the per-profile "
                 "UML class that JSON-shape unions reduce to."
             )
@@ -233,9 +233,9 @@ def add_stub_class(cfg: dict, target_name: str, package: str = "Support") -> boo
             ],
         },
         "Reference": {
-            "_comment": "Reference (cdif:Reference) stub. Local target class so attributes typed as 'Reference' resolve inside this profile; the canonical definition lives in the CDIFCore profile and the cdifProperties/cdifReference building block.",
+            "_comment": "Reference (cdif:Reference) stub. Local target class so attributes typed as 'Reference' resolve inside this profile; the canonical definition lives in the CDIFCore profile and the cdifDataType/cdifReference building block.",
             "mappingType": "new", "targetPackage": package, "targetClass": "Reference",
-            "definition": "cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifProperties/cdifReference.",
+            "definition": "cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifDataType/cdifReference.",
             "attribute": [
                 {"name": "identifier",  "dataType": "XsdAnyUri", "definition": "@id - URI of the referenced resource.",                       "multiplicity": {"lower": "1", "upper": "1"}},
                 {"name": "name",        "dataType": "String",    "definition": "schema:name - human-readable label for the URI.",             "multiplicity": {"lower": "0", "upper": "1"}},

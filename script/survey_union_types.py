@@ -15,7 +15,7 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2] / "metadataBuildingBlocks" / "_sources" / "profiles" / "cdifProfiles"
+ROOT = Path(__file__).resolve().parents[2] / "metadataBuildingBlocks" / "_sources" / "profiles" / "cdifCompositeProfile"
 
 # Tag a sub-schema with a short type label, suitable for grouping.
 def describe(schema: dict, defs: dict, depth: int = 0) -> str:

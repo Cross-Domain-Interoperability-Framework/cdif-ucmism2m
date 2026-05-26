@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Data Description profile UML. Sources: metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIFDataDescriptionProfile/CDIFDataDescriptionProfileSchema.json and ../../cdifProperties/cdifDataDescription/cdifDataDescriptionSchema.json. Data Description composes Core + cdifDataDescription. On top of Discovery's variableMeasured, this profile adds variable-level physicalDataType, distribution-level file characterization (characterSet, fileSize), plus the cdif:hasPrimaryKey and cdif:statistics extension points. This config defines the additions only; the full UML is assembled by composing CDIFCore + CDIFDiscovery + this profile. Conforms-to: https://w3id.org/cdif/data_description/1.0.",
+  "_comment": "DDI-CDI -> CDIF Data Description profile UML. Sources: metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/BasicDataDescription/CDIFDataDescriptionProfileSchema.json and ../../profiles/cdifProfile/cdifDataDescription/cdifDataDescriptionSchema.json. Data Description composes Core + cdifDataDescription. On top of Discovery's variableMeasured, this profile adds variable-level physicalDataType, distribution-level file characterization (characterSet, fileSize), plus the cdif:hasPrimaryKey and cdif:statistics extension points. This config defines the additions only; the full UML is assembled by composing CDIFCore + CDIFDiscovery + this profile. Conforms-to: https://w3id.org/cdif/data_description/1.0.",
   "transformation": {
     "description": "DDI-CDI to CDIF Data Description Profile",
     "version": "0.1",
@@ -45,12 +45,12 @@
     {
       "name": "Statistics",
       "parent": "CDIFDataDescription",
-      "definition": "Statistic value object plus Statistics, CategoryStatistics, StatisticsCollection and Category for cdif:statistics (cdifProperties/cdifStatistics)."
+      "definition": "Statistic value object plus Statistics, CategoryStatistics, StatisticsCollection and Category for cdif:statistics (cdifDataType/cdifStatistics)."
     },
     {
       "name": "ValueDomains",
       "parent": "CDIFDataDescription",
-      "definition": "SubstantiveValueDomain, SentinelValueDomain and EnumerationDomain for the value domains an InstanceVariable draws its values from (cdifProperties/cdifValueDomain)."
+      "definition": "SubstantiveValueDomain, SentinelValueDomain and EnumerationDomain for the value domains an InstanceVariable draws its values from (cdifDataType/cdifValueDomain)."
     },
     {
       "name": "Support",
@@ -286,7 +286,7 @@
         "targetClass": "PrimaryKeyComponent"
       },
       {
-        "_comment": "Statistic value object - a single computed value (mean, count, median ...). DDI-CDI Statistic dataType; no identity, carried inline inside a Statistics/CategoryStatistics bundle. isDataType:true per the value-type policy. From cdifProperties/cdifStatistics.",
+        "_comment": "Statistic value object - a single computed value (mean, count, median ...). DDI-CDI Statistic dataType; no identity, carried inline inside a Statistics/CategoryStatistics bundle. isDataType:true per the value-type policy. From cdifDataType/cdifStatistics.",
         "mappingType": "new",
         "sourceClass": "Statistic",
         "targetPackage": "Statistics",
@@ -321,7 +321,7 @@
         ]
       },
       {
-        "_comment": "Statistics - a named bundle of one or more Statistic value objects for an instance variable, optionally weighted, optionally broken down by Category. Target of cdif:statistics. From cdifProperties/cdifStatistics.",
+        "_comment": "Statistics - a named bundle of one or more Statistic value objects for an instance variable, optionally weighted, optionally broken down by Category. Target of cdif:statistics. From cdifDataType/cdifStatistics.",
         "mappingType": "new",
         "sourceClass": "Statistics",
         "targetPackage": "Statistics",
@@ -343,7 +343,7 @@
         ]
       },
       {
-        "_comment": "CategoryStatistics - statistics for a specific Category of an instance variable. From cdifProperties/cdifStatistics.",
+        "_comment": "CategoryStatistics - statistics for a specific Category of an instance variable. From cdifDataType/cdifStatistics.",
         "mappingType": "new",
         "sourceClass": "CategoryStatistics",
         "targetPackage": "Statistics",
@@ -365,7 +365,7 @@
         ]
       },
       {
-        "_comment": "StatisticsCollection - groups one or more Statistics nodes for an instance variable (e.g. row-count / mean / stddev per measured variable). Target of cdif:statistics. From cdifProperties/cdifStatistics.",
+        "_comment": "StatisticsCollection - groups one or more Statistics nodes for an instance variable (e.g. row-count / mean / stddev per measured variable). Target of cdif:statistics. From cdifDataType/cdifStatistics.",
         "mappingType": "new",
         "sourceClass": "StatisticsCollection",
         "targetPackage": "Statistics",
@@ -381,7 +381,7 @@
         ]
       },
       {
-        "_comment": "Category - minimal Category shape used as a CategoryStatistics target. CDIF simplifies the DDI-CDI InternationalString/LabelForDisplay/ObjectName valued properties to plain strings. From cdifProperties/cdifStatistics.",
+        "_comment": "Category - minimal Category shape used as a CategoryStatistics target. CDIF simplifies the DDI-CDI InternationalString/LabelForDisplay/ObjectName valued properties to plain strings. From cdifDataType/cdifStatistics.",
         "mappingType": "new",
         "sourceClass": "Category",
         "targetPackage": "Statistics",
@@ -415,7 +415,7 @@
         ]
       },
       {
-        "_comment": "SubstantiveValueDomain - the set of valid, meaningful values for a variable (cdi:takesSubstantiveValuesFrom). From cdifProperties/cdifValueDomain. At the Data Description level value domains attach to the InstanceVariable directly; at the Data Structure level they attach to the RepresentedVariable instead. Mapped 1:1 from DDI-CDI.",
+        "_comment": "SubstantiveValueDomain - the set of valid, meaningful values for a variable (cdi:takesSubstantiveValuesFrom). From cdifDataType/cdifValueDomain. At the Data Description level value domains attach to the InstanceVariable directly; at the Data Structure level they attach to the RepresentedVariable instead. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "SubstantiveValueDomain",
         "targetPackage": "ValueDomains",
@@ -436,7 +436,7 @@
         ]
       },
       {
-        "_comment": "SentinelValueDomain - missing / not-applicable value codes for a variable (cdi:takesSentinelValuesFrom). From cdifProperties/cdifValueDomain. Mapped 1:1 from DDI-CDI.",
+        "_comment": "SentinelValueDomain - missing / not-applicable value codes for a variable (cdi:takesSentinelValuesFrom). From cdifDataType/cdifValueDomain. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "SentinelValueDomain",
         "targetPackage": "ValueDomains",
@@ -457,14 +457,14 @@
         ]
       },
       {
-        "_comment": "ValueAndConceptDescription - formal description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, regular/logical expressions, etc. Target of cdi:isDescribedBy on the substantive/sentinel value domains. From cdifProperties/cdifValueDomain.",
+        "_comment": "ValueAndConceptDescription - formal description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, regular/logical expressions, etc. Target of cdi:isDescribedBy on the substantive/sentinel value domains. From cdifDataType/cdifValueDomain.",
         "mappingType": "map",
         "sourceClass": "ValueAndConceptDescription",
         "targetPackage": "ValueDomains",
         "targetClass": "ValueAndConceptDescription"
       },
       {
-        "_comment": "EnumerationDomain - the enumerated set of codes a value domain draws from (cdif:takesValuesFrom). From cdifProperties/cdifEnumerationDomain. Mapped 1:1 from DDI-CDI.",
+        "_comment": "EnumerationDomain - the enumerated set of codes a value domain draws from (cdif:takesValuesFrom). From cdifDataType/cdifEnumerationDomain. Mapped 1:1 from DDI-CDI.",
         "mappingType": "map",
         "sourceClass": "EnumerationDomain",
         "targetPackage": "ValueDomains",
@@ -497,7 +497,7 @@
         ]
       },
       {
-        "_comment": "PhysicalMapping - serialization-agnostic base for the per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifProperties/cdifPhysicalMapping. The text-format specifics (column width, decimal/digit-group separators, display label) live on the TextMapping subclass; locator-based addressing lives on the LocatorMapping subclass (both generalize PhysicalMapping). mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta.",
+        "_comment": "PhysicalMapping - serialization-agnostic base for the per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifDataType/cdifPhysicalMapping. The text-format specifics (column width, decimal/digit-group separators, display label) live on the TextMapping subclass; locator-based addressing lives on the LocatorMapping subclass (both generalize PhysicalMapping). mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta.",
         "mappingType": "new",
         "targetPackage": "Distribution",
         "targetClass": "PhysicalMapping",
@@ -572,7 +572,7 @@
         ]
       },
       {
-        "_comment": "TextMapping - per-field physical mapping for a variable in a delimited or fixed-width text data set. DDI-CDI TextMapping, a subclass of PhysicalMapping; adds column width and number-formatting detail. From cdifProperties/cdifTextMapping (allOf cdifPhysicalMapping). cdif:formats_InstanceVariable and the base mapping attributes are inherited from PhysicalMapping.",
+        "_comment": "TextMapping - per-field physical mapping for a variable in a delimited or fixed-width text data set. DDI-CDI TextMapping, a subclass of PhysicalMapping; adds column width and number-formatting detail. From cdifDataType/cdifTextMapping (allOf cdifPhysicalMapping). cdif:formats_InstanceVariable and the base mapping attributes are inherited from PhysicalMapping.",
         "mappingType": "new",
         "sourceClass": "TextMapping",
         "targetPackage": "Distribution",
@@ -607,7 +607,7 @@
         ]
       },
       {
-        "_comment": "LocatorMapping - locates a variable's value(s) within a structured (hierarchical) data set (XML/JSON) via a locator expression. DDI-CDI LocatorMapping, a subclass of PhysicalMapping. From cdifProperties/cdifLocatorMapping. Used in place of column-index/text mappings for cdi:StructuredDataSet distributions; cdif:formats_InstanceVariable is inherited from PhysicalMapping.",
+        "_comment": "LocatorMapping - locates a variable's value(s) within a structured (hierarchical) data set (XML/JSON) via a locator expression. DDI-CDI LocatorMapping, a subclass of PhysicalMapping. From cdifDataType/cdifLocatorMapping. Used in place of column-index/text mappings for cdi:StructuredDataSet distributions; cdif:formats_InstanceVariable is inherited from PhysicalMapping.",
         "mappingType": "new",
         "sourceClass": "LocatorMapping",
         "targetPackage": "Distribution",
@@ -624,7 +624,7 @@
         ]
       },
       {
-        "_comment": "TabularTextDataSet - dataset-level physical layout of a delimited or fixed-width text data set (CSV/TSV/fixed-width). DDI-CDI TabularTextDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Carried as a co-type on the distribution. From cdifProperties/cdifTabularTextDataSet. Per-field mappings are TextMapping (on cdif:hasPhysicalMapping, inherited from DataDownload).",
+        "_comment": "TabularTextDataSet - dataset-level physical layout of a delimited or fixed-width text data set (CSV/TSV/fixed-width). DDI-CDI TabularTextDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Carried as a co-type on the distribution. From cdifDataType/cdifTabularTextDataSet. Per-field mappings are TextMapping (on cdif:hasPhysicalMapping, inherited from DataDownload).",
         "mappingType": "new",
         "sourceClass": "TabularTextDataSet",
         "targetPackage": "Distribution",
@@ -755,7 +755,7 @@
         ]
       },
       {
-        "_comment": "StructuredDataSet - dataset-level marker for a structured (hierarchical) data set (XML/JSON). DDI-CDI StructuredDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Fields are located with LocatorMapping rather than column-index/text mappings. From cdifProperties/cdifStructuredDataSet.",
+        "_comment": "StructuredDataSet - dataset-level marker for a structured (hierarchical) data set (XML/JSON). DDI-CDI StructuredDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Fields are located with LocatorMapping rather than column-index/text mappings. From cdifDataType/cdifStructuredDataSet.",
         "mappingType": "new",
         "sourceClass": "StructuredDataSet",
         "targetPackage": "Distribution",
@@ -772,7 +772,7 @@
         ]
       },
       {
-        "_comment": "DataFingerprint - a fingerprint (checksum/hash) of a physical dataset, used to verify integrity. DDI-CDI DataFingerprint datatype (StructuredDataTypes); carried inline on a DataDownload via cdi:fingerprint. isDataType:true per the value-type policy. From cdifProperties/cdifDataFingerprint.",
+        "_comment": "DataFingerprint - a fingerprint (checksum/hash) of a physical dataset, used to verify integrity. DDI-CDI DataFingerprint datatype (StructuredDataTypes); carried inline on a DataDownload via cdi:fingerprint. isDataType:true per the value-type policy. From cdifDataType/cdifDataFingerprint.",
         "mappingType": "new",
         "sourceClass": "DataFingerprint",
         "targetPackage": "Distribution",
@@ -1095,7 +1095,7 @@
         }
       },
       {
-        "_comment": "cdi:indexes - the InstanceVariable this PrimaryKeyComponent (cdi:ComponentPosition wrapper) places in the key; cdi:value records its position. From cdifKey/cdifProperties resolvedSchema.",
+        "_comment": "cdi:indexes - the InstanceVariable this PrimaryKeyComponent (cdi:ComponentPosition wrapper) places in the key; cdi:value records its position. From cdifDataType/cdifKey resolvedSchema.",
         "targetAssociationName": "PrimaryKeyComponent_indexes_InstanceVariable",
         "subjectClass": "PrimaryKeyComponent",
         "objectClass": "InstanceVariable",

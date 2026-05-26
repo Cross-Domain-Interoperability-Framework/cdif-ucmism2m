@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Codelist profile UML. The profile is defined at metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIFCodelistProfile/CDIFCodelistProfileSchema.json and composes the W3C SKOS skosConceptScheme + skosConcept building blocks with CDIF-specific constraints. Approach: target classes are named after the JSON-schema vocabulary (ConceptScheme, Concept). Each class uses mappingType=new with optional v1.1 sourceClass to preserve a provenance Dependency back to the DDI-CDI source (ConceptSystem, Concept). Attributes are authored explicitly using SKOS names; data types are the UML primitives String/Boolean/Integer/Real plus DDI-CDI XsdAnyUri/XsdDate (the structured DDI-CDI types InternationalString/LabelForDisplay/ObjectName are deliberately flattened to String here per CDIF profile policy — multilingual labels are encoded inline using JSON-LD @language tags, not as nested LanguageString objects). Associations between target classes are declared with the v1.1 new-association form (no sourceAssociationName).",
+  "_comment": "DDI-CDI -> CDIF Codelist profile UML. The profile is defined at metadataBuildingBlocks/_sources/profiles/archive/CDIFCodelistProfile/CDIFCodelistProfileSchema.json and composes the W3C SKOS skosConceptScheme + skosConcept building blocks with CDIF-specific constraints. Approach: target classes are named after the JSON-schema vocabulary (ConceptScheme, Concept). Each class uses mappingType=new with optional v1.1 sourceClass to preserve a provenance Dependency back to the DDI-CDI source (ConceptSystem, Concept). Attributes are authored explicitly using SKOS names; data types are the UML primitives String/Boolean/Integer/Real plus DDI-CDI XsdAnyUri/XsdDate (the structured DDI-CDI types InternationalString/LabelForDisplay/ObjectName are deliberately flattened to String here per CDIF profile policy — multilingual labels are encoded inline using JSON-LD @language tags, not as nested LanguageString objects). Associations between target classes are declared with the v1.1 new-association form (no sourceAssociationName).",
   "transformation": {
     "description": "DDI-CDI to CDIF Codelist Profile",
     "version": "0.1",
@@ -355,12 +355,12 @@
         ]
       },
       {
-        "_comment": "Reference (cdif:Reference) stub. Local target class so attributes typed as 'Reference' resolve inside this profile; the canonical definition lives in the CDIFCore profile and the cdifProperties/cdifReference building block.",
+        "_comment": "Reference (cdif:Reference) stub. Local target class so attributes typed as 'Reference' resolve inside this profile; the canonical definition lives in the CDIFCore profile and the cdifDataType/cdifReference building block.",
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Reference",
         "isDataType": true,
-        "definition": "cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifProperties/cdifReference.",
+        "definition": "cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifDataType/cdifReference.",
         "attribute": [
           {
             "name": "identifier",

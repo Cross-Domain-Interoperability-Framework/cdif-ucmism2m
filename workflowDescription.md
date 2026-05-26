@@ -11,7 +11,10 @@ configuration files in this directory.
   The authoritative DDI-CDI class model in Eclipse UML2 / XMI 2.5.1 form. Provides class names, attributes, datatypes, enumerations and associations that profile transformations map *from*. A 1.0 version remains at `CDIF/ucmism2m/model/ddi-cdi_canonical-unique-names-eclipse.xmi` for reference; switching back is one line in `build-docs.ps1`.
 
 - **CDIF building-block profiles**
-  Path: `CDIF/metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIF*Profile/` (one directory per profile: `CDIFCodelist`, `CDIFCore`, `CDIFDiscovery`, `CDIFDataDescription`, `CDIFDataStructure`, `CDIFcomplete`).
+  Paths (post 2026-05 reorg):
+  - Composite profiles: `CDIF/metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/<Name>/` — `BasicDiscovery`, `BasicDataDescription`, `DataDescriptionWithStructure`, `XASdata`, `cdifComplete`.
+  - Profile modules: `CDIF/metadataBuildingBlocks/_sources/profiles/cdifProfile/<Name>/` — `cdifCore`, `cdifCodelist`, `cdifDataDescription`, `cdifDataStructure`, `cdifArchive`, `cdifProvenance`, `cdifDiscovery`, `cdifConceptScheme`.
+  - Archived: `CDIF/metadataBuildingBlocks/_sources/profiles/archive/` — `CDIFCodelistProfile`, `CDIFConceptSchemeProfile`.
   The authoritative JSON-LD implementation of each profile. Each profile directory ships: `CDIF{Name}ProfileSchema.json` (composite), `resolvedSchema.json`, `schema.yaml`, `context.jsonld` (prefix-only), `rules.shacl`, `examples.yaml`, and sample instance documents.
 
 - **CDIF release repos** (downstream consumers)
@@ -24,7 +27,7 @@ These are produced by the **metadataBuildingBlocks** tooling (`bblocks-config.ya
 
 - ✅ JSON Schema (per-BB `schema.yaml`, composite `CDIF{Profile}ProfileSchema.json`)
 - ✅ SHACL rules (per-BB `rules.shacl`, merged via `CDIF/validation/ShaclValidation/generate_shacl_shapes.py`)
-- ✅ JSON-LD `@context` (prefix-only, per profile in `_sources/profiles/cdifProfiles/.../context.jsonld`)
+- ✅ JSON-LD `@context` (prefix-only, per profile in `_sources/profiles/cdifCompositeProfile/.../context.jsonld`)
 - ✅ JSON-LD frames (per profile in each release repo)
 - ✅ Instance examples (per BB)
 

@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Core profile UML. Source: metadataBuildingBlocks/_sources/cdifProperties/cdifCore/cdifCoreSchema.json. The Core profile vocabulary is schema.org + dcterms + prov + dcat, almost entirely outside DDI-CDI's UML. Pattern used: mappingType=new with v1.1 sourceClass when there is a plausible DDI-CDI provenance anchor (Dataset<-DataStore, Person<-Individual, Organization<-Organization, ProvActivity<-Activity, MonetaryGrant<-FundingInformation, CatalogRecord<-CatalogDetails). Classes with no DDI-CDI counterpart (DataDownload, WebAPI, Contributor, DefinedTerm, LabeledLink, DerivedFrom) are plain new. Required Core attributes per the JSON schema: @id, @type, @context (modelled in metadata block), schema:name, schema:identifier, schema:dateModified, schema:subjectOf, AND (license OR conditionsOfAccess), AND (url OR distribution). This file covers the required attributes plus the commonly-used optional ones; rarely-used attributes (sameAs, publishingPrinciples, contributor) are included where space allows but with shorter definitions.",
+  "_comment": "DDI-CDI -> CDIF Core profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/cdifCoreSchema.json. The Core profile vocabulary is schema.org + dcterms + prov + dcat, almost entirely outside DDI-CDI's UML. Pattern used: mappingType=new with v1.1 sourceClass when there is a plausible DDI-CDI provenance anchor (Dataset<-DataStore, Person<-Individual, Organization<-Organization, ProvActivity<-Activity, MonetaryGrant<-FundingInformation, CatalogRecord<-CatalogDetails). Classes with no DDI-CDI counterpart (DataDownload, WebAPI, Contributor, DefinedTerm, LabeledLink, DerivedFrom) are plain new. Required Core attributes per the JSON schema: @id, @type, @context (modelled in metadata block), schema:name, schema:identifier, schema:dateModified, schema:subjectOf, AND (license OR conditionsOfAccess), AND (url OR distribution). This file covers the required attributes plus the commonly-used optional ones; rarely-used attributes (sameAs, publishingPrinciples, contributor) are included where space allows but with shorter definitions.",
   "transformation": {
     "description": "DDI-CDI to CDIF Core Profile",
     "version": "0.1",
@@ -834,12 +834,12 @@
         }
       },
       {
-        "_comment": "Reference (the cdif:Reference type â€” local UML class matching the cdifProperties/cdifReference building block). Renamed from the previous 'LabeledLink' stub. Used wherever the JSON schema admits 'cdif:Reference | @id-ref | string' shape (license, conditionsOfAccess, publishingPrinciples, documentation, termsOfService, relatedLink, subjectOf).",
+        "_comment": "Reference (the cdif:Reference type â€” local UML class matching the cdifDataType/cdifReference building block). Renamed from the previous 'LabeledLink' stub. Used wherever the JSON schema admits 'cdif:Reference | @id-ref | string' shape (license, conditionsOfAccess, publishingPrinciples, documentation, termsOfService, relatedLink, subjectOf).",
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Reference",
         "isDataType": true,
-        "definition": "A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifProperties/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.",
+        "definition": "A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifDataType/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.",
         "attribute": [
           {
             "name": "name",
@@ -957,7 +957,7 @@
         "mappingType": "new",
         "targetPackage": "Provenance",
         "targetClass": "DerivedFrom",
-        "definition": "prov:wasDerivedFrom payload - a cdif:Reference to an upstream resource the dataset was derived from (the JSON also admits a bare string or @id). Mirrors the cdifProperties/cdifReference building block.",
+        "definition": "prov:wasDerivedFrom payload - a cdif:Reference to an upstream resource the dataset was derived from (the JSON also admits a bare string or @id). Mirrors the cdifDataType/cdifReference building block.",
         "attribute": [
           {
             "name": "name",

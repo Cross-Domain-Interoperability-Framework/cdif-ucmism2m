@@ -32,14 +32,16 @@ it's in `metadataBuildingBlocks/tools/uml_to_schema.py`.
 - **Audit:** `script/audit_schema_vs_uml.py`
 - **Orchestrator (XMI + PlantUML + HTML, all profiles):** `script/build-docs.ps1`
 - **Output:** `generated/<lower-acronym>_<major>-<minor>_canonical-unique-names.xmi`
-- **Profile JSON Schemas (for the audit):** `../metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIF<Name>Profile/resolvedSchema.json` (Core's is under `_sources/cdifProperties/cdifCore/`).
+- **Profile JSON Schemas (for the audit):** `../metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/<NewName>/resolvedSchema.json` (composite profiles: BasicDiscovery, BasicDataDescription, DataDescriptionWithStructure, XASdata, cdifComplete). Core's is under `_sources/profiles/cdifProfile/cdifCore/`. The archived Codelist profile lives under `_sources/profiles/archive/CDIFCodelistProfile/`.
 
 ## The loop: extend or add a profile
 
 1. **Find the gap.** Run the audit for the profile (see below). The `REAL GAPS`
    bucket is your worklist; the other buckets are intentionally absent.
 2. **Read the building block(s)** the profile composes
-   (`_sources/cdifProperties/<bb>/schema.yaml`) to learn the classes/properties.
+   (`_sources/cdifDataType/<bb>/schema.yaml` for data-type BBs, or
+   `_sources/profiles/cdifProfile/<bb>/schema.yaml` for profile modules) to
+   learn the classes/properties.
 3. **Verify source names** against the 1.1beta XMI before mapping
    (`grep "<name>X</name>" <source.xmi>`) — the `.ddi-cdi-source-index.json` is
    1.0 and can be stale (e.g. `CategoryStatistic` vs 1.1beta `CategoryStatistics`).
@@ -188,7 +190,7 @@ Browser features:
   DataDescription/DataStructure. The Action subtypes (SearchAction, FindAction, …)
   stay union-collapsed to the `Action` base, and `schema:object` (open-ended
   `schema:Thing`) is still not modelled — revisit when the prov profile incorporates
-  `_sources/cdifProperties/cdifProvActivity/`, where `Action.object` becomes relevant
+  `_sources/cdifDataType/cdifProvActivity/`, where `Action.object` becomes relevant
   (future work). Mirrors the `action`/`actionResult`/`webAPI`
   BBs. Audit: `query-input` ~ `Action_queryInput_PropertyValueSpecification` (ALIAS,
   since association names can't contain `-`).

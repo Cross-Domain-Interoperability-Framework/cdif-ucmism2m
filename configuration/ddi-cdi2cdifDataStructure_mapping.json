@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfiles/CDIFDataStructureProfile/CDIFDataStructureProfileSchema.json. This is the most DDI-CDI-aligned profile: the JSON schema essentially exposes DDI-CDI's DataStructure / Component / RepresentedVariable / ValueDomain hierarchy. Strategy: heavy use of mappingType=map (with class rename when needed) and association renames - the same pattern as the existing DDSC example (ddi-cdi2ddsc_mapping.json). Target class names follow the JSON schema vocabulary (cdi:DataStructure, cdi:WideDataStructure, cdi:IdentifierComponent, etc.) which happen to match DDI-CDI's class names directly. The cdi:isStructuredBy hook from Distribution -> DataStructure is the key Distribution-level addition and is represented as a new association.",
+  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/DataDescriptionWithStructure/CDIFDataStructureProfileSchema.json. This is the most DDI-CDI-aligned profile: the JSON schema essentially exposes DDI-CDI's DataStructure / Component / RepresentedVariable / ValueDomain hierarchy. Strategy: heavy use of mappingType=map (with class rename when needed) and association renames - the same pattern as the existing DDSC example (ddi-cdi2ddsc_mapping.json). Target class names follow the JSON schema vocabulary (cdi:DataStructure, cdi:WideDataStructure, cdi:IdentifierComponent, etc.) which happen to match DDI-CDI's class names directly. The cdi:isStructuredBy hook from Distribution -> DataStructure is the key Distribution-level addition and is represented as a new association.",
   "transformation": {
     "description": "DDI-CDI to CDIF Data Structure Profile",
     "version": "0.1",
@@ -187,7 +187,7 @@
         ]
       },
       {
-        "_comment": "DescriptorVariable - in the CDIF profile a descriptor variable carries only an identifier, a name, and the DescriptorValueDomain enumerating the codes it can take (cdif:hasValuesFrom). The richer DDI-CDI DescriptorVariable attributes (function, role, unit of measure, data type, etc.) are NOT part of the CDIF building block, so this is a curated 'new' class rather than a bare map of the source. From cdifProperties/cdifDescriptorVariable.",
+        "_comment": "DescriptorVariable - in the CDIF profile a descriptor variable carries only an identifier, a name, and the DescriptorValueDomain enumerating the codes it can take (cdif:hasValuesFrom). The richer DDI-CDI DescriptorVariable attributes (function, role, unit of measure, data type, etc.) are NOT part of the CDIF building block, so this is a curated 'new' class rather than a bare map of the source. From cdifDataType/cdifDescriptorVariable.",
         "mappingType": "new",
         "sourceClass": "DescriptorVariable",
         "targetPackage": "Variables",

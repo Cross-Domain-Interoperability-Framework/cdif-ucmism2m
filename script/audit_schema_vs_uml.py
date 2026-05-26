@@ -39,23 +39,23 @@ from uml_to_schema import _load_with_composition  # noqa: E402
 PROFILES = {
     "cdifCodelist": (
         CONFIG_DIR / "ddi-cdi2cdifCodelist_mapping.json",
-        SOURCES / "profiles/cdifProfiles/CDIFCodelistProfile/resolvedSchema.json",
+        SOURCES / "profiles/archive/CDIFCodelistProfile/resolvedSchema.json",
     ),
     "cdifCore": (
         CONFIG_DIR / "ddi-cdi2cdifCore_mapping.json",
-        SOURCES / "cdifProperties/cdifCore/resolvedSchema.json",
+        SOURCES / "profiles/cdifProfile/cdifCore/resolvedSchema.json",
     ),
     "cdifDiscovery": (
         CONFIG_DIR / "ddi-cdi2cdifDiscovery_mapping.json",
-        SOURCES / "profiles/cdifProfiles/CDIFDiscoveryProfile/resolvedSchema.json",
+        SOURCES / "profiles/cdifCompositeProfile/BasicDiscovery/resolvedSchema.json",
     ),
     "cdifDataDescription": (
         CONFIG_DIR / "ddi-cdi2cdifDataDescription_mapping.json",
-        SOURCES / "profiles/cdifProfiles/CDIFDataDescriptionProfile/resolvedSchema.json",
+        SOURCES / "profiles/cdifCompositeProfile/BasicDataDescription/resolvedSchema.json",
     ),
     "cdifDataStructure": (
         CONFIG_DIR / "ddi-cdi2cdifDataStructure_mapping.json",
-        SOURCES / "profiles/cdifProfiles/CDIFDataStructureProfile/resolvedSchema.json",
+        SOURCES / "profiles/cdifCompositeProfile/DataDescriptionWithStructure/resolvedSchema.json",
     ),
 }
 
