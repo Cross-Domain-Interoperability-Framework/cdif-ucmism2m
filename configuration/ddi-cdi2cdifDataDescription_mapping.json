@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Data Description profile UML. Sources: metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/BasicDataDescription/CDIFDataDescriptionProfileSchema.json and ../../profiles/cdifProfile/cdifDataDescription/cdifDataDescriptionSchema.json. Data Description composes Core + cdifDataDescription. On top of Discovery's variableMeasured, this profile adds variable-level physicalDataType, distribution-level file characterization (characterSet, fileSize), plus the cdif:hasPrimaryKey and cdif:statistics extension points. This config defines the additions only; the full UML is assembled by composing CDIFCore + CDIFDiscovery + this profile. Conforms-to: https://w3id.org/cdif/data_description/1.0.",
+  "_comment": "DDI-CDI -> CDIF Data Description profile UML. Aligned to metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataDescription/schema.yaml. Diagram scope: only the data-description-specific content. Anchor classes Dataset / CatalogRecord / DataDownload / WebAPI / ActionResult are restated as minimal stubs (full definitions in CDIFCore). cdifCore is NOT composed so the overview stays tight; cross-profile registry handles the stub <-> CDIFCore links. The discovery-level properties (measurementTechnique / spatialCoverage / temporalCoverage / hasQualityMeasurement) belong to cdifDiscovery and are NOT modelled here. The schema permits cdif:hasPhysicalMapping items to be PhysicalMapping or its subtypes TextMapping / LocatorMapping; rendered here as an abstract AbstractMapping with three concrete subtypes. Similarly, a DataDownload may be co-typed with cdi:TabularTextDataSet or cdi:StructuredDataSet (an abstract AbstractDataSet wraps the two physical-dataset variants).",
   "transformation": {
     "description": "DDI-CDI to CDIF Data Description Profile",
     "version": "0.1",
@@ -12,1178 +12,484 @@
     "targetModel": {
       "acronym": "BasicDataDescription",
       "modelTitle": "UML Model for the CDIF Data Description Profile",
-      "subTitle": "Data-description additions over CDIF Discovery: variable physicalDataType, file characterization, primary key, statistics",
+      "subTitle": "Variable-level physical data types, primary keys, statistics, physical mappings on distributions",
       "majorVersion": "1",
       "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/data_description/1.0/xmi/",
-      "definition": "CDIF Data Description profile - extends Discovery with detailed variable descriptions (physicalDataType), distribution file characterization (character set, file size), primary key declarations, and statistical summaries.",
+      "definition": "CDIF Data Description profile module. On any Dataset whose catalog record declares conformance to https://w3id.org/cdif/data_description/1.0, this profile adds: (a) cdif:hasPrimaryKey on the Dataset, (b) cdif:statistics on the Dataset, (c) richer InstanceVariable shape (cdif:physicalDataType required, plus optional cdi:takesSubstantiveValuesFrom / cdi:takesSentinelValuesFrom value-domains), and (d) physical mapping on schema:distribution items - cdif:hasPhysicalMapping (any of PhysicalMapping / TextMapping / LocatorMapping) on DataDownload and on WebAPI's potentialAction.result, plus cdi:characterSet and cdi:fingerprint (DataFingerprint). A DataDownload MAY be co-typed cdi:TabularTextDataSet or cdi:StructuredDataSet.",
       "mainPackage": "BasicDataDescription",
-      "mainPackageDefinition": "Data Description profile additions on top of Core + Discovery.",
-      "dataTypesPackage": "BasicDataDescription",
-      "composes": [
-        "ddi-cdi2cdifDiscovery_mapping.json"
-      ]
+      "mainPackageDefinition": "Data Description profile additions: variable-level physical types, primary keys, statistics, distribution-level physical mappings.",
+      "dataTypesPackage": "BasicDataDescription"
     }
   },
   "package": [
     {
       "name": "Variables",
       "parent": "BasicDataDescription",
-      "definition": "Variable description classes (InstanceVariable subset used in Data Description)."
+      "definition": "Variable description: cdi:InstanceVariable with its physical data type and value domains."
     },
     {
       "name": "Distribution",
       "parent": "BasicDataDescription",
-      "definition": "Distribution-level extensions: file characterization, the PhysicalDataSet subclasses (TabularTextDataSet, StructuredDataSet), the physical-mapping family (PhysicalMapping, TextMapping, LocatorMapping), and the DataFingerprint datatype."
+      "definition": "Distribution-level additions: physical mapping family (AbstractMapping with PhysicalMapping / TextMapping / LocatorMapping subtypes), physical dataset family (AbstractDataSet with TabularTextDataSet / StructuredDataSet subtypes), and the DataFingerprint datatype."
     },
     {
       "name": "Keys",
       "parent": "BasicDataDescription",
-      "definition": "PrimaryKey and PrimaryKeyComponent for cdif:hasPrimaryKey."
+      "definition": "cdif:hasPrimaryKey: PrimaryKey + PrimaryKeyComponent."
     },
     {
       "name": "Statistics",
       "parent": "BasicDataDescription",
-      "definition": "Statistic value object plus Statistics, CategoryStatistics, StatisticsCollection and Category for cdif:statistics (cdifDataType/cdifStatistics)."
+      "definition": "cdif:statistics: Statistic / Statistics / StatisticsCollection / CategoryStatistics / Category."
     },
     {
       "name": "ValueDomains",
       "parent": "BasicDataDescription",
-      "definition": "SubstantiveValueDomain, SentinelValueDomain and EnumerationDomain for the value domains an InstanceVariable draws its values from (cdifDataType/cdifValueDomain)."
+      "definition": "SubstantiveValueDomain and SentinelValueDomain (referenced from InstanceVariable's takesSubstantiveValuesFrom / takesSentinelValuesFrom)."
     },
     {
-      "name": "Support",
+      "name": "Anchors",
       "parent": "BasicDataDescription",
-      "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
+      "definition": "Stub re-declarations of CDIFCore classes the profile attaches to (Dataset / CatalogRecord / DataDownload / WebAPI / ActionResult). Full definitions live in CDIFCore; these stubs let the diagram render attachment edges without dragging the entire CDIFCore graph in."
     }
   ],
   "mapping": {
     "class": [
       {
-        "_comment": "AbstractVariable - abstract supertype of VariableMeasured (schema:PropertyValue form) and InstanceVariable (cdi:InstanceVariable form). The Dataset_variableMeasured association targets this single end; the JSON instance carries the concrete schema:PropertyValue or cdi:InstanceVariable in @type. Value domains and statistics attach to the concrete InstanceVariable; the lightweight schema.org wrapper attributes live on VariableMeasured.",
+        "_comment": "Dataset stub - the host node carrying cdif:hasPrimaryKey, cdif:statistics, schema:variableMeasured, schema:distribution, and the schema:subjectOf back-reference to CatalogRecord.",
         "mappingType": "new",
-        "isAbstract": true,
-        "targetPackage": "Variables",
-        "targetClass": "AbstractVariable",
-        "definition": "Abstract supertype for the value of schema:variableMeasured - either a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable. Concrete subclasses: VariableMeasured, InstanceVariable.",
+        "targetPackage": "Anchors",
+        "targetClass": "Dataset",
+        "definition": "Stub of schema:Dataset (full definition in CDIFCore). Re-declared so the diagram can render the data-description-specific edges.",
         "attribute": [
           {
             "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI for the variable.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "name",
-            "dataType": "String",
-            "definition": "schema:name / cdi:name - variable name.",
-            "multiplicity": { "lower": "1", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "InstanceVariable as referenced by schema:variableMeasured at the Data Description level. Adds physicalDataType, describedUnitOfMeasure, unitOfMeasureKind, role. Mapped from DDI-CDI InstanceVariable directly. Generalizes AbstractVariable; value domains and statistics attach here.",
-        "mappingType": "map",
-        "sourceClass": "InstanceVariable",
-        "targetPackage": "Variables",
-        "targetClass": "InstanceVariable",
-        "generalization": ["AbstractVariable"],
-        "attribute": [
-          {
-            "name": "name",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "definition",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "_comment": "Flatten DDI-CDI ControlledVocabularyEntry source type to a skos:Concept reference (CDIF profile policy).",
-            "name": "describedUnitOfMeasure",
-            "dataType": "Concept",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "_comment": "Flatten DDI-CDI ControlledVocabularyEntry source type to a skos:Concept reference (CDIF profile policy).",
-            "name": "unitOfMeasureKind",
-            "dataType": "Concept",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "function",
-            "dataType": "Concept",
-            "definition": "cdi:function - immutable characteristic of the variable (geographic designator, weight, temporal designation, ...).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          },
-          {
-            "name": "platformType",
-            "dataType": "Concept",
-            "definition": "cdi:platformType - the application/technical system context in which the variable was realized.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "source",
-            "dataType": "String",
-            "definition": "cdi:source - provenance information for this InstanceVariable.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "hasIntendedDataType",
-            "dataType": "Concept",
-            "definition": "cdi:hasIntendedDataType - the data type intended for this variable, independent of its physical representation.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "simpleUnitOfMeasure",
-            "dataType": "String",
-            "definition": "cdif:simpleUnitOfMeasure - plain-string unit of measure (use describedUnitOfMeasure for a controlled-vocabulary unit).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "uses",
-            "dataType": "Concept",
-            "definition": "cdif:uses - concept(s) this variable measures or represents (akin to schema:propertyID).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          }
-        ]
-      },
-      {
-        "_comment": "VariableMeasured wrapper that the Data Description profile uses as the value of schema:variableMeasured. Holds the cdif:physicalDataType required at this profile level.",
-        "mappingType": "new",
-        "sourceClass": "InstanceVariable",
-        "targetPackage": "Variables",
-        "targetClass": "VariableMeasured",
-        "generalization": ["AbstractVariable"],
-        "definition": "schema:variableMeasured payload at the Data Description level. Wraps a DDI-CDI InstanceVariable reference with additional CDIF-required properties: cdif:physicalDataType and (optionally) cdif:role. Generalizes AbstractVariable.",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI for this variable description.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "name",
-            "dataType": "String",
-            "definition": "schema:name - short variable name.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "description",
-            "dataType": "String",
-            "definition": "schema:description - human-readable description.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "propertyId",
             "dataType": "XsdAnyUri",
-            "definition": "schema:propertyID - URI of the property concept.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "unitText",
-            "dataType": "String",
-            "definition": "schema:unitText - unit of measure as text.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "unitCode",
-            "dataType": "DefinedTerm",
-            "definition": "schema:unitCode - URI for the unit.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "_comment": "Per CDIF profile policy: DDI-CDI's cdi:physicalDataType (originally a ControlledVocabularyEntry / PairedControlledVocabularyEntry structured DataType) is implemented as a skos:Concept reference. The Concept stub lives in this profile so the type is locally resolvable; the canonical SKOS Concept definition lives in the CDIFCodelist profile (cross-profile linked in the HTML).",
-            "name": "physicalDataType",
-            "dataType": "Concept",
-            "definition": "cdif:physicalDataType / cdi:physicalDataType - XSD-style data type for the physical representation, expressed as a reference to a skos:Concept in a controlled vocabulary (e.g. XSD-types scheme). Required at the Data Description level.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "role",
-            "dataType": "String",
-            "definition": "cdif:role - role of this variable in the data set (Identifier / Measure / Attribute / Dimension). At the Data Structure level this lives on the component class instead.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "@id - resolvable URI for the dataset.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "PhysicalDataSet-based file characterization. Mapped from DDI-CDI PhysicalDataSet with file-level attributes.",
+        "_comment": "CatalogRecord stub - carries the required https://w3id.org/cdif/data_description/1.0 conformance declaration.",
         "mappingType": "new",
-        "sourceClass": "PhysicalDataSet",
-        "targetPackage": "Distribution",
+        "targetPackage": "Anchors",
+        "targetClass": "CatalogRecord",
+        "definition": "Stub of CDIFCore::CatalogRecord. For the data-description profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_description/1.0.",
+        "attribute": [
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_description/1.0 for the data-description profile.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "DataDownload stub - a downloadable distribution. cdif:hasPhysicalMapping (to AbstractMapping items), cdi:characterSet, cdi:fingerprint (DataFingerprint), and the cdi: physical-dataset co-typing (TabularTextDataSet / StructuredDataSet) attach here. Full definition in CDIFCore.",
+        "mappingType": "new",
+        "targetPackage": "Anchors",
         "targetClass": "DataDownload",
-        "definition": "schema:DataDownload extended for the Data Description profile - adds the character-set attribute, the per-field physical mappings (cdif:hasPhysicalMapping), and a data fingerprint (cdi:fingerprint). File size is carried by the Core schema:contentSize attribute. Co-typed cdi:PhysicalDataSet in instances; TabularTextDataSet and StructuredDataSet specialize it for text-tabular and structured serializations. Composes with the core DataDownload at the model-composition step.",
+        "definition": "Stub of CDIFCore::DataDownload. Carries data-description additions: cdif:hasPhysicalMapping, cdi:characterSet, cdi:fingerprint, and optional co-typing as cdi:TabularTextDataSet or cdi:StructuredDataSet (AbstractDataSet specializations).",
         "attribute": [
           {
             "name": "characterSet",
             "dataType": "String",
-            "definition": "cdi:characterSet - character encoding of a text-based distribution (e.g. UTF-8). Required by CDIF Data Description for text distributions.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "fingerprint",
-            "dataType": "DataFingerprint",
-            "definition": "cdi:fingerprint - a fingerprint (checksum/hash) of the physical dataset, used to verify integrity.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "cdi:characterSet - the character set used in the distribution (e.g. UTF-8, ASCII).",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "PrimaryKey - target of cdif:hasPrimaryKey on the dataset.",
-        "mappingType": "map",
-        "sourceClass": "PrimaryKey",
-        "targetPackage": "Keys",
-        "targetClass": "PrimaryKey"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "PrimaryKeyComponent",
-        "targetPackage": "Keys",
-        "targetClass": "PrimaryKeyComponent"
-      },
-      {
-        "_comment": "Statistic value object - a single computed value (mean, count, median ...). DDI-CDI Statistic dataType; no identity, carried inline inside a Statistics/CategoryStatistics bundle. isDataType:true per the value-type policy. From cdifDataType/cdifStatistics.",
+        "_comment": "WebAPI stub - a WebAPI distribution. cdif:hasPhysicalMapping attaches to its potentialAction.result, not directly to the WebAPI. Modelled as WebAPI -> ActionResult -> AbstractMapping[].",
         "mappingType": "new",
-        "sourceClass": "Statistic",
-        "targetPackage": "Statistics",
-        "targetClass": "Statistic",
-        "isDataType": true,
-        "definition": "cdi:Statistic - a single computed statistical value. A value object carried inline inside a Statistics or CategoryStatistics bundle.",
-        "attribute": [
-          {
-            "name": "computationBase",
-            "dataType": "String",
-            "definition": "cdi:computationBase - cases included in the statistic: Total, ValidOnly, or MissingOnly.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "content",
-            "dataType": "Real",
-            "definition": "cdi:content - the value of the statistic expressed as a real number.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "isWeighted",
-            "dataType": "Boolean",
-            "definition": "cdi:isWeighted - true if the statistic was computed using a weighting variable.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "typeOfNumericValue",
-            "dataType": "String",
-            "definition": "cdi:typeOfNumericValue - the type of numeric value in content (decimal, float, double).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "Statistics - a named bundle of one or more Statistic value objects for an instance variable, optionally weighted, optionally broken down by Category. Target of cdif:statistics. From cdifDataType/cdifStatistics.",
-        "mappingType": "new",
-        "sourceClass": "Statistics",
-        "targetPackage": "Statistics",
-        "targetClass": "Statistics",
-        "definition": "cdi:Statistics - a named bundle of Statistic value objects for an instance variable.",
-        "attribute": [
-          {
-            "name": "typeOfStatistic",
-            "dataType": "Concept",
-            "definition": "cdi:typeOfStatistic - controlled-vocabulary entry naming the kind of statistic (mean, median, count, sum, stdDev ...).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "statistic",
-            "dataType": "Statistic",
-            "definition": "cdi:statistic - ordered list of Statistic value objects carried by this bundle.",
-            "multiplicity": { "lower": "1", "upper": "*" }
-          }
-        ]
-      },
-      {
-        "_comment": "CategoryStatistics - statistics for a specific Category of an instance variable. From cdifDataType/cdifStatistics.",
-        "mappingType": "new",
-        "sourceClass": "CategoryStatistics",
-        "targetPackage": "Statistics",
-        "targetClass": "CategoryStatistics",
-        "definition": "cdi:CategoryStatistics - statistics for a specific Category of an instance variable within a data set.",
-        "attribute": [
-          {
-            "name": "typeOfStatistic",
-            "dataType": "Concept",
-            "definition": "cdi:typeOfStatistic - controlled-vocabulary entry naming the kind of statistic.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "statistic",
-            "dataType": "Statistic",
-            "definition": "cdi:statistic - per-category Statistic value objects.",
-            "multiplicity": { "lower": "1", "upper": "*" }
-          }
-        ]
-      },
-      {
-        "_comment": "StatisticsCollection - groups one or more Statistics nodes for an instance variable (e.g. row-count / mean / stddev per measured variable). Target of cdif:statistics. From cdifDataType/cdifStatistics.",
-        "mappingType": "new",
-        "sourceClass": "StatisticsCollection",
-        "targetPackage": "Statistics",
-        "targetClass": "StatisticsCollection",
-        "definition": "cdi:StatisticsCollection - groups one or more Statistics nodes for an instance variable.",
+        "targetPackage": "Anchors",
+        "targetClass": "WebAPI",
+        "definition": "Stub of CDIFCore::WebAPI. Carries a potentialAction whose result has cdif:hasPhysicalMapping + cdi:characterSet at the data-description level.",
         "attribute": [
           {
             "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - identifier for this StatisticsCollection node.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "Category - minimal Category shape used as a CategoryStatistics target. CDIF simplifies the DDI-CDI InternationalString/LabelForDisplay/ObjectName valued properties to plain strings. From cdifDataType/cdifStatistics.",
-        "mappingType": "new",
-        "sourceClass": "Category",
-        "targetPackage": "Statistics",
-        "targetClass": "Category",
-        "definition": "cdi:Category - a category of an instance variable, as the subject of CategoryStatistics.",
-        "attribute": [
-          {
-            "name": "name",
-            "dataType": "String",
-            "definition": "cdif:name - human-understandable name(s). CDIF-simplified from DDI-CDI Category.name (ObjectName).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          },
-          {
-            "name": "descriptiveText",
-            "dataType": "String",
-            "definition": "cdif:descriptiveText - short natural-language account of the category.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "definition",
-            "dataType": "String",
-            "definition": "cdif:definition - natural-language definition of the category.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "displayLabel",
-            "dataType": "String",
-            "definition": "cdif:displayLabel - human-readable display label(s).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          }
-        ]
-      },
-      {
-        "_comment": "SubstantiveValueDomain - the set of valid, meaningful values for a variable (cdi:takesSubstantiveValuesFrom). From cdifDataType/cdifValueDomain. At the Data Description level value domains attach to the InstanceVariable directly; at the Data Structure level they attach to the RepresentedVariable instead. Mapped 1:1 from DDI-CDI.",
-        "mappingType": "map",
-        "sourceClass": "SubstantiveValueDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "SubstantiveValueDomain",
-        "attribute": [
-          {
-            "name": "displayLabel",
-            "dataType": "String",
-            "definition": "cdif:displayLabel - human-readable display label for the value domain.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "recommendedDataType",
-            "dataType": "String",
-            "definition": "cdif:recommendedDataType - the data type(s) recommended for use with this domain (xsd type token).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          }
-        ]
-      },
-      {
-        "_comment": "SentinelValueDomain - missing / not-applicable value codes for a variable (cdi:takesSentinelValuesFrom). From cdifDataType/cdifValueDomain. Mapped 1:1 from DDI-CDI.",
-        "mappingType": "map",
-        "sourceClass": "SentinelValueDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "SentinelValueDomain",
-        "attribute": [
-          {
-            "name": "displayLabel",
-            "dataType": "String",
-            "definition": "cdif:displayLabel - human-readable display label for the value domain.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "recommendedDataType",
-            "dataType": "String",
-            "definition": "cdif:recommendedDataType - the data type(s) recommended for use with this domain (xsd type token).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          }
-        ]
-      },
-      {
-        "_comment": "ValueAndConceptDescription - formal description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, regular/logical expressions, etc. Target of cdi:isDescribedBy on the substantive/sentinel value domains. From cdifDataType/cdifValueDomain.",
-        "mappingType": "map",
-        "sourceClass": "ValueAndConceptDescription",
-        "targetPackage": "ValueDomains",
-        "targetClass": "ValueAndConceptDescription"
-      },
-      {
-        "_comment": "EnumerationDomain - the enumerated set of codes a value domain draws from (cdif:takesValuesFrom). From cdifDataType/cdifEnumerationDomain. Mapped 1:1 from DDI-CDI.",
-        "mappingType": "map",
-        "sourceClass": "EnumerationDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "EnumerationDomain",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "cdif:identifier - identifier for this enumerated (categorical) domain.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "name",
-            "dataType": "String",
-            "definition": "schema:name - human-understandable name of the enumeration domain.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "references",
             "dataType": "XsdAnyUri",
-            "definition": "cdif:references - URI of the SKOS ConceptScheme that contains the concepts defining the allowed values of this enumeration domain.",
-            "multiplicity": { "lower": "1", "upper": "1" }
-          },
-          {
-            "name": "purpose",
-            "dataType": "String",
-            "definition": "cdif:purpose - intent or reason for the object / the description of the object.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "definition": "@id - resolvable URI for the WebAPI distribution.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "PhysicalMapping - serialization-agnostic base for the per-field physical representation of a variable in a distribution file (cdif:hasPhysicalMapping). From cdifDataType/cdifPhysicalMapping. The text-format specifics (column width, decimal/digit-group separators, display label) live on the TextMapping subclass; locator-based addressing lives on the LocatorMapping subclass (both generalize PhysicalMapping). mappingType=new because the CDIF flat per-column structure has no 1:1 class in DDI-CDI 1.1beta.",
+        "_comment": "ActionResult stub - the response from a WebAPI's potentialAction. Carries the same data-description payload (cdif:hasPhysicalMapping, cdi:characterSet) as a DataDownload, because the response is another physical realization of the dataset's variables.",
         "mappingType": "new",
-        "targetPackage": "Distribution",
-        "targetClass": "PhysicalMapping",
-        "definition": "Per-field physical mapping linking a variable measured by a distribution to its physical representation in the file - column index, format, physical data type, number pattern, null sequence, etc. (cdif:hasPhysicalMapping items). TextMapping and LocatorMapping specialize it for text-tabular and structured (locator) data respectively.",
+        "targetPackage": "Anchors",
+        "targetClass": "ActionResult",
+        "definition": "Stub of CDIFCore::ActionResult (schema.org Action's schema:result). For data description, carries cdif:hasPhysicalMapping (to AbstractMapping) and cdi:characterSet.",
         "attribute": [
           {
-            "name": "index",
-            "dataType": "Integer",
-            "definition": "cdif:index - non-negative integer that orders the fields in the data structure (column number).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "format",
+            "name": "characterSet",
             "dataType": "String",
-            "definition": "cdif:format - format for a number expressed as a string, or a date format such as YYYY/MM or MM-DD-YY.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "definition": "cdi:characterSet - the character set used in the API response.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "InstanceVariable - the cdi:InstanceVariable shape contributed by cdifDataDescription. cdif:physicalDataType is required at this profile level. Substantive/sentinel value domains attach here directly (in DataStructure profiles, they move to RepresentedVariable instead). 'new' mapping (not 'map') because we are restating the attributes explicitly for this profile rather than auto-importing the DDI-CDI superset.",
+        "mappingType": "new",
+        "sourceClass": "InstanceVariable",
+        "targetPackage": "Variables",
+        "targetClass": "InstanceVariable",
+        "definition": "A cdi:InstanceVariable as referenced by schema:variableMeasured. At Data Description level, every InstanceVariable must have an @id and a cdif:physicalDataType so physical mappings can reference it.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - URI for this variable; target of cdif:formats_InstanceVariable references from physical mappings.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "physicalDataType",
             "dataType": "String",
-            "definition": "cdif:physicalDataType - physical data type of the column, expressed as a string.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "numberPattern",
-            "dataType": "String",
-            "definition": "cdi:numberPattern - number format pattern for the field (PhysicalMapping.numberPattern). Column width and decimal/digit-group separators live on the TextMapping subclass.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "nullSequence",
-            "dataType": "String",
-            "definition": "cdi:nullSequence - the value used as the null annotation for the described column.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "defaultValue",
-            "dataType": "String",
-            "definition": "cdi:defaultValue - default string to substitute for an empty string.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "scale",
-            "dataType": "Integer",
-            "definition": "cdi:scale - scale of the numeric value.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "decimalPositions",
-            "dataType": "Integer",
-            "definition": "cdi:decimalPositions - number of decimal positions.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "minimumLength",
-            "dataType": "Integer",
-            "definition": "cdi:minimumLength - minimum length of the column value.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "maximumLength",
-            "dataType": "Integer",
-            "definition": "cdi:maximumLength - maximum length of the column value.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "isRequired",
-            "dataType": "Boolean",
-            "definition": "cdi:isRequired - whether a value is required for this column.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "definition": "cdif:physicalDataType - the physical representation type (string, decimal, integer, dateTime, ...). Required at Data Description level.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "TextMapping - per-field physical mapping for a variable in a delimited or fixed-width text data set. DDI-CDI TextMapping, a subclass of PhysicalMapping; adds column width and number-formatting detail. From cdifDataType/cdifTextMapping (allOf cdifPhysicalMapping). cdif:formats_InstanceVariable and the base mapping attributes are inherited from PhysicalMapping.",
+        "_comment": "AbstractMapping - abstract supertype for the three concrete mapping shapes. The cdif:hasPhysicalMapping property on DataDownload / WebAPI.result accepts any of the three. cdif:formats_InstanceVariable is modelled as an association to InstanceVariable (see Associations) rather than an attribute, since underscores aren't allowed in UML attribute names.",
         "mappingType": "new",
-        "sourceClass": "TextMapping",
+        "isAbstract": true,
         "targetPackage": "Distribution",
-        "targetClass": "TextMapping",
-        "generalization": ["PhysicalMapping"],
-        "definition": "DDI-CDI TextMapping - physical mapping for a variable in a delimited or fixed-width text data set, extending PhysicalMapping with column width and number-formatting properties.",
+        "targetClass": "AbstractMapping",
+        "definition": "Abstract supertype for the cdif:hasPhysicalMapping family. Each concrete subtype maps a variable to a specific physical representation: PhysicalMapping (generic index-based), TextMapping (delimited / fixed-width text), LocatorMapping (locator string for structured data). Every concrete mapping carries a cdif:formats_InstanceVariable reference to the variable it describes.",
         "attribute": [
           {
-            "name": "length",
-            "dataType": "Integer",
-            "definition": "cdi:length - the column width if the tabular text is fixed width (TextMapping.length).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "defaultDecimalSeparator",
-            "dataType": "String",
-            "definition": "cdi:defaultDecimalSeparator - decimal separator used when not otherwise specified (TextMapping.defaultDecimalSeparator).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "defaultDigitGroupSeparator",
-            "dataType": "String",
-            "definition": "cdi:defaultDigitGroupSeparator - digit-group (thousands) separator (TextMapping.defaultDigitGroupSeparator).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "displayLabel",
-            "dataType": "String",
-            "definition": "cdif:displayLabel - human-readable label(s) for display. CDIF simplification (plain string) of DDI-CDI TextMapping.displayLabel (LabelForDisplay).",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - optional resolvable URI for this mapping (mappings are usually inline value objects but may be referenced when shared).",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "LocatorMapping - locates a variable's value(s) within a structured (hierarchical) data set (XML/JSON) via a locator expression. DDI-CDI LocatorMapping, a subclass of PhysicalMapping. From cdifDataType/cdifLocatorMapping. Used in place of column-index/text mappings for cdi:StructuredDataSet distributions; cdif:formats_InstanceVariable is inherited from PhysicalMapping.",
+        "_comment": "PhysicalMapping - generic per-field physical mapping. Concrete subtype of AbstractMapping.",
         "mappingType": "new",
-        "sourceClass": "LocatorMapping",
+        "targetPackage": "Distribution",
+        "targetClass": "PhysicalMapping",
+        "generalization": ["AbstractMapping"],
+        "definition": "Generic per-field physical mapping. Carries column index, format, physical data type, null sequence, etc., for a variable's representation in a file.",
+        "attribute": [
+          {
+            "name": "index",
+            "dataType": "Integer",
+            "definition": "cdif:index - column index (zero-based) of this variable's values in the file.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "format",
+            "dataType": "String",
+            "definition": "cdif:format - format token / pattern for parsing values (e.g. ISO8601, decimal, ...).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "physicalDataType",
+            "dataType": "String",
+            "definition": "cdif:physicalDataType - physical representation type for this column's bytes.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "TextMapping - per-field physical mapping with delimited / fixed-width text-specific attributes (column width, number-formatting detail).",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "TextMapping",
+        "generalization": ["AbstractMapping"],
+        "definition": "Per-field mapping specialized for delimited or fixed-width text data sets. Extends PhysicalMapping with column-width and number-format-detail attributes.",
+        "attribute": [
+          {
+            "name": "index",
+            "dataType": "Integer",
+            "definition": "cdif:index - column index of this variable in the text data set.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "LocatorMapping - locates a variable's values within a structured (hierarchical) dataset via a locator expression (XPath / JSONPath).",
+        "mappingType": "new",
         "targetPackage": "Distribution",
         "targetClass": "LocatorMapping",
-        "generalization": ["PhysicalMapping"],
-        "definition": "DDI-CDI LocatorMapping - locates a variable's value(s) in a structured document (XPath, JSONPath, pointer, ...) for a cdi:StructuredDataSet distribution.",
+        "generalization": ["AbstractMapping"],
+        "definition": "Per-field mapping for structured (hierarchical) data sets. Uses a locator expression (XPath / JSONPath) instead of a column index.",
         "attribute": [
           {
             "name": "locator",
             "dataType": "String",
-            "definition": "cdi:locator - expression locating the variable's value(s) in the structured document (XPath, JSONPath, pointer, etc.). LocatorMapping.locator.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "definition": "cdi:locator - locator expression (e.g. JSONPath) to extract this variable's values from the structured dataset.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "TabularTextDataSet - dataset-level physical layout of a delimited or fixed-width text data set (CSV/TSV/fixed-width). DDI-CDI TabularTextDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Carried as a co-type on the distribution. From cdifDataType/cdifTabularTextDataSet. Per-field mappings are TextMapping (on cdif:hasPhysicalMapping, inherited from DataDownload).",
+        "_comment": "AbstractDataSet - abstract supertype for the cdi:PhysicalDataSet co-types a schema:DataDownload may carry. The schema lets a DataDownload also be typed cdi:TabularTextDataSet or cdi:StructuredDataSet to mark its on-disk shape.",
         "mappingType": "new",
-        "sourceClass": "TabularTextDataSet",
+        "isAbstract": true,
         "targetPackage": "Distribution",
-        "targetClass": "TabularTextDataSet",
-        "generalization": ["DataDownload"],
-        "definition": "DDI-CDI TabularTextDataSet - dataset-level physical layout properties of a delimited or fixed-width text distribution; a subclass of PhysicalDataSet (= schema:DataDownload).",
+        "targetClass": "AbstractDataSet",
+        "definition": "Abstract supertype for the cdi:PhysicalDataSet co-types a DataDownload may declare: TabularTextDataSet (delimited / fixed-width text) or StructuredDataSet (XML / JSON / hierarchical).",
         "attribute": [
           {
-            "name": "arrayBase",
-            "dataType": "Integer",
-            "definition": "cdi:arrayBase - index of the first element/column (TabularTextDataSet.arrayBase).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "commentPrefix",
-            "dataType": "String",
-            "definition": "cdi:commentPrefix - character(s) that mark a line as a comment.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - same @id as the underlying DataDownload (this is a co-typing, not a separate object).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "TabularTextDataSet - DataDownload co-typed as cdi:TabularTextDataSet. Carries the delimited/fixed-width layout attributes (delimiter, hasHeader, ...).",
+        "mappingType": "new",
+        "targetPackage": "Distribution",
+        "targetClass": "TabularTextDataSet",
+        "generalization": ["AbstractDataSet"],
+        "definition": "DataDownload co-typed as cdi:TabularTextDataSet: delimited or fixed-width text data set (CSV / TSV / fixed). Carries CSV-style layout attributes; per-field mappings are TextMapping (via cdif:hasPhysicalMapping).",
+        "attribute": [
           {
             "name": "delimiter",
             "dataType": "String",
-            "definition": "cdi:delimiter - field delimiter (e.g. ',' or tab).",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "definition": "csvw:delimiter - field-separator character.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
-            "name": "escapeCharacter",
-            "dataType": "String",
-            "definition": "cdi:escapeCharacter - character used to escape the delimiter or quote within a field.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "hasHeader",
+            "name": "header",
             "dataType": "Boolean",
-            "definition": "cdi:hasHeader - whether the file has a header row.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "headerIsCaseSensitive",
-            "dataType": "Boolean",
-            "definition": "cdi:headerIsCaseSensitive - whether header matching is case sensitive.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "headerRowCount",
-            "dataType": "Integer",
-            "definition": "cdi:headerRowCount - number of header rows.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "isDelimited",
-            "dataType": "Boolean",
-            "definition": "cdi:isDelimited - whether the file is delimited.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "isFixedWidth",
-            "dataType": "Boolean",
-            "definition": "cdi:isFixedWidth - whether the file is fixed-width.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "lineTerminator",
-            "dataType": "String",
-            "definition": "cdi:lineTerminator - allowed line terminators, in order (default [CRLF, LF]).",
-            "multiplicity": { "lower": "0", "upper": "*" }
-          },
-          {
-            "name": "nullSequence",
-            "dataType": "String",
-            "definition": "cdi:nullSequence - value interpreted as null at the dataset level.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "quoteCharacter",
-            "dataType": "String",
-            "definition": "cdi:quoteCharacter - character used to quote fields.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "skipBlankRows",
-            "dataType": "Boolean",
-            "definition": "cdi:skipBlankRows - whether blank rows are skipped.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "skipDataColumns",
-            "dataType": "Integer",
-            "definition": "cdi:skipDataColumns - number of leading data columns to skip.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "skipInitialSpace",
-            "dataType": "Boolean",
-            "definition": "cdi:skipInitialSpace - whether to skip whitespace after the delimiter.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "skipRows",
-            "dataType": "Integer",
-            "definition": "cdi:skipRows - number of leading rows to skip.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "tableDirection",
-            "dataType": "String",
-            "definition": "cdi:tableDirection - direction in which columns are arranged in each row (TableDirectionValues enumeration: Auto, Ltr, Rtl).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "textDirection",
-            "dataType": "String",
-            "definition": "cdi:textDirection - reading order of text within cells (TextDirectionValues enumeration: Auto, Inherit, Ltr, Rtl).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "treatConsecutiveDelimitersAsOne",
-            "dataType": "Boolean",
-            "definition": "cdi:treatConsecutiveDelimitersAsOne - whether consecutive delimiters are treated as a single delimiter.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "trim",
-            "dataType": "String",
-            "definition": "cdi:trim - which spaces to remove from a data value (TrimValues enumeration: Both, End, Neither, Start).",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "definition": "csvw:header - whether the first row(s) are headers.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "StructuredDataSet - dataset-level marker for a structured (hierarchical) data set (XML/JSON). DDI-CDI StructuredDataSet, a subclass of PhysicalDataSet (= schema:DataDownload). Fields are located with LocatorMapping rather than column-index/text mappings. From cdifDataType/cdifStructuredDataSet.",
+        "_comment": "StructuredDataSet - DataDownload co-typed as cdi:StructuredDataSet for hierarchical/structured serializations (XML / JSON). Per-field mappings are LocatorMapping.",
         "mappingType": "new",
-        "sourceClass": "StructuredDataSet",
         "targetPackage": "Distribution",
         "targetClass": "StructuredDataSet",
-        "generalization": ["DataDownload"],
-        "definition": "DDI-CDI StructuredDataSet - dataset-level marker for a structured (hierarchical) distribution; a subclass of PhysicalDataSet (= schema:DataDownload). Fields are addressed with LocatorMapping.",
+        "generalization": ["AbstractDataSet"],
+        "definition": "DataDownload co-typed as cdi:StructuredDataSet: hierarchical / structured data set (XML, JSON, ...). Per-field mappings are LocatorMapping (XPath / JSONPath).",
         "attribute": [
           {
             "name": "encoding",
             "dataType": "String",
-            "definition": "cdif:encoding - character encoding / serialization of the structured document (e.g. utf-8, application/json). CDIF simplification (plain charset string) of DDI-CDI PhysicalDataSet.encoding (ControlledVocabularyEntry).",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "definition": "Encoding-family hint (e.g. XML, JSON) for the structured dataset.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "DataFingerprint - a fingerprint (checksum/hash) of a physical dataset, used to verify integrity. DDI-CDI DataFingerprint datatype (StructuredDataTypes); carried inline on a DataDownload via cdi:fingerprint. isDataType:true per the value-type policy. From cdifDataType/cdifDataFingerprint.",
+        "_comment": "DataFingerprint - integrity fingerprint (checksum / hash) of a distribution's bytes. DDI-CDI DataFingerprint datatype.",
         "mappingType": "new",
-        "sourceClass": "DataFingerprint",
+        "isDataType": true,
         "targetPackage": "Distribution",
         "targetClass": "DataFingerprint",
-        "isDataType": true,
-        "definition": "DDI-CDI DataFingerprint - a fingerprint (checksum/hash) of a physical dataset, used to verify integrity.",
+        "definition": "Integrity fingerprint (checksum / hash) of a distribution's bytes. DDI-CDI DataFingerprint datatype; carried inline on a DataDownload via cdi:fingerprint.",
         "attribute": [
           {
-            "name": "value",
+            "name": "algorithm",
             "dataType": "String",
-            "definition": "cdi:value - the fingerprint value (e.g. the hex digest). DataFingerprint.value.",
-            "multiplicity": { "lower": "1", "upper": "1" }
-          },
-          {
-            "name": "algorithmSpecification",
-            "dataType": "String",
-            "definition": "cdi:algorithmSpecification - identifier or name of the algorithm specification (e.g. SHA-256, MD5). DataFingerprint.algorithmSpecification.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "algorithmVersion",
-            "dataType": "String",
-            "definition": "cdi:algorithmVersion - version of the fingerprint algorithm/specification. DataFingerprint.algorithmVersion.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "typeOfFingerprint",
-            "dataType": "String",
-            "definition": "cdi:typeOfFingerprint - the kind of fingerprint (e.g. checksum, hash, digest). DataFingerprint.typeOfFingerprint.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "skos:Concept stub. Local target class so attributes typed as 'Concept' (e.g. InstanceVariable.physicalDataType) resolve inside this profile. The canonical SKOS Concept definition lives in the CDIFCodelist profile; cross-profile HTML links point readers there. DDI-CDI's PairedControlledVocabularyEntry / ControlledVocabularyEntry are implemented across CDIF profiles as references to skos:Concept.",
-        "mappingType": "new",
-        "sourceClass": "ControlledVocabularyEntry",
-        "targetPackage": "Classes",
-        "targetClass": "Concept",
-        "definition": "skos:Concept (stub). A reference to a controlled-vocabulary term defined in a SKOS ConceptScheme; full definition in CDIFCodelist::Concept.",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - resolvable URI for this concept.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "prefLabel",
-            "dataType": "String",
-            "definition": "skos:prefLabel - preferred lexical label.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "inScheme",
-            "dataType": "XsdAnyUri",
-            "definition": "skos:inScheme - URI of the owning ConceptScheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ],
-        "sssom": {
-          "subject_label": "DDI-CDI ControlledVocabularyEntry / PairedControlledVocabularyEntry",
-          "object_label": "CDIF profile skos:Concept reference (skos:Concept)",
-          "predicate_id": "skos:closeMatch",
-          "confidence": 0.85,
-          "comment": "CDIF profiles flatten the DDI-CDI scheme+term DataType into a plain skos:Concept reference. The Concept definition itself lives in CDIFCodelist."
-        }
-      },
-      {
-        "_comment": "Identifier (schema:PropertyValue) stub. Local target class so attributes typed as 'Identifier' resolve inside this profile; the canonical definition lives in the CDIFCore profile.",
-        "mappingType": "new",
-        "targetPackage": "Support",
-        "targetClass": "Identifier",
-        "definition": "schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.",
-        "attribute": [
-          {
-            "name": "propertyId",
-            "dataType": "String",
-            "definition": "schema:propertyID - the identifier scheme (e.g. DOI, Handle, ROR).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "Hash algorithm identifier.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "value",
             "dataType": "String",
-            "definition": "schema:value - the identifier value.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "url",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:url - resolvable form of the identifier.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "Hash digest value as a hex string.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "DefinedTerm (schema:DefinedTerm) stub. Local target class so attributes typed as 'DefinedTerm' resolve inside this profile; the canonical definition lives in the CDIFCore profile.",
+        "_comment": "PrimaryKey - cdif:hasPrimaryKey on the Dataset: a cdif:Key whose isComposedOf is an ordered list of InstanceVariables that uniquely identify a row.",
         "mappingType": "new",
-        "targetPackage": "Support",
-        "targetClass": "DefinedTerm",
-        "definition": "schema:DefinedTerm (stub). A controlled-vocabulary term with name, code, and scheme URI. Full definition in CDIFCore::DefinedTerm.",
+        "targetPackage": "Keys",
+        "targetClass": "PrimaryKey",
+        "definition": "Primary key of the dataset: a cdif:Key whose cdif:isComposedOf is an ordered list of cdi:InstanceVariables uniquely identifying each data instance.",
         "attribute": [
           {
             "name": "identifier",
             "dataType": "XsdAnyUri",
-            "definition": "@id / schema:identifier - URI for the term.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
+            "definition": "@id - resolvable URI for the key (so it can be referenced from elsewhere).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "Statistics - bundle of one or more Statistic values for the dataset's variables. Target of cdif:statistics.",
+        "mappingType": "new",
+        "targetPackage": "Statistics",
+        "targetClass": "Statistics",
+        "definition": "A named bundle of one or more Statistic value objects for an instance variable, optionally weighted, optionally broken down by Category.",
+        "attribute": [
           {
-            "name": "name",
-            "dataType": "String",
-            "definition": "schema:name - the term's preferred label.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "termCode",
-            "dataType": "String",
-            "definition": "schema:termCode - code value within the term set.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "inDefinedTermSet",
+            "name": "identifier",
             "dataType": "XsdAnyUri",
-            "definition": "schema:inDefinedTermSet - URI of the controlled vocabulary.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "@id - resolvable URI for this statistics bundle.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "SubstantiveValueDomain - the set of valid, meaningful values for a variable. At Data Description level it attaches directly to InstanceVariable; in DataStructure profiles it moves to RepresentedVariable.",
+        "mappingType": "new",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SubstantiveValueDomain",
+        "definition": "The substantive value domain for a variable - the set of valid, meaningful values (cdi:takesSubstantiveValuesFrom).",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the value domain.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "SentinelValueDomain - missing / not-applicable value codes for a variable (cdi:takesSentinelValuesFrom).",
+        "mappingType": "new",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SentinelValueDomain",
+        "definition": "Sentinel (missing / not-applicable) value domain for a variable. Attaches to InstanceVariable at Data Description level; moves to RepresentedVariable in DataStructure profiles.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the value domain.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       }
     ],
     "association": [
       {
-        "_comment": "schema:variableMeasured targets the AbstractVariable supertype (either a VariableMeasured/schema:PropertyValue or a cdi:InstanceVariable). targetAssociationName is kept as ..._VariableMeasured so it overrides (dedups) the Discovery profile's Dataset_variableMeasured_VariableMeasured at composition; objectClass retargets the actual end to AbstractVariable, so the emitted association is Dataset_variableMeasured_AbstractVariable.",
-        "targetAssociationName": "Dataset_variableMeasured_VariableMeasured",
+        "_comment": "Dataset -> CatalogRecord via schema:subjectOf (attachment point for the cdif:data_description/1.0 conformance declaration).",
+        "targetAssociationName": "Dataset_subjectOf_CatalogRecord",
         "subjectClass": "Dataset",
-        "objectClass": "AbstractVariable",
-        "definition": "schema:variableMeasured - variables described at the Data Description level. The AbstractVariable supertype admits a VariableMeasured (schema:PropertyValue) or a cdi:InstanceVariable.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
+        "objectClass": "CatalogRecord",
+        "definition": "schema:subjectOf - the catalog record describing this dataset's metadata. MUST declare conformance to https://w3id.org/cdif/data_description/1.0.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "targetAssociationName": "VariableMeasured_describes_InstanceVariable",
-        "subjectClass": "VariableMeasured",
+        "_comment": "Dataset -> InstanceVariable via schema:variableMeasured. Required (the array must be non-empty).",
+        "targetAssociationName": "Dataset_variableMeasured_InstanceVariable",
+        "subjectClass": "Dataset",
         "objectClass": "InstanceVariable",
-        "definition": "Links the schema:variableMeasured wrapper to the DDI-CDI InstanceVariable being described.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
+        "definition": "schema:variableMeasured - the variables described by this dataset. Required.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
+        "_comment": "Dataset -> PrimaryKey via cdif:hasPrimaryKey.",
         "targetAssociationName": "Dataset_hasPrimaryKey_PrimaryKey",
         "subjectClass": "Dataset",
         "objectClass": "PrimaryKey",
-        "definition": "cdif:hasPrimaryKey - the primary key declared for the dataset.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
+        "definition": "cdif:hasPrimaryKey - the primary key of the dataset.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "_comment": "cdif:statistics - a dataset reports statistical summaries as Statistics bundles ...",
+        "_comment": "Dataset -> Statistics via cdif:statistics.",
         "targetAssociationName": "Dataset_statistics_Statistics",
         "subjectClass": "Dataset",
         "objectClass": "Statistics",
-        "definition": "cdif:statistics - Statistics bundles (one or more Statistic value objects) reported on the dataset.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "definition": "cdif:statistics - summary statistics describing the dataset's values.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "_comment": "cdif:statistics - ... or as StatisticsCollections grouping several Statistics nodes. Role named statisticsCollection to distinguish the diagram edge from Dataset_statistics_Statistics (both serialize as cdif:statistics).",
-        "targetAssociationName": "Dataset_statisticsCollection_StatisticsCollection",
+        "_comment": "Dataset -> DataDownload via schema:distribution (when distribution item is a DataDownload).",
+        "targetAssociationName": "Dataset_distribution_DataDownload",
         "subjectClass": "Dataset",
-        "objectClass": "StatisticsCollection",
-        "definition": "cdif:statistics - StatisticsCollections grouping several Statistics nodes reported on the dataset.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "objectClass": "DataDownload",
+        "definition": "schema:distribution - a downloadable distribution. May be co-typed cdi:TabularTextDataSet or cdi:StructuredDataSet (see AbstractDataSet subtypes).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "targetAssociationName": "Statistics_appliesTo_InstanceVariable",
-        "subjectClass": "Statistics",
+        "_comment": "Dataset -> WebAPI via schema:distribution (when distribution item is a WebAPI).",
+        "targetAssociationName": "Dataset_distribution_WebAPI",
+        "subjectClass": "Dataset",
+        "objectClass": "WebAPI",
+        "definition": "schema:distribution - a WebAPI distribution. Per-field mappings attach to the WebAPI's potentialAction.result (see ActionResult).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "DataDownload -> AbstractMapping via cdif:hasPhysicalMapping. The schema admits any of PhysicalMapping / TextMapping / LocatorMapping; the abstract class anchors the diagram.",
+        "targetAssociationName": "DataDownload_hasPhysicalMapping_AbstractMapping",
+        "subjectClass": "DataDownload",
+        "objectClass": "AbstractMapping",
+        "definition": "cdif:hasPhysicalMapping - per-field physical mappings linking variables to their on-disk representation. Each item is one of PhysicalMapping / TextMapping / LocatorMapping.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "DataDownload -> AbstractDataSet via the cdi: physical-dataset co-typing (TabularTextDataSet or StructuredDataSet).",
+        "targetAssociationName": "DataDownload_alsoTypedAs_AbstractDataSet",
+        "subjectClass": "DataDownload",
+        "objectClass": "AbstractDataSet",
+        "definition": "Co-typing: a DataDownload MAY also be typed cdi:TabularTextDataSet (delimited / fixed-width) or cdi:StructuredDataSet (XML / JSON). Represented in JSON-LD as an additional @type value (shared @id with the DataDownload), not a separate object.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "shared"
+      },
+      {
+        "_comment": "DataDownload -> DataFingerprint via cdi:fingerprint.",
+        "targetAssociationName": "DataDownload_fingerprint_DataFingerprint",
+        "subjectClass": "DataDownload",
+        "objectClass": "DataFingerprint",
+        "definition": "cdi:fingerprint - integrity fingerprint of this distribution's bytes.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "WebAPI -> ActionResult via schema:potentialAction.result. The schema nests this two deep; the diagram collapses to the direct relationship.",
+        "targetAssociationName": "WebAPI_potentialActionResult_ActionResult",
+        "subjectClass": "WebAPI",
+        "objectClass": "ActionResult",
+        "definition": "schema:potentialAction.schema:result - the response object of the WebAPI's main action. Carries cdif:hasPhysicalMapping + cdi:characterSet at this profile level.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ActionResult -> AbstractMapping via cdif:hasPhysicalMapping. Same shape as the DataDownload edge.",
+        "targetAssociationName": "ActionResult_hasPhysicalMapping_AbstractMapping",
+        "subjectClass": "ActionResult",
+        "objectClass": "AbstractMapping",
+        "definition": "cdif:hasPhysicalMapping - per-field physical mappings for the API response (which is another physical realization of the dataset's variables).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "AbstractMapping -> InstanceVariable via cdif:formats. Inherited by all three subtypes. (Association name uses 'formats' rather than 'formats_InstanceVariable' to fit the targetAssociationName regex; the actual JSON-LD property is cdif:formats_InstanceVariable per the schema.)",
+        "targetAssociationName": "AbstractMapping_formats_InstanceVariable",
+        "subjectClass": "AbstractMapping",
         "objectClass": "InstanceVariable",
-        "definition": "cdif:appliesTo - the InstanceVariable(s) this Statistics bundle summarizes.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
+        "definition": "cdif:formats_InstanceVariable - the InstanceVariable this mapping describes (by @id reference).",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"}
       },
       {
-        "targetAssociationName": "Statistics_hasWeight_InstanceVariable",
-        "subjectClass": "Statistics",
-        "objectClass": "InstanceVariable",
-        "definition": "cdi:hasWeight - the InstanceVariable whose values were used as weights when computing the statistics.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "Statistics_has_CategoryStatistics",
-        "subjectClass": "Statistics",
-        "objectClass": "CategoryStatistics",
-        "definition": "cdif:has_CategoryStatistics - CategoryStatistics entries breaking this Statistics bundle down by Category.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "targetAssociationName": "CategoryStatistics_for_Category",
-        "subjectClass": "CategoryStatistics",
-        "objectClass": "Category",
-        "definition": "cdi:for - the Category this CategoryStatistics is for.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "CategoryStatistics_hasWeight_InstanceVariable",
-        "subjectClass": "CategoryStatistics",
-        "objectClass": "InstanceVariable",
-        "definition": "cdi:hasWeight - the InstanceVariable whose values were used as weights.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "StatisticsCollection_has_Statistics",
-        "subjectClass": "StatisticsCollection",
-        "objectClass": "Statistics",
-        "definition": "cdif:has_Statistics - the Statistics nodes carried by this collection.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "targetAssociationName": "StatisticsCollection_indexedBy_InstanceVariable",
-        "subjectClass": "StatisticsCollection",
-        "objectClass": "InstanceVariable",
-        "definition": "cdif:indexedBy - the InstanceVariable(s) the contained Statistics index.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "targetAssociationName": "StatisticsCollection_hasWeight_InstanceVariable",
-        "subjectClass": "StatisticsCollection",
-        "objectClass": "InstanceVariable",
-        "definition": "cdi:hasWeight - the InstanceVariable whose values were used as weights.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "InstanceVariable_isDescribedBy_StatisticsCollection",
-        "subjectClass": "InstanceVariable",
-        "objectClass": "StatisticsCollection",
-        "definition": "cdif:isDescribedBy_StatisticsCollection - the StatisticsCollection holding summary / category statistics for this InstanceVariable.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "InstanceVariable_qualifies_InstanceVariable",
-        "subjectClass": "InstanceVariable",
-        "objectClass": "InstanceVariable",
-        "definition": "cdi:qualifies - reference to another instance variable that this variable qualifies.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "sourceAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent",
-        "targetAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "_comment": "cdi:indexes - the InstanceVariable this PrimaryKeyComponent (cdi:ComponentPosition wrapper) places in the key; cdi:value records its position. From cdifDataType/cdifKey resolvedSchema.",
-        "targetAssociationName": "PrimaryKeyComponent_indexes_InstanceVariable",
-        "subjectClass": "PrimaryKeyComponent",
-        "objectClass": "InstanceVariable",
-        "definition": "cdi:indexes - the InstanceVariable indexed at this position in the primary key.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdi:takesSubstantiveValuesFrom. DDI-CDI carries this on RepresentedVariable; at the Data Description profile level CDIF attaches the value domain to the InstanceVariable directly, so this is declared as a new association (no DDI-CDI source association from InstanceVariable).",
+        "_comment": "InstanceVariable -> SubstantiveValueDomain via cdi:takesSubstantiveValuesFrom.",
         "targetAssociationName": "InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain",
         "subjectClass": "InstanceVariable",
         "objectClass": "SubstantiveValueDomain",
-        "definition": "cdi:takesSubstantiveValuesFrom - the substantive value domain (the set of valid, meaningful values) for this variable.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
+        "definition": "cdi:takesSubstantiveValuesFrom - the substantive value domain for this variable.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
-        "_comment": "cdi:takesSentinelValuesFrom. As above, attached to InstanceVariable at the Data Description level; declared as a new association.",
+        "_comment": "InstanceVariable -> SentinelValueDomain via cdi:takesSentinelValuesFrom.",
         "targetAssociationName": "InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain",
         "subjectClass": "InstanceVariable",
         "objectClass": "SentinelValueDomain",
-        "definition": "cdi:takesSentinelValuesFrom - the sentinel (missing / not-applicable) value domain(s) for this variable.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "_comment": "cdif:takesValuesFrom - a substantive value domain draws its values from an enumerated set. Mapped 1:1 from the DDI-CDI source association.",
-        "sourceAssociationName": "SubstantiveValueDomain_takesValuesFrom_EnumerationDomain",
-        "targetAssociationName": "SubstantiveValueDomain_takesValuesFrom_EnumerationDomain",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdif:takesValuesFrom - a sentinel value domain draws its values from an enumerated set. Mapped 1:1 from the DDI-CDI source association.",
-        "sourceAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
-        "targetAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdi:isDescribedBy - a substantive value domain is described by a ValueAndConceptDescription (ranges, patterns, classification level, expressions). Mapped 1:1 from the DDI-CDI source association.",
-        "sourceAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "targetAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdi:isDescribedBy - a sentinel value domain is described by a ValueAndConceptDescription. Mapped 1:1 from the DDI-CDI source association.",
-        "sourceAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "targetAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdif:hasPhysicalMapping - per-field physical mappings for a DataDownload distribution typed as a physical data set. New association (CDIF flattening; no DDI-CDI source association).",
-        "targetAssociationName": "DataDownload_hasPhysicalMapping_PhysicalMapping",
-        "subjectClass": "DataDownload",
-        "objectClass": "PhysicalMapping",
-        "definition": "cdif:hasPhysicalMapping - per-field physical mappings linking the variables measured by this distribution to their physical representation in the file.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "_comment": "cdif:formats_InstanceVariable - the variable in schema:variableMeasured that this physical mapping formats. New association (CDIF flattening of DDI-CDI ValueMapping_formats_DataPoint / InstanceVariable_has_ValueMapping).",
-        "targetAssociationName": "PhysicalMapping_formats_InstanceVariable",
-        "subjectClass": "PhysicalMapping",
-        "objectClass": "InstanceVariable",
-        "definition": "cdif:formats_InstanceVariable - reference to the variable defined in schema:variableMeasured that this physical mapping formats.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
+        "definition": "cdi:takesSentinelValuesFrom - sentinel (missing / NA) value domain(s) for this variable.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
       }
     ]
   }
