@@ -2942,21 +2942,249 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="DataDescriptionWithStructure.DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructureComponent" xmi:type="uml:Class" isAbstract="true">
-               <ownedComment xmi:id="DataDescriptionWithStructure.DataStructureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructureComponent-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <body>Stub of cdifDataType::cdifDataStructureComponent (abstract). Subtypes (IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent) are defined in that BB.</body>
+            <packagedElement xmi:id="DataDescriptionWithStructure.AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructureComponent" xmi:type="uml:Class" isAbstract="true">
+               <ownedComment xmi:id="DataDescriptionWithStructure.AbstractDataStructureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructureComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <body>Abstract supertype for the cdi:DataStructureComponent family. Role given to a represented variable in the context of a data structure. Concrete subtypes: IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent. Full attribute structure (cdif:isDefinedBy_RepresentedVariable, cdi:has_PrimaryKey, etc.) lives in cdifDataType/cdifDataStructureComponent.</body>
                </ownedComment>
-               <name>DataStructureComponent</name>
-               <ownedAttribute xmi:id="DataDescriptionWithStructure.DataStructureComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructureComponent-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DataDescriptionWithStructure.DataStructureComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructureComponent-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DataDescriptionWithStructure.DataStructureComponent-identifier"/>
+               <name>AbstractDataStructureComponent</name>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.AbstractDataStructureComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructureComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.AbstractDataStructureComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructureComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent-identifier"/>
                      <body>@id - resolvable URI for the component.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DataDescriptionWithStructure.DataStructureComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructureComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DataDescriptionWithStructure.AbstractDataStructureComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructureComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DataDescriptionWithStructure.DataStructureComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructureComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="DataDescriptionWithStructure.AbstractDataStructureComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructureComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DataDescriptionWithStructure.IdentifierComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent" xmi:type="uml:Class">
+               <ownedComment xmi:id="DataDescriptionWithStructure.IdentifierComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.IdentifierComponent"/>
+                  <body>Data-structure component for content identification. Used by Dimensional / Long / Wide data structures.</body>
+               </ownedComment>
+               <name>IdentifierComponent</name>
+               <generalization xmi:id="DataDescriptionWithStructure.IdentifierComponent-generalization-AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-generalization-AbstractDataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               </generalization>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.IdentifierComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-type" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.IdentifierComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-type-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.IdentifierComponent-type"/>
+                     <body>@type must contain 'cdi:IdentifierComponent'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.IdentifierComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.IdentifierComponent-type-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-type-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>type</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.IdentifierComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.IdentifierComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.IdentifierComponent-identifier"/>
+                     <body>@id - resolvable URI for the component.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.IdentifierComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.IdentifierComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#IdentifierComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DataDescriptionWithStructure.MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent" xmi:type="uml:Class">
+               <ownedComment xmi:id="DataDescriptionWithStructure.MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.MeasureComponent"/>
+                  <body>Data-structure component representing a measure (the values being recorded, as opposed to identifiers or dimensions).</body>
+               </ownedComment>
+               <name>MeasureComponent</name>
+               <generalization xmi:id="DataDescriptionWithStructure.MeasureComponent-generalization-AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-generalization-AbstractDataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               </generalization>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.MeasureComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-type" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.MeasureComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-type-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.MeasureComponent-type"/>
+                     <body>@type must contain 'cdi:MeasureComponent'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.MeasureComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.MeasureComponent-type-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-type-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>type</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.MeasureComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.MeasureComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.MeasureComponent-identifier"/>
+                     <body>@id - resolvable URI for the component.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.MeasureComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.MeasureComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#MeasureComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DataDescriptionWithStructure.AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent" xmi:type="uml:Class">
+               <ownedComment xmi:id="DataDescriptionWithStructure.AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.AttributeComponent"/>
+                  <body>Data-structure component representing an attribute (qualifying or contextual value alongside the primary measures).</body>
+               </ownedComment>
+               <name>AttributeComponent</name>
+               <generalization xmi:id="DataDescriptionWithStructure.AttributeComponent-generalization-AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-generalization-AbstractDataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               </generalization>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.AttributeComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-type" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.AttributeComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-type-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.AttributeComponent-type"/>
+                     <body>@type must contain 'cdi:AttributeComponent'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.AttributeComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.AttributeComponent-type-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-type-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>type</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.AttributeComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.AttributeComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.AttributeComponent-identifier"/>
+                     <body>@id - resolvable URI for the component.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.AttributeComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.AttributeComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AttributeComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DataDescriptionWithStructure.DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent" xmi:type="uml:Class">
+               <ownedComment xmi:id="DataDescriptionWithStructure.DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.DimensionComponent"/>
+                  <body>Data-structure component representing a dimension along which measures vary. Specific to dimensional / cube structures.</body>
+               </ownedComment>
+               <name>DimensionComponent</name>
+               <generalization xmi:id="DataDescriptionWithStructure.DimensionComponent-generalization-AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-generalization-AbstractDataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               </generalization>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.DimensionComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-type" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.DimensionComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-type-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.DimensionComponent-type"/>
+                     <body>@type must contain 'cdi:DimensionComponent'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.DimensionComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.DimensionComponent-type-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-type-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>type</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.DimensionComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.DimensionComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.DimensionComponent-identifier"/>
+                     <body>@id - resolvable URI for the component.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.DimensionComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.DimensionComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent" xmi:type="uml:Class">
+               <ownedComment xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.VariableDescriptorComponent"/>
+                  <body>Data-structure component identifying which InstanceVariable a long-format row represents (the descriptor column). Specific to LongDataStructure; exactly one is required.</body>
+               </ownedComment>
+               <name>VariableDescriptorComponent</name>
+               <generalization xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-generalization-AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-generalization-AbstractDataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               </generalization>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-type" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-type-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.VariableDescriptorComponent-type"/>
+                     <body>@type must contain 'cdi:VariableDescriptorComponent'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-type-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-type-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>type</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.VariableDescriptorComponent-identifier"/>
+                     <body>@id - resolvable URI for the component.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.VariableDescriptorComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableDescriptorComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DataDescriptionWithStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DataDescriptionWithStructure.VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent" xmi:type="uml:Class">
+               <ownedComment xmi:id="DataDescriptionWithStructure.VariableValueComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DataDescriptionWithStructure.VariableValueComponent"/>
+                  <body>Data-structure component carrying the value for the variable identified by the VariableDescriptorComponent in a long-format row. Specific to LongDataStructure; exactly one is required.</body>
+               </ownedComment>
+               <name>VariableValueComponent</name>
+               <generalization xmi:id="DataDescriptionWithStructure.VariableValueComponent-generalization-AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-generalization-AbstractDataStructureComponent" xmi:type="uml:Generalization">
+                  <general xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               </generalization>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.VariableValueComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-type" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.VariableValueComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-type-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.VariableValueComponent-type"/>
+                     <body>@type must contain 'cdi:VariableValueComponent'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.VariableValueComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.VariableValueComponent-type-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-type-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>type</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DataDescriptionWithStructure.VariableValueComponent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DataDescriptionWithStructure.VariableValueComponent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DataDescriptionWithStructure.VariableValueComponent-identifier"/>
+                     <body>@id - resolvable URI for the component.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DataDescriptionWithStructure.VariableValueComponent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DataDescriptionWithStructure.VariableValueComponent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableValueComponent-identifier-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>identifier</name>
@@ -2995,8 +3223,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="DataDescriptionWithStructure.AbstractDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="DataDescriptionWithStructure.AbstractDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -3078,8 +3306,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="DataDescriptionWithStructure.DataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="DataDescriptionWithStructure.DataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -3146,8 +3374,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="DataDescriptionWithStructure.DimensionalDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="DataDescriptionWithStructure.DimensionalDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -3214,8 +3442,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="DataDescriptionWithStructure.LongDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="DataDescriptionWithStructure.LongDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -3282,8 +3510,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="DataDescriptionWithStructure.WideDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="DataDescriptionWithStructure.WideDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
@@ -3347,8 +3575,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.DimensionGroup_hasComponent_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.DimensionGroup_hasComponent_AbstractDataStructureComponent"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="DataDescriptionWithStructure.PrimaryKeyComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#PrimaryKeyComponent" xmi:type="uml:Class">
@@ -3383,8 +3611,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>1</value>
                   </upperValue>
                   <name>correspondsTo</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="DataDescriptionWithStructure.ForeignKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#ForeignKey" xmi:type="uml:Class">
@@ -3470,8 +3698,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>1</value>
                   </upperValue>
                   <name>correspondsTo</name>
-                  <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-                  <association xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_DataStructureComponent"/>
+                  <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+                  <association xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent"/>
                </ownedAttribute>
             </packagedElement>
          </packagedElement>
@@ -3880,14 +4108,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.PrimaryKey_isComposedOf_InstanceVariable-InstanceVariableEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure_hasComponent_DataStructureComponent" xmi:type="uml:Association">
-            <name>AbstractDataStructure_hasComponent_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure_hasComponent_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>AbstractDataStructure_hasComponent_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.AbstractDataStructure-hasComponent"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.AbstractDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DataDescriptionWithStructure.AbstractDataStructure_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractDataStructure_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>AbstractDataStructure_hasPrimaryKey_PrimaryKey</name>
@@ -3907,14 +4135,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.DataStructure_hasForeignKey_ForeignKey-ForeignKeyEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.DataStructure_hasComponent_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure_hasComponent_DataStructureComponent" xmi:type="uml:Association">
-            <name>DataStructure_hasComponent_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.DataStructure_hasComponent_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure_hasComponent_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>DataStructure_hasComponent_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.DataStructure-hasComponent"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.DataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.DataStructure_hasComponent_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.DataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.DataStructure_hasComponent_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.DataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.DataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DataDescriptionWithStructure.DataStructure_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DataStructure_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>DataStructure_hasPrimaryKey_PrimaryKey</name>
@@ -3925,14 +4153,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.DataStructure_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure_hasComponent_DataStructureComponent" xmi:type="uml:Association">
-            <name>DimensionalDataStructure_hasComponent_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure_hasComponent_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>DimensionalDataStructure_hasComponent_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionalDataStructure-hasComponent"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionalDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DataDescriptionWithStructure.DimensionalDataStructure_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionalDataStructure_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>DimensionalDataStructure_hasPrimaryKey_PrimaryKey</name>
@@ -3943,14 +4171,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionalDataStructure_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.LongDataStructure_hasComponent_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure_hasComponent_DataStructureComponent" xmi:type="uml:Association">
-            <name>LongDataStructure_hasComponent_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.LongDataStructure_hasComponent_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure_hasComponent_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>LongDataStructure_hasComponent_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.LongDataStructure-hasComponent"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.LongDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.LongDataStructure_hasComponent_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.LongDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.LongDataStructure_hasComponent_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.LongDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.LongDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DataDescriptionWithStructure.LongDataStructure_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#LongDataStructure_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>LongDataStructure_hasPrimaryKey_PrimaryKey</name>
@@ -3961,14 +4189,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.LongDataStructure_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure_hasComponent_DataStructureComponent" xmi:type="uml:Association">
-            <name>WideDataStructure_hasComponent_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure_hasComponent_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>WideDataStructure_hasComponent_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.WideDataStructure-hasComponent"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DataDescriptionWithStructure.WideDataStructure_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#WideDataStructure_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
             <name>WideDataStructure_hasPrimaryKey_PrimaryKey</name>
@@ -3979,23 +4207,23 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.WideDataStructure_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.DimensionGroup_hasComponent_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionGroup_hasComponent_DataStructureComponent" xmi:type="uml:Association">
-            <name>DimensionGroup_hasComponent_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.DimensionGroup_hasComponent_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionGroup_hasComponent_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>DimensionGroup_hasComponent_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionGroup-hasComponent"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.DimensionGroup_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionGroup_hasComponent_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.DimensionGroup_hasComponent_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.DimensionGroup_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DimensionGroup_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.DimensionGroup_hasComponent_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionGroup_hasComponent_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.DimensionGroup_hasComponent_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#PrimaryKeyComponent_correspondsTo_DataStructureComponent" xmi:type="uml:Association">
-            <name>PrimaryKeyComponent_correspondsTo_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent-correspondsTo"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#PrimaryKeyComponent_correspondsTo_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DataDescriptionWithStructure.ForeignKey_isComposedOf_ForeignKeyComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#ForeignKey_isComposedOf_ForeignKeyComponent" xmi:type="uml:Association">
             <name>ForeignKey_isComposedOf_ForeignKeyComponent</name>
@@ -4015,14 +4243,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_references_PrimaryKeyComponent-PrimaryKeyComponentEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#ForeignKeyComponent_correspondsTo_DataStructureComponent" xmi:type="uml:Association">
-            <name>ForeignKeyComponent_correspondsTo_DataStructureComponent</name>
+         <packagedElement xmi:id="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent" xmi:type="uml:Association">
+            <name>ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent</name>
             <memberEnd xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent-correspondsTo"/>
-            <ownedEnd xmi:id="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_DataStructureComponent-DataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#ForeignKeyComponent_correspondsTo_DataStructureComponent-DataStructureComponentEnd" xmi:type="uml:Property">
-               <type xmi:idref="DataDescriptionWithStructure.DataStructureComponent"/>
-               <association xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_DataStructureComponent"/>
+            <ownedEnd xmi:id="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent-AbstractDataStructureComponentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DataDescriptionWithStructure.AbstractDataStructureComponent"/>
+               <association xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_DataStructureComponent-DataStructureComponentEnd"/>
+            <memberEnd xmi:idref="DataDescriptionWithStructure.ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent-AbstractDataStructureComponentEnd"/>
          </packagedElement>
       </packagedElement>
    </uml:Model>

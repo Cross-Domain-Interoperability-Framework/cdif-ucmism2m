@@ -35,9 +35,14 @@
       "definition": "PrimaryKey + PrimaryKeyComponent + ForeignKey + ForeignKeyComponent."
     },
     {
+      "name": "Components",
+      "parent": "CDIFDataStructure",
+      "definition": "AbstractDataStructureComponent + the six concrete component subtypes (IdentifierComponent, MeasureComponent, AttributeComponent, DimensionComponent, VariableDescriptorComponent, VariableValueComponent). Full attribute structure for each subtype is in cdifDataType/cdifDataStructureComponent; this package shows just the type hierarchy + how the DataStructure variants compose them."
+    },
+    {
       "name": "Anchors",
       "parent": "CDIFDataStructure",
-      "definition": "Stub re-declarations of classes from cdifCore / cdifDataDescription / cdifDataStructureComponent this profile attaches to or references."
+      "definition": "Stub re-declarations of classes from cdifCore / cdifDataDescription this profile attaches to or references."
     }
   ],
   "mapping": {
@@ -73,18 +78,114 @@
         ]
       },
       {
-        "_comment": "DataStructureComponent stub - the abstract parent of IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent. Full subtypes defined in cdifDataType/cdifDataStructureComponent; this stub is here so the diagram can render the cdi:has_DataStructureComponent edges.",
+        "_comment": "AbstractDataStructureComponent - abstract supertype unifying the six concrete component subtypes. Same union-pattern used elsewhere in CDIF (AbstractMapping, AbstractDataStructure, AbstractDataSet). The cdi:has_DataStructureComponent association points at this abstract; concrete instances are one of the six subtypes below.",
         "mappingType": "new",
         "isAbstract": true,
-        "targetPackage": "Anchors",
-        "targetClass": "DataStructureComponent",
-        "definition": "Stub of cdifDataType::cdifDataStructureComponent (abstract). Subtypes (IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent) are defined in that BB.",
+        "targetPackage": "Components",
+        "targetClass": "AbstractDataStructureComponent",
+        "definition": "Abstract supertype for the cdi:DataStructureComponent family. Role given to a represented variable in the context of a data structure. Concrete subtypes: IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent. Full attribute structure (cdif:isDefinedBy_RepresentedVariable, cdi:has_PrimaryKey, etc.) lives in cdifDataType/cdifDataStructureComponent.",
         "attribute": [
           {
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the component.",
             "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "IdentifierComponent - data-structure component for identifying / addressing data instances. Used by DimensionalDataStructure, LongDataStructure, WideDataStructure.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "IdentifierComponent",
+        "generalization": ["AbstractDataStructureComponent"],
+        "definition": "Data-structure component for content identification. Used by Dimensional / Long / Wide data structures.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:IdentifierComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "MeasureComponent - data-structure component for measure values. Used by DimensionalDataStructure and WideDataStructure.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "MeasureComponent",
+        "generalization": ["AbstractDataStructureComponent"],
+        "definition": "Data-structure component representing a measure (the values being recorded, as opposed to identifiers or dimensions).",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:MeasureComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "AttributeComponent - data-structure component carrying attribute (qualifying / contextual) values. Used by all four DataStructure variants.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "AttributeComponent",
+        "generalization": ["AbstractDataStructureComponent"],
+        "definition": "Data-structure component representing an attribute (qualifying or contextual value alongside the primary measures).",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:AttributeComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "DimensionComponent - data-structure component representing a dimension along which measures vary. Used by DimensionalDataStructure (cube structures).",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "DimensionComponent",
+        "generalization": ["AbstractDataStructureComponent"],
+        "definition": "Data-structure component representing a dimension along which measures vary. Specific to dimensional / cube structures.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:DimensionComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "VariableDescriptorComponent - data-structure component naming the variable in long-format data (the descriptor column). Specific to LongDataStructure.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "VariableDescriptorComponent",
+        "generalization": ["AbstractDataStructureComponent"],
+        "definition": "Data-structure component identifying which InstanceVariable a long-format row represents (the descriptor column). Specific to LongDataStructure; exactly one is required.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:VariableDescriptorComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "VariableValueComponent - data-structure component carrying the actual values in long-format data (the value column). Specific to LongDataStructure.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "VariableValueComponent",
+        "generalization": ["AbstractDataStructureComponent"],
+        "definition": "Data-structure component carrying the value for the variable identified by the VariableDescriptorComponent in a long-format row. Specific to LongDataStructure; exactly one is required.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:VariableValueComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
           }
         ]
       },
@@ -284,9 +385,9 @@
       },
       {
         "_comment": "AbstractDataStructure -> DataStructureComponent via cdi:has_DataStructureComponent. Inherited by all four subtypes (each subtype constrains the allowed component subtypes differently).",
-        "targetAssociationName": "AbstractDataStructure_hasComponent_DataStructureComponent",
+        "targetAssociationName": "AbstractDataStructure_hasComponent_AbstractDataStructureComponent",
         "subjectClass": "AbstractDataStructure",
-        "objectClass": "DataStructureComponent",
+        "objectClass": "AbstractDataStructureComponent",
         "definition": "cdi:has_DataStructureComponent - the components this structure is composed of. Concrete subtypes constrain the allowed component subtypes (see DimensionalDataStructure / LongDataStructure).",
         "objectClassMultiplicity": {"lower": "1", "upper": "*"},
         "objectClassAggregationKind": "composite"
@@ -311,9 +412,9 @@
       },
       {
         "_comment": "DimensionGroup -> DataStructureComponent via cdif:has_DataStructureComponent. DimensionGroups are reusable component collections.",
-        "targetAssociationName": "DimensionGroup_hasComponent_DataStructureComponent",
+        "targetAssociationName": "DimensionGroup_hasComponent_AbstractDataStructureComponent",
         "subjectClass": "DimensionGroup",
-        "objectClass": "DataStructureComponent",
+        "objectClass": "AbstractDataStructureComponent",
         "definition": "cdif:has_DataStructureComponent - the components belonging to this dimension group.",
         "objectClassMultiplicity": {"lower": "1", "upper": "*"},
         "objectClassAggregationKind": "composite"
@@ -345,17 +446,17 @@
       },
       {
         "_comment": "ForeignKeyComponent -> DataStructureComponent via cdi:correspondsTo.",
-        "targetAssociationName": "ForeignKeyComponent_correspondsTo_DataStructureComponent",
+        "targetAssociationName": "ForeignKeyComponent_correspondsTo_AbstractDataStructureComponent",
         "subjectClass": "ForeignKeyComponent",
-        "objectClass": "DataStructureComponent",
+        "objectClass": "AbstractDataStructureComponent",
         "definition": "cdi:correspondsTo - the local DataStructureComponent on the host structure that this FK component corresponds to.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
         "_comment": "PrimaryKeyComponent -> DataStructureComponent via cdi:correspondsTo.",
-        "targetAssociationName": "PrimaryKeyComponent_correspondsTo_DataStructureComponent",
+        "targetAssociationName": "PrimaryKeyComponent_correspondsTo_AbstractDataStructureComponent",
         "subjectClass": "PrimaryKeyComponent",
-        "objectClass": "DataStructureComponent",
+        "objectClass": "AbstractDataStructureComponent",
         "definition": "cdi:correspondsTo - the local DataStructureComponent this PrimaryKeyComponent corresponds to.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       }
