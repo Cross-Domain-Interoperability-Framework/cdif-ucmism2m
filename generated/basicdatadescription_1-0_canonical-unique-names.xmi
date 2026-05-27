@@ -185,23 +185,9 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="BasicDataDescription.Dataset" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset" xmi:type="uml:Class">
                <ownedComment xmi:id="BasicDataDescription.Dataset-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="BasicDataDescription.Dataset"/>
-                  <body>schema:Dataset extended with Discovery-profile discovery properties. (Core attributes are inherited from CDIFCore at the model-composition step.)</body>
+                  <body>schema:Dataset - the resource being described. Acts as the root of a CDIF metadata document.</body>
                </ownedComment>
                <name>Dataset</name>
-               <ownedAttribute xmi:id="BasicDataDescription.Dataset-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Dataset-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-measurementTechnique"/>
-                     <body>schema:measurementTechnique - technique, technology, or methodology used.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Dataset-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Dataset-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>measurementTechnique</name>
-                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="BasicDataDescription.Dataset-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="BasicDataDescription.Dataset-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="BasicDataDescription.Dataset-identifier"/>
@@ -412,66 +398,6 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>relatedLink</name>
                   <type xmi:idref="BasicDataDescription.Reference"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-variableMeasured"/>
-                     <body>schema:variableMeasured - variables described by this dataset.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Dataset-variableMeasured-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>variableMeasured</name>
-                  <type xmi:idref="BasicDataDescription.VariableMeasured"/>
-                  <association xmi:idref="BasicDataDescription.Dataset_variableMeasured_VariableMeasured"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Dataset-spatialCoverage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Dataset-spatialCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-spatialCoverage"/>
-                     <body>schema:spatialCoverage - geographic extent of resource content.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Dataset-spatialCoverage-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Dataset-spatialCoverage-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>spatialCoverage</name>
-                  <type xmi:idref="BasicDataDescription.SpatialExtent"/>
-                  <association xmi:idref="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Dataset-temporalCoverage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Dataset-temporalCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-temporalCoverage"/>
-                     <body>schema:temporalCoverage - temporal extent of resource content.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Dataset-temporalCoverage-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Dataset-temporalCoverage-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>temporalCoverage</name>
-                  <type xmi:idref="BasicDataDescription.TemporalExtent"/>
-                  <association xmi:idref="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-hasQualityMeasurement"/>
-                     <body>dqv:hasQualityMeasurement - quality measurements reported on the resource.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>hasQualityMeasurement</name>
-                  <type xmi:idref="BasicDataDescription.QualityMeasurement"/>
-                  <association xmi:idref="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasurement"/>
-               </ownedAttribute>
                <ownedAttribute xmi:id="BasicDataDescription.Dataset-provider" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-provider" xmi:type="uml:Property">
                   <ownedComment xmi:id="BasicDataDescription.Dataset-provider-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-provider-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="BasicDataDescription.Dataset-provider"/>
@@ -637,6 +563,81 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="BasicDataDescription.Reference"/>
                   <association xmi:idref="BasicDataDescription.Dataset_license_Reference"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Dataset-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.Dataset-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-measurementTechnique"/>
+                     <body>schema:measurementTechnique - technique / technology / methodology used. May be a plain string or a DefinedTerm reference (this edge models the DefinedTerm branch).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Dataset-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Dataset-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-measurementTechnique-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>measurementTechnique</name>
+                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
+                  <association xmi:idref="BasicDataDescription.Dataset_measurementTechnique_DefinedTerm"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="BasicDataDescription.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-variableMeasured"/>
+                     <body>schema:variableMeasured - the variables described by this dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Dataset-variableMeasured-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>variableMeasured</name>
+                  <type xmi:idref="BasicDataDescription.VariableMeasured"/>
+                  <association xmi:idref="BasicDataDescription.Dataset_variableMeasured_VariableMeasured"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Dataset-spatialCoverage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="BasicDataDescription.Dataset-spatialCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-spatialCoverage"/>
+                     <body>schema:spatialCoverage - geographic extent of the dataset's content.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Dataset-spatialCoverage-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Dataset-spatialCoverage-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-spatialCoverage-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>spatialCoverage</name>
+                  <type xmi:idref="BasicDataDescription.SpatialExtent"/>
+                  <association xmi:idref="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Dataset-temporalCoverage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="BasicDataDescription.Dataset-temporalCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-temporalCoverage"/>
+                     <body>schema:temporalCoverage - period of time the dataset covers.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Dataset-temporalCoverage-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Dataset-temporalCoverage-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-temporalCoverage-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>temporalCoverage</name>
+                  <type xmi:idref="BasicDataDescription.TemporalExtent"/>
+                  <association xmi:idref="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Dataset-hasQualityMeasurement"/>
+                     <body>dqv:hasQualityMeasurement - quality measurements reported about the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Dataset-hasQualityMeasurement-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-hasQualityMeasurement-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasQualityMeasurement</name>
+                  <type xmi:idref="BasicDataDescription.QualityMeasure"/>
+                  <association xmi:idref="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasure"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="BasicDataDescription.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="BasicDataDescription.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="BasicDataDescription.Dataset-variableMeasured"/>
@@ -711,864 +712,6 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>distribution</name>
                   <type xmi:idref="BasicDataDescription.WebAPI"/>
                   <association xmi:idref="BasicDataDescription.Dataset_distribution_WebAPI"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured"/>
-                  <body>schema:variableMeasured / cdifVariableMeasured - description of what the dataset measures (e.g. temperature, pressure). In Discovery this is a flat description; in DataStructure it gains role and structural references.</body>
-               </ownedComment>
-               <name>VariableMeasured</name>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-identifier"/>
-                     <body>@id - URI for this variable description.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="BasicDataDescription.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-name"/>
-                     <body>schema:name - variable name (short, machine-friendly).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>name</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-description"/>
-                     <body>schema:description - human-readable description of the variable.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-description-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-description-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>description</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-propertyId" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-propertyId" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-propertyId-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-propertyId-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-propertyId"/>
-                     <body>schema:propertyID - URI of the property concept (e.g. an ontology term).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-propertyId-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-propertyId-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-propertyId-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-propertyId-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>propertyId</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-unitText" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitText" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-unitText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitText-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-unitText"/>
-                     <body>schema:unitText - unit of measure as text. Maps to DDI-CDI cdi:simpleUnitOfMeasure (string).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-unitText-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitText-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-unitText-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitText-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>unitText</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-unitCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitCode" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-unitCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitCode-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-unitCode"/>
-                     <body>schema:unitCode - URI for the unit (e.g. UCUM, QUDT). For full DDI-CDI fidelity prefer cdi:describedUnitOfMeasure (skos:Concept reference).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-unitCode-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitCode-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-unitCode-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-unitCode-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>unitCode</name>
-                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-describedUnitOfMeasure" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-describedUnitOfMeasure" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-describedUnitOfMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-describedUnitOfMeasure-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-describedUnitOfMeasure"/>
-                     <body>DDI-CDI cdi:describedUnitOfMeasure - unit expressed as a reference to a skos:Concept in a controlled vocabulary.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-describedUnitOfMeasure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-describedUnitOfMeasure-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-describedUnitOfMeasure-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-describedUnitOfMeasure-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>describedUnitOfMeasure</name>
-                  <type xmi:idref="BasicDataDescription.Concept"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-minValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-minValue" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-minValue-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-minValue-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-minValue"/>
-                     <body>schema:minValue - lower value of the measured variable's range.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-minValue-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-minValue-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-minValue-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-minValue-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>minValue</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-maxValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-maxValue" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-maxValue-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-maxValue-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-maxValue"/>
-                     <body>schema:maxValue - upper value of the measured variable's range.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-maxValue-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-maxValue-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-maxValue-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-maxValue-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>maxValue</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.SpatialExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent"/>
-                  <body>schema:spatialCoverage payload - a schema:Place with name and/or a geo (point or shape) describing the geographic extent of the resource.</body>
-               </ownedComment>
-               <name>SpatialExtent</name>
-               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-name"/>
-                     <body>schema:name - place name.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>name</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-identifier"/>
-                     <body>@id / schema:identifier - gazetteer URI.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="BasicDataDescription.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-additionalType" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-additionalType" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-additionalType-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-additionalType"/>
-                     <body>schema:additionalType - domain-specific type classification(s) for this place.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-additionalType-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-additionalType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>additionalType</name>
-                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-alternateName" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-alternateName" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-alternateName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-alternateName-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-alternateName"/>
-                     <body>schema:alternateName - alternate or abbreviated name(s) for this place.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-alternateName-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-alternateName-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-alternateName-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-alternateName-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
-                     <value>*</value>
-                  </upperValue>
-                  <name>alternateName</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-geo" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-geo" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-geo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-geo-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-geo"/>
-                     <body>schema:geo - the geometry of this spatial extent. AbstractGeometry admits GeoCoordinates (point) or GeoShape (box, polygon, line).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-geo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-geo-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-geo-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-geo-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>geo</name>
-                  <type xmi:idref="BasicDataDescription.AbstractGeometry"/>
-                  <association xmi:idref="BasicDataDescription.SpatialExtent_geo_AbstractGeometry"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-hasGeometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-hasGeometry" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-hasGeometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-hasGeometry-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-hasGeometry"/>
-                     <body>geosparql:hasGeometry - an exact (WKT) geometry for this spatial extent.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-hasGeometry-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-hasGeometry-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-hasGeometry-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-hasGeometry-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>hasGeometry</name>
-                  <type xmi:idref="BasicDataDescription.Geometry"/>
-                  <association xmi:idref="BasicDataDescription.SpatialExtent_hasGeometry_Geometry"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractGeometry" xmi:type="uml:Class" isAbstract="true">
-               <ownedComment xmi:id="BasicDataDescription.AbstractGeometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractGeometry-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.AbstractGeometry"/>
-                  <body>Abstract supertype for geographic geometry payloads (point coordinates or named/bounded shape). Concrete subclasses: GeoCoordinates, GeoShape.</body>
-               </ownedComment>
-               <name>AbstractGeometry</name>
-               <ownedAttribute xmi:id="BasicDataDescription.AbstractGeometry-crs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractGeometry-crs" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.AbstractGeometry-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractGeometry-crs-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.AbstractGeometry-crs"/>
-                     <body>geosparql:crs - coordinate reference system URI (defaults to WGS 84 / EPSG:4326 when omitted).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.AbstractGeometry-crs-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractGeometry-crs-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.AbstractGeometry-crs-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractGeometry-crs-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>crs</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.GeoCoordinates" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.GeoCoordinates-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.GeoCoordinates"/>
-                  <body>schema:GeoCoordinates - a single point expressed as latitude + longitude (and optional elevation). Use GeoShape for bounding boxes, polygons, or lines.</body>
-               </ownedComment>
-               <name>GeoCoordinates</name>
-               <generalization xmi:id="BasicDataDescription.GeoCoordinates-generalization-AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-generalization-AbstractGeometry" xmi:type="uml:Generalization">
-                  <general xmi:idref="BasicDataDescription.AbstractGeometry"/>
-               </generalization>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoCoordinates-latitude" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-latitude" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoCoordinates-latitude-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-latitude-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoCoordinates-latitude"/>
-                     <body>schema:latitude - decimal degrees, WGS 84 unless overridden by crs.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoCoordinates-latitude-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-latitude-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoCoordinates-latitude-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-latitude-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>latitude</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoCoordinates-longitude" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-longitude" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoCoordinates-longitude-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-longitude-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoCoordinates-longitude"/>
-                     <body>schema:longitude - decimal degrees, WGS 84 unless overridden by crs.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoCoordinates-longitude-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-longitude-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoCoordinates-longitude-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-longitude-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>longitude</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoCoordinates-elevation" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-elevation" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoCoordinates-elevation-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-elevation-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoCoordinates-elevation"/>
-                     <body>schema:elevation - elevation above sea level (metres unless overridden).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoCoordinates-elevation-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-elevation-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoCoordinates-elevation-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-elevation-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>elevation</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoCoordinates-crs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-crs" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoCoordinates-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-crs-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoCoordinates-crs"/>
-                     <body>geosparql:crs - coordinate reference system URI (defaults to WGS 84 / EPSG:4326 when omitted).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoCoordinates-crs-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-crs-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoCoordinates-crs-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoCoordinates-crs-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>crs</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.GeoShape" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.GeoShape-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.GeoShape"/>
-                  <body>schema:GeoShape - a non-point geometry: box, polygon, or line. May be expressed either as a WKT literal (geometry) or as the schema.org native attributes (box, polygon, line).</body>
-               </ownedComment>
-               <name>GeoShape</name>
-               <generalization xmi:id="BasicDataDescription.GeoShape-generalization-AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-generalization-AbstractGeometry" xmi:type="uml:Generalization">
-                  <general xmi:idref="BasicDataDescription.AbstractGeometry"/>
-               </generalization>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoShape-geometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-geometry" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoShape-geometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-geometry-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoShape-geometry"/>
-                     <body>geosparql:asWKT - well-known-text geometry literal (POINT/LINESTRING/POLYGON/...). Preferred over the schema.org native attributes for non-rectangular shapes.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoShape-geometry-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-geometry-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoShape-geometry-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-geometry-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>geometry</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoShape-box" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-box" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoShape-box-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-box-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoShape-box"/>
-                     <body>schema:box - 'minLat minLon maxLat maxLon' bounding box.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoShape-box-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-box-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoShape-box-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-box-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>box</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoShape-polygon" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-polygon" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoShape-polygon-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-polygon-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoShape-polygon"/>
-                     <body>schema:polygon - polygon as a space-separated list of lat/lon pairs.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoShape-polygon-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-polygon-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoShape-polygon-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-polygon-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>polygon</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoShape-line" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-line" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoShape-line-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-line-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoShape-line"/>
-                     <body>schema:line - line as a space-separated list of lat/lon pairs.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoShape-line-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-line-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoShape-line-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-line-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>line</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.GeoShape-crs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-crs" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.GeoShape-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-crs-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.GeoShape-crs"/>
-                     <body>geosparql:crs - coordinate reference system URI (defaults to WGS 84 / EPSG:4326 when omitted).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.GeoShape-crs-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-crs-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.GeoShape-crs-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#GeoShape-crs-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>crs</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.TemporalExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent"/>
-                  <body>schema:temporalCoverage payload - the temporal extent of the resource as a time:ProperInterval (named-era or numeric-age bounds) or a simple ISO 8601 interval string.</body>
-               </ownedComment>
-               <name>TemporalExtent</name>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-startDate" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-startDate-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-startDate"/>
-                     <body>Start of the temporal coverage (simple ISO 8601 form).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-startDate-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-startDate-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>startDate</name>
-                  <type xmi:idref="BasicDataDescription.XsdDate"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-endDate" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-endDate-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-endDate"/>
-                     <body>End of the temporal coverage (simple ISO 8601 form).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-endDate-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-endDate-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>endDate</name>
-                  <type xmi:idref="BasicDataDescription.XsdDate"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-duration" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-duration" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-duration-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-duration-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-duration"/>
-                     <body>ISO 8601 duration form (e.g. P1Y) when the coverage is expressed as duration.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-duration-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-duration-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-duration-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-duration-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>duration</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-description" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-description-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-description"/>
-                     <body>schema:description - free-text description of the temporal interval.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-description-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-description-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-description-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-description-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>description</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-intervalStartedBy" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalStartedBy" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-intervalStartedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalStartedBy-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-intervalStartedBy"/>
-                     <body>time:intervalStartedBy - identifier for a named time ordinal era that is the older bound of the interval (e.g. a geologic age).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-intervalStartedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalStartedBy-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-intervalStartedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalStartedBy-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>intervalStartedBy</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-intervalFinishedBy" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-intervalFinishedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-intervalFinishedBy"/>
-                     <body>time:intervalFinishedBy - identifier for a named time ordinal era that is the younger bound of the interval.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-intervalFinishedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-intervalFinishedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>intervalFinishedBy</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-hasBeginning" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasBeginning" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-hasBeginning-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasBeginning-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-hasBeginning"/>
-                     <body>time:hasBeginning - the beginning instant of the interval (numeric-age form).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-hasBeginning-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasBeginning-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-hasBeginning-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasBeginning-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>hasBeginning</name>
-                  <type xmi:idref="BasicDataDescription.Instant"/>
-                  <association xmi:idref="BasicDataDescription.TemporalExtent_hasBeginning_Instant"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-hasEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasEnd" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-hasEnd-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasEnd-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-hasEnd"/>
-                     <body>time:hasEnd - the end instant of the interval (numeric-age form).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-hasEnd-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasEnd-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-hasEnd-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-hasEnd-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>hasEnd</name>
-                  <type xmi:idref="BasicDataDescription.Instant"/>
-                  <association xmi:idref="BasicDataDescription.TemporalExtent_hasEnd_Instant"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.Instant" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.Instant-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.Instant"/>
-                  <body>time:Instant - a temporal instant used as the beginning or end bound of a TemporalExtent (time:ProperInterval).</body>
-               </ownedComment>
-               <name>Instant</name>
-               <ownedAttribute xmi:id="BasicDataDescription.Instant-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Instant-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Instant-identifier"/>
-                     <body>@id - identifier for this instant.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Instant-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Instant-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Instant-inTimePosition" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-inTimePosition" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Instant-inTimePosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-inTimePosition-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Instant-inTimePosition"/>
-                     <body>time:inTimePosition - the numeric temporal position of this instant.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Instant-inTimePosition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-inTimePosition-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Instant-inTimePosition-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant-inTimePosition-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>inTimePosition</name>
-                  <type xmi:idref="BasicDataDescription.TimePosition"/>
-                  <association xmi:idref="BasicDataDescription.Instant_inTimePosition_TimePosition"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.TimePosition" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.TimePosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.TimePosition"/>
-                  <body>time:TimePosition - a numeric temporal position expressed against a temporal reference system (e.g. millions of years before present).</body>
-               </ownedComment>
-               <name>TimePosition</name>
-               <ownedAttribute xmi:id="BasicDataDescription.TimePosition-hasTRS" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-hasTRS" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TimePosition-hasTRS-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-hasTRS-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TimePosition-hasTRS"/>
-                     <body>time:hasTRS - identifier for the temporal reference system (default: chronometric geologic time).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TimePosition-hasTRS-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-hasTRS-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TimePosition-hasTRS-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-hasTRS-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>hasTRS</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.TimePosition-numericPosition" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-numericPosition" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.TimePosition-numericPosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-numericPosition-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.TimePosition-numericPosition"/>
-                     <body>time:numericPosition - the numeric position in the temporal reference system.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.TimePosition-numericPosition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-numericPosition-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.TimePosition-numericPosition-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TimePosition-numericPosition-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>numericPosition</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Real"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.Geometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.Geometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.Geometry"/>
-                  <body>geosparql Geometry (OGC Simple Feature) - an exact geometry for the spatial extent, expressed as a WKT literal.</body>
-               </ownedComment>
-               <name>Geometry</name>
-               <ownedAttribute xmi:id="BasicDataDescription.Geometry-asWKT" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-asWKT" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Geometry-asWKT-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-asWKT-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Geometry-asWKT"/>
-                     <body>geosparql:asWKT - a WKT geometry literal, e.g. 'POINT(-76 -18)'.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Geometry-asWKT-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-asWKT-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Geometry-asWKT-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-asWKT-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>asWKT</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Geometry-crs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-crs" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Geometry-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-crs-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Geometry-crs"/>
-                     <body>geosparql:crs - identifier for the coordinate reference system (e.g. CRS84).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Geometry-crs-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-crs-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Geometry-crs-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Geometry-crs-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>crs</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.QualityMeasurement" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.QualityMeasurement-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.QualityMeasurement"/>
-                  <body>dqv:QualityMeasurement - a single quality measurement reported on the resource (e.g. completeness, accuracy, timeliness) per the W3C Data Quality Vocabulary.</body>
-               </ownedComment>
-               <name>QualityMeasurement</name>
-               <ownedAttribute xmi:id="BasicDataDescription.QualityMeasurement-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.QualityMeasurement-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.QualityMeasurement-identifier"/>
-                     <body>@id - URI for this measurement.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.QualityMeasurement-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.QualityMeasurement-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="BasicDataDescription.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.QualityMeasurement-isMeasurementOf" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.QualityMeasurement-isMeasurementOf-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.QualityMeasurement-isMeasurementOf"/>
-                     <body>dqv:isMeasurementOf - the quality measure being reported, given by name, by @id reference, or as a schema:DefinedTerm (string and @id-reference are JSON shorthands for the DefinedTerm).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.QualityMeasurement-isMeasurementOf-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.QualityMeasurement-isMeasurementOf-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>isMeasurementOf</name>
-                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.QualityMeasurement-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-value" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.QualityMeasurement-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-value-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.QualityMeasurement-value"/>
-                     <body>dqv:value - the reported result of the quality measure, either as a string or a schema:DefinedTerm from a vocabulary (string is a JSON shorthand for the DefinedTerm).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.QualityMeasurement-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-value-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.QualityMeasurement-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-value-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>value</name>
-                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.QualityMeasurement-unit" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-unit" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.QualityMeasurement-unit-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-unit-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.QualityMeasurement-unit"/>
-                     <body>Optional unit of measure for the value.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.QualityMeasurement-unit-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-unit-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.QualityMeasurement-unit-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasurement-unit-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>unit</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.Concept" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.Concept-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.Concept"/>
-                  <body>skos:Concept (stub). A reference to a controlled-vocabulary term defined in a SKOS ConceptScheme; full definition in CDIFCodelist::Concept.</body>
-               </ownedComment>
-               <name>Concept</name>
-               <ownedAttribute xmi:id="BasicDataDescription.Concept-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Concept-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Concept-identifier"/>
-                     <body>@id - resolvable URI for this concept.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Concept-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Concept-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="BasicDataDescription.Identifier"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Concept-prefLabel" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-prefLabel" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Concept-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-prefLabel-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Concept-prefLabel"/>
-                     <body>skos:prefLabel - preferred lexical label.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Concept-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Concept-prefLabel-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-prefLabel-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>prefLabel</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-inScheme" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Concept-inScheme"/>
-                     <body>skos:inScheme - URI of the owning ConceptScheme.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Concept-inScheme-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-inScheme-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Concept-inScheme-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Concept-inScheme-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>inScheme</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.Identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier" xmi:type="uml:DataType">
-               <ownedComment xmi:id="BasicDataDescription.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.Identifier"/>
-                  <body>schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.</body>
-               </ownedComment>
-               <name>Identifier</name>
-               <ownedAttribute xmi:id="BasicDataDescription.Identifier-propertyId" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyId" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Identifier-propertyId-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyId-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-propertyId"/>
-                     <body>schema:propertyID - the identifier scheme (e.g. DOI, Handle, ROR).</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Identifier-propertyId-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyId-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Identifier-propertyId-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyId-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>propertyId</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Identifier-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Identifier-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-value"/>
-                     <body>schema:value - the identifier value.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Identifier-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Identifier-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>value</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Identifier-url" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Identifier-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-url"/>
-                     <body>schema:url - resolvable form of the identifier.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Identifier-url-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Identifier-url-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>url</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.Identifier-propertyID" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.Identifier-propertyID-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-propertyID"/>
-                     <body>schema:propertyID - the identifier scheme (e.g. 'DOI', 'Handle', 'ROR').</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.Identifier-propertyID-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.Identifier-propertyID-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>propertyID</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-            </packagedElement>
-            <packagedElement xmi:id="BasicDataDescription.DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm" xmi:type="uml:Class">
-               <ownedComment xmi:id="BasicDataDescription.DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm"/>
-                  <body>schema:DefinedTerm (stub). A controlled-vocabulary term with name, code, and scheme URI. Full definition in CDIFCore::DefinedTerm.</body>
-               </ownedComment>
-               <name>DefinedTerm</name>
-               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-identifier"/>
-                     <body>@id / schema:identifier - URI for the term.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-name"/>
-                     <body>schema:name - the term's preferred label.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>name</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-termCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-termCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-termCode"/>
-                     <body>schema:termCode - code value within the term set.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-termCode-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-termCode-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>termCode</name>
-                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
-               </ownedAttribute>
-               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet" xmi:type="uml:Property">
-                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-inDefinedTermSet"/>
-                     <body>schema:inDefinedTermSet - URI of the controlled vocabulary.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>inDefinedTermSet</name>
-                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="BasicDataDescription.AbstractDistribution" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AbstractDistribution" xmi:type="uml:Class" isAbstract="true">
@@ -2532,6 +1675,118 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <association xmi:idref="BasicDataDescription.Contributor_contributor_Agent"/>
                </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:id="BasicDataDescription.DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm" xmi:type="uml:Class">
+               <ownedComment xmi:id="BasicDataDescription.DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm"/>
+                  <body>schema:DefinedTerm - a term from a controlled vocabulary used as a value (keywords, additionalType, measurementTechnique, ...).</body>
+               </ownedComment>
+               <name>DefinedTerm</name>
+               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-identifier"/>
+                     <body>@id / schema:identifier - URI for the term.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="BasicDataDescription.Identifier"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-name"/>
+                     <body>schema:name - the term's preferred label.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-termCode" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-termCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-termCode"/>
+                     <body>schema:termCode - code value within the term set.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-termCode-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-termCode-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-termCode-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>termCode</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.DefinedTerm-inDefinedTermSet"/>
+                     <body>schema:inDefinedTermSet - URI of the controlled vocabulary containing this term.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.DefinedTerm-inDefinedTermSet-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DefinedTerm-inDefinedTermSet-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>inDefinedTermSet</name>
+                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="BasicDataDescription.Identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier" xmi:type="uml:DataType">
+               <ownedComment xmi:id="BasicDataDescription.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="BasicDataDescription.Identifier"/>
+                  <body>schema:PropertyValue used as schema:identifier - a structured identifier with type, value, and URL.</body>
+               </ownedComment>
+               <name>Identifier</name>
+               <ownedAttribute xmi:id="BasicDataDescription.Identifier-propertyID" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.Identifier-propertyID-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-propertyID"/>
+                     <body>schema:propertyID - the identifier scheme (e.g. 'DOI', 'Handle', 'ROR').</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Identifier-propertyID-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Identifier-propertyID-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-propertyID-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>propertyID</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Identifier-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.Identifier-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-value"/>
+                     <body>schema:value - the identifier value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Identifier-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Identifier-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-value-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>value</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.Identifier-url" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.Identifier-url-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.Identifier-url"/>
+                     <body>schema:url - resolvable form of the identifier.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.Identifier-url-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.Identifier-url-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Identifier-url-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>url</name>
+                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
             <packagedElement xmi:id="BasicDataDescription.AdditionalProperty" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AdditionalProperty" xmi:type="uml:Class">
                <ownedComment xmi:id="BasicDataDescription.AdditionalProperty-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#AdditionalProperty-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="BasicDataDescription.AdditionalProperty"/>
@@ -2939,6 +2194,189 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>maintainer</name>
                   <type xmi:idref="BasicDataDescription.Agent"/>
                   <association xmi:idref="BasicDataDescription.CatalogRecord_maintainer_Agent"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="BasicDataDescription.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured" xmi:type="uml:Class">
+               <ownedComment xmi:id="BasicDataDescription.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured"/>
+                  <body>A measured variable described as a schema:PropertyValue. The lightweight discovery-level shape: name, description, optional measurement technique. Richer per-variable structure (physical data types, value domains, ...) is added by cdifDataDescription.</body>
+               </ownedComment>
+               <name>VariableMeasured</name>
+               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-identifier"/>
+                     <body>@id - resolvable URI for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-name"/>
+                     <body>schema:name - label associated with the variable in the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-description" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-description-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-description"/>
+                     <body>schema:description - free-text description of what the variable measures.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-description-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-description-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-alternateName" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-alternateName" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-alternateName-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-alternateName-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-alternateName"/>
+                     <body>schema:alternateName - additional human-readable name(s) for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-alternateName-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-alternateName-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-alternateName-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-alternateName-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>alternateName</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.VariableMeasured-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-measurementTechnique" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.VariableMeasured-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-measurementTechnique-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.VariableMeasured-measurementTechnique"/>
+                     <body>schema:measurementTechnique - measurement technique for this specific variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.VariableMeasured-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.VariableMeasured-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured-measurementTechnique-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>measurementTechnique</name>
+                  <type xmi:idref="BasicDataDescription.DefinedTerm"/>
+                  <association xmi:idref="BasicDataDescription.VariableMeasured_measurementTechnique_DefinedTerm"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="BasicDataDescription.SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent" xmi:type="uml:Class">
+               <ownedComment xmi:id="BasicDataDescription.SpatialExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent"/>
+                  <body>Geographic extent of the resource content (schema:Place). Carries a place name, optional identifier, and optional geometry (geosparql:hasGeometry).</body>
+               </ownedComment>
+               <name>SpatialExtent</name>
+               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-identifier"/>
+                     <body>@id / schema:identifier - URI for this place (e.g. ROR identifier, gazetteer entry).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.SpatialExtent-name" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.SpatialExtent-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.SpatialExtent-name"/>
+                     <body>schema:name - place name. May also be a DefinedTerm from a gazetteer.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.SpatialExtent-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.SpatialExtent-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="BasicDataDescription.TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent" xmi:type="uml:Class">
+               <ownedComment xmi:id="BasicDataDescription.TemporalExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent"/>
+                  <body>Temporal extent of resource content - the period of time the resource covers.</body>
+               </ownedComment>
+               <name>TemporalExtent</name>
+               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-startDate" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-startDate-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-startDate"/>
+                     <body>Start of the temporal coverage.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-startDate-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-startDate-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-startDate-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>startDate</name>
+                  <type xmi:idref="BasicDataDescription.XsdDate"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.TemporalExtent-endDate" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.TemporalExtent-endDate-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.TemporalExtent-endDate"/>
+                     <body>End of the temporal coverage.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.TemporalExtent-endDate-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.TemporalExtent-endDate-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent-endDate-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>endDate</name>
+                  <type xmi:idref="BasicDataDescription.XsdDate"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="BasicDataDescription.QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure" xmi:type="uml:Class">
+               <ownedComment xmi:id="BasicDataDescription.QualityMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="BasicDataDescription.QualityMeasure"/>
+                  <body>A W3C DQV (Data Quality Vocabulary) quality measurement: a measured value for a defined quality metric.</body>
+               </ownedComment>
+               <name>QualityMeasure</name>
+               <ownedAttribute xmi:id="BasicDataDescription.QualityMeasure-metric" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-metric" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.QualityMeasure-metric-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-metric-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.QualityMeasure-metric"/>
+                     <body>dqv:isMeasurementOf - URI of the dqv:Metric being measured.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.QualityMeasure-metric-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-metric-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.QualityMeasure-metric-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-metric-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>metric</name>
+                  <type xmi:idref="BasicDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="BasicDataDescription.QualityMeasure-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="BasicDataDescription.QualityMeasure-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="BasicDataDescription.QualityMeasure-value"/>
+                     <body>dqv:value - the measured value (string for generality; concrete type varies by metric).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="BasicDataDescription.QualityMeasure-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-value-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="BasicDataDescription.QualityMeasure-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#QualityMeasure-value-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>value</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="BasicDataDescription.InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#InstanceVariable" xmi:type="uml:Class">
@@ -3460,42 +2898,6 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                </ownedAttribute>
             </packagedElement>
          </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
-            <name>Dataset_variableMeasured_VariableMeasured</name>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset-variableMeasured"/>
-            <ownedEnd xmi:id="BasicDataDescription.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.VariableMeasured"/>
-               <association xmi:idref="BasicDataDescription.Dataset_variableMeasured_VariableMeasured"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_spatialCoverage_SpatialExtent" xmi:type="uml:Association">
-            <name>Dataset_spatialCoverage_SpatialExtent</name>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset-spatialCoverage"/>
-            <ownedEnd xmi:id="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.SpatialExtent"/>
-               <association xmi:idref="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_temporalCoverage_TemporalExtent" xmi:type="uml:Association">
-            <name>Dataset_temporalCoverage_TemporalExtent</name>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset-temporalCoverage"/>
-            <ownedEnd xmi:id="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.TemporalExtent"/>
-               <association xmi:idref="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasurement" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasurement" xmi:type="uml:Association">
-            <name>Dataset_hasQualityMeasurement_QualityMeasurement</name>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset-hasQualityMeasurement"/>
-            <ownedEnd xmi:id="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.QualityMeasurement"/>
-               <association xmi:idref="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasurement"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd"/>
-         </packagedElement>
          <packagedElement xmi:id="BasicDataDescription.Dataset_provider_Agent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_provider_Agent" xmi:type="uml:Association">
             <name>Dataset_provider_Agent</name>
             <memberEnd xmi:idref="BasicDataDescription.Dataset-provider"/>
@@ -3595,6 +2997,51 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="BasicDataDescription.Dataset_license_Reference-ReferenceEnd"/>
          </packagedElement>
+         <packagedElement xmi:id="BasicDataDescription.Dataset_measurementTechnique_DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_measurementTechnique_DefinedTerm" xmi:type="uml:Association">
+            <name>Dataset_measurementTechnique_DefinedTerm</name>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset-measurementTechnique"/>
+            <ownedEnd xmi:id="BasicDataDescription.Dataset_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
+               <type xmi:idref="BasicDataDescription.DefinedTerm"/>
+               <association xmi:idref="BasicDataDescription.Dataset_measurementTechnique_DefinedTerm"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset_measurementTechnique_DefinedTerm-DefinedTermEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="BasicDataDescription.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
+            <name>Dataset_variableMeasured_VariableMeasured</name>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset-variableMeasured"/>
+            <ownedEnd xmi:id="BasicDataDescription.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:type="uml:Property">
+               <type xmi:idref="BasicDataDescription.VariableMeasured"/>
+               <association xmi:idref="BasicDataDescription.Dataset_variableMeasured_VariableMeasured"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_spatialCoverage_SpatialExtent" xmi:type="uml:Association">
+            <name>Dataset_spatialCoverage_SpatialExtent</name>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset-spatialCoverage"/>
+            <ownedEnd xmi:id="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd" xmi:type="uml:Property">
+               <type xmi:idref="BasicDataDescription.SpatialExtent"/>
+               <association xmi:idref="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_temporalCoverage_TemporalExtent" xmi:type="uml:Association">
+            <name>Dataset_temporalCoverage_TemporalExtent</name>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset-temporalCoverage"/>
+            <ownedEnd xmi:id="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd" xmi:type="uml:Property">
+               <type xmi:idref="BasicDataDescription.TemporalExtent"/>
+               <association xmi:idref="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasure" xmi:type="uml:Association">
+            <name>Dataset_hasQualityMeasurement_QualityMeasure</name>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset-hasQualityMeasurement"/>
+            <ownedEnd xmi:id="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:type="uml:Property">
+               <type xmi:idref="BasicDataDescription.QualityMeasure"/>
+               <association xmi:idref="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasure"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="BasicDataDescription.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd"/>
+         </packagedElement>
          <packagedElement xmi:id="BasicDataDescription.Dataset_variableMeasured_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Dataset_variableMeasured_InstanceVariable" xmi:type="uml:Association">
             <name>Dataset_variableMeasured_InstanceVariable</name>
             <memberEnd xmi:idref="BasicDataDescription.Dataset-variableMeasured"/>
@@ -3639,51 +3086,6 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <association xmi:idref="BasicDataDescription.Dataset_distribution_WebAPI"/>
             </ownedEnd>
             <memberEnd xmi:idref="BasicDataDescription.Dataset_distribution_WebAPI-WebAPIEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.SpatialExtent_geo_AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent_geo_AbstractGeometry" xmi:type="uml:Association">
-            <name>SpatialExtent_geo_AbstractGeometry</name>
-            <memberEnd xmi:idref="BasicDataDescription.SpatialExtent-geo"/>
-            <ownedEnd xmi:id="BasicDataDescription.SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.AbstractGeometry"/>
-               <association xmi:idref="BasicDataDescription.SpatialExtent_geo_AbstractGeometry"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.SpatialExtent_hasGeometry_Geometry" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent_hasGeometry_Geometry" xmi:type="uml:Association">
-            <name>SpatialExtent_hasGeometry_Geometry</name>
-            <memberEnd xmi:idref="BasicDataDescription.SpatialExtent-hasGeometry"/>
-            <ownedEnd xmi:id="BasicDataDescription.SpatialExtent_hasGeometry_Geometry-GeometryEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#SpatialExtent_hasGeometry_Geometry-GeometryEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.Geometry"/>
-               <association xmi:idref="BasicDataDescription.SpatialExtent_hasGeometry_Geometry"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.SpatialExtent_hasGeometry_Geometry-GeometryEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.TemporalExtent_hasBeginning_Instant" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent_hasBeginning_Instant" xmi:type="uml:Association">
-            <name>TemporalExtent_hasBeginning_Instant</name>
-            <memberEnd xmi:idref="BasicDataDescription.TemporalExtent-hasBeginning"/>
-            <ownedEnd xmi:id="BasicDataDescription.TemporalExtent_hasBeginning_Instant-InstantEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent_hasBeginning_Instant-InstantEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.Instant"/>
-               <association xmi:idref="BasicDataDescription.TemporalExtent_hasBeginning_Instant"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.TemporalExtent_hasBeginning_Instant-InstantEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.TemporalExtent_hasEnd_Instant" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent_hasEnd_Instant" xmi:type="uml:Association">
-            <name>TemporalExtent_hasEnd_Instant</name>
-            <memberEnd xmi:idref="BasicDataDescription.TemporalExtent-hasEnd"/>
-            <ownedEnd xmi:id="BasicDataDescription.TemporalExtent_hasEnd_Instant-InstantEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#TemporalExtent_hasEnd_Instant-InstantEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.Instant"/>
-               <association xmi:idref="BasicDataDescription.TemporalExtent_hasEnd_Instant"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.TemporalExtent_hasEnd_Instant-InstantEnd"/>
-         </packagedElement>
-         <packagedElement xmi:id="BasicDataDescription.Instant_inTimePosition_TimePosition" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant_inTimePosition_TimePosition" xmi:type="uml:Association">
-            <name>Instant_inTimePosition_TimePosition</name>
-            <memberEnd xmi:idref="BasicDataDescription.Instant-inTimePosition"/>
-            <ownedEnd xmi:id="BasicDataDescription.Instant_inTimePosition_TimePosition-TimePositionEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#Instant_inTimePosition_TimePosition-TimePositionEnd" xmi:type="uml:Property">
-               <type xmi:idref="BasicDataDescription.TimePosition"/>
-               <association xmi:idref="BasicDataDescription.Instant_inTimePosition_TimePosition"/>
-            </ownedEnd>
-            <memberEnd xmi:idref="BasicDataDescription.Instant_inTimePosition_TimePosition-TimePositionEnd"/>
          </packagedElement>
          <packagedElement xmi:id="BasicDataDescription.DataDownload_provider_Agent" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#DataDownload_provider_Agent" xmi:type="uml:Association">
             <name>DataDownload_provider_Agent</name>
@@ -3810,6 +3212,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <association xmi:idref="BasicDataDescription.CatalogRecord_maintainer_Agent"/>
             </ownedEnd>
             <memberEnd xmi:idref="BasicDataDescription.CatalogRecord_maintainer_Agent-AgentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="BasicDataDescription.VariableMeasured_measurementTechnique_DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured_measurementTechnique_DefinedTerm" xmi:type="uml:Association">
+            <name>VariableMeasured_measurementTechnique_DefinedTerm</name>
+            <memberEnd xmi:idref="BasicDataDescription.VariableMeasured-measurementTechnique"/>
+            <ownedEnd xmi:id="BasicDataDescription.VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
+               <type xmi:idref="BasicDataDescription.DefinedTerm"/>
+               <association xmi:idref="BasicDataDescription.VariableMeasured_measurementTechnique_DefinedTerm"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="BasicDataDescription.VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd"/>
          </packagedElement>
          <packagedElement xmi:id="BasicDataDescription.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/composite/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:type="uml:Association">
             <name>InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain</name>

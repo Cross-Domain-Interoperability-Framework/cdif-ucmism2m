@@ -22,6 +22,7 @@
       "mainPackageDefinition": "Composite profile: CDIFCore + cdifDiscovery + CDIFDataDescription assembled.",
       "dataTypesPackage": "BasicDataDescription",
       "composes": [
+        "ddi-cdi2cdifCore_mapping.json",
         "ddi-cdi2cdifDiscovery_mapping.json",
         "ddi-cdi2cdifDataDescription_mapping.json"
       ]

@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Discovery profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/BasicDiscovery/CDIFDiscoveryProfileSchema.json. The Discovery profile composes Core with five discovery-oriented additions: measurementTechnique, variableMeasured, spatialCoverage, temporalCoverage, hasQualityMeasurement. This config focuses on those additions PLUS the Core classes Dataset and CatalogRecord (re-declared to keep this UML standalone). Core's Dataset/CatalogRecord/Person/Organization/etc. attribute sets are inherited verbatim from CDIFCore in spirit; this config restates Dataset (the discovery extension point) and CatalogRecord (whose conformsTo must be https://w3id.org/cdif/discovery/1.0) and adds the discovery vocabulary. Higher-level composition (Discovery extends Core) is left to the model build process.",
+  "_comment": "DDI-CDI -> CDIF Discovery profile UML. Aligned to metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml. The schema is a tight set of discovery extension properties (measurementTechnique / variableMeasured / spatialCoverage / temporalCoverage / hasQualityMeasurement) with $refs out to schemaorgProperties + qualityProperties for the value types. This UML config matches that shape: no composes (cdifCore is composed in BY THE COMPOSITE profile, not by this module), and the value-type classes (VariableMeasured / SpatialExtent / TemporalExtent / QualityMeasure) are restated locally because schemaorgProperties / qualityProperties don't have their own UML configs in build-docs.ps1. Anchor stubs (Dataset, CatalogRecord, DefinedTerm) provide attachment points; cross-profile registry links DefinedTerm to CDIFCore.",
   "transformation": {
     "description": "DDI-CDI to CDIF Discovery Profile",
     "version": "0.1",
@@ -10,688 +10,237 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "BasicDiscovery",
+      "acronym": "CDIFDiscovery",
       "modelTitle": "UML Model for the CDIF Discovery Profile",
-      "subTitle": "Discovery-oriented metadata extending CDIF Core",
+      "subTitle": "Discovery extension properties: measurement technique, variable measured, spatial / temporal coverage, quality measurement",
       "majorVersion": "1",
       "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/discovery/1.0/xmi/",
-      "definition": "CDIF Discovery profile - extends CDIF Core with discovery-oriented properties: measurement technique, variables measured, spatial and temporal coverage, quality measurements. Conforms-to identifier: https://w3id.org/cdif/discovery/1.0.",
-      "mainPackage": "BasicDiscovery",
-      "mainPackageDefinition": "Discovery profile additions on top of CDIF Core.",
-      "dataTypesPackage": "BasicDiscovery",
-      "composes": [
-        "ddi-cdi2cdifCore_mapping.json"
-      ]
+      "definition": "CDIF Discovery profile module - the discovery-oriented extension properties added on top of a cdifCore Dataset: schema:measurementTechnique (string or DefinedTerm), schema:variableMeasured (VariableMeasured / PropertyValue), schema:spatialCoverage (SpatialExtent / Place), schema:temporalCoverage (TemporalExtent), dqv:hasQualityMeasurement (QualityMeasure). The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/discovery/1.0.",
+      "mainPackage": "CDIFDiscovery",
+      "mainPackageDefinition": "Discovery extension properties for a CDIF Dataset.",
+      "dataTypesPackage": "CDIFDiscovery"
     }
   },
   "package": [
     {
       "name": "Classes",
-      "parent": "BasicDiscovery",
-      "definition": "Dataset (with discovery additions) and the discovery-specific value classes."
+      "parent": "CDIFDiscovery",
+      "definition": "Discovery-specific value classes: VariableMeasured (schema:PropertyValue), SpatialExtent (schema:Place), TemporalExtent, QualityMeasure."
     },
     {
-      "name": "Coverage",
-      "parent": "BasicDiscovery",
-      "definition": "Spatial and temporal extent classes: SpatialExtent + AbstractGeometry/GeoCoordinates/GeoShape/Geometry; TemporalExtent + Instant/TimePosition."
-    },
-    {
-      "name": "Quality",
-      "parent": "BasicDiscovery",
-      "definition": "Quality measurement classes (DQV)."
-    },
-    {
-      "name": "Support",
-      "parent": "BasicDiscovery",
-      "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
+      "name": "Anchors",
+      "parent": "CDIFDiscovery",
+      "definition": "Stub re-declarations of CDIFCore classes this profile attaches to. Full definitions live in CDIFCore; these stubs let the standalone discovery diagram render attachment edges without dragging in the full CDIFCore graph."
     }
   ],
   "mapping": {
     "class": [
       {
-        "_comment": "schema:Dataset, extended with discovery additions (variableMeasured, spatialCoverage, temporalCoverage, measurementTechnique, hasQualityMeasurement). The Core-level attributes are deliberately omitted here; the build pipeline is expected to merge this profile UML with CDIFCore.",
+        "_comment": "Dataset stub - the host node the discovery properties attach to. Full definition in CDIFCore.",
         "mappingType": "new",
-        "sourceClass": "DataStore",
-        "targetPackage": "Classes",
+        "targetPackage": "Anchors",
         "targetClass": "Dataset",
-        "definition": "schema:Dataset extended with Discovery-profile discovery properties. (Core attributes are inherited from CDIFCore at the model-composition step.)",
+        "definition": "Stub of schema:Dataset (full definition in CDIFCore). The discovery profile adds measurementTechnique / variableMeasured / spatialCoverage / temporalCoverage / hasQualityMeasurement to this Dataset.",
         "attribute": [
           {
-            "name": "measurementTechnique",
-            "dataType": "DefinedTerm",
-            "definition": "schema:measurementTechnique - technique, technology, or methodology used.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the dataset.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           }
         ]
       },
       {
-        "_comment": "schema:variableMeasured payload (used by Discovery). DDI-CDI provenance: InstanceVariable.",
+        "_comment": "CatalogRecord stub - the metadata-about-this-resource node carried at schema:subjectOf on the Dataset. For the discovery profile, dcterms:conformsTo MUST include https://w3id.org/cdif/discovery/1.0.",
         "mappingType": "new",
-        "sourceClass": "InstanceVariable",
-        "targetPackage": "Classes",
-        "targetClass": "VariableMeasured",
-        "definition": "schema:variableMeasured / cdifVariableMeasured - description of what the dataset measures (e.g. temperature, pressure). In Discovery this is a flat description; in DataStructure it gains role and structural references.",
+        "targetPackage": "Anchors",
+        "targetClass": "CatalogRecord",
+        "definition": "Stub of CDIFCore::CatalogRecord. For the discovery profile, dcterms:conformsTo MUST include https://w3id.org/cdif/discovery/1.0.",
+        "attribute": [
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/discovery/1.0 for the discovery profile.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "DefinedTerm stub - cdifCore::DefinedTerm. Used by schema:measurementTechnique and by VariableMeasured / SpatialExtent attributes that can be either a string or a controlled-vocabulary term. Cross-profile registry links to /CDIFCore/Classes/DefinedTerm.html.",
+        "mappingType": "new",
+        "targetPackage": "Anchors",
+        "targetClass": "DefinedTerm",
+        "definition": "Stub of CDIFCore::DefinedTerm - a schema.org DefinedTerm typically backed by a SKOS Concept. Used here as the controlled-vocabulary alternative to plain strings on measurementTechnique etc.",
         "attribute": [
           {
             "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI for this variable description.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the term.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "VariableMeasured - the schema:PropertyValue form of a variable described by the dataset. cdifDiscovery's lightweight variable shape (cdifDataDescription adds cdi:InstanceVariable richness on top).",
+        "mappingType": "new",
+        "sourceClass": "Variable",
+        "targetPackage": "Classes",
+        "targetClass": "VariableMeasured",
+        "definition": "A measured variable described as a schema:PropertyValue. The lightweight discovery-level shape: name, description, optional measurement technique. Richer per-variable structure (physical data types, value domains, ...) is added by cdifDataDescription.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the variable.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "name",
             "dataType": "String",
-            "definition": "schema:name - variable name (short, machine-friendly).",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "definition": "schema:name - label associated with the variable in the dataset.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "description",
             "dataType": "String",
-            "definition": "schema:description - human-readable description of the variable.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "propertyId",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:propertyID - URI of the property concept (e.g. an ontology term).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "unitText",
-            "dataType": "String",
-            "definition": "schema:unitText - unit of measure as text. Maps to DDI-CDI cdi:simpleUnitOfMeasure (string).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "unitCode",
-            "dataType": "DefinedTerm",
-            "definition": "schema:unitCode - URI for the unit (e.g. UCUM, QUDT). For full DDI-CDI fidelity prefer cdi:describedUnitOfMeasure (skos:Concept reference).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "_comment": "Per CDIF profile policy: cdi:describedUnitOfMeasure (originally a DDI-CDI ControlledVocabularyEntry / PairedControlledVocabularyEntry) is implemented here as a skos:Concept reference. The SKOS Concept stub lives in this profile as a target class so the type is locally resolvable; the canonical concept definition lives in the CDIFCodelist profile (see field-level-documentation/CDIFCodelist/Classes/Concept.html).",
-            "name": "describedUnitOfMeasure",
-            "dataType": "Concept",
-            "definition": "DDI-CDI cdi:describedUnitOfMeasure - unit expressed as a reference to a skos:Concept in a controlled vocabulary.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "minValue",
-            "dataType": "String",
-            "definition": "schema:minValue - lower value of the measured variable's range.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "maxValue",
-            "dataType": "String",
-            "definition": "schema:maxValue - upper value of the measured variable's range.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ],
-        "sssom": {
-          "subject_label": "DDI-CDI InstanceVariable",
-          "object_label": "CDIF Discovery VariableMeasured (schema:variableMeasured)",
-          "predicate_id": "skos:closeMatch",
-          "confidence": 0.8
-        }
-      },
-      {
-        "_comment": "SpatialExtent. No direct DDI-CDI counterpart; plain new. Carries name + identifier and a polymorphic geo end on AbstractGeometry (point, shape).",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "SpatialExtent",
-        "definition": "schema:spatialCoverage payload - a schema:Place with name and/or a geo (point or shape) describing the geographic extent of the resource.",
-        "attribute": [
-          {
-            "name": "name",
-            "dataType": "String",
-            "definition": "schema:name - place name.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id / schema:identifier - gazetteer URI.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "additionalType",
-            "dataType": "DefinedTerm",
-            "definition": "schema:additionalType - domain-specific type classification(s) for this place.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "definition": "schema:description - free-text description of what the variable measures.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "alternateName",
             "dataType": "String",
-            "definition": "schema:alternateName - alternate or abbreviated name(s) for this place.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "definition": "schema:alternateName - additional human-readable name(s) for the variable.",
+            "multiplicity": {"lower": "0", "upper": "*"}
           }
         ]
       },
       {
-        "_comment": "AbstractGeometry - abstract supertype of GeoCoordinates and GeoShape (union-type-policy: v1.1 generalization). Lets SpatialExtent.geo target a single end instead of one per concrete geometry kind. The JSON instance carries the concrete schema:GeoCoordinates or schema:GeoShape in @type.",
+        "_comment": "SpatialExtent - schema:Place. Geographic extent of the resource content; backed by GeoSPARQL geometry when present (modelled elsewhere; not detailed here).",
         "mappingType": "new",
-        "isAbstract": true,
-        "targetPackage": "Coverage",
-        "targetClass": "AbstractGeometry",
-        "definition": "Abstract supertype for geographic geometry payloads (point coordinates or named/bounded shape). Concrete subclasses: GeoCoordinates, GeoShape.",
-        "attribute": [
-          {
-            "name": "crs",
-            "dataType": "XsdAnyUri",
-            "definition": "geosparql:crs - coordinate reference system URI (defaults to WGS 84 / EPSG:4326 when omitted).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ],
-        "sssom": {
-          "subject_label": "(no direct DDI-CDI source class)",
-          "object_label": "CDIF Discovery AbstractGeometry (polymorphic over schema:GeoCoordinates + schema:GeoShape)",
-          "predicate_id": "skos:closeMatch",
-          "confidence": 0.8,
-          "comment": "Introduced as an abstract parent so SpatialExtent.geo can target one end. Concrete subclasses align with schema.org's GeoCoordinates (point) and GeoShape (box / line / polygon)."
-        }
-      },
-      {
-        "_comment": "schema:GeoCoordinates - a point geometry (lat/lon and optional elevation). Inherits crs from AbstractGeometry.",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "GeoCoordinates",
-        "generalization": [
-          "AbstractGeometry"
-        ],
-        "definition": "schema:GeoCoordinates - a single point expressed as latitude + longitude (and optional elevation). Use GeoShape for bounding boxes, polygons, or lines.",
-        "attribute": [
-          {
-            "name": "latitude",
-            "dataType": "String",
-            "definition": "schema:latitude - decimal degrees, WGS 84 unless overridden by crs.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "longitude",
-            "dataType": "String",
-            "definition": "schema:longitude - decimal degrees, WGS 84 unless overridden by crs.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "elevation",
-            "dataType": "String",
-            "definition": "schema:elevation - elevation above sea level (metres unless overridden).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ]
-      },
-      {
-        "_comment": "schema:GeoShape - a non-point geometry: box, polygon, or line. Inherits crs from AbstractGeometry. Concrete shape carried as WKT in geometry OR one of the schema.org native shape attributes.",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "GeoShape",
-        "generalization": [
-          "AbstractGeometry"
-        ],
-        "definition": "schema:GeoShape - a non-point geometry: box, polygon, or line. May be expressed either as a WKT literal (geometry) or as the schema.org native attributes (box, polygon, line).",
-        "attribute": [
-          {
-            "name": "geometry",
-            "dataType": "String",
-            "definition": "geosparql:asWKT - well-known-text geometry literal (POINT/LINESTRING/POLYGON/...). Preferred over the schema.org native attributes for non-rectangular shapes.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "box",
-            "dataType": "String",
-            "definition": "schema:box - 'minLat minLon maxLat maxLon' bounding box.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "polygon",
-            "dataType": "String",
-            "definition": "schema:polygon - polygon as a space-separated list of lat/lon pairs.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "line",
-            "dataType": "String",
-            "definition": "schema:line - line as a space-separated list of lat/lon pairs.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ]
-      },
-      {
-        "_comment": "TemporalExtent represents the schema:temporalCoverage payload, i.e. a time:ProperInterval (or a simple ISO 8601 string). Carries both the simple string form (startDate/endDate/duration) and the OWL-Time structured forms: named-era bounds (intervalStartedBy/intervalFinishedBy) and numeric-age bounds (hasBeginning/hasEnd -> Instant -> TimePosition).",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "TemporalExtent",
-        "definition": "schema:temporalCoverage payload - the temporal extent of the resource as a time:ProperInterval (named-era or numeric-age bounds) or a simple ISO 8601 interval string.",
-        "attribute": [
-          {
-            "name": "startDate",
-            "dataType": "XsdDate",
-            "definition": "Start of the temporal coverage (simple ISO 8601 form).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "endDate",
-            "dataType": "XsdDate",
-            "definition": "End of the temporal coverage (simple ISO 8601 form).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "duration",
-            "dataType": "String",
-            "definition": "ISO 8601 duration form (e.g. P1Y) when the coverage is expressed as duration.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "description",
-            "dataType": "String",
-            "definition": "schema:description - free-text description of the temporal interval.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "intervalStartedBy",
-            "dataType": "XsdAnyUri",
-            "definition": "time:intervalStartedBy - identifier for a named time ordinal era that is the older bound of the interval (e.g. a geologic age).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "intervalFinishedBy",
-            "dataType": "XsdAnyUri",
-            "definition": "time:intervalFinishedBy - identifier for a named time ordinal era that is the younger bound of the interval.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ],
-        "sssom": {
-          "subject_label": "DDI-CDI DateRange",
-          "object_label": "CDIF Discovery TemporalExtent (schema:temporalCoverage payload)",
-          "predicate_id": "skos:closeMatch",
-          "confidence": 0.85
-        }
-      },
-      {
-        "_comment": "time:Instant - an instant bounding a ProperInterval (numeric-age form). Carries a TimePosition via inTimePosition. From schemaorgProperties/temporalExtent.",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "Instant",
-        "definition": "time:Instant - a temporal instant used as the beginning or end bound of a TemporalExtent (time:ProperInterval).",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "XsdAnyUri",
-            "definition": "@id - identifier for this instant.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "time:TimePosition - a numeric temporal position with a temporal reference system (TRS). From schemaorgProperties/temporalExtent.",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "TimePosition",
-        "definition": "time:TimePosition - a numeric temporal position expressed against a temporal reference system (e.g. millions of years before present).",
-        "attribute": [
-          {
-            "name": "hasTRS",
-            "dataType": "XsdAnyUri",
-            "definition": "time:hasTRS - identifier for the temporal reference system (default: chronometric geologic time).",
-            "multiplicity": { "lower": "1", "upper": "1" }
-          },
-          {
-            "name": "numericPosition",
-            "dataType": "Real",
-            "definition": "time:numericPosition - the numeric position in the temporal reference system.",
-            "multiplicity": { "lower": "1", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "geosparql Geometry (sf SimpleFeature) - WKT geometry attached to a SpatialExtent via geosparql:hasGeometry, distinct from the schema:geo point/box/line forms (AbstractGeometry). From schemaorgProperties/spatialExtent.",
-        "mappingType": "new",
-        "targetPackage": "Coverage",
-        "targetClass": "Geometry",
-        "definition": "geosparql Geometry (OGC Simple Feature) - an exact geometry for the spatial extent, expressed as a WKT literal.",
-        "attribute": [
-          {
-            "name": "asWKT",
-            "dataType": "String",
-            "definition": "geosparql:asWKT - a WKT geometry literal, e.g. 'POINT(-76 -18)'.",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          },
-          {
-            "name": "crs",
-            "dataType": "XsdAnyUri",
-            "definition": "geosparql:crs - identifier for the coordinate reference system (e.g. CRS84).",
-            "multiplicity": { "lower": "0", "upper": "1" }
-          }
-        ]
-      },
-      {
-        "_comment": "dqv:QualityMeasurement (DQV). No direct DDI-CDI counterpart at this level (Statistic is closer to actual statistical results than quality assertions).",
-        "mappingType": "new",
-        "targetPackage": "Quality",
-        "targetClass": "QualityMeasurement",
-        "definition": "dqv:QualityMeasurement - a single quality measurement reported on the resource (e.g. completeness, accuracy, timeliness) per the W3C Data Quality Vocabulary.",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - URI for this measurement.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "isMeasurementOf",
-            "dataType": "DefinedTerm",
-            "definition": "dqv:isMeasurementOf - the quality measure being reported, given by name, by @id reference, or as a schema:DefinedTerm (string and @id-reference are JSON shorthands for the DefinedTerm).",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "value",
-            "dataType": "DefinedTerm",
-            "definition": "dqv:value - the reported result of the quality measure, either as a string or a schema:DefinedTerm from a vocabulary (string is a JSON shorthand for the DefinedTerm).",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "unit",
-            "dataType": "XsdAnyUri",
-            "definition": "Optional unit of measure for the value.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ]
-      },
-      {
-        "_comment": "skos:Concept stub. Local target class so attributes typed as 'Concept' resolve inside this profile. The canonical SKOS Concept definition (with full alt/hidden labels, scopeNote, history/change notes, etc.) lives in the CDIFCodelist profile; cross-profile HTML links point readers there. DDI-CDI's PairedControlledVocabularyEntry / ControlledVocabularyEntry are implemented across CDIF profiles as references to skos:Concept.",
-        "mappingType": "new",
-        "sourceClass": "ControlledVocabularyEntry",
         "targetPackage": "Classes",
-        "targetClass": "Concept",
-        "definition": "skos:Concept (stub). A reference to a controlled-vocabulary term defined in a SKOS ConceptScheme; full definition in CDIFCodelist::Concept.",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - resolvable URI for this concept.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "prefLabel",
-            "dataType": "String",
-            "definition": "skos:prefLabel - preferred lexical label.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "inScheme",
-            "dataType": "XsdAnyUri",
-            "definition": "skos:inScheme - URI of the owning ConceptScheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ],
-        "sssom": {
-          "subject_label": "DDI-CDI ControlledVocabularyEntry / PairedControlledVocabularyEntry",
-          "object_label": "CDIF profile skos:Concept reference (skos:Concept)",
-          "predicate_id": "skos:closeMatch",
-          "confidence": 0.85,
-          "comment": "CDIF profiles flatten the DDI-CDI scheme+term DataType into a plain skos:Concept reference. The Concept definition itself lives in CDIFCodelist."
-        }
-      },
-      {
-        "_comment": "Identifier (schema:PropertyValue) stub. Local target class so attributes typed as 'Identifier' resolve inside this profile; the canonical definition lives in the CDIFCore profile.",
-        "mappingType": "new",
-        "targetPackage": "Support",
-        "targetClass": "Identifier",
-        "definition": "schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.",
-        "attribute": [
-          {
-            "name": "propertyId",
-            "dataType": "String",
-            "definition": "schema:propertyID - the identifier scheme (e.g. DOI, Handle, ROR).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "value",
-            "dataType": "String",
-            "definition": "schema:value - the identifier value.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "url",
-            "dataType": "XsdAnyUri",
-            "definition": "schema:url - resolvable form of the identifier.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          }
-        ]
-      },
-      {
-        "_comment": "DefinedTerm (schema:DefinedTerm) stub. Local target class so attributes typed as 'DefinedTerm' resolve inside this profile; the canonical definition lives in the CDIFCore profile.",
-        "mappingType": "new",
-        "targetPackage": "Support",
-        "targetClass": "DefinedTerm",
-        "definition": "schema:DefinedTerm (stub). A controlled-vocabulary term with name, code, and scheme URI. Full definition in CDIFCore::DefinedTerm.",
+        "targetClass": "SpatialExtent",
+        "definition": "Geographic extent of the resource content (schema:Place). Carries a place name, optional identifier, and optional geometry (geosparql:hasGeometry).",
         "attribute": [
           {
             "name": "identifier",
             "dataType": "XsdAnyUri",
-            "definition": "@id / schema:identifier - URI for the term.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "@id / schema:identifier - URI for this place (e.g. ROR identifier, gazetteer entry).",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "name",
             "dataType": "String",
-            "definition": "schema:name - the term's preferred label.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "definition": "schema:name - place name. May also be a DefinedTerm from a gazetteer.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "TemporalExtent - temporal extent of resource content. Carries start / end / a time interval string.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "TemporalExtent",
+        "definition": "Temporal extent of resource content - the period of time the resource covers.",
+        "attribute": [
+          {
+            "name": "startDate",
+            "dataType": "XsdDate",
+            "definition": "Start of the temporal coverage.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
-            "name": "termCode",
-            "dataType": "String",
-            "definition": "schema:termCode - code value within the term set.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
-          },
+            "name": "endDate",
+            "dataType": "XsdDate",
+            "definition": "End of the temporal coverage.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "QualityMeasure - W3C DQV quality measurement reported for the resource. Each entry pairs a metric with a measured value.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "QualityMeasure",
+        "definition": "A W3C DQV (Data Quality Vocabulary) quality measurement: a measured value for a defined quality metric.",
+        "attribute": [
           {
-            "name": "inDefinedTermSet",
+            "name": "metric",
             "dataType": "XsdAnyUri",
-            "definition": "schema:inDefinedTermSet - URI of the controlled vocabulary.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "dqv:isMeasurementOf - URI of the dqv:Metric being measured.",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          },
+          {
+            "name": "value",
+            "dataType": "String",
+            "definition": "dqv:value - the measured value (string for generality; concrete type varies by metric).",
+            "multiplicity": {"lower": "1", "upper": "1"}
           }
         ]
       }
     ],
     "association": [
       {
+        "_comment": "Dataset -> CatalogRecord via schema:subjectOf. Attachment point for the cdif:discovery/1.0 conformance declaration.",
+        "targetAssociationName": "Dataset_subjectOf_CatalogRecord",
+        "subjectClass": "Dataset",
+        "objectClass": "CatalogRecord",
+        "definition": "schema:subjectOf - the catalog record describing this dataset's metadata. For the discovery profile, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/discovery/1.0.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "Dataset -> DefinedTerm via schema:measurementTechnique (or plain string; UML shows the typed branch).",
+        "targetAssociationName": "Dataset_measurementTechnique_DefinedTerm",
+        "subjectClass": "Dataset",
+        "objectClass": "DefinedTerm",
+        "definition": "schema:measurementTechnique - technique / technology / methodology used. May be a plain string or a DefinedTerm reference (this edge models the DefinedTerm branch).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "Dataset -> VariableMeasured via schema:variableMeasured.",
         "targetAssociationName": "Dataset_variableMeasured_VariableMeasured",
         "subjectClass": "Dataset",
         "objectClass": "VariableMeasured",
-        "definition": "schema:variableMeasured - variables described by this dataset.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "definition": "schema:variableMeasured - the variables described by this dataset.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
+        "_comment": "Dataset -> SpatialExtent via schema:spatialCoverage.",
         "targetAssociationName": "Dataset_spatialCoverage_SpatialExtent",
         "subjectClass": "Dataset",
         "objectClass": "SpatialExtent",
-        "definition": "schema:spatialCoverage - geographic extent of resource content.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "definition": "schema:spatialCoverage - geographic extent of the dataset's content.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "_comment": "schema:geo - polymorphic geo end on AbstractGeometry. Replaces flat geometry/box string attributes that previously lived on SpatialExtent. JSON instance carries the concrete schema:GeoCoordinates or schema:GeoShape in @type.",
-        "targetAssociationName": "SpatialExtent_geo_AbstractGeometry",
-        "subjectClass": "SpatialExtent",
-        "objectClass": "AbstractGeometry",
-        "definition": "schema:geo - the geometry of this spatial extent. AbstractGeometry admits GeoCoordinates (point) or GeoShape (box, polygon, line).",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
+        "_comment": "Dataset -> TemporalExtent via schema:temporalCoverage.",
         "targetAssociationName": "Dataset_temporalCoverage_TemporalExtent",
         "subjectClass": "Dataset",
         "objectClass": "TemporalExtent",
-        "definition": "schema:temporalCoverage - temporal extent of resource content.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "definition": "schema:temporalCoverage - period of time the dataset covers.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "targetAssociationName": "Dataset_hasQualityMeasurement_QualityMeasurement",
+        "_comment": "Dataset -> QualityMeasure via dqv:hasQualityMeasurement.",
+        "targetAssociationName": "Dataset_hasQualityMeasurement_QualityMeasure",
         "subjectClass": "Dataset",
-        "objectClass": "QualityMeasurement",
-        "definition": "dqv:hasQualityMeasurement - quality measurements reported on the resource.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "objectClass": "QualityMeasure",
+        "definition": "dqv:hasQualityMeasurement - quality measurements reported about the dataset.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "targetAssociationName": "SpatialExtent_hasGeometry_Geometry",
-        "subjectClass": "SpatialExtent",
-        "objectClass": "Geometry",
-        "definition": "geosparql:hasGeometry - an exact (WKT) geometry for this spatial extent.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "TemporalExtent_hasBeginning_Instant",
-        "subjectClass": "TemporalExtent",
-        "objectClass": "Instant",
-        "definition": "time:hasBeginning - the beginning instant of the interval (numeric-age form).",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "TemporalExtent_hasEnd_Instant",
-        "subjectClass": "TemporalExtent",
-        "objectClass": "Instant",
-        "definition": "time:hasEnd - the end instant of the interval (numeric-age form).",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "targetAssociationName": "Instant_inTimePosition_TimePosition",
-        "subjectClass": "Instant",
-        "objectClass": "TimePosition",
-        "definition": "time:inTimePosition - the numeric temporal position of this instant.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
+        "_comment": "VariableMeasured -> DefinedTerm via schema:measurementTechnique (per-variable measurement technique).",
+        "targetAssociationName": "VariableMeasured_measurementTechnique_DefinedTerm",
+        "subjectClass": "VariableMeasured",
+        "objectClass": "DefinedTerm",
+        "definition": "schema:measurementTechnique - measurement technique for this specific variable.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       }
     ]
   }

@@ -1,0 +1,57 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF BasicDiscovery COMPOSITE profile UML. Holds no local class declarations beyond a placeholder anchor - it composes the two upstream profile-module configs (cdifCore + the tight cdifDiscovery) and lets the XMI pipeline merge their class graphs. Mirrors the JSON-Schema allOf at _sources/profiles/cdifCompositeProfile/BasicDiscovery/schema.yaml.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF BasicDiscovery Composite Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "BasicDiscovery",
+      "modelTitle": "UML Model for the CDIF BasicDiscovery Composite Profile",
+      "subTitle": "Composes CDIFCore + CDIFDiscovery",
+      "majorVersion": "1",
+      "minorVersion": "0",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/discovery/1.0/composite/xmi/",
+      "definition": "BasicDiscovery is the smallest CDIF composite profile that produces a discovery-ready dataset metadata record. Assembled from two building-block profile modules: cdifCore (the foundational schema:Dataset shape - identifiers, distribution, agents, license, ...) and cdifDiscovery (measurementTechnique, variableMeasured, spatialCoverage, temporalCoverage, hasQualityMeasurement). A metadata record validating against this composite must declare conformance to https://w3id.org/cdif/core/1.0 and https://w3id.org/cdif/discovery/1.0.",
+      "mainPackage": "BasicDiscovery",
+      "mainPackageDefinition": "Composite profile: CDIFCore + CDIFDiscovery assembled.",
+      "dataTypesPackage": "BasicDiscovery",
+      "composes": [
+        "ddi-cdi2cdifCore_mapping.json",
+        "ddi-cdi2cdifDiscovery_mapping.json"
+      ]
+    }
+  },
+  "package": [
+    {
+      "name": "Composition",
+      "parent": "BasicDiscovery",
+      "definition": "Local placeholder package. The composite has no classes of its own beyond what its two composed modules contribute."
+    }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "Placeholder anchor for composite-level constraints. Carries no real attributes; the composite's content comes entirely from the two composed modules' classes.",
+        "mappingType": "new",
+        "targetPackage": "Composition",
+        "targetClass": "CompositeProfile",
+        "isAbstract": true,
+        "definition": "Placeholder for the BasicDiscovery composite. All concrete classes come from the composed modules (CDIFCore, CDIFDiscovery) - this class has no instances.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "Placeholder.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmi:XMI xmlns:StandardProfile="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+   <uml:Model xmi:id="CDIFDiscovery.CDIFDiscovery" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CDIFDiscovery">
+      <ownedComment xmi:id="CDIFDiscovery.CDIFDiscovery-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CDIFDiscovery-ownedComment" xmi:type="uml:Comment">
+         <annotatedElement xmi:idref="CDIFDiscovery.CDIFDiscovery"/>
+         <body>CDIF Discovery profile module - the discovery-oriented extension properties added on top of a cdifCore Dataset: schema:measurementTechnique (string or DefinedTerm), schema:variableMeasured (VariableMeasured / PropertyValue), schema:spatialCoverage (SpatialExtent / Place), schema:temporalCoverage (TemporalExtent), dqv:hasQualityMeasurement (QualityMeasure). The catalog record (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/discovery/1.0.</body>
+      </ownedComment>
+      <name>CDIFDiscovery</name>
+      <URI>https://w3id.org/cdif/discovery/1.0/xmi/</URI>
+      <packagedElement xmi:id="CDIFDiscovery.ModelIdentification" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification" xmi:type="uml:DataType">
+         <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification"/>
+            <body>Identification metadata for this profile model: constant, read-only attributes carrying the model's prefix, version, title, language and URI.</body>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="CDIFDiscovery.ModelIdentification-prefix" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-prefix" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-prefix-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-prefix-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification-prefix"/>
+               <body>Namespace prefix of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDiscovery.ModelIdentification-prefix-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-prefix-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDiscovery.ModelIdentification-prefix-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-prefix-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>prefix</name>
+            <defaultValue xmi:id="CDIFDiscovery.ModelIdentification-prefix-defaultValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-prefix-defaultValue" xmi:type="uml:LiteralString">
+               <value>cdif</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDiscovery.ModelIdentification-majorVersion" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-majorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-majorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-majorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification-majorVersion"/>
+               <body>Major version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDiscovery.ModelIdentification-majorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-majorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDiscovery.ModelIdentification-majorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-majorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>majorVersion</name>
+            <defaultValue xmi:id="CDIFDiscovery.ModelIdentification-majorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-majorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDiscovery.ModelIdentification-minorVersion" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-minorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-minorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-minorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification-minorVersion"/>
+               <body>Minor version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDiscovery.ModelIdentification-minorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-minorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDiscovery.ModelIdentification-minorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-minorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>minorVersion</name>
+            <defaultValue xmi:id="CDIFDiscovery.ModelIdentification-minorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-minorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>0</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDiscovery.ModelIdentification-title" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-title" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-title-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-title-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification-title"/>
+               <body>Title of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDiscovery.ModelIdentification-title-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-title-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDiscovery.ModelIdentification-title-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-title-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>title</name>
+            <defaultValue xmi:id="CDIFDiscovery.ModelIdentification-title-defaultValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-title-defaultValue" xmi:type="uml:LiteralString">
+               <value>UML Model for the CDIF Discovery Profile</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDiscovery.ModelIdentification-language" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-language" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-language-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-language-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification-language"/>
+               <body>Primary language of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDiscovery.ModelIdentification-language-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-language-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDiscovery.ModelIdentification-language-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-language-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>language</name>
+            <defaultValue xmi:id="CDIFDiscovery.ModelIdentification-language-defaultValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-language-defaultValue" xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDiscovery.ModelIdentification-uri" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-uri" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDiscovery.ModelIdentification-uri-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-uri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.ModelIdentification-uri"/>
+               <body>Namespace URI of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDiscovery.ModelIdentification-uri-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-uri-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDiscovery.ModelIdentification-uri-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-uri-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>uri</name>
+            <defaultValue xmi:id="CDIFDiscovery.ModelIdentification-uri-defaultValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#ModelIdentification-uri-defaultValue" xmi:type="uml:LiteralString">
+               <value>https://w3id.org/cdif/discovery/1.0/xmi/</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="CDIFDiscovery.CDIFDiscoveryPackage" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CDIFDiscovery-package" xmi:type="uml:Package">
+         <ownedComment xmi:id="CDIFDiscovery.CDIFDiscoveryPackage-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CDIFDiscovery-package-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFDiscovery.CDIFDiscoveryPackage"/>
+            <body>Discovery extension properties for a CDIF Dataset.</body>
+         </ownedComment>
+         <name>CDIFDiscovery</name>
+         <packagedElement xmi:id="CDIFDiscovery.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#XsdAnyUri" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFDiscovery.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               <body>Primitive data type "anyURI" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents a Uniform Resource Identifier Reference (URI). An "anyURI" value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI.</body>
+            </ownedComment>
+            <name>XsdAnyUri</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.XsdDate" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#XsdDate" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFDiscovery.XsdDate-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#XsdDate-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.XsdDate"/>
+               <body>Primitive data type "date" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of date consists of top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day (in each timezone), i.e. '00:00:00', up to but not including '24:00:00' (which is identical with '00:00:00' of the next day). For nontimezoned values, the top-open intervals disjointly cover the nontimezoned timeline, one per day. For timezoned values, the intervals begin at every minute and therefore overlap." For details see https://www.w3.org/TR/xmlschema-2/#date.</body>
+            </ownedComment>
+            <name>XsdDate</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Classes" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Classes-package" xmi:type="uml:Package">
+            <ownedComment xmi:id="CDIFDiscovery.Classes-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Classes-package-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDiscovery.Classes"/>
+               <body>Target classes of the CDIF profile.</body>
+            </ownedComment>
+            <name>Classes</name>
+            <packagedElement xmi:id="CDIFDiscovery.Dataset" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.Dataset-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.Dataset"/>
+                  <body>Stub of schema:Dataset (full definition in CDIFCore). The discovery profile adds measurementTechnique / variableMeasured / spatialCoverage / temporalCoverage / hasQualityMeasurement to this Dataset.</body>
+               </ownedComment>
+               <name>Dataset</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-identifier"/>
+                     <body>@id - resolvable URI for the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-subjectOf" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-subjectOf" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-subjectOf-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-subjectOf"/>
+                     <body>schema:subjectOf - the catalog record describing this dataset's metadata. For the discovery profile, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/discovery/1.0.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-subjectOf-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-subjectOf-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>subjectOf</name>
+                  <type xmi:idref="CDIFDiscovery.CatalogRecord"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_subjectOf_CatalogRecord"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-measurementTechnique" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-measurementTechnique" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-measurementTechnique-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-measurementTechnique"/>
+                     <body>schema:measurementTechnique - technique / technology / methodology used. May be a plain string or a DefinedTerm reference (this edge models the DefinedTerm branch).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-measurementTechnique-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>measurementTechnique</name>
+                  <type xmi:idref="CDIFDiscovery.DefinedTerm"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_measurementTechnique_DefinedTerm"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-variableMeasured" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-variableMeasured"/>
+                     <body>schema:variableMeasured - the variables described by this dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-variableMeasured-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-variableMeasured-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>variableMeasured</name>
+                  <type xmi:idref="CDIFDiscovery.VariableMeasured"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_variableMeasured_VariableMeasured"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-spatialCoverage" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-spatialCoverage" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-spatialCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-spatialCoverage-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-spatialCoverage"/>
+                     <body>schema:spatialCoverage - geographic extent of the dataset's content.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-spatialCoverage-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-spatialCoverage-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-spatialCoverage-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-spatialCoverage-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>spatialCoverage</name>
+                  <type xmi:idref="CDIFDiscovery.SpatialExtent"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_spatialCoverage_SpatialExtent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-temporalCoverage" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-temporalCoverage" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-temporalCoverage-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-temporalCoverage-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-temporalCoverage"/>
+                     <body>schema:temporalCoverage - period of time the dataset covers.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-temporalCoverage-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-temporalCoverage-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-temporalCoverage-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-temporalCoverage-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>temporalCoverage</name>
+                  <type xmi:idref="CDIFDiscovery.TemporalExtent"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_temporalCoverage_TemporalExtent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.Dataset-hasQualityMeasurement" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-hasQualityMeasurement" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDiscovery.Dataset-hasQualityMeasurement-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-hasQualityMeasurement-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.Dataset-hasQualityMeasurement"/>
+                     <body>dqv:hasQualityMeasurement - quality measurements reported about the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.Dataset-hasQualityMeasurement-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-hasQualityMeasurement-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.Dataset-hasQualityMeasurement-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset-hasQualityMeasurement-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasQualityMeasurement</name>
+                  <type xmi:idref="CDIFDiscovery.QualityMeasure"/>
+                  <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.CatalogRecord" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.CatalogRecord"/>
+                  <body>Stub of CDIFCore::CatalogRecord. For the discovery profile, dcterms:conformsTo MUST include https://w3id.org/cdif/discovery/1.0.</body>
+               </ownedComment>
+               <name>CatalogRecord</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.CatalogRecord-conformsTo"/>
+                     <body>dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/discovery/1.0 for the discovery profile.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.CatalogRecord-conformsTo-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#CatalogRecord-conformsTo-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>conformsTo</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.DefinedTerm" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DefinedTerm" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.DefinedTerm"/>
+                  <body>Stub of CDIFCore::DefinedTerm - a schema.org DefinedTerm typically backed by a SKOS Concept. Used here as the controlled-vocabulary alternative to plain strings on measurementTechnique etc.</body>
+               </ownedComment>
+               <name>DefinedTerm</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.DefinedTerm-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DefinedTerm-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.DefinedTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DefinedTerm-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.DefinedTerm-identifier"/>
+                     <body>@id - resolvable URI for the term.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.DefinedTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DefinedTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.DefinedTerm-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#DefinedTerm-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.VariableMeasured" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured"/>
+                  <body>A measured variable described as a schema:PropertyValue. The lightweight discovery-level shape: name, description, optional measurement technique. Richer per-variable structure (physical data types, value domains, ...) is added by cdifDataDescription.</body>
+               </ownedComment>
+               <name>VariableMeasured</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-identifier"/>
+                     <body>@id - resolvable URI for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-name" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-name-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-name"/>
+                     <body>schema:name - label associated with the variable in the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-name-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-name-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-description" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-description-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-description"/>
+                     <body>schema:description - free-text description of what the variable measures.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-description-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-description-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-alternateName" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-alternateName" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-alternateName-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-alternateName-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-alternateName"/>
+                     <body>schema:alternateName - additional human-readable name(s) for the variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-alternateName-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-alternateName-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-alternateName-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-alternateName-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>alternateName</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.VariableMeasured-measurementTechnique" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-measurementTechnique" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.VariableMeasured-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-measurementTechnique-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.VariableMeasured-measurementTechnique"/>
+                     <body>schema:measurementTechnique - measurement technique for this specific variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.VariableMeasured-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.VariableMeasured-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured-measurementTechnique-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>measurementTechnique</name>
+                  <type xmi:idref="CDIFDiscovery.DefinedTerm"/>
+                  <association xmi:idref="CDIFDiscovery.VariableMeasured_measurementTechnique_DefinedTerm"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.SpatialExtent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent"/>
+                  <body>Geographic extent of the resource content (schema:Place). Carries a place name, optional identifier, and optional geometry (geosparql:hasGeometry).</body>
+               </ownedComment>
+               <name>SpatialExtent</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.SpatialExtent-identifier" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent-identifier"/>
+                     <body>@id / schema:identifier - URI for this place (e.g. ROR identifier, gazetteer entry).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.SpatialExtent-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.SpatialExtent-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.SpatialExtent-name" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.SpatialExtent-name-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.SpatialExtent-name"/>
+                     <body>schema:name - place name. May also be a DefinedTerm from a gazetteer.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.SpatialExtent-name-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.SpatialExtent-name-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#SpatialExtent-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.TemporalExtent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent"/>
+                  <body>Temporal extent of resource content - the period of time the resource covers.</body>
+               </ownedComment>
+               <name>TemporalExtent</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-startDate" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-startDate-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-startDate"/>
+                     <body>Start of the temporal coverage.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-startDate-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-startDate-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-startDate-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>startDate</name>
+                  <type xmi:idref="CDIFDiscovery.XsdDate"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.TemporalExtent-endDate" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.TemporalExtent-endDate-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.TemporalExtent-endDate"/>
+                     <body>End of the temporal coverage.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.TemporalExtent-endDate-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.TemporalExtent-endDate-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#TemporalExtent-endDate-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>endDate</name>
+                  <type xmi:idref="CDIFDiscovery.XsdDate"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDiscovery.QualityMeasure" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure"/>
+                  <body>A W3C DQV (Data Quality Vocabulary) quality measurement: a measured value for a defined quality metric.</body>
+               </ownedComment>
+               <name>QualityMeasure</name>
+               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasure-metric" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-metric-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure-metric"/>
+                     <body>dqv:isMeasurementOf - URI of the dqv:Metric being measured.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasure-metric-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.QualityMeasure-metric-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-metric-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>metric</name>
+                  <type xmi:idref="CDIFDiscovery.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDiscovery.QualityMeasure-value" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDiscovery.QualityMeasure-value-ownedComment" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDiscovery.QualityMeasure-value"/>
+                     <body>dqv:value - the measured value (string for generality; concrete type varies by metric).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDiscovery.QualityMeasure-value-lowerValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDiscovery.QualityMeasure-value-upperValue" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#QualityMeasure-value-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>value</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_subjectOf_CatalogRecord" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_subjectOf_CatalogRecord" xmi:type="uml:Association">
+            <name>Dataset_subjectOf_CatalogRecord</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-subjectOf"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.CatalogRecord"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_subjectOf_CatalogRecord"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_subjectOf_CatalogRecord-CatalogRecordEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_measurementTechnique_DefinedTerm" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_measurementTechnique_DefinedTerm" xmi:type="uml:Association">
+            <name>Dataset_measurementTechnique_DefinedTerm</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-measurementTechnique"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.DefinedTerm"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_measurementTechnique_DefinedTerm"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_measurementTechnique_DefinedTerm-DefinedTermEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_variableMeasured_VariableMeasured" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_variableMeasured_VariableMeasured" xmi:type="uml:Association">
+            <name>Dataset_variableMeasured_VariableMeasured</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-variableMeasured"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.VariableMeasured"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_variableMeasured_VariableMeasured"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_variableMeasured_VariableMeasured-VariableMeasuredEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_spatialCoverage_SpatialExtent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_spatialCoverage_SpatialExtent" xmi:type="uml:Association">
+            <name>Dataset_spatialCoverage_SpatialExtent</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-spatialCoverage"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.SpatialExtent"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_spatialCoverage_SpatialExtent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_spatialCoverage_SpatialExtent-SpatialExtentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_temporalCoverage_TemporalExtent" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_temporalCoverage_TemporalExtent" xmi:type="uml:Association">
+            <name>Dataset_temporalCoverage_TemporalExtent</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-temporalCoverage"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.TemporalExtent"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_temporalCoverage_TemporalExtent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_hasQualityMeasurement_QualityMeasure" xmi:type="uml:Association">
+            <name>Dataset_hasQualityMeasurement_QualityMeasure</name>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset-hasQualityMeasurement"/>
+            <ownedEnd xmi:id="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.QualityMeasure"/>
+               <association xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDiscovery.VariableMeasured_measurementTechnique_DefinedTerm" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured_measurementTechnique_DefinedTerm" xmi:type="uml:Association">
+            <name>VariableMeasured_measurementTechnique_DefinedTerm</name>
+            <memberEnd xmi:idref="CDIFDiscovery.VariableMeasured-measurementTechnique"/>
+            <ownedEnd xmi:id="CDIFDiscovery.VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/discovery/1.0/xmi/#VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDiscovery.DefinedTerm"/>
+               <association xmi:idref="CDIFDiscovery.VariableMeasured_measurementTechnique_DefinedTerm"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDiscovery.VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd"/>
+         </packagedElement>
+      </packagedElement>
+   </uml:Model>
+</xmi:XMI>
