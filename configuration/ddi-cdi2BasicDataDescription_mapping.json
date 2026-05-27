@@ -1,0 +1,57 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF BasicDataDescription COMPOSITE profile UML. This config holds no local class declarations; it just composes the constituent profile-module configs (cdifCore + cdifDiscovery + cdifDataDescription). The result mirrors the JSON-Schema allOf at _sources/profiles/cdifCompositeProfile/BasicDataDescription/schema.yaml. Patterns used in the module configs (abstract unions for hasPhysicalMapping / physical-dataset co-typing, anchor stubs with conformsTo annotations) propagate through composes so the composite diagram is consistent with the modules.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF BasicDataDescription Composite Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "BasicDataDescription",
+      "modelTitle": "UML Model for the CDIF BasicDataDescription Composite Profile",
+      "subTitle": "Composes CDIFCore + cdifDiscovery + CDIFDataDescription",
+      "majorVersion": "1",
+      "minorVersion": "0",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/data_description/1.0/composite/xmi/",
+      "definition": "BasicDataDescription is a CDIF composite profile assembled from three building-block profile modules: cdifCore (the foundational schema:Dataset shape), cdifDiscovery (measurementTechnique, variableMeasured, spatialCoverage, temporalCoverage, hasQualityMeasurement) and cdifDataDescription (variable-level physical types, primary key, statistics, physical mappings on distributions). A metadata record validating against this composite must declare conformance to https://w3id.org/cdif/core/1.0, https://w3id.org/cdif/discovery/1.0, and https://w3id.org/cdif/data_description/1.0.",
+      "mainPackage": "BasicDataDescription",
+      "mainPackageDefinition": "Composite profile: CDIFCore + cdifDiscovery + CDIFDataDescription assembled.",
+      "dataTypesPackage": "BasicDataDescription",
+      "composes": [
+        "ddi-cdi2cdifDiscovery_mapping.json",
+        "ddi-cdi2cdifDataDescription_mapping.json"
+      ]
+    }
+  },
+  "package": [
+    {
+      "name": "Composition",
+      "parent": "BasicDataDescription",
+      "definition": "Local placeholder package. The composite has no classes of its own beyond what its three composed modules contribute; this package exists so the UML model has at least one non-empty parent for any composite-level constraints added later."
+    }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "Placeholder anchor for composite-level constraints. Carries no real attributes - the composite's content comes entirely from the three composed modules' classes. Will likely be removed when composite-level SHACL / cross-module constraints are explicit.",
+        "mappingType": "new",
+        "targetPackage": "Composition",
+        "targetClass": "CompositeProfile",
+        "isAbstract": true,
+        "definition": "Placeholder for the BasicDataDescription composite. All concrete classes come from the composed modules (CDIFCore, cdifDiscovery, CDIFDataDescription) - this class has no instances.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "Placeholder.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      }
+    ]
+  }
+}
