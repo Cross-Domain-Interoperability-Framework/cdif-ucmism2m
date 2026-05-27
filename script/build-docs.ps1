@@ -45,7 +45,7 @@ $profiles = @(
     @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist";                  kind = "module" },
     @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore";                      kind = "module" },
     @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "BasicDiscovery";                kind = "composite" },
-    @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "BasicDataDescription";          kind = "composite" },
+    @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription";           kind = "module" },
     @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "DataDescriptionWithStructure";  kind = "composite" },
     @{ slug = "cdifArchiveDistribution"; config = "ddi-cdi2cdifArchiveDistribution_mapping.json"; umlName = "CDIFArchiveDistribution";   kind = "module" },
     @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance";                kind = "module" }

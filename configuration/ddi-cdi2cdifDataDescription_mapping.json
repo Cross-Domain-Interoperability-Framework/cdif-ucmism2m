@@ -10,7 +10,7 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "BasicDataDescription",
+      "acronym": "CDIFDataDescription",
       "modelTitle": "UML Model for the CDIF Data Description Profile",
       "subTitle": "Variable-level physical data types, primary keys, statistics, physical mappings on distributions",
       "majorVersion": "1",
@@ -18,40 +18,40 @@
       "language": "en",
       "uri": "https://w3id.org/cdif/data_description/1.0/xmi/",
       "definition": "CDIF Data Description profile module. On any Dataset whose catalog record declares conformance to https://w3id.org/cdif/data_description/1.0, this profile adds: (a) cdif:hasPrimaryKey on the Dataset, (b) cdif:statistics on the Dataset, (c) richer InstanceVariable shape (cdif:physicalDataType required, plus optional cdi:takesSubstantiveValuesFrom / cdi:takesSentinelValuesFrom value-domains), and (d) physical mapping on schema:distribution items - cdif:hasPhysicalMapping (any of PhysicalMapping / TextMapping / LocatorMapping) on DataDownload and on WebAPI's potentialAction.result, plus cdi:characterSet and cdi:fingerprint (DataFingerprint). A DataDownload MAY be co-typed cdi:TabularTextDataSet or cdi:StructuredDataSet.",
-      "mainPackage": "BasicDataDescription",
+      "mainPackage": "CDIFDataDescription",
       "mainPackageDefinition": "Data Description profile additions: variable-level physical types, primary keys, statistics, distribution-level physical mappings.",
-      "dataTypesPackage": "BasicDataDescription"
+      "dataTypesPackage": "CDIFDataDescription"
     }
   },
   "package": [
     {
       "name": "Variables",
-      "parent": "BasicDataDescription",
+      "parent": "CDIFDataDescription",
       "definition": "Variable description: cdi:InstanceVariable with its physical data type and value domains."
     },
     {
       "name": "Distribution",
-      "parent": "BasicDataDescription",
+      "parent": "CDIFDataDescription",
       "definition": "Distribution-level additions: physical mapping family (AbstractMapping with PhysicalMapping / TextMapping / LocatorMapping subtypes), physical dataset family (AbstractDataSet with TabularTextDataSet / StructuredDataSet subtypes), and the DataFingerprint datatype."
     },
     {
       "name": "Keys",
-      "parent": "BasicDataDescription",
+      "parent": "CDIFDataDescription",
       "definition": "cdif:hasPrimaryKey: PrimaryKey + PrimaryKeyComponent."
     },
     {
       "name": "Statistics",
-      "parent": "BasicDataDescription",
+      "parent": "CDIFDataDescription",
       "definition": "cdif:statistics: Statistic / Statistics / StatisticsCollection / CategoryStatistics / Category."
     },
     {
       "name": "ValueDomains",
-      "parent": "BasicDataDescription",
+      "parent": "CDIFDataDescription",
       "definition": "SubstantiveValueDomain and SentinelValueDomain (referenced from InstanceVariable's takesSubstantiveValuesFrom / takesSentinelValuesFrom)."
     },
     {
       "name": "Anchors",
-      "parent": "BasicDataDescription",
+      "parent": "CDIFDataDescription",
       "definition": "Stub re-declarations of CDIFCore classes the profile attaches to (Dataset / CatalogRecord / DataDownload / WebAPI / ActionResult). Full definitions live in CDIFCore; these stubs let the diagram render attachment edges without dragging the entire CDIFCore graph in."
     }
   ],

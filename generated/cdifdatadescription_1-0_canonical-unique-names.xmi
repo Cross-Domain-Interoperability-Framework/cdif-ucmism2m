@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmi:XMI xmlns:StandardProfile="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+   <uml:Model xmi:id="CDIFDataDescription.CDIFDataDescription" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CDIFDataDescription">
+      <ownedComment xmi:id="CDIFDataDescription.CDIFDataDescription-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CDIFDataDescription-ownedComment" xmi:type="uml:Comment">
+         <annotatedElement xmi:idref="CDIFDataDescription.CDIFDataDescription"/>
+         <body>CDIF Data Description profile module. On any Dataset whose catalog record declares conformance to https://w3id.org/cdif/data_description/1.0, this profile adds: (a) cdif:hasPrimaryKey on the Dataset, (b) cdif:statistics on the Dataset, (c) richer InstanceVariable shape (cdif:physicalDataType required, plus optional cdi:takesSubstantiveValuesFrom / cdi:takesSentinelValuesFrom value-domains), and (d) physical mapping on schema:distribution items - cdif:hasPhysicalMapping (any of PhysicalMapping / TextMapping / LocatorMapping) on DataDownload and on WebAPI's potentialAction.result, plus cdi:characterSet and cdi:fingerprint (DataFingerprint). A DataDownload MAY be co-typed cdi:TabularTextDataSet or cdi:StructuredDataSet.</body>
+      </ownedComment>
+      <name>CDIFDataDescription</name>
+      <URI>https://w3id.org/cdif/data_description/1.0/xmi/</URI>
+      <packagedElement xmi:id="CDIFDataDescription.ModelIdentification" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification" xmi:type="uml:DataType">
+         <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification"/>
+            <body>Identification metadata for this profile model: constant, read-only attributes carrying the model's prefix, version, title, language and URI.</body>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-prefix" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-prefix-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-prefix"/>
+               <body>Namespace prefix of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-prefix-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-prefix-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>prefix</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-prefix-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-prefix-defaultValue" xmi:type="uml:LiteralString">
+               <value>cdif</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-majorVersion" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-majorVersion"/>
+               <body>Major version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>majorVersion</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-majorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-majorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-minorVersion" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-minorVersion"/>
+               <body>Minor version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>minorVersion</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-minorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-minorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>0</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-title" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-title-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-title"/>
+               <body>Title of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-title-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-title-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>title</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-title-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-title-defaultValue" xmi:type="uml:LiteralString">
+               <value>UML Model for the CDIF Data Description Profile</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-language" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-language-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-language"/>
+               <body>Primary language of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-language-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-language-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>language</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-language-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-language-defaultValue" xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFDataDescription.ModelIdentification-uri" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFDataDescription.ModelIdentification-uri-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.ModelIdentification-uri"/>
+               <body>Namespace URI of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFDataDescription.ModelIdentification-uri-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFDataDescription.ModelIdentification-uri-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>uri</name>
+            <defaultValue xmi:id="CDIFDataDescription.ModelIdentification-uri-defaultValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ModelIdentification-uri-defaultValue" xmi:type="uml:LiteralString">
+               <value>https://w3id.org/cdif/data_description/1.0/xmi/</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="CDIFDataDescription.CDIFDataDescriptionPackage" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CDIFDataDescription-package" xmi:type="uml:Package">
+         <ownedComment xmi:id="CDIFDataDescription.CDIFDataDescriptionPackage-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CDIFDataDescription-package-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFDataDescription.CDIFDataDescriptionPackage"/>
+            <body>Data Description profile additions: variable-level physical types, primary keys, statistics, distribution-level physical mappings.</body>
+         </ownedComment>
+         <name>CDIFDataDescription</name>
+         <packagedElement xmi:id="CDIFDataDescription.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#XsdAnyUri" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFDataDescription.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               <body>Primitive data type "anyURI" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents a Uniform Resource Identifier Reference (URI). An "anyURI" value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI.</body>
+            </ownedComment>
+            <name>XsdAnyUri</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Classes" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Classes-package" xmi:type="uml:Package">
+            <ownedComment xmi:id="CDIFDataDescription.Classes-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Classes-package-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFDataDescription.Classes"/>
+               <body>Target classes of the CDIF profile.</body>
+            </ownedComment>
+            <name>Classes</name>
+            <packagedElement xmi:id="CDIFDataDescription.Dataset" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.Dataset-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.Dataset"/>
+                  <body>Stub of schema:Dataset (full definition in CDIFCore). Re-declared so the diagram can render the data-description-specific edges.</body>
+               </ownedComment>
+               <name>Dataset</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-identifier"/>
+                     <body>@id - resolvable URI for the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-subjectOf" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-subjectOf" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-subjectOf-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-subjectOf"/>
+                     <body>schema:subjectOf - the catalog record describing this dataset's metadata. MUST declare conformance to https://w3id.org/cdif/data_description/1.0.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-subjectOf-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-subjectOf-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>subjectOf</name>
+                  <type xmi:idref="CDIFDataDescription.CatalogRecord"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_subjectOf_CatalogRecord"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-variableMeasured"/>
+                     <body>schema:variableMeasured - the variables described by this dataset. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-variableMeasured-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-variableMeasured-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>variableMeasured</name>
+                  <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_variableMeasured_InstanceVariable"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-hasPrimaryKey"/>
+                     <body>cdif:hasPrimaryKey - the primary key of the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-hasPrimaryKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-hasPrimaryKey-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-hasPrimaryKey-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-hasPrimaryKey-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasPrimaryKey</name>
+                  <type xmi:idref="CDIFDataDescription.PrimaryKey"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_hasPrimaryKey_PrimaryKey"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-statistics" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-statistics-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-statistics"/>
+                     <body>cdif:statistics - summary statistics describing the dataset's values.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-statistics-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-statistics-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-statistics-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-statistics-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>statistics</name>
+                  <type xmi:idref="CDIFDataDescription.Statistics"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_statistics_Statistics"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-distribution"/>
+                     <body>schema:distribution - a downloadable distribution. May be co-typed cdi:TabularTextDataSet or cdi:StructuredDataSet (see AbstractDataSet subtypes).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-distribution-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-distribution-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>distribution</name>
+                  <type xmi:idref="CDIFDataDescription.DataDownload"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_distribution_DataDownload"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-distribution"/>
+                     <body>schema:distribution - a WebAPI distribution. Per-field mappings attach to the WebAPI's potentialAction.result (see ActionResult).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-distribution-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-distribution-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset-distribution-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>distribution</name>
+                  <type xmi:idref="CDIFDataDescription.WebAPI"/>
+                  <association xmi:idref="CDIFDataDescription.Dataset_distribution_WebAPI"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.CatalogRecord"/>
+                  <body>Stub of CDIFCore::CatalogRecord. For the data-description profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_description/1.0.</body>
+               </ownedComment>
+               <name>CatalogRecord</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.CatalogRecord-conformsTo"/>
+                     <body>dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_description/1.0 for the data-description profile.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.CatalogRecord-conformsTo-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#CatalogRecord-conformsTo-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>conformsTo</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.DataDownload" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.DataDownload-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.DataDownload"/>
+                  <body>Stub of CDIFCore::DataDownload. Carries data-description additions: cdif:hasPhysicalMapping, cdi:characterSet, cdi:fingerprint, and optional co-typing as cdi:TabularTextDataSet or cdi:StructuredDataSet (AbstractDataSet specializations).</body>
+               </ownedComment>
+               <name>DataDownload</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-characterSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-characterSet" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.DataDownload-characterSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-characterSet-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.DataDownload-characterSet"/>
+                     <body>cdi:characterSet - the character set used in the distribution (e.g. UTF-8, ASCII).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.DataDownload-characterSet-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-characterSet-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.DataDownload-characterSet-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-characterSet-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>characterSet</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-hasPhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-hasPhysicalMapping" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.DataDownload-hasPhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-hasPhysicalMapping-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.DataDownload-hasPhysicalMapping"/>
+                     <body>cdif:hasPhysicalMapping - per-field physical mappings linking variables to their on-disk representation. Each item is one of PhysicalMapping / TextMapping / LocatorMapping.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.DataDownload-hasPhysicalMapping-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-hasPhysicalMapping-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.DataDownload-hasPhysicalMapping-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-hasPhysicalMapping-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasPhysicalMapping</name>
+                  <type xmi:idref="CDIFDataDescription.AbstractMapping"/>
+                  <association xmi:idref="CDIFDataDescription.DataDownload_hasPhysicalMapping_AbstractMapping"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-alsoTypedAs" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-alsoTypedAs" xmi:type="uml:Property" aggregation="shared">
+                  <ownedComment xmi:id="CDIFDataDescription.DataDownload-alsoTypedAs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-alsoTypedAs-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.DataDownload-alsoTypedAs"/>
+                     <body>Co-typing: a DataDownload MAY also be typed cdi:TabularTextDataSet (delimited / fixed-width) or cdi:StructuredDataSet (XML / JSON). Represented in JSON-LD as an additional @type value (shared @id with the DataDownload), not a separate object.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.DataDownload-alsoTypedAs-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-alsoTypedAs-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.DataDownload-alsoTypedAs-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-alsoTypedAs-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>alsoTypedAs</name>
+                  <type xmi:idref="CDIFDataDescription.AbstractDataSet"/>
+                  <association xmi:idref="CDIFDataDescription.DataDownload_alsoTypedAs_AbstractDataSet"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.DataDownload-fingerprint" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fingerprint" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.DataDownload-fingerprint-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fingerprint-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.DataDownload-fingerprint"/>
+                     <body>cdi:fingerprint - integrity fingerprint of this distribution's bytes.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.DataDownload-fingerprint-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fingerprint-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.DataDownload-fingerprint-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload-fingerprint-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>fingerprint</name>
+                  <type xmi:idref="CDIFDataDescription.DataFingerprint"/>
+                  <association xmi:idref="CDIFDataDescription.DataDownload_fingerprint_DataFingerprint"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.WebAPI-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.WebAPI"/>
+                  <body>Stub of CDIFCore::WebAPI. Carries a potentialAction whose result has cdif:hasPhysicalMapping + cdi:characterSet at the data-description level.</body>
+               </ownedComment>
+               <name>WebAPI</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.WebAPI-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.WebAPI-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.WebAPI-identifier"/>
+                     <body>@id - resolvable URI for the WebAPI distribution.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.WebAPI-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.WebAPI-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.WebAPI-potentialActionResult" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-potentialActionResult" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.WebAPI-potentialActionResult-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-potentialActionResult-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.WebAPI-potentialActionResult"/>
+                     <body>schema:potentialAction.schema:result - the response object of the WebAPI's main action. Carries cdif:hasPhysicalMapping + cdi:characterSet at this profile level.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.WebAPI-potentialActionResult-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-potentialActionResult-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.WebAPI-potentialActionResult-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI-potentialActionResult-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>potentialActionResult</name>
+                  <type xmi:idref="CDIFDataDescription.ActionResult"/>
+                  <association xmi:idref="CDIFDataDescription.WebAPI_potentialActionResult_ActionResult"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.ActionResult" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.ActionResult-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.ActionResult"/>
+                  <body>Stub of CDIFCore::ActionResult (schema.org Action's schema:result). For data description, carries cdif:hasPhysicalMapping (to AbstractMapping) and cdi:characterSet.</body>
+               </ownedComment>
+               <name>ActionResult</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.ActionResult-characterSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-characterSet" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.ActionResult-characterSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-characterSet-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ActionResult-characterSet"/>
+                     <body>cdi:characterSet - the character set used in the API response.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ActionResult-characterSet-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-characterSet-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ActionResult-characterSet-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-characterSet-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>characterSet</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.ActionResult-hasPhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-hasPhysicalMapping" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.ActionResult-hasPhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-hasPhysicalMapping-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.ActionResult-hasPhysicalMapping"/>
+                     <body>cdif:hasPhysicalMapping - per-field physical mappings for the API response (which is another physical realization of the dataset's variables).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.ActionResult-hasPhysicalMapping-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-hasPhysicalMapping-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.ActionResult-hasPhysicalMapping-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult-hasPhysicalMapping-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasPhysicalMapping</name>
+                  <type xmi:idref="CDIFDataDescription.AbstractMapping"/>
+                  <association xmi:idref="CDIFDataDescription.ActionResult_hasPhysicalMapping_AbstractMapping"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable"/>
+                  <body>A cdi:InstanceVariable as referenced by schema:variableMeasured. At Data Description level, every InstanceVariable must have an @id and a cdif:physicalDataType so physical mappings can reference it.</body>
+               </ownedComment>
+               <name>InstanceVariable</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-identifier"/>
+                     <body>@id - URI for this variable; target of cdif:formats_InstanceVariable references from physical mappings.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-physicalDataType" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-physicalDataType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-physicalDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-physicalDataType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-physicalDataType"/>
+                     <body>cdif:physicalDataType - the physical representation type (string, decimal, integer, dateTime, ...). Required at Data Description level.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-physicalDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-physicalDataType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-physicalDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-physicalDataType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>physicalDataType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-takesSubstantiveValuesFrom" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-takesSubstantiveValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-takesSubstantiveValuesFrom"/>
+                     <body>cdi:takesSubstantiveValuesFrom - the substantive value domain for this variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-takesSubstantiveValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-takesSubstantiveValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSubstantiveValuesFrom-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>takesSubstantiveValuesFrom</name>
+                  <type xmi:idref="CDIFDataDescription.SubstantiveValueDomain"/>
+                  <association xmi:idref="CDIFDataDescription.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-takesSentinelValuesFrom" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-takesSentinelValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-takesSentinelValuesFrom"/>
+                     <body>cdi:takesSentinelValuesFrom - sentinel (missing / NA) value domain(s) for this variable.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-takesSentinelValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-takesSentinelValuesFrom-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable-takesSentinelValuesFrom-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>takesSentinelValuesFrom</name>
+                  <type xmi:idref="CDIFDataDescription.SentinelValueDomain"/>
+                  <association xmi:idref="CDIFDataDescription.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.AbstractMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping" xmi:type="uml:Class" isAbstract="true">
+               <ownedComment xmi:id="CDIFDataDescription.AbstractMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.AbstractMapping"/>
+                  <body>Abstract supertype for the cdif:hasPhysicalMapping family. Each concrete subtype maps a variable to a specific physical representation: PhysicalMapping (generic index-based), TextMapping (delimited / fixed-width text), LocatorMapping (locator string for structured data). Every concrete mapping carries a cdif:formats_InstanceVariable reference to the variable it describes.</body>
+               </ownedComment>
+               <name>AbstractMapping</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.AbstractMapping-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.AbstractMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.AbstractMapping-identifier"/>
+                     <body>@id - optional resolvable URI for this mapping (mappings are usually inline value objects but may be referenced when shared).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.AbstractMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.AbstractMapping-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.AbstractMapping-formats" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-formats" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.AbstractMapping-formats-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-formats-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.AbstractMapping-formats"/>
+                     <body>cdif:formats_InstanceVariable - the InstanceVariable this mapping describes (by @id reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.AbstractMapping-formats-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-formats-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.AbstractMapping-formats-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping-formats-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>formats</name>
+                  <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataDescription.LocatorMapping_formats_InstanceVariable"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.PhysicalMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.PhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.PhysicalMapping"/>
+                  <body>Generic per-field physical mapping. Carries column index, format, physical data type, null sequence, etc., for a variable's representation in a file.</body>
+               </ownedComment>
+               <name>PhysicalMapping</name>
+               <generalization xmi:id="CDIFDataDescription.PhysicalMapping-generalization-AbstractMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-generalization-AbstractMapping" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractMapping"/>
+               </generalization>
+               <ownedAttribute xmi:id="CDIFDataDescription.PhysicalMapping-index" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-index" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.PhysicalMapping-index-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-index-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.PhysicalMapping-index"/>
+                     <body>cdif:index - column index (zero-based) of this variable's values in the file.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.PhysicalMapping-index-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-index-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.PhysicalMapping-index-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-index-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>index</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.PhysicalMapping-format" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-format" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.PhysicalMapping-format-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-format-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.PhysicalMapping-format"/>
+                     <body>cdif:format - format token / pattern for parsing values (e.g. ISO8601, decimal, ...).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.PhysicalMapping-format-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-format-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.PhysicalMapping-format-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-format-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>format</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.PhysicalMapping-physicalDataType" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-physicalDataType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.PhysicalMapping-physicalDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-physicalDataType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.PhysicalMapping-physicalDataType"/>
+                     <body>cdif:physicalDataType - physical representation type for this column's bytes.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.PhysicalMapping-physicalDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-physicalDataType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.PhysicalMapping-physicalDataType-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-physicalDataType-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>physicalDataType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.PhysicalMapping-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.PhysicalMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.PhysicalMapping-identifier"/>
+                     <body>@id - optional resolvable URI for this mapping (mappings are usually inline value objects but may be referenced when shared).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.PhysicalMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.PhysicalMapping-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.PhysicalMapping-formats" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-formats" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.PhysicalMapping-formats-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-formats-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.PhysicalMapping-formats"/>
+                     <body>cdif:formats_InstanceVariable - the InstanceVariable this mapping describes (by @id reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.PhysicalMapping-formats-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-formats-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.PhysicalMapping-formats-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping-formats-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>formats</name>
+                  <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataDescription.LocatorMapping_formats_InstanceVariable"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.TextMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.TextMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.TextMapping"/>
+                  <body>Per-field mapping specialized for delimited or fixed-width text data sets. Extends PhysicalMapping with column-width and number-format-detail attributes.</body>
+               </ownedComment>
+               <name>TextMapping</name>
+               <generalization xmi:id="CDIFDataDescription.TextMapping-generalization-AbstractMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-generalization-AbstractMapping" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractMapping"/>
+               </generalization>
+               <ownedAttribute xmi:id="CDIFDataDescription.TextMapping-index" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-index" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.TextMapping-index-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-index-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.TextMapping-index"/>
+                     <body>cdif:index - column index of this variable in the text data set.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.TextMapping-index-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-index-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.TextMapping-index-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-index-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>index</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.TextMapping-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.TextMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.TextMapping-identifier"/>
+                     <body>@id - optional resolvable URI for this mapping (mappings are usually inline value objects but may be referenced when shared).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.TextMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.TextMapping-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.TextMapping-formats" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-formats" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.TextMapping-formats-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-formats-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.TextMapping-formats"/>
+                     <body>cdif:formats_InstanceVariable - the InstanceVariable this mapping describes (by @id reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.TextMapping-formats-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-formats-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.TextMapping-formats-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping-formats-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>formats</name>
+                  <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataDescription.LocatorMapping_formats_InstanceVariable"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.LocatorMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.LocatorMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.LocatorMapping"/>
+                  <body>Per-field mapping for structured (hierarchical) data sets. Uses a locator expression (XPath / JSONPath) instead of a column index.</body>
+               </ownedComment>
+               <name>LocatorMapping</name>
+               <generalization xmi:id="CDIFDataDescription.LocatorMapping-generalization-AbstractMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-generalization-AbstractMapping" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractMapping"/>
+               </generalization>
+               <ownedAttribute xmi:id="CDIFDataDescription.LocatorMapping-locator" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-locator" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.LocatorMapping-locator-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-locator-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.LocatorMapping-locator"/>
+                     <body>cdi:locator - locator expression (e.g. JSONPath) to extract this variable's values from the structured dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.LocatorMapping-locator-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-locator-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.LocatorMapping-locator-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-locator-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>locator</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.LocatorMapping-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.LocatorMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.LocatorMapping-identifier"/>
+                     <body>@id - optional resolvable URI for this mapping (mappings are usually inline value objects but may be referenced when shared).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.LocatorMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.LocatorMapping-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.LocatorMapping-formats" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-formats" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.LocatorMapping-formats-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-formats-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.LocatorMapping-formats"/>
+                     <body>cdif:formats_InstanceVariable - the InstanceVariable this mapping describes (by @id reference).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.LocatorMapping-formats-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-formats-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.LocatorMapping-formats-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping-formats-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>formats</name>
+                  <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+                  <association xmi:idref="CDIFDataDescription.LocatorMapping_formats_InstanceVariable"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.AbstractDataSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDataSet" xmi:type="uml:Class" isAbstract="true">
+               <ownedComment xmi:id="CDIFDataDescription.AbstractDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDataSet-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.AbstractDataSet"/>
+                  <body>Abstract supertype for the cdi:PhysicalDataSet co-types a DataDownload may declare: TabularTextDataSet (delimited / fixed-width text) or StructuredDataSet (XML / JSON / hierarchical).</body>
+               </ownedComment>
+               <name>AbstractDataSet</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.AbstractDataSet-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDataSet-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.AbstractDataSet-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDataSet-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.AbstractDataSet-identifier"/>
+                     <body>@id - same @id as the underlying DataDownload (this is a co-typing, not a separate object).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.AbstractDataSet-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDataSet-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.AbstractDataSet-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractDataSet-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.TabularTextDataSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.TabularTextDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.TabularTextDataSet"/>
+                  <body>DataDownload co-typed as cdi:TabularTextDataSet: delimited or fixed-width text data set (CSV / TSV / fixed). Carries CSV-style layout attributes; per-field mappings are TextMapping (via cdif:hasPhysicalMapping).</body>
+               </ownedComment>
+               <name>TabularTextDataSet</name>
+               <generalization xmi:id="CDIFDataDescription.TabularTextDataSet-generalization-AbstractDataSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-generalization-AbstractDataSet" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractDataSet"/>
+               </generalization>
+               <ownedAttribute xmi:id="CDIFDataDescription.TabularTextDataSet-delimiter" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-delimiter" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.TabularTextDataSet-delimiter-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-delimiter-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.TabularTextDataSet-delimiter"/>
+                     <body>csvw:delimiter - field-separator character.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.TabularTextDataSet-delimiter-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-delimiter-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.TabularTextDataSet-delimiter-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-delimiter-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>delimiter</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.TabularTextDataSet-header" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-header" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.TabularTextDataSet-header-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-header-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.TabularTextDataSet-header"/>
+                     <body>csvw:header - whether the first row(s) are headers.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.TabularTextDataSet-header-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-header-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.TabularTextDataSet-header-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-header-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>header</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Boolean"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.TabularTextDataSet-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.TabularTextDataSet-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.TabularTextDataSet-identifier"/>
+                     <body>@id - same @id as the underlying DataDownload (this is a co-typing, not a separate object).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.TabularTextDataSet-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.TabularTextDataSet-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TabularTextDataSet-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.StructuredDataSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.StructuredDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.StructuredDataSet"/>
+                  <body>DataDownload co-typed as cdi:StructuredDataSet: hierarchical / structured data set (XML, JSON, ...). Per-field mappings are LocatorMapping (XPath / JSONPath).</body>
+               </ownedComment>
+               <name>StructuredDataSet</name>
+               <generalization xmi:id="CDIFDataDescription.StructuredDataSet-generalization-AbstractDataSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-generalization-AbstractDataSet" xmi:type="uml:Generalization">
+                  <general xmi:idref="CDIFDataDescription.AbstractDataSet"/>
+               </generalization>
+               <ownedAttribute xmi:id="CDIFDataDescription.StructuredDataSet-encoding" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-encoding" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.StructuredDataSet-encoding-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-encoding-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.StructuredDataSet-encoding"/>
+                     <body>Encoding-family hint (e.g. XML, JSON) for the structured dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.StructuredDataSet-encoding-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-encoding-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.StructuredDataSet-encoding-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-encoding-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>encoding</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.StructuredDataSet-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.StructuredDataSet-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.StructuredDataSet-identifier"/>
+                     <body>@id - same @id as the underlying DataDownload (this is a co-typing, not a separate object).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.StructuredDataSet-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.StructuredDataSet-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#StructuredDataSet-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.DataFingerprint" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint" xmi:type="uml:DataType">
+               <ownedComment xmi:id="CDIFDataDescription.DataFingerprint-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.DataFingerprint"/>
+                  <body>Integrity fingerprint (checksum / hash) of a distribution's bytes. DDI-CDI DataFingerprint datatype; carried inline on a DataDownload via cdi:fingerprint.</body>
+               </ownedComment>
+               <name>DataFingerprint</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.DataFingerprint-algorithm" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-algorithm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.DataFingerprint-algorithm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-algorithm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.DataFingerprint-algorithm"/>
+                     <body>Hash algorithm identifier.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.DataFingerprint-algorithm-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-algorithm-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.DataFingerprint-algorithm-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-algorithm-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>algorithm</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataDescription.DataFingerprint-value" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.DataFingerprint-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.DataFingerprint-value"/>
+                     <body>Hash digest value as a hex string.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.DataFingerprint-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-value-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.DataFingerprint-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataFingerprint-value-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>value</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.PrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.PrimaryKey"/>
+                  <body>Primary key of the dataset: a cdif:Key whose cdif:isComposedOf is an ordered list of cdi:InstanceVariables uniquely identifying each data instance.</body>
+               </ownedComment>
+               <name>PrimaryKey</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.PrimaryKey-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.PrimaryKey-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.PrimaryKey-identifier"/>
+                     <body>@id - resolvable URI for the key (so it can be referenced from elsewhere).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.PrimaryKey-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.PrimaryKey-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PrimaryKey-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.Statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Statistics" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.Statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Statistics-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.Statistics"/>
+                  <body>A named bundle of one or more Statistic value objects for an instance variable, optionally weighted, optionally broken down by Category.</body>
+               </ownedComment>
+               <name>Statistics</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.Statistics-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Statistics-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.Statistics-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Statistics-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Statistics-identifier"/>
+                     <body>@id - resolvable URI for this statistics bundle.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.Statistics-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Statistics-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.Statistics-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Statistics-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.SubstantiveValueDomain-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.SubstantiveValueDomain"/>
+                  <body>The substantive value domain for a variable - the set of valid, meaningful values (cdi:takesSubstantiveValuesFrom).</body>
+               </ownedComment>
+               <name>SubstantiveValueDomain</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.SubstantiveValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.SubstantiveValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.SubstantiveValueDomain-identifier"/>
+                     <body>@id - resolvable URI for the value domain.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.SubstantiveValueDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.SubstantiveValueDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SubstantiveValueDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFDataDescription.SentinelValueDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFDataDescription.SentinelValueDomain-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataDescription.SentinelValueDomain"/>
+                  <body>Sentinel (missing / not-applicable) value domain for a variable. Attaches to InstanceVariable at Data Description level; moves to RepresentedVariable in DataStructure profiles.</body>
+               </ownedComment>
+               <name>SentinelValueDomain</name>
+               <ownedAttribute xmi:id="CDIFDataDescription.SentinelValueDomain-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.SentinelValueDomain-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.SentinelValueDomain-identifier"/>
+                     <body>@id - resolvable URI for the value domain.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataDescription.SentinelValueDomain-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataDescription.SentinelValueDomain-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#SentinelValueDomain-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_subjectOf_CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_subjectOf_CatalogRecord" xmi:type="uml:Association">
+            <name>Dataset_subjectOf_CatalogRecord</name>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-subjectOf"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.CatalogRecord"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_subjectOf_CatalogRecord"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_subjectOf_CatalogRecord-CatalogRecordEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_variableMeasured_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_variableMeasured_InstanceVariable" xmi:type="uml:Association">
+            <name>Dataset_variableMeasured_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-variableMeasured"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_variableMeasured_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_variableMeasured_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_variableMeasured_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_variableMeasured_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_hasPrimaryKey_PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_hasPrimaryKey_PrimaryKey" xmi:type="uml:Association">
+            <name>Dataset_hasPrimaryKey_PrimaryKey</name>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-hasPrimaryKey"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.PrimaryKey"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_hasPrimaryKey_PrimaryKey"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_hasPrimaryKey_PrimaryKey-PrimaryKeyEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_statistics_Statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_statistics_Statistics" xmi:type="uml:Association">
+            <name>Dataset_statistics_Statistics</name>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-statistics"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_statistics_Statistics-StatisticsEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_statistics_Statistics-StatisticsEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.Statistics"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_statistics_Statistics"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_statistics_Statistics-StatisticsEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_distribution_DataDownload" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_distribution_DataDownload" xmi:type="uml:Association">
+            <name>Dataset_distribution_DataDownload</name>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-distribution"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_distribution_DataDownload-DataDownloadEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_distribution_DataDownload-DataDownloadEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.DataDownload"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_distribution_DataDownload"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_distribution_DataDownload-DataDownloadEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.Dataset_distribution_WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_distribution_WebAPI" xmi:type="uml:Association">
+            <name>Dataset_distribution_WebAPI</name>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-distribution"/>
+            <ownedEnd xmi:id="CDIFDataDescription.Dataset_distribution_WebAPI-WebAPIEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#Dataset_distribution_WebAPI-WebAPIEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.WebAPI"/>
+               <association xmi:idref="CDIFDataDescription.Dataset_distribution_WebAPI"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset_distribution_WebAPI-WebAPIEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.DataDownload_hasPhysicalMapping_AbstractMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload_hasPhysicalMapping_AbstractMapping" xmi:type="uml:Association">
+            <name>DataDownload_hasPhysicalMapping_AbstractMapping</name>
+            <memberEnd xmi:idref="CDIFDataDescription.DataDownload-hasPhysicalMapping"/>
+            <ownedEnd xmi:id="CDIFDataDescription.DataDownload_hasPhysicalMapping_AbstractMapping-AbstractMappingEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload_hasPhysicalMapping_AbstractMapping-AbstractMappingEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.AbstractMapping"/>
+               <association xmi:idref="CDIFDataDescription.DataDownload_hasPhysicalMapping_AbstractMapping"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.DataDownload_hasPhysicalMapping_AbstractMapping-AbstractMappingEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.DataDownload_alsoTypedAs_AbstractDataSet" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload_alsoTypedAs_AbstractDataSet" xmi:type="uml:Association">
+            <name>DataDownload_alsoTypedAs_AbstractDataSet</name>
+            <memberEnd xmi:idref="CDIFDataDescription.DataDownload-alsoTypedAs"/>
+            <ownedEnd xmi:id="CDIFDataDescription.DataDownload_alsoTypedAs_AbstractDataSet-AbstractDataSetEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload_alsoTypedAs_AbstractDataSet-AbstractDataSetEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.AbstractDataSet"/>
+               <association xmi:idref="CDIFDataDescription.DataDownload_alsoTypedAs_AbstractDataSet"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.DataDownload_alsoTypedAs_AbstractDataSet-AbstractDataSetEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.DataDownload_fingerprint_DataFingerprint" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload_fingerprint_DataFingerprint" xmi:type="uml:Association">
+            <name>DataDownload_fingerprint_DataFingerprint</name>
+            <memberEnd xmi:idref="CDIFDataDescription.DataDownload-fingerprint"/>
+            <ownedEnd xmi:id="CDIFDataDescription.DataDownload_fingerprint_DataFingerprint-DataFingerprintEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#DataDownload_fingerprint_DataFingerprint-DataFingerprintEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.DataFingerprint"/>
+               <association xmi:idref="CDIFDataDescription.DataDownload_fingerprint_DataFingerprint"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.DataDownload_fingerprint_DataFingerprint-DataFingerprintEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.WebAPI_potentialActionResult_ActionResult" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI_potentialActionResult_ActionResult" xmi:type="uml:Association">
+            <name>WebAPI_potentialActionResult_ActionResult</name>
+            <memberEnd xmi:idref="CDIFDataDescription.WebAPI-potentialActionResult"/>
+            <ownedEnd xmi:id="CDIFDataDescription.WebAPI_potentialActionResult_ActionResult-ActionResultEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#WebAPI_potentialActionResult_ActionResult-ActionResultEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.ActionResult"/>
+               <association xmi:idref="CDIFDataDescription.WebAPI_potentialActionResult_ActionResult"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.WebAPI_potentialActionResult_ActionResult-ActionResultEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.ActionResult_hasPhysicalMapping_AbstractMapping" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult_hasPhysicalMapping_AbstractMapping" xmi:type="uml:Association">
+            <name>ActionResult_hasPhysicalMapping_AbstractMapping</name>
+            <memberEnd xmi:idref="CDIFDataDescription.ActionResult-hasPhysicalMapping"/>
+            <ownedEnd xmi:id="CDIFDataDescription.ActionResult_hasPhysicalMapping_AbstractMapping-AbstractMappingEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#ActionResult_hasPhysicalMapping_AbstractMapping-AbstractMappingEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.AbstractMapping"/>
+               <association xmi:idref="CDIFDataDescription.ActionResult_hasPhysicalMapping_AbstractMapping"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.ActionResult_hasPhysicalMapping_AbstractMapping-AbstractMappingEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:type="uml:Association">
+            <name>InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain</name>
+            <memberEnd xmi:idref="CDIFDataDescription.InstanceVariable-takesSubstantiveValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataDescription.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain-SubstantiveValueDomainEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain-SubstantiveValueDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.SubstantiveValueDomain"/>
+               <association xmi:idref="CDIFDataDescription.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain-SubstantiveValueDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain" xmi:type="uml:Association">
+            <name>InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain</name>
+            <memberEnd xmi:idref="CDIFDataDescription.InstanceVariable-takesSentinelValuesFrom"/>
+            <ownedEnd xmi:id="CDIFDataDescription.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.SentinelValueDomain"/>
+               <association xmi:idref="CDIFDataDescription.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.InstanceVariable_takesSentinelValuesFrom_SentinelValueDomain-SentinelValueDomainEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.AbstractMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping_formats_InstanceVariable" xmi:type="uml:Association">
+            <name>AbstractMapping_formats_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataDescription.AbstractMapping-formats"/>
+            <ownedEnd xmi:id="CDIFDataDescription.AbstractMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#AbstractMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+               <association xmi:idref="CDIFDataDescription.AbstractMapping_formats_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.AbstractMapping_formats_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.PhysicalMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping_formats_InstanceVariable" xmi:type="uml:Association">
+            <name>PhysicalMapping_formats_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataDescription.PhysicalMapping-formats"/>
+            <ownedEnd xmi:id="CDIFDataDescription.PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+               <association xmi:idref="CDIFDataDescription.PhysicalMapping_formats_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.PhysicalMapping_formats_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.TextMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping_formats_InstanceVariable" xmi:type="uml:Association">
+            <name>TextMapping_formats_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataDescription.TextMapping-formats"/>
+            <ownedEnd xmi:id="CDIFDataDescription.TextMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#TextMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+               <association xmi:idref="CDIFDataDescription.TextMapping_formats_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.TextMapping_formats_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFDataDescription.LocatorMapping_formats_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping_formats_InstanceVariable" xmi:type="uml:Association">
+            <name>LocatorMapping_formats_InstanceVariable</name>
+            <memberEnd xmi:idref="CDIFDataDescription.LocatorMapping-formats"/>
+            <ownedEnd xmi:id="CDIFDataDescription.LocatorMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.0/xmi/#LocatorMapping_formats_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFDataDescription.InstanceVariable"/>
+               <association xmi:idref="CDIFDataDescription.LocatorMapping_formats_InstanceVariable"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFDataDescription.LocatorMapping_formats_InstanceVariable-InstanceVariableEnd"/>
+         </packagedElement>
+      </packagedElement>
+   </uml:Model>
+</xmi:XMI>
