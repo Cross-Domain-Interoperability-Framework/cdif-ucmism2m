@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Archive profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifArchive/cdifArchiveSchema.json (with the archive distribution wrapper at metadataBuildingBlocks/_sources/cdifDataType/cdifArchiveDistribution/cdifArchiveDistributionSchema.json). The Archive profile module documents how schema:hasPart describes component files inside an archive distribution (e.g. ZIP). It composes cdifCore (the host schema:Dataset + schema:DataDownload distribution shape); the archive-specific content is ArchiveDistribution (the host download, narrated as a sub-shape of CDIFCore::DataDownload in its definition text) and the ArchivePart items inside it (typed as schema:MediaObject). No direct DDI-CDI source classes apply, so every targetClass is mappingType=new. @id is modeled as the 'identifier' attribute per the cdifCore convention; @type is implied by the UML class name and is not modeled as an attribute. Generalization is documented narratively because the parent (DataDownload) lives in CDIFCore, not in this config.",
+  "_comment": "DDI-CDI -> CDIF Archive profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifArchiveDistribution/cdifArchiveDistributionSchema.json (cdifArchive merged in: archivePartArray/Item $defs now local to this BB). The Archive profile module documents how schema:hasPart describes component files inside an archive distribution (e.g. ZIP). It composes cdifCore (the host schema:Dataset + schema:DataDownload distribution shape); the archive-specific content is ArchiveDistribution (the host download, narrated as a sub-shape of CDIFCore::DataDownload in its definition text) and the ArchivePart items inside it (typed as schema:MediaObject). No direct DDI-CDI source classes apply, so every targetClass is mappingType=new. @id is modeled as the 'identifier' attribute per the cdifCore convention; @type is implied by the UML class name and is not modeled as an attribute. Generalization is documented narratively because the parent (DataDownload) lives in CDIFCore, not in this config.",
   "transformation": {
     "description": "DDI-CDI to CDIF Archive Profile",
     "version": "0.1",
@@ -10,7 +10,7 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "CDIFArchive",
+      "acronym": "CDIFArchiveDistribution",
       "modelTitle": "UML Model for the CDIF Archive Profile",
       "subTitle": "Archive-distribution structure: a DataDownload that bundles component files (schema:hasPart -> schema:MediaObject)",
       "majorVersion": "1",
@@ -18,9 +18,9 @@
       "language": "en",
       "uri": "https://w3id.org/cdif/archive/1.0/xmi/",
       "definition": "CDIF Archive profile module - documents the archive-distribution pattern: a schema:DataDownload whose schema:hasPart enumerates component files (schema:MediaObject items) inside the archive (e.g. ZIP). Each ArchivePart records filename, MIME type(s), size, optional spdx:checksum, optional schema:about back-reference, and may carry data-description extensions (cdifTabularData, cdifDataCube). The composite cdifComplete profile pulls this module in. Conforms-to identifier: https://w3id.org/cdif/manifest/1.0.",
-      "mainPackage": "CDIFArchive",
+      "mainPackage": "CDIFArchiveDistribution",
       "mainPackageDefinition": "Archive distribution structure: bundling component files inside a single download.",
-      "dataTypesPackage": "CDIFArchive",
+      "dataTypesPackage": "CDIFArchiveDistribution",
       "composes": [
         "ddi-cdi2cdifCore_mapping.json"
       ]
@@ -29,12 +29,12 @@
   "package": [
     {
       "name": "Classes",
-      "parent": "CDIFArchive",
+      "parent": "CDIFArchiveDistribution",
       "definition": "Archive-distribution classes: ArchiveDistribution (host) and ArchivePart (components)."
     },
     {
       "name": "DataTypes",
-      "parent": "CDIFArchive",
+      "parent": "CDIFArchiveDistribution",
       "definition": "Supporting value-object datatypes: QuantitativeValue (file size), Checksum (spdx)."
     }
   ],

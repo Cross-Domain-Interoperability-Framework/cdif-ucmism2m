@@ -57,9 +57,9 @@ PROFILES = {
         CONFIG_DIR / "ddi-cdi2cdifDataStructure_mapping.json",
         SOURCES / "profiles/cdifCompositeProfile/DataDescriptionWithStructure/resolvedSchema.json",
     ),
-    "cdifArchive": (
-        CONFIG_DIR / "ddi-cdi2cdifArchive_mapping.json",
-        SOURCES / "profiles/cdifProfile/cdifArchive/resolvedSchema.json",
+    "cdifArchiveDistribution": (
+        CONFIG_DIR / "ddi-cdi2cdifArchiveDistribution_mapping.json",
+        SOURCES / "profiles/cdifProfile/cdifArchiveDistribution/resolvedSchema.json",
     ),
     "cdifProvenance": (
         CONFIG_DIR / "ddi-cdi2cdifProvenance_mapping.json",
