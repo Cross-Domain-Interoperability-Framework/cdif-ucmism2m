@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Codelist profile UML. The profile is defined at metadataBuildingBlocks/_sources/profiles/archive/CDIFCodelistProfile/CDIFCodelistProfileSchema.json and composes the W3C SKOS skosConceptScheme + skosConcept building blocks with CDIF-specific constraints. Approach: target classes are named after the JSON-schema vocabulary (ConceptScheme, Concept). Each class uses mappingType=new with optional v1.1 sourceClass to preserve a provenance Dependency back to the DDI-CDI source (ConceptSystem, Concept). Attributes are authored explicitly using SKOS names; data types are the UML primitives String/Boolean/Integer/Real plus DDI-CDI XsdAnyUri/XsdDate (the structured DDI-CDI types InternationalString/LabelForDisplay/ObjectName are deliberately flattened to String here per CDIF profile policy — multilingual labels are encoded inline using JSON-LD @language tags, not as nested LanguageString objects). Associations between target classes are declared with the v1.1 new-association form (no sourceAssociationName).",
+  "_comment": "DDI-CDI -> CDIF Codelist profile UML. The profile is defined at metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCodelist/schema.yaml. Attributes mirror that JSON schema exactly — CDIF deliberately uses a small CDIF-curated subset of SKOS / dcterms / schema.org properties, not the full SKOS vocabulary. The Anchors package re-declares CatalogRecord so the diagram can show the required https://w3id.org/cdif/codelist/1.0 conformance constraint as an attribute on the metadata record (schema:subjectOf > CatalogRecord > dcterms:conformsTo).",
   "transformation": {
     "description": "DDI-CDI to CDIF Codelist Profile",
     "version": "0.1",
@@ -17,7 +17,7 @@
       "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/codelist/1.0/xmi/",
-      "definition": "CDIF profile for controlled-vocabulary codelists implemented as SKOS ConceptSchemes. Each concept must have a resolvable @id, skos:inScheme, skos:definition and skos:prefLabel. The scheme must declare skos:hasTopConcept; concepts in a hierarchy must declare both skos:narrower (downward) and skos:broader (upward). CDIF metadata properties (schema:identifier, schema:dateModified, schema:license or schema:conditionsOfAccess) take precedence over the equivalent dcterms properties from the base skosConceptScheme building block. Required attributes per the profile JSON schema and rules.shacl: ConceptScheme @id, schema:identifier, schema:dateModified, skos:hasTopConcept, plus (license OR conditionsOfAccess); Concept @id, skos:inScheme, skos:definition, skos:prefLabel, skos:notation.",
+      "definition": "CDIF profile for controlled-vocabulary codelists implemented as SKOS ConceptSchemes. Required attributes per the profile JSON schema: ConceptScheme has @id, schema:identifier, schema:dateModified, skos:prefLabel, skos:hasTopConcept, plus (schema:license OR schema:conditionsOfAccess); CdifCodelistConcept has @id, skos:inScheme, skos:prefLabel, skos:notation. A concept that has skos:narrower children must also declare skos:broader. The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/codelist/1.0.",
       "mainPackage": "CDIFCodelist",
       "mainPackageDefinition": "Profile for controlled-vocabulary codelists as SKOS ConceptSchemes.",
       "dataTypesPackage": "CDIFCodelist"
@@ -32,325 +32,148 @@
     {
       "name": "Support",
       "parent": "CDIFCodelist",
-      "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
+      "definition": "Supporting structured types: Identifier (the schema:PropertyValue form of schema:identifier), Reference (a stub for cdif:Reference; full definition in CDIFCore)."
+    },
+    {
+      "name": "Anchors",
+      "parent": "CDIFCodelist",
+      "definition": "Stub re-declarations of CDIFCore classes that this profile attaches to. Provided so the diagram can render attachment edges without dragging in the full CDIFCore class graph."
     }
   ],
   "mapping": {
     "class": [
       {
-        "_comment": "skos:ConceptScheme. v1.1 sourceClass=ConceptSystem preserves the provenance Dependency without forcing the DDI-CDI attribute vocabulary. All attributes are authored explicitly in SKOS / CDIF terms. Cross-reference: ddicdiCodeList/schema.yaml in metadataBuildingBlocks (CodeList is the closest DDI-CDI BB; it has cdi:identifier, cdi:name, cdi:purpose, cdi:allowsDuplicates as attributes plus has_Code / has_CodePosition / references / uses / isDefinedBy associations). ConceptSystem is the better semantic match for skos:ConceptScheme but has no dedicated BB yet.",
+        "_comment": "skos:ConceptScheme - the codelist. CDIF intentionally uses a small subset of SKOS+dcterms+schema.org properties (not the full SKOS vocabulary). Required: @id (identifier), schema:identifier, schema:dateModified, skos:prefLabel, skos:hasTopConcept, plus (license OR conditionsOfAccess). v1.1 sourceClass=ConceptSystem preserves the DDI-CDI provenance link.",
         "mappingType": "new",
         "sourceClass": "ConceptSystem",
         "targetPackage": "Classes",
         "targetClass": "ConceptScheme",
-        "definition": "A SKOS Concept Scheme - an aggregation of one or more SKOS Concepts, forming a controlled vocabulary or codelist. CDIF requires a resolvable @id, schema:identifier, schema:dateModified, and skos:hasTopConcept, plus either schema:license or schema:conditionsOfAccess.",
+        "definition": "A SKOS Concept Scheme - an aggregation of one or more SKOS Concepts forming a controlled vocabulary or codelist. The metadata record describing this scheme (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/codelist/1.0.",
         "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the concept scheme. Required.",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          },
           {
             "name": "prefLabel",
             "dataType": "String",
             "definition": "skos:prefLabel - the preferred lexical label for the concept scheme. Required.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "*"
-            }
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
-            "name": "altLabel",
-            "dataType": "String",
-            "definition": "skos:altLabel - alternative lexical labels (acronyms, abbreviations, variants).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "hiddenLabel",
-            "dataType": "String",
-            "definition": "skos:hiddenLabel - labels accessible to free-text search but not displayed.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "_comment": "Per ddicdiCodeList: DDI-CDI uses cdi:purpose (InternationalString) for the scheme-level explanation. Flattened here to String per CDIF profile policy; @language tags carry the locale.",
             "name": "definition",
             "dataType": "String",
-            "definition": "skos:definition - formal explanation of the meaning or purpose of this concept scheme. DDI-CDI cdi:purpose carries the same semantics.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "notation",
-            "dataType": "String",
-            "definition": "skos:notation - classification code or notation for this concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
+            "definition": "skos:definition - formal explanation of the meaning or purpose of this concept scheme.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "note",
             "dataType": "String",
             "definition": "skos:note - general note about the concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "scopeNote",
-            "dataType": "String",
-            "definition": "skos:scopeNote - note clarifying the intended scope of the concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "historyNote",
-            "dataType": "String",
-            "definition": "skos:historyNote - note about the history of the concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "changeNote",
-            "dataType": "String",
-            "definition": "skos:changeNote - note documenting a change to the concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "editorialNote",
-            "dataType": "String",
-            "definition": "skos:editorialNote - note for editors, translators, and maintainers.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "example",
-            "dataType": "String",
-            "definition": "skos:example - example of the use of this concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "schema:identifier - primary CDIF identifier for the codelist (URI). Required by the CDIF Codelist profile.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "dateModified",
             "dataType": "XsdDate",
-            "definition": "schema:dateModified - ISO 8601 date the codelist was last modified. Required.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "datePublished",
-            "dataType": "XsdDate",
-            "definition": "dcterms:created / schema:datePublished - date the concept scheme was created.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "schema:dateModified - ISO 8601 date when the codelist was last modified. Required.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "url",
             "dataType": "XsdAnyUri",
             "definition": "schema:url - web location of a page describing the codelist.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "license",
-            "dataType": "Reference",
-            "definition": "schema:license - license for the codelist. Either license or conditionsOfAccess is required.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
+            "dataType": "String",
+            "definition": "schema:license - license for the codelist. Either schema:license OR schema:conditionsOfAccess is required (anyOf).",
+            "multiplicity": {"lower": "0", "upper": "*"}
           },
           {
             "name": "conditionsOfAccess",
-            "dataType": "Reference",
-            "definition": "schema:conditionsOfAccess - text statement of access conditions. Either license or conditionsOfAccess is required.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "version",
             "dataType": "String",
-            "definition": "schema:version - version identifier for the concept scheme.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "schema:conditionsOfAccess - text statement of access conditions. Either schema:license OR schema:conditionsOfAccess is required (anyOf).",
+            "multiplicity": {"lower": "0", "upper": "*"}
           }
-        ],
-        "sssom": {
-          "subject_label": "DDI-CDI ConceptSystem",
-          "object_label": "CDIF Codelist ConceptScheme (skos:ConceptScheme)",
-          "predicate_id": "skos:closeMatch",
-          "predicate_label": "ConceptScheme is the SKOS-vocabulary expression of a DDI-CDI ConceptSystem with profile-specific CDIF identifier/date/access constraints.",
-          "confidence": 0.9,
-          "comment": "Class semantics align. Attribute vocabulary is SKOS + CDIF rather than DDI-CDI."
-        }
+        ]
       },
       {
-        "_comment": "skos:Concept (as constrained by CDIF's CdifCodelistConcept). Required by SHACL: @id, skos:inScheme, skos:definition, skos:prefLabel, skos:notation; if skos:narrower is present then a skos:broader pointing back is also required (enforced at instance level, not in the UML model).",
+        "_comment": "skos:Concept (CdifCodelistConcept) - a single code in a codelist. Required: @id, skos:inScheme, skos:prefLabel, skos:notation. skos:broader is required on any concept that appears as a skos:narrower child of another concept (CDIF requires both directions explicit for hierarchy traversal).",
         "mappingType": "new",
         "sourceClass": "Concept",
         "targetPackage": "Classes",
         "targetClass": "Concept",
-        "definition": "A SKOS Concept constrained for CDIF codelist use. Must have a resolvable @id, skos:inScheme, skos:definition, and skos:prefLabel.",
+        "definition": "A SKOS Concept constrained for CDIF codelist use. Must have a resolvable @id, skos:inScheme (back-pointer to its ConceptScheme), skos:prefLabel, and skos:notation. Hierarchical concepts must declare both skos:narrower (downward) and skos:broader (upward).",
         "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - globally unique, resolvable URI for this concept. Required.",
+            "multiplicity": {"lower": "1", "upper": "1"}
+          },
           {
             "name": "prefLabel",
             "dataType": "String",
             "definition": "skos:prefLabel - preferred lexical label for this concept. Required.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "*"
-            }
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "notation",
             "dataType": "String",
-            "definition": "skos:notation - classification code for this concept within a scheme. Required by the CDIF Codelist profile.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "*"
-            }
+            "definition": "skos:notation - classification code for this concept within the scheme. Required.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "definition",
             "dataType": "String",
-            "definition": "skos:definition - formal explanation of the meaning of this concept. Required by CDIF.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "scopeNote",
-            "dataType": "String",
-            "definition": "skos:scopeNote - note clarifying meaning and/or intended use.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "note",
-            "dataType": "String",
-            "definition": "skos:note - general note about this concept.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "historyNote",
-            "dataType": "String",
-            "definition": "skos:historyNote - note about past state or use.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "changeNote",
-            "dataType": "String",
-            "definition": "skos:changeNote - note documenting a change.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "editorialNote",
-            "dataType": "String",
-            "definition": "skos:editorialNote - note for editors and maintainers.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "*"
-            }
-          },
-          {
-            "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - resolvable URI identifier for this concept. Required by CDIF.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "definition": "skos:definition - formal definition of this concept. Optional in CDIF.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
-        ],
-        "sssom": {
-          "subject_label": "DDI-CDI Concept",
-          "object_label": "CDIF Codelist Concept (skos:Concept)",
-          "predicate_id": "skos:closeMatch",
-          "predicate_label": "skos:Concept is the SKOS-vocabulary expression of a DDI-CDI Concept with CDIF profile requirements.",
-          "confidence": 0.95,
-          "comment": "Class name matches; attribute vocabulary is SKOS rather than DDI-CDI structured types."
-        }
+        ]
       },
       {
-        "_comment": "Identifier (schema:PropertyValue) stub. Local target class so attributes typed as 'Identifier' resolve inside this profile; the canonical definition lives in the CDIFCore profile.",
+        "_comment": "Identifier (schema:PropertyValue form of schema:identifier). CDIF allows schema:identifier to be either a plain string URI or a structured PropertyValue object with propertyID/value/url. isDataType:true because the PropertyValue has no independent identity.",
         "mappingType": "new",
         "targetPackage": "Support",
         "targetClass": "Identifier",
         "isDataType": true,
-        "definition": "schema:PropertyValue / schema:Identifier (stub). A structured identifier with a propertyID (scheme), value, and optional url. Full definition in CDIFCore::Identifier.",
+        "definition": "schema:PropertyValue form of schema:identifier. Used when the codelist needs a structured identifier (propertyID + value + url) instead of a plain URI string.",
         "attribute": [
           {
             "name": "propertyId",
-            "dataType": "String",
-            "definition": "schema:propertyID - the identifier scheme (e.g. DOI, Handle, ROR).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "dataType": "XsdAnyUri",
+            "definition": "schema:propertyID - URI of the identifier scheme (e.g. doi:, orcid:).",
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "value",
             "dataType": "String",
-            "definition": "schema:value - the identifier value.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "definition": "schema:value - the identifier value within that scheme.",
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "url",
             "dataType": "XsdAnyUri",
-            "definition": "schema:url - resolvable form of the identifier.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "definition": "schema:url - resolvable URL form of the identifier.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "CatalogRecord stub - the metadata-about-this-resource node sitting under schema:subjectOf. The diagram needs to show that dcterms:conformsTo must include https://w3id.org/cdif/codelist/1.0 for the codelist profile to apply. Full definition is in CDIFCore.",
+        "mappingType": "new",
+        "targetPackage": "Anchors",
+        "targetClass": "CatalogRecord",
+        "definition": "Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the codelist profile, dcterms:conformsTo MUST include https://w3id.org/cdif/codelist/1.0.",
+        "attribute": [
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/codelist/1.0 for the codelist profile.",
+            "multiplicity": {"lower": "1", "upper": "*"}
           }
         ]
       },
@@ -366,85 +189,80 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - URI of the referenced resource.",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "multiplicity": {"lower": "1", "upper": "1"}
           },
           {
             "name": "name",
             "dataType": "String",
             "definition": "schema:name - human-readable label for the URI.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "description",
             "dataType": "String",
             "definition": "schema:description - short summary of the referenced resource.",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "url",
             "dataType": "XsdAnyUri",
             "definition": "schema:url - resolvable URL (when distinct from the @id).",
-            "multiplicity": {
-              "lower": "0",
-              "upper": "1"
-            }
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       }
     ],
     "association": [
       {
-        "_comment": "skos:hasTopConcept - top concepts of the scheme. Required by CDIF on the scheme.",
+        "_comment": "ConceptScheme -> CatalogRecord via schema:subjectOf. This is the attachment point for the cdif:codelist/1.0 conformance declaration.",
+        "targetAssociationName": "ConceptScheme_subjectOf_CatalogRecord",
+        "subjectClass": "ConceptScheme",
+        "objectClass": "CatalogRecord",
+        "definition": "schema:subjectOf - the catalog record describing this codelist's metadata. For a CDIF codelist, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/codelist/1.0.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ConceptScheme -> Identifier via schema:identifier (structured form). Composition: the PropertyValue has no independent identity. schema:identifier may alternatively be a plain string URI (the JSON schema admits both); the structured form is what this UML edge captures.",
+        "targetAssociationName": "ConceptScheme_identifier_Identifier",
+        "subjectClass": "ConceptScheme",
+        "objectClass": "Identifier",
+        "definition": "schema:identifier - the structured (PropertyValue) form of the codelist's primary identifier. Required (either as string URI or as Identifier).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ConceptScheme -> Concept via skos:hasTopConcept. Composition with minOccurs=1: every CDIF ConceptScheme must declare at least one top concept.",
         "targetAssociationName": "ConceptScheme_hasTopConcept_Concept",
         "subjectClass": "ConceptScheme",
         "objectClass": "Concept",
-        "definition": "skos:hasTopConcept. Top-level concepts that have no skos:broader in this scheme. Required for hierarchical codelists; the array must be non-empty.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
+        "definition": "skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "_comment": "skos:inScheme - every Concept declares its containing ConceptScheme. Required by CDIF.",
+        "_comment": "Concept -> ConceptScheme via skos:inScheme. Required: every CdifCodelistConcept must back-point to its containing scheme.",
         "targetAssociationName": "Concept_inScheme_ConceptScheme",
         "subjectClass": "Concept",
         "objectClass": "ConceptScheme",
-        "definition": "skos:inScheme. The concept scheme this concept belongs to. Required for CDIF codelist concepts.",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
+        "definition": "skos:inScheme - the ConceptScheme(s) this concept belongs to. Required for every CDIF codelist concept.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"}
       },
       {
-        "_comment": "skos:broader - upward hierarchy navigation. Required on any concept appearing as a skos:narrower value of another.",
+        "_comment": "Concept -> Concept via skos:broader. Required on any concept that appears as a skos:narrower value of another concept; CDIF requires both directions explicit for hierarchy traversal.",
         "targetAssociationName": "Concept_broader_Concept",
         "subjectClass": "Concept",
         "objectClass": "Concept",
-        "definition": "skos:broader. Broader (parent) concepts in the hierarchy.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "definition": "skos:broader - parent (broader) concepts in the hierarchy. Required on any concept that appears as a skos:narrower of another.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
       },
       {
-        "_comment": "skos:narrower - downward hierarchy navigation.",
+        "_comment": "Concept -> Concept via skos:narrower. Inverse of skos:broader; CDIF requires both directions for hierarchy traversal.",
         "targetAssociationName": "Concept_narrower_Concept",
         "subjectClass": "Concept",
         "objectClass": "Concept",
-        "definition": "skos:narrower. Narrower (child) concepts in the hierarchy.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
+        "definition": "skos:narrower - child (narrower) concepts in the hierarchy. Each inline child must also declare skos:broader pointing back to this parent.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
       }
     ]
   }
