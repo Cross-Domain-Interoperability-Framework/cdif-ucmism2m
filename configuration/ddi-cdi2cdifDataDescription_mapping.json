@@ -10,7 +10,7 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "CDIFDataDescription",
+      "acronym": "BasicDataDescription",
       "modelTitle": "UML Model for the CDIF Data Description Profile",
       "subTitle": "Data-description additions over CDIF Discovery: variable physicalDataType, file characterization, primary key, statistics",
       "majorVersion": "1",
@@ -18,9 +18,9 @@
       "language": "en",
       "uri": "https://w3id.org/cdif/data_description/1.0/xmi/",
       "definition": "CDIF Data Description profile - extends Discovery with detailed variable descriptions (physicalDataType), distribution file characterization (character set, file size), primary key declarations, and statistical summaries.",
-      "mainPackage": "CDIFDataDescription",
+      "mainPackage": "BasicDataDescription",
       "mainPackageDefinition": "Data Description profile additions on top of Core + Discovery.",
-      "dataTypesPackage": "CDIFDataDescription",
+      "dataTypesPackage": "BasicDataDescription",
       "composes": [
         "ddi-cdi2cdifDiscovery_mapping.json"
       ]
@@ -29,32 +29,32 @@
   "package": [
     {
       "name": "Variables",
-      "parent": "CDIFDataDescription",
+      "parent": "BasicDataDescription",
       "definition": "Variable description classes (InstanceVariable subset used in Data Description)."
     },
     {
       "name": "Distribution",
-      "parent": "CDIFDataDescription",
+      "parent": "BasicDataDescription",
       "definition": "Distribution-level extensions: file characterization, the PhysicalDataSet subclasses (TabularTextDataSet, StructuredDataSet), the physical-mapping family (PhysicalMapping, TextMapping, LocatorMapping), and the DataFingerprint datatype."
     },
     {
       "name": "Keys",
-      "parent": "CDIFDataDescription",
+      "parent": "BasicDataDescription",
       "definition": "PrimaryKey and PrimaryKeyComponent for cdif:hasPrimaryKey."
     },
     {
       "name": "Statistics",
-      "parent": "CDIFDataDescription",
+      "parent": "BasicDataDescription",
       "definition": "Statistic value object plus Statistics, CategoryStatistics, StatisticsCollection and Category for cdif:statistics (cdifDataType/cdifStatistics)."
     },
     {
       "name": "ValueDomains",
-      "parent": "CDIFDataDescription",
+      "parent": "BasicDataDescription",
       "definition": "SubstantiveValueDomain, SentinelValueDomain and EnumerationDomain for the value domains an InstanceVariable draws its values from (cdifDataType/cdifValueDomain)."
     },
     {
       "name": "Support",
-      "parent": "CDIFDataDescription",
+      "parent": "BasicDataDescription",
       "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
     }
   ],

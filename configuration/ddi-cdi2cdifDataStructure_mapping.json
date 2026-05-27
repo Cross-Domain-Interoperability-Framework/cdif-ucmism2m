@@ -10,7 +10,7 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "CDIFDataStructure",
+      "acronym": "DataDescriptionWithStructure",
       "modelTitle": "UML Model for the CDIF Data Structure Profile",
       "subTitle": "Full DDI-CDI structural complexity for tabular, long, and dimensional datasets",
       "majorVersion": "1",
@@ -18,9 +18,9 @@
       "language": "en",
       "uri": "https://w3id.org/cdif/data_structure/1.0/xmi/",
       "definition": "CDIF Data Structure profile - extends Data Description with the full DDI-CDI structural complexity. Distributions carry cdi:isStructuredBy pointing at a Data Structure node. Conforms-to: https://w3id.org/cdif/data_structure/1.0.",
-      "mainPackage": "CDIFDataStructure",
+      "mainPackage": "DataDescriptionWithStructure",
       "mainPackageDefinition": "Data Structure profile: DataStructure subclasses, Components, RepresentedVariable, ValueDomain.",
-      "dataTypesPackage": "CDIFDataStructure",
+      "dataTypesPackage": "DataDescriptionWithStructure",
       "composes": [
         "ddi-cdi2cdifDataDescription_mapping.json"
       ]
@@ -32,27 +32,27 @@
   "package": [
     {
       "name": "DataStructures",
-      "parent": "CDIFDataStructure",
+      "parent": "DataDescriptionWithStructure",
       "definition": "DataStructure umbrella class and its Dimensional/Long/Wide subclasses."
     },
     {
       "name": "Components",
-      "parent": "CDIFDataStructure",
+      "parent": "DataDescriptionWithStructure",
       "definition": "DataStructureComponent subclasses: Identifier, Measure, Attribute, Dimension, VariableValue, VariableDescriptor; ComponentPosition; PrimaryKey."
     },
     {
       "name": "Variables",
-      "parent": "CDIFDataStructure",
+      "parent": "DataDescriptionWithStructure",
       "definition": "RepresentedVariable, DescriptorVariable plus reuse of InstanceVariable from Data Description. (DDI-CDI ReferenceVariable collapses to RepresentedVariable in CDIF.)"
     },
     {
       "name": "ValueDomains",
-      "parent": "CDIFDataStructure",
+      "parent": "DataDescriptionWithStructure",
       "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain, ValueAndConceptDescription."
     },
     {
       "name": "Physical",
-      "parent": "CDIFDataStructure",
+      "parent": "DataDescriptionWithStructure",
       "definition": "PhysicalDataSet and its subtypes (TabularTextDataSet, StructuredDataSet) - the byte-level realization a distribution is structured by."
     }
   ],

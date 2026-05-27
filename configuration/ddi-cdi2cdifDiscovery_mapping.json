@@ -10,7 +10,7 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "CDIFDiscovery",
+      "acronym": "BasicDiscovery",
       "modelTitle": "UML Model for the CDIF Discovery Profile",
       "subTitle": "Discovery-oriented metadata extending CDIF Core",
       "majorVersion": "1",
@@ -18,9 +18,9 @@
       "language": "en",
       "uri": "https://w3id.org/cdif/discovery/1.0/xmi/",
       "definition": "CDIF Discovery profile - extends CDIF Core with discovery-oriented properties: measurement technique, variables measured, spatial and temporal coverage, quality measurements. Conforms-to identifier: https://w3id.org/cdif/discovery/1.0.",
-      "mainPackage": "CDIFDiscovery",
+      "mainPackage": "BasicDiscovery",
       "mainPackageDefinition": "Discovery profile additions on top of CDIF Core.",
-      "dataTypesPackage": "CDIFDiscovery",
+      "dataTypesPackage": "BasicDiscovery",
       "composes": [
         "ddi-cdi2cdifCore_mapping.json"
       ]
@@ -29,22 +29,22 @@
   "package": [
     {
       "name": "Classes",
-      "parent": "CDIFDiscovery",
+      "parent": "BasicDiscovery",
       "definition": "Dataset (with discovery additions) and the discovery-specific value classes."
     },
     {
       "name": "Coverage",
-      "parent": "CDIFDiscovery",
+      "parent": "BasicDiscovery",
       "definition": "Spatial and temporal extent classes: SpatialExtent + AbstractGeometry/GeoCoordinates/GeoShape/Geometry; TemporalExtent + Instant/TimePosition."
     },
     {
       "name": "Quality",
-      "parent": "CDIFDiscovery",
+      "parent": "BasicDiscovery",
       "definition": "Quality measurement classes (DQV)."
     },
     {
       "name": "Support",
-      "parent": "CDIFDiscovery",
+      "parent": "BasicDiscovery",
       "definition": "Supporting structured types: Identifier, DefinedTerm, Reference (stubs; full definitions in CDIFCore)."
     }
   ],

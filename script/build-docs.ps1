@@ -42,13 +42,13 @@ $pumlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model\_plantuml"
 $htmlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model"
 
 $profiles = @(
-    @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist";        kind = "module" },
-    @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore";            kind = "module" },
-    @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "CDIFDiscovery";       kind = "composite" },
-    @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription"; kind = "composite" },
-    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure";   kind = "composite" },
-    @{ slug = "cdifArchive";         config = "ddi-cdi2cdifArchive_mapping.json";         umlName = "CDIFArchive";         kind = "module" },
-    @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance";      kind = "module" }
+    @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist";                  kind = "module" },
+    @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore";                      kind = "module" },
+    @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "BasicDiscovery";                kind = "composite" },
+    @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "BasicDataDescription";          kind = "composite" },
+    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "DataDescriptionWithStructure";  kind = "composite" },
+    @{ slug = "cdifArchive";         config = "ddi-cdi2cdifArchive_mapping.json";         umlName = "CDIFArchive";                   kind = "module" },
+    @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance";                kind = "module" }
 )
 
 $mbbDir = Join-Path $repoRoot "metadataBuildingBlocks"
