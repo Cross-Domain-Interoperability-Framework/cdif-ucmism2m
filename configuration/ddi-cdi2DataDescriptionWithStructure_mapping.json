@@ -1,0 +1,59 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF DataDescriptionWithStructure COMPOSITE profile UML. Holds no local class declarations beyond a placeholder anchor - it composes the four upstream profile-module configs (cdifCore + cdifDiscovery + cdifDataDescription + cdifDataStructure) and lets the XMI pipeline merge their class graphs. Mirrors the JSON-Schema allOf at _sources/profiles/cdifCompositeProfile/DataDescriptionWithStructure/schema.yaml.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF DataDescriptionWithStructure Composite Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "DataDescriptionWithStructure",
+      "modelTitle": "UML Model for the CDIF DataDescriptionWithStructure Composite Profile",
+      "subTitle": "Composes CDIFCore + CDIFDiscovery + CDIFDataDescription + CDIFDataStructure",
+      "majorVersion": "1",
+      "minorVersion": "0",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/data_structure/1.0/composite/xmi/",
+      "definition": "DataDescriptionWithStructure is the CDIF composite profile that extends BasicDataDescription with full DDI-CDI structural complexity. Assembled from four building-block profile modules: cdifCore + cdifDiscovery + cdifDataDescription + cdifDataStructure. A metadata record validating against this composite must declare conformance to https://w3id.org/cdif/core/1.0, https://w3id.org/cdif/discovery/1.0, https://w3id.org/cdif/data_description/1.0, and https://w3id.org/cdif/data_structure/1.0.",
+      "mainPackage": "DataDescriptionWithStructure",
+      "mainPackageDefinition": "Composite profile: CDIFCore + CDIFDiscovery + CDIFDataDescription + CDIFDataStructure assembled.",
+      "dataTypesPackage": "DataDescriptionWithStructure",
+      "composes": [
+        "ddi-cdi2cdifCore_mapping.json",
+        "ddi-cdi2cdifDiscovery_mapping.json",
+        "ddi-cdi2cdifDataDescription_mapping.json",
+        "ddi-cdi2cdifDataStructure_mapping.json"
+      ]
+    }
+  },
+  "package": [
+    {
+      "name": "Composition",
+      "parent": "DataDescriptionWithStructure",
+      "definition": "Local placeholder package. The composite has no classes of its own beyond what its four composed modules contribute."
+    }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "Placeholder anchor for composite-level constraints. Carries no real attributes; the composite's content comes entirely from the four composed modules' classes.",
+        "mappingType": "new",
+        "targetPackage": "Composition",
+        "targetClass": "CompositeProfile",
+        "isAbstract": true,
+        "definition": "Placeholder for the DataDescriptionWithStructure composite. All concrete classes come from the composed modules (CDIFCore, CDIFDiscovery, CDIFDataDescription, CDIFDataStructure) - this class has no instances.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "Placeholder.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      }
+    ]
+  }
+}

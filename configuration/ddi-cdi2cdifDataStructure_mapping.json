@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/DataDescriptionWithStructure/CDIFDataStructureProfileSchema.json. This is the most DDI-CDI-aligned profile: the JSON schema essentially exposes DDI-CDI's DataStructure / Component / RepresentedVariable / ValueDomain hierarchy. Strategy: heavy use of mappingType=map (with class rename when needed) and association renames - the same pattern as the existing DDSC example (ddi-cdi2ddsc_mapping.json). Target class names follow the JSON schema vocabulary (cdi:DataStructure, cdi:WideDataStructure, cdi:IdentifierComponent, etc.) which happen to match DDI-CDI's class names directly. The cdi:isStructuredBy hook from Distribution -> DataStructure is the key Distribution-level addition and is represented as a new association.",
+  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Aligned to metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataStructure/schema.yaml. The schema adds a single distribution-level property (cdi:isStructuredBy) plus a family of $defs for the DataStructure variants and supporting key types. This UML module is correspondingly tight: no composes (cdifCore + cdifDiscovery + cdifDataDescription are composed in BY THE COMPOSITE profile DataDescriptionWithStructure, not here). Anchor stubs (DataDownload, CatalogRecord) provide the attachment points. DataStructureComponent and InstanceVariable are referenced but defined elsewhere (cdifDataType / cdifDataDescription); cross-profile registry handles the linking.",
   "transformation": {
     "description": "DDI-CDI to CDIF Data Structure Profile",
     "version": "0.1",
@@ -10,573 +10,354 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "DataDescriptionWithStructure",
+      "acronym": "CDIFDataStructure",
       "modelTitle": "UML Model for the CDIF Data Structure Profile",
-      "subTitle": "Full DDI-CDI structural complexity for tabular, long, and dimensional datasets",
+      "subTitle": "Reusable data-structure description: DataStructure variants (Dimensional / Long / Wide), keys, foreign keys, dimension groups",
       "majorVersion": "1",
       "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/data_structure/1.0/xmi/",
-      "definition": "CDIF Data Structure profile - extends Data Description with the full DDI-CDI structural complexity. Distributions carry cdi:isStructuredBy pointing at a Data Structure node. Conforms-to: https://w3id.org/cdif/data_structure/1.0.",
-      "mainPackage": "DataDescriptionWithStructure",
-      "mainPackageDefinition": "Data Structure profile: DataStructure subclasses, Components, RepresentedVariable, ValueDomain.",
-      "dataTypesPackage": "DataDescriptionWithStructure",
-      "composes": [
-        "ddi-cdi2cdifDataDescription_mapping.json"
-      ]
-    },
-    "datatypeSubstitutions": {
-      "TypedString": "String"
+      "definition": "CDIF Data Structure profile module - adds cdi:isStructuredBy on a DataDownload, pointing at one of four AbstractDataStructure variants (DataStructure / DimensionalDataStructure / LongDataStructure / WideDataStructure). Each structure has DataStructureComponents and optional PrimaryKey / ForeignKey. The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/data_structure/1.0.",
+      "mainPackage": "CDIFDataStructure",
+      "mainPackageDefinition": "Data structure description extension classes added by this profile.",
+      "dataTypesPackage": "CDIFDataStructure"
     }
   },
   "package": [
     {
-      "name": "DataStructures",
-      "parent": "DataDescriptionWithStructure",
-      "definition": "DataStructure umbrella class and its Dimensional/Long/Wide subclasses."
+      "name": "Structures",
+      "parent": "CDIFDataStructure",
+      "definition": "AbstractDataStructure + concrete variants (DataStructure / DimensionalDataStructure / LongDataStructure / WideDataStructure), plus DimensionGroup."
     },
     {
-      "name": "Components",
-      "parent": "DataDescriptionWithStructure",
-      "definition": "DataStructureComponent subclasses: Identifier, Measure, Attribute, Dimension, VariableValue, VariableDescriptor; ComponentPosition; PrimaryKey."
+      "name": "Keys",
+      "parent": "CDIFDataStructure",
+      "definition": "PrimaryKey + PrimaryKeyComponent + ForeignKey + ForeignKeyComponent."
     },
     {
-      "name": "Variables",
-      "parent": "DataDescriptionWithStructure",
-      "definition": "RepresentedVariable, DescriptorVariable plus reuse of InstanceVariable from Data Description. (DDI-CDI ReferenceVariable collapses to RepresentedVariable in CDIF.)"
-    },
-    {
-      "name": "ValueDomains",
-      "parent": "DataDescriptionWithStructure",
-      "definition": "SubstantiveValueDomain, SentinelValueDomain, DescriptorValueDomain, EnumerationDomain, ValueAndConceptDescription."
-    },
-    {
-      "name": "Physical",
-      "parent": "DataDescriptionWithStructure",
-      "definition": "PhysicalDataSet and its subtypes (TabularTextDataSet, StructuredDataSet) - the byte-level realization a distribution is structured by."
+      "name": "Anchors",
+      "parent": "CDIFDataStructure",
+      "definition": "Stub re-declarations of classes from cdifCore / cdifDataDescription / cdifDataStructureComponent this profile attaches to or references."
     }
   ],
   "mapping": {
     "class": [
       {
-        "_comment": "Umbrella DataStructure - mapped 1:1.",
-        "mappingType": "map",
-        "sourceClass": "DataStructure",
-        "targetPackage": "DataStructures",
-        "targetClass": "DataStructure"
-      },
-      {
-        "_comment": "Concrete variants generalize the generic DataStructure so the distribution's cdi:isStructuredBy (which targets DataStructure) propagates to them in the diagram.",
-        "mappingType": "map",
-        "sourceClass": "WideDataStructure",
-        "targetPackage": "DataStructures",
-        "targetClass": "WideDataStructure",
-        "generalization": ["DataStructure"]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "LongDataStructure",
-        "targetPackage": "DataStructures",
-        "targetClass": "LongDataStructure",
-        "generalization": ["DataStructure"]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "DimensionalDataStructure",
-        "targetPackage": "DataStructures",
-        "targetClass": "DimensionalDataStructure",
-        "generalization": ["DataStructure"]
-      },
-      {
-        "_comment": "Abstract supertype of the component types (cdi:DataStructureComponent). Target of the generic DataStructure_has_DataStructureComponent; the concrete components generalize it.",
-        "mappingType": "map",
-        "sourceClass": "DataStructureComponent",
-        "targetPackage": "Components",
-        "targetClass": "DataStructureComponent",
-        "isAbstract": true
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "IdentifierComponent",
-        "targetPackage": "Components",
-        "targetClass": "IdentifierComponent",
-        "generalization": ["DataStructureComponent"]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "MeasureComponent",
-        "targetPackage": "Components",
-        "targetClass": "MeasureComponent",
-        "generalization": ["DataStructureComponent"]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "AttributeComponent",
-        "targetPackage": "Components",
-        "targetClass": "AttributeComponent",
-        "generalization": ["DataStructureComponent"]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "DimensionComponent",
-        "targetPackage": "Components",
-        "targetClass": "DimensionComponent",
-        "generalization": ["DataStructureComponent"]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "VariableValueComponent",
-        "targetPackage": "Components",
-        "targetClass": "VariableValueComponent",
-        "generalization": ["DataStructureComponent"]
-      },
-      {
-        "_comment": "VariableDescriptorComponent is the descriptor (parameter-name) column of a long-format data structure. Unlike the other components it is defined by a DescriptorVariable (not a RepresentedVariable), so it is modelled standalone rather than generalizing the abstract DataStructureComponent (which carries isDefinedBy_RepresentedVariable). It keeps its own identifier/semantic/refersTo via the source map.",
-        "mappingType": "map",
-        "sourceClass": "VariableDescriptorComponent",
-        "targetPackage": "Components",
-        "targetClass": "VariableDescriptorComponent"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "ComponentPosition",
-        "targetPackage": "Components",
-        "targetClass": "ComponentPosition",
-        "attribute": [
-          {
-            "name": "value",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          }
-        ]
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "PrimaryKey",
-        "targetPackage": "Components",
-        "targetClass": "PrimaryKey"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "PrimaryKeyComponent",
-        "targetPackage": "Components",
-        "targetClass": "PrimaryKeyComponent"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "RepresentedVariable",
-        "targetPackage": "Variables",
-        "targetClass": "RepresentedVariable",
-        "attribute": [
-          {
-            "name": "name",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "definition",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          }
-        ]
-      },
-      {
-        "_comment": "DescriptorVariable - in the CDIF profile a descriptor variable carries only an identifier, a name, and the DescriptorValueDomain enumerating the codes it can take (cdif:hasValuesFrom). The richer DDI-CDI DescriptorVariable attributes (function, role, unit of measure, data type, etc.) are NOT part of the CDIF building block, so this is a curated 'new' class rather than a bare map of the source. From cdifDataType/cdifDescriptorVariable.",
+        "_comment": "DataDownload stub - the host for cdi:isStructuredBy. Full definition in CDIFCore.",
         "mappingType": "new",
-        "sourceClass": "DescriptorVariable",
-        "targetPackage": "Variables",
-        "targetClass": "DescriptorVariable",
-        "definition": "cdi:DescriptorVariable - names the descriptor codes used in a long-format data structure; each code is paired (via the DescriptorValueDomain) with the RepresentedVariable it names.",
+        "targetPackage": "Anchors",
+        "targetClass": "DataDownload",
+        "definition": "Stub of CDIFCore::DataDownload. The data-structure profile adds the cdi:isStructuredBy property on each schema:distribution DataDownload item.",
         "attribute": [
           {
             "name": "identifier",
-            "dataType": "Identifier",
-            "definition": "@id - identifier for this descriptor variable.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the download.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "CatalogRecord stub - carries the required https://w3id.org/cdif/data_structure/1.0 conformance declaration.",
+        "mappingType": "new",
+        "targetPackage": "Anchors",
+        "targetClass": "CatalogRecord",
+        "definition": "Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.0.",
+        "attribute": [
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_structure/1.0 for the data-structure profile.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "DataStructureComponent stub - the abstract parent of IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent. Full subtypes defined in cdifDataType/cdifDataStructureComponent; this stub is here so the diagram can render the cdi:has_DataStructureComponent edges.",
+        "mappingType": "new",
+        "isAbstract": true,
+        "targetPackage": "Anchors",
+        "targetClass": "DataStructureComponent",
+        "definition": "Stub of cdifDataType::cdifDataStructureComponent (abstract). Subtypes (IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableDescriptorComponent / VariableValueComponent) are defined in that BB.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the component.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "InstanceVariable stub - referenced by PrimaryKey.isComposedOf. Full definition in CDIFDataDescription (and cdifDataType/cdifInstanceVariable).",
+        "mappingType": "new",
+        "targetPackage": "Anchors",
+        "targetClass": "InstanceVariable",
+        "definition": "Stub of CDIFDataDescription::InstanceVariable. Referenced by PrimaryKey.isComposedOf - the ordered list of variables that uniquely identify each row.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the variable.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "AbstractDataStructure - abstract supertype for the four cdi:isStructuredBy targets. The schema's anyOf on cdi:isStructuredBy is rendered here as the generalization hierarchy underneath.",
+        "mappingType": "new",
+        "isAbstract": true,
+        "targetPackage": "Structures",
+        "targetClass": "AbstractDataStructure",
+        "definition": "Abstract supertype for the four DataStructure variants. cdi:isStructuredBy on a DataDownload accepts any concrete subtype: DataStructure (general), DimensionalDataStructure (cube), LongDataStructure (variable-value-pair rows), WideDataStructure (wide-format tables).",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for this structure node; used as the target of @id-reference cdi:isStructuredBy.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "DataStructure - general data organization based on reusable data structure components. Required: at least one has_DataStructureComponent. Optional has_PrimaryKey and has_ForeignKey.",
+        "mappingType": "new",
+        "targetPackage": "Structures",
+        "targetClass": "DataStructure",
+        "generalization": ["AbstractDataStructure"],
+        "definition": "Generic data organization based on reusable data structure components. Carries at least one cdi:has_DataStructureComponent, plus optional cdi:has_PrimaryKey and cdi:has_ForeignKey[].",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:DataStructure'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "DimensionalDataStructure - cube-shaped structure: dimensions, measures, attributes. Components are constrained to IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent.",
+        "mappingType": "new",
+        "targetPackage": "Structures",
+        "targetClass": "DimensionalDataStructure",
+        "generalization": ["AbstractDataStructure"],
+        "definition": "Dimensional data set (multidimensional cube) described by Identifier / Measure / Attribute / Dimension components plus an optional PrimaryKey.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:DimensionalDataStructure'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "LongDataStructure - variable-value-pair (narrow / long) row layout. Exactly one Identifier + one VariableDescriptor + one VariableValue component, plus optional Attribute components.",
+        "mappingType": "new",
+        "targetPackage": "Structures",
+        "targetClass": "LongDataStructure",
+        "generalization": ["AbstractDataStructure"],
+        "definition": "Long (narrow) dataset row layout. Required: exactly one IdentifierComponent, exactly one VariableDescriptorComponent, exactly one VariableValueComponent. AttributeComponents optional.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:LongDataStructure'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "WideDataStructure - wide-format tabular layout. Identifier + Measure + Attribute components.",
+        "mappingType": "new",
+        "targetPackage": "Structures",
+        "targetClass": "WideDataStructure",
+        "generalization": ["AbstractDataStructure"],
+        "definition": "Wide (tabular) dataset layout. Components are the standard cdifDataStructureComponent family; cdi:has_PrimaryKey optional.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:WideDataStructure'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "DimensionGroup - reusable collection of dimensions referenced across multiple dimensional structures.",
+        "mappingType": "new",
+        "targetPackage": "Structures",
+        "targetClass": "DimensionGroup",
+        "definition": "Reusable collection of dimensions that can be shared across multiple dimensional structures. Carries cdi:identifier, cdif:name, cdif:has_DataStructureComponent[].",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the dimension group.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           },
           {
             "name": "name",
             "dataType": "String",
-            "definition": "cdif:name - human-understandable name(s) of the descriptor variable.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "definition": "cdif:name - human-readable name for the dimension group (ISO/IEC 11179-5).",
+            "multiplicity": {"lower": "1", "upper": "*"}
           }
         ]
       },
       {
-        "_comment": "InstanceVariable is used by DataStructure components as well as by Discovery's variableMeasured. Included here for self-contained Data Structure UML.",
-        "mappingType": "map",
-        "sourceClass": "InstanceVariable",
-        "targetPackage": "Variables",
-        "targetClass": "InstanceVariable",
+        "_comment": "PrimaryKey - role of an ordered set of cdi:InstanceVariables uniquely identifying a data instance. Array order of isComposedOf gives the position.",
+        "mappingType": "new",
+        "targetPackage": "Keys",
+        "targetClass": "PrimaryKey",
+        "definition": "Role of an ordered set of cdi:InstanceVariables that uniquely identify each data instance. Position is implicit in the cdif:isComposedOf array order; no ComponentPosition wrapper.",
         "attribute": [
           {
-            "name": "name",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
-          },
-          {
-            "name": "definition",
-            "multiplicity": {
-              "lower": "1",
-              "upper": "1"
-            }
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for this primary key.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
       {
-        "mappingType": "map",
-        "sourceClass": "SubstantiveValueDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "SubstantiveValueDomain"
+        "_comment": "PrimaryKeyComponent - role of a data structure component for content identification. Referenced by ForeignKeyComponent.references.",
+        "mappingType": "new",
+        "targetPackage": "Keys",
+        "targetClass": "PrimaryKeyComponent",
+        "definition": "Role of a data structure component for content identification. Used in conjunction with PrimaryKey when content-identification is captured at the component level.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for this PrimaryKeyComponent.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
       },
       {
-        "mappingType": "map",
-        "sourceClass": "SentinelValueDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "SentinelValueDomain"
+        "_comment": "ForeignKey - role of a set of data structure components for content referencing.",
+        "mappingType": "new",
+        "targetPackage": "Keys",
+        "targetClass": "ForeignKey",
+        "definition": "Role of a set of data structure components for content referencing (relational foreign-key semantics on a DataStructure).",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for this foreign key.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
       },
       {
-        "mappingType": "map",
-        "sourceClass": "DescriptorValueDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "DescriptorValueDomain"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "EnumerationDomain",
-        "targetPackage": "ValueDomains",
-        "targetClass": "EnumerationDomain"
-      },
-      {
-        "_comment": "ForeignKey - a key whose components reference the PrimaryKey of another DataStructure (cdi:ForeignKey).",
-        "mappingType": "map",
-        "sourceClass": "ForeignKey",
-        "targetPackage": "Components",
-        "targetClass": "ForeignKey"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "ForeignKeyComponent",
-        "targetPackage": "Components",
-        "targetClass": "ForeignKeyComponent"
-      },
-
-      
-      {
-        "_comment": "ValueAndConceptDescription - description of the values/concepts a value domain admits (cdi:ValueAndConceptDescription): ranges, patterns, classification level, etc.",
-        "mappingType": "map",
-        "sourceClass": "ValueAndConceptDescription",
-        "targetPackage": "ValueDomains",
-        "targetClass": "ValueAndConceptDescription"
-      },
-      {
-        "_comment": "UnitType - the type of unit a (conceptual/represented) variable measures (cdi:UnitType).",
-        "mappingType": "map",
-        "sourceClass": "UnitType",
-        "targetPackage": "Variables",
-        "targetClass": "UnitType"
-      },
-      {
-        "_comment": "PhysicalDataSet - byte-level realization of a dataset that a distribution is structured by (cdi:PhysicalDataSet). Subtypes: TabularTextDataSet, StructuredDataSet.",
-        "mappingType": "map",
-        "sourceClass": "PhysicalDataSet",
-        "targetPackage": "Physical",
-        "targetClass": "PhysicalDataSet"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "TabularTextDataSet",
-        "targetPackage": "Physical",
-        "targetClass": "TabularTextDataSet"
-      },
-      {
-        "mappingType": "map",
-        "sourceClass": "StructuredDataSet",
-        "targetPackage": "Physical",
-        "targetClass": "StructuredDataSet"
+        "_comment": "ForeignKeyComponent - role of a single data structure component for content referencing. References a PrimaryKeyComponent and correspondsTo a DataStructureComponent.",
+        "mappingType": "new",
+        "targetPackage": "Keys",
+        "targetClass": "ForeignKeyComponent",
+        "definition": "Single-component role of a foreign key. Points at the PrimaryKeyComponent it references (cdi:references) and at the DataStructureComponent it corresponds to (cdi:correspondsTo).",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for this ForeignKeyComponent.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
       }
     ],
     "association": [
       {
-        "_comment": "Generic cdi:has at the DataStructure level: every data structure has 1..* DataStructureComponent (the abstract supertype). The concrete per-variant component requirements are the WideDataStructure_has_*/Long.../Dimensional... associations below; the variants generalize DataStructure so this generic association applies to all of them.",
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "DataStructure_has_DataStructureComponent",
-        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "WideDataStructure_has_IdentifierComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "WideDataStructure_has_MeasureComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "WideDataStructure_has_AttributeComponent",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "LongDataStructure_has_IdentifierComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "LongDataStructure_has_VariableDescriptorComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "LongDataStructure_has_VariableValueComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "LongDataStructure_has_AttributeComponent",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "DimensionalDataStructure_has_IdentifierComponent",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "DimensionalDataStructure_has_DimensionComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "DimensionalDataStructure_has_MeasureComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_DataStructureComponent",
-        "targetAssociationName": "DimensionalDataStructure_has_AttributeComponent",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_ComponentPosition",
-        "targetAssociationName": "DimensionalDataStructure_has_ComponentPosition",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "ComponentPosition_indexes_DataStructureComponent",
-        "targetAssociationName": "ComponentPosition_indexes_DimensionComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdi:has PrimaryKey at the generic DataStructure level (any data structure can have one); variants inherit it via generalization.",
-        "sourceAssociationName": "DataStructure_has_PrimaryKey",
-        "targetAssociationName": "DataStructure_has_PrimaryKey",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "sourceAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent",
-        "targetAssociationName": "PrimaryKey_isComposedOf_PrimaryKeyComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "PrimaryKeyComponent_correspondsTo_DataStructureComponent",
-        "targetAssociationName": "PrimaryKeyComponent_correspondsTo_IdentifierComponent",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdif:isDefinedBy_RepresentedVariable - declared once on the abstract DataStructureComponent so every concrete component (IdentifierComponent, MeasureComponent, AttributeComponent, DimensionComponent, VariableValueComponent) inherits it. The DDI-CDI ReferenceVariable that defines a VariableValueComponent is just a RepresentedVariable in the CDIF schema. VariableDescriptorComponent is the exception (defined by a DescriptorVariable) and is modelled standalone, not as a DataStructureComponent.",
-        "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "subjectClass": "DataStructureComponent",
-        "objectClass": "RepresentedVariable",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdif:isDefinedBy_DescriptorVariable - VariableDescriptorComponent (the descriptor column) is defined by a DescriptorVariable, not a RepresentedVariable, so it is modelled standalone (not generalizing DataStructureComponent) and carries its own isDefinedBy association.",
-        "sourceAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
-        "targetAssociationName": "VariableDescriptorComponent_isDefinedBy_DescriptorVariable",
-        "subjectClass": "VariableDescriptorComponent",
-        "objectClass": "DescriptorVariable",
-        "objectClassMultiplicity": {
-          "lower": "1",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdi:refersTo - the descriptor column refers to the VariableValueComponent whose values its descriptor codes identify. Modelled as an @id object reference in JSON; the target type is also enforced by SHACL (cdifVariableDescriptorComponentShape). New association (CDIF-specific typing).",
-        "targetAssociationName": "VariableDescriptorComponent_refersTo_VariableValueComponent",
-        "subjectClass": "VariableDescriptorComponent",
-        "objectClass": "VariableValueComponent",
-        "definition": "cdi:refersTo - the VariableValueComponent in the same data structure whose values the descriptor codes identify.",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "1"
-        }
-      },
-      {
-        "_comment": "cdif:hasValuesFrom - the DescriptorValueDomain enumerating the codes the descriptor variable can take; each code is paired (via cdif:isDefinedBy) with the RepresentedVariable it names. New association (CDIF-specific; required on cdifDescriptorVariable).",
-        "targetAssociationName": "DescriptorVariable_hasValuesFrom_DescriptorValueDomain",
-        "subjectClass": "DescriptorVariable",
-        "objectClass": "DescriptorValueDomain",
-        "definition": "cdif:hasValuesFrom - the DescriptorValueDomain enumerating the codes that can appear in the descriptor column.",
-        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
-      },
-      {
-        "_comment": "Refined per audit_cdif_vs_ddi.py: cdi:takesSubstantiveValuesFrom in CDIF restricts the target type to SubstantiveValueDomain (rather than the bare ValueDomain DDI-CDI permits). Source association RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain already encodes this restriction in the source XMI - keep target identical.",
-        "sourceAssociationName": "RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain",
-        "targetAssociationName": "RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain"
-      },
-      {
-        "_comment": "Same audit note for cdi:takesSentinelValuesFrom (restricted to SentinelValueDomain in CDIF).",
-        "sourceAssociationName": "RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain",
-        "targetAssociationName": "RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain"
-      },
-      {
-        "_comment": "cdif:uses_Concept - the controlled-vocabulary skos:Concept(s) the RepresentedVariable represents/measures (akin to schema:propertyID). New association (CDIF-specific; no DDI-CDI source association).",
-        "targetAssociationName": "RepresentedVariable_uses_Concept",
-        "subjectClass": "RepresentedVariable",
-        "objectClass": "Concept",
-        "definition": "cdif:uses - the concept(s) this represented variable measures or represents, as references to skos:Concept entries.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
-      },
-      {
-        "_comment": "cdi:qualifies association on AttributeComponent. DDI-CDI has AttributeComponent_qualifies_DataStructureComponent; CDIF's DataStructure profile narrows the qualifies target to MeasureComponent per the cdifDataStructureComponent BB. Renamed accordingly.",
-        "sourceAssociationName": "AttributeComponent_qualifies_DataStructureComponent",
-        "targetAssociationName": "AttributeComponent_qualifies_MeasureComponent",
-        "objectClassMultiplicity": {
-          "lower": "0",
-          "upper": "*"
-        }
-      },
-      {
-        "sourceAssociationName": "DataStructure_has_ForeignKey",
-        "targetAssociationName": "DataStructure_has_ForeignKey",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
-      },
-      {
-        "sourceAssociationName": "ForeignKey_isComposedOf_ForeignKeyComponent",
-        "targetAssociationName": "ForeignKey_isComposedOf_ForeignKeyComponent",
-        "objectClassMultiplicity": { "lower": "1", "upper": "*" }
-      },
-      {
-        "sourceAssociationName": "ForeignKeyComponent_correspondsTo_DataStructureComponent",
-        "targetAssociationName": "ForeignKeyComponent_correspondsTo_DataStructureComponent",
-        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
-      },
-      {
-        "sourceAssociationName": "ForeignKeyComponent_references_PrimaryKeyComponent",
-        "targetAssociationName": "ForeignKeyComponent_references_PrimaryKeyComponent",
-        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
-      },
-
-      {
-        "sourceAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "targetAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-      {
-        "sourceAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "targetAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
-      },
-
-      {
-        "_comment": "cdi:isStructuredBy - the distribution carries it. In the instance the distribution object is co-typed schema:DataDownload + cdi:PhysicalDataSet; the association is anchored on DataDownload so it renders on the distribution class readers recognize. (A WebAPI carries it on its Action result instead - see ActionResult_isStructuredBy_DataStructure.) New association (DDI-CDI carries it on DataSet/PhysicalDataSet).",
-        "targetAssociationName": "DataDownload_isStructuredBy_DataStructure",
+        "_comment": "DataDownload -> CatalogRecord (via the dataset's schema:subjectOf back-ref). Modelled here so the diagram can show where the conformsTo declaration lives.",
+        "targetAssociationName": "DataDownload_subjectOf_CatalogRecord",
         "subjectClass": "DataDownload",
-        "objectClass": "DataStructure",
-        "definition": "cdi:isStructuredBy - the DataStructure describing this distribution's physical layout.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+        "objectClass": "CatalogRecord",
+        "definition": "schema:subjectOf - the catalog record describing this dataset's metadata. For the data-structure profile, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/data_structure/1.0.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
-        "_comment": "cdi:isStructuredBy on a WebAPI Action result. The Action response (ActionResult) is the per-request representation a WebAPI distribution returns; its physical layout is described by a DataStructure, mirroring DataDownload_isStructuredBy_DataStructure. New association (ActionResult is defined in CDIFCore).",
-        "targetAssociationName": "ActionResult_isStructuredBy_DataStructure",
-        "subjectClass": "ActionResult",
-        "objectClass": "DataStructure",
-        "definition": "cdi:isStructuredBy - the DataStructure describing the physical layout of this Action result representation.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+        "_comment": "DataDownload -> AbstractDataStructure via cdi:isStructuredBy. Schema's anyOf permits any of the four concrete subtypes plus an @id-reference.",
+        "targetAssociationName": "DataDownload_isStructuredBy_AbstractDataStructure",
+        "subjectClass": "DataDownload",
+        "objectClass": "AbstractDataStructure",
+        "definition": "cdi:isStructuredBy - the reusable data-structure description for this distribution. One of DataStructure / DimensionalDataStructure / LongDataStructure / WideDataStructure (or @id-reference to one declared elsewhere).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
-        "_comment": "cdif:uses - the InstanceVariable references the RepresentedVariable it instantiates; the represented-variable-level properties live on the RepresentedVariable and are not duplicated on the InstanceVariable. The instance @id targets a RepresentedVariable. New association (no DDI-CDI source association from InstanceVariable).",
-        "targetAssociationName": "InstanceVariable_uses_RepresentedVariable",
-        "subjectClass": "InstanceVariable",
-        "objectClass": "RepresentedVariable",
-        "definition": "cdif:uses - the RepresentedVariable this InstanceVariable instantiates.",
-        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
+        "_comment": "AbstractDataStructure -> DataStructureComponent via cdi:has_DataStructureComponent. Inherited by all four subtypes (each subtype constrains the allowed component subtypes differently).",
+        "targetAssociationName": "AbstractDataStructure_hasComponent_DataStructureComponent",
+        "subjectClass": "AbstractDataStructure",
+        "objectClass": "DataStructureComponent",
+        "definition": "cdi:has_DataStructureComponent - the components this structure is composed of. Concrete subtypes constrain the allowed component subtypes (see DimensionalDataStructure / LongDataStructure).",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "_comment": "cdi:measures - the unit type a represented variable measures. New association (DDI-CDI carries measures on ConceptualVariable).",
-        "targetAssociationName": "RepresentedVariable_measures_UnitType",
-        "subjectClass": "RepresentedVariable",
-        "objectClass": "UnitType",
-        "definition": "cdi:measures - the UnitType this represented variable measures.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+        "_comment": "AbstractDataStructure -> PrimaryKey via cdi:has_PrimaryKey. Optional on all four subtypes.",
+        "targetAssociationName": "AbstractDataStructure_hasPrimaryKey_PrimaryKey",
+        "subjectClass": "AbstractDataStructure",
+        "objectClass": "PrimaryKey",
+        "definition": "cdi:has_PrimaryKey - optional primary key on the structure.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
       },
       {
-        "_comment": "cdif:isDefinedBy - the enumeration domain is defined by a Concept. Mapped from the DDI-CDI source association.",
-        "sourceAssociationName": "EnumerationDomain_isDefinedBy_Concept",
-        "targetAssociationName": "EnumerationDomain_isDefinedBy_Concept",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+        "_comment": "DataStructure -> ForeignKey via cdi:has_ForeignKey. Only the general DataStructure variant carries foreign keys in the schema.",
+        "targetAssociationName": "DataStructure_hasForeignKey_ForeignKey",
+        "subjectClass": "DataStructure",
+        "objectClass": "ForeignKey",
+        "definition": "cdi:has_ForeignKey - foreign-key relationships on the general DataStructure variant.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "DimensionGroup -> DataStructureComponent via cdif:has_DataStructureComponent. DimensionGroups are reusable component collections.",
+        "targetAssociationName": "DimensionGroup_hasComponent_DataStructureComponent",
+        "subjectClass": "DimensionGroup",
+        "objectClass": "DataStructureComponent",
+        "definition": "cdif:has_DataStructureComponent - the components belonging to this dimension group.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "PrimaryKey -> InstanceVariable via cdif:isComposedOf. Ordered list of variables that uniquely identify a row.",
+        "targetAssociationName": "PrimaryKey_isComposedOf_InstanceVariable",
+        "subjectClass": "PrimaryKey",
+        "objectClass": "InstanceVariable",
+        "definition": "cdif:isComposedOf - ordered list of cdi:InstanceVariables. Array position is the component position.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"}
+      },
+      {
+        "_comment": "ForeignKey -> ForeignKeyComponent via cdi:isComposedOf. Components of the foreign-key role.",
+        "targetAssociationName": "ForeignKey_isComposedOf_ForeignKeyComponent",
+        "subjectClass": "ForeignKey",
+        "objectClass": "ForeignKeyComponent",
+        "definition": "cdi:isComposedOf - the components of this foreign key.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ForeignKeyComponent -> PrimaryKeyComponent via cdi:references.",
+        "targetAssociationName": "ForeignKeyComponent_references_PrimaryKeyComponent",
+        "subjectClass": "ForeignKeyComponent",
+        "objectClass": "PrimaryKeyComponent",
+        "definition": "cdi:references - the PrimaryKeyComponent on another structure that this foreign-key component points at.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "ForeignKeyComponent -> DataStructureComponent via cdi:correspondsTo.",
+        "targetAssociationName": "ForeignKeyComponent_correspondsTo_DataStructureComponent",
+        "subjectClass": "ForeignKeyComponent",
+        "objectClass": "DataStructureComponent",
+        "definition": "cdi:correspondsTo - the local DataStructureComponent on the host structure that this FK component corresponds to.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "PrimaryKeyComponent -> DataStructureComponent via cdi:correspondsTo.",
+        "targetAssociationName": "PrimaryKeyComponent_correspondsTo_DataStructureComponent",
+        "subjectClass": "PrimaryKeyComponent",
+        "objectClass": "DataStructureComponent",
+        "definition": "cdi:correspondsTo - the local DataStructureComponent this PrimaryKeyComponent corresponds to.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       }
     ]
   }

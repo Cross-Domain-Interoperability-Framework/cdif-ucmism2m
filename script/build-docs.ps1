@@ -48,7 +48,8 @@ $profiles = @(
     @{ slug = "basicDiscovery";      config = "ddi-cdi2BasicDiscovery_mapping.json";      umlName = "BasicDiscovery";                kind = "composite" },
     @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription";           kind = "module" },
     @{ slug = "basicDataDescription"; config = "ddi-cdi2BasicDataDescription_mapping.json"; umlName = "BasicDataDescription";         kind = "composite" },
-    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "DataDescriptionWithStructure";  kind = "composite" },
+    @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure";             kind = "module" },
+    @{ slug = "dataDescriptionWithStructure"; config = "ddi-cdi2DataDescriptionWithStructure_mapping.json"; umlName = "DataDescriptionWithStructure"; kind = "composite" },
     @{ slug = "cdifArchiveDistribution"; config = "ddi-cdi2cdifArchiveDistribution_mapping.json"; umlName = "CDIFArchiveDistribution";   kind = "module" },
     @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance";                kind = "module" }
 )
