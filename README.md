@@ -15,7 +15,9 @@ There are now **two interchangeable implementations** of the transformation desc
 | **Eclipse / QVTo application** | In development — described in sections 1–3 below | Java 21 + Eclipse Tycho + QVTo 3.11.1 (build) | You want the long-term canonical tool, run from a packaged Eclipse RCP binary |
 | **Python generator** | Working today — see [section 4](#4-alternative-python-generator-using-uml_to_schemapy) | Python 3.10+ with `pyyaml` and `jsonschema` | You want to generate profile UML right now, on any platform, without an Eclipse build |
 
-Both paths read the same configuration files (`configuration/ddi-cdi2*.json`) and the same source model — the current DDI-CDI **1.1beta** canonical UML at `../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi` (in the sibling UCMIS-M2T clone). A DDI-CDI 1.0 model remains at `model/ddi-cdi_canonical-unique-names-eclipse.xmi` for reference. The five CDIF profile UML files in `generated/` were produced by the Python path from the 1.1beta source; the Eclipse application will produce equivalent output once built.
+Both paths read the same configuration files (`configuration/ddi-cdi2*.json`) and the same source model — the current DDI-CDI **1.1beta** canonical UML at `../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi` (in the sibling UCMIS-M2T clone). A DDI-CDI 1.0 model remains at `model/ddi-cdi_canonical-unique-names-eclipse.xmi` for reference.
+
+**2026-05-27**: Profile UML configs are now split into **modules** (`kind: module` in `build-docs.ps1`; one per `cdifProfile/<X>` building block, no `composes` so the diagram shows only the module's own extension classes + anchor stubs) and **composites** (`kind: composite`; thin `composes`-only configs that aggregate modules — `BasicDiscovery`, `BasicDataDescription`, `DataDescriptionWithStructure`). The generated XMI files in `generated/` were produced by the Python path from the 1.1beta source; the Eclipse application will produce equivalent output once built.
 
 ---
 
