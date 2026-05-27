@@ -1593,7 +1593,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFCore.Reference" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Reference" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFCore.Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Reference-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCore.Reference"/>
-                  <body>A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifProperties/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.</body>
+                  <body>A typed reference to an external entity (cdif:Reference). Provides a labeled link surface (name, description, url) plus the DDI-CDI dt-Reference semantics (uri, optional cdif:semantic describing the role). See the cdifDataType/cdifReference building block for the full definition; this is the per-profile UML class that JSON-shape unions reduce to.</body>
                </ownedComment>
                <name>Reference</name>
                <ownedAttribute xmi:id="CDIFCore.Reference-name" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Reference-name" xmi:type="uml:Property">
@@ -1755,7 +1755,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFCore.DerivedFrom" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#DerivedFrom" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFCore.DerivedFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#DerivedFrom-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCore.DerivedFrom"/>
-                  <body>prov:wasDerivedFrom payload - a cdif:Reference to an upstream resource the dataset was derived from (the JSON also admits a bare string or @id). Mirrors the cdifProperties/cdifReference building block.</body>
+                  <body>prov:wasDerivedFrom payload - a cdif:Reference to an upstream resource the dataset was derived from (the JSON also admits a bare string or @id). Mirrors the cdifDataType/cdifReference building block.</body>
                </ownedComment>
                <name>DerivedFrom</name>
                <ownedAttribute xmi:id="CDIFCore.DerivedFrom-name" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#DerivedFrom-name" xmi:type="uml:Property">

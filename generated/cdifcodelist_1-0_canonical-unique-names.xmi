@@ -656,7 +656,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFCodelist.Reference" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFCodelist.Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCodelist.Reference"/>
-                  <body>cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifProperties/cdifReference.</body>
+                  <body>cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifDataType/cdifReference.</body>
                </ownedComment>
                <name>Reference</name>
                <ownedAttribute xmi:id="CDIFCodelist.Reference-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.0/xmi/#Reference-identifier" xmi:type="uml:Property">
