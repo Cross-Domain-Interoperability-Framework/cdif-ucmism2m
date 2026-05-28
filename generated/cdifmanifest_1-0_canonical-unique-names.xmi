@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmi:XMI xmlns:StandardProfile="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+   <uml:Model xmi:id="CDIFManifest.CDIFManifest" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CDIFManifest">
+      <ownedComment xmi:id="CDIFManifest.CDIFManifest-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CDIFManifest-ownedComment" xmi:type="uml:Comment">
+         <annotatedElement xmi:idref="CDIFManifest.CDIFManifest"/>
+         <body>CDIF Archive Distribution profile module. On any Dataset whose catalog record (schema:subjectOf &gt; CatalogRecord) declares conformance to https://w3id.org/cdif/manifest/1.0, schema:distribution items that are schema:DataDownloads MAY carry schema:hasPart describing the component files inside an archive. When schema:encodingFormat includes 'application/zip', schema:hasPart is REQUIRED. Each ArchivePart is typed as schema:MediaObject (not DataDownload, since the parts are not independently accessible). Parts may carry size (schema:QuantitativeValue), checksum (spdx:Checksum), back-references via schema:about, and CDIF data-description extensions (cdifTabularData, cdifDataCube).</body>
+      </ownedComment>
+      <name>CDIFManifest</name>
+      <URI>https://w3id.org/cdif/manifest/1.0/xmi/</URI>
+      <packagedElement xmi:id="CDIFManifest.ModelIdentification" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification" xmi:type="uml:DataType">
+         <ownedComment xmi:id="CDIFManifest.ModelIdentification-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFManifest.ModelIdentification"/>
+            <body>Identification metadata for this profile model: constant, read-only attributes carrying the model's prefix, version, title, language and URI.</body>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="CDIFManifest.ModelIdentification-prefix" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-prefix" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFManifest.ModelIdentification-prefix-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-prefix-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.ModelIdentification-prefix"/>
+               <body>Namespace prefix of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFManifest.ModelIdentification-prefix-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-prefix-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFManifest.ModelIdentification-prefix-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-prefix-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>prefix</name>
+            <defaultValue xmi:id="CDIFManifest.ModelIdentification-prefix-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-prefix-defaultValue" xmi:type="uml:LiteralString">
+               <value>cdif</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFManifest.ModelIdentification-majorVersion" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-majorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFManifest.ModelIdentification-majorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-majorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.ModelIdentification-majorVersion"/>
+               <body>Major version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFManifest.ModelIdentification-majorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-majorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFManifest.ModelIdentification-majorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-majorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>majorVersion</name>
+            <defaultValue xmi:id="CDIFManifest.ModelIdentification-majorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-majorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFManifest.ModelIdentification-minorVersion" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-minorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFManifest.ModelIdentification-minorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-minorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.ModelIdentification-minorVersion"/>
+               <body>Minor version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFManifest.ModelIdentification-minorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-minorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFManifest.ModelIdentification-minorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-minorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>minorVersion</name>
+            <defaultValue xmi:id="CDIFManifest.ModelIdentification-minorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-minorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>0</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFManifest.ModelIdentification-title" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-title" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFManifest.ModelIdentification-title-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-title-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.ModelIdentification-title"/>
+               <body>Title of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFManifest.ModelIdentification-title-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-title-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFManifest.ModelIdentification-title-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-title-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>title</name>
+            <defaultValue xmi:id="CDIFManifest.ModelIdentification-title-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-title-defaultValue" xmi:type="uml:LiteralString">
+               <value>UML Model for the CDIF Archive Distribution Profile</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFManifest.ModelIdentification-language" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-language" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFManifest.ModelIdentification-language-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-language-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.ModelIdentification-language"/>
+               <body>Primary language of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFManifest.ModelIdentification-language-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-language-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFManifest.ModelIdentification-language-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-language-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>language</name>
+            <defaultValue xmi:id="CDIFManifest.ModelIdentification-language-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-language-defaultValue" xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFManifest.ModelIdentification-uri" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-uri" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFManifest.ModelIdentification-uri-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-uri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.ModelIdentification-uri"/>
+               <body>Namespace URI of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFManifest.ModelIdentification-uri-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-uri-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFManifest.ModelIdentification-uri-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-uri-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>uri</name>
+            <defaultValue xmi:id="CDIFManifest.ModelIdentification-uri-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ModelIdentification-uri-defaultValue" xmi:type="uml:LiteralString">
+               <value>https://w3id.org/cdif/manifest/1.0/xmi/</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="CDIFManifest.CDIFManifestPackage" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CDIFManifest-package" xmi:type="uml:Package">
+         <ownedComment xmi:id="CDIFManifest.CDIFManifestPackage-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CDIFManifest-package-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFManifest.CDIFManifestPackage"/>
+            <body>Archive distribution structure: component files inside a single download.</body>
+         </ownedComment>
+         <name>CDIFManifest</name>
+         <packagedElement xmi:id="CDIFManifest.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#XsdAnyUri" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFManifest.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.XsdAnyUri"/>
+               <body>Primitive data type "anyURI" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents a Uniform Resource Identifier Reference (URI). An "anyURI" value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI.</body>
+            </ownedComment>
+            <name>XsdAnyUri</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFManifest.Classes" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Classes-package" xmi:type="uml:Package">
+            <ownedComment xmi:id="CDIFManifest.Classes-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Classes-package-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFManifest.Classes"/>
+               <body>Target classes of the CDIF profile.</body>
+            </ownedComment>
+            <name>Classes</name>
+            <packagedElement xmi:id="CDIFManifest.Dataset" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFManifest.Dataset-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFManifest.Dataset"/>
+                  <body>Stub of schema:Dataset (full definition in CDIFCore). Re-declared here so the diagram can show schema:subjectOf &gt; CatalogRecord as the attachment point for the cdif:manifest/1.0 conformance declaration.</body>
+               </ownedComment>
+               <name>Dataset</name>
+               <ownedAttribute xmi:id="CDIFManifest.Dataset-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.Dataset-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.Dataset-identifier"/>
+                     <body>@id - resolvable URI for the dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.Dataset-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.Dataset-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFManifest.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.Dataset-subjectOf" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-subjectOf" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFManifest.Dataset-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-subjectOf-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.Dataset-subjectOf"/>
+                     <body>schema:subjectOf - the catalog record describing this dataset's metadata. For an archive distribution, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/manifest/1.0.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.Dataset-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.Dataset-subjectOf-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset-subjectOf-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>subjectOf</name>
+                  <type xmi:idref="CDIFManifest.CatalogRecord"/>
+                  <association xmi:idref="CDIFManifest.Dataset_subjectOf_CatalogRecord"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFManifest.CatalogRecord" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CatalogRecord" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFManifest.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFManifest.CatalogRecord"/>
+                  <body>Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a Dataset). For the archive-distribution profile, dcterms:conformsTo MUST include https://w3id.org/cdif/manifest/1.0.</body>
+               </ownedComment>
+               <name>CatalogRecord</name>
+               <ownedAttribute xmi:id="CDIFManifest.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.CatalogRecord-conformsTo"/>
+                     <body>dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/manifest/1.0 for the archive profile.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.CatalogRecord-conformsTo-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#CatalogRecord-conformsTo-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>conformsTo</name>
+                  <type xmi:idref="CDIFManifest.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFManifest.DataDownload" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFManifest.DataDownload-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFManifest.DataDownload"/>
+                  <body>Stub of CDIFCore::DataDownload (a distribution that is a downloadable file). When encodingFormat includes 'application/zip', schema:hasPart MUST list the component files inside the archive.</body>
+               </ownedComment>
+               <name>DataDownload</name>
+               <ownedAttribute xmi:id="CDIFManifest.DataDownload-encodingFormat" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-encodingFormat" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.DataDownload-encodingFormat-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-encodingFormat-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.DataDownload-encodingFormat"/>
+                     <body>schema:encodingFormat - MIME type(s) of the download. Including 'application/zip' triggers the requirement to populate schema:hasPart.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.DataDownload-encodingFormat-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-encodingFormat-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.DataDownload-encodingFormat-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-encodingFormat-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>encodingFormat</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.DataDownload-hasPart" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-hasPart" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFManifest.DataDownload-hasPart-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-hasPart-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.DataDownload-hasPart"/>
+                     <body>schema:hasPart - the component files inside this archive DataDownload. Required when schema:encodingFormat includes 'application/zip'.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.DataDownload-hasPart-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-hasPart-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.DataDownload-hasPart-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload-hasPart-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasPart</name>
+                  <type xmi:idref="CDIFManifest.ArchivePart"/>
+                  <association xmi:idref="CDIFManifest.DataDownload_hasPart_ArchivePart"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFManifest.ArchivePart" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFManifest.ArchivePart-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFManifest.ArchivePart"/>
+                  <body>A component file within an archive distribution. Typed as schema:MediaObject; carries filename, MIME type(s), optional size and checksum, and optional schema:about back-references when the part is a sidecar metadata file.</body>
+               </ownedComment>
+               <name>ArchivePart</name>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-identifier"/>
+                     <body>@id - identifier for this part, typically a hash-anchor (e.g. '#abc123'). Used as the target of schema:about back-references from sidecar metadata files inside the same archive.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFManifest.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-name" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-name-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-name"/>
+                     <body>schema:name - filename of the component file within the archive.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-name-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-name-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-description" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-description" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-description-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-description-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-description"/>
+                     <body>schema:description - short description of the file content.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-description-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-description-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-description-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-description-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>description</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-encodingFormat" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-encodingFormat" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-encodingFormat-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-encodingFormat-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-encodingFormat"/>
+                     <body>schema:encodingFormat - MIME type(s) of this file.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-encodingFormat-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-encodingFormat-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-encodingFormat-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-encodingFormat-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>encodingFormat</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-about" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-about" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-about-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-about-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-about"/>
+                     <body>schema:about - when this ArchivePart is a metadata sidecar, references the data ArchivePart this sidecar describes (typically via @id).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-about-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-about-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-about-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-about-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>about</name>
+                  <type xmi:idref="CDIFManifest.ArchivePart"/>
+                  <association xmi:idref="CDIFManifest.ArchivePart_about_ArchivePart"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-size" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-size" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-size-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-size-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-size"/>
+                     <body>schema:size - file size as a QuantitativeValue (value + unitText).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-size-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-size-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-size-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-size-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>size</name>
+                  <type xmi:idref="CDIFManifest.QuantitativeValue"/>
+                  <association xmi:idref="CDIFManifest.ArchivePart_size_QuantitativeValue"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.ArchivePart-checksum" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-checksum" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFManifest.ArchivePart-checksum-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-checksum-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.ArchivePart-checksum"/>
+                     <body>spdx:checksum - integrity-verification digest for this component file.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.ArchivePart-checksum-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-checksum-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.ArchivePart-checksum-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart-checksum-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>checksum</name>
+                  <type xmi:idref="CDIFManifest.Checksum"/>
+                  <association xmi:idref="CDIFManifest.ArchivePart_checksum_Checksum"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFManifest.QuantitativeValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue" xmi:type="uml:DataType">
+               <ownedComment xmi:id="CDIFManifest.QuantitativeValue-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFManifest.QuantitativeValue"/>
+                  <body>schema:QuantitativeValue - a numeric value with a unit, used for schema:size on an ArchivePart.</body>
+               </ownedComment>
+               <name>QuantitativeValue</name>
+               <ownedAttribute xmi:id="CDIFManifest.QuantitativeValue-value" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.QuantitativeValue-value-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.QuantitativeValue-value"/>
+                     <body>schema:value - the numeric size value.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.QuantitativeValue-value-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-value-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.QuantitativeValue-value-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-value-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>value</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Real"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.QuantitativeValue-unitText" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-unitText" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.QuantitativeValue-unitText-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-unitText-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.QuantitativeValue-unitText"/>
+                     <body>schema:unitText - unit of measure for the size (e.g. 'byte').</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.QuantitativeValue-unitText-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-unitText-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.QuantitativeValue-unitText-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#QuantitativeValue-unitText-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>unitText</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFManifest.Checksum" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum" xmi:type="uml:DataType">
+               <ownedComment xmi:id="CDIFManifest.Checksum-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFManifest.Checksum"/>
+                  <body>spdx:Checksum - inline checksum payload on an ArchivePart for integrity verification.</body>
+               </ownedComment>
+               <name>Checksum</name>
+               <ownedAttribute xmi:id="CDIFManifest.Checksum-algorithm" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-algorithm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.Checksum-algorithm-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-algorithm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.Checksum-algorithm"/>
+                     <body>spdx:algorithm - checksum algorithm identifier (e.g. 'spdx:checksumAlgorithm_sha256').</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.Checksum-algorithm-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-algorithm-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.Checksum-algorithm-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-algorithm-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>algorithm</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFManifest.Checksum-checksumValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-checksumValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFManifest.Checksum-checksumValue-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-checksumValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFManifest.Checksum-checksumValue"/>
+                     <body>spdx:checksumValue - the digest value as a hex string.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFManifest.Checksum-checksumValue-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-checksumValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFManifest.Checksum-checksumValue-upperValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Checksum-checksumValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>checksumValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFManifest.Dataset_subjectOf_CatalogRecord" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset_subjectOf_CatalogRecord" xmi:type="uml:Association">
+            <name>Dataset_subjectOf_CatalogRecord</name>
+            <memberEnd xmi:idref="CDIFManifest.Dataset-subjectOf"/>
+            <ownedEnd xmi:id="CDIFManifest.Dataset_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#Dataset_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFManifest.CatalogRecord"/>
+               <association xmi:idref="CDIFManifest.Dataset_subjectOf_CatalogRecord"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFManifest.Dataset_subjectOf_CatalogRecord-CatalogRecordEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFManifest.DataDownload_hasPart_ArchivePart" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload_hasPart_ArchivePart" xmi:type="uml:Association">
+            <name>DataDownload_hasPart_ArchivePart</name>
+            <memberEnd xmi:idref="CDIFManifest.DataDownload-hasPart"/>
+            <ownedEnd xmi:id="CDIFManifest.DataDownload_hasPart_ArchivePart-ArchivePartEnd" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#DataDownload_hasPart_ArchivePart-ArchivePartEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFManifest.ArchivePart"/>
+               <association xmi:idref="CDIFManifest.DataDownload_hasPart_ArchivePart"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFManifest.DataDownload_hasPart_ArchivePart-ArchivePartEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFManifest.ArchivePart_about_ArchivePart" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart_about_ArchivePart" xmi:type="uml:Association">
+            <name>ArchivePart_about_ArchivePart</name>
+            <memberEnd xmi:idref="CDIFManifest.ArchivePart-about"/>
+            <ownedEnd xmi:id="CDIFManifest.ArchivePart_about_ArchivePart-ArchivePartEnd" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart_about_ArchivePart-ArchivePartEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFManifest.ArchivePart"/>
+               <association xmi:idref="CDIFManifest.ArchivePart_about_ArchivePart"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFManifest.ArchivePart_about_ArchivePart-ArchivePartEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFManifest.ArchivePart_size_QuantitativeValue" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart_size_QuantitativeValue" xmi:type="uml:Association">
+            <name>ArchivePart_size_QuantitativeValue</name>
+            <memberEnd xmi:idref="CDIFManifest.ArchivePart-size"/>
+            <ownedEnd xmi:id="CDIFManifest.ArchivePart_size_QuantitativeValue-QuantitativeValueEnd" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart_size_QuantitativeValue-QuantitativeValueEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFManifest.QuantitativeValue"/>
+               <association xmi:idref="CDIFManifest.ArchivePart_size_QuantitativeValue"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFManifest.ArchivePart_size_QuantitativeValue-QuantitativeValueEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFManifest.ArchivePart_checksum_Checksum" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart_checksum_Checksum" xmi:type="uml:Association">
+            <name>ArchivePart_checksum_Checksum</name>
+            <memberEnd xmi:idref="CDIFManifest.ArchivePart-checksum"/>
+            <ownedEnd xmi:id="CDIFManifest.ArchivePart_checksum_Checksum-ChecksumEnd" xmi:uuid="https://w3id.org/cdif/manifest/1.0/xmi/#ArchivePart_checksum_Checksum-ChecksumEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFManifest.Checksum"/>
+               <association xmi:idref="CDIFManifest.ArchivePart_checksum_Checksum"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFManifest.ArchivePart_checksum_Checksum-ChecksumEnd"/>
+         </packagedElement>
+      </packagedElement>
+   </uml:Model>
+</xmi:XMI>
