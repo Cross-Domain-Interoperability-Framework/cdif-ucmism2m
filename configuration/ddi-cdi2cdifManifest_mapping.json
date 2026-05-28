@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Archive Distribution profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifArchiveDistribution/cdifArchiveDistributionSchema.json (cdifArchive merged in; archivePartArray/Item $defs now local). This profile module describes how a Dataset that conforms to https://w3id.org/cdif/manifest/1.0 carries archive-style distributions: a schema:DataDownload (the archive file) whose schema:hasPart enumerates schema:MediaObject component files inside, each with optional size/checksum/about and optional data-description extensions. Diagram scope: only the archive-specific content + the immediate anchor points where it plugs into the host Dataset / CatalogRecord / DataDownload (those three are restated as minimal stubs; full definitions in CDIFCore). cdifCore is NOT composed here on purpose so the overview diagram stays tight; cross-profile registry handles the stub <-> CDIFCore links.",
+  "_comment": "DDI-CDI -> CDIF Archive Distribution profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifManifest/cdifManifestSchema.json (cdifArchive merged in; archivePartArray/Item $defs now local). This profile module describes how a Dataset that conforms to https://w3id.org/cdif/manifest/1.0 carries archive-style distributions: a schema:DataDownload (the archive file) whose schema:hasPart enumerates schema:MediaObject component files inside, each with optional size/checksum/about and optional data-description extensions. Diagram scope: only the archive-specific content + the immediate anchor points where it plugs into the host Dataset / CatalogRecord / DataDownload (those three are restated as minimal stubs; full definitions in CDIFCore). cdifCore is NOT composed here on purpose so the overview diagram stays tight; cross-profile registry handles the stub <-> CDIFCore links.",
   "transformation": {
     "description": "DDI-CDI to CDIF Archive Distribution Profile",
     "version": "0.1",
@@ -10,7 +10,7 @@
       "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
     },
     "targetModel": {
-      "acronym": "CDIFArchiveDistribution",
+      "acronym": "CDIFManifest",
       "modelTitle": "UML Model for the CDIF Archive Distribution Profile",
       "subTitle": "Archive-distribution structure: schema:hasPart on a DataDownload listing component files (schema:MediaObject) inside an archive",
       "majorVersion": "1",
@@ -18,25 +18,25 @@
       "language": "en",
       "uri": "https://w3id.org/cdif/manifest/1.0/xmi/",
       "definition": "CDIF Archive Distribution profile module. On any Dataset whose catalog record (schema:subjectOf > CatalogRecord) declares conformance to https://w3id.org/cdif/manifest/1.0, schema:distribution items that are schema:DataDownloads MAY carry schema:hasPart describing the component files inside an archive. When schema:encodingFormat includes 'application/zip', schema:hasPart is REQUIRED. Each ArchivePart is typed as schema:MediaObject (not DataDownload, since the parts are not independently accessible). Parts may carry size (schema:QuantitativeValue), checksum (spdx:Checksum), back-references via schema:about, and CDIF data-description extensions (cdifTabularData, cdifDataCube).",
-      "mainPackage": "CDIFArchiveDistribution",
+      "mainPackage": "CDIFManifest",
       "mainPackageDefinition": "Archive distribution structure: component files inside a single download.",
-      "dataTypesPackage": "CDIFArchiveDistribution"
+      "dataTypesPackage": "CDIFManifest"
     }
   },
   "package": [
     {
       "name": "Classes",
-      "parent": "CDIFArchiveDistribution",
+      "parent": "CDIFManifest",
       "definition": "Archive-distribution classes: ArchivePart (the component files) plus the anchor-point stubs Dataset / CatalogRecord / DataDownload where archive content attaches."
     },
     {
       "name": "DataTypes",
-      "parent": "CDIFArchiveDistribution",
+      "parent": "CDIFManifest",
       "definition": "Inline value-object datatypes used inside an ArchivePart: QuantitativeValue (file size), Checksum (spdx)."
     },
     {
       "name": "Anchors",
-      "parent": "CDIFArchiveDistribution",
+      "parent": "CDIFManifest",
       "definition": "Stub re-declarations of CDIFCore classes that this profile attaches to. Provided so the overview diagram can render the attachment edges without dragging in the entire CDIFCore class graph. Full definitions are in CDIFCore (cross-profile links handle navigation)."
     }
   ],

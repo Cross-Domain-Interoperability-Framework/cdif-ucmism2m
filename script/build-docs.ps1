@@ -45,12 +45,12 @@ $profiles = @(
     @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist";                  kind = "module" },
     @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore";                      kind = "module" },
     @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "CDIFDiscovery";                 kind = "module" },
-    @{ slug = "basicDiscovery";      config = "ddi-cdi2BasicDiscovery_mapping.json";      umlName = "BasicDiscovery";                kind = "composite" },
+    @{ slug = "coreDiscovery";      config = "ddi-cdi2CoreDiscovery_mapping.json";      umlName = "CoreDiscovery";                kind = "composite" },
     @{ slug = "cdifDataDescription"; config = "ddi-cdi2cdifDataDescription_mapping.json"; umlName = "CDIFDataDescription";           kind = "module" },
-    @{ slug = "basicDataDescription"; config = "ddi-cdi2BasicDataDescription_mapping.json"; umlName = "BasicDataDescription";         kind = "composite" },
+    @{ slug = "discoveryDataDescription"; config = "ddi-cdi2DiscoveryDataDescription_mapping.json"; umlName = "DiscoveryDataDescription";         kind = "composite" },
     @{ slug = "cdifDataStructure";   config = "ddi-cdi2cdifDataStructure_mapping.json";   umlName = "CDIFDataStructure";             kind = "module" },
-    @{ slug = "dataDescriptionWithStructure"; config = "ddi-cdi2DataDescriptionWithStructure_mapping.json"; umlName = "DataDescriptionWithStructure"; kind = "composite" },
-    @{ slug = "cdifArchiveDistribution"; config = "ddi-cdi2cdifArchiveDistribution_mapping.json"; umlName = "CDIFArchiveDistribution";   kind = "module" },
+    @{ slug = "discoveryDataDescriptionStructure"; config = "ddi-cdi2DiscoveryDataDescriptionStructure_mapping.json"; umlName = "DiscoveryDataDescriptionStructure"; kind = "composite" },
+    @{ slug = "cdifManifest"; config = "ddi-cdi2cdifManifest_mapping.json"; umlName = "CDIFManifest";   kind = "module" },
     @{ slug = "cdifProvenance";      config = "ddi-cdi2cdifProvenance_mapping.json";      umlName = "CDIFProvenance";                kind = "module" }
 )
 
