@@ -39,7 +39,7 @@ from uml_to_schema import _load_with_composition  # noqa: E402
 PROFILES = {
     "cdifCodelist": (
         CONFIG_DIR / "ddi-cdi2cdifCodelist_mapping.json",
-        SOURCES / "profiles/archive/CDIFCodelistProfile/resolvedSchema.json",
+        SOURCES / "profiles/cdifProfile/cdifCodelist/resolvedSchema.json",
     ),
     "cdifCore": (
         CONFIG_DIR / "ddi-cdi2cdifCore_mapping.json",
@@ -47,19 +47,19 @@ PROFILES = {
     ),
     "cdifDiscovery": (
         CONFIG_DIR / "ddi-cdi2cdifDiscovery_mapping.json",
-        SOURCES / "profiles/cdifCompositeProfile/BasicDiscovery/resolvedSchema.json",
+        SOURCES / "profiles/cdifProfile/cdifDiscovery/resolvedSchema.json",
     ),
     "cdifDataDescription": (
         CONFIG_DIR / "ddi-cdi2cdifDataDescription_mapping.json",
-        SOURCES / "profiles/cdifCompositeProfile/BasicDataDescription/resolvedSchema.json",
+        SOURCES / "profiles/cdifProfile/cdifDataDescription/resolvedSchema.json",
     ),
     "cdifDataStructure": (
         CONFIG_DIR / "ddi-cdi2cdifDataStructure_mapping.json",
-        SOURCES / "profiles/cdifCompositeProfile/DataDescriptionWithStructure/resolvedSchema.json",
+        SOURCES / "profiles/cdifProfile/cdifDataStructure/resolvedSchema.json",
     ),
-    "cdifArchiveDistribution": (
-        CONFIG_DIR / "ddi-cdi2cdifArchiveDistribution_mapping.json",
-        SOURCES / "profiles/cdifProfile/cdifArchiveDistribution/resolvedSchema.json",
+    "cdifManifest": (
+        CONFIG_DIR / "ddi-cdi2cdifManifest_mapping.json",
+        SOURCES / "profiles/cdifProfile/cdifManifest/resolvedSchema.json",
     ),
     "cdifProvenance": (
         CONFIG_DIR / "ddi-cdi2cdifProvenance_mapping.json",
