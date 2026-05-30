@@ -107,6 +107,20 @@ UNION_POLICY = {
     "languagetaggedvalue", "conceptref", "id-reference",
     # $def wrapper names emitted by the resolver (not real classes)
     "cdifinstancevariable", "cdifinstancevariable_definedterm", "cdifcodelistconcept",
+    "cdifrepresentedvariable",                             # cdifProfile/cdifDataStructure $def
+    "cdifconceptscheme_conceptref",                        # codelist resolver wrapper
+    "cdifdatastructurecomponent_cdifconceptorterm",        # component_cdif:uses wrapper
+    "skosconcept_languagetaggedvalue",                     # codelist resolver wrapper
+    # Catalog-level CatalogRecord/Distribution properties show up via cross-
+    # profile CatalogRecord references in DataStructure but are owned/modelled
+    # in Core. Mark intentionally absent at the DataStructure profile level.
+    "conditionsofaccess", "datemodified", "distribution", "license", "propertyid",
+    # cdif:position is an association-attribute on key membership (PrimaryKey/
+    # ForeignKey isComposedOf RepresentedVariable). Carried by a {RV, position}
+    # pair in JSON; the UML keeps the binary association and notes the position
+    # in the association definition (intentional non-modelling of association
+    # attributes which would require an association class).
+    "position",
     # schema:object on an Action is open-ended (schema:Thing) and not modelled.
     # The rest of the Action machinery (Action / EntryPoint / ActionResult /
     # PropertyValueSpecification + potentialAction/target/result/query-input)
@@ -126,6 +140,12 @@ ALIASES = {
     "componentposition": "primarykeycomponent",  # cdi:ComponentPosition ~ PrimaryKeyComponent
     "cdifphysicalmapping": "physicalmapping",  # resolver $def wrapper for the cdifPhysicalMapping BB ~ PhysicalMapping class
     "query-input": "queryinput",      # schema:query-input ~ Action_queryInput_PropertyValueSpecification role
+    # DataStructure has * camelCase association names (Stephen's renaming) that
+    # don't canonicalize to the schema's snake_case has_* properties:
+    "has_primarykey": "hasprimarykey",     # cdi:has_PrimaryKey ~ DataStructure_hasPrimaryKey_PrimaryKey
+    "has_foreignkey": "hasforeignkey",     # cdi:has_ForeignKey ~ DataStructure_hasForeignKey_ForeignKey
+    # cdif:uses with target-suffix is covered by the cdifConceptOrTerm union:
+    "uses_concept": "uses_cdifconceptorterm",  # cdif:uses_Concept ~ RepresentedVariable_uses_CdifConceptOrTerm
 }
 
 
