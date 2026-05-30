@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Aligned to metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataStructure/schema.yaml (refined: each concrete DataStructure variant restricts the allowed component subtypes; ForeignKey.isComposedOf points at InstanceVariable; ForeignKey.references points at PrimaryKey; the previous ForeignKeyComponent / PrimaryKeyComponent classes are gone). No abstract supertypes for DataStructure or DataStructureComponent: an abstract layer would hide the per-subtype component restrictions (Dimensional uses Identifier/Measure/Attribute/Dimension; Long uses Identifier/VariableDescriptor/VariableValue/Attribute; Wide uses Identifier/Measure/Attribute; general DataStructure accepts any). Each concrete DataStructure variant has explicit edges to the specific component subtypes it allows.",
+  "_comment": "DDI-CDI -> CDIF Data Structure profile UML. Aligned to metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataStructure/schema.yaml. Carries the structural model (variants + components + keys), the variable model (RepresentedVariable / DescriptorVariable), the value-domain model (Substantive/Sentinel/DescriptorValueDomain + EnumerationDomain + ValueAndConceptDescription), UnitType, plus the CdifConceptOrTerm union shorthand. cdi:DataStructureComponent is the abstract parent of five concrete component subtypes (Identifier/Measure/Attribute/Dimension/VariableValue); VariableDescriptorComponent is standalone because it is defined by a DescriptorVariable, not a RepresentedVariable. Per-variant has-edges are kept so the diagram still expresses which subtypes each concrete variant accepts.",
   "transformation": {
     "description": "DDI-CDI to CDIF Data Structure Profile",
     "version": "0.1",
@@ -12,12 +12,12 @@
     "targetModel": {
       "acronym": "CDIFDataStructure",
       "modelTitle": "UML Model for the CDIF Data Structure Profile",
-      "subTitle": "DataStructure variants (general / Dimensional / Long / Wide), component subtypes, keys, foreign keys, dimension groups",
+      "subTitle": "DataStructure variants + components + keys + variables + value domains + units",
       "majorVersion": "1",
       "minorVersion": "0",
       "language": "en",
       "uri": "https://w3id.org/cdif/data_structure/1.0/xmi/",
-      "definition": "CDIF Data Structure profile module. Adds cdi:isStructuredBy on a DataDownload, pointing at one of four DataStructure variants - DataStructure (general; any component subtype), DimensionalDataStructure (Identifier/Measure/Attribute/Dimension components), LongDataStructure (Identifier/VariableDescriptor/VariableValue/Attribute components), WideDataStructure (Identifier/Measure/Attribute components). Each structure may also carry a PrimaryKey and ForeignKeys. The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/data_structure/1.0.",
+      "definition": "CDIF Data Structure profile module. Adds cdi:isStructuredBy on a DataDownload, pointing at one of four DataStructure variants - DataStructure (general; any component subtype), DimensionalDataStructure (Identifier/Measure/Attribute/Dimension), LongDataStructure (Identifier/VariableDescriptor/VariableValue/Attribute), WideDataStructure (Identifier/Measure/Attribute). Each structure may also carry a PrimaryKey and ForeignKeys. RepresentedVariables carry value domains (substantive / sentinel), an intended data type, a unit type (measures), and concept references (cdif:uses -> CdifConceptOrTerm). The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/data_structure/1.0.",
       "mainPackage": "CDIFDataStructure",
       "mainPackageDefinition": "Data structure description extension classes added by this profile.",
       "dataTypesPackage": "CDIFDataStructure"
@@ -27,17 +27,32 @@
     {
       "name": "Structures",
       "parent": "CDIFDataStructure",
-      "definition": "The four concrete DataStructure variants (DataStructure / Dimensional / Long / Wide) plus DimensionGroup. cdi:isStructuredBy on a DataDownload accepts any of the four."
+      "definition": "The four concrete DataStructure variants (DataStructure / Dimensional / Long / Wide) plus DimensionGroup."
     },
     {
       "name": "Components",
       "parent": "CDIFDataStructure",
-      "definition": "The six concrete cdifDataStructureComponent subtypes used by the DataStructure variants. Full attribute structure for each subtype lives in cdifDataType/cdifDataStructureComponent."
+      "definition": "Abstract cdi:DataStructureComponent + six concrete subtypes (Identifier / Measure / Attribute / Dimension / VariableValue / VariableDescriptor). Five generalize the abstract; VariableDescriptorComponent is standalone (defined by a DescriptorVariable, not a RepresentedVariable)."
     },
     {
       "name": "Keys",
       "parent": "CDIFDataStructure",
-      "definition": "PrimaryKey + ForeignKey. Both are composed of cdi:InstanceVariables (cdif:isComposedOf); ForeignKey additionally references a PrimaryKey on another structure."
+      "definition": "PrimaryKey + ForeignKey. Both are composed of RepresentedVariables (cdif:isComposedOf); ForeignKey additionally references a PrimaryKey on another structure (cdi:references)."
+    },
+    {
+      "name": "Variables",
+      "parent": "CDIFDataStructure",
+      "definition": "RepresentedVariable (defines the component) and DescriptorVariable (defines a VariableDescriptorComponent specifically)."
+    },
+    {
+      "name": "ValueDomains",
+      "parent": "CDIFDataStructure",
+      "definition": "Substantive / Sentinel / Descriptor ValueDomain, the EnumerationDomain a value domain can take values from, ValueAndConceptDescription (range / pattern / classification-level description), and UnitType (cdi:measures target)."
+    },
+    {
+      "name": "Concepts",
+      "parent": "CDIFDataStructure",
+      "definition": "schema:DefinedTerm reference target + the CdifConceptOrTerm union shorthand used as the value type of cdif:uses."
     },
     {
       "name": "Anchors",
@@ -78,22 +93,7 @@
         ]
       },
       {
-        "_comment": "RepresentedVariable stub - referenced by PrimaryKey.isComposedOf and ForeignKey.isComposedOf. Full definition in cdifDataType/cdifRepresentedVariable.",
-        "mappingType": "new",
-        "targetPackage": "Anchors",
-        "targetClass": "RepresentedVariable",
-        "definition": "Stub of cdifDataType::cdifRepresentedVariable. Referenced by both PrimaryKey.isComposedOf and ForeignKey.isComposedOf - each membership in a key carries a cdif:position integer alongside the variable reference.",
-        "attribute": [
-          {
-            "name": "identifier",
-            "dataType": "XsdAnyUri",
-            "definition": "@id - resolvable URI for the represented variable.",
-            "multiplicity": {"lower": "0", "upper": "1"}
-          }
-        ]
-      },
-      {
-        "_comment": "DataStructure - the general variant. Accepts ANY component subtype (the JSON schema uses a generic cdifDataStructureComponent ref). Optional PrimaryKey + ForeignKey.",
+        "_comment": "DataStructure - the general variant. Accepts ANY component subtype. Optional PrimaryKey + ForeignKey.",
         "mappingType": "new",
         "targetPackage": "Structures",
         "targetClass": "DataStructure",
@@ -108,7 +108,7 @@
         ]
       },
       {
-        "_comment": "DimensionalDataStructure - cube-shaped. Components restricted to IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent. Optional PrimaryKey + ForeignKey.",
+        "_comment": "DimensionalDataStructure - cube-shaped. Components restricted to Identifier / Measure / Attribute / Dimension.",
         "mappingType": "new",
         "targetPackage": "Structures",
         "targetClass": "DimensionalDataStructure",
@@ -123,7 +123,7 @@
         ]
       },
       {
-        "_comment": "LongDataStructure - narrow / variable-value-pair row layout. Required: exactly one Identifier + one VariableDescriptor + one VariableValue. Optional Attribute. Optional PrimaryKey.",
+        "_comment": "LongDataStructure - narrow / variable-value-pair row layout. Exactly one Identifier + VariableDescriptor + VariableValue (required); optional Attribute.",
         "mappingType": "new",
         "targetPackage": "Structures",
         "targetClass": "LongDataStructure",
@@ -138,7 +138,7 @@
         ]
       },
       {
-        "_comment": "WideDataStructure - wide-format tabular layout. Components restricted to IdentifierComponent / MeasureComponent / AttributeComponent. Optional PrimaryKey + ForeignKey.",
+        "_comment": "WideDataStructure - wide-format tabular layout. Components restricted to Identifier / Measure / Attribute.",
         "mappingType": "new",
         "targetPackage": "Structures",
         "targetClass": "WideDataStructure",
@@ -174,11 +174,28 @@
         ]
       },
       {
-        "_comment": "IdentifierComponent - role of a data structure component for content identification. Used by DataStructure, Dimensional, Long, Wide.",
+        "_comment": "Abstract cdi:DataStructureComponent - parent of the five concrete component subtypes that are defined by a RepresentedVariable. VariableDescriptorComponent is NOT a subtype (it is defined by a DescriptorVariable instead). Generic edges (DataStructure_has_DataStructureComponent, DataStructureComponent_isDefinedBy_RepresentedVariable) anchor here; per-variant edges to concrete subtypes specify which subtypes each structure variant accepts.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "DataStructureComponent",
+        "isAbstract": true,
+        "definition": "Abstract supertype of the component types defined by a RepresentedVariable (Identifier / Measure / Attribute / Dimension / VariableValue). Target of the generic cdi:has_DataStructureComponent and DataStructureComponent_isDefinedBy_RepresentedVariable; concrete subtypes generalize it.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain a concrete subtype constant (cdi:IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableValueComponent).",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "IdentifierComponent - role of a data structure component for content identification. Used by all four DataStructure variants.",
         "mappingType": "new",
         "targetPackage": "Components",
         "targetClass": "IdentifierComponent",
-        "definition": "Data-structure component for content identification. Used by all four DataStructure variants. Full attributes (cdif:isDefinedBy_RepresentedVariable, ...) in cdifDataType/cdifDataStructureComponent.",
+        "generalization": ["DataStructureComponent"],
+        "definition": "Data-structure component for content identification. Used by all four DataStructure variants.",
         "attribute": [
           {
             "name": "type",
@@ -189,10 +206,11 @@
         ]
       },
       {
-        "_comment": "MeasureComponent - data structure component representing measure values. Used by DataStructure, Dimensional, Wide.",
+        "_comment": "MeasureComponent - data structure component representing measure values. Used by general DataStructure, Dimensional, Wide.",
         "mappingType": "new",
         "targetPackage": "Components",
         "targetClass": "MeasureComponent",
+        "generalization": ["DataStructureComponent"],
         "definition": "Data-structure component representing a measure (the values being recorded). Used by general DataStructure, Dimensional, and Wide structures.",
         "attribute": [
           {
@@ -208,6 +226,7 @@
         "mappingType": "new",
         "targetPackage": "Components",
         "targetClass": "AttributeComponent",
+        "generalization": ["DataStructureComponent"],
         "definition": "Data-structure component representing an attribute (qualifying or contextual value alongside the primary measures). Used by all four DataStructure variants.",
         "attribute": [
           {
@@ -219,11 +238,12 @@
         ]
       },
       {
-        "_comment": "DimensionComponent - data structure component for a dimension along which measures vary. Specific to DataStructure (general) and DimensionalDataStructure.",
+        "_comment": "DimensionComponent - data structure component for a dimension along which measures vary. Specific to general DataStructure and DimensionalDataStructure.",
         "mappingType": "new",
         "targetPackage": "Components",
         "targetClass": "DimensionComponent",
-        "definition": "Data-structure component representing a dimension along which measures vary. Specific to dimensional / cube structures (and accepted by the general DataStructure).",
+        "generalization": ["DataStructureComponent"],
+        "definition": "Data-structure component representing a dimension along which measures vary. Specific to dimensional / cube structures.",
         "attribute": [
           {
             "name": "type",
@@ -234,26 +254,12 @@
         ]
       },
       {
-        "_comment": "VariableDescriptorComponent - identifies which InstanceVariable a long-format row represents. Specific to DataStructure (general) and LongDataStructure (exactly one required).",
-        "mappingType": "new",
-        "targetPackage": "Components",
-        "targetClass": "VariableDescriptorComponent",
-        "definition": "Data-structure component naming which InstanceVariable a long-format row represents (the descriptor column). Specific to LongDataStructure (exactly one required) and the general DataStructure.",
-        "attribute": [
-          {
-            "name": "type",
-            "dataType": "String",
-            "definition": "@type must contain 'cdi:VariableDescriptorComponent'.",
-            "multiplicity": {"lower": "1", "upper": "*"}
-          }
-        ]
-      },
-      {
-        "_comment": "VariableValueComponent - carries the actual value for the variable identified by a VariableDescriptorComponent. Specific to DataStructure (general) and LongDataStructure (exactly one required).",
+        "_comment": "VariableValueComponent - carries the actual value for the variable identified by a VariableDescriptorComponent. Specific to general DataStructure and LongDataStructure.",
         "mappingType": "new",
         "targetPackage": "Components",
         "targetClass": "VariableValueComponent",
-        "definition": "Data-structure component carrying the value for the variable named by a VariableDescriptorComponent in a long-format row. Specific to LongDataStructure (exactly one required) and the general DataStructure.",
+        "generalization": ["DataStructureComponent"],
+        "definition": "Data-structure component carrying the value for the variable named by a VariableDescriptorComponent in a long-format row.",
         "attribute": [
           {
             "name": "type",
@@ -264,11 +270,26 @@
         ]
       },
       {
-        "_comment": "PrimaryKey - role of an ordered set of InstanceVariables uniquely identifying a data instance. Array order of cdif:isComposedOf gives the position.",
+        "_comment": "VariableDescriptorComponent - identifies which InstanceVariable a long-format row represents. Defined by a DescriptorVariable (not a RepresentedVariable), so it does NOT generalize the abstract DataStructureComponent.",
+        "mappingType": "new",
+        "targetPackage": "Components",
+        "targetClass": "VariableDescriptorComponent",
+        "definition": "Data-structure component naming which InstanceVariable a long-format row represents (the descriptor column). Specific to LongDataStructure (exactly one required) and the general DataStructure. Standalone: defined by a DescriptorVariable rather than a RepresentedVariable.",
+        "attribute": [
+          {
+            "name": "type",
+            "dataType": "String",
+            "definition": "@type must contain 'cdi:VariableDescriptorComponent'.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "PrimaryKey - role of an ordered set of RepresentedVariables uniquely identifying a data instance.",
         "mappingType": "new",
         "targetPackage": "Keys",
         "targetClass": "PrimaryKey",
-        "definition": "Role of an ordered set of cdi:InstanceVariables that uniquely identify each data instance. Position is implicit in cdif:isComposedOf array order.",
+        "definition": "Role of an ordered set of cdi:RepresentedVariables that uniquely identify each data instance. Position is implicit in cdif:isComposedOf array order; each membership carries a cdif:position integer.",
         "attribute": [
           {
             "name": "identifier",
@@ -279,16 +300,121 @@
         ]
       },
       {
-        "_comment": "ForeignKey - role of a set of cdi:InstanceVariables for content referencing. Composed of InstanceVariables (cdi:isComposedOf) and references a PrimaryKey on another structure (cdi:references).",
+        "_comment": "ForeignKey - role of a set of RepresentedVariables for content referencing. Composed of RepresentedVariables and references a PrimaryKey on another structure.",
         "mappingType": "new",
         "targetPackage": "Keys",
         "targetClass": "ForeignKey",
-        "definition": "Role of a set of cdi:InstanceVariables for content referencing. cdi:isComposedOf is a list of InstanceVariables in this structure; cdi:references is the PrimaryKey in another structure that this foreign key references.",
+        "definition": "Role of a set of cdi:RepresentedVariables for content referencing. cdi:isComposedOf is a list of RepresentedVariables in this structure; cdi:references is the PrimaryKey in another structure that this foreign key references.",
         "attribute": [
           {
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for this foreign key.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "RepresentedVariable - the conceptual variable that defines a DataStructureComponent. Carries value domains (substantive/sentinel), an intended data type, an optional UnitType, and concept references via cdif:uses.",
+        "mappingType": "map",
+        "sourceClass": "RepresentedVariable",
+        "targetPackage": "Variables",
+        "targetClass": "RepresentedVariable"
+      },
+      {
+        "_comment": "DescriptorVariable - the variable type defining a VariableDescriptorComponent in long-format structures. Its values are descriptors that identify the role of associated VariableValueComponent values; it has a DescriptorValueDomain rather than the substantive/sentinel pair.",
+        "mappingType": "map",
+        "sourceClass": "DescriptorVariable",
+        "targetPackage": "Variables",
+        "targetClass": "DescriptorVariable"
+      },
+      {
+        "_comment": "SubstantiveValueDomain - the set of valid, meaningful values a RepresentedVariable can take (cdi:takesSubstantiveValuesFrom). May take values from an EnumerationDomain and be described by a ValueAndConceptDescription.",
+        "mappingType": "map",
+        "sourceClass": "SubstantiveValueDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SubstantiveValueDomain"
+      },
+      {
+        "_comment": "SentinelValueDomain - missing-value / not-applicable codes for a RepresentedVariable (cdi:takesSentinelValuesFrom). Same shape as SubstantiveValueDomain.",
+        "mappingType": "map",
+        "sourceClass": "SentinelValueDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "SentinelValueDomain"
+      },
+      {
+        "_comment": "DescriptorValueDomain - the value domain a DescriptorVariable draws its descriptor values from (cdif:hasValuesFrom). Same shape as the Substantive/Sentinel pair but used by DescriptorVariable rather than RepresentedVariable.",
+        "mappingType": "map",
+        "sourceClass": "DescriptorValueDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "DescriptorValueDomain"
+      },
+      {
+        "_comment": "EnumerationDomain - extension point letting a value domain reference a controlled-vocabulary codelist (cdif:takesValuesFrom -> CDIF codelist / skos:ConceptScheme).",
+        "mappingType": "map",
+        "sourceClass": "EnumerationDomain",
+        "targetPackage": "ValueDomains",
+        "targetClass": "EnumerationDomain"
+      },
+      {
+        "_comment": "ValueAndConceptDescription - description of the values/concepts a value domain admits: ranges, patterns, classification level, format pattern, recommended datatype, semantic note, external definition.",
+        "mappingType": "map",
+        "sourceClass": "ValueAndConceptDescription",
+        "targetPackage": "ValueDomains",
+        "targetClass": "ValueAndConceptDescription"
+      },
+      {
+        "_comment": "UnitType - the type of unit a RepresentedVariable measures (cdi:measures target). cdi:UnitType.",
+        "mappingType": "map",
+        "sourceClass": "UnitType",
+        "targetPackage": "ValueDomains",
+        "targetClass": "UnitType"
+      },
+      {
+        "_comment": "schema:DefinedTerm - referenced by CdifConceptOrTerm (and used as the target of cdi:hasIntendedDataType / cdif:recommendedDataType). Minimal stub: termCode + name + inDefinedTermSet.",
+        "mappingType": "new",
+        "targetPackage": "Concepts",
+        "targetClass": "DefinedTerm",
+        "definition": "schema:DefinedTerm - a term from a controlled vocabulary (DefinedTermSet). Used as a typed concept reference (e.g., cdi:hasIntendedDataType / cdif:recommendedDataType point at an xsd-datatype DefinedTerm), and as one branch of CdifConceptOrTerm.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI for the DefinedTerm.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "termCode",
+            "dataType": "String",
+            "definition": "schema:termCode - the code identifying the term within its DefinedTermSet.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - human-readable label.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "inDefinedTermSet",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:inDefinedTermSet - @id of the DefinedTermSet this term belongs to.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "CdifConceptOrTerm - union shorthand used as the value type of cdif:uses. Admits a skos:Concept reference OR a schema:DefinedTerm. In JSON instances it MAY be replaced by a plain string (interpreted as the @id / prefLabel / termCode of the underlying concept or term) - i.e. the JSON value can be an inline object, an {@id} reference, or a bare string.",
+        "mappingType": "new",
+        "isDataType": true,
+        "targetPackage": "Concepts",
+        "targetClass": "CdifConceptOrTerm",
+        "definition": "Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term. cdif:uses on a RepresentedVariable is typed by this union.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI of the concept or term being referenced.",
             "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
@@ -308,29 +434,39 @@
         "targetAssociationName": "DataDownload_isStructuredBy_DataStructure",
         "subjectClass": "DataDownload",
         "objectClass": "DataStructure",
-        "definition": "cdi:isStructuredBy - general DataStructure variant. Accepts any component subtype.",
+        "definition": "cdi:isStructuredBy - general DataStructure variant.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
         "targetAssociationName": "DataDownload_isStructuredBy_DimensionalDataStructure",
         "subjectClass": "DataDownload",
         "objectClass": "DimensionalDataStructure",
-        "definition": "cdi:isStructuredBy - dimensional (cube) variant. Components restricted to Identifier / Measure / Attribute / Dimension.",
+        "definition": "cdi:isStructuredBy - dimensional (cube) variant.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
         "targetAssociationName": "DataDownload_isStructuredBy_LongDataStructure",
         "subjectClass": "DataDownload",
         "objectClass": "LongDataStructure",
-        "definition": "cdi:isStructuredBy - long (narrow) variant. Required: exactly one Identifier + VariableDescriptor + VariableValue; optional Attribute.",
+        "definition": "cdi:isStructuredBy - long (narrow) variant.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
         "targetAssociationName": "DataDownload_isStructuredBy_WideDataStructure",
         "subjectClass": "DataDownload",
         "objectClass": "WideDataStructure",
-        "definition": "cdi:isStructuredBy - wide (tabular) variant. Components restricted to Identifier / Measure / Attribute.",
+        "definition": "cdi:isStructuredBy - wide (tabular) variant.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+
+      {
+        "_comment": "Generic cdi:has_DataStructureComponent on the abstract: any DataStructure has 1..* DataStructureComponent. The per-variant has-edges below specify which concrete subtypes each variant accepts.",
+        "targetAssociationName": "DataStructure_has_DataStructureComponent",
+        "subjectClass": "DataStructure",
+        "objectClass": "DataStructureComponent",
+        "definition": "cdi:has_DataStructureComponent - generic: every DataStructure carries at least one component (any of the five RV-defined subtypes plus VariableDescriptorComponent).",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
       },
 
       {
@@ -418,7 +554,7 @@
       },
 
       {
-        "_comment": "LongDataStructure -> exactly one Identifier + VariableDescriptor + VariableValue, plus optional Attribute. Multiplicity reflects the schema's contains constraints (exactly one of three required types).",
+        "_comment": "LongDataStructure -> exactly one Identifier + VariableDescriptor + VariableValue, plus optional Attribute.",
         "targetAssociationName": "LongDataStructure_hasComponent_IdentifierComponent",
         "subjectClass": "LongDataStructure",
         "objectClass": "IdentifierComponent",
@@ -538,7 +674,7 @@
       },
 
       {
-        "_comment": "DimensionGroup -> the 6 component subtypes via cdif:has_DataStructureComponent (schema uses generic ref).",
+        "_comment": "DimensionGroup -> the component subtypes via cdif:has_DataStructureComponent (schema uses generic ref).",
         "targetAssociationName": "DimensionGroup_hasComponent_IdentifierComponent",
         "subjectClass": "DimensionGroup",
         "objectClass": "IdentifierComponent",
@@ -576,25 +712,142 @@
         "targetAssociationName": "PrimaryKey_isComposedOf_RepresentedVariable",
         "subjectClass": "PrimaryKey",
         "objectClass": "RepresentedVariable",
-        "definition": "cdif:isComposedOf - the RepresentedVariables that make up the key. Each item is a {RepresentedVariable (inline or @id-reference), cdif:position (positive integer)} pair; the position is the 1-based position of the component in the key.",
+        "definition": "cdif:isComposedOf - the RepresentedVariables that make up the key.",
         "objectClassMultiplicity": {"lower": "1", "upper": "*"}
       },
-
       {
-        "_comment": "ForeignKey -> RepresentedVariable via cdi:isComposedOf. Same shape as PrimaryKey.isComposedOf: each membership carries a cdif:position integer.",
+        "_comment": "ForeignKey -> RepresentedVariable via cdi:isComposedOf.",
         "targetAssociationName": "ForeignKey_isComposedOf_RepresentedVariable",
         "subjectClass": "ForeignKey",
         "objectClass": "RepresentedVariable",
-        "definition": "cdi:isComposedOf - the RepresentedVariables in this structure that make up the foreign key. Each item is a {RepresentedVariable (inline or @id-reference), cdif:position (positive integer)} pair.",
+        "definition": "cdi:isComposedOf - the RepresentedVariables in this structure that make up the foreign key.",
         "objectClassMultiplicity": {"lower": "1", "upper": "*"}
       },
-
       {
-        "_comment": "ForeignKey -> PrimaryKey via cdi:references. The foreign key points at the PrimaryKey of another structure.",
+        "_comment": "ForeignKey -> PrimaryKey via cdi:references.",
         "targetAssociationName": "ForeignKey_references_PrimaryKey",
         "subjectClass": "ForeignKey",
         "objectClass": "PrimaryKey",
         "definition": "cdi:references - the PrimaryKey on another DataStructure that this foreign key references.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+
+      {
+        "_comment": "cdif:isDefinedBy: each DataStructureComponent (the abstract) is defined by a RepresentedVariable. Concrete RV-defined subtypes inherit via the generalization.",
+        "targetAssociationName": "DataStructureComponent_isDefinedBy_RepresentedVariable",
+        "subjectClass": "DataStructureComponent",
+        "objectClass": "RepresentedVariable",
+        "definition": "cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"}
+      },
+      {
+        "_comment": "VariableDescriptorComponent is defined by a DescriptorVariable (NOT a RepresentedVariable), hence the standalone association.",
+        "targetAssociationName": "VariableDescriptorComponent_isDefinedBy_DescriptorVariable",
+        "subjectClass": "VariableDescriptorComponent",
+        "objectClass": "DescriptorVariable",
+        "definition": "cdif:isDefinedBy_DescriptorVariable - the DescriptorVariable that defines this VariableDescriptorComponent.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"}
+      },
+      {
+        "_comment": "VariableDescriptorComponent -> VariableValueComponent: which VariableValueComponent the descriptor names.",
+        "targetAssociationName": "VariableDescriptorComponent_refersTo_VariableValueComponent",
+        "subjectClass": "VariableDescriptorComponent",
+        "objectClass": "VariableValueComponent",
+        "definition": "cdi:refersTo - the VariableValueComponent whose values are described by this VariableDescriptorComponent (long-format pairing).",
+        "objectClassMultiplicity": {"lower": "1", "upper": "1"}
+      },
+      {
+        "_comment": "AttributeComponent -> MeasureComponent via cdi:qualifies (the attribute qualifies the value of a measure).",
+        "targetAssociationName": "AttributeComponent_qualifies_MeasureComponent",
+        "subjectClass": "AttributeComponent",
+        "objectClass": "MeasureComponent",
+        "definition": "cdi:qualifies - the MeasureComponent whose values this AttributeComponent qualifies.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+
+      {
+        "_comment": "RepresentedVariable -> SubstantiveValueDomain via cdi:takesSubstantiveValuesFrom (the valid, meaningful values).",
+        "targetAssociationName": "RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "SubstantiveValueDomain",
+        "definition": "cdi:takesSubstantiveValuesFrom - the substantive value domain of this RepresentedVariable.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "RepresentedVariable -> SentinelValueDomain via cdi:takesSentinelValuesFrom (missing-value / not-applicable codes).",
+        "targetAssociationName": "RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "SentinelValueDomain",
+        "definition": "cdi:takesSentinelValuesFrom - the sentinel value domain (missing-value codes) of this RepresentedVariable.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "RepresentedVariable -> UnitType via cdi:measures (the kind of unit the variable measures).",
+        "targetAssociationName": "RepresentedVariable_measures_UnitType",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "UnitType",
+        "definition": "cdi:measures - the kind of unit (UnitType) this RepresentedVariable measures.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "RepresentedVariable -> CdifConceptOrTerm via cdif:uses. Concept-or-term reference(s) the variable measures/represents. CdifConceptOrTerm is a union shorthand; in JSON instances each value MAY be a plain string (interpreted as @id / prefLabel / termCode).",
+        "targetAssociationName": "RepresentedVariable_uses_CdifConceptOrTerm",
+        "subjectClass": "RepresentedVariable",
+        "objectClass": "CdifConceptOrTerm",
+        "definition": "cdif:uses - concept or term reference(s) for what this RepresentedVariable measures or represents. The value type is the CdifConceptOrTerm union (skos:Concept | schema:DefinedTerm | string shorthand).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "DescriptorVariable -> DescriptorValueDomain via cdif:hasValuesFrom.",
+        "targetAssociationName": "DescriptorVariable_hasValuesFrom_DescriptorValueDomain",
+        "subjectClass": "DescriptorVariable",
+        "objectClass": "DescriptorValueDomain",
+        "definition": "cdif:hasValuesFrom - the descriptor value domain of this DescriptorVariable.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+
+      {
+        "_comment": "SubstantiveValueDomain -> ValueAndConceptDescription via cdi:isDescribedBy.",
+        "targetAssociationName": "SubstantiveValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "subjectClass": "SubstantiveValueDomain",
+        "objectClass": "ValueAndConceptDescription",
+        "definition": "cdi:isDescribedBy - description (ranges, patterns, classification level, ...) of the values/concepts this domain admits.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "targetAssociationName": "SentinelValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "subjectClass": "SentinelValueDomain",
+        "objectClass": "ValueAndConceptDescription",
+        "definition": "cdi:isDescribedBy - description of the sentinel (missing) values.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "targetAssociationName": "DescriptorValueDomain_isDescribedBy_ValueAndConceptDescription",
+        "subjectClass": "DescriptorValueDomain",
+        "objectClass": "ValueAndConceptDescription",
+        "definition": "cdi:isDescribedBy - description of the descriptor values.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "_comment": "SubstantiveValueDomain -> EnumerationDomain via cdif:takesValuesFrom (codelist-backed enumeration).",
+        "targetAssociationName": "SubstantiveValueDomain_takesValuesFrom_EnumerationDomain",
+        "subjectClass": "SubstantiveValueDomain",
+        "objectClass": "EnumerationDomain",
+        "definition": "cdif:takesValuesFrom - controlled-vocabulary codelist for the substantive values.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "targetAssociationName": "SentinelValueDomain_takesValuesFrom_EnumerationDomain",
+        "subjectClass": "SentinelValueDomain",
+        "objectClass": "EnumerationDomain",
+        "definition": "cdif:takesValuesFrom - controlled-vocabulary codelist for the sentinel values.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+      },
+      {
+        "targetAssociationName": "DescriptorValueDomain_takesValuesFrom_EnumerationDomain",
+        "subjectClass": "DescriptorValueDomain",
+        "objectClass": "EnumerationDomain",
+        "definition": "cdif:takesValuesFrom - controlled-vocabulary codelist for the descriptor values.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       }
     ]
