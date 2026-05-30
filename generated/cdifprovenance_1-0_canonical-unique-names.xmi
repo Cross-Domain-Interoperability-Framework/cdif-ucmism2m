@@ -380,6 +380,21 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFProvenance.Person"/>
                   <association xmi:idref="CDIFProvenance.ProvActivity_participant_Person"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.ProvActivity-agent" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#ProvActivity-agent" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.ProvActivity-agent-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#ProvActivity-agent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.ProvActivity-agent"/>
+                     <body>schema:agent - agent playing a named role (alternative to bare Person / Organization links when the role assignment carries its own metadata).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.ProvActivity-agent-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#ProvActivity-agent-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.ProvActivity-agent-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#ProvActivity-agent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>agent</name>
+                  <type xmi:idref="CDIFProvenance.AgentInRole"/>
+                  <association xmi:idref="CDIFProvenance.ProvActivity_agent_AgentInRole"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFProvenance.Instrument" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFProvenance.Instrument-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-ownedComment" xmi:type="uml:Comment">
@@ -442,6 +457,111 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   </upperValue>
                   <name>version</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.Instrument-manufacturer" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-manufacturer" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.Instrument-manufacturer-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-manufacturer-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.Instrument-manufacturer"/>
+                     <body>schema:manufacturer - the entity that manufactured or developed the instrument (text label or @id of an Organization).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.Instrument-manufacturer-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-manufacturer-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.Instrument-manufacturer-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-manufacturer-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>manufacturer</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.Instrument-model" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-model" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.Instrument-model-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-model-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.Instrument-model"/>
+                     <body>schema:model - the model name / identifier of the instrument (or @id of a schema:ProductModel).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.Instrument-model-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-model-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.Instrument-model-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-model-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>model</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.Instrument-owner" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-owner" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.Instrument-owner-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-owner-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.Instrument-owner"/>
+                     <body>schema:owner - the entity that owns the instrument (text label or @id of an Organization).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.Instrument-owner-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-owner-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.Instrument-owner-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Instrument-owner-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>owner</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFProvenance.AgentInRole" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFProvenance.AgentInRole-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFProvenance.AgentInRole"/>
+                  <body>An Agent (Person / Organization) playing a named role within a provenance activity. Used when the role assignment carries its own metadata (the role name, time bounds, etc.) - otherwise schema:agent / schema:participant point directly at the Agent.</body>
+               </ownedComment>
+               <name>AgentInRole</name>
+               <ownedAttribute xmi:id="CDIFProvenance.AgentInRole-identifier" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.AgentInRole-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.AgentInRole-identifier"/>
+                     <body>@id - identifier for this role assignment.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.AgentInRole-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.AgentInRole-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFProvenance.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.AgentInRole-name" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.AgentInRole-name-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.AgentInRole-name"/>
+                     <body>schema:name - the role name (e.g. 'principal investigator', 'data steward').</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.AgentInRole-name-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.AgentInRole-name-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.AgentInRole-validFrom" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validFrom" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.AgentInRole-validFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validFrom-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.AgentInRole-validFrom"/>
+                     <body>schema:validFrom - start of the period during which the agent held this role.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.AgentInRole-validFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validFrom-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.AgentInRole-validFrom-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validFrom-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>validFrom</name>
+                  <type xmi:idref="CDIFProvenance.XsdDateTime"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFProvenance.AgentInRole-validThrough" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validThrough" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.AgentInRole-validThrough-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validThrough-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.AgentInRole-validThrough"/>
+                     <body>schema:validThrough - end of the period during which the agent held this role.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFProvenance.AgentInRole-validThrough-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validThrough-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFProvenance.AgentInRole-validThrough-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#AgentInRole-validThrough-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>validThrough</name>
+                  <type xmi:idref="CDIFProvenance.XsdDateTime"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="CDIFProvenance.Dataset" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Dataset" xmi:type="uml:Class">
@@ -2241,6 +2361,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <association xmi:idref="CDIFProvenance.ProvActivity_participant_Person"/>
             </ownedEnd>
             <memberEnd xmi:idref="CDIFProvenance.ProvActivity_participant_Person-PersonEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFProvenance.ProvActivity_agent_AgentInRole" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#ProvActivity_agent_AgentInRole" xmi:type="uml:Association">
+            <name>ProvActivity_agent_AgentInRole</name>
+            <memberEnd xmi:idref="CDIFProvenance.ProvActivity-agent"/>
+            <ownedEnd xmi:id="CDIFProvenance.ProvActivity_agent_AgentInRole-AgentInRoleEnd" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#ProvActivity_agent_AgentInRole-AgentInRoleEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFProvenance.AgentInRole"/>
+               <association xmi:idref="CDIFProvenance.ProvActivity_agent_AgentInRole"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFProvenance.ProvActivity_agent_AgentInRole-AgentInRoleEnd"/>
          </packagedElement>
          <packagedElement xmi:id="CDIFProvenance.Dataset_wasGeneratedBy_ProvActivity" xmi:uuid="https://w3id.org/cdif/provenance/1.0/xmi/#Dataset_wasGeneratedBy_ProvActivity" xmi:type="uml:Association">
             <name>Dataset_wasGeneratedBy_ProvActivity</name>

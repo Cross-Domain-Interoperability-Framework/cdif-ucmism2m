@@ -129,6 +129,57 @@
             "dataType": "String",
             "definition": "schema:softwareVersion / schema:version - version identifier of the instrument or software.",
             "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "manufacturer",
+            "dataType": "String",
+            "definition": "schema:manufacturer - the entity that manufactured or developed the instrument (text label or @id of an Organization).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "model",
+            "dataType": "String",
+            "definition": "schema:model - the model name / identifier of the instrument (or @id of a schema:ProductModel).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "owner",
+            "dataType": "String",
+            "definition": "schema:owner - the entity that owns the instrument (text label or @id of an Organization).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "AgentInRole - an Agent (Person / Organization) playing a named role within an activity, with optional time bounds (schema:validFrom / schema:validThrough). Alternative to a bare schema:agent / schema:participant link when the role needs to be made explicit.",
+        "mappingType": "new",
+        "targetPackage": "Classes",
+        "targetClass": "AgentInRole",
+        "definition": "An Agent (Person / Organization) playing a named role within a provenance activity. Used when the role assignment carries its own metadata (the role name, time bounds, etc.) - otherwise schema:agent / schema:participant point directly at the Agent.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - identifier for this role assignment.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "name",
+            "dataType": "String",
+            "definition": "schema:name - the role name (e.g. 'principal investigator', 'data steward').",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "validFrom",
+            "dataType": "XsdDateTime",
+            "definition": "schema:validFrom - start of the period during which the agent held this role.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "validThrough",
+            "dataType": "XsdDateTime",
+            "definition": "schema:validThrough - end of the period during which the agent held this role.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       }
@@ -173,6 +224,14 @@
         "subjectClass": "ProvActivity",
         "objectClass": "Person",
         "definition": "schema:participant - additional participants in the activity beyond the primary schema:agent.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "ProvActivity -> AgentInRole via schema:agent (agent-in-named-role branch of the schema:agent union).",
+        "targetAssociationName": "ProvActivity_agent_AgentInRole",
+        "subjectClass": "ProvActivity",
+        "objectClass": "AgentInRole",
+        "definition": "schema:agent - agent playing a named role (alternative to bare Person / Organization links when the role assignment carries its own metadata).",
         "objectClassMultiplicity": {"lower": "0", "upper": "*"}
       }
     ]

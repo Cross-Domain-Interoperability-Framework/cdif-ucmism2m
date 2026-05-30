@@ -121,6 +121,38 @@ UNION_POLICY = {
     # in the association definition (intentional non-modelling of association
     # attributes which would require an association class).
     "position",
+    # schema.org action-status enumeration: the UML keeps the single
+    # schema:actionStatus attribute and treats the four ActionStatus subclasses
+    # (Active/Completed/Failed/Potential) as intentional union-policy absence.
+    "activeactionstatus", "completedactionstatus", "failedactionstatus", "potentialactionstatus",
+    # schema:Thing - too generic to model; intentional non-modelling at any profile level.
+    "thing",
+    # schema.org how-to / product-model machinery: schema:actionProcess points
+    # at a HowTo URI string, schema:model at a ProductModel @id - the references
+    # are kept as URI/string attributes, the rich classes themselves are not
+    # modelled in the CDIF profile UML.
+    "howto", "howtostep", "productmodel", "step",
+    # schema:hasPart on a provenance ProvActivity is the action-chaining
+    # back-reference, modelled as an @id string rather than an association
+    # back into ProvActivity itself.
+    "haspart",
+    # schema:category - generic categorization shorthand, kept as a string attr
+    # where it matters rather than modelled as a class link.
+    "category",
+    # cdifConcept - $def wrapper for a skos:Concept reference in some BB
+    # resolvedSchemas; the modelled type is cdif:Concept (Codelist) or the
+    # cdifConceptOrTerm union shorthand.
+    "cdifconcept",
+    # Geometry / location classes + properties are modelled in cdifDiscovery;
+    # profiles that reference them (Provenance, others) but don't compose
+    # Discovery treat the references as intentional cross-profile absence.
+    "spatialextent", "geocoordinates", "geoshape",
+    "aswkt", "crs", "hasgeometry", "box", "geo", "latitude", "line", "longitude",
+    # cdif:formats_InstanceVariable on a mapping references InstanceVariable
+    # which is modelled in cdifDataDescription; profiles that include the
+    # mapping family but not the variable model (cdifManifest) treat this as
+    # intentional cross-profile absence.
+    "formats_instancevariable",
     # schema:object on an Action is open-ended (schema:Thing) and not modelled.
     # The rest of the Action machinery (Action / EntryPoint / ActionResult /
     # PropertyValueSpecification + potentialAction/target/result/query-input)
@@ -146,6 +178,11 @@ ALIASES = {
     "has_foreignkey": "hasforeignkey",     # cdi:has_ForeignKey ~ DataStructure_hasForeignKey_ForeignKey
     # cdif:uses with target-suffix is covered by the cdifConceptOrTerm union:
     "uses_concept": "uses_cdifconceptorterm",  # cdif:uses_Concept ~ RepresentedVariable_uses_CdifConceptOrTerm
+    # WebAPI's potentialAction.result is modelled as a single combined edge
+    # WebAPI_potentialActionResult_ActionResult; the schema's two property
+    # names (schema:potentialAction, schema:result) both alias to that role.
+    "potentialaction": "potentialactionresult",
+    "result": "potentialactionresult",
 }
 
 
