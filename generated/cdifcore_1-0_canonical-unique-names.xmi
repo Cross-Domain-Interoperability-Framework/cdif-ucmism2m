@@ -1922,6 +1922,27 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <association xmi:idref="CDIFCore.CatalogRecord_maintainer_Agent"/>
                </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:id="CDIFCore.CdifConceptOrTerm" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CdifConceptOrTerm" xmi:type="uml:DataType">
+               <ownedComment xmi:id="CDIFCore.CdifConceptOrTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CdifConceptOrTerm-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFCore.CdifConceptOrTerm"/>
+                  <body>Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term.</body>
+               </ownedComment>
+               <name>CdifConceptOrTerm</name>
+               <ownedAttribute xmi:id="CDIFCore.CdifConceptOrTerm-identifier" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CdifConceptOrTerm-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.CdifConceptOrTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CdifConceptOrTerm-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.CdifConceptOrTerm-identifier"/>
+                     <body>@id - resolvable URI of the concept or term being referenced.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFCore.CdifConceptOrTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CdifConceptOrTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFCore.CdifConceptOrTerm-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#CdifConceptOrTerm-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFCore.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
          </packagedElement>
          <packagedElement xmi:id="CDIFCore.Dataset_provider_Agent" xmi:uuid="https://w3id.org/cdif/core/1.0/xmi/#Dataset_provider_Agent" xmi:type="uml:Association">
             <name>Dataset_provider_Agent</name>

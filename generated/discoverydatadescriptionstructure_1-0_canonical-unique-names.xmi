@@ -700,7 +700,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Dataset-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset-measurementTechnique" xmi:type="uml:Property">
                   <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Dataset-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset-measurementTechnique-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Dataset-measurementTechnique"/>
-                     <body>schema:measurementTechnique - technique / technology / methodology used. May be a plain string or a DefinedTerm reference (this edge models the DefinedTerm branch).</body>
+                     <body>schema:measurementTechnique - technique / methodology used.</body>
                   </ownedComment>
                   <lowerValue xmi:id="DiscoveryDataDescriptionStructure.Dataset-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -769,8 +769,8 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>hasQualityMeasurement</name>
-                  <type xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure"/>
-                  <association xmi:idref="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasure"/>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasurement"/>
                </ownedAttribute>
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset-variableMeasured" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
@@ -1946,6 +1946,20 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>inDefinedTermSet</name>
                   <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.DefinedTerm-additionalType" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DefinedTerm-additionalType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.DefinedTerm-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DefinedTerm-additionalType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.DefinedTerm-additionalType"/>
+                     <body>schema:additionalType - additional type assertion for this term.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.DefinedTerm-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DefinedTerm-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.DefinedTerm-additionalType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#DefinedTerm-additionalType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>additionalType</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Identifier" xmi:type="uml:DataType">
                <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
@@ -2405,10 +2419,31 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <association xmi:idref="DiscoveryDataDescriptionStructure.CatalogRecord_maintainer_Agent"/>
                </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm" xmi:type="uml:DataType">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.CdifConceptOrTerm"/>
+                  <body>Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term.</body>
+               </ownedComment>
+               <name>CdifConceptOrTerm</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier"/>
+                     <body>@id - resolvable URI of the concept or term being referenced.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
             <packagedElement xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured" xmi:type="uml:Class">
                <ownedComment xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured"/>
-                  <body>A measured variable described as a schema:PropertyValue. The lightweight discovery-level shape: name, description, optional measurement technique. Richer per-variable structure (physical data types, value domains, ...) is added by cdifDataDescription.</body>
+                  <body>A measured variable described as a schema:PropertyValue. Lightweight discovery-level shape: name, description, optional measurement technique, optional value range (min/maxValue) and unit (unitCode/unitText). Richer per-variable structure is added by cdifDataDescription.</body>
                </ownedComment>
                <name>VariableMeasured</name>
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-identifier" xmi:type="uml:Property">
@@ -2467,6 +2502,62 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>alternateName</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-minValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-minValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-minValue-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-minValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured-minValue"/>
+                     <body>schema:minValue - the lower bound of the values this variable can take (string for generality; concrete numeric type varies).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-minValue-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-minValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-minValue-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-minValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>minValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-maxValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-maxValue" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-maxValue-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-maxValue-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured-maxValue"/>
+                     <body>schema:maxValue - the upper bound of the values this variable can take.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-maxValue-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-maxValue-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-maxValue-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-maxValue-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>maxValue</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitCode" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitCode" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitCode-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured-unitCode"/>
+                     <body>schema:unitCode - URL/code identifying the unit of measure (e.g. UN/CEFACT Common Code, QUDT URI).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitCode-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitCode-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitCode-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitCode-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>unitCode</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitText" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitText" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitText-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitText-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured-unitText"/>
+                     <body>schema:unitText - text label for the unit of measure (free form, complements unitCode).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitText-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitText-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-unitText-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-unitText-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>unitText</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-measurementTechnique" xmi:type="uml:Property">
                   <ownedComment xmi:id="DiscoveryDataDescriptionStructure.VariableMeasured-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#VariableMeasured-measurementTechnique-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured-measurementTechnique"/>
@@ -2486,7 +2577,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent" xmi:type="uml:Class">
                <ownedComment xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent"/>
-                  <body>Geographic extent of the resource content (schema:Place). Carries a place name, optional identifier, and optional geometry (geosparql:hasGeometry).</body>
+                  <body>Geographic extent of the resource content (schema:Place). Carries a place name, optional identifier, and optional geometry (geosparql:hasGeometry / schema:geo).</body>
                </ownedComment>
                <name>SpatialExtent</name>
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-identifier" xmi:type="uml:Property">
@@ -2517,17 +2608,47 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>name</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-geo" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-geo" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-geo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-geo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent-geo"/>
+                     <body>schema:geo - geometry of the place. The JSON anyOf admits a GeoCoordinates (point) or GeoShape (bounding box / line) - collapsed in the UML to the AbstractGeometry supertype.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-geo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-geo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-geo-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-geo-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>geo</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.AbstractGeometry"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent_geo_AbstractGeometry"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-hasGeometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-hasGeometry" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-hasGeometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-hasGeometry-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent-hasGeometry"/>
+                     <body>geosparql:hasGeometry - structured GeoSPARQL geometry (WKT + CRS).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-hasGeometry-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-hasGeometry-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent-hasGeometry-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent-hasGeometry-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasGeometry</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.Geometry"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent_hasGeometry_Geometry"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent" xmi:type="uml:Class">
                <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent"/>
-                  <body>Temporal extent of resource content - the period of time the resource covers.</body>
+                  <body>Temporal extent of resource content - the period of time the resource covers. Endpoints can be plain XSD dates OR OWL-Time Instants (time:hasBeginning / time:hasEnd) for structured time positions.</body>
                </ownedComment>
                <name>TemporalExtent</name>
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-startDate" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-startDate" xmi:type="uml:Property">
                   <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-startDate-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-startDate-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-startDate"/>
-                     <body>Start of the temporal coverage.</body>
+                     <body>Start of the temporal coverage (simple-date form; structured form is time:hasBeginning -&gt; Instant).</body>
                   </ownedComment>
                   <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-startDate-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-startDate-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2541,7 +2662,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-endDate" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-endDate" xmi:type="uml:Property">
                   <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-endDate-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-endDate-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-endDate"/>
-                     <body>End of the temporal coverage.</body>
+                     <body>End of the temporal coverage (simple-date form; structured form is time:hasEnd -&gt; Instant).</body>
                   </ownedComment>
                   <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-endDate-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-endDate-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2552,40 +2673,395 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>endDate</name>
                   <type xmi:idref="DiscoveryDataDescriptionStructure.XsdDate"/>
                </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasBeginning" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasBeginning" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasBeginning-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasBeginning-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-hasBeginning"/>
+                     <body>time:hasBeginning - structured form of the start endpoint (OWL-Time Instant).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasBeginning-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasBeginning-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasBeginning-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasBeginning-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasBeginning</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.Instant"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_hasBeginning_Instant"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasEnd" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasEnd-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasEnd-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-hasEnd"/>
+                     <body>time:hasEnd - structured form of the end endpoint (OWL-Time Instant).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasEnd-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasEnd-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-hasEnd-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-hasEnd-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasEnd</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.Instant"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_hasEnd_Instant"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalStartedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalStartedBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalStartedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalStartedBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-intervalStartedBy"/>
+                     <body>time:intervalStartedBy - another temporal extent that shares the start of this one (OWL-Time interval relation).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalStartedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalStartedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalStartedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalStartedBy-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>intervalStartedBy</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_intervalStartedBy_TemporalExtent"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalFinishedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalFinishedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-intervalFinishedBy"/>
+                     <body>time:intervalFinishedBy - another temporal extent that shares the end of this one (OWL-Time interval relation).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalFinishedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent-intervalFinishedBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent-intervalFinishedBy-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>intervalFinishedBy</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_intervalFinishedBy_TemporalExtent"/>
+               </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure" xmi:type="uml:Class">
                <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure"/>
-                  <body>A W3C DQV (Data Quality Vocabulary) quality measurement: a measured value for a defined quality metric.</body>
+                  <body>A W3C DQV (Data Quality Vocabulary) quality metric definition - identifies the quality property being measured.</body>
                </ownedComment>
                <name>QualityMeasure</name>
-               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-metric" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-metric" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-metric-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-metric-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure-metric"/>
-                     <body>dqv:isMeasurementOf - URI of the dqv:Metric being measured.</body>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure-identifier"/>
+                     <body>@id - URI of the dqv:Metric.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-metric-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-metric-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-metric-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-metric-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-identifier-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
-                  <name>metric</name>
+                  <name>identifier</name>
                   <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-value" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-value" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-value-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure-value"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-name" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-name-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure-name"/>
+                     <body>schema:name - human-readable label for the metric.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-name-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-name-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-name-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>name</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement" xmi:type="uml:Class">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement"/>
+                  <body>A W3C DQV quality measurement: a measured value for a defined quality metric. References the metric (dqv:isMeasurementOf -&gt; QualityMeasure) and carries the measured value (dqv:value).</body>
+               </ownedComment>
+               <name>QualityMeasurement</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement-identifier"/>
+                     <body>@id - URI for this measurement.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-value" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-value" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-value-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-value-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement-value"/>
                      <body>dqv:value - the measured value (string for generality; concrete type varies by metric).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-value-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-value-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-value-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasure-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasure-value-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-value-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-value-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>value</name>
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-isMeasurementOf" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-isMeasurementOf-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement-isMeasurementOf"/>
+                     <body>dqv:isMeasurementOf - the dqv:Metric this measurement instantiates.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-isMeasurementOf-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement-isMeasurementOf-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement-isMeasurementOf-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>isMeasurementOf</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement_isMeasurementOf_QualityMeasure"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractGeometry" xmi:type="uml:Class" isAbstract="true">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.AbstractGeometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractGeometry-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.AbstractGeometry"/>
+                  <body>Abstract supertype of GeoCoordinates and GeoShape - the union-type collapse target for schema:geo on a SpatialExtent. The JSON anyOf admits either subtype.</body>
+               </ownedComment>
+               <name>AbstractGeometry</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.AbstractGeometry-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractGeometry-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.AbstractGeometry-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractGeometry-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.AbstractGeometry-identifier"/>
+                     <body>@id - resolvable URI for the geometry node.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.AbstractGeometry-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractGeometry-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.AbstractGeometry-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#AbstractGeometry-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates" xmi:type="uml:Class">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoCoordinates"/>
+                  <body>schema:GeoCoordinates - point geometry with latitude / longitude.</body>
+               </ownedComment>
+               <name>GeoCoordinates</name>
+               <generalization xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-generalization-AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-generalization-AbstractGeometry" xmi:type="uml:Generalization">
+                  <general xmi:idref="DiscoveryDataDescriptionStructure.AbstractGeometry"/>
+               </generalization>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-latitude" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-latitude" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-latitude-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-latitude-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoCoordinates-latitude"/>
+                     <body>schema:latitude - latitude of the point (number or string).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-latitude-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-latitude-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-latitude-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-latitude-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>latitude</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-longitude" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-longitude" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-longitude-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-longitude-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoCoordinates-longitude"/>
+                     <body>schema:longitude - longitude of the point.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-longitude-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-longitude-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-longitude-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-longitude-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>longitude</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoCoordinates-identifier"/>
+                     <body>@id - resolvable URI for the geometry node.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.GeoCoordinates-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoCoordinates-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.GeoShape" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape" xmi:type="uml:Class">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoShape-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoShape"/>
+                  <body>schema:GeoShape - shape geometry (box, line, polygon, circle).</body>
+               </ownedComment>
+               <name>GeoShape</name>
+               <generalization xmi:id="DiscoveryDataDescriptionStructure.GeoShape-generalization-AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-generalization-AbstractGeometry" xmi:type="uml:Generalization">
+                  <general xmi:idref="DiscoveryDataDescriptionStructure.AbstractGeometry"/>
+               </generalization>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.GeoShape-box" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-box" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoShape-box-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-box-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoShape-box"/>
+                     <body>schema:box - bounding box, two lat-long pairs.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.GeoShape-box-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-box-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.GeoShape-box-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-box-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>box</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.GeoShape-line" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-line" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoShape-line-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-line-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoShape-line"/>
+                     <body>schema:line - line geometry, sequence of lat-long pairs.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.GeoShape-line-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-line-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.GeoShape-line-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-line-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>line</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.GeoShape-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.GeoShape-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.GeoShape-identifier"/>
+                     <body>@id - resolvable URI for the geometry node.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.GeoShape-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.GeoShape-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#GeoShape-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Geometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry" xmi:type="uml:Class">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Geometry-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Geometry"/>
+                  <body>geosparql:Geometry - structured spatial geometry serialized as Well-Known Text (geosparql:asWKT) with an optional coordinate reference system (geosparql:crs). Modelled as a real class (intentional exception to the union-shorthand: the BB defines real structure here).</body>
+               </ownedComment>
+               <name>Geometry</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Geometry-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Geometry-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Geometry-identifier"/>
+                     <body>@id - resolvable URI for the geometry node.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.Geometry-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.Geometry-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Geometry-asWKT" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-asWKT" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Geometry-asWKT-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-asWKT-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Geometry-asWKT"/>
+                     <body>geosparql:asWKT - Well-Known Text serialization of the geometry.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.Geometry-asWKT-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-asWKT-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.Geometry-asWKT-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-asWKT-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>asWKT</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Geometry-crs" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-crs" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Geometry-crs-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-crs-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Geometry-crs"/>
+                     <body>geosparql:crs - coordinate reference system URI.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.Geometry-crs-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-crs-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.Geometry-crs-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Geometry-crs-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>crs</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Instant" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant" xmi:type="uml:Class">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Instant-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Instant"/>
+                  <body>OWL-Time time:Instant - a structured time point. Used as the value of time:hasBeginning / time:hasEnd on a TemporalExtent. Modelled as a real class because the BB defines real structure (an inTimePosition -&gt; TimePosition reference).</body>
+               </ownedComment>
+               <name>Instant</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Instant-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Instant-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Instant-identifier"/>
+                     <body>@id - resolvable URI for the Instant.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.Instant-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.Instant-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.Instant-inTimePosition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-inTimePosition" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.Instant-inTimePosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-inTimePosition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.Instant-inTimePosition"/>
+                     <body>time:inTimePosition - the numeric time position carried by this Instant.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.Instant-inTimePosition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-inTimePosition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.Instant-inTimePosition-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant-inTimePosition-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>inTimePosition</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.TimePosition"/>
+                  <association xmi:idref="DiscoveryDataDescriptionStructure.Instant_inTimePosition_TimePosition"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.TimePosition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition" xmi:type="uml:Class">
+               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TimePosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TimePosition"/>
+                  <body>OWL-Time time:TimePosition - a numeric position on a temporal reference system. Carried by an Instant via time:inTimePosition.</body>
+               </ownedComment>
+               <name>TimePosition</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TimePosition-numericPosition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-numericPosition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TimePosition-numericPosition-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-numericPosition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TimePosition-numericPosition"/>
+                     <body>time:numericPosition - the numeric value (string for generality).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TimePosition-numericPosition-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-numericPosition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.TimePosition-numericPosition-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-numericPosition-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>numericPosition</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.TimePosition-hasTRS" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-hasTRS" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.TimePosition-hasTRS-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-hasTRS-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.TimePosition-hasTRS"/>
+                     <body>time:hasTRS - URI of the temporal reference system the numericPosition is expressed in.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.TimePosition-hasTRS-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-hasTRS-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.TimePosition-hasTRS-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TimePosition-hasTRS-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>hasTRS</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:id="DiscoveryDataDescriptionStructure.InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#InstanceVariable" xmi:type="uml:Class">
@@ -4888,27 +5364,6 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
                </ownedAttribute>
             </packagedElement>
-            <packagedElement xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm" xmi:type="uml:DataType">
-               <ownedComment xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-ownedComment" xmi:type="uml:Comment">
-                  <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.CdifConceptOrTerm"/>
-                  <body>Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term. cdif:uses on a RepresentedVariable is typed by this union.</body>
-               </ownedComment>
-               <name>CdifConceptOrTerm</name>
-               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier"/>
-                     <body>@id - resolvable URI of the concept or term being referenced.</body>
-                  </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
-                     <value>0</value>
-                  </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.CdifConceptOrTerm-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#CdifConceptOrTerm-identifier-upperValue" xmi:type="uml:LiteralInteger">
-                     <value>1</value>
-                  </upperValue>
-                  <name>identifier</name>
-                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
-               </ownedAttribute>
-            </packagedElement>
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Dataset_provider_Agent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset_provider_Agent" xmi:type="uml:Association">
             <name>Dataset_provider_Agent</name>
@@ -5045,14 +5500,14 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             </ownedEnd>
             <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.Dataset_temporalCoverage_TemporalExtent-TemporalExtentEnd"/>
          </packagedElement>
-         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasure" xmi:type="uml:Association">
-            <name>Dataset_hasQualityMeasurement_QualityMeasure</name>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasurement" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasurement" xmi:type="uml:Association">
+            <name>Dataset_hasQualityMeasurement_QualityMeasurement</name>
             <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.Dataset-hasQualityMeasurement"/>
-            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd" xmi:type="uml:Property">
-               <type xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure"/>
-               <association xmi:idref="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasure"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasurement"/>
             </ownedEnd>
-            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasure-QualityMeasureEnd"/>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.Dataset_hasQualityMeasurement_QualityMeasurement-QualityMeasurementEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Dataset_variableMeasured_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Dataset_variableMeasured_InstanceVariable" xmi:type="uml:Association">
             <name>Dataset_variableMeasured_InstanceVariable</name>
@@ -5278,6 +5733,78 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <association xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured_measurementTechnique_DefinedTerm"/>
             </ownedEnd>
             <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.VariableMeasured_measurementTechnique_DefinedTerm-DefinedTermEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent_geo_AbstractGeometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent_geo_AbstractGeometry" xmi:type="uml:Association">
+            <name>SpatialExtent_geo_AbstractGeometry</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent-geo"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.AbstractGeometry"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent_geo_AbstractGeometry"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent_geo_AbstractGeometry-AbstractGeometryEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent_hasGeometry_Geometry" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent_hasGeometry_Geometry" xmi:type="uml:Association">
+            <name>SpatialExtent_hasGeometry_Geometry</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent-hasGeometry"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.SpatialExtent_hasGeometry_Geometry-GeometryEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#SpatialExtent_hasGeometry_Geometry-GeometryEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.Geometry"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent_hasGeometry_Geometry"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.SpatialExtent_hasGeometry_Geometry-GeometryEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_hasBeginning_Instant" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_hasBeginning_Instant" xmi:type="uml:Association">
+            <name>TemporalExtent_hasBeginning_Instant</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-hasBeginning"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_hasBeginning_Instant-InstantEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_hasBeginning_Instant-InstantEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.Instant"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_hasBeginning_Instant"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_hasBeginning_Instant-InstantEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_hasEnd_Instant" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_hasEnd_Instant" xmi:type="uml:Association">
+            <name>TemporalExtent_hasEnd_Instant</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-hasEnd"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_hasEnd_Instant-InstantEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_hasEnd_Instant-InstantEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.Instant"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_hasEnd_Instant"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_hasEnd_Instant-InstantEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_intervalStartedBy_TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_intervalStartedBy_TemporalExtent" xmi:type="uml:Association">
+            <name>TemporalExtent_intervalStartedBy_TemporalExtent</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-intervalStartedBy"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_intervalStartedBy_TemporalExtent-TemporalExtentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_intervalStartedBy_TemporalExtent-TemporalExtentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_intervalStartedBy_TemporalExtent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_intervalStartedBy_TemporalExtent-TemporalExtentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_intervalFinishedBy_TemporalExtent" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_intervalFinishedBy_TemporalExtent" xmi:type="uml:Association">
+            <name>TemporalExtent_intervalFinishedBy_TemporalExtent</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent-intervalFinishedBy"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.TemporalExtent_intervalFinishedBy_TemporalExtent-TemporalExtentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#TemporalExtent_intervalFinishedBy_TemporalExtent-TemporalExtentEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_intervalFinishedBy_TemporalExtent"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.TemporalExtent_intervalFinishedBy_TemporalExtent-TemporalExtentEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement_isMeasurementOf_QualityMeasure" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement_isMeasurementOf_QualityMeasure" xmi:type="uml:Association">
+            <name>QualityMeasurement_isMeasurementOf_QualityMeasure</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement-isMeasurementOf"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.QualityMeasurement_isMeasurementOf_QualityMeasure-QualityMeasureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#QualityMeasurement_isMeasurementOf_QualityMeasure-QualityMeasureEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasure"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement_isMeasurementOf_QualityMeasure"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.QualityMeasurement_isMeasurementOf_QualityMeasure-QualityMeasureEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="DiscoveryDataDescriptionStructure.Instant_inTimePosition_TimePosition" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant_inTimePosition_TimePosition" xmi:type="uml:Association">
+            <name>Instant_inTimePosition_TimePosition</name>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.Instant-inTimePosition"/>
+            <ownedEnd xmi:id="DiscoveryDataDescriptionStructure.Instant_inTimePosition_TimePosition-TimePositionEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#Instant_inTimePosition_TimePosition-TimePositionEnd" xmi:type="uml:Property">
+               <type xmi:idref="DiscoveryDataDescriptionStructure.TimePosition"/>
+               <association xmi:idref="DiscoveryDataDescriptionStructure.Instant_inTimePosition_TimePosition"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="DiscoveryDataDescriptionStructure.Instant_inTimePosition_TimePosition-TimePositionEnd"/>
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescriptionStructure.InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:uuid="https://w3id.org/cdif/data_structure/1.0/composite/xmi/#InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi:type="uml:Association">
             <name>InstanceVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain</name>

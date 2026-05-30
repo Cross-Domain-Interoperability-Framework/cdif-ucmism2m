@@ -1050,6 +1050,22 @@
           "predicate_id": "skos:closeMatch",
           "confidence": 0.75
         }
+      },
+      {
+        "_comment": "CdifConceptOrTerm - union shorthand: a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm). In JSON instances the value MAY be replaced by a plain string interpreted as the @id / prefLabel / termCode of the underlying ref. Used as the value type of cdif:uses, schema:linkRelationship, and other concept-or-term properties; declared in Core so downstream profiles inherit (or restate) it.",
+        "mappingType": "new",
+        "isDataType": true,
+        "targetPackage": "Support",
+        "targetClass": "CdifConceptOrTerm",
+        "definition": "Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI of the concept or term being referenced.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
       }
     ],
     "association": [
