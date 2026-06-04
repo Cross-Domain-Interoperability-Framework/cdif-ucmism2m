@@ -158,6 +158,11 @@ UNION_POLICY = {
     # PropertyValueSpecification + potentialAction/target/result/query-input)
     # IS now modelled in Core.
     "object",
+    # schema:Dataset typing on the schema:subjectOf wrapper in cdifCodelist
+    # (Jun-2026 schema:subjectOf shape fix). The CatalogRecord stub carries
+    # the role; the Dataset typing is recorded by schema:additionalType =
+    # dcat:CatalogRecord on the CatalogRecord stub itself.
+    "dataset",
     # schema:LinkRole hyperlink machinery (collapsed)
     "linkrelationship",
 }

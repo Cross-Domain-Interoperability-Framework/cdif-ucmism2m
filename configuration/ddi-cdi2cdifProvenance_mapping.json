@@ -1,6 +1,6 @@
 {
   "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
-  "_comment": "DDI-CDI -> CDIF Provenance profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifProvenance/cdifProvenanceSchema.json with the value class at metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/cdifProvActivitySchema.json. The Provenance profile module defines prov:wasGeneratedBy as an array of ProvActivity items describing how the dataset was generated. ProvActivity is a richly attributed activity class: prov:used (with optional schema:instrument sub-key for instruments), schema:agent / schema:participant (Person/Organization/AgentInRole), schema:object (input entities, supports action chaining via @id back-references), schema:result, schema:actionStatus / startTime / endTime / location / actionProcess / error / additionalProperty. Conforms-to identifier: https://w3id.org/cdif/provenance/1.0. Person/Organization/AgentInRole/Identifier are referenced from CDIFCore (cross-profile registry); Instrument is restated here as a local class. The DDI-CDI source provenance is Activity in the v1.1beta XMI (sourceClass=Activity preserves that provenance link).",
+  "_comment": "DDI-CDI -> CDIF Provenance profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifProvenance/cdifProvenanceSchema.json with the value class at metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/cdifProvActivitySchema.json. The Provenance profile module defines prov:wasGeneratedBy as an array of ProvActivity items describing how the dataset was generated. ProvActivity is a richly attributed activity class: prov:used (with optional schema:instrument sub-key for instruments), schema:agent / schema:participant (Person/Organization/AgentInRole), schema:object (input entities, supports action chaining via @id back-references), schema:result, schema:actionStatus / startTime / endTime / location / actionProcess / error / additionalProperty. Conforms-to identifier: https://w3id.org/cdif/provenance/1.1. Person/Organization/AgentInRole/Identifier are referenced from CDIFCore (cross-profile registry); Instrument is restated here as a local class. The DDI-CDI source provenance is Activity in the v1.1beta XMI (sourceClass=Activity preserves that provenance link).",
   "transformation": {
     "description": "DDI-CDI to CDIF Provenance Profile",
     "version": "0.1",
@@ -14,10 +14,10 @@
       "modelTitle": "UML Model for the CDIF Provenance Profile",
       "subTitle": "Provenance activities describing how a dataset was generated: agents, instruments, temporal bounds, methodology, action chaining",
       "majorVersion": "1",
-      "minorVersion": "0",
+      "minorVersion": "1",
       "language": "en",
-      "uri": "https://w3id.org/cdif/provenance/1.0/xmi/",
-      "definition": "CDIF Provenance profile module - documents prov:wasGeneratedBy on a Dataset as a sequence of ProvActivity items. Each ProvActivity extends the minimal prov:Activity with schema.org Action vocabulary (instruments, agents, temporal bounds, action chaining via schema:object back-references to earlier activities' schema:result). Conforms-to identifier: https://w3id.org/cdif/provenance/1.0.",
+      "uri": "https://w3id.org/cdif/provenance/1.1/xmi/",
+      "definition": "CDIF Provenance profile module - documents prov:wasGeneratedBy on a Dataset as a sequence of ProvActivity items. Each ProvActivity extends the minimal prov:Activity with schema.org Action vocabulary (instruments, agents, temporal bounds, action chaining via schema:object back-references to earlier activities' schema:result). Conforms-to identifier: https://w3id.org/cdif/provenance/1.1.",
       "mainPackage": "CDIFProvenance",
       "mainPackageDefinition": "Provenance activities, instruments, and action chaining for CDIF metadata records.",
       "dataTypesPackage": "CDIFProvenance",

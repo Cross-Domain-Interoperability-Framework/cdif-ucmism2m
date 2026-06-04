@@ -14,10 +14,10 @@
       "modelTitle": "UML Model for the CDIF Data Structure Profile",
       "subTitle": "DataStructure variants + components + keys + variables + value domains + units",
       "majorVersion": "1",
-      "minorVersion": "0",
+      "minorVersion": "1",
       "language": "en",
-      "uri": "https://w3id.org/cdif/data_structure/1.0/xmi/",
-      "definition": "CDIF Data Structure profile module. Adds cdi:isStructuredBy on a DataDownload, pointing at one of four DataStructure variants - DataStructure (general; any component subtype), DimensionalDataStructure (Identifier/Measure/Attribute/Dimension), LongDataStructure (Identifier/VariableDescriptor/VariableValue/Attribute), WideDataStructure (Identifier/Measure/Attribute). Each structure may also carry a PrimaryKey and ForeignKeys. RepresentedVariables carry value domains (substantive / sentinel), an intended data type, a unit type (measures), and concept references (cdif:uses -> CdifConceptOrTerm). The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/data_structure/1.0.",
+      "uri": "https://w3id.org/cdif/data_structure/1.1/xmi/",
+      "definition": "CDIF Data Structure profile module. Adds cdi:isStructuredBy on a DataDownload, pointing at one of four DataStructure variants - DataStructure (general; any component subtype), DimensionalDataStructure (Identifier/Measure/Attribute/Dimension), LongDataStructure (Identifier/VariableDescriptor/VariableValue/Attribute), WideDataStructure (Identifier/Measure/Attribute). Each structure may also carry a PrimaryKey and ForeignKeys. RepresentedVariables carry value domains (substantive / sentinel), an intended data type, a unit type (measures), and concept references (cdif:uses -> CdifConceptOrTerm). The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/data_structure/1.1.",
       "mainPackage": "CDIFDataStructure",
       "mainPackageDefinition": "Data structure description extension classes added by this profile.",
       "dataTypesPackage": "CDIFDataStructure"
@@ -78,16 +78,16 @@
         ]
       },
       {
-        "_comment": "CatalogRecord stub - carries the required https://w3id.org/cdif/data_structure/1.0 conformance declaration.",
+        "_comment": "CatalogRecord stub - carries the required https://w3id.org/cdif/data_structure/1.1 conformance declaration.",
         "mappingType": "new",
         "targetPackage": "Anchors",
         "targetClass": "CatalogRecord",
-        "definition": "Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.0.",
+        "definition": "Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1.",
         "attribute": [
           {
             "name": "conformsTo",
             "dataType": "XsdAnyUri",
-            "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_structure/1.0 for the data-structure profile.",
+            "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_structure/1.1 for the data-structure profile.",
             "multiplicity": {"lower": "1", "upper": "*"}
           }
         ]
@@ -426,7 +426,7 @@
         "targetAssociationName": "DataDownload_subjectOf_CatalogRecord",
         "subjectClass": "DataDownload",
         "objectClass": "CatalogRecord",
-        "definition": "schema:subjectOf - the catalog record describing this dataset's metadata. MUST declare conformance to https://w3id.org/cdif/data_structure/1.0.",
+        "definition": "schema:subjectOf - the catalog record describing this dataset's metadata. MUST declare conformance to https://w3id.org/cdif/data_structure/1.1.",
         "objectClassMultiplicity": {"lower": "0", "upper": "1"}
       },
       {
