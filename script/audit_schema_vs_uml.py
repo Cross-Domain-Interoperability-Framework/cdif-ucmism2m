@@ -41,6 +41,10 @@ PROFILES = {
         CONFIG_DIR / "ddi-cdi2cdifCodelist_mapping.json",
         SOURCES / "profiles/cdifProfile/cdifCodelist/resolvedSchema.json",
     ),
+    "cdifConceptScheme": (
+        CONFIG_DIR / "ddi-cdi2cdifConceptScheme_mapping.json",
+        SOURCES / "profiles/cdifProfile/cdifConceptScheme/resolvedSchema.json",
+    ),
     "cdifCore": (
         CONFIG_DIR / "ddi-cdi2cdifCore_mapping.json",
         SOURCES / "profiles/cdifProfile/cdifCore/resolvedSchema.json",

@@ -1,0 +1,205 @@
+{
+  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "_comment": "DDI-CDI -> CDIF ConceptScheme profile UML. The profile is defined at metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifConceptScheme/schema.yaml. ConceptScheme is a standalone SKOS-only profile (no composes:) — a thin wrapper around skosConceptScheme. Distinct from cdifCodelist: looser concept shape (no inScheme requirement on top concepts; notation as array; altLabel/note/version added), and no schema:identifier PropertyValue / dateModified / license machinery. The Anchors package re-declares CatalogRecord so the diagram can show the required https://w3id.org/cdif/conceptscheme/1.1 conformance constraint as an attribute on the schema:subjectOf > CatalogRecord node.",
+  "transformation": {
+    "description": "DDI-CDI to CDIF ConceptScheme Profile",
+    "version": "0.1",
+    "sourceModel": {
+      "name": "DDI-CDI",
+      "mainPackage": "DDICDILibrary",
+      "uri": "http://ddialliance.org/Specification/DDI-CDI/1.0/XMI/"
+    },
+    "targetModel": {
+      "acronym": "CDIFConceptScheme",
+      "modelTitle": "UML Model for the CDIF ConceptScheme Profile",
+      "subTitle": "SKOS concept schemes used as controlled vocabularies in CDIF metadata",
+      "majorVersion": "1",
+      "minorVersion": "1",
+      "language": "en",
+      "uri": "https://w3id.org/cdif/conceptscheme/1.1/xmi/",
+      "definition": "CDIF profile module for SKOS concept schemes used as controlled vocabularies in CDIF metadata. Thin wrapper around skosConceptScheme. Required attributes per the profile JSON schema: ConceptScheme has @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (minItems 1); Concept has @type (containing skos:Concept), skos:prefLabel, skos:notation. The catalog record (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.",
+      "mainPackage": "CDIFConceptScheme",
+      "mainPackageDefinition": "Profile module for SKOS concept schemes used as controlled vocabularies in CDIF metadata.",
+      "dataTypesPackage": "CDIFConceptScheme"
+    }
+  },
+  "package": [
+    {
+      "name": "Classes",
+      "parent": "CDIFConceptScheme",
+      "definition": "Classes of the CDIF ConceptScheme profile: ConceptScheme (the SKOS scheme) and Concept (the SKOS Concept members)."
+    },
+    {
+      "name": "Anchors",
+      "parent": "CDIFConceptScheme",
+      "definition": "Stub re-declarations of CDIFCore classes that this profile attaches to. Provided so the diagram can render attachment edges without dragging in the full CDIFCore class graph."
+    }
+  ],
+  "mapping": {
+    "class": [
+      {
+        "_comment": "skos:ConceptScheme - a controlled vocabulary expressed as a SKOS scheme. Required by the profile schema: @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (minItems 1). sourceClass=ConceptSystem preserves the DDI-CDI 1.1beta provenance link (same source class as cdifCodelist's ConceptScheme).",
+        "mappingType": "new",
+        "sourceClass": "ConceptSystem",
+        "targetPackage": "Classes",
+        "targetClass": "ConceptScheme",
+        "definition": "A SKOS Concept Scheme - a controlled vocabulary aggregating one or more SKOS Concepts. Required attributes: @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (at least one). The metadata record describing this scheme (schema:subjectOf > CatalogRecord) MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - URI identifier for this concept scheme.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "prefLabel",
+            "dataType": "String",
+            "definition": "skos:prefLabel - preferred lexical label for the concept scheme. Required. May be a plain string or a language-tagged value (LanguageTaggedValue is collapsed to String per the union-type policy).",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "altLabel",
+            "dataType": "String",
+            "definition": "skos:altLabel - alternative lexical labels (acronyms, abbreviations, spelling variants).",
+            "multiplicity": {"lower": "0", "upper": "*"}
+          },
+          {
+            "name": "definition",
+            "dataType": "String",
+            "definition": "skos:definition - formal explanation of the meaning or purpose of this concept scheme. Required.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "notation",
+            "dataType": "String",
+            "definition": "skos:notation - classification code or notation for this concept scheme.",
+            "multiplicity": {"lower": "0", "upper": "*"}
+          },
+          {
+            "name": "note",
+            "dataType": "String",
+            "definition": "skos:note - general note about the concept scheme.",
+            "multiplicity": {"lower": "0", "upper": "*"}
+          },
+          {
+            "name": "version",
+            "dataType": "String",
+            "definition": "schema:version - version identifier for the concept scheme.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      },
+      {
+        "_comment": "skos:Concept - a SKOS Concept member of a scheme. Required attributes per the profile schema (top-concept items): @type (containing skos:Concept), skos:prefLabel, skos:notation. Concepts MAY also carry definition, note, skos:inScheme back-pointer, and hierarchical broader/narrower links. Unlike cdifCodelist's Concept, inScheme is NOT required on top concepts here.",
+        "mappingType": "new",
+        "sourceClass": "Concept",
+        "targetPackage": "Classes",
+        "targetClass": "Concept",
+        "definition": "A SKOS Concept member of a ConceptScheme. Must have @type (containing skos:Concept), skos:prefLabel, and skos:notation. Optionally carries skos:definition, skos:note, skos:inScheme (back-pointer to its scheme), and hierarchical skos:broader / skos:narrower links to other concepts.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - URI identifier for this concept.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          },
+          {
+            "name": "prefLabel",
+            "dataType": "String",
+            "definition": "skos:prefLabel - preferred lexical label for this concept. Required.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "notation",
+            "dataType": "String",
+            "definition": "skos:notation - classification code for this concept within a scheme. Required.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "definition",
+            "dataType": "String",
+            "definition": "skos:definition - formal explanation of the meaning of this concept.",
+            "multiplicity": {"lower": "0", "upper": "*"}
+          },
+          {
+            "name": "note",
+            "dataType": "String",
+            "definition": "skos:note - general note about this concept.",
+            "multiplicity": {"lower": "0", "upper": "*"}
+          }
+        ]
+      },
+      {
+        "_comment": "CatalogRecord stub - the metadata-about-this-resource node sitting under schema:subjectOf. Typed as schema:Dataset with schema:additionalType narrowing to dcat:CatalogRecord. dcterms:conformsTo MUST include https://w3id.org/cdif/conceptscheme/1.1. Full definition is in CDIFCore.",
+        "mappingType": "new",
+        "targetPackage": "Anchors",
+        "targetClass": "CatalogRecord",
+        "definition": "Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the conceptScheme profile, dcterms:conformsTo MUST include https://w3id.org/cdif/conceptscheme/1.1.",
+        "attribute": [
+          {
+            "name": "additionalType",
+            "dataType": "String",
+            "definition": "schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "conformsTo",
+            "dataType": "XsdAnyUri",
+            "definition": "dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/conceptscheme/1.1 for the conceptScheme profile.",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "about",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
+      }
+    ],
+    "association": [
+      {
+        "_comment": "ConceptScheme -> CatalogRecord via schema:subjectOf. The attachment point for the cdif:conceptscheme/1.1 conformance declaration.",
+        "targetAssociationName": "ConceptScheme_subjectOf_CatalogRecord",
+        "subjectClass": "ConceptScheme",
+        "objectClass": "CatalogRecord",
+        "definition": "schema:subjectOf - the catalog record describing this concept scheme's metadata. For a CDIF concept scheme, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "ConceptScheme -> Concept via skos:hasTopConcept. Required: every CDIF ConceptScheme must declare at least one top concept (minItems 1).",
+        "targetAssociationName": "ConceptScheme_hasTopConcept_Concept",
+        "subjectClass": "ConceptScheme",
+        "objectClass": "Concept",
+        "definition": "skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.",
+        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
+        "objectClassAggregationKind": "composite"
+      },
+      {
+        "_comment": "Concept -> ConceptScheme via skos:inScheme. Optional in this profile (unlike cdifCodelist where it is required on every concept).",
+        "targetAssociationName": "Concept_inScheme_ConceptScheme",
+        "subjectClass": "Concept",
+        "objectClass": "ConceptScheme",
+        "definition": "skos:inScheme - the ConceptScheme(s) this concept belongs to. Optional in the conceptScheme profile (the containment via skos:hasTopConcept implies it for top concepts; required only when the concept reference is by @id outside a containing scheme).",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "Concept -> Concept via skos:broader. Parent (broader) concepts in the hierarchy. Items in the schema are inline concept objects or @id references; both collapse to a Concept link in the UML.",
+        "targetAssociationName": "Concept_broader_Concept",
+        "subjectClass": "Concept",
+        "objectClass": "Concept",
+        "definition": "skos:broader - parent (broader) concepts in the hierarchy.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      },
+      {
+        "_comment": "Concept -> Concept via skos:narrower. Child (narrower) concepts; inverse of skos:broader.",
+        "targetAssociationName": "Concept_narrower_Concept",
+        "subjectClass": "Concept",
+        "objectClass": "Concept",
+        "definition": "skos:narrower - child (narrower) concepts in the hierarchy. Each inline child SHOULD also declare skos:broader pointing back to this parent.",
+        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+      }
+    ]
+  }
+}

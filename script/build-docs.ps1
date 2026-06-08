@@ -43,6 +43,7 @@ $htmlOut = Join-Path $repoRoot "metadataBuildingBlocks\cdif-uml-model"
 
 $profiles = @(
     @{ slug = "cdifCodelist";        config = "ddi-cdi2cdifCodelist_mapping.json";        umlName = "CDIFCodelist";                  kind = "module" },
+    @{ slug = "cdifConceptScheme";   config = "ddi-cdi2cdifConceptScheme_mapping.json";   umlName = "CDIFConceptScheme";             kind = "module" },
     @{ slug = "cdifCore";            config = "ddi-cdi2cdifCore_mapping.json";            umlName = "CDIFCore";                      kind = "module" },
     @{ slug = "cdifDiscovery";       config = "ddi-cdi2cdifDiscovery_mapping.json";       umlName = "CDIFDiscovery";                 kind = "module" },
     @{ slug = "coreDiscovery";      config = "ddi-cdi2CoreDiscovery_mapping.json";      umlName = "CoreDiscovery";                kind = "composite" },

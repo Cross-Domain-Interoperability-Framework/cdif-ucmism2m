@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmi:XMI xmlns:StandardProfile="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+   <uml:Model xmi:id="CDIFConceptScheme.CDIFConceptScheme" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CDIFConceptScheme">
+      <ownedComment xmi:id="CDIFConceptScheme.CDIFConceptScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CDIFConceptScheme-ownedComment" xmi:type="uml:Comment">
+         <annotatedElement xmi:idref="CDIFConceptScheme.CDIFConceptScheme"/>
+         <body>CDIF profile module for SKOS concept schemes used as controlled vocabularies in CDIF metadata. Thin wrapper around skosConceptScheme. Required attributes per the profile JSON schema: ConceptScheme has @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (minItems 1); Concept has @type (containing skos:Concept), skos:prefLabel, skos:notation. The catalog record (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.</body>
+      </ownedComment>
+      <name>CDIFConceptScheme</name>
+      <URI>https://w3id.org/cdif/conceptscheme/1.1/xmi/</URI>
+      <packagedElement xmi:id="CDIFConceptScheme.ModelIdentification" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification" xmi:type="uml:DataType">
+         <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification"/>
+            <body>Identification metadata for this profile model: constant, read-only attributes carrying the model's prefix, version, title, language and URI.</body>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="CDIFConceptScheme.ModelIdentification-prefix" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-prefix" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-prefix-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-prefix-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification-prefix"/>
+               <body>Namespace prefix of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFConceptScheme.ModelIdentification-prefix-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-prefix-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFConceptScheme.ModelIdentification-prefix-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-prefix-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>prefix</name>
+            <defaultValue xmi:id="CDIFConceptScheme.ModelIdentification-prefix-defaultValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-prefix-defaultValue" xmi:type="uml:LiteralString">
+               <value>cdif</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFConceptScheme.ModelIdentification-majorVersion" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-majorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-majorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-majorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification-majorVersion"/>
+               <body>Major version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFConceptScheme.ModelIdentification-majorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-majorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFConceptScheme.ModelIdentification-majorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-majorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>majorVersion</name>
+            <defaultValue xmi:id="CDIFConceptScheme.ModelIdentification-majorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-majorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFConceptScheme.ModelIdentification-minorVersion" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-minorVersion" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-minorVersion-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-minorVersion-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification-minorVersion"/>
+               <body>Minor version number of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFConceptScheme.ModelIdentification-minorVersion-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-minorVersion-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFConceptScheme.ModelIdentification-minorVersion-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-minorVersion-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>minorVersion</name>
+            <defaultValue xmi:id="CDIFConceptScheme.ModelIdentification-minorVersion-defaultValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-minorVersion-defaultValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#Integer"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFConceptScheme.ModelIdentification-title" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-title" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-title-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-title-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification-title"/>
+               <body>Title of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFConceptScheme.ModelIdentification-title-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-title-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFConceptScheme.ModelIdentification-title-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-title-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>title</name>
+            <defaultValue xmi:id="CDIFConceptScheme.ModelIdentification-title-defaultValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-title-defaultValue" xmi:type="uml:LiteralString">
+               <value>UML Model for the CDIF ConceptScheme Profile</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFConceptScheme.ModelIdentification-language" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-language" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-language-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-language-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification-language"/>
+               <body>Primary language of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFConceptScheme.ModelIdentification-language-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-language-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFConceptScheme.ModelIdentification-language-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-language-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>language</name>
+            <defaultValue xmi:id="CDIFConceptScheme.ModelIdentification-language-defaultValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-language-defaultValue" xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="CDIFConceptScheme.ModelIdentification-uri" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-uri" xmi:type="uml:Property">
+            <ownedComment xmi:id="CDIFConceptScheme.ModelIdentification-uri-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-uri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.ModelIdentification-uri"/>
+               <body>Namespace URI of the model.</body>
+            </ownedComment>
+            <lowerValue xmi:id="CDIFConceptScheme.ModelIdentification-uri-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-uri-lowerValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </lowerValue>
+            <upperValue xmi:id="CDIFConceptScheme.ModelIdentification-uri-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-uri-upperValue" xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </upperValue>
+            <name>uri</name>
+            <defaultValue xmi:id="CDIFConceptScheme.ModelIdentification-uri-defaultValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ModelIdentification-uri-defaultValue" xmi:type="uml:LiteralString">
+               <value>https://w3id.org/cdif/conceptscheme/1.1/xmi/</value>
+            </defaultValue>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="CDIFConceptScheme.CDIFConceptSchemePackage" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CDIFConceptScheme-package" xmi:type="uml:Package">
+         <ownedComment xmi:id="CDIFConceptScheme.CDIFConceptSchemePackage-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CDIFConceptScheme-package-ownedComment" xmi:type="uml:Comment">
+            <annotatedElement xmi:idref="CDIFConceptScheme.CDIFConceptSchemePackage"/>
+            <body>Profile module for SKOS concept schemes used as controlled vocabularies in CDIF metadata.</body>
+         </ownedComment>
+         <name>CDIFConceptScheme</name>
+         <packagedElement xmi:id="CDIFConceptScheme.XsdAnyUri" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#XsdAnyUri" xmi:type="uml:DataType">
+            <ownedComment xmi:id="CDIFConceptScheme.XsdAnyUri-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#XsdAnyUri-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.XsdAnyUri"/>
+               <body>Primitive data type "anyURI" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents a Uniform Resource Identifier Reference (URI). An "anyURI" value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI.</body>
+            </ownedComment>
+            <name>XsdAnyUri</name>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFConceptScheme.Classes" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Classes-package" xmi:type="uml:Package">
+            <ownedComment xmi:id="CDIFConceptScheme.Classes-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Classes-package-ownedComment" xmi:type="uml:Comment">
+               <annotatedElement xmi:idref="CDIFConceptScheme.Classes"/>
+               <body>Target classes of the CDIF profile.</body>
+            </ownedComment>
+            <name>Classes</name>
+            <packagedElement xmi:id="CDIFConceptScheme.ConceptScheme" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme"/>
+                  <body>A SKOS Concept Scheme - a controlled vocabulary aggregating one or more SKOS Concepts. Required attributes: @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (at least one). The metadata record describing this scheme (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.</body>
+               </ownedComment>
+               <name>ConceptScheme</name>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-identifier" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-identifier"/>
+                     <body>@id - URI identifier for this concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFConceptScheme.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-prefLabel"/>
+                     <body>skos:prefLabel - preferred lexical label for the concept scheme. Required. May be a plain string or a language-tagged value (LanguageTaggedValue is collapsed to String per the union-type policy).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>prefLabel</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-altLabel" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-altLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-altLabel"/>
+                     <body>skos:altLabel - alternative lexical labels (acronyms, abbreviations, spelling variants).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-altLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-altLabel-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>altLabel</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-definition" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-definition"/>
+                     <body>skos:definition - formal explanation of the meaning or purpose of this concept scheme. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-definition-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>definition</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-notation" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-notation"/>
+                     <body>skos:notation - classification code or notation for this concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-notation-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>notation</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-note" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-note-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-note"/>
+                     <body>skos:note - general note about the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-note-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-note-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>note</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-version" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-version-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-version"/>
+                     <body>schema:version - version identifier for the concept scheme.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-version-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-version-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>version</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-subjectOf"/>
+                     <body>schema:subjectOf - the catalog record describing this concept scheme's metadata. For a CDIF concept scheme, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>subjectOf</name>
+                  <type xmi:idref="CDIFConceptScheme.CatalogRecord"/>
+                  <association xmi:idref="CDIFConceptScheme.ConceptScheme_subjectOf_CatalogRecord"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-hasTopConcept"/>
+                     <body>skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>hasTopConcept</name>
+                  <type xmi:idref="CDIFConceptScheme.Concept"/>
+                  <association xmi:idref="CDIFConceptScheme.ConceptScheme_hasTopConcept_Concept"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFConceptScheme.Concept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFConceptScheme.Concept-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFConceptScheme.Concept"/>
+                  <body>A SKOS Concept member of a ConceptScheme. Must have @type (containing skos:Concept), skos:prefLabel, and skos:notation. Optionally carries skos:definition, skos:note, skos:inScheme (back-pointer to its scheme), and hierarchical skos:broader / skos:narrower links to other concepts.</body>
+               </ownedComment>
+               <name>Concept</name>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-identifier" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-identifier"/>
+                     <body>@id - URI identifier for this concept.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFConceptScheme.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-prefLabel" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-prefLabel"/>
+                     <body>skos:prefLabel - preferred lexical label for this concept. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-prefLabel-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>prefLabel</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-notation" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-notation"/>
+                     <body>skos:notation - classification code for this concept within a scheme. Required.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-notation-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>notation</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-definition" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-definition"/>
+                     <body>skos:definition - formal explanation of the meaning of this concept.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-definition-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>definition</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-note" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-note-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-note"/>
+                     <body>skos:note - general note about this concept.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-note-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-note-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>note</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-inScheme"/>
+                     <body>skos:inScheme - the ConceptScheme(s) this concept belongs to. Optional in the conceptScheme profile (the containment via skos:hasTopConcept implies it for top concepts; required only when the concept reference is by @id outside a containing scheme).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-inScheme-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-inScheme-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>inScheme</name>
+                  <type xmi:idref="CDIFConceptScheme.ConceptScheme"/>
+                  <association xmi:idref="CDIFConceptScheme.Concept_inScheme_ConceptScheme"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-broader" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-broader-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-broader"/>
+                     <body>skos:broader - parent (broader) concepts in the hierarchy.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-broader-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-broader-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>broader</name>
+                  <type xmi:idref="CDIFConceptScheme.Concept"/>
+                  <association xmi:idref="CDIFConceptScheme.Concept_broader_Concept"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.Concept-narrower" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.Concept-narrower-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.Concept-narrower"/>
+                     <body>skos:narrower - child (narrower) concepts in the hierarchy. Each inline child SHOULD also declare skos:broader pointing back to this parent.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.Concept-narrower-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.Concept-narrower-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>narrower</name>
+                  <type xmi:idref="CDIFConceptScheme.Concept"/>
+                  <association xmi:idref="CDIFConceptScheme.Concept_narrower_Concept"/>
+               </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:id="CDIFConceptScheme.CatalogRecord" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord" xmi:type="uml:Class">
+               <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord"/>
+                  <body>Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the conceptScheme profile, dcterms:conformsTo MUST include https://w3id.org/cdif/conceptscheme/1.1.</body>
+               </ownedComment>
+               <name>CatalogRecord</name>
+               <ownedAttribute xmi:id="CDIFConceptScheme.CatalogRecord-additionalType" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord-additionalType"/>
+                     <body>schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.CatalogRecord-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.CatalogRecord-additionalType-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>additionalType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord-conformsTo"/>
+                     <body>dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/conceptscheme/1.1 for the conceptScheme profile.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>conformsTo</name>
+                  <type xmi:idref="CDIFConceptScheme.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFConceptScheme.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord-about"/>
+                     <body>schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFConceptScheme.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFConceptScheme.CatalogRecord-about-upperValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>about</name>
+                  <type xmi:idref="CDIFConceptScheme.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFConceptScheme.ConceptScheme_subjectOf_CatalogRecord" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme_subjectOf_CatalogRecord" xmi:type="uml:Association">
+            <name>ConceptScheme_subjectOf_CatalogRecord</name>
+            <memberEnd xmi:idref="CDIFConceptScheme.ConceptScheme-subjectOf"/>
+            <ownedEnd xmi:id="CDIFConceptScheme.ConceptScheme_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme_subjectOf_CatalogRecord-CatalogRecordEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFConceptScheme.CatalogRecord"/>
+               <association xmi:idref="CDIFConceptScheme.ConceptScheme_subjectOf_CatalogRecord"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFConceptScheme.ConceptScheme_subjectOf_CatalogRecord-CatalogRecordEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFConceptScheme.ConceptScheme_hasTopConcept_Concept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme_hasTopConcept_Concept" xmi:type="uml:Association">
+            <name>ConceptScheme_hasTopConcept_Concept</name>
+            <memberEnd xmi:idref="CDIFConceptScheme.ConceptScheme-hasTopConcept"/>
+            <ownedEnd xmi:id="CDIFConceptScheme.ConceptScheme_hasTopConcept_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme_hasTopConcept_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFConceptScheme.Concept"/>
+               <association xmi:idref="CDIFConceptScheme.ConceptScheme_hasTopConcept_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFConceptScheme.ConceptScheme_hasTopConcept_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFConceptScheme.Concept_inScheme_ConceptScheme" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept_inScheme_ConceptScheme" xmi:type="uml:Association">
+            <name>Concept_inScheme_ConceptScheme</name>
+            <memberEnd xmi:idref="CDIFConceptScheme.Concept-inScheme"/>
+            <ownedEnd xmi:id="CDIFConceptScheme.Concept_inScheme_ConceptScheme-ConceptSchemeEnd" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept_inScheme_ConceptScheme-ConceptSchemeEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFConceptScheme.ConceptScheme"/>
+               <association xmi:idref="CDIFConceptScheme.Concept_inScheme_ConceptScheme"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFConceptScheme.Concept_inScheme_ConceptScheme-ConceptSchemeEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFConceptScheme.Concept_broader_Concept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept_broader_Concept" xmi:type="uml:Association">
+            <name>Concept_broader_Concept</name>
+            <memberEnd xmi:idref="CDIFConceptScheme.Concept-broader"/>
+            <ownedEnd xmi:id="CDIFConceptScheme.Concept_broader_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept_broader_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFConceptScheme.Concept"/>
+               <association xmi:idref="CDIFConceptScheme.Concept_broader_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFConceptScheme.Concept_broader_Concept-ConceptEnd"/>
+         </packagedElement>
+         <packagedElement xmi:id="CDIFConceptScheme.Concept_narrower_Concept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept_narrower_Concept" xmi:type="uml:Association">
+            <name>Concept_narrower_Concept</name>
+            <memberEnd xmi:idref="CDIFConceptScheme.Concept-narrower"/>
+            <ownedEnd xmi:id="CDIFConceptScheme.Concept_narrower_Concept-ConceptEnd" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept_narrower_Concept-ConceptEnd" xmi:type="uml:Property">
+               <type xmi:idref="CDIFConceptScheme.Concept"/>
+               <association xmi:idref="CDIFConceptScheme.Concept_narrower_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="CDIFConceptScheme.Concept_narrower_Concept-ConceptEnd"/>
+         </packagedElement>
+      </packagedElement>
+   </uml:Model>
+</xmi:XMI>
