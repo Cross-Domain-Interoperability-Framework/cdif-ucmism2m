@@ -2453,9 +2453,23 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord"/>
-                  <body>Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1.</body>
+                  <body>Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1. Typed schema:Dataset with schema:additionalType 'dcat:CatalogRecord' (Jun-2026 schema:subjectOf shape fix).</body>
                </ownedComment>
                <name>CatalogRecord</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.CatalogRecord-additionalType" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord-additionalType"/>
+                     <body>schema:additionalType - MUST include 'dcat:CatalogRecord' (@type array itself is schema:Dataset).</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CatalogRecord-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CatalogRecord-additionalType-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                     <value>*</value>
+                  </upperValue>
+                  <name>additionalType</name>
+                  <type xmi:type="uml:PrimitiveType" href="http://www.eclipse.org/uml2/5.0.0/UML/PrimitiveTypes.xmi#String"/>
+               </ownedAttribute>
                <ownedAttribute xmi:id="CDIFDataStructure.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord-conformsTo"/>
@@ -2468,6 +2482,20 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                      <value>*</value>
                   </upperValue>
                   <name>conformsTo</name>
+                  <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="CDIFDataStructure.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord-about"/>
+                     <body>schema:about - @id back-pointer to the described Dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CatalogRecord-about-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>about</name>
                   <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>

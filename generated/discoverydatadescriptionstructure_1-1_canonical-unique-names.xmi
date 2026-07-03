@@ -2334,6 +2334,20 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about" xmi:type="uml:Property">
                   <ownedComment xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.CatalogRecord-about"/>
+                     <body>schema:about - @id back-pointer to the described Dataset.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>about</name>
+                  <type xmi:idref="DiscoveryDataDescriptionStructure.XsdAnyUri"/>
+               </ownedAttribute>
+               <ownedAttribute xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescriptionStructure.CatalogRecord-about"/>
                      <body>schema:about - the resource this metadata record (CatalogRecord) describes.</body>
                   </ownedComment>
                   <lowerValue xmi:id="DiscoveryDataDescriptionStructure.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/composite/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">

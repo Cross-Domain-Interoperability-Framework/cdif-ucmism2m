@@ -82,13 +82,25 @@
         "mappingType": "new",
         "targetPackage": "Anchors",
         "targetClass": "CatalogRecord",
-        "definition": "Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1.",
+        "definition": "Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1. Typed schema:Dataset with schema:additionalType 'dcat:CatalogRecord' (Jun-2026 schema:subjectOf shape fix).",
         "attribute": [
+          {
+            "name": "additionalType",
+            "dataType": "String",
+            "definition": "schema:additionalType - MUST include 'dcat:CatalogRecord' (@type array itself is schema:Dataset).",
+            "multiplicity": {"lower": "1", "upper": "*"}
+          },
           {
             "name": "conformsTo",
             "dataType": "XsdAnyUri",
             "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_structure/1.1 for the data-structure profile.",
             "multiplicity": {"lower": "1", "upper": "*"}
+          },
+          {
+            "name": "about",
+            "dataType": "XsdAnyUri",
+            "definition": "schema:about - @id back-pointer to the described Dataset.",
+            "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
       },
