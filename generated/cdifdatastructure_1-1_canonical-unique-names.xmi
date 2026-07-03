@@ -4596,6 +4596,27 @@ A set of information useful for attribution, data discovery, and access. This is
                   <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:id="CDIFDataStructure.CdifConceptOrTermOrString" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString" xmi:type="uml:DataType">
+               <ownedComment xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="CDIFDataStructure.CdifConceptOrTermOrString"/>
+                  <body>Union shorthand for 'a plain string OR the CdifConceptOrTerm 3-way union (skos:Concept @id-ref | schema:DefinedTerm | inline cdif:Concept)'.</body>
+               </ownedComment>
+               <name>CdifConceptOrTermOrString</name>
+               <ownedAttribute xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.CdifConceptOrTermOrString-identifier"/>
+                     <body>@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="CDIFDataStructure.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataDownload_subjectOf_CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_subjectOf_CatalogRecord" xmi:type="uml:Association">
             <name>DataDownload_subjectOf_CatalogRecord</name>

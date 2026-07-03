@@ -1066,6 +1066,22 @@
             "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
+      },
+      {
+        "_comment": "CdifConceptOrTermOrString - union shorthand wrapping CdifConceptOrTerm with a plain-string alternative. Consolidates 22 previously-inline `anyOf: [string, cdifConceptOrTerm]` sites across Core, Discovery, and 8 cdifDataType BBs (mBB commit adding _sources/cdifDataType/cdifConceptOrTermOrString/). Used as the value type of properties that accept either a controlled-vocabulary value or a plain string label.",
+        "mappingType": "new",
+        "isDataType": true,
+        "targetPackage": "Support",
+        "targetClass": "CdifConceptOrTermOrString",
+        "definition": "Union shorthand for 'a plain string OR the CdifConceptOrTerm 3-way union (skos:Concept @id-ref | schema:DefinedTerm | inline cdif:Concept)'. In JSON instances the value MAY be: (a) a plain string label, (b) an @id-only object referencing a SKOS concept, (c) a schema:DefinedTerm node, or (d) an inline cdif:Concept.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
       }
     ],
     "association": [

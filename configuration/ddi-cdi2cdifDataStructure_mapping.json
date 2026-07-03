@@ -430,6 +430,22 @@
             "multiplicity": {"lower": "0", "upper": "1"}
           }
         ]
+      },
+      {
+        "_comment": "CdifConceptOrTermOrString - union shorthand wrapping CdifConceptOrTerm with a plain-string alternative. Matches the shared cdifConceptOrTermOrString building block; used on RepresentedVariable / component / value-domain properties that accept either a controlled-vocabulary value or a plain string label.",
+        "mappingType": "new",
+        "isDataType": true,
+        "targetPackage": "Concepts",
+        "targetClass": "CdifConceptOrTermOrString",
+        "definition": "Union shorthand for 'a plain string OR the CdifConceptOrTerm 3-way union (skos:Concept @id-ref | schema:DefinedTerm | inline cdif:Concept)'.",
+        "attribute": [
+          {
+            "name": "identifier",
+            "dataType": "XsdAnyUri",
+            "definition": "@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.",
+            "multiplicity": {"lower": "0", "upper": "1"}
+          }
+        ]
       }
     ],
     "association": [

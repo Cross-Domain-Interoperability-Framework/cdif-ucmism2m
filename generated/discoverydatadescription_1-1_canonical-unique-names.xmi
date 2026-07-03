@@ -2245,6 +2245,27 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DiscoveryDataDescription.XsdAnyUri"/>
                </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:id="DiscoveryDataDescription.CdifConceptOrTermOrString" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CdifConceptOrTermOrString" xmi:type="uml:DataType">
+               <ownedComment xmi:id="DiscoveryDataDescription.CdifConceptOrTermOrString-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CdifConceptOrTermOrString-ownedComment" xmi:type="uml:Comment">
+                  <annotatedElement xmi:idref="DiscoveryDataDescription.CdifConceptOrTermOrString"/>
+                  <body>Union shorthand for 'a plain string OR the CdifConceptOrTerm 3-way union (skos:Concept @id-ref | schema:DefinedTerm | inline cdif:Concept)'. In JSON instances the value MAY be: (a) a plain string label, (b) an @id-only object referencing a SKOS concept, (c) a schema:DefinedTerm node, or (d) an inline cdif:Concept.</body>
+               </ownedComment>
+               <name>CdifConceptOrTermOrString</name>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.CdifConceptOrTermOrString-identifier" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CdifConceptOrTermOrString-identifier" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescription.CdifConceptOrTermOrString-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CdifConceptOrTermOrString-identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.CdifConceptOrTermOrString-identifier"/>
+                     <body>@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.</body>
+                  </ownedComment>
+                  <lowerValue xmi:id="DiscoveryDataDescription.CdifConceptOrTermOrString-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CdifConceptOrTermOrString-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                     <value>0</value>
+                  </lowerValue>
+                  <upperValue xmi:id="DiscoveryDataDescription.CdifConceptOrTermOrString-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CdifConceptOrTermOrString-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                     <value>1</value>
+                  </upperValue>
+                  <name>identifier</name>
+                  <type xmi:idref="DiscoveryDataDescription.XsdAnyUri"/>
+               </ownedAttribute>
+            </packagedElement>
             <packagedElement xmi:id="DiscoveryDataDescription.VariableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#VariableMeasured" xmi:type="uml:Class">
                <ownedComment xmi:id="DiscoveryDataDescription.VariableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#VariableMeasured-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="DiscoveryDataDescription.VariableMeasured"/>
