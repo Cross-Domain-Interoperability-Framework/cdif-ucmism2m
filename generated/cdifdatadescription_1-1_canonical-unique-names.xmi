@@ -238,15 +238,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <type xmi:idref="CDIFDataDescription.DataDownload"/>
                   <association xmi:idref="CDIFDataDescription.Dataset_distribution_DataDownload"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataDescription.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-distribution"/>
+               <ownedAttribute xmi:id="CDIFDataDescription.Dataset-distribution-WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-WebAPI" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Dataset-distribution-WebAPI-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-WebAPI-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Dataset-distribution-WebAPI"/>
                      <body>schema:distribution - WebAPI distribution.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataDescription.Dataset-distribution-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataDescription.Dataset-distribution-WebAPI-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-WebAPI-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataDescription.Dataset-distribution-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataDescription.Dataset-distribution-WebAPI-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset-distribution-WebAPI-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>distribution</name>
@@ -750,15 +750,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <type xmi:idref="CDIFDataDescription.DefinedTerm"/>
                   <association xmi:idref="CDIFDataDescription.InstanceVariable_source_DefinedTerm"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-measurementTechnique"/>
+               <ownedAttribute xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-DefinedTerm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.InstanceVariable-measurementTechnique-DefinedTerm"/>
                      <body>schema:measurementTechnique - typed measurement technique reference (string shorthand also permitted).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-DefinedTerm-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-DefinedTerm-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataDescription.InstanceVariable-measurementTechnique-DefinedTerm-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable-measurementTechnique-DefinedTerm-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>measurementTechnique</name>
@@ -2285,15 +2285,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <type xmi:idref="CDIFDataDescription.CategoryStatistics"/>
                   <association xmi:idref="CDIFDataDescription.Statistics_has_CategoryStatistics"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataDescription.Statistics-has" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataDescription.Statistics-has-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataDescription.Statistics-has"/>
+               <ownedAttribute xmi:id="CDIFDataDescription.Statistics-has-Statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-Statistics" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataDescription.Statistics-has-Statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-Statistics-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataDescription.Statistics-has-Statistics"/>
                      <body>cdif:has_Statistics - nested statistic bundles.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataDescription.Statistics-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataDescription.Statistics-has-Statistics-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-Statistics-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataDescription.Statistics-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataDescription.Statistics-has-Statistics-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics-has-Statistics-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>has</name>
@@ -2486,7 +2486,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
          </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.Dataset_distribution_WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset_distribution_WebAPI" xmi:type="uml:Association">
             <name>Dataset_distribution_WebAPI</name>
-            <memberEnd xmi:idref="CDIFDataDescription.Dataset-distribution"/>
+            <memberEnd xmi:idref="CDIFDataDescription.Dataset-distribution-WebAPI"/>
             <ownedEnd xmi:id="CDIFDataDescription.Dataset_distribution_WebAPI-WebAPIEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Dataset_distribution_WebAPI-WebAPIEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataDescription.WebAPI"/>
                <association xmi:idref="CDIFDataDescription.Dataset_distribution_WebAPI"/>
@@ -2621,7 +2621,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
          </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.InstanceVariable_measurementTechnique_DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable_measurementTechnique_DefinedTerm" xmi:type="uml:Association">
             <name>InstanceVariable_measurementTechnique_DefinedTerm</name>
-            <memberEnd xmi:idref="CDIFDataDescription.InstanceVariable-measurementTechnique"/>
+            <memberEnd xmi:idref="CDIFDataDescription.InstanceVariable-measurementTechnique-DefinedTerm"/>
             <ownedEnd xmi:id="CDIFDataDescription.InstanceVariable_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#InstanceVariable_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataDescription.DefinedTerm"/>
                <association xmi:idref="CDIFDataDescription.InstanceVariable_measurementTechnique_DefinedTerm"/>
@@ -2756,7 +2756,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
          </packagedElement>
          <packagedElement xmi:id="CDIFDataDescription.Statistics_has_Statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics_has_Statistics" xmi:type="uml:Association">
             <name>Statistics_has_Statistics</name>
-            <memberEnd xmi:idref="CDIFDataDescription.Statistics-has"/>
+            <memberEnd xmi:idref="CDIFDataDescription.Statistics-has-Statistics"/>
             <ownedEnd xmi:id="CDIFDataDescription.Statistics_has_Statistics-StatisticsEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/xmi/#Statistics_has_Statistics-StatisticsEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataDescription.Statistics"/>
                <association xmi:idref="CDIFDataDescription.Statistics_has_Statistics"/>

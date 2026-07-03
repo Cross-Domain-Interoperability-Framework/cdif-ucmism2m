@@ -512,30 +512,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                   <type xmi:idref="CDIFCore.CatalogRecord"/>
                   <association xmi:idref="CDIFCore.Dataset_subjectOf_CatalogRecord"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFCore.Dataset-keywords" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFCore.Dataset-keywords-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFCore.Dataset-keywords"/>
+               <ownedAttribute xmi:id="CDIFCore.Dataset-keywords-DefinedTerm" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-DefinedTerm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Dataset-keywords-DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Dataset-keywords-DefinedTerm"/>
                      <body>schema:keywords - keywords expressed as controlled-vocabulary DefinedTerms (in addition to string-valued keywords on the Dataset itself).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFCore.Dataset-keywords-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFCore.Dataset-keywords-DefinedTerm-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-DefinedTerm-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFCore.Dataset-keywords-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFCore.Dataset-keywords-DefinedTerm-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-keywords-DefinedTerm-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>keywords</name>
                   <type xmi:idref="CDIFCore.DefinedTerm"/>
                   <association xmi:idref="CDIFCore.Dataset_keywords_DefinedTerm"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFCore.Dataset-license" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFCore.Dataset-license-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFCore.Dataset-license"/>
+               <ownedAttribute xmi:id="CDIFCore.Dataset-license-Reference" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-Reference" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFCore.Dataset-license-Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-Reference-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCore.Dataset-license-Reference"/>
                      <body>schema:license - structured (labelled) license link form.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFCore.Dataset-license-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFCore.Dataset-license-Reference-lowerValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-Reference-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFCore.Dataset-license-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFCore.Dataset-license-Reference-upperValue" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset-license-Reference-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>license</name>
@@ -2027,7 +2027,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
          </packagedElement>
          <packagedElement xmi:id="CDIFCore.Dataset_keywords_DefinedTerm" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset_keywords_DefinedTerm" xmi:type="uml:Association">
             <name>Dataset_keywords_DefinedTerm</name>
-            <memberEnd xmi:idref="CDIFCore.Dataset-keywords"/>
+            <memberEnd xmi:idref="CDIFCore.Dataset-keywords-DefinedTerm"/>
             <ownedEnd xmi:id="CDIFCore.Dataset_keywords_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset_keywords_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFCore.DefinedTerm"/>
                <association xmi:idref="CDIFCore.Dataset_keywords_DefinedTerm"/>
@@ -2036,7 +2036,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
          </packagedElement>
          <packagedElement xmi:id="CDIFCore.Dataset_license_Reference" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset_license_Reference" xmi:type="uml:Association">
             <name>Dataset_license_Reference</name>
-            <memberEnd xmi:idref="CDIFCore.Dataset-license"/>
+            <memberEnd xmi:idref="CDIFCore.Dataset-license-Reference"/>
             <ownedEnd xmi:id="CDIFCore.Dataset_license_Reference-ReferenceEnd" xmi:uuid="https://w3id.org/cdif/core/1.1/xmi/#Dataset_license_Reference-ReferenceEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFCore.Reference"/>
                <association xmi:idref="CDIFCore.Dataset_license_Reference"/>

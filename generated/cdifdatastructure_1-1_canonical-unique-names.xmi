@@ -2404,45 +2404,45 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.DataStructure"/>
                   <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_DataStructure"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure"/>
                      <body>cdi:isStructuredBy - dimensional (cube) variant.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>isStructuredBy</name>
                   <type xmi:idref="CDIFDataStructure.DimensionalDataStructure"/>
                   <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_DimensionalDataStructure"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure"/>
                      <body>cdi:isStructuredBy - long (narrow) variant.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>isStructuredBy</name>
                   <type xmi:idref="CDIFDataStructure.LongDataStructure"/>
                   <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_LongDataStructure"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure"/>
                      <body>cdi:isStructuredBy - wide (tabular) variant.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>isStructuredBy</name>
@@ -2549,75 +2549,75 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.IdentifierComponent"/>
                   <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_IdentifierComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent"/>
                      <body>cdi:has_DataStructureComponent - MeasureComponent (general DataStructure accepts any subtype).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                   <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_MeasureComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent"/>
                      <body>cdi:has_DataStructureComponent - AttributeComponent (general DataStructure accepts any subtype).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                   <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_AttributeComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent"/>
                      <body>cdi:has_DataStructureComponent - DimensionComponent (general DataStructure accepts any subtype).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.DimensionComponent"/>
                   <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_DimensionComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent"/>
                      <body>cdi:has_DataStructureComponent - VariableDescriptorComponent (general DataStructure accepts any subtype).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.VariableDescriptorComponent"/>
                   <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_VariableDescriptorComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent"/>
                      <body>cdi:has_DataStructureComponent - VariableValueComponent (general DataStructure accepts any subtype).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
@@ -2690,45 +2690,45 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.IdentifierComponent"/>
                   <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_hasComponent_IdentifierComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent"/>
                      <body>cdi:has_DataStructureComponent - Measure components on a dimensional structure.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                   <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_hasComponent_MeasureComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent"/>
                      <body>cdi:has_DataStructureComponent - Attribute components on a dimensional structure.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                   <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_hasComponent_AttributeComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent"/>
                      <body>cdi:has_DataStructureComponent - Dimension components on a dimensional structure.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
@@ -2801,45 +2801,45 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.IdentifierComponent"/>
                   <association xmi:idref="CDIFDataStructure.LongDataStructure_hasComponent_IdentifierComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent"/>
                      <body>cdi:has_DataStructureComponent - exactly one VariableDescriptorComponent (names which InstanceVariable the row represents).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.VariableDescriptorComponent"/>
                   <association xmi:idref="CDIFDataStructure.LongDataStructure_hasComponent_VariableDescriptorComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent"/>
                      <body>cdi:has_DataStructureComponent - exactly one VariableValueComponent (carries the value).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.VariableValueComponent"/>
                   <association xmi:idref="CDIFDataStructure.LongDataStructure_hasComponent_VariableValueComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent"/>
                      <body>cdi:has_DataStructureComponent - optional Attribute components.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
@@ -2897,30 +2897,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.IdentifierComponent"/>
                   <association xmi:idref="CDIFDataStructure.WideDataStructure_hasComponent_IdentifierComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent"/>
                      <body>cdi:has_DataStructureComponent - Measure components on a wide structure.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                   <association xmi:idref="CDIFDataStructure.WideDataStructure_hasComponent_MeasureComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent"/>
                      <body>cdi:has_DataStructureComponent - Attribute components on a wide structure.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
@@ -3007,45 +3007,45 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFDataStructure.IdentifierComponent"/>
                   <association xmi:idref="CDIFDataStructure.DimensionGroup_hasComponent_IdentifierComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent"/>
                      <body>cdif:has_DataStructureComponent - MeasureComponent (any subtype permitted).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                   <association xmi:idref="CDIFDataStructure.DimensionGroup_hasComponent_MeasureComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent"/>
                      <body>cdif:has_DataStructureComponent - AttributeComponent (any subtype permitted).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
                   <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                   <association xmi:idref="CDIFDataStructure.DimensionGroup_hasComponent_AttributeComponent"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
+               <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent"/>
                      <body>cdif:has_DataStructureComponent - DimensionComponent (any subtype permitted).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent-upperValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>hasComponent</name>
@@ -4617,7 +4617,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_DimensionalDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_isStructuredBy_DimensionalDataStructure" xmi:type="uml:Association">
             <name>DataDownload_isStructuredBy_DimensionalDataStructure</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_DimensionalDataStructure-DimensionalDataStructureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_isStructuredBy_DimensionalDataStructure-DimensionalDataStructureEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.DimensionalDataStructure"/>
                <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_DimensionalDataStructure"/>
@@ -4626,7 +4626,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_LongDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_isStructuredBy_LongDataStructure" xmi:type="uml:Association">
             <name>DataDownload_isStructuredBy_LongDataStructure</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_LongDataStructure-LongDataStructureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_isStructuredBy_LongDataStructure-LongDataStructureEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.LongDataStructure"/>
                <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_LongDataStructure"/>
@@ -4635,7 +4635,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_WideDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_isStructuredBy_WideDataStructure" xmi:type="uml:Association">
             <name>DataDownload_isStructuredBy_WideDataStructure</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataDownload_isStructuredBy_WideDataStructure-WideDataStructureEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload_isStructuredBy_WideDataStructure-WideDataStructureEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.WideDataStructure"/>
                <association xmi:idref="CDIFDataStructure.DataDownload_isStructuredBy_WideDataStructure"/>
@@ -4662,7 +4662,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataStructure_hasComponent_MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_MeasureComponent" xmi:type="uml:Association">
             <name>DataStructure_hasComponent_MeasureComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataStructure_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_MeasureComponent"/>
@@ -4671,7 +4671,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataStructure_hasComponent_AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_AttributeComponent" xmi:type="uml:Association">
             <name>DataStructure_hasComponent_AttributeComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_AttributeComponent"/>
@@ -4680,7 +4680,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataStructure_hasComponent_DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_DimensionComponent" xmi:type="uml:Association">
             <name>DataStructure_hasComponent_DimensionComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataStructure_hasComponent_DimensionComponent-DimensionComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_DimensionComponent-DimensionComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.DimensionComponent"/>
                <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_DimensionComponent"/>
@@ -4689,7 +4689,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataStructure_hasComponent_VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_VariableDescriptorComponent" xmi:type="uml:Association">
             <name>DataStructure_hasComponent_VariableDescriptorComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataStructure_hasComponent_VariableDescriptorComponent-VariableDescriptorComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_VariableDescriptorComponent-VariableDescriptorComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.VariableDescriptorComponent"/>
                <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_VariableDescriptorComponent"/>
@@ -4698,7 +4698,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DataStructure_hasComponent_VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_VariableValueComponent" xmi:type="uml:Association">
             <name>DataStructure_hasComponent_VariableValueComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DataStructure_hasComponent_VariableValueComponent-VariableValueComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure_hasComponent_VariableValueComponent-VariableValueComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.VariableValueComponent"/>
                <association xmi:idref="CDIFDataStructure.DataStructure_hasComponent_VariableValueComponent"/>
@@ -4734,7 +4734,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DimensionalDataStructure_hasComponent_MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure_hasComponent_MeasureComponent" xmi:type="uml:Association">
             <name>DimensionalDataStructure_hasComponent_MeasureComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DimensionalDataStructure_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_hasComponent_MeasureComponent"/>
@@ -4743,7 +4743,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DimensionalDataStructure_hasComponent_AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure_hasComponent_AttributeComponent" xmi:type="uml:Association">
             <name>DimensionalDataStructure_hasComponent_AttributeComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DimensionalDataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_hasComponent_AttributeComponent"/>
@@ -4752,7 +4752,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DimensionalDataStructure_hasComponent_DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure_hasComponent_DimensionComponent" xmi:type="uml:Association">
             <name>DimensionalDataStructure_hasComponent_DimensionComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DimensionalDataStructure_hasComponent_DimensionComponent-DimensionComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure_hasComponent_DimensionComponent-DimensionComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.DimensionComponent"/>
                <association xmi:idref="CDIFDataStructure.DimensionalDataStructure_hasComponent_DimensionComponent"/>
@@ -4788,7 +4788,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.LongDataStructure_hasComponent_VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure_hasComponent_VariableDescriptorComponent" xmi:type="uml:Association">
             <name>LongDataStructure_hasComponent_VariableDescriptorComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.LongDataStructure_hasComponent_VariableDescriptorComponent-VariableDescriptorComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure_hasComponent_VariableDescriptorComponent-VariableDescriptorComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.VariableDescriptorComponent"/>
                <association xmi:idref="CDIFDataStructure.LongDataStructure_hasComponent_VariableDescriptorComponent"/>
@@ -4797,7 +4797,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.LongDataStructure_hasComponent_VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure_hasComponent_VariableValueComponent" xmi:type="uml:Association">
             <name>LongDataStructure_hasComponent_VariableValueComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.LongDataStructure_hasComponent_VariableValueComponent-VariableValueComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure_hasComponent_VariableValueComponent-VariableValueComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.VariableValueComponent"/>
                <association xmi:idref="CDIFDataStructure.LongDataStructure_hasComponent_VariableValueComponent"/>
@@ -4806,7 +4806,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.LongDataStructure_hasComponent_AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure_hasComponent_AttributeComponent" xmi:type="uml:Association">
             <name>LongDataStructure_hasComponent_AttributeComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.LongDataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                <association xmi:idref="CDIFDataStructure.LongDataStructure_hasComponent_AttributeComponent"/>
@@ -4833,7 +4833,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.WideDataStructure_hasComponent_MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure_hasComponent_MeasureComponent" xmi:type="uml:Association">
             <name>WideDataStructure_hasComponent_MeasureComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.WideDataStructure_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                <association xmi:idref="CDIFDataStructure.WideDataStructure_hasComponent_MeasureComponent"/>
@@ -4842,7 +4842,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.WideDataStructure_hasComponent_AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure_hasComponent_AttributeComponent" xmi:type="uml:Association">
             <name>WideDataStructure_hasComponent_AttributeComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.WideDataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                <association xmi:idref="CDIFDataStructure.WideDataStructure_hasComponent_AttributeComponent"/>
@@ -4878,7 +4878,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DimensionGroup_hasComponent_MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup_hasComponent_MeasureComponent" xmi:type="uml:Association">
             <name>DimensionGroup_hasComponent_MeasureComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DimensionGroup_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup_hasComponent_MeasureComponent-MeasureComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.MeasureComponent"/>
                <association xmi:idref="CDIFDataStructure.DimensionGroup_hasComponent_MeasureComponent"/>
@@ -4887,7 +4887,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DimensionGroup_hasComponent_AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup_hasComponent_AttributeComponent" xmi:type="uml:Association">
             <name>DimensionGroup_hasComponent_AttributeComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DimensionGroup_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup_hasComponent_AttributeComponent-AttributeComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.AttributeComponent"/>
                <association xmi:idref="CDIFDataStructure.DimensionGroup_hasComponent_AttributeComponent"/>
@@ -4896,7 +4896,7 @@ A set of information useful for attribution, data discovery, and access. This is
          </packagedElement>
          <packagedElement xmi:id="CDIFDataStructure.DimensionGroup_hasComponent_DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup_hasComponent_DimensionComponent" xmi:type="uml:Association">
             <name>DimensionGroup_hasComponent_DimensionComponent</name>
-            <memberEnd xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
+            <memberEnd xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent"/>
             <ownedEnd xmi:id="CDIFDataStructure.DimensionGroup_hasComponent_DimensionComponent-DimensionComponentEnd" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup_hasComponent_DimensionComponent-DimensionComponentEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFDataStructure.DimensionComponent"/>
                <association xmi:idref="CDIFDataStructure.DimensionGroup_hasComponent_DimensionComponent"/>

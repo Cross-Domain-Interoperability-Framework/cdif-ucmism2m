@@ -285,15 +285,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFCodelist.CatalogRecord"/>
                   <association xmi:idref="CDIFCodelist.ConceptScheme_subjectOf_CatalogRecord"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-identifier"/>
+               <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-identifier-Identifier"/>
                      <body>schema:identifier - the structured (PropertyValue) form of the codelist's primary identifier. Required (either as string URI or as Identifier).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-identifier-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier-upperValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>identifier</name>
@@ -597,7 +597,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="CDIFCodelist.ConceptScheme_identifier_Identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme_identifier_Identifier" xmi:type="uml:Association">
             <name>ConceptScheme_identifier_Identifier</name>
-            <memberEnd xmi:idref="CDIFCodelist.ConceptScheme-identifier"/>
+            <memberEnd xmi:idref="CDIFCodelist.ConceptScheme-identifier-Identifier"/>
             <ownedEnd xmi:id="CDIFCodelist.ConceptScheme_identifier_Identifier-IdentifierEnd" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme_identifier_Identifier-IdentifierEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFCodelist.Identifier"/>
                <association xmi:idref="CDIFCodelist.ConceptScheme_identifier_Identifier"/>

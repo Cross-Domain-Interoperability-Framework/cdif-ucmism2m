@@ -350,15 +350,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFProvenance.Person"/>
                   <association xmi:idref="CDIFProvenance.ProvActivity_agent_Person"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFProvenance.ProvActivity-agent" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFProvenance.ProvActivity-agent-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFProvenance.ProvActivity-agent"/>
+               <ownedAttribute xmi:id="CDIFProvenance.ProvActivity-agent-Organization" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-Organization" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.ProvActivity-agent-Organization-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-Organization-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.ProvActivity-agent-Organization"/>
                      <body>schema:agent - primary responsible agent (Organization). Alternative to Person.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFProvenance.ProvActivity-agent-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFProvenance.ProvActivity-agent-Organization-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-Organization-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFProvenance.ProvActivity-agent-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="CDIFProvenance.ProvActivity-agent-Organization-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-Organization-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>agent</name>
@@ -380,15 +380,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFProvenance.Person"/>
                   <association xmi:idref="CDIFProvenance.ProvActivity_participant_Person"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFProvenance.ProvActivity-agent" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFProvenance.ProvActivity-agent-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFProvenance.ProvActivity-agent"/>
+               <ownedAttribute xmi:id="CDIFProvenance.ProvActivity-agent-AgentInRole" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-AgentInRole" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.ProvActivity-agent-AgentInRole-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-AgentInRole-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.ProvActivity-agent-AgentInRole"/>
                      <body>schema:agent - agent playing a named role (alternative to bare Person / Organization links when the role assignment carries its own metadata).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFProvenance.ProvActivity-agent-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFProvenance.ProvActivity-agent-AgentInRole-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-AgentInRole-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFProvenance.ProvActivity-agent-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFProvenance.ProvActivity-agent-AgentInRole-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity-agent-AgentInRole-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>agent</name>
@@ -915,30 +915,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="CDIFProvenance.CatalogRecord"/>
                   <association xmi:idref="CDIFProvenance.Dataset_subjectOf_CatalogRecord"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFProvenance.Dataset-keywords" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFProvenance.Dataset-keywords-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFProvenance.Dataset-keywords"/>
+               <ownedAttribute xmi:id="CDIFProvenance.Dataset-keywords-DefinedTerm" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-DefinedTerm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.Dataset-keywords-DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.Dataset-keywords-DefinedTerm"/>
                      <body>schema:keywords - keywords expressed as controlled-vocabulary DefinedTerms (in addition to string-valued keywords on the Dataset itself).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFProvenance.Dataset-keywords-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFProvenance.Dataset-keywords-DefinedTerm-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-DefinedTerm-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFProvenance.Dataset-keywords-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFProvenance.Dataset-keywords-DefinedTerm-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-keywords-DefinedTerm-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>keywords</name>
                   <type xmi:idref="CDIFProvenance.DefinedTerm"/>
                   <association xmi:idref="CDIFProvenance.Dataset_keywords_DefinedTerm"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="CDIFProvenance.Dataset-license" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license" xmi:type="uml:Property">
-                  <ownedComment xmi:id="CDIFProvenance.Dataset-license-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="CDIFProvenance.Dataset-license"/>
+               <ownedAttribute xmi:id="CDIFProvenance.Dataset-license-Reference" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-Reference" xmi:type="uml:Property">
+                  <ownedComment xmi:id="CDIFProvenance.Dataset-license-Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-Reference-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="CDIFProvenance.Dataset-license-Reference"/>
                      <body>schema:license - structured (labelled) license link form.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="CDIFProvenance.Dataset-license-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="CDIFProvenance.Dataset-license-Reference-lowerValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-Reference-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="CDIFProvenance.Dataset-license-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="CDIFProvenance.Dataset-license-Reference-upperValue" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset-license-Reference-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>license</name>
@@ -2346,7 +2346,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="CDIFProvenance.ProvActivity_agent_Organization" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity_agent_Organization" xmi:type="uml:Association">
             <name>ProvActivity_agent_Organization</name>
-            <memberEnd xmi:idref="CDIFProvenance.ProvActivity-agent"/>
+            <memberEnd xmi:idref="CDIFProvenance.ProvActivity-agent-Organization"/>
             <ownedEnd xmi:id="CDIFProvenance.ProvActivity_agent_Organization-OrganizationEnd" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity_agent_Organization-OrganizationEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFProvenance.Organization"/>
                <association xmi:idref="CDIFProvenance.ProvActivity_agent_Organization"/>
@@ -2364,7 +2364,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="CDIFProvenance.ProvActivity_agent_AgentInRole" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity_agent_AgentInRole" xmi:type="uml:Association">
             <name>ProvActivity_agent_AgentInRole</name>
-            <memberEnd xmi:idref="CDIFProvenance.ProvActivity-agent"/>
+            <memberEnd xmi:idref="CDIFProvenance.ProvActivity-agent-AgentInRole"/>
             <ownedEnd xmi:id="CDIFProvenance.ProvActivity_agent_AgentInRole-AgentInRoleEnd" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#ProvActivity_agent_AgentInRole-AgentInRoleEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFProvenance.AgentInRole"/>
                <association xmi:idref="CDIFProvenance.ProvActivity_agent_AgentInRole"/>
@@ -2454,7 +2454,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="CDIFProvenance.Dataset_keywords_DefinedTerm" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset_keywords_DefinedTerm" xmi:type="uml:Association">
             <name>Dataset_keywords_DefinedTerm</name>
-            <memberEnd xmi:idref="CDIFProvenance.Dataset-keywords"/>
+            <memberEnd xmi:idref="CDIFProvenance.Dataset-keywords-DefinedTerm"/>
             <ownedEnd xmi:id="CDIFProvenance.Dataset_keywords_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset_keywords_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFProvenance.DefinedTerm"/>
                <association xmi:idref="CDIFProvenance.Dataset_keywords_DefinedTerm"/>
@@ -2463,7 +2463,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="CDIFProvenance.Dataset_license_Reference" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset_license_Reference" xmi:type="uml:Association">
             <name>Dataset_license_Reference</name>
-            <memberEnd xmi:idref="CDIFProvenance.Dataset-license"/>
+            <memberEnd xmi:idref="CDIFProvenance.Dataset-license-Reference"/>
             <ownedEnd xmi:id="CDIFProvenance.Dataset_license_Reference-ReferenceEnd" xmi:uuid="https://w3id.org/cdif/provenance/1.1/xmi/#Dataset_license_Reference-ReferenceEnd" xmi:type="uml:Property">
                <type xmi:idref="CDIFProvenance.Reference"/>
                <association xmi:idref="CDIFProvenance.Dataset_license_Reference"/>

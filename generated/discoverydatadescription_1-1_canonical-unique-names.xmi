@@ -533,30 +533,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DiscoveryDataDescription.CatalogRecord"/>
                   <association xmi:idref="DiscoveryDataDescription.Dataset_subjectOf_CatalogRecord"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-keywords" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-keywords-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-keywords"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-keywords-DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-DefinedTerm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-keywords-DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-keywords-DefinedTerm"/>
                      <body>schema:keywords - keywords expressed as controlled-vocabulary DefinedTerms (in addition to string-valued keywords on the Dataset itself).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-keywords-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-keywords-DefinedTerm-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-DefinedTerm-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-keywords-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-keywords-DefinedTerm-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-keywords-DefinedTerm-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>keywords</name>
                   <type xmi:idref="DiscoveryDataDescription.DefinedTerm"/>
                   <association xmi:idref="DiscoveryDataDescription.Dataset_keywords_DefinedTerm"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-license" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-license-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-license"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-license-Reference" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-Reference" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-license-Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-Reference-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-license-Reference"/>
                      <body>schema:license - structured (labelled) license link form.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-license-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-license-Reference-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-Reference-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-license-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-license-Reference-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-license-Reference-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>license</name>
@@ -638,15 +638,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DiscoveryDataDescription.QualityMeasurement"/>
                   <association xmi:idref="DiscoveryDataDescription.Dataset_hasQualityMeasurement_QualityMeasurement"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-variableMeasured" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-variableMeasured"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-InstanceVariable" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-InstanceVariable-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-InstanceVariable-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-variableMeasured-InstanceVariable"/>
                      <body>schema:variableMeasured - the variables described.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-InstanceVariable-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-InstanceVariable-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-variableMeasured-InstanceVariable-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-variableMeasured-InstanceVariable-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>variableMeasured</name>
@@ -683,30 +683,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DiscoveryDataDescription.Statistics"/>
                   <association xmi:idref="DiscoveryDataDescription.Dataset_statistics_Statistics"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-distribution"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-distribution-DataDownload" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-DataDownload" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-distribution-DataDownload-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-DataDownload-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-distribution-DataDownload"/>
                      <body>schema:distribution - downloadable distribution.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-distribution-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-distribution-DataDownload-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-DataDownload-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-distribution-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-distribution-DataDownload-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-DataDownload-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>distribution</name>
                   <type xmi:idref="DiscoveryDataDescription.DataDownload"/>
                   <association xmi:idref="DiscoveryDataDescription.Dataset_distribution_DataDownload"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-distribution" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-distribution-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-distribution"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.Dataset-distribution-WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-WebAPI" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescription.Dataset-distribution-WebAPI-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-WebAPI-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.Dataset-distribution-WebAPI"/>
                      <body>schema:distribution - WebAPI distribution.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-distribution-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.Dataset-distribution-WebAPI-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-WebAPI-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-distribution-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.Dataset-distribution-WebAPI-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset-distribution-WebAPI-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>distribution</name>
@@ -2193,15 +2193,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <name>about</name>
                   <type xmi:idref="DiscoveryDataDescription.XsdAnyUri"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescription.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.CatalogRecord-about"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.CatalogRecord-about-Dataset" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-Dataset" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescription.CatalogRecord-about-Dataset-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-Dataset-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.CatalogRecord-about-Dataset"/>
                      <body>schema:about - the resource this metadata record (CatalogRecord) describes.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.CatalogRecord-about-Dataset-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-Dataset-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.CatalogRecord-about-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-upperValue" xmi:type="uml:LiteralInteger">
+                  <upperValue xmi:id="DiscoveryDataDescription.CatalogRecord-about-Dataset-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord-about-Dataset-upperValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
                   </upperValue>
                   <name>about</name>
@@ -3178,15 +3178,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DiscoveryDataDescription.DefinedTerm"/>
                   <association xmi:idref="DiscoveryDataDescription.InstanceVariable_source_DefinedTerm"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique" xmi:type="uml:Property">
-                  <ownedComment xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.InstanceVariable-measurementTechnique"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-DefinedTerm" xmi:type="uml:Property">
+                  <ownedComment xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-DefinedTerm-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.InstanceVariable-measurementTechnique-DefinedTerm"/>
                      <body>schema:measurementTechnique - typed measurement technique reference (string shorthand also permitted).</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-DefinedTerm-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-DefinedTerm-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.InstanceVariable-measurementTechnique-DefinedTerm-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable-measurementTechnique-DefinedTerm-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>measurementTechnique</name>
@@ -4629,15 +4629,15 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                   <type xmi:idref="DiscoveryDataDescription.CategoryStatistics"/>
                   <association xmi:idref="DiscoveryDataDescription.Statistics_has_CategoryStatistics"/>
                </ownedAttribute>
-               <ownedAttribute xmi:id="DiscoveryDataDescription.Statistics-has" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has" xmi:type="uml:Property" aggregation="composite">
-                  <ownedComment xmi:id="DiscoveryDataDescription.Statistics-has-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-ownedComment" xmi:type="uml:Comment">
-                     <annotatedElement xmi:idref="DiscoveryDataDescription.Statistics-has"/>
+               <ownedAttribute xmi:id="DiscoveryDataDescription.Statistics-has-Statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-Statistics" xmi:type="uml:Property" aggregation="composite">
+                  <ownedComment xmi:id="DiscoveryDataDescription.Statistics-has-Statistics-ownedComment" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-Statistics-ownedComment" xmi:type="uml:Comment">
+                     <annotatedElement xmi:idref="DiscoveryDataDescription.Statistics-has-Statistics"/>
                      <body>cdif:has_Statistics - nested statistic bundles.</body>
                   </ownedComment>
-                  <lowerValue xmi:id="DiscoveryDataDescription.Statistics-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-lowerValue" xmi:type="uml:LiteralInteger">
+                  <lowerValue xmi:id="DiscoveryDataDescription.Statistics-has-Statistics-lowerValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-Statistics-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
                   </lowerValue>
-                  <upperValue xmi:id="DiscoveryDataDescription.Statistics-has-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
+                  <upperValue xmi:id="DiscoveryDataDescription.Statistics-has-Statistics-upperValue" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics-has-Statistics-upperValue" xmi:type="uml:LiteralUnlimitedNatural">
                      <value>*</value>
                   </upperValue>
                   <name>has</name>
@@ -4866,7 +4866,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.Dataset_keywords_DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_keywords_DefinedTerm" xmi:type="uml:Association">
             <name>Dataset_keywords_DefinedTerm</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-keywords"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-keywords-DefinedTerm"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.Dataset_keywords_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_keywords_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.DefinedTerm"/>
                <association xmi:idref="DiscoveryDataDescription.Dataset_keywords_DefinedTerm"/>
@@ -4875,7 +4875,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.Dataset_license_Reference" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_license_Reference" xmi:type="uml:Association">
             <name>Dataset_license_Reference</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-license"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-license-Reference"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.Dataset_license_Reference-ReferenceEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_license_Reference-ReferenceEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.Reference"/>
                <association xmi:idref="DiscoveryDataDescription.Dataset_license_Reference"/>
@@ -4929,7 +4929,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.Dataset_variableMeasured_InstanceVariable" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_variableMeasured_InstanceVariable" xmi:type="uml:Association">
             <name>Dataset_variableMeasured_InstanceVariable</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-variableMeasured"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-variableMeasured-InstanceVariable"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.Dataset_variableMeasured_InstanceVariable-InstanceVariableEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_variableMeasured_InstanceVariable-InstanceVariableEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.InstanceVariable"/>
                <association xmi:idref="DiscoveryDataDescription.Dataset_variableMeasured_InstanceVariable"/>
@@ -4956,7 +4956,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.Dataset_distribution_DataDownload" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_distribution_DataDownload" xmi:type="uml:Association">
             <name>Dataset_distribution_DataDownload</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-distribution"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-distribution-DataDownload"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.Dataset_distribution_DataDownload-DataDownloadEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_distribution_DataDownload-DataDownloadEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.DataDownload"/>
                <association xmi:idref="DiscoveryDataDescription.Dataset_distribution_DataDownload"/>
@@ -4965,7 +4965,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.Dataset_distribution_WebAPI" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_distribution_WebAPI" xmi:type="uml:Association">
             <name>Dataset_distribution_WebAPI</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-distribution"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.Dataset-distribution-WebAPI"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.Dataset_distribution_WebAPI-WebAPIEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Dataset_distribution_WebAPI-WebAPIEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.WebAPI"/>
                <association xmi:idref="DiscoveryDataDescription.Dataset_distribution_WebAPI"/>
@@ -5082,7 +5082,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.CatalogRecord_about_Dataset" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord_about_Dataset" xmi:type="uml:Association">
             <name>CatalogRecord_about_Dataset</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.CatalogRecord-about"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.CatalogRecord-about-Dataset"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.CatalogRecord_about_Dataset-DatasetEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#CatalogRecord_about_Dataset-DatasetEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.Dataset"/>
                <association xmi:idref="DiscoveryDataDescription.CatalogRecord_about_Dataset"/>
@@ -5262,7 +5262,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.InstanceVariable_measurementTechnique_DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable_measurementTechnique_DefinedTerm" xmi:type="uml:Association">
             <name>InstanceVariable_measurementTechnique_DefinedTerm</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.InstanceVariable-measurementTechnique"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.InstanceVariable-measurementTechnique-DefinedTerm"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.InstanceVariable_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#InstanceVariable_measurementTechnique_DefinedTerm-DefinedTermEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.DefinedTerm"/>
                <association xmi:idref="DiscoveryDataDescription.InstanceVariable_measurementTechnique_DefinedTerm"/>
@@ -5397,7 +5397,7 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
          </packagedElement>
          <packagedElement xmi:id="DiscoveryDataDescription.Statistics_has_Statistics" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics_has_Statistics" xmi:type="uml:Association">
             <name>Statistics_has_Statistics</name>
-            <memberEnd xmi:idref="DiscoveryDataDescription.Statistics-has"/>
+            <memberEnd xmi:idref="DiscoveryDataDescription.Statistics-has-Statistics"/>
             <ownedEnd xmi:id="DiscoveryDataDescription.Statistics_has_Statistics-StatisticsEnd" xmi:uuid="https://w3id.org/cdif/data_description/1.1/composite/xmi/#Statistics_has_Statistics-StatisticsEnd" xmi:type="uml:Property">
                <type xmi:idref="DiscoveryDataDescription.Statistics"/>
                <association xmi:idref="DiscoveryDataDescription.Statistics_has_Statistics"/>
