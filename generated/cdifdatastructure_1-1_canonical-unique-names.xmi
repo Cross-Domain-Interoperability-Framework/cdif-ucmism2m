@@ -2357,13 +2357,72 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.DataDownload" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DataDownload-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DataDownload"/>
-                  <body>Stub of CDIFCore::DataDownload. The data-structure profile adds the cdi:isStructuredBy property on each schema:distribution DataDownload item, pointing at one of the four DataStructure variants.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:DataDownload
+
+Definition
+..........
+All or part of a [[Dataset]] in downloadable form.
+
+Scope
+.....
+Parent class(es): MediaObject (https://schema.org/MediaObject).
+
+
+CDIF
+----
+
+Definition
+..........
+Adds data-structure description to a CDIF metadata record. Defines the cdi:DataStructure family of types ($defs DataStructure / DimensionalDataStructure / LongDataStructure / WideDataStructure, plus the supporting Component / Key / RepresentedVariable types). A distribution attaches a structure via cdi:isStructuredBy on its schema:DataDownload item; the structure value is any of the four DataStructure variants. Metadata records must declare conformance to cdif/data_structure/1.0.
+
+Scope
+.....
+Stub of CDIFCore::DataDownload. The data-structure profile adds the cdi:isStructuredBy property on each schema:distribution DataDownload item, pointing at one of the four DataStructure variants.
+</body>
                </ownedComment>
                <name>DataDownload</name>
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-identifier"/>
-                     <body>@id - resolvable URI for the download.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI for the download.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataDownload-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2377,7 +2436,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-subjectOf" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-subjectOf" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-subjectOf-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-subjectOf"/>
-                     <body>schema:subjectOf - the catalog record describing this dataset's metadata. MUST declare conformance to https://w3id.org/cdif/data_structure/1.1.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:subjectOf
+
+Definition
+..........
+A CreativeWork or Event about this Thing.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: CreativeWork (https://schema.org/CreativeWork), Event (https://schema.org/Event).
+
+
+CDIF
+----
+
+Definition
+..........
+Catalog record describing this codelist as CDIF-conformant metadata. Must declare conformance to the cdifCodelist profile via dcterms:conformsTo and be typed as schema:Dataset with schema:additionalType including dcat:CatalogRecord.
+
+Scope
+.....
+schema:subjectOf - the catalog record describing this dataset's metadata. MUST declare conformance to https://w3id.org/cdif/data_structure/1.1.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataDownload-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2392,7 +2481,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy"/>
-                     <body>cdi:isStructuredBy - general DataStructure variant.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isStructuredBy
+
+
+CDIF
+----
+
+Definition
+..........
+Reusable data-structure description for this distribution. One of the four DataStructure variants (DataStructure, Dimensional, Long, Wide) as an inline definition, or an @id reference to one declared elsewhere in the document or published at a resolvable URI. (A profile may further require the inline form via SHACL.)
+
+Scope
+.....
+cdi:isStructuredBy - general DataStructure variant.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2407,7 +2517,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure"/>
-                     <body>cdi:isStructuredBy - dimensional (cube) variant.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isStructuredBy
+
+
+CDIF
+----
+
+Definition
+..........
+Reusable data-structure description for this distribution. One of the four DataStructure variants (DataStructure, Dimensional, Long, Wide) as an inline definition, or an @id reference to one declared elsewhere in the document or published at a resolvable URI. (A profile may further require the inline form via SHACL.)
+
+Scope
+.....
+cdi:isStructuredBy - dimensional (cube) variant.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-DimensionalDataStructure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-DimensionalDataStructure-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2422,7 +2553,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure"/>
-                     <body>cdi:isStructuredBy - long (narrow) variant.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isStructuredBy
+
+
+CDIF
+----
+
+Definition
+..........
+Reusable data-structure description for this distribution. One of the four DataStructure variants (DataStructure, Dimensional, Long, Wide) as an inline definition, or an @id reference to one declared elsewhere in the document or published at a resolvable URI. (A profile may further require the inline form via SHACL.)
+
+Scope
+.....
+cdi:isStructuredBy - long (narrow) variant.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-LongDataStructure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-LongDataStructure-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2437,7 +2589,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure"/>
-                     <body>cdi:isStructuredBy - wide (tabular) variant.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isStructuredBy
+
+
+CDIF
+----
+
+Definition
+..........
+Reusable data-structure description for this distribution. One of the four DataStructure variants (DataStructure, Dimensional, Long, Wide) as an inline definition, or an @id reference to one declared elsewhere in the document or published at a resolvable URI. (A profile may further require the inline form via SHACL.)
+
+Scope
+.....
+cdi:isStructuredBy - wide (tabular) variant.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataDownload-isStructuredBy-WideDataStructure-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataDownload-isStructuredBy-WideDataStructure-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2453,13 +2626,61 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.CatalogRecord" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord"/>
-                  <body>Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1. Typed schema:Dataset with schema:additionalType 'dcat:CatalogRecord' (Jun-2026 schema:subjectOf shape fix).</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcat:CatalogRecord
+
+Definition
+..........
+A record in a data catalog, describing the registration of a single dataset or data service.
+
+
+CDIF
+----
+
+Definition
+..........
+Stub of CDIFCore::CatalogRecord. For the data-structure profile, dcterms:conformsTo MUST include https://w3id.org/cdif/data_structure/1.1. Typed schema:Dataset with schema:additionalType 'dcat:CatalogRecord' (Jun-2026 schema:subjectOf shape fix).
+</body>
                </ownedComment>
                <name>CatalogRecord</name>
                <ownedAttribute xmi:id="CDIFDataStructure.CatalogRecord-additionalType" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord-additionalType"/>
-                     <body>schema:additionalType - MUST include 'dcat:CatalogRecord' (@type array itself is schema:Dataset).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:additionalType
+
+Definition
+..........
+An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. Typically the value is a URI-identified RDF class, and in this case corresponds to the
+    use of rdf:type in RDF. Text values can be used sparingly, for cases where useful information can be added without their being an appropriate schema to reference. In the case of text values, the class label should follow the schema.org &lt;a href="https://schema.org/docs/styleguide.html"&gt;style guide&lt;/a&gt;.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:additionalType - MUST include 'dcat:CatalogRecord' (@type array itself is schema:Dataset).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.CatalogRecord-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2473,7 +2694,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord-conformsTo"/>
-                     <body>dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_structure/1.1 for the data-structure profile.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcterms:conformsTo
+
+Definition
+..........
+An established standard to which the described resource conforms.
+
+
+CDIF
+----
+
+Definition
+..........
+dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/data_structure/1.1 for the data-structure profile.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2487,7 +2729,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.CatalogRecord-about"/>
-                     <body>schema:about - @id back-pointer to the described Dataset.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:about
+
+Definition
+..........
+The subject matter of an object.
+
+Scope
+.....
+Domain: Certification (https://schema.org/Certification), CommunicateAction (https://schema.org/CommunicateAction), CreativeWork (https://schema.org/CreativeWork), DefinedTerm (https://schema.org/DefinedTerm), DefinedTermSet (https://schema.org/DefinedTermSet), Event (https://schema.org/Event).
+Range: Thing (https://schema.org/Thing).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:about - @id back-pointer to the described Dataset.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2502,13 +2770,45 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.DataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DataStructure"/>
-                  <body>Generic data organization. Carries at least one cdi:has_DataStructureComponent (any of the six concrete component subtypes), plus optional cdi:has_PrimaryKey and cdi:has_ForeignKey[].</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:DataStructure
+
+Definition
+..........
+Definition 
+============
+Data organization based on reusable data structure components.
+
+
+CDIF
+----
+
+Definition
+..........
+Generic data organization. Carries at least one cdi:has_DataStructureComponent (any of the six concrete component subtypes), plus optional cdi:has_PrimaryKey and cdi:has_ForeignKey[].
+</body>
                </ownedComment>
                <name>DataStructure</name>
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-type"/>
-                     <body>@type must contain 'cdi:DataStructure'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:DataStructure'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2522,7 +2822,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-has" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-has" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-has-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-has-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-has"/>
-                     <body>cdi:has_DataStructureComponent - generic: every DataStructure carries at least one component (any of the five RV-defined subtypes plus VariableDescriptorComponent).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - generic: every DataStructure carries at least one component (any of the five RV-defined subtypes plus VariableDescriptorComponent).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-has-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-has-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2537,7 +2854,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent"/>
-                     <body>cdi:has_DataStructureComponent - IdentifierComponent (general DataStructure accepts any subtype).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - IdentifierComponent (general DataStructure accepts any subtype).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2552,7 +2886,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent"/>
-                     <body>cdi:has_DataStructureComponent - MeasureComponent (general DataStructure accepts any subtype).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - MeasureComponent (general DataStructure accepts any subtype).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2567,7 +2918,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent"/>
-                     <body>cdi:has_DataStructureComponent - AttributeComponent (general DataStructure accepts any subtype).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - AttributeComponent (general DataStructure accepts any subtype).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2582,7 +2950,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent"/>
-                     <body>cdi:has_DataStructureComponent - DimensionComponent (general DataStructure accepts any subtype).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - DimensionComponent (general DataStructure accepts any subtype).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-DimensionComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-DimensionComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2597,7 +2982,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent"/>
-                     <body>cdi:has_DataStructureComponent - VariableDescriptorComponent (general DataStructure accepts any subtype).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - VariableDescriptorComponent (general DataStructure accepts any subtype).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2612,7 +3014,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent"/>
-                     <body>cdi:has_DataStructureComponent - VariableValueComponent (general DataStructure accepts any subtype).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - VariableValueComponent (general DataStructure accepts any subtype).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2627,7 +3046,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasPrimaryKey"/>
-                     <body>cdi:has_PrimaryKey - optional primary key on the general DataStructure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_PrimaryKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_PrimaryKey - optional primary key on the general DataStructure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasPrimaryKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasPrimaryKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2642,7 +3078,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructure-hasForeignKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasForeignKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructure-hasForeignKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasForeignKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructure-hasForeignKey"/>
-                     <body>cdi:has_ForeignKey - foreign keys on the general DataStructure variant.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_ForeignKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_ForeignKey - foreign keys on the general DataStructure variant.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructure-hasForeignKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructure-hasForeignKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2658,13 +3111,49 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.DimensionalDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure"/>
-                  <body>Dimensional data set (multidimensional cube). Components are restricted to Identifier / Measure / Attribute / Dimension. Optional PrimaryKey and ForeignKey.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:DimensionalDataStructure
+
+Definition
+..........
+Definition
+============
+Structure of a dimensional data set (organized collection of multidimensional data). It is described by dimension, measure and attribute components.
+
+Examples
+==========
+The structure described by [City, Average Income, Total Population] where City is a dimension and Average Income and Total Population are measures.
+
+
+CDIF
+----
+
+Definition
+..........
+Dimensional data set (multidimensional cube). Components are restricted to Identifier / Measure / Attribute / Dimension. Optional PrimaryKey and ForeignKey.
+</body>
                </ownedComment>
                <name>DimensionalDataStructure</name>
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-type"/>
-                     <body>@type must contain 'cdi:DimensionalDataStructure'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:DimensionalDataStructure'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2678,7 +3167,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent"/>
-                     <body>cdi:has_DataStructureComponent - Identifier components on a dimensional structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Identifier components on a dimensional structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2693,7 +3199,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent"/>
-                     <body>cdi:has_DataStructureComponent - Measure components on a dimensional structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Measure components on a dimensional structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2708,7 +3231,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent"/>
-                     <body>cdi:has_DataStructureComponent - Attribute components on a dimensional structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Attribute components on a dimensional structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2723,7 +3263,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent"/>
-                     <body>cdi:has_DataStructureComponent - Dimension components on a dimensional structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Dimension components on a dimensional structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasComponent-DimensionComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasComponent-DimensionComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2738,7 +3295,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasPrimaryKey"/>
-                     <body>cdi:has_PrimaryKey - optional primary key on a dimensional structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_PrimaryKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_PrimaryKey - optional primary key on a dimensional structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasPrimaryKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasPrimaryKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2753,7 +3327,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionalDataStructure-hasForeignKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasForeignKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionalDataStructure-hasForeignKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasForeignKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionalDataStructure-hasForeignKey"/>
-                     <body>cdi:has_ForeignKey - foreign keys on a dimensional structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_ForeignKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_ForeignKey - foreign keys on a dimensional structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionalDataStructure-hasForeignKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionalDataStructure-hasForeignKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2769,13 +3360,49 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.LongDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure"/>
-                  <body>Long (narrow) dataset row layout. Required: exactly one IdentifierComponent, one VariableDescriptorComponent, one VariableValueComponent. Optional AttributeComponents. Optional PrimaryKey.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:LongDataStructure
+
+Definition
+..........
+Definition
+============
+Structure of a long dataset (organized collection of long data). It is described by identifier, measure, attribute, variable descriptor and variable value components.
+
+Examples
+==========
+The structure described by [Unit id, Income, Province, Variable name, Variable value] where Unit id identifies a statistical unit, Income and Province are two instance variables capturing characteristics, and other instance variables are represented by Variable name (a variable descriptor component) and Variable Value (a variable value component).
+
+
+CDIF
+----
+
+Definition
+..........
+Long (narrow) dataset row layout. Required: exactly one IdentifierComponent, one VariableDescriptorComponent, one VariableValueComponent. Optional AttributeComponents. Optional PrimaryKey.
+</body>
                </ownedComment>
                <name>LongDataStructure</name>
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-type"/>
-                     <body>@type must contain 'cdi:LongDataStructure'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:LongDataStructure'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2789,7 +3416,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent"/>
-                     <body>cdi:has_DataStructureComponent - exactly one IdentifierComponent (long-format identifier column).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - exactly one IdentifierComponent (long-format identifier column).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2804,7 +3448,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent"/>
-                     <body>cdi:has_DataStructureComponent - exactly one VariableDescriptorComponent (names which InstanceVariable the row represents).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - exactly one VariableDescriptorComponent (names which InstanceVariable the row represents).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableDescriptorComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2819,7 +3480,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent"/>
-                     <body>cdi:has_DataStructureComponent - exactly one VariableValueComponent (carries the value).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - exactly one VariableValueComponent (carries the value).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-VariableValueComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2834,7 +3512,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent"/>
-                     <body>cdi:has_DataStructureComponent - optional Attribute components.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - optional Attribute components.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2849,7 +3544,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.LongDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.LongDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.LongDataStructure-hasPrimaryKey"/>
-                     <body>cdi:has_PrimaryKey - optional primary key on a long structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_PrimaryKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_PrimaryKey - optional primary key on a long structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.LongDataStructure-hasPrimaryKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#LongDataStructure-hasPrimaryKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2865,13 +3577,49 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.WideDataStructure" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure"/>
-                  <body>Wide (tabular) dataset layout. Components restricted to Identifier / Measure / Attribute. Optional PrimaryKey and ForeignKey.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:WideDataStructure
+
+Definition
+..........
+Definition
+==========
+Structure of a wide dataset (organized collection of wide data). It is described by identifier, measure and attribute components.
+
+Examples
+==========
+The structure described by [Unit id, Income, Province] where Unit id identifies a statistical unit and Income and Province are two instance variables capturing characteristics.
+
+
+CDIF
+----
+
+Definition
+..........
+Wide (tabular) dataset layout. Components restricted to Identifier / Measure / Attribute. Optional PrimaryKey and ForeignKey.
+</body>
                </ownedComment>
                <name>WideDataStructure</name>
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-type"/>
-                     <body>@type must contain 'cdi:WideDataStructure'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:WideDataStructure'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2885,7 +3633,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent"/>
-                     <body>cdi:has_DataStructureComponent - Identifier components on a wide structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Identifier components on a wide structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2900,7 +3665,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent"/>
-                     <body>cdi:has_DataStructureComponent - Measure components on a wide structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Measure components on a wide structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2915,7 +3697,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent"/>
-                     <body>cdi:has_DataStructureComponent - Attribute components on a wide structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - Attribute components on a wide structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2930,7 +3729,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasPrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasPrimaryKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasPrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasPrimaryKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasPrimaryKey"/>
-                     <body>cdi:has_PrimaryKey - optional primary key on a wide structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_PrimaryKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_PrimaryKey - optional primary key on a wide structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasPrimaryKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasPrimaryKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2945,7 +3761,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.WideDataStructure-hasForeignKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasForeignKey" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.WideDataStructure-hasForeignKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasForeignKey-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.WideDataStructure-hasForeignKey"/>
-                     <body>cdi:has_ForeignKey - foreign keys on a wide structure.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_ForeignKey
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_ForeignKey - foreign keys on a wide structure.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.WideDataStructure-hasForeignKey-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#WideDataStructure-hasForeignKey-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2961,13 +3794,70 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.DimensionGroup" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup"/>
-                  <body>Reusable collection of dimensions that can be shared across multiple dimensional structures. Carries cdi:identifier, cdif:name, cdif:has_DataStructureComponent (any subtype).</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:DimensionGroup
+
+Definition
+..........
+Definition
+============
+Collection of dimensions that can be reused across multiple dimensional structures.
+
+Examples
+==========
+Sex, Province and Marital Status is a common set of dimensions used across a variety of dimensional data structures and might need to be maintained separately.
+
+
+CDIF
+----
+
+Definition
+..........
+Reusable collection of dimensions that can be shared across multiple dimensional structures. Carries cdi:identifier, cdif:name, cdif:has_DataStructureComponent (any subtype).
+</body>
                </ownedComment>
                <name>DimensionGroup</name>
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-identifier"/>
-                     <body>@id - resolvable URI for the dimension group.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI for the dimension group.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -2981,7 +3871,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-name"/>
-                     <body>cdif:name - human-readable name for the dimension group (ISO/IEC 11179-5).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:name
+
+Definition
+..........
+The name of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+text label for the term that is useful to human user
+
+Scope
+.....
+cdif:name - human-readable name for the dimension group (ISO/IEC 11179-5).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-name-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -2995,7 +3915,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent"/>
-                     <body>cdif:has_DataStructureComponent - IdentifierComponent (any subtype permitted).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - IdentifierComponent (any subtype permitted).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3010,7 +3947,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent"/>
-                     <body>cdif:has_DataStructureComponent - MeasureComponent (any subtype permitted).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - MeasureComponent (any subtype permitted).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-MeasureComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-MeasureComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3025,7 +3979,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent"/>
-                     <body>cdif:has_DataStructureComponent - AttributeComponent (any subtype permitted).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - AttributeComponent (any subtype permitted).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-AttributeComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-AttributeComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3040,7 +4011,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent"/>
-                     <body>cdif:has_DataStructureComponent - DimensionComponent (any subtype permitted).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:has_DataStructureComponent
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:has_DataStructureComponent - DimensionComponent (any subtype permitted).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionGroup-hasComponent-DimensionComponent-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionGroup-hasComponent-DimensionComponent-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3056,13 +4044,49 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent" xmi:type="uml:Class" isAbstract="true">
                <ownedComment xmi:id="CDIFDataStructure.DataStructureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DataStructureComponent"/>
-                  <body>Abstract supertype of the component types defined by a RepresentedVariable (Identifier / Measure / Attribute / Dimension / VariableValue). Target of the generic cdi:has_DataStructureComponent and DataStructureComponent_isDefinedBy_RepresentedVariable; concrete subtypes generalize it.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:DataStructureComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a data structure.  
+
+Explanatory notes 
+=================== 
+A represented variable can have different roles in different data structures. For instance, the variable sex can be a measure in a wide data structure and a dimension in a dimensional data structure.
+
+
+CDIF
+----
+
+Definition
+..........
+Abstract supertype of the component types defined by a RepresentedVariable (Identifier / Measure / Attribute / Dimension / VariableValue). Target of the generic cdi:has_DataStructureComponent and DataStructureComponent_isDefinedBy_RepresentedVariable; concrete subtypes generalize it.
+</body>
                </ownedComment>
                <name>DataStructureComponent</name>
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructureComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructureComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructureComponent-type"/>
-                     <body>@type must contain a concrete subtype constant (cdi:IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableValueComponent).</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain a concrete subtype constant (cdi:IdentifierComponent / MeasureComponent / AttributeComponent / DimensionComponent / VariableValueComponent).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructureComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3076,7 +4100,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DataStructureComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DataStructureComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DataStructureComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_RepresentedVariable
+
+Definition
+..........
+Data structure component is defined by zero to one represented variable.
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DataStructureComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DataStructureComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3092,7 +4137,38 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.IdentifierComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.IdentifierComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.IdentifierComponent"/>
-                  <body>Data-structure component for content identification. Used by all four DataStructure variants.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:IdentifierComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a long or wide data structure to identify the units associated to data points, and in dimensional and key value data structures to provide identifying fields for the instance values.  
+
+Examples 
+========== 
+The personal identification number of a Swedish citizen for unit data or the name of a country in the European Union for dimensional data.
+
+
+CDIF
+----
+
+Definition
+..........
+Role given to a represented variable in the context of a long or wide data structure to identify the units associated to data points, and in dimensional and key value data structures to provide identifying fields for the instance values.
+
+Scope
+.....
+Data-structure component for content identification. Used by all four DataStructure variants.
+</body>
                </ownedComment>
                <name>IdentifierComponent</name>
                <generalization xmi:id="CDIFDataStructure.IdentifierComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
@@ -3101,7 +4177,16 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.IdentifierComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.IdentifierComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.IdentifierComponent-type"/>
-                     <body>@type must contain 'cdi:IdentifierComponent'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:IdentifierComponent'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.IdentifierComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3115,7 +4200,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.IdentifierComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.IdentifierComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.IdentifierComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_RepresentedVariable
+
+Definition
+..........
+Data structure component is defined by zero to one represented variable.
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.IdentifierComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#IdentifierComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3131,7 +4237,38 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.MeasureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.MeasureComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.MeasureComponent"/>
-                  <body>Data-structure component representing a measure (the values being recorded). Used by general DataStructure, Dimensional, and Wide structures.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:MeasureComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a data structure to hold the observed/derived values.  
+
+Examples 
+========== 
+Height of a person in a wide or long dataset or number of citizens in a country in a dataset for multiple countries (dimensional dataset).
+
+
+CDIF
+----
+
+Definition
+..........
+Role given to a represented variable in the context of a data structure to hold the observed/derived values.
+
+Scope
+.....
+Data-structure component representing a measure (the values being recorded). Used by general DataStructure, Dimensional, and Wide structures.
+</body>
                </ownedComment>
                <name>MeasureComponent</name>
                <generalization xmi:id="CDIFDataStructure.MeasureComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
@@ -3140,7 +4277,16 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.MeasureComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.MeasureComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.MeasureComponent-type"/>
-                     <body>@type must contain 'cdi:MeasureComponent'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:MeasureComponent'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.MeasureComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3154,7 +4300,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.MeasureComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.MeasureComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.MeasureComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_RepresentedVariable
+
+Definition
+..........
+Data structure component is defined by zero to one represented variable.
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.MeasureComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#MeasureComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3170,7 +4337,38 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.AttributeComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.AttributeComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.AttributeComponent"/>
-                  <body>Data-structure component representing an attribute (qualifying or contextual value alongside the primary measures). Used by all four DataStructure variants.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:AttributeComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a data structure to qualify observations or provide other types of supplementary information.  
+
+Examples 
+========== 
+The publication status of an observation (e.g. provisional, final, revised).
+
+
+CDIF
+----
+
+Definition
+..........
+Role given to a represented variable in the context of a data structure to qualify observations or provide other types of supplementary information.
+
+Scope
+.....
+Data-structure component representing an attribute (qualifying or contextual value alongside the primary measures). Used by all four DataStructure variants.
+</body>
                </ownedComment>
                <name>AttributeComponent</name>
                <generalization xmi:id="CDIFDataStructure.AttributeComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
@@ -3179,7 +4377,16 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.AttributeComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AttributeComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.AttributeComponent-type"/>
-                     <body>@type must contain 'cdi:AttributeComponent'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:AttributeComponent'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.AttributeComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3193,7 +4400,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.AttributeComponent-qualifies" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-qualifies" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AttributeComponent-qualifies-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-qualifies-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.AttributeComponent-qualifies"/>
-                     <body>cdi:qualifies - the MeasureComponent whose values this AttributeComponent qualifies.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:qualifies
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:qualifies - the MeasureComponent whose values this AttributeComponent qualifies.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.AttributeComponent-qualifies-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-qualifies-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3208,7 +4432,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.AttributeComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.AttributeComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.AttributeComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_RepresentedVariable
+
+Definition
+..........
+Data structure component is defined by zero to one represented variable.
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.AttributeComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#AttributeComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3224,7 +4469,38 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.DimensionComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DimensionComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DimensionComponent"/>
-                  <body>Data-structure component representing a dimension along which measures vary. Specific to dimensional / cube structures.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:DimensionComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a dimensional data structure to identify the universes associated with data points. The variable acts as a field in the compound identifier (the key structure) to disambiguate the cells in the multi-dimensional "cube".  
+
+Explanatory notes 
+=================== 
+The categories from each dimension often are used in combination to identify a cell. The meaning of the combination of the categories supplies meaning to the cell.
+
+
+CDIF
+----
+
+Definition
+..........
+Role given to a represented variable in the context of a dimensional data structure to identify the universes associated with data points. The variable acts as a field in the compound identifier (the key structure) to disambiguate the cells in the multi-dimensional "cube".  AG: references to the variables which are the components of a compound identifier, in which each variable is a single field - an axis - in a coordinate system addressing a location in a matrix. These variables are often categorical, but also commonly include time. Unlike other Components, they may be ordered using instances of cdi:ComponentPosition.
+
+Scope
+.....
+Data-structure component representing a dimension along which measures vary. Specific to dimensional / cube structures.
+</body>
                </ownedComment>
                <name>DimensionComponent</name>
                <generalization xmi:id="CDIFDataStructure.DimensionComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
@@ -3233,7 +4509,16 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionComponent-type"/>
-                     <body>@type must contain 'cdi:DimensionComponent'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:DimensionComponent'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3247,7 +4532,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DimensionComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DimensionComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DimensionComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_RepresentedVariable
+
+Definition
+..........
+Data structure component is defined by zero to one represented variable.
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DimensionComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DimensionComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3263,7 +4569,42 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.VariableValueComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.VariableValueComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.VariableValueComponent"/>
-                  <body>Data-structure component carrying the value for the variable named by a VariableDescriptorComponent in a long-format row.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:VariableValueComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a data structure to record values of multiple variables.   
+
+Examples 
+========== 
+Consider two variables, i.e. income and age, with their values living together in different entries in the same column.  The values of those two variables are now in the value domain of a single variable (the one working as a variable value component).  Another column, based on a variable descriptor component, use codes for "income" and "age" to distinguish income values from age values.   
+
+Explanatory notes 
+=================== 
+A variable value component captures the values of multiple variables that have been transposed into a single column.  The variable descriptor component provides a mechanism to identify which of those values correspond to which variable.   This structure provides a flexible mechanism avoiding the need for a formal pointer.
+
+
+CDIF
+----
+
+Definition
+..........
+Role given to a represented variable in the context of a data structure to record values of multiple variables.
+
+Scope
+.....
+Data-structure component carrying the value for the variable named by a VariableDescriptorComponent in a long-format row.
+</body>
                </ownedComment>
                <name>VariableValueComponent</name>
                <generalization xmi:id="CDIFDataStructure.VariableValueComponent-generalization-DataStructureComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-generalization-DataStructureComponent" xmi:type="uml:Generalization">
@@ -3272,7 +4613,16 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.VariableValueComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableValueComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableValueComponent-type"/>
-                     <body>@type must contain 'cdi:VariableValueComponent'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:VariableValueComponent'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.VariableValueComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3286,7 +4636,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.VariableValueComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableValueComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableValueComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_RepresentedVariable
+
+Definition
+..........
+Data structure component is defined by zero to one represented variable.
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_RepresentedVariable - the RepresentedVariable that defines this DataStructureComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.VariableValueComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableValueComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3302,13 +4673,57 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.VariableDescriptorComponent" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.VariableDescriptorComponent-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.VariableDescriptorComponent"/>
-                  <body>Data-structure component naming which InstanceVariable a long-format row represents (the descriptor column). Specific to LongDataStructure (exactly one required) and the general DataStructure. Standalone: defined by a DescriptorVariable rather than a RepresentedVariable.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:VariableDescriptorComponent
+
+Definition
+..........
+Definition 
+============ 
+Role given to a represented variable in the context of a data structure to provide codes for variable identification.   
+
+Examples 
+========== 
+Consider {"income", "age"} to be the value domain of the represented variable working as a variable descriptor component.  The two codes, i.e. those designating "income" and "age", are descriptors used to identify which values in the variable value component correspond to income and which ones to age.   
+
+Explanatory notes 
+=================== 
+Whenever more than one variable appears in the same column, we need a mechanism to distinguish which values correspond to which variable. This mechanism is provided by the variable descriptor component, which contains the codes used to link the variables to their values.  This structure provides a flexible mechanism avoiding the need for a formal pointer.
+
+
+CDIF
+----
+
+Definition
+..........
+Role given to a represented variable in the context of a data structure to provide codes for variable identification.
+
+Scope
+.....
+Data-structure component naming which InstanceVariable a long-format row represents (the descriptor column). Specific to LongDataStructure (exactly one required) and the general DataStructure. Standalone: defined by a DescriptorVariable rather than a RepresentedVariable.
+</body>
                </ownedComment>
                <name>VariableDescriptorComponent</name>
                <ownedAttribute xmi:id="CDIFDataStructure.VariableDescriptorComponent-type" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-type" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableDescriptorComponent-type-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-type-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableDescriptorComponent-type"/>
-                     <body>@type must contain 'cdi:VariableDescriptorComponent'.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+@type must contain 'cdi:VariableDescriptorComponent'.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.VariableDescriptorComponent-type-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-type-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3322,7 +4737,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.VariableDescriptorComponent-isDefinedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-isDefinedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableDescriptorComponent-isDefinedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-isDefinedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableDescriptorComponent-isDefinedBy"/>
-                     <body>cdif:isDefinedBy_DescriptorVariable - the DescriptorVariable that defines this VariableDescriptorComponent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isDefinedBy_DescriptorVariable
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:isDefinedBy_DescriptorVariable - the DescriptorVariable that defines this VariableDescriptorComponent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.VariableDescriptorComponent-isDefinedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-isDefinedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3337,7 +4769,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-refersTo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-refersTo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.VariableDescriptorComponent-refersTo"/>
-                     <body>cdi:refersTo - the VariableValueComponent whose values are described by this VariableDescriptorComponent (long-format pairing).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:refersTo
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:refersTo - the VariableValueComponent whose values are described by this VariableDescriptorComponent (long-format pairing).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.VariableDescriptorComponent-refersTo-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#VariableDescriptorComponent-refersTo-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3353,13 +4802,76 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.PrimaryKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.PrimaryKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.PrimaryKey"/>
-                  <body>Role of an ordered set of cdi:RepresentedVariables that uniquely identify each data instance. Position is implicit in cdif:isComposedOf array order; each membership carries a cdif:position integer.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PrimaryKey
+
+Definition
+..........
+Definition
+============
+Role of a set of data structure components for content linkage purposes
+
+Explanatory notes
+===================
+Equivalent to primary key in the relational model.
+A primary key essentially indicates which data structure components correspond to key members.
+It can also be used in conjunction with foreign key to link data structures and their related datasets.
+
+
+CDIF
+----
+
+Definition
+..........
+set of Variables that uniquely identify a data instance. Array order of cdif:isComposedOf items is the position; no intermediate ComponentPosition wrapper.
+
+Scope
+.....
+Role of an ordered set of cdi:RepresentedVariables that uniquely identify each data instance. Position is implicit in cdif:isComposedOf array order; each membership carries a cdif:position integer.
+</body>
                </ownedComment>
                <name>PrimaryKey</name>
                <ownedAttribute xmi:id="CDIFDataStructure.PrimaryKey-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.PrimaryKey-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.PrimaryKey-identifier"/>
-                     <body>@id - resolvable URI for this primary key.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI for this primary key.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.PrimaryKey-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3373,7 +4885,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.PrimaryKey-isComposedOf" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-isComposedOf" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.PrimaryKey-isComposedOf-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-isComposedOf-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.PrimaryKey-isComposedOf"/>
-                     <body>cdif:isComposedOf - the RepresentedVariables that make up the key.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isComposedOf
+
+
+CDIF
+----
+
+Definition
+..........
+List @id-references to representedVariables in this dataStructure. Array order of cdif:isComposedOf items is the position; no intermediate ComponentPosition wrapper.
+
+Scope
+.....
+cdif:isComposedOf - the RepresentedVariables that make up the key.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.PrimaryKey-isComposedOf-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#PrimaryKey-isComposedOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3389,13 +4922,75 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFDataStructure.ForeignKey" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.ForeignKey-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.ForeignKey"/>
-                  <body>Role of a set of cdi:RepresentedVariables for content referencing. cdi:isComposedOf is a list of RepresentedVariables in this structure; cdi:references is the PrimaryKey in another structure that this foreign key references.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:ForeignKey
+
+Definition
+..........
+Definition
+============
+Role of a set of data structure components for content referencing purposes
+
+Explanatory notes
+===================
+Equivalent to foreign key in the relational model.
+It can be used in conjunction with primary key to link data structures and their related data sets.
+
+
+CDIF
+----
+
+Definition
+..........
+Role of a set of data structure components for content referencing purposes
+
+Scope
+.....
+Role of a set of cdi:RepresentedVariables for content referencing. cdi:isComposedOf is a list of RepresentedVariables in this structure; cdi:references is the PrimaryKey in another structure that this foreign key references.
+</body>
                </ownedComment>
                <name>ForeignKey</name>
                <ownedAttribute xmi:id="CDIFDataStructure.ForeignKey-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ForeignKey-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.ForeignKey-identifier"/>
-                     <body>@id - resolvable URI for this foreign key.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI for this foreign key.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.ForeignKey-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3409,7 +5004,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.ForeignKey-isComposedOf" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-isComposedOf" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ForeignKey-isComposedOf-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-isComposedOf-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.ForeignKey-isComposedOf"/>
-                     <body>cdi:isComposedOf - the RepresentedVariables in this structure that make up the foreign key.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:isComposedOf
+
+
+CDIF
+----
+
+Definition
+..........
+List @id-references to representedVariables in this dataStructure. Array order of cdif:isComposedOf items is the position; no intermediate ComponentPosition wrapper.
+
+Scope
+.....
+cdif:isComposedOf - the RepresentedVariables in this structure that make up the foreign key (CDIF flattens the DDI-CDI ForeignKeyComponent intermediate).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.ForeignKey-isComposedOf-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-isComposedOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -3424,7 +5040,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.ForeignKey-references" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-references" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.ForeignKey-references-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-references-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.ForeignKey-references"/>
-                     <body>cdi:references - the PrimaryKey on another DataStructure that this foreign key references.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:references
+
+
+CDIF
+----
+
+Definition
+..........
+CDIF codelist (skos:ConceptScheme) whose concepts define the allowed values of this enumeration domain.
+
+Scope
+.....
+cdi:references - the PrimaryKey on another DataStructure that this foreign key references.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.ForeignKey-references-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#ForeignKey-references-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3600,7 +5237,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-takesSubstantiveValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-takesSubstantiveValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom"/>
-                     <body>cdi:takesSubstantiveValuesFrom - the substantive value domain of this RepresentedVariable.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:takesSubstantiveValuesFrom
+
+
+CDIF
+----
+
+Definition
+..........
+The substantive value domain for this RepresentedVariable - the set of valid, meaningful values (RepresentedVariable.takesSubstantiveValuesFrom).
+
+Scope
+.....
+cdi:takesSubstantiveValuesFrom - the substantive value domain of this RepresentedVariable.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSubstantiveValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-takesSubstantiveValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3615,7 +5273,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-takesSentinelValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-takesSentinelValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-takesSentinelValuesFrom"/>
-                     <body>cdi:takesSentinelValuesFrom - the sentinel value domain (missing-value codes) of this RepresentedVariable.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:takesSentinelValuesFrom
+
+
+CDIF
+----
+
+Definition
+..........
+Sentinel (missing / not-applicable) value domain(s) for this RepresentedVariable (RepresentedVariable.takesSentinelValuesFrom).
+
+Scope
+.....
+cdi:takesSentinelValuesFrom - the sentinel value domain (missing-value codes) of this RepresentedVariable.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-takesSentinelValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-takesSentinelValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3630,7 +5309,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-measures" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-measures" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-measures-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-measures-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-measures"/>
-                     <body>cdi:measures - the kind of unit (UnitType) this RepresentedVariable measures.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:measures
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:measures - the kind of unit (UnitType) this RepresentedVariable measures.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-measures-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-measures-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3645,7 +5341,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.RepresentedVariable-uses" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-uses" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.RepresentedVariable-uses-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-uses-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.RepresentedVariable-uses"/>
-                     <body>cdif:uses - concept or term reference(s) for what this RepresentedVariable measures or represents. The value type is the CdifConceptOrTerm union (skos:Concept | schema:DefinedTerm | string shorthand).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:uses
+
+
+CDIF
+----
+
+Definition
+..........
+cdif:uses - concept or term reference(s) for what this RepresentedVariable measures or represents. The value type is the CdifConceptOrTerm union (skos:Concept | schema:DefinedTerm | string shorthand).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.RepresentedVariable-uses-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#RepresentedVariable-uses-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3891,7 +5604,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorVariable-hasValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorVariable-hasValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DescriptorVariable-hasValuesFrom"/>
-                     <body>cdif:hasValuesFrom - the descriptor value domain of this DescriptorVariable.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:hasValuesFrom
+
+
+CDIF
+----
+
+Definition
+..........
+A cdi:DescriptorValueDomain enumerating the codes that can appear in the descriptor column, each paired (via cdif:isDefinedBy) with the RepresentedVariable that the code names.
+
+Scope
+.....
+cdif:hasValuesFrom - the descriptor value domain of this DescriptorVariable.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DescriptorVariable-hasValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorVariable-hasValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3973,7 +5707,28 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SubstantiveValueDomain-isDescribedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SubstantiveValueDomain-isDescribedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy"/>
-                     <body>cdi:isDescribedBy - description (ranges, patterns, classification level, ...) of the values/concepts this domain admits.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isDescribedBy
+
+
+CDIF
+----
+
+Definition
+..........
+A ValueAndConceptDescription giving the formal description (ranges, patterns, classification level, expressions) of the values this domain admits.
+
+Scope
+.....
+cdi:isDescribedBy - description (ranges, patterns, classification level, ...) of the values/concepts this domain admits.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SubstantiveValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -3988,7 +5743,28 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SubstantiveValueDomain-takesValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SubstantiveValueDomain-takesValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom"/>
-                     <body>cdif:takesValuesFrom - controlled-vocabulary codelist for the substantive values.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:takesValuesFrom
+
+
+CDIF
+----
+
+Definition
+..........
+Ordered list of descriptor entries. Each entry has a cdif:value (the code as it appears in the descriptor column) and a cdif:isDefinedBy pointer to the RepresentedVariable that the code names.
+
+Scope
+.....
+cdif:takesValuesFrom - controlled-vocabulary codelist for the substantive values.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SubstantiveValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SubstantiveValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4086,7 +5862,28 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SentinelValueDomain-isDescribedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-isDescribedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SentinelValueDomain-isDescribedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SentinelValueDomain-isDescribedBy"/>
-                     <body>cdi:isDescribedBy - description of the sentinel (missing) values.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isDescribedBy
+
+
+CDIF
+----
+
+Definition
+..........
+A ValueAndConceptDescription giving the formal description (ranges, patterns, classification level, expressions) of the values this domain admits.
+
+Scope
+.....
+cdi:isDescribedBy - description of the sentinel (missing) values.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SentinelValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4101,7 +5898,28 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SentinelValueDomain-takesValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SentinelValueDomain-takesValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.SentinelValueDomain-takesValuesFrom"/>
-                     <body>cdif:takesValuesFrom - controlled-vocabulary codelist for the sentinel values.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:takesValuesFrom
+
+
+CDIF
+----
+
+Definition
+..........
+Ordered list of descriptor entries. Each entry has a cdif:value (the code as it appears in the descriptor column) and a cdif:isDefinedBy pointer to the RepresentedVariable that the code names.
+
+Scope
+.....
+cdif:takesValuesFrom - controlled-vocabulary codelist for the sentinel values.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.SentinelValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#SentinelValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4183,7 +6001,28 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorValueDomain-isDescribedBy" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorValueDomain-isDescribedBy" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorValueDomain-isDescribedBy-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorValueDomain-isDescribedBy-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DescriptorValueDomain-isDescribedBy"/>
-                     <body>cdi:isDescribedBy - description of the descriptor values.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:isDescribedBy
+
+
+CDIF
+----
+
+Definition
+..........
+A ValueAndConceptDescription giving the formal description (ranges, patterns, classification level, expressions) of the values this domain admits.
+
+Scope
+.....
+cdi:isDescribedBy - description of the descriptor values.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DescriptorValueDomain-isDescribedBy-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorValueDomain-isDescribedBy-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4198,7 +6037,28 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.DescriptorValueDomain-takesValuesFrom" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorValueDomain-takesValuesFrom" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DescriptorValueDomain-takesValuesFrom-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorValueDomain-takesValuesFrom-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DescriptorValueDomain-takesValuesFrom"/>
-                     <body>cdif:takesValuesFrom - controlled-vocabulary codelist for the descriptor values.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:takesValuesFrom
+
+
+CDIF
+----
+
+Definition
+..........
+Ordered list of descriptor entries. Each entry has a cdif:value (the code as it appears in the descriptor column) and a cdif:isDefinedBy pointer to the RepresentedVariable that the code names.
+
+Scope
+.....
+cdif:takesValuesFrom - controlled-vocabulary codelist for the descriptor values.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DescriptorValueDomain-takesValuesFrom-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DescriptorValueDomain-takesValuesFrom-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4515,13 +6375,68 @@ A set of information useful for attribution, data discovery, and access. This is
             <packagedElement xmi:id="CDIFDataStructure.DefinedTerm" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.DefinedTerm"/>
-                  <body>schema:DefinedTerm - a term from a controlled vocabulary (DefinedTermSet). Used as a typed concept reference (e.g., cdi:hasIntendedDataType / cdif:recommendedDataType point at an xsd-datatype DefinedTerm), and as one branch of CdifConceptOrTerm.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:DefinedTerm
+
+Definition
+..........
+A word, name, acronym, phrase, etc. with a formal definition. Often used in the context of category or subject classification, glossaries or dictionaries, product or creative work types, etc. Use the name property for the term being defined, use termCode if the term has an alpha-numeric code allocated, use description to provide the definition of the term. Use the about property to specify what the term is about.
+
+Scope
+.....
+Parent class(es): Intangible (https://schema.org/Intangible).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:DefinedTerm - a term from a controlled vocabulary (DefinedTermSet). Used as a typed concept reference (e.g., cdi:hasIntendedDataType / cdif:recommendedDataType point at an xsd-datatype DefinedTerm), and as one branch of CdifConceptOrTerm.
+</body>
                </ownedComment>
                <name>DefinedTerm</name>
                <ownedAttribute xmi:id="CDIFDataStructure.DefinedTerm-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DefinedTerm-identifier"/>
-                     <body>@id - resolvable URI for the DefinedTerm.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI for the DefinedTerm.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DefinedTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4535,7 +6450,37 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.DefinedTerm-termCode" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-termCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-termCode-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-termCode-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DefinedTerm-termCode"/>
-                     <body>schema:termCode - the code identifying the term within its DefinedTermSet.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:termCode
+
+Definition
+..........
+A code that identifies this [[DefinedTerm]] within a [[DefinedTermSet]].
+
+Scope
+.....
+Domain: DefinedTerm (https://schema.org/DefinedTerm).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+A representative code for this keyword in the controlled vocabulary. Analogous to skos:Notation
+
+Scope
+.....
+schema:termCode - the code identifying the term within its DefinedTermSet.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DefinedTerm-termCode-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-termCode-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4549,7 +6494,37 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.DefinedTerm-name" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-name-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DefinedTerm-name"/>
-                     <body>schema:name - human-readable label.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:name
+
+Definition
+..........
+The name of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+text label for the term that is useful to human user
+
+Scope
+.....
+schema:name - human-readable label.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DefinedTerm-name-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-name-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4563,7 +6538,37 @@ A set of information useful for attribution, data discovery, and access. This is
                <ownedAttribute xmi:id="CDIFDataStructure.DefinedTerm-inDefinedTermSet" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-inDefinedTermSet" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.DefinedTerm-inDefinedTermSet-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-inDefinedTermSet-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.DefinedTerm-inDefinedTermSet"/>
-                     <body>schema:inDefinedTermSet - @id of the DefinedTermSet this term belongs to.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:inDefinedTermSet
+
+Definition
+..........
+A [[DefinedTermSet]] that contains this term.
+
+Scope
+.....
+Domain: DefinedTerm (https://schema.org/DefinedTerm).
+Range: DefinedTermSet (https://schema.org/DefinedTermSet), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Name for the controlled vocabulary responsible for this keyword.
+
+Scope
+.....
+schema:inDefinedTermSet - @id of the DefinedTermSet this term belongs to.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.DefinedTerm-inDefinedTermSet-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#DefinedTerm-inDefinedTermSet-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4578,13 +6583,52 @@ A set of information useful for attribution, data discovery, and access. This is
             <packagedElement xmi:id="CDIFDataStructure.CdifConceptOrTerm" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTerm" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataStructure.CdifConceptOrTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTerm-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.CdifConceptOrTerm"/>
-                  <body>Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term. cdif:uses on a RepresentedVariable is typed by this union.</body>
+                  <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+Union shorthand for 'a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm)'. In JSON instances the value MAY be: (a) an inline object typed as Concept / DefinedTerm, (b) an @id-only object referencing one, or (c) a plain string interpreted as the @id / prefLabel / termCode of the referenced concept or term. cdif:uses on a RepresentedVariable is typed by this union.
+</body>
                </ownedComment>
                <name>CdifConceptOrTerm</name>
                <ownedAttribute xmi:id="CDIFDataStructure.CdifConceptOrTerm-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTerm-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.CdifConceptOrTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTerm-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.CdifConceptOrTerm-identifier"/>
-                     <body>@id - resolvable URI of the concept or term being referenced.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI of the concept or term being referenced.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.CdifConceptOrTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -4599,13 +6643,52 @@ A set of information useful for attribution, data discovery, and access. This is
             <packagedElement xmi:id="CDIFDataStructure.CdifConceptOrTermOrString" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFDataStructure.CdifConceptOrTermOrString"/>
-                  <body>Union shorthand for 'a plain string OR the CdifConceptOrTerm 3-way union (skos:Concept @id-ref | schema:DefinedTerm | inline cdif:Concept)'.</body>
+                  <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+Union shorthand for 'a plain string OR the CdifConceptOrTerm 3-way union (skos:Concept @id-ref | schema:DefinedTerm | inline cdif:Concept)'.
+</body>
                </ownedComment>
                <name>CdifConceptOrTermOrString</name>
                <ownedAttribute xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFDataStructure.CdifConceptOrTermOrString-identifier"/>
-                     <body>@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Identifier for objects requiring short- or long-lasting referencing and management.
+
+Scope
+.....
+@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFDataStructure.CdifConceptOrTermOrString-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/data_structure/1.1/xmi/#CdifConceptOrTermOrString-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>

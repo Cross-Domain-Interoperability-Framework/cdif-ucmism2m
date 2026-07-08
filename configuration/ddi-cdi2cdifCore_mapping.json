@@ -1,5 +1,5 @@
 {
-  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "$schema": "ucmis_mapping_configuration.schema.v1.2.json",
   "_comment": "DDI-CDI -> CDIF Core profile UML. Source: metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/cdifCoreSchema.json. The Core profile vocabulary is schema.org + dcterms + prov + dcat, almost entirely outside DDI-CDI's UML. Pattern used: mappingType=new with v1.1 sourceClass when there is a plausible DDI-CDI provenance anchor (Dataset<-DataStore, Person<-Individual, Organization<-Organization, ProvActivity<-Activity, MonetaryGrant<-FundingInformation, CatalogRecord<-CatalogDetails). Classes with no DDI-CDI counterpart (DataDownload, WebAPI, Contributor, DefinedTerm, LabeledLink, DerivedFrom) are plain new. Required Core attributes per the JSON schema: @id, @type, @context (modelled in metadata block), schema:name, schema:identifier, schema:dateModified, schema:subjectOf, AND (license OR conditionsOfAccess), AND (url OR distribution). This file covers the required attributes plus the commonly-used optional ones; rarely-used attributes (sameAs, publishingPrinciples, contributor) are included where space allows but with shorter definitions.",
   "transformation": {
     "description": "DDI-CDI to CDIF Core Profile",
@@ -90,7 +90,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
@@ -99,7 +100,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
@@ -108,7 +110,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "additionalType",
@@ -117,7 +120,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:additionalType"
           },
           {
             "name": "sameAs",
@@ -126,7 +130,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:sameAs"
           },
           {
             "name": "version",
@@ -135,7 +140,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:version"
           },
           {
             "name": "inLanguage",
@@ -144,7 +150,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:inLanguage"
           },
           {
             "name": "dateModified",
@@ -153,7 +160,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:dateModified"
           },
           {
             "name": "datePublished",
@@ -162,7 +170,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:datePublished"
           },
           {
             "name": "url",
@@ -171,7 +180,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:url"
           },
           {
             "name": "license",
@@ -180,7 +190,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:license"
           },
           {
             "name": "conditionsOfAccess",
@@ -189,7 +200,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:conditionsOfAccess"
           },
           {
             "name": "publishingPrinciples",
@@ -198,7 +210,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:publishingPrinciples"
           },
           {
             "name": "keywords",
@@ -207,13 +220,18 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:keywords"
           },
           {
             "name": "relatedLink",
             "dataType": "Reference",
             "definition": "schema:relatedLink - a related resource link.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "schema:relatedLink"
           }
         ],
         "sssom": {
@@ -223,7 +241,8 @@
           "predicate_label": "Dataset is the schema.org-aligned root resource; DDI-CDI DataStore is its closest conceptual anchor (the housing of organized data).",
           "confidence": 0.7,
           "comment": "schema:Dataset is broader than DDI-CDI DataStore; DataStore in DDI-CDI excludes the metadata-about-the-dataset semantics that schema:Dataset implies. Mapping is conceptual only."
-        }
+        },
+        "sourceUri": "schema:Dataset"
       },
       {
         "_comment": "AbstractDistribution - abstract supertype of DataDownload and WebAPI (union-type-policy: v1.1 generalization). Lets the Dataset_distribution association target a single end instead of one per concrete kind. Carries the attributes common to both (identifier, name, description). Concrete subclasses keep the kind-specific attributes and the appropriate multiplicity for url.",
@@ -240,7 +259,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
@@ -249,7 +269,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
@@ -258,7 +279,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           }
         ],
         "sssom": {
@@ -275,7 +297,9 @@
         "sourceClass": "PhysicalDataSet",
         "targetPackage": "Distribution",
         "targetClass": "DataDownload",
-        "generalization": ["AbstractDistribution"],
+        "generalization": [
+          "AbstractDistribution"
+        ],
         "definition": "schema:DataDownload - a downloadable file distribution of a Dataset. Inherits identifier/name/description from AbstractDistribution.",
         "attribute": [
           {
@@ -285,7 +309,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:contentUrl"
           },
           {
             "name": "encodingFormat",
@@ -294,7 +319,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:encodingFormat"
           },
           {
             "name": "contentSize",
@@ -303,7 +329,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:contentSize"
           },
           {
             "name": "checksum",
@@ -312,7 +339,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:checksum"
           },
           {
             "name": "conformsTo",
@@ -321,7 +349,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "dcterms:conformsTo"
           }
         ],
         "sssom": {
@@ -330,14 +359,17 @@
           "predicate_id": "skos:closeMatch",
           "predicate_label": "DataDownload is the schema.org expression of a downloadable physical realization of a dataset.",
           "confidence": 0.85
-        }
+        },
+        "sourceUri": "schema:DataDownload"
       },
       {
         "_comment": "schema:WebAPI - API distribution. No DDI-CDI counterpart; pure schema.org concept. Inherits identifier, name, description from AbstractDistribution.",
         "mappingType": "new",
         "targetPackage": "Distribution",
         "targetClass": "WebAPI",
-        "generalization": ["AbstractDistribution"],
+        "generalization": [
+          "AbstractDistribution"
+        ],
         "definition": "schema:WebAPI - an API distribution endpoint. Used as an alternative to schema:DataDownload for service-mediated access. Inherits identifier/name/description from AbstractDistribution.",
         "attribute": [
           {
@@ -347,21 +379,31 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:documentation"
           },
           {
             "name": "termsOfService",
             "dataType": "Reference",
             "definition": "schema:termsOfService - terms of service for using the API (URI or labeled reference).",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:termsOfService"
           },
           {
             "name": "serviceType",
             "dataType": "String",
             "definition": "schema:serviceType - the type of the web API service.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:serviceType"
           }
-        ]
+        ],
+        "sourceUri": "schema:WebAPI"
       },
       {
         "_comment": "schema:Action - an operation (typically an HTTP request) invocable via a WebAPI distribution. Pure schema.org concept (no DDI-CDI counterpart), adapted from the schema.org Actions pattern. Carried by schema:potentialAction on WebAPI. target defines the endpoint/syntax (EntryPoint); result defines the response serialization (ActionResult); query-input documents the urlTemplate parameters (PropertyValueSpecification). schema:object (the resource acted upon) is open-ended (schema:Thing) and superfluous for WebAPI distributions, so it is not modelled.",
@@ -374,9 +416,14 @@
             "name": "name",
             "dataType": "String",
             "definition": "schema:name - text label for the action.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:name"
           }
-        ]
+        ],
+        "sourceUri": "schema:Action"
       },
       {
         "_comment": "schema:EntryPoint - the request target (endpoint + syntax) for an Action. Target of schema:target.",
@@ -389,27 +436,44 @@
             "name": "description",
             "dataType": "String",
             "definition": "schema:description - description of the entry point.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "urlTemplate",
             "dataType": "String",
             "definition": "schema:urlTemplate - templated URL (RFC 6570); curly-brace parameters are documented in the Action's query-input.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            },
+            "sourceUri": "schema:urlTemplate"
           },
           {
             "name": "httpMethod",
             "dataType": "String",
             "definition": "schema:httpMethod - HTTP method(s) (GET, PUT, POST, PATCH, DELETE, ...); applicable when the protocol is HTTP.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "schema:httpMethod"
           },
           {
             "name": "contentType",
             "dataType": "String",
             "definition": "schema:contentType - supported MIME content type(s) for the endpoint response.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "schema:contentType"
           }
-        ]
+        ],
+        "sourceUri": "schema:EntryPoint"
       },
       {
         "_comment": "Action result descriptor (schema:DataDownload form) - the actionResult building block. Target of schema:result. Describes the response serialization (encodingFormat, conformsTo) without a per-request contentUrl/contentSize.",
@@ -422,27 +486,44 @@
             "name": "name",
             "dataType": "String",
             "definition": "schema:name - label for the result/response format.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
             "dataType": "String",
             "definition": "schema:description - description of the result representation.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "encodingFormat",
             "dataType": "String",
             "definition": "schema:encodingFormat - MIME type(s) of the response serialization.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "schema:encodingFormat"
           },
           {
             "name": "conformsTo",
             "dataType": "XsdAnyUri",
             "definition": "dcterms:conformsTo - identifier(s) of a standard/specification the response conforms to.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "dcterms:conformsTo"
           }
-        ]
+        ],
+        "sourceUri": "schema:Thing"
       },
       {
         "_comment": "schema:PropertyValueSpecification - documents a parameter used in the Action EntryPoint urlTemplate. Target of schema:query-input.",
@@ -455,33 +536,54 @@
             "name": "identifier",
             "dataType": "Identifier",
             "definition": "@id - identifier for this parameter specification.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "valueName",
             "dataType": "String",
             "definition": "schema:valueName - the parameter name as used in the urlTemplate.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            },
+            "sourceUri": "schema:valueName"
           },
           {
             "name": "description",
             "dataType": "String",
             "definition": "schema:description - description of the parameter.",
-            "multiplicity": { "lower": "1", "upper": "1" }
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "valueRequired",
             "dataType": "Boolean",
             "definition": "schema:valueRequired - whether the parameter is required.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:valueRequired"
           },
           {
             "name": "valuePattern",
             "dataType": "String",
             "definition": "schema:valuePattern - a regular expression constraining the parameter value.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:valuePattern"
           }
-        ]
+        ],
+        "sourceUri": "schema:PropertyValueSpecification"
       },
       {
         "_comment": "Agent - abstract supertype of Person and Organization (v1.1 generalization). Carries the attributes common to both (identifier, name) so associations like Dataset_creator_Agent can target a single end. Has no direct DDI-CDI source class; conceptually corresponds to prov:Agent and the schema.org agent role pattern.",
@@ -498,7 +600,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
@@ -507,7 +610,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           }
         ],
         "sssom": {
@@ -516,7 +620,8 @@
           "predicate_id": "skos:closeMatch",
           "confidence": 0.8,
           "comment": "DDI-CDI has no abstract 'Agent' class; Individual + Organization are siblings. Introduced here as an abstract parent so creator/publisher/contributor associations can target one end."
-        }
+        },
+        "sourceUri": "cdi:Agent"
       },
       {
         "_comment": "schema:Person - human agent. DDI-CDI provenance anchor: Individual (the data-type/agent class for natural persons). Attribute set follows the CDIF Person building block (_sources/schemaorgProperties/person/schema.yaml): description, alternateName, affiliation (a schema:Organization), contactPoint (email only), sameAs. identifier and name are inherited from Agent. The full schema.org Person vocabulary (givenName/familyName/honorificPrefix/honorificSuffix/telephone/...) is intentionally NOT part of the restricted CDIF profile.",
@@ -524,7 +629,9 @@
         "sourceClass": "Individual",
         "targetPackage": "Classes",
         "targetClass": "Person",
-        "generalization": ["Agent"],
+        "generalization": [
+          "Agent"
+        ],
         "definition": "schema:Person - a human agent (creator, contributor, publisher, etc.). Inherits identifier and name from Agent.",
         "attribute": [
           {
@@ -534,7 +641,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "alternateName",
@@ -543,7 +651,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:alternateName"
           },
           {
             "name": "affiliation",
@@ -552,7 +661,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:affiliation"
           },
           {
             "name": "contactPoint",
@@ -561,7 +671,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:contactPoint"
           },
           {
             "name": "sameAs",
@@ -570,7 +681,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:sameAs"
           }
         ],
         "sssom": {
@@ -578,7 +690,8 @@
           "object_label": "CDIF Core Person (schema:Person)",
           "predicate_id": "skos:closeMatch",
           "confidence": 0.9
-        }
+        },
+        "sourceUri": "schema:Person"
       },
       {
         "_comment": "schema:ContactPoint - restricted to email only per the CDIF Person building block (schema.org also allows telephone/postal). Used by Person.contactPoint. No DDI-CDI source class.",
@@ -594,9 +707,11 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:email"
           }
-        ]
+        ],
+        "sourceUri": "schema:ContactPoint"
       },
       {
         "_comment": "schema:Organization - institutional agent. DDI-CDI has Organization as a class. Inherits identifier and name from Agent.",
@@ -604,7 +719,9 @@
         "sourceClass": "Organization",
         "targetPackage": "Classes",
         "targetClass": "Organization",
-        "generalization": ["Agent"],
+        "generalization": [
+          "Agent"
+        ],
         "definition": "schema:Organization - an organisational agent. Inherits identifier and name from Agent.",
         "attribute": [
           {
@@ -614,7 +731,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:additionalType"
           },
           {
             "name": "alternateName",
@@ -623,7 +741,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:alternateName"
           },
           {
             "name": "description",
@@ -632,7 +751,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "sameAs",
@@ -641,7 +761,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:sameAs"
           }
         ],
         "sssom": {
@@ -649,7 +770,8 @@
           "object_label": "CDIF Core Organization (schema:Organization)",
           "predicate_id": "skos:exactMatch",
           "confidence": 0.95
-        }
+        },
+        "sourceUri": "schema:Organization"
       },
       {
         "_comment": "Contributor - the schema:Role/AgentInRole pattern. DDI-CDI's AgentInRole is a DataType (not a Class), so no sourceClass is set; the provenance link is recorded only in the SSSOM block.",
@@ -665,7 +787,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:roleName"
           }
         ],
         "sssom": {
@@ -674,7 +797,8 @@
           "predicate_id": "skos:closeMatch",
           "predicate_label": "Conceptually similar; DDI-CDI AgentInRole is a DataType so cannot be sourceClass.",
           "confidence": 0.8
-        }
+        },
+        "sourceUri": "schema:Person"
       },
       {
         "_comment": "schema:DefinedTerm - controlled-vocabulary term used in keywords, additionalType, etc. Loose DDI-CDI anchor: Concept.",
@@ -691,7 +815,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
@@ -700,7 +825,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "termCode",
@@ -709,7 +835,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:termCode"
           },
           {
             "name": "inDefinedTermSet",
@@ -718,7 +845,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:inDefinedTermSet"
           }
         ],
         "sssom": {
@@ -727,7 +855,8 @@
           "predicate_id": "skos:broadMatch",
           "predicate_label": "DefinedTerm is a flat schema.org notion; DDI-CDI Concept is richer (placed in a ConceptSystem).",
           "confidence": 0.6
-        }
+        },
+        "sourceUri": "schema:DefinedTerm"
       },
       {
         "_comment": "Identifier - schema:PropertyValue identifier (used for richly typed identifiers with propertyID/value/url). DDI-CDI's Identifier is a DataType (not a Class), so no sourceClass; SSSOM records the relation.",
@@ -744,7 +873,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:propertyID"
           },
           {
             "name": "value",
@@ -753,7 +883,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:value"
           },
           {
             "name": "url",
@@ -762,7 +893,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:url"
           }
         ],
         "sssom": {
@@ -770,7 +902,8 @@
           "object_label": "CDIF Core Identifier (schema:PropertyValue pattern)",
           "predicate_id": "skos:closeMatch",
           "confidence": 0.8
-        }
+        },
+        "sourceUri": "schema:PropertyValue"
       },
       {
         "_comment": "AdditionalProperty (schema:PropertyValue in the key/value extension role). Distinct from Identifier (also schema:PropertyValue but in the identifier role). The string shorthand permitted for Identifier does NOT apply here - both the property name (propertyID) and the value are required to identify the assertion, so a bare string would be ambiguous. JSON instance MUST be an inline object or @id-reference.",
@@ -786,7 +919,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:propertyID"
           },
           {
             "name": "name",
@@ -795,7 +929,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "value",
@@ -804,7 +939,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:value"
           },
           {
             "name": "unitText",
@@ -813,7 +949,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:unitText"
           },
           {
             "name": "unitCode",
@@ -822,7 +959,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:unitCode"
           }
         ],
         "sssom": {
@@ -831,7 +969,8 @@
           "predicate_id": "skos:closeMatch",
           "confidence": 0.8,
           "comment": "Distinct from Identifier so the union-type policy does not collapse it to a string. See CDIFDiscoveryImplementationGuide.md Polymorphism of PropertyValue."
-        }
+        },
+        "sourceUri": "schema:PropertyValue"
       },
       {
         "_comment": "Reference (the cdif:Reference type â€” local UML class matching the cdifDataType/cdifReference building block). Renamed from the previous 'LabeledLink' stub. Used wherever the JSON schema admits 'cdif:Reference | @id-ref | string' shape (license, conditionsOfAccess, publishingPrinciples, documentation, termsOfService, relatedLink, subjectOf).",
@@ -848,7 +987,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
@@ -857,7 +997,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "url",
@@ -866,7 +1007,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:url"
           },
           {
             "name": "relation",
@@ -875,7 +1017,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "dcterms:relation"
           },
           {
             "name": "hadRole",
@@ -884,7 +1027,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "dcat:hadRole"
           }
         ]
       },
@@ -902,7 +1046,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
@@ -911,7 +1056,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
@@ -920,7 +1066,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           }
         ],
         "sssom": {
@@ -928,7 +1075,8 @@
           "object_label": "CDIF Core MonetaryGrant (schema:MonetaryGrant)",
           "predicate_id": "skos:closeMatch",
           "confidence": 0.85
-        }
+        },
+        "sourceUri": "schema:MonetaryGrant"
       },
       {
         "_comment": "prov:Activity as used by CDIF Core via prov:wasGeneratedBy. Core uses the provProperties/generatedBy building block, which models the activity with ONLY prov:used (a brief reference to instruments/software/protocols). The richer PROV-O activity (provProperties/provActivity) and the schema.org-extended cdifProvActivity BB are used only by the cdifComplete / cdifXAS profiles, NOT by Core/Discovery/DataDescription/DataStructure. Do not add name/description/startedAtTime/etc. here.",
@@ -942,7 +1090,11 @@
             "name": "used",
             "dataType": "XsdAnyUri",
             "definition": "prov:used - an entity (instrument, software, or protocol, by URI) that this activity used.",
-            "multiplicity": { "lower": "0", "upper": "*" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "prov:used"
           }
         ],
         "sssom": {
@@ -950,7 +1102,8 @@
           "object_label": "CDIF Core ProvActivity (prov:Activity)",
           "predicate_id": "skos:exactMatch",
           "confidence": 0.9
-        }
+        },
+        "sourceUri": "prov:Activity"
       },
       {
         "_comment": "DerivedFrom - schema for prov:wasDerivedFrom sources. No DDI-CDI counterpart; plain new.",
@@ -966,7 +1119,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
@@ -975,7 +1129,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "url",
@@ -984,7 +1139,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "schema:url"
           },
           {
             "name": "relation",
@@ -993,7 +1149,8 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "dcterms:relation"
           },
           {
             "name": "hadRole",
@@ -1002,9 +1159,11 @@
             "multiplicity": {
               "lower": "0",
               "upper": "1"
-            }
+            },
+            "sourceUri": "dcat:hadRole"
           }
-        ]
+        ],
+        "sourceUri": "prov:wasDerivedFrom"
       },
       {
         "_comment": "CdifCatalogRecord - the schema:subjectOf target carrying dcterms:conformsTo (which references the cdif/core/1.1 profile URI). Required on every CDIF resource. No DDI-CDI Class counterpart; CatalogDetails is a DataType, not a Class.",
@@ -1020,7 +1179,8 @@
             "multiplicity": {
               "lower": "1",
               "upper": "*"
-            }
+            },
+            "sourceUri": "schema:additionalType"
           },
           {
             "name": "conformsTo",
@@ -1029,19 +1189,28 @@
             "multiplicity": {
               "lower": "1",
               "upper": "*"
-            }
+            },
+            "sourceUri": "dcterms:conformsTo"
           },
           {
             "name": "sdDatePublished",
             "dataType": "XsdDate",
             "definition": "schema:sdDatePublished - date the structured data (this metadata record) was published / last updated.",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:sdDatePublished"
           },
           {
             "name": "includedInDataCatalog",
             "dataType": "Reference",
             "definition": "schema:includedInDataCatalog - the source data catalog the metadata record originates from (a schema:DataCatalog reference).",
-            "multiplicity": { "lower": "0", "upper": "1" }
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:includedInDataCatalog"
           }
         ],
         "sssom": {
@@ -1049,7 +1218,8 @@
           "object_label": "CDIF Core CatalogRecord (schema:subjectOf target)",
           "predicate_id": "skos:closeMatch",
           "confidence": 0.75
-        }
+        },
+        "sourceUri": "dcat:CatalogRecord"
       },
       {
         "_comment": "CdifConceptOrTerm - union shorthand: a concept reference (skos:Concept) OR a defined term (schema:DefinedTerm). In JSON instances the value MAY be replaced by a plain string interpreted as the @id / prefLabel / termCode of the underlying ref. Used as the value type of cdif:uses, schema:linkRelationship, and other concept-or-term properties; declared in Core so downstream profiles inherit (or restate) it.",
@@ -1063,7 +1233,11 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI of the concept or term being referenced.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
         ]
       },
@@ -1079,7 +1253,11 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI when the concept-or-term branch is used; absent when the value is a plain string.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
         ]
       }
@@ -1091,7 +1269,11 @@
         "subjectClass": "WebAPI",
         "objectClass": "Action",
         "definition": "schema:potentialAction - an Action (operation) invocable via this WebAPI.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "schema:potentialAction"
       },
       {
         "_comment": "schema:target - the EntryPoint (endpoint + request syntax) for the Action.",
@@ -1099,7 +1281,11 @@
         "subjectClass": "Action",
         "objectClass": "EntryPoint",
         "definition": "schema:target - the request target (endpoint and syntax) used to invoke the Action.",
-        "objectClassMultiplicity": { "lower": "1", "upper": "1" }
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "1"
+        },
+        "sourceUri": "schema:target"
       },
       {
         "_comment": "schema:result - the ActionResult describing the Action response serialization.",
@@ -1107,7 +1293,11 @@
         "subjectClass": "Action",
         "objectClass": "ActionResult",
         "definition": "schema:result - the expected representation (encoding format, conformance) of the Action response.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "sourceUri": "schema:result"
       },
       {
         "_comment": "schema:query-input - the parameter specifications for the Action urlTemplate.",
@@ -1115,21 +1305,33 @@
         "subjectClass": "Action",
         "objectClass": "PropertyValueSpecification",
         "definition": "schema:query-input - explanations of the parameters used in the target URL template.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "schema:query-input"
       },
       {
         "targetAssociationName": "Dataset_provider_Agent",
         "subjectClass": "Dataset",
         "objectClass": "Agent",
         "definition": "schema:provider - the agent providing access to the dataset. The Agent supertype admits Person or Organization.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "*" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "schema:provider"
       },
       {
         "targetAssociationName": "CatalogRecord_about_Dataset",
         "subjectClass": "CatalogRecord",
         "objectClass": "Dataset",
         "definition": "schema:about - the resource this metadata record (CatalogRecord) describes.",
-        "objectClassMultiplicity": { "lower": "0", "upper": "1" }
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "sourceUri": "schema:about"
       },
       {
         "_comment": "schema:distribution - single association on the AbstractDistribution supertype; replaces the previous Dataset_distribution_DataDownload + Dataset_distribution_WebAPI pair. Instance @type carries the concrete kind (schema:DataDownload or schema:WebAPI).",
@@ -1140,7 +1342,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:distribution"
       },
       {
         "_comment": "schema:creator - single association ending on the abstract Agent supertype. Replaces the previous pair of Dataset_creator_Person + Dataset_creator_Organization (which produced two visually overlapping associations in EA). The instance is either a Person or an Organization by virtue of Agent's generalization.",
@@ -1151,7 +1354,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:creator"
       },
       {
         "targetAssociationName": "Dataset_contributor_Contributor",
@@ -1161,7 +1365,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:contributor"
       },
       {
         "_comment": "schema:contributor - the Agent (Person or Organization) playing this role (the agentInRole BB names this slot 'contributor'). Single association on the Agent supertype; replaces the previous Contributor_agent_Person + Contributor_agent_Organization pair.",
@@ -1172,7 +1377,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "1"
-        }
+        },
+        "sourceUri": "schema:contributor"
       },
       {
         "_comment": "schema:publisher - single association on the Agent supertype; replaces the previous Dataset_publisher_Person + Dataset_publisher_Organization pair.",
@@ -1183,7 +1389,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "1"
-        }
+        },
+        "sourceUri": "schema:publisher"
       },
       {
         "targetAssociationName": "Dataset_funding_MonetaryGrant",
@@ -1193,7 +1400,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:funding"
       },
       {
         "_comment": "schema:funder - widened from Organization-only to Agent so a Person funder is also admissible (schema.org schema:funder accepts both).",
@@ -1204,7 +1412,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:funder"
       },
       {
         "targetAssociationName": "Dataset_wasGeneratedBy_ProvActivity",
@@ -1214,7 +1423,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "prov:wasGeneratedBy"
       },
       {
         "targetAssociationName": "Dataset_wasDerivedFrom_DerivedFrom",
@@ -1224,7 +1434,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "prov:wasDerivedFrom"
       },
       {
         "targetAssociationName": "Dataset_subjectOf_CatalogRecord",
@@ -1234,7 +1445,8 @@
         "objectClassMultiplicity": {
           "lower": "1",
           "upper": "1"
-        }
+        },
+        "sourceUri": "schema:subjectOf"
       },
       {
         "targetAssociationName": "Dataset_keywords_DefinedTerm",
@@ -1244,7 +1456,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:keywords"
       },
       {
         "targetAssociationName": "Dataset_license_Reference",
@@ -1254,7 +1467,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:license"
       },
       {
         "_comment": "schema:provider on DataDownload (per the dataDownload BB). The Agent supertype admits Person or Organization.",
@@ -1265,7 +1479,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "*"
-        }
+        },
+        "sourceUri": "schema:provider"
       },
       {
         "_comment": "schema:maintainer on CatalogRecord (per the cdifCatalogRecord BB). The Agent supertype admits Person or Organization.",
@@ -1276,7 +1491,8 @@
         "objectClassMultiplicity": {
           "lower": "0",
           "upper": "1"
-        }
+        },
+        "sourceUri": "schema:maintainer"
       }
     ]
   }

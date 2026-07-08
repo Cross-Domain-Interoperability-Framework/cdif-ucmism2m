@@ -146,13 +146,64 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFConceptScheme.ConceptScheme" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme"/>
-                  <body>A SKOS Concept Scheme - a controlled vocabulary aggregating one or more SKOS Concepts. Required attributes: @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (at least one). The metadata record describing this scheme (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:ConceptScheme
+
+Definition
+..........
+A set of concepts, optionally including statements about semantic relationships between those concepts.
+
+
+CDIF
+----
+
+Definition
+..........
+Profile module for SKOS concept schemes used as controlled vocabularies in CDIF metadata. Thin wrapper around skosConceptScheme.
+
+Scope
+.....
+A SKOS Concept Scheme - a controlled vocabulary aggregating one or more SKOS Concepts. Required attributes: @type (containing skos:ConceptScheme), skos:prefLabel, skos:definition, skos:hasTopConcept (at least one). The metadata record describing this scheme (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.
+</body>
                </ownedComment>
                <name>ConceptScheme</name>
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-identifier" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-identifier"/>
-                     <body>@id - URI identifier for this concept scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id - URI identifier for this concept scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -166,7 +217,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-prefLabel"/>
-                     <body>skos:prefLabel - preferred lexical label for the concept scheme. Required. May be a plain string or a language-tagged value (LanguageTaggedValue is collapsed to String per the union-type policy).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:prefLabel
+
+Definition
+..........
+A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.
+
+
+CDIF
+----
+
+Definition
+..........
+Preferred lexical label for the concept scheme. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.
+
+Scope
+.....
+skos:prefLabel - preferred lexical label for the concept scheme. Required. May be a plain string or a language-tagged value (LanguageTaggedValue is collapsed to String per the union-type policy).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -180,7 +256,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-altLabel" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-altLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-altLabel"/>
-                     <body>skos:altLabel - alternative lexical labels (acronyms, abbreviations, spelling variants).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:altLabel
+
+Definition
+..........
+The range of skos:altLabel is the class of RDF plain literals.
+
+
+CDIF
+----
+
+Definition
+..........
+Alternative lexical labels (acronyms, abbreviations, spelling variants).
+
+Scope
+.....
+skos:altLabel - alternative lexical labels (acronyms, abbreviations, spelling variants).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-altLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-altLabel-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -194,7 +295,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-definition" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-definition"/>
-                     <body>skos:definition - formal explanation of the meaning or purpose of this concept scheme. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:definition
+
+Definition
+..........
+A statement or formal explanation of the meaning of a concept.
+
+
+CDIF
+----
+
+Definition
+..........
+Formal explanation of the meaning or purpose of this concept scheme.
+
+Scope
+.....
+skos:definition - formal explanation of the meaning or purpose of this concept scheme. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-definition-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -208,7 +334,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-notation" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-notation"/>
-                     <body>skos:notation - classification code or notation for this concept scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:notation
+
+Definition
+..........
+A notation, also known as classification code, is a string of characters such as "T58.5" or "303.4833" used to uniquely identify a concept within the scope of a given concept scheme.
+
+
+CDIF
+----
+
+Definition
+..........
+Classification code or notation for this concept scheme.
+
+Scope
+.....
+skos:notation - classification code or notation for this concept scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-notation-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -222,7 +373,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-note" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-note-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-note"/>
-                     <body>skos:note - general note about the concept scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:note
+
+Definition
+..........
+A general note, for any purpose.
+
+
+CDIF
+----
+
+Definition
+..........
+General note about the concept scheme.
+
+Scope
+.....
+skos:note - general note about the concept scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-note-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-note-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -236,7 +412,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-version" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-version-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-version"/>
-                     <body>schema:version - version identifier for the concept scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:version
+
+Definition
+..........
+The version of the CreativeWork embodied by a specified resource.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork).
+Range: Number (https://schema.org/Number), Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+Version identifier for the concept scheme.
+
+Scope
+.....
+schema:version - version identifier for the concept scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-version-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-version-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -250,7 +456,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-subjectOf"/>
-                     <body>schema:subjectOf - the catalog record describing this concept scheme's metadata. For a CDIF concept scheme, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:subjectOf
+
+Definition
+..........
+A CreativeWork or Event about this Thing.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: CreativeWork (https://schema.org/CreativeWork), Event (https://schema.org/Event).
+
+
+CDIF
+----
+
+Definition
+..........
+Catalog record describing this concept scheme as CDIF-conformant metadata. Must declare conformance to the cdifConceptScheme profile via dcterms:conformsTo and be typed as schema:Dataset with schema:additionalType including dcat:CatalogRecord.
+
+Scope
+.....
+schema:subjectOf - the catalog record describing this concept scheme's metadata. For a CDIF concept scheme, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -265,7 +501,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.ConceptScheme-hasTopConcept"/>
-                     <body>skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:hasTopConcept
+
+Definition
+..........
+Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies.
+
+Scope
+.....
+Domain: Concept Scheme (http://www.w3.org/2004/02/skos/core#ConceptScheme).
+Range: Concept (http://www.w3.org/2004/02/skos/core#Concept).
+
+
+CDIF
+----
+
+Definition
+..........
+Top-level concepts in this scheme. Each item is a skos:Concept (inline or @id reference).
+
+Scope
+.....
+skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.ConceptScheme-hasTopConcept-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#ConceptScheme-hasTopConcept-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -281,13 +547,60 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFConceptScheme.Concept" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFConceptScheme.Concept-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFConceptScheme.Concept"/>
-                  <body>A SKOS Concept member of a ConceptScheme. Must have @type (containing skos:Concept), skos:prefLabel, and skos:notation. Optionally carries skos:definition, skos:note, skos:inScheme (back-pointer to its scheme), and hierarchical skos:broader / skos:narrower links to other concepts.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:Concept
+
+Definition
+..........
+An idea or notion; a unit of thought.
+
+
+CDIF
+----
+
+Definition
+..........
+A SKOS Concept member of a ConceptScheme. Must have @type (containing skos:Concept), skos:prefLabel, and skos:notation. Optionally carries skos:definition, skos:note, skos:inScheme (back-pointer to its scheme), and hierarchical skos:broader / skos:narrower links to other concepts.
+</body>
                </ownedComment>
                <name>Concept</name>
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-identifier" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-identifier"/>
-                     <body>@id - URI identifier for this concept.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id - URI identifier for this concept.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -301,7 +614,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-prefLabel" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-prefLabel"/>
-                     <body>skos:prefLabel - preferred lexical label for this concept. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:prefLabel
+
+Definition
+..........
+A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.
+
+
+CDIF
+----
+
+Definition
+..........
+Preferred lexical label for the concept scheme. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.
+
+Scope
+.....
+skos:prefLabel - preferred lexical label for this concept. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -315,7 +653,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-notation" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-notation"/>
-                     <body>skos:notation - classification code for this concept within a scheme. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:notation
+
+Definition
+..........
+A notation, also known as classification code, is a string of characters such as "T58.5" or "303.4833" used to uniquely identify a concept within the scope of a given concept scheme.
+
+
+CDIF
+----
+
+Definition
+..........
+Classification code or notation for this concept scheme.
+
+Scope
+.....
+skos:notation - classification code for this concept within a scheme. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-notation-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -329,7 +692,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-definition" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-definition"/>
-                     <body>skos:definition - formal explanation of the meaning of this concept.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:definition
+
+Definition
+..........
+A statement or formal explanation of the meaning of a concept.
+
+
+CDIF
+----
+
+Definition
+..........
+Formal explanation of the meaning or purpose of this concept scheme.
+
+Scope
+.....
+skos:definition - formal explanation of the meaning of this concept.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-definition-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -343,7 +731,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-note" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-note-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-note"/>
-                     <body>skos:note - general note about this concept.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:note
+
+Definition
+..........
+A general note, for any purpose.
+
+
+CDIF
+----
+
+Definition
+..........
+General note about the concept scheme.
+
+Scope
+.....
+skos:note - general note about this concept.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-note-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-note-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -357,7 +770,36 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-inScheme"/>
-                     <body>skos:inScheme - the ConceptScheme(s) this concept belongs to. Optional in the conceptScheme profile (the containment via skos:hasTopConcept implies it for top concepts; required only when the concept reference is by @id outside a containing scheme).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:inScheme
+
+Definition
+..........
+Relates a resource (for example a concept) to a concept scheme in which it is included.
+
+Scope
+.....
+Range: Concept Scheme (http://www.w3.org/2004/02/skos/core#ConceptScheme).
+
+
+CDIF
+----
+
+Definition
+..........
+Concept scheme(s) this concept belongs to.
+
+Scope
+.....
+skos:inScheme - the ConceptScheme(s) this concept belongs to. Optional in the conceptScheme profile (the containment via skos:hasTopConcept implies it for top concepts; required only when the concept reference is by @id outside a containing scheme).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-inScheme-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-inScheme-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -372,7 +814,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-broader" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-broader-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-broader"/>
-                     <body>skos:broader - parent (broader) concepts in the hierarchy.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:broader
+
+Definition
+..........
+Broader concepts are typically rendered as parents in a concept hierarchy (tree).
+
+
+CDIF
+----
+
+Definition
+..........
+Broader (parent) concepts in the hierarchy. Items are inline concept objects or @id references.
+
+Scope
+.....
+skos:broader - parent (broader) concepts in the hierarchy.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-broader-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-broader-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -387,7 +854,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.Concept-narrower" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.Concept-narrower-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.Concept-narrower"/>
-                     <body>skos:narrower - child (narrower) concepts in the hierarchy. Each inline child SHOULD also declare skos:broader pointing back to this parent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:narrower
+
+Definition
+..........
+Narrower concepts are typically rendered as children in a concept hierarchy (tree).
+
+
+CDIF
+----
+
+Definition
+..........
+Narrower (child) concepts in the hierarchy. Items are inline concept objects or @id references.
+
+Scope
+.....
+skos:narrower - child (narrower) concepts in the hierarchy. Each inline child SHOULD also declare skos:broader pointing back to this parent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.Concept-narrower-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#Concept-narrower-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -403,13 +895,61 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFConceptScheme.CatalogRecord" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord"/>
-                  <body>Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the conceptScheme profile, dcterms:conformsTo MUST include https://w3id.org/cdif/conceptscheme/1.1.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcat:CatalogRecord
+
+Definition
+..........
+A record in a data catalog, describing the registration of a single dataset or data service.
+
+
+CDIF
+----
+
+Definition
+..........
+Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the conceptScheme profile, dcterms:conformsTo MUST include https://w3id.org/cdif/conceptscheme/1.1.
+</body>
                </ownedComment>
                <name>CatalogRecord</name>
                <ownedAttribute xmi:id="CDIFConceptScheme.CatalogRecord-additionalType" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord-additionalType"/>
-                     <body>schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:additionalType
+
+Definition
+..........
+An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. Typically the value is a URI-identified RDF class, and in this case corresponds to the
+    use of rdf:type in RDF. Text values can be used sparingly, for cases where useful information can be added without their being an appropriate schema to reference. In the case of text values, the class label should follow the schema.org &lt;a href="https://schema.org/docs/styleguide.html"&gt;style guide&lt;/a&gt;.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.CatalogRecord-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -423,7 +963,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord-conformsTo"/>
-                     <body>dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/conceptscheme/1.1 for the conceptScheme profile.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcterms:conformsTo
+
+Definition
+..........
+An established standard to which the described resource conforms.
+
+
+CDIF
+----
+
+Definition
+..........
+dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/conceptscheme/1.1 for the conceptScheme profile.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -437,7 +998,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFConceptScheme.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFConceptScheme.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFConceptScheme.CatalogRecord-about"/>
-                     <body>schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:about
+
+Definition
+..........
+The subject matter of an object.
+
+Scope
+.....
+Domain: Certification (https://schema.org/Certification), CommunicateAction (https://schema.org/CommunicateAction), CreativeWork (https://schema.org/CreativeWork), DefinedTerm (https://schema.org/DefinedTerm), DefinedTermSet (https://schema.org/DefinedTermSet), Event (https://schema.org/Event).
+Range: Thing (https://schema.org/Thing).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFConceptScheme.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/conceptscheme/1.1/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>

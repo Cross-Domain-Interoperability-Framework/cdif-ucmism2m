@@ -155,13 +155,51 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFCodelist.ConceptScheme" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFCodelist.ConceptScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme"/>
-                  <body>A SKOS Concept Scheme - an aggregation of one or more SKOS Concepts forming a controlled vocabulary or codelist. The metadata record describing this scheme (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/codelist/1.1.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:ConceptScheme
+
+Definition
+..........
+A set of concepts, optionally including statements about semantic relationships between those concepts.
+
+
+CDIF
+----
+
+Definition
+..........
+A controlled-vocabulary codelist implemented as a skos:ConceptScheme constrained for CDIF use. The scheme must have a resolvable @id and identify its top concepts via skos:hasTopConcept; each concept (CdifCodelistConcept) must have a resolvable @id, skos:inScheme, skos:prefLabel, and skos:notation. Hierarchical concepts must declare both skos:narrower (for JSON tree traversal) and skos:broader (for upward navigation) where hierarchy exists. CDIF metadata properties (schema:identifier, schema:dateModified, schema:license or schema:conditionsOfAccess) take precedence over the equivalent dcterms properties from the base skos:ConceptScheme.
+
+Scope
+.....
+A SKOS Concept Scheme - an aggregation of one or more SKOS Concepts forming a controlled vocabulary or codelist. The metadata record describing this scheme (schema:subjectOf &gt; CatalogRecord) MUST declare conformance to https://w3id.org/cdif/codelist/1.1.
+</body>
                </ownedComment>
                <name>ConceptScheme</name>
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-identifier"/>
-                     <body>@id - resolvable URI for the concept scheme. Required.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+Primary identifier for the codelist. May be a string URI or a structured PropertyValue.
+
+Scope
+.....
+@id - resolvable URI for the concept scheme. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -175,7 +213,49 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-prefLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-prefLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-prefLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-prefLabel"/>
-                     <body>skos:prefLabel - the preferred lexical label for the concept scheme. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:prefLabel
+
+Definition
+..........
+A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.
+
+
+CDIF
+----
+
+Definition
+..........
+Preferred lexical label for the concept scheme. Required. A single
+string, a single language-tagged value, or an array of language-tagged
+values.
+
+**Uniqueness rule.** Each language should appear at most once in the
+set of prefLabel values. Two prefLabel values with duplicate `@language`
+tags are non-conformant. Consumers may reject or arbitrarily pick one.
+
+**Multilinguality.** For codelists intended for multilingual use,
+supply an array of language-tagged values — one per supported locale.
+When a bare string is supplied (no `@language` tag), consumers treat
+it as untagged and MAY infer the language from the enclosing document's
+`@context` or from `schema:inLanguage` on the codelist itself.
+
+**Relationship to skos:altLabel.** Alternate labels (acronyms,
+spelling variants, obsolete names) go on `skos:altLabel`, NOT on
+`prefLabel`. A concept scheme has exactly one preferred label per
+language.
+
+Scope
+.....
+skos:prefLabel - the preferred lexical label for the concept scheme. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -189,7 +269,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-definition" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-definition-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-definition"/>
-                     <body>skos:definition - formal explanation of the meaning or purpose of this concept scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:definition
+
+Definition
+..........
+A statement or formal explanation of the meaning of a concept.
+
+
+CDIF
+----
+
+Definition
+..........
+Formal explanation of the meaning or purpose of this concept scheme.
+
+Scope
+.....
+skos:definition - formal explanation of the meaning or purpose of this concept scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-definition-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -203,7 +308,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-note" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-note" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-note-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-note-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-note"/>
-                     <body>skos:note - general note about the concept scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:note
+
+Definition
+..........
+A general note, for any purpose.
+
+
+CDIF
+----
+
+Definition
+..........
+General note about the concept scheme.
+
+Scope
+.....
+skos:note - general note about the concept scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-note-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-note-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -217,7 +347,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-dateModified" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-dateModified" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-dateModified-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-dateModified-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-dateModified"/>
-                     <body>schema:dateModified - ISO 8601 date when the codelist was last modified. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:dateModified
+
+Definition
+..........
+The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork), DataFeedItem (https://schema.org/DataFeedItem).
+Range: Date (https://schema.org/Date), DateTime (https://schema.org/DateTime).
+
+
+CDIF
+----
+
+Definition
+..........
+ISO 8601 date when the codelist was last modified.
+
+Scope
+.....
+schema:dateModified - ISO 8601 date when the codelist was last modified. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-dateModified-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-dateModified-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -231,7 +391,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-url" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-url-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-url-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-url"/>
-                     <body>schema:url - web location of a page describing the codelist.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:url
+
+Definition
+..........
+URL of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Web location of a page describing the codelist.
+
+Scope
+.....
+schema:url - web location of a page describing the codelist.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-url-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-url-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -245,7 +435,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-license" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-license" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-license-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-license-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-license"/>
-                     <body>schema:license - license for the codelist. Either schema:license OR schema:conditionsOfAccess is required (anyOf).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:license
+
+Definition
+..........
+A license document that applies to this content, typically indicated by URL.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork).
+Range: CreativeWork (https://schema.org/CreativeWork), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+License for the codelist.
+
+Scope
+.....
+schema:license - license for the codelist. Either schema:license OR schema:conditionsOfAccess is required (anyOf).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-license-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-license-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -259,7 +479,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-conditionsOfAccess" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-conditionsOfAccess-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-conditionsOfAccess"/>
-                     <body>schema:conditionsOfAccess - text statement of access conditions. Either schema:license OR schema:conditionsOfAccess is required (anyOf).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:conditionsOfAccess
+
+Definition
+..........
+Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an [[ArchiveComponent]] held by an [[ArchiveOrganization]]. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.\n\nFor example "Available by appointment from the Reading Room" or "Accessible only from logged-in accounts ".
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+Text statement of access conditions for the codelist.
+
+Scope
+.....
+schema:conditionsOfAccess - text statement of access conditions. Either schema:license OR schema:conditionsOfAccess is required (anyOf).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-conditionsOfAccess-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-conditionsOfAccess-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -273,7 +523,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-subjectOf" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-subjectOf" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-subjectOf-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-subjectOf"/>
-                     <body>schema:subjectOf - the catalog record describing this codelist's metadata. For a CDIF codelist, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/codelist/1.1.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:subjectOf
+
+Definition
+..........
+A CreativeWork or Event about this Thing.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: CreativeWork (https://schema.org/CreativeWork), Event (https://schema.org/Event).
+
+
+CDIF
+----
+
+Definition
+..........
+Catalog record describing this codelist as CDIF-conformant metadata. Must declare conformance to the cdifCodelist profile via dcterms:conformsTo and be typed as schema:Dataset with schema:additionalType including dcat:CatalogRecord.
+
+Scope
+.....
+schema:subjectOf - the catalog record describing this codelist's metadata. For a CDIF codelist, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/codelist/1.1.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -288,7 +568,20 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-identifier-Identifier"/>
-                     <body>schema:identifier - the structured (PropertyValue) form of the codelist's primary identifier. Required (either as string URI or as Identifier).</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+Primary identifier for the codelist. May be a string URI or a structured PropertyValue.
+
+Scope
+.....
+schema:identifier - the structured (PropertyValue) form of the codelist's primary identifier. Required (either as string URI or as Identifier).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-identifier-Identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-identifier-Identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -303,7 +596,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-hasTopConcept" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-hasTopConcept-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.ConceptScheme-hasTopConcept"/>
-                     <body>skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:hasTopConcept
+
+Definition
+..........
+Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies.
+
+Scope
+.....
+Domain: Concept Scheme (http://www.w3.org/2004/02/skos/core#ConceptScheme).
+Range: Concept (http://www.w3.org/2004/02/skos/core#Concept).
+
+
+CDIF
+----
+
+Definition
+..........
+Top-level concepts that have no skos:broader in this scheme. Required for hierarchical codelists.
+
+Scope
+.....
+skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.ConceptScheme-hasTopConcept-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#ConceptScheme-hasTopConcept-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -319,13 +642,47 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFCodelist.Concept" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFCodelist.Concept-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCodelist.Concept"/>
-                  <body>A SKOS Concept constrained for CDIF codelist use. Must have a resolvable @id, skos:inScheme (back-pointer to its ConceptScheme), skos:prefLabel, and skos:notation. Hierarchical concepts must declare both skos:narrower (downward) and skos:broader (upward).</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:Concept
+
+Definition
+..........
+An idea or notion; a unit of thought.
+
+
+CDIF
+----
+
+Definition
+..........
+A SKOS Concept constrained for CDIF codelist use. Must have a resolvable @id, skos:inScheme (back-pointer to its ConceptScheme), skos:prefLabel, and skos:notation. Hierarchical concepts must declare both skos:narrower (downward) and skos:broader (upward).
+</body>
                </ownedComment>
                <name>Concept</name>
                <ownedAttribute xmi:id="CDIFCodelist.Concept-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-identifier"/>
-                     <body>@id - globally unique, resolvable URI for this concept. Required.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+Primary identifier for the codelist. May be a string URI or a structured PropertyValue.
+
+Scope
+.....
+@id - globally unique, resolvable URI for this concept. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -339,7 +696,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Concept-prefLabel" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-prefLabel" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-prefLabel-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-prefLabel-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-prefLabel"/>
-                     <body>skos:prefLabel - preferred lexical label for this concept. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:prefLabel
+
+Definition
+..........
+A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.
+
+
+CDIF
+----
+
+Definition
+..........
+Preferred lexical label for this concept. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.
+
+Scope
+.....
+skos:prefLabel - preferred lexical label for this concept. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-prefLabel-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-prefLabel-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -353,7 +735,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Concept-notation" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-notation" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-notation-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-notation-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-notation"/>
-                     <body>skos:notation - classification code for this concept within the scheme. Required.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:notation
+
+Definition
+..........
+A notation, also known as classification code, is a string of characters such as "T58.5" or "303.4833" used to uniquely identify a concept within the scope of a given concept scheme.
+
+
+CDIF
+----
+
+Definition
+..........
+Classification code for this concept within a scheme.
+
+Scope
+.....
+skos:notation - classification code for this concept within the scheme. Required.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-notation-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-notation-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -367,7 +774,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Concept-definition" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-definition" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-definition-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-definition-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-definition"/>
-                     <body>skos:definition - formal definition of this concept. Optional in CDIF.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:definition
+
+Definition
+..........
+A statement or formal explanation of the meaning of a concept.
+
+
+CDIF
+----
+
+Definition
+..........
+Formal definition of this concept. Optional for CDIF codelist concepts. A plain string.
+
+Scope
+.....
+skos:definition - formal definition of this concept. Optional in CDIF.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-definition-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-definition-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -381,7 +813,36 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Concept-inScheme" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-inScheme" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-inScheme-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-inScheme-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-inScheme"/>
-                     <body>skos:inScheme - the ConceptScheme(s) this concept belongs to. Required for every CDIF codelist concept.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:inScheme
+
+Definition
+..........
+Relates a resource (for example a concept) to a concept scheme in which it is included.
+
+Scope
+.....
+Range: Concept Scheme (http://www.w3.org/2004/02/skos/core#ConceptScheme).
+
+
+CDIF
+----
+
+Definition
+..........
+The concept scheme this concept belongs to. Required for CDIF codelist concepts.
+
+Scope
+.....
+skos:inScheme - the ConceptScheme(s) this concept belongs to. Required for every CDIF codelist concept.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-inScheme-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-inScheme-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -396,7 +857,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Concept-broader" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-broader" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-broader-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-broader-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-broader"/>
-                     <body>skos:broader - parent (broader) concepts in the hierarchy. Required on any concept that appears as a skos:narrower of another.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:broader
+
+Definition
+..........
+Broader concepts are typically rendered as parents in a concept hierarchy (tree).
+
+
+CDIF
+----
+
+Definition
+..........
+Broader (parent) concepts. Required on any concept that appears as a skos:narrower value of another concept. CDIF requires both directions to be explicit for hierarchy traversal.
+
+Scope
+.....
+skos:broader - parent (broader) concepts in the hierarchy. Required on any concept that appears as a skos:narrower of another.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-broader-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-broader-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -411,7 +897,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Concept-narrower" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-narrower" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Concept-narrower-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-narrower-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Concept-narrower"/>
-                     <body>skos:narrower - child (narrower) concepts in the hierarchy. Each inline child must also declare skos:broader pointing back to this parent.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+skos:narrower
+
+Definition
+..........
+Narrower concepts are typically rendered as children in a concept hierarchy (tree).
+
+
+CDIF
+----
+
+Definition
+..........
+Narrower (child) concepts. If present, each inline concept must also declare skos:broader pointing back to the parent concept. Both skos:narrower and skos:broader must be explicit in CDIF codelists.
+
+Scope
+.....
+skos:narrower - child (narrower) concepts in the hierarchy. Each inline child must also declare skos:broader pointing back to this parent.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Concept-narrower-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Concept-narrower-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -427,13 +938,67 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFCodelist.Identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFCodelist.Identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCodelist.Identifier"/>
-                  <body>schema:PropertyValue form of schema:identifier. Used when the codelist needs a structured identifier (propertyID + value + url) instead of a plain URI string.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:PropertyValue
+
+Definition
+..........
+A property-value pair, e.g. representing a feature of a product or place. Use the 'name' property for the name of the property. If there is an additional human-readable version of the value, put that into the 'description' property.\n\n Always use specific schema.org properties when a) they exist and b) you can populate them. Using PropertyValue as a substitute will typically not trigger the same effect as using the original, specific property.
+
+Scope
+.....
+Parent class(es): StructuredValue (https://schema.org/StructuredValue).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:PropertyValue form of schema:identifier. Used when the codelist needs a structured identifier (propertyID + value + url) instead of a plain URI string.
+</body>
                </ownedComment>
                <name>Identifier</name>
                <ownedAttribute xmi:id="CDIFCodelist.Identifier-propertyId" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-propertyId" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Identifier-propertyId-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-propertyId-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Identifier-propertyId"/>
-                     <body>schema:propertyID - URI of the identifier scheme (e.g. doi:, orcid:).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:propertyID
+
+Definition
+..........
+A commonly used identifier for the characteristic represented by the property, e.g. a manufacturer or a standard code for a property. propertyID can be
+(1) a prefixed string, mainly meant to be used with standards for product properties; (2) a site-specific, non-prefixed string (e.g. the primary key of the property or the vendor-specific ID of the property), or (3)
+a URL indicating the type of the property, either pointing to an external vocabulary, or a Web resource that describes the property (e.g. a glossary entry).
+Standards bodies should promote a standard prefix for the identifiers of properties from their standards.
+
+Scope
+.....
+Domain: PropertyValue (https://schema.org/PropertyValue).
+Range: Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:propertyID - URI of the identifier scheme (e.g. doi:, orcid:).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Identifier-propertyId-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-propertyId-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -447,7 +1012,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Identifier-value" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-value" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Identifier-value-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-value-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Identifier-value"/>
-                     <body>schema:value - the identifier value within that scheme.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:value
+
+Definition
+..........
+The value of a [[QuantitativeValue]] (including [[Observation]]) or property value node.\n\n* For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type for values is 'Number'.\n* For [[PropertyValue]], it can be 'Text', 'Number', 'Boolean', or 'StructuredValue'.\n* Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similar Unicode symbols.\n* Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+
+Scope
+.....
+Domain: MonetaryAmount (https://schema.org/MonetaryAmount), PropertyValue (https://schema.org/PropertyValue), QuantitativeValue (https://schema.org/QuantitativeValue).
+Range: Boolean (https://schema.org/Boolean), Number (https://schema.org/Number), StructuredValue (https://schema.org/StructuredValue), Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:value - the identifier value within that scheme.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Identifier-value-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-value-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -461,7 +1052,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Identifier-url" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Identifier-url-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-url-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Identifier-url"/>
-                     <body>schema:url - resolvable URL form of the identifier.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:url
+
+Definition
+..........
+URL of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Web location of a page describing the codelist.
+
+Scope
+.....
+schema:url - resolvable URL form of the identifier.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Identifier-url-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Identifier-url-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -476,13 +1097,61 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFCodelist.CatalogRecord" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFCodelist.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCodelist.CatalogRecord"/>
-                  <body>Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the codelist profile, dcterms:conformsTo MUST include https://w3id.org/cdif/codelist/1.1.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcat:CatalogRecord
+
+Definition
+..........
+A record in a data catalog, describing the registration of a single dataset or data service.
+
+
+CDIF
+----
+
+Definition
+..........
+Stub of CDIFCore::CatalogRecord (the metadata-about-the-metadata node carried at schema:subjectOf on a ConceptScheme). For the codelist profile, dcterms:conformsTo MUST include https://w3id.org/cdif/codelist/1.1.
+</body>
                </ownedComment>
                <name>CatalogRecord</name>
                <ownedAttribute xmi:id="CDIFCodelist.CatalogRecord-additionalType" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-additionalType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.CatalogRecord-additionalType-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-additionalType-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.CatalogRecord-additionalType"/>
-                     <body>schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:additionalType
+
+Definition
+..........
+An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. Typically the value is a URI-identified RDF class, and in this case corresponds to the
+    use of rdf:type in RDF. Text values can be used sparingly, for cases where useful information can be added without their being an appropriate schema to reference. In the case of text values, the class label should follow the schema.org &lt;a href="https://schema.org/docs/styleguide.html"&gt;style guide&lt;/a&gt;.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.CatalogRecord-additionalType-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-additionalType-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -496,7 +1165,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.CatalogRecord-conformsTo"/>
-                     <body>dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/codelist/1.1 for the codelist profile.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcterms:conformsTo
+
+Definition
+..........
+An established standard to which the described resource conforms.
+
+
+CDIF
+----
+
+Definition
+..........
+dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/codelist/1.1 for the codelist profile.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -510,7 +1200,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.CatalogRecord-about" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-about" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.CatalogRecord-about-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-about-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.CatalogRecord-about"/>
-                     <body>schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:about
+
+Definition
+..........
+The subject matter of an object.
+
+Scope
+.....
+Domain: Certification (https://schema.org/Certification), CommunicateAction (https://schema.org/CommunicateAction), CreativeWork (https://schema.org/CreativeWork), DefinedTerm (https://schema.org/DefinedTerm), DefinedTermSet (https://schema.org/DefinedTermSet), Event (https://schema.org/Event).
+Range: Thing (https://schema.org/Thing).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.CatalogRecord-about-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#CatalogRecord-about-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -525,13 +1241,35 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
             <packagedElement xmi:id="CDIFCodelist.Reference" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFCodelist.Reference-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFCodelist.Reference"/>
-                  <body>cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifDataType/cdifReference.</body>
+                  <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+cdif:Reference (stub). A typed reference to an external entity. Full definition in CDIFCore::Reference and cdifDataType/cdifReference.
+</body>
                </ownedComment>
                <name>Reference</name>
                <ownedAttribute xmi:id="CDIFCodelist.Reference-identifier" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Reference-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Reference-identifier"/>
-                     <body>@id - URI of the referenced resource.</body>
+                     <body>Documentation
+=============
+
+CDIF
+----
+
+Definition
+..........
+Primary identifier for the codelist. May be a string URI or a structured PropertyValue.
+
+Scope
+.....
+@id - URI of the referenced resource.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Reference-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -545,7 +1283,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Reference-name" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Reference-name-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Reference-name"/>
-                     <body>schema:name - human-readable label for the URI.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:name
+
+Definition
+..........
+The name of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:name - human-readable label for the URI.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Reference-name-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-name-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -559,7 +1323,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Reference-description" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Reference-description-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-description-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Reference-description"/>
-                     <body>schema:description - short summary of the referenced resource.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:description
+
+Definition
+..........
+A description of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text), TextObject (https://schema.org/TextObject).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:description - short summary of the referenced resource.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Reference-description-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-description-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -573,7 +1363,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "The value space of
                <ownedAttribute xmi:id="CDIFCodelist.Reference-url" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-url" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFCodelist.Reference-url-ownedComment" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-url-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFCodelist.Reference-url"/>
-                     <body>schema:url - resolvable URL (when distinct from the @id).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:url
+
+Definition
+..........
+URL of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Web location of a page describing the codelist.
+
+Scope
+.....
+schema:url - resolvable URL (when distinct from the @id).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFCodelist.Reference-url-lowerValue" xmi:uuid="https://w3id.org/cdif/codelist/1.1/xmi/#Reference-url-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>

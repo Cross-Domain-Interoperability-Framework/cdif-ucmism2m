@@ -1,5 +1,5 @@
 {
-  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "$schema": "ucmis_mapping_configuration.schema.v1.2.json",
   "_comment": "DDI-CDI -> CDIF ConceptScheme profile UML. The profile is defined at metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifConceptScheme/schema.yaml. ConceptScheme is a standalone SKOS-only profile (no composes:) — a thin wrapper around skosConceptScheme. Distinct from cdifCodelist: looser concept shape (no inScheme requirement on top concepts; notation as array; altLabel/note/version added), and no schema:identifier PropertyValue / dateModified / license machinery. The Anchors package re-declares CatalogRecord so the diagram can show the required https://w3id.org/cdif/conceptscheme/1.1 conformance constraint as an attribute on the schema:subjectOf > CatalogRecord node.",
   "transformation": {
     "description": "DDI-CDI to CDIF ConceptScheme Profile",
@@ -49,45 +49,74 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - URI identifier for this concept scheme.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "prefLabel",
             "dataType": "String",
             "definition": "skos:prefLabel - preferred lexical label for the concept scheme. Required. May be a plain string or a language-tagged value (LanguageTaggedValue is collapsed to String per the union-type policy).",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "skos:prefLabel"
           },
           {
             "name": "altLabel",
             "dataType": "String",
             "definition": "skos:altLabel - alternative lexical labels (acronyms, abbreviations, spelling variants).",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "skos:altLabel"
           },
           {
             "name": "definition",
             "dataType": "String",
             "definition": "skos:definition - formal explanation of the meaning or purpose of this concept scheme. Required.",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "skos:definition"
           },
           {
             "name": "notation",
             "dataType": "String",
             "definition": "skos:notation - classification code or notation for this concept scheme.",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "skos:notation"
           },
           {
             "name": "note",
             "dataType": "String",
             "definition": "skos:note - general note about the concept scheme.",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "skos:note"
           },
           {
             "name": "version",
             "dataType": "String",
             "definition": "schema:version - version identifier for the concept scheme.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:version"
           }
-        ]
+        ],
+        "sourceUri": "skos:ConceptScheme"
       },
       {
         "_comment": "skos:Concept - a SKOS Concept member of a scheme. Required attributes per the profile schema (top-concept items): @type (containing skos:Concept), skos:prefLabel, skos:notation. Concepts MAY also carry definition, note, skos:inScheme back-pointer, and hierarchical broader/narrower links. Unlike cdifCodelist's Concept, inScheme is NOT required on top concepts here.",
@@ -101,33 +130,54 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - URI identifier for this concept.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "prefLabel",
             "dataType": "String",
             "definition": "skos:prefLabel - preferred lexical label for this concept. Required.",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "skos:prefLabel"
           },
           {
             "name": "notation",
             "dataType": "String",
             "definition": "skos:notation - classification code for this concept within a scheme. Required.",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "skos:notation"
           },
           {
             "name": "definition",
             "dataType": "String",
             "definition": "skos:definition - formal explanation of the meaning of this concept.",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "skos:definition"
           },
           {
             "name": "note",
             "dataType": "String",
             "definition": "skos:note - general note about this concept.",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "skos:note"
           }
-        ]
+        ],
+        "sourceUri": "skos:Concept"
       },
       {
         "_comment": "CatalogRecord stub - the metadata-about-this-resource node sitting under schema:subjectOf. Typed as schema:Dataset with schema:additionalType narrowing to dcat:CatalogRecord. dcterms:conformsTo MUST include https://w3id.org/cdif/conceptscheme/1.1. Full definition is in CDIFCore.",
@@ -140,21 +190,34 @@
             "name": "additionalType",
             "dataType": "String",
             "definition": "schema:additionalType - additional type assertions for the catalog record node. MUST include 'dcat:CatalogRecord' (the @type array itself is typed as schema:Dataset, with this attribute narrowing the role).",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "schema:additionalType"
           },
           {
             "name": "conformsTo",
             "dataType": "XsdAnyUri",
             "definition": "dcterms:conformsTo - URIs of specifications this metadata record conforms to. MUST include the constant https://w3id.org/cdif/conceptscheme/1.1 for the conceptScheme profile.",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "dcterms:conformsTo"
           },
           {
             "name": "about",
             "dataType": "XsdAnyUri",
             "definition": "schema:about - @id back-pointer to the ConceptScheme this CatalogRecord describes (closes the schema:subjectOf round-trip).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:about"
           }
-        ]
+        ],
+        "sourceUri": "dcat:CatalogRecord"
       }
     ],
     "association": [
@@ -164,8 +227,12 @@
         "subjectClass": "ConceptScheme",
         "objectClass": "CatalogRecord",
         "definition": "schema:subjectOf - the catalog record describing this concept scheme's metadata. For a CDIF concept scheme, the CatalogRecord MUST declare conformance to https://w3id.org/cdif/conceptscheme/1.1.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "schema:subjectOf"
       },
       {
         "_comment": "ConceptScheme -> Concept via skos:hasTopConcept. Required: every CDIF ConceptScheme must declare at least one top concept (minItems 1).",
@@ -173,8 +240,12 @@
         "subjectClass": "ConceptScheme",
         "objectClass": "Concept",
         "definition": "skos:hasTopConcept - top-level concepts with no skos:broader in this scheme. Required; the array must be non-empty.",
-        "objectClassMultiplicity": {"lower": "1", "upper": "*"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "*"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "skos:hasTopConcept"
       },
       {
         "_comment": "Concept -> ConceptScheme via skos:inScheme. Optional in this profile (unlike cdifCodelist where it is required on every concept).",
@@ -182,7 +253,11 @@
         "subjectClass": "Concept",
         "objectClass": "ConceptScheme",
         "definition": "skos:inScheme - the ConceptScheme(s) this concept belongs to. Optional in the conceptScheme profile (the containment via skos:hasTopConcept implies it for top concepts; required only when the concept reference is by @id outside a containing scheme).",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "skos:inScheme"
       },
       {
         "_comment": "Concept -> Concept via skos:broader. Parent (broader) concepts in the hierarchy. Items in the schema are inline concept objects or @id references; both collapse to a Concept link in the UML.",
@@ -190,7 +265,11 @@
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:broader - parent (broader) concepts in the hierarchy.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "skos:broader"
       },
       {
         "_comment": "Concept -> Concept via skos:narrower. Child (narrower) concepts; inverse of skos:broader.",
@@ -198,7 +277,11 @@
         "subjectClass": "Concept",
         "objectClass": "Concept",
         "definition": "skos:narrower - child (narrower) concepts in the hierarchy. Each inline child SHOULD also declare skos:broader pointing back to this parent.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "skos:narrower"
       }
     ]
   }

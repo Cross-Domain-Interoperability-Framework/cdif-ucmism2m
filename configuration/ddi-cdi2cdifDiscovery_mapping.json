@@ -1,5 +1,5 @@
 {
-  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "$schema": "ucmis_mapping_configuration.schema.v1.2.json",
   "_comment": "DDI-CDI -> CDIF Discovery profile UML. Aligned to metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml. Standalone module (composes: []); the composite profile (CoreDiscovery) chains Core in. Restored content from the resolvedSchema: GeoSPARQL geometry (Geometry / AbstractGeometry + GeoCoordinates / GeoShape), OWL-Time (Instant / TimePosition) - intentional exception to the ProperInterval->string union shorthand because the BB defines real structure - and DQV (QualityMeasure metric definition + QualityMeasurement measurement instance). DefinedTerm and VariableMeasured are fattened with the controlled-vocabulary / quantitative-value attributes the schema actually requires.",
   "transformation": {
     "description": "DDI-CDI to CDIF Discovery Profile",
@@ -58,9 +58,14 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the dataset.",
-            "multiplicity": {"lower": "1", "upper": "1"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
-        ]
+        ],
+        "sourceUri": "schema:Dataset"
       },
       {
         "_comment": "CatalogRecord stub - the metadata-about-this-resource node carried at schema:subjectOf on the Dataset.",
@@ -73,9 +78,14 @@
             "name": "conformsTo",
             "dataType": "XsdAnyUri",
             "definition": "dcterms:conformsTo - MUST include the constant https://w3id.org/cdif/discovery/1.1 for the discovery profile.",
-            "multiplicity": {"lower": "1", "upper": "*"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "*"
+            },
+            "sourceUri": "dcterms:conformsTo"
           }
-        ]
+        ],
+        "sourceUri": "dcat:CatalogRecord"
       },
       {
         "_comment": "DefinedTerm stub - cdifCore::DefinedTerm. Fattened here with the schema-required controlled-vocabulary attributes (termCode, additionalType, inDefinedTermSet) because the discovery schema references those properties.",
@@ -88,27 +98,44 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the term.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "termCode",
             "dataType": "String",
             "definition": "schema:termCode - the code identifying the term within its DefinedTermSet.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:termCode"
           },
           {
             "name": "additionalType",
             "dataType": "XsdAnyUri",
             "definition": "schema:additionalType - additional type assertion for this term.",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "schema:additionalType"
           },
           {
             "name": "inDefinedTermSet",
             "dataType": "XsdAnyUri",
             "definition": "schema:inDefinedTermSet - @id of the DefinedTermSet this term belongs to.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:inDefinedTermSet"
           }
-        ]
+        ],
+        "sourceUri": "schema:DefinedTerm"
       },
       {
         "_comment": "VariableMeasured - the schema:PropertyValue form of a variable described by the dataset. Carries optional quantitative-value attributes (min/maxValue, unitCode/unitText).",
@@ -122,51 +149,84 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the variable.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
             "dataType": "String",
             "definition": "schema:name - label associated with the variable in the dataset.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:name"
           },
           {
             "name": "description",
             "dataType": "String",
             "definition": "schema:description - free-text description of what the variable measures.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:description"
           },
           {
             "name": "alternateName",
             "dataType": "String",
             "definition": "schema:alternateName - additional human-readable name(s) for the variable.",
-            "multiplicity": {"lower": "0", "upper": "*"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "*"
+            },
+            "sourceUri": "schema:alternateName"
           },
           {
             "name": "minValue",
             "dataType": "String",
             "definition": "schema:minValue - the lower bound of the values this variable can take (string for generality; concrete numeric type varies).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:minValue"
           },
           {
             "name": "maxValue",
             "dataType": "String",
             "definition": "schema:maxValue - the upper bound of the values this variable can take.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:maxValue"
           },
           {
             "name": "unitCode",
             "dataType": "String",
             "definition": "schema:unitCode - URL/code identifying the unit of measure (e.g. UN/CEFACT Common Code, QUDT URI).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:unitCode"
           },
           {
             "name": "unitText",
             "dataType": "String",
             "definition": "schema:unitText - text label for the unit of measure (free form, complements unitCode).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:unitText"
           }
-        ]
+        ],
+        "sourceUri": "schema:PropertyValue"
       },
       {
         "_comment": "SpatialExtent - schema:Place. Geographic extent of the resource content; carries an optional Geometry via geosparql:hasGeometry / schema:geo.",
@@ -179,15 +239,24 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id / schema:identifier - URI for this place (e.g. ROR identifier, gazetteer entry).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
             "dataType": "String",
             "definition": "schema:name - place name. May also be a DefinedTerm from a gazetteer.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:name"
           }
-        ]
+        ],
+        "sourceUri": "schema:Place"
       },
       {
         "_comment": "TemporalExtent - temporal extent of resource content. Endpoints (hasBeginning / hasEnd) can be modelled as OWL-Time Instants for structured time positions, or simply as start/end dates.",
@@ -200,15 +269,24 @@
             "name": "startDate",
             "dataType": "XsdDate",
             "definition": "Start of the temporal coverage (simple-date form; structured form is time:hasBeginning -> Instant).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:startDate"
           },
           {
             "name": "endDate",
             "dataType": "XsdDate",
             "definition": "End of the temporal coverage (simple-date form; structured form is time:hasEnd -> Instant).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:endDate"
           }
-        ]
+        ],
+        "sourceUri": "time:ProperInterval"
       },
       {
         "_comment": "QualityMeasure - W3C DQV metric definition.",
@@ -221,15 +299,24 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - URI of the dqv:Metric.",
-            "multiplicity": {"lower": "1", "upper": "1"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "name",
             "dataType": "String",
             "definition": "schema:name - human-readable label for the metric.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:name"
           }
-        ]
+        ],
+        "sourceUri": "dqv:QualityMeasure"
       },
       {
         "_comment": "QualityMeasurement - W3C DQV quality measurement instance. Pairs a metric (dqv:isMeasurementOf -> QualityMeasure) with a measured value (dqv:value).",
@@ -242,15 +329,24 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - URI for this measurement.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "value",
             "dataType": "String",
             "definition": "dqv:value - the measured value (string for generality; concrete type varies by metric).",
-            "multiplicity": {"lower": "1", "upper": "1"}
+            "multiplicity": {
+              "lower": "1",
+              "upper": "1"
+            },
+            "sourceUri": "schema:value"
           }
-        ]
+        ],
+        "sourceUri": "dqv:QualityMeasurement"
       },
       {
         "_comment": "AbstractGeometry - abstract supertype of GeoCoordinates / GeoShape (per the union-type policy: the schema:geo anyOf collapses to AbstractGeometry in the UML).",
@@ -264,53 +360,80 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the geometry node.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
-        ]
+        ],
+        "sourceUri": "geo:Geometry"
       },
       {
         "_comment": "GeoCoordinates - schema.org point geometry. Generalizes AbstractGeometry.",
         "mappingType": "new",
         "targetPackage": "Geometry",
         "targetClass": "GeoCoordinates",
-        "generalization": ["AbstractGeometry"],
+        "generalization": [
+          "AbstractGeometry"
+        ],
         "definition": "schema:GeoCoordinates - point geometry with latitude / longitude.",
         "attribute": [
           {
             "name": "latitude",
             "dataType": "String",
             "definition": "schema:latitude - latitude of the point (number or string).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:latitude"
           },
           {
             "name": "longitude",
             "dataType": "String",
             "definition": "schema:longitude - longitude of the point.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:longitude"
           }
-        ]
+        ],
+        "sourceUri": "schema:GeoCoordinates"
       },
       {
         "_comment": "GeoShape - schema.org bounding box / line / polygon. Generalizes AbstractGeometry.",
         "mappingType": "new",
         "targetPackage": "Geometry",
         "targetClass": "GeoShape",
-        "generalization": ["AbstractGeometry"],
+        "generalization": [
+          "AbstractGeometry"
+        ],
         "definition": "schema:GeoShape - shape geometry (box, line, polygon, circle).",
         "attribute": [
           {
             "name": "box",
             "dataType": "String",
             "definition": "schema:box - bounding box, two lat-long pairs.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:box"
           },
           {
             "name": "line",
             "dataType": "String",
             "definition": "schema:line - line geometry, sequence of lat-long pairs.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:line"
           }
-        ]
+        ],
+        "sourceUri": "schema:GeoShape"
       },
       {
         "_comment": "Geometry - GeoSPARQL Geometry. Standalone class (NOT under AbstractGeometry) because the JSON uses geosparql:hasGeometry with WKT/CRS as its own structured property, distinct from schema:geo's GeoCoordinates/GeoShape union.",
@@ -323,21 +446,34 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the geometry node.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           },
           {
             "name": "asWKT",
             "dataType": "String",
             "definition": "geosparql:asWKT - Well-Known Text serialization of the geometry.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "geosparql:asWKT"
           },
           {
             "name": "crs",
             "dataType": "XsdAnyUri",
             "definition": "geosparql:crs - coordinate reference system URI.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "cdif:crs"
           }
-        ]
+        ],
+        "sourceUri": "geo:Geometry"
       },
       {
         "_comment": "Instant - OWL-Time time:Instant. Endpoint of a TemporalExtent. Intentional exception to the time:ProperInterval -> string union shorthand: the BB defines a real structured time point.",
@@ -350,9 +486,14 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "@id - resolvable URI for the Instant.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
-        ]
+        ],
+        "sourceUri": "time:Instant"
       },
       {
         "_comment": "TimePosition - OWL-Time time:TimePosition. Numeric value + temporal reference system carried by an Instant.",
@@ -365,15 +506,24 @@
             "name": "numericPosition",
             "dataType": "String",
             "definition": "time:numericPosition - the numeric value (string for generality).",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "time:numericPosition"
           },
           {
             "name": "hasTRS",
             "dataType": "XsdAnyUri",
             "definition": "time:hasTRS - URI of the temporal reference system the numericPosition is expressed in.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "time:hasTRS"
           }
-        ]
+        ],
+        "sourceUri": "time:TimePosition"
       }
     ],
     "association": [
@@ -383,8 +533,12 @@
         "subjectClass": "Dataset",
         "objectClass": "CatalogRecord",
         "definition": "schema:subjectOf - the catalog record describing this dataset's metadata.",
-        "objectClassMultiplicity": {"lower": "1", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "schema:subjectOf"
       },
       {
         "_comment": "Dataset -> DefinedTerm via schema:measurementTechnique (typed branch of the string-or-DefinedTerm union).",
@@ -392,7 +546,11 @@
         "subjectClass": "Dataset",
         "objectClass": "DefinedTerm",
         "definition": "schema:measurementTechnique - technique / methodology used.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "schema:measurementTechnique"
       },
       {
         "_comment": "Dataset -> VariableMeasured via schema:variableMeasured.",
@@ -400,8 +558,12 @@
         "subjectClass": "Dataset",
         "objectClass": "VariableMeasured",
         "definition": "schema:variableMeasured - the variables described by this dataset.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "schema:variableMeasured"
       },
       {
         "_comment": "Dataset -> SpatialExtent via schema:spatialCoverage.",
@@ -409,8 +571,12 @@
         "subjectClass": "Dataset",
         "objectClass": "SpatialExtent",
         "definition": "schema:spatialCoverage - geographic extent of the dataset's content.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "schema:spatialCoverage"
       },
       {
         "_comment": "Dataset -> TemporalExtent via schema:temporalCoverage.",
@@ -418,8 +584,12 @@
         "subjectClass": "Dataset",
         "objectClass": "TemporalExtent",
         "definition": "schema:temporalCoverage - period of time the dataset covers.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "schema:temporalCoverage"
       },
       {
         "_comment": "Dataset -> QualityMeasurement via dqv:hasQualityMeasurement.",
@@ -427,8 +597,12 @@
         "subjectClass": "Dataset",
         "objectClass": "QualityMeasurement",
         "definition": "dqv:hasQualityMeasurement - quality measurements reported about the dataset.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "dqv:hasQualityMeasurement"
       },
       {
         "_comment": "VariableMeasured -> DefinedTerm via schema:measurementTechnique (per-variable technique).",
@@ -436,7 +610,11 @@
         "subjectClass": "VariableMeasured",
         "objectClass": "DefinedTerm",
         "definition": "schema:measurementTechnique - measurement technique for this specific variable.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "sourceUri": "schema:measurementTechnique"
       },
       {
         "_comment": "SpatialExtent -> AbstractGeometry via schema:geo (anyOf GeoCoordinates / GeoShape, collapsed to the abstract supertype).",
@@ -444,8 +622,12 @@
         "subjectClass": "SpatialExtent",
         "objectClass": "AbstractGeometry",
         "definition": "schema:geo - geometry of the place. The JSON anyOf admits a GeoCoordinates (point) or GeoShape (bounding box / line) - collapsed in the UML to the AbstractGeometry supertype.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "schema:geo"
       },
       {
         "_comment": "SpatialExtent -> Geometry via geosparql:hasGeometry (the GeoSPARQL branch with WKT/CRS).",
@@ -453,8 +635,12 @@
         "subjectClass": "SpatialExtent",
         "objectClass": "Geometry",
         "definition": "geosparql:hasGeometry - structured GeoSPARQL geometry (WKT + CRS).",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "geosparql:hasGeometry"
       },
       {
         "_comment": "TemporalExtent -> Instant via time:hasBeginning.",
@@ -462,8 +648,12 @@
         "subjectClass": "TemporalExtent",
         "objectClass": "Instant",
         "definition": "time:hasBeginning - structured form of the start endpoint (OWL-Time Instant).",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "time:hasBeginning"
       },
       {
         "_comment": "TemporalExtent -> Instant via time:hasEnd.",
@@ -471,8 +661,12 @@
         "subjectClass": "TemporalExtent",
         "objectClass": "Instant",
         "definition": "time:hasEnd - structured form of the end endpoint (OWL-Time Instant).",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "time:hasEnd"
       },
       {
         "_comment": "TemporalExtent -> TemporalExtent via time:intervalStartedBy / time:intervalFinishedBy (interval relations).",
@@ -480,14 +674,22 @@
         "subjectClass": "TemporalExtent",
         "objectClass": "TemporalExtent",
         "definition": "time:intervalStartedBy - another temporal extent that shares the start of this one (OWL-Time interval relation).",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "time:intervalStartedBy"
       },
       {
         "targetAssociationName": "TemporalExtent_intervalFinishedBy_TemporalExtent",
         "subjectClass": "TemporalExtent",
         "objectClass": "TemporalExtent",
         "definition": "time:intervalFinishedBy - another temporal extent that shares the end of this one (OWL-Time interval relation).",
-        "objectClassMultiplicity": {"lower": "0", "upper": "*"}
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "*"
+        },
+        "sourceUri": "time:intervalFinishedBy"
       },
       {
         "_comment": "Instant -> TimePosition via time:inTimePosition.",
@@ -495,8 +697,12 @@
         "subjectClass": "Instant",
         "objectClass": "TimePosition",
         "definition": "time:inTimePosition - the numeric time position carried by this Instant.",
-        "objectClassMultiplicity": {"lower": "0", "upper": "1"},
-        "objectClassAggregationKind": "composite"
+        "objectClassMultiplicity": {
+          "lower": "0",
+          "upper": "1"
+        },
+        "objectClassAggregationKind": "composite",
+        "sourceUri": "time:inTimePosition"
       },
       {
         "_comment": "QualityMeasurement -> QualityMeasure via dqv:isMeasurementOf.",
@@ -504,7 +710,11 @@
         "subjectClass": "QualityMeasurement",
         "objectClass": "QualityMeasure",
         "definition": "dqv:isMeasurementOf - the dqv:Metric this measurement instantiates.",
-        "objectClassMultiplicity": {"lower": "1", "upper": "1"}
+        "objectClassMultiplicity": {
+          "lower": "1",
+          "upper": "1"
+        },
+        "sourceUri": "dqv:isMeasurementOf"
       }
     ]
   }

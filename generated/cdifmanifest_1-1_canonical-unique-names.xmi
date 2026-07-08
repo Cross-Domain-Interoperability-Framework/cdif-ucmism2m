@@ -146,13 +146,68 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.Dataset" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.Dataset-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.Dataset"/>
-                  <body>Stub of schema:Dataset (full definition in CDIFCore).</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:Dataset
+
+Definition
+..........
+A body of structured information describing some topic(s) of interest.
+
+Scope
+.....
+Parent class(es): CreativeWork (https://schema.org/CreativeWork).
+
+
+CDIF
+----
+
+Definition
+..........
+Profile module for archive distributions. Marks the catalog record as conformant to the CDIF manifest spec (https://w3id.org/cdif/manifest/1.1) and lets schema:distribution items carry schema:hasPart describing the component files inside an archive (ZIP, etc.). The base schema:distribution anyOf [DataDownload, WebAPI] contributed by cdifCore is preserved — this BB only adds property constraints, no new anyOf branch. (Merged from the previous cdifProfile/cdifArchive BB, which held only the $defs for ArchivePart; everything now lives here.)
+
+Scope
+.....
+Stub of schema:Dataset (full definition in CDIFCore).
+</body>
                </ownedComment>
                <name>Dataset</name>
                <ownedAttribute xmi:id="CDIFManifest.Dataset-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.Dataset-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.Dataset-identifier"/>
-                     <body>@id.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.Dataset-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -166,7 +221,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.Dataset-subjectOf" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-subjectOf" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFManifest.Dataset-subjectOf-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-subjectOf-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.Dataset-subjectOf"/>
-                     <body>schema:subjectOf.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:subjectOf
+
+Definition
+..........
+A CreativeWork or Event about this Thing.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: CreativeWork (https://schema.org/CreativeWork), Event (https://schema.org/Event).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:subjectOf.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.Dataset-subjectOf-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Dataset-subjectOf-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -182,13 +263,55 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.CatalogRecord" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#CatalogRecord" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.CatalogRecord-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#CatalogRecord-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.CatalogRecord"/>
-                  <body>Stub of CDIFCore::CatalogRecord. For manifest, dcterms:conformsTo MUST include https://w3id.org/cdif/manifest/1.1.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcat:CatalogRecord
+
+Definition
+..........
+A record in a data catalog, describing the registration of a single dataset or data service.
+
+
+CDIF
+----
+
+Definition
+..........
+Stub of CDIFCore::CatalogRecord. For manifest, dcterms:conformsTo MUST include https://w3id.org/cdif/manifest/1.1.
+</body>
                </ownedComment>
                <name>CatalogRecord</name>
                <ownedAttribute xmi:id="CDIFManifest.CatalogRecord-conformsTo" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#CatalogRecord-conformsTo" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.CatalogRecord-conformsTo-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#CatalogRecord-conformsTo-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.CatalogRecord-conformsTo"/>
-                     <body>dcterms:conformsTo.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+dcterms:conformsTo
+
+Definition
+..........
+An established standard to which the described resource conforms.
+
+
+CDIF
+----
+
+Definition
+..........
+dcterms:conformsTo.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.CatalogRecord-conformsTo-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#CatalogRecord-conformsTo-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -203,13 +326,72 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.DataDownload" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.DataDownload-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.DataDownload"/>
-                  <body>Stub of CDIFCore::DataDownload. Carries schema:hasPart when the file is an archive.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:DataDownload
+
+Definition
+..........
+All or part of a [[Dataset]] in downloadable form.
+
+Scope
+.....
+Parent class(es): MediaObject (https://schema.org/MediaObject).
+
+
+CDIF
+----
+
+Definition
+..........
+Stub of CDIFCore::DataDownload. Carries schema:hasPart when the file is an archive.
+</body>
                </ownedComment>
                <name>DataDownload</name>
                <ownedAttribute xmi:id="CDIFManifest.DataDownload-encodingFormat" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-encodingFormat" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.DataDownload-encodingFormat-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-encodingFormat-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.DataDownload-encodingFormat"/>
-                     <body>schema:encodingFormat - including 'application/zip' triggers the hasPart requirement.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:encodingFormat
+
+Definition
+..........
+Media type typically expressed using a MIME format (see [IANA site](http://www.iana.org/assignments/media-types/media-types.xhtml) and [MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)), e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.
+
+In cases where a [[CreativeWork]] has several media type representations, [[encoding]] can be used to indicate each [[MediaObject]] alongside particular [[encodingFormat]] information.
+
+Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork), MediaObject (https://schema.org/MediaObject).
+Range: Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+MIME type(s) for this file.
+
+Scope
+.....
+schema:encodingFormat - including 'application/zip' triggers the hasPart requirement.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.DataDownload-encodingFormat-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-encodingFormat-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -223,7 +405,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.DataDownload-hasPart" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-hasPart" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFManifest.DataDownload-hasPart-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-hasPart-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.DataDownload-hasPart"/>
-                     <body>schema:hasPart - component files inside this archive.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:hasPart
+
+Definition
+..........
+Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork).
+Range: CreativeWork (https://schema.org/CreativeWork).
+
+
+CDIF
+----
+
+Definition
+..........
+For archive-style distributions (e.g. ZIP files containing multiple component files), describes the component files. Each component is typed as schema:MediaObject and may include CDIF data description extensions (cdifTabularData, cdifDataCube) to describe its internal structure.
+
+Scope
+.....
+schema:hasPart - component files inside this archive.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.DataDownload-hasPart-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DataDownload-hasPart-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -239,13 +451,56 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.ArchivePart" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.ArchivePart-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.ArchivePart"/>
-                  <body>A component file within an archive distribution. Typed schema:MediaObject. May itself carry cdif:hasPhysicalMapping and the cdi: physical-dataset co-typing when the part is a tabular or structured data file.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:ArchivePart
+
+
+CDIF
+----
+
+Definition
+..........
+A component file within an archive distribution. Typed schema:MediaObject. May itself carry cdif:hasPhysicalMapping and the cdi: physical-dataset co-typing when the part is a tabular or structured data file.
+</body>
                </ownedComment>
                <name>ArchivePart</name>
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-identifier"/>
-                     <body>@id - typically a hash-anchor.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id - typically a hash-anchor.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -259,7 +514,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-name" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-name-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-name"/>
-                     <body>schema:name - filename.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:name
+
+Definition
+..........
+The name of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+Filename of the component file within the archive.
+
+Scope
+.....
+schema:name - filename.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-name-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-name-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -273,7 +558,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-description" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-description" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-description-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-description-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-description"/>
-                     <body>schema:description.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:description
+
+Definition
+..........
+A description of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text), TextObject (https://schema.org/TextObject).
+
+
+CDIF
+----
+
+Definition
+..........
+Description of the file content. May include checksum information.
+
+Scope
+.....
+schema:description.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-description-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-description-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -287,7 +602,41 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-encodingFormat" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-encodingFormat" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-encodingFormat-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-encodingFormat-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-encodingFormat"/>
-                     <body>schema:encodingFormat - MIME type(s).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:encodingFormat
+
+Definition
+..........
+Media type typically expressed using a MIME format (see [IANA site](http://www.iana.org/assignments/media-types/media-types.xhtml) and [MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)), e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.
+
+In cases where a [[CreativeWork]] has several media type representations, [[encoding]] can be used to indicate each [[MediaObject]] alongside particular [[encodingFormat]] information.
+
+Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork), MediaObject (https://schema.org/MediaObject).
+Range: Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+MIME type(s) for this file.
+
+Scope
+.....
+schema:encodingFormat - MIME type(s).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-encodingFormat-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-encodingFormat-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -301,7 +650,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-countColumns" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-countColumns" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-countColumns-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-countColumns-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-countColumns"/>
-                     <body>Column count for tabular parts.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:countColumns
+
+
+CDIF
+----
+
+Definition
+..........
+Column count for tabular parts.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-countColumns-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-countColumns-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -315,7 +681,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-countRows" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-countRows" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-countRows-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-countRows-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-countRows"/>
-                     <body>Row count for tabular parts.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:countRows
+
+
+CDIF
+----
+
+Definition
+..........
+Row count for tabular parts.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-countRows-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-countRows-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -329,7 +712,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-about" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-about" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-about-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-about-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-about"/>
-                     <body>schema:about - sidecar-to-data back-reference.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:about
+
+Definition
+..........
+The subject matter of an object.
+
+Scope
+.....
+Domain: Certification (https://schema.org/Certification), CommunicateAction (https://schema.org/CommunicateAction), CreativeWork (https://schema.org/CreativeWork), DefinedTerm (https://schema.org/DefinedTerm), DefinedTermSet (https://schema.org/DefinedTermSet), Event (https://schema.org/Event).
+Range: Thing (https://schema.org/Thing).
+
+
+CDIF
+----
+
+Definition
+..........
+For metadata sidecar files, references the data file this metadata describes.
+
+Scope
+.....
+schema:about - sidecar-to-data back-reference.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-about-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-about-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -344,7 +757,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-size" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-size" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-size-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-size-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-size"/>
-                     <body>schema:size.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:size
+
+Definition
+..........
+A standardized size of a product or creative work, specified either through a simple textual string (for example 'XL', '32Wx34L'), a  QuantitativeValue with a unitCode, or a comprehensive and structured [[SizeSpecification]]; in other cases, the [[width]], [[height]], [[depth]] and [[weight]] properties may be more applicable.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork), Product (https://schema.org/Product).
+Range: DefinedTerm (https://schema.org/DefinedTerm), QuantitativeValue (https://schema.org/QuantitativeValue), SizeSpecification (https://schema.org/SizeSpecification), Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+File size as a QuantitativeValue.
+
+Scope
+.....
+schema:size.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-size-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-size-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -359,7 +802,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-checksum" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-checksum" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-checksum-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-checksum-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-checksum"/>
-                     <body>spdx:checksum.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:checksum
+
+
+CDIF
+----
+
+Definition
+..........
+spdx:checksum.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-checksum-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-checksum-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -374,7 +834,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-hasPhysicalMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-hasPhysicalMapping" xmi:type="uml:Property" aggregation="composite">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-hasPhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-hasPhysicalMapping-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-hasPhysicalMapping"/>
-                     <body>cdif:hasPhysicalMapping - per-field physical mappings for the part's variables.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:hasPhysicalMapping
+
+
+CDIF
+----
+
+Definition
+..........
+Links variables to their physical representation in this dataset.
+
+Scope
+.....
+cdif:hasPhysicalMapping - per-field physical mappings for the part's variables.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-hasPhysicalMapping-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-hasPhysicalMapping-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -389,7 +870,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.ArchivePart-alsoTypedAs" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-alsoTypedAs" xmi:type="uml:Property" aggregation="shared">
                   <ownedComment xmi:id="CDIFManifest.ArchivePart-alsoTypedAs-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-alsoTypedAs-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.ArchivePart-alsoTypedAs"/>
-                     <body>Co-typing: an ArchivePart MAY also be typed cdi:TabularTextDataSet or cdi:StructuredDataSet.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdif:alsoTypedAs
+
+
+CDIF
+----
+
+Definition
+..........
+Co-typing: an ArchivePart MAY also be typed cdi:TabularTextDataSet or cdi:StructuredDataSet.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.ArchivePart-alsoTypedAs-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#ArchivePart-alsoTypedAs-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -405,13 +903,68 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.QuantitativeValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFManifest.QuantitativeValue-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.QuantitativeValue"/>
-                  <body>schema:QuantitativeValue - numeric value with unit, used for schema:size on an ArchivePart.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:QuantitativeValue
+
+Definition
+..........
+A point value or interval for product characteristics and other purposes.
+
+Scope
+.....
+Parent class(es): StructuredValue (https://schema.org/StructuredValue).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:QuantitativeValue - numeric value with unit, used for schema:size on an ArchivePart.
+</body>
                </ownedComment>
                <name>QuantitativeValue</name>
                <ownedAttribute xmi:id="CDIFManifest.QuantitativeValue-value" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-value" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.QuantitativeValue-value-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-value-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.QuantitativeValue-value"/>
-                     <body>schema:value.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:value
+
+Definition
+..........
+The value of a [[QuantitativeValue]] (including [[Observation]]) or property value node.\n\n* For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type for values is 'Number'.\n* For [[PropertyValue]], it can be 'Text', 'Number', 'Boolean', or 'StructuredValue'.\n* Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similar Unicode symbols.\n* Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+
+Scope
+.....
+Domain: MonetaryAmount (https://schema.org/MonetaryAmount), PropertyValue (https://schema.org/PropertyValue), QuantitativeValue (https://schema.org/QuantitativeValue).
+Range: Boolean (https://schema.org/Boolean), Number (https://schema.org/Number), StructuredValue (https://schema.org/StructuredValue), Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+Numeric size value.
+
+Scope
+.....
+schema:value.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.QuantitativeValue-value-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-value-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -425,7 +978,38 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.QuantitativeValue-unitText" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-unitText" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.QuantitativeValue-unitText-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-unitText-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.QuantitativeValue-unitText"/>
-                     <body>schema:unitText - unit label (e.g. 'byte').</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:unitText
+
+Definition
+..........
+A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
+&lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
+
+Scope
+.....
+Domain: PropertyValue (https://schema.org/PropertyValue), QuantitativeValue (https://schema.org/QuantitativeValue), TypeAndQuantityNode (https://schema.org/TypeAndQuantityNode), UnitPriceSpecification (https://schema.org/UnitPriceSpecification).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+Unit of measure for size (e.g. 'byte').
+
+Scope
+.....
+schema:unitText - unit label (e.g. 'byte').
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.QuantitativeValue-unitText-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#QuantitativeValue-unitText-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -440,13 +1024,59 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.Checksum" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum" xmi:type="uml:DataType">
                <ownedComment xmi:id="CDIFManifest.Checksum-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.Checksum"/>
-                  <body>spdx:Checksum - inline checksum payload on an ArchivePart.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+spdx:Checksum
+
+Definition
+..........
+A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.
+
+
+CDIF
+----
+
+Definition
+..........
+spdx:Checksum - inline checksum payload on an ArchivePart.
+</body>
                </ownedComment>
                <name>Checksum</name>
                <ownedAttribute xmi:id="CDIFManifest.Checksum-algorithm" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-algorithm" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.Checksum-algorithm-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-algorithm-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.Checksum-algorithm"/>
-                     <body>spdx:algorithm.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+spdx:algorithm
+
+Definition
+..........
+Identifies the algorithm used to produce the subject Checksum. Currently, SHA-1 is the only supported algorithm. It is anticipated that other algorithms will be supported at a later time.
+
+Scope
+.....
+Domain: http://spdx.org/rdf/terms#Checksum.
+
+
+CDIF
+----
+
+Definition
+..........
+spdx:algorithm.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.Checksum-algorithm-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-algorithm-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -460,7 +1090,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.Checksum-checksumValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-checksumValue" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.Checksum-checksumValue-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-checksumValue-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.Checksum-checksumValue"/>
-                     <body>spdx:checksumValue.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+spdx:checksumValue
+
+Definition
+..........
+The checksumValue property provides a lower case hexidecimal encoded digest value produced using a specific algorithm.
+
+Scope
+.....
+Domain: http://spdx.org/rdf/terms#Checksum.
+Range: http://www.w3.org/2001/XMLSchema#hexBinary.
+
+
+CDIF
+----
+
+Definition
+..........
+spdx:checksumValue.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.Checksum-checksumValue-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#Checksum-checksumValue-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -475,13 +1131,64 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.DefinedTerm" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.DefinedTerm-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.DefinedTerm"/>
-                  <body>schema:DefinedTerm - a term from a controlled vocabulary (DefinedTermSet).</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:DefinedTerm
+
+Definition
+..........
+A word, name, acronym, phrase, etc. with a formal definition. Often used in the context of category or subject classification, glossaries or dictionaries, product or creative work types, etc. Use the name property for the term being defined, use termCode if the term has an alpha-numeric code allocated, use description to provide the definition of the term. Use the about property to specify what the term is about.
+
+Scope
+.....
+Parent class(es): Intangible (https://schema.org/Intangible).
+
+
+CDIF
+----
+
+Definition
+..........
+schema:DefinedTerm - a term from a controlled vocabulary (DefinedTermSet).
+</body>
                </ownedComment>
                <name>DefinedTerm</name>
                <ownedAttribute xmi:id="CDIFManifest.DefinedTerm-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.DefinedTerm-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.DefinedTerm-identifier"/>
-                     <body>@id.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.DefinedTerm-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -495,7 +1202,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.DefinedTerm-termCode" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-termCode" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.DefinedTerm-termCode-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-termCode-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.DefinedTerm-termCode"/>
-                     <body>schema:termCode.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:termCode
+
+Definition
+..........
+A code that identifies this [[DefinedTerm]] within a [[DefinedTermSet]].
+
+Scope
+.....
+Domain: DefinedTerm (https://schema.org/DefinedTerm).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+A representative code for this keyword in the controlled vocabulary. Analogous to skos:Notation
+
+Scope
+.....
+schema:termCode.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.DefinedTerm-termCode-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-termCode-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -509,7 +1246,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.DefinedTerm-name" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-name" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.DefinedTerm-name-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-name-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.DefinedTerm-name"/>
-                     <body>schema:name.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:name
+
+Definition
+..........
+The name of the item.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: Text (https://schema.org/Text).
+
+
+CDIF
+----
+
+Definition
+..........
+Filename of the component file within the archive.
+
+Scope
+.....
+schema:name.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.DefinedTerm-name-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-name-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -523,7 +1290,37 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.DefinedTerm-inDefinedTermSet" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-inDefinedTermSet" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.DefinedTerm-inDefinedTermSet-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-inDefinedTermSet-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.DefinedTerm-inDefinedTermSet"/>
-                     <body>schema:inDefinedTermSet.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:inDefinedTermSet
+
+Definition
+..........
+A [[DefinedTermSet]] that contains this term.
+
+Scope
+.....
+Domain: DefinedTerm (https://schema.org/DefinedTerm).
+Range: DefinedTermSet (https://schema.org/DefinedTermSet), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+Name for the controlled vocabulary responsible for this keyword.
+
+Scope
+.....
+schema:inDefinedTermSet.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.DefinedTerm-inDefinedTermSet-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#DefinedTerm-inDefinedTermSet-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -538,13 +1335,56 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.AbstractMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractMapping" xmi:type="uml:Class" isAbstract="true">
                <ownedComment xmi:id="CDIFManifest.AbstractMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractMapping-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.AbstractMapping"/>
-                  <body>Abstract supertype for the cdif:hasPhysicalMapping family. Concrete subtypes: PhysicalMapping / TextMapping / LocatorMapping.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:AbstractMapping
+
+
+CDIF
+----
+
+Definition
+..........
+Abstract supertype for the cdif:hasPhysicalMapping family. Concrete subtypes: PhysicalMapping / TextMapping / LocatorMapping.
+</body>
                </ownedComment>
                <name>AbstractMapping</name>
                <ownedAttribute xmi:id="CDIFManifest.AbstractMapping-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractMapping-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.AbstractMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractMapping-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.AbstractMapping-identifier"/>
-                     <body>@id.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.AbstractMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -559,7 +1399,38 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.PhysicalMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.PhysicalMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping"/>
-                  <body>Generic per-field physical mapping with column index, format, and numeric-format details.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping
+
+Definition
+..........
+Definition 
+==========
+Physical characteristics of the values of an instance variable as part of a physical data set.
+
+Examples 
+========
+A variable "age" might be represented in a file as a string with a maximum length of 5 characters and a number pattern of ##0.0  
+
+Explanatory notes 
+=================
+An instance variable has details of value domain and data type, but will not have the final details of how a value is physically represented in a data file. A variable for height, for example, may be represented as a real number, but may be represented as a string in multiple ways. The decimal separator might be, for example a period or a comma. The string representing the value of a payment might be preceded by a currency symbol. The same numeric value might be written as "1,234,567" or "1.234567". A missing value might be written as ".", "NA", ".R" or as "R". The value mapping describes how the value of an instance variable is physically expressed. The properties of the value mapping as intended to be compatible with the W3C Metadata Vocabulary for Tabular Data (https://www.w3.org/TR/tabular-metadata/) as well as common programming languages and statistical packages. The 'format' property, for example, can draw from an external controlled vocabulary such as the set of formats for Stata, SPSS, or SAS.
+
+
+CDIF
+----
+
+Definition
+..........
+Generic per-field physical mapping with column index, format, and numeric-format details.
+</body>
                </ownedComment>
                <name>PhysicalMapping</name>
                <generalization xmi:id="CDIFManifest.PhysicalMapping-generalization-AbstractMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-generalization-AbstractMapping" xmi:type="uml:Generalization">
@@ -568,7 +1439,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-index" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-index" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-index-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-index-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-index"/>
-                     <body>cdif:index.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping-index
+
+
+CDIF
+----
+
+Definition
+..........
+Non-negative integer that orders the fields in the data structure (column number).
+
+Scope
+.....
+cdif:index.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-index-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-index-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -582,7 +1474,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-format" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-format" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-format-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-format-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-format"/>
-                     <body>cdif:format.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping-format
+
+Definition
+..........
+This defines the format of the physical representation of the value. From https://www.w3.org/TR/tabular-metadata/ 5.11.2 format: "An atomic property that contains either a single string or an object that defines the format of a value of this type, used when parsing a string value as described in Parsing Cells in [tabular-data-model]. The value of this property becomes the format annotation for the described datatype." See https://www.w3.org/TR/tabular-metadata/ Tabular 6.4.2 "Formats for numeric datatypes" this may include decimalChar, groupChar, pattern "By default, numeric values must be in the formats defined in [xmlschema11-2]. It is not uncommon for numbers within tabular data to be formatted for human consumption, which may involve using commas for decimal points, grouping digits in the number using commas, or adding percent signs to the number." See https://www.w3.org/TR/tabular-metadata/ Tabular 6.4. Formats for Booleans " Boolean values may be represented in many ways aside from the standard 1 and 0 or true and false." See https://www.w3.org/TR/tabular-metadata/ 6.4.4. Formats for dates and times "By default, dates and times are assumed to be in the format defined in [xmlschema11-2]. However dates and times are commonly represented in tabular data in other formats." See https://www.w3.org/TR/tabular-metadata/ 6.4.5 Formats for durations "Durations MUST be formatted and interpreted as defined in [xmlschema11-2], using the [ISO8601] format -?PnYnMnDTnHnMnS. For example, the duration P1Y1D is used for a year and a day; the duration PT2H30M for 2 hours and 30 minutes." See https://www.w3.org/TR/tabular-metadata/ 6.4.6 Formats for other types "If the datatype base is not numeric, boolean, a date/time type, or a duration type, the datatype format annotation provides a regular expression for the string values, with syntax and processing defined by [ECMASCRIPT]. If the supplied value is not a valid regular expression, implementations MUST issue a warning and proceed as if no format had been provided." From DDI3.2 ManagedNumericRepresentation@format "A format for number expressed as a string." From DDI3.2 ManagedDateTimeRepresentation_DateFieldFormat "Describes the format of the date field, in formats such as YYYY/MM or MM-DD-YY, etc. If this element is omitted, then the format is assumed to be the XML Schema format corresponding to the type attribute value."
+
+
+CDIF
+----
+
+Definition
+..........
+A format for number expressed as a string, or date format like YYYY/MM or MM-DD-YY.
+
+Scope
+.....
+cdif:format.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-format-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-format-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -596,7 +1513,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-physicalDataType" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-physicalDataType" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-physicalDataType-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-physicalDataType-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-physicalDataType"/>
-                     <body>cdif:physicalDataType.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:physicalDataType
+
+
+CDIF
+----
+
+Definition
+..........
+identifier or name for the data type concept.
+
+Scope
+.....
+cdif:physicalDataType.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-physicalDataType-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-physicalDataType-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -610,7 +1548,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-decimalPositions" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-decimalPositions" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-decimalPositions-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-decimalPositions-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-decimalPositions"/>
-                     <body>cdi:decimalPositions.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:decimalPositions
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:decimalPositions.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-decimalPositions-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-decimalPositions-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -624,7 +1579,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-numberPattern" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-numberPattern" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-numberPattern-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-numberPattern-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-numberPattern"/>
-                     <body>cdi:numberPattern.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:numberPattern
+
+
+CDIF
+----
+
+Definition
+..........
+Number format pattern for the field (PhysicalMapping.numberPattern). Text-format properties (column width, decimal/digit-group separators, display label) live on cdifTextMapping.
+
+Scope
+.....
+cdi:numberPattern.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-numberPattern-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-numberPattern-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -638,7 +1614,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-scale" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-scale" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-scale-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-scale-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-scale"/>
-                     <body>cdi:scale.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:scale
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:scale.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-scale-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-scale-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -652,7 +1645,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-maximumLength" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-maximumLength" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-maximumLength-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-maximumLength-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-maximumLength"/>
-                     <body>cdi:maximumLength.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping-maximumLength
+
+Definition
+..........
+The largest possible value of the length of the physical representation of the value. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "maxLength: A numeric atomic property that contains a single integer that is the maximum length of the value. The value of this property becomes the maximum length annotation for the described datatype. See Length Constraints in [tabular-data-model] for details."
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:maximumLength.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-maximumLength-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-maximumLength-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -666,7 +1680,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-minimumLength" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-minimumLength" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-minimumLength-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-minimumLength-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-minimumLength"/>
-                     <body>cdi:minimumLength.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping-minimumLength
+
+Definition
+..........
+The smallest possible value for the length of the physical representation of the value. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/)  5.11.2: "minLength: An atomic property that contains a single integer that is the minimum length of the value. The value of this property becomes the minimum length annotation for the described datatype. See Length Constraints in [tabular-data-model] for details."
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:minimumLength.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-minimumLength-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-minimumLength-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -680,7 +1715,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-nullSequence" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-nullSequence" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-nullSequence-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-nullSequence-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-nullSequence"/>
-                     <body>cdi:nullSequence.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping-nullSequence
+
+Definition
+..........
+A string indicating a null value. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 4.3: "null: the string or strings which cause the value of cells having string value matching any of these values to be null." From the same source, Inherited 5.7: "null: An atomic property giving the string or strings used for null values within the data. If the string value of the cell is equal to any one of these values, the cell value is null. See Parsing Cells in [tabular-data-model] for more details. If not specified, the default for the null property is the empty string ''. The value of this property becomes the null annotation for the described column."
+
+
+CDIF
+----
+
+Definition
+..........
+The value of this property becomes the null annotation for the described column.
+
+Scope
+.....
+cdi:nullSequence.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-nullSequence-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-nullSequence-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -694,7 +1754,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-arrayBase" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-arrayBase" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-arrayBase-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-arrayBase-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-arrayBase"/>
-                     <body>cdi:arrayBase.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:arrayBase
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:arrayBase.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-arrayBase-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-arrayBase-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -708,7 +1785,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-defaultValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-defaultValue" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-defaultValue-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-defaultValue-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-defaultValue"/>
-                     <body>cdi:defaultValue.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:defaultValue
+
+
+CDIF
+----
+
+Definition
+..........
+A default string indicating the value to substitute for an empty string.
+
+Scope
+.....
+cdi:defaultValue.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-defaultValue-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-defaultValue-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -722,7 +1820,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-isRequired" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-isRequired" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-isRequired-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-isRequired-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-isRequired"/>
-                     <body>cdi:isRequired.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:PhysicalMapping-isRequired
+
+Definition
+..........
+If the value of this property is True indicates that a value is required for the referenced instance variable. From the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.7 Inherited Properties: "required: A boolean atomic property taking a single value which indicates whether the cell value can be null. See Parsing Cells in [tabular-data-model] for more details. The default is false, which means cells can have null values. The value of this property becomes the required annotation for the described column."
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:isRequired.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-isRequired-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-isRequired-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -736,7 +1855,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.PhysicalMapping-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.PhysicalMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.PhysicalMapping-identifier"/>
-                     <body>@id.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.PhysicalMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#PhysicalMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -751,7 +1896,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.TextMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.TextMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.TextMapping"/>
-                  <body>Per-field mapping for delimited or fixed-width text.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TextMapping
+
+Definition
+..........
+Definition
+==========
+The physical characteristics of an instance variable which appears in a data set using a text-based encoding and having a tabular structure (a tabular text data set).
+
+
+CDIF
+----
+
+Definition
+..........
+Per-field mapping for delimited or fixed-width text.
+</body>
                </ownedComment>
                <name>TextMapping</name>
                <generalization xmi:id="CDIFManifest.TextMapping-generalization-AbstractMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-generalization-AbstractMapping" xmi:type="uml:Generalization">
@@ -760,7 +1928,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TextMapping-index" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-index" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TextMapping-index-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-index-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TextMapping-index"/>
-                     <body>cdif:index.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TextMapping-index
+
+
+CDIF
+----
+
+Definition
+..........
+Non-negative integer that orders the fields in the data structure (column number).
+
+Scope
+.....
+cdif:index.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TextMapping-index-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-index-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -774,7 +1963,24 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TextMapping-isFixedWidth" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-isFixedWidth" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TextMapping-isFixedWidth-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-isFixedWidth-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TextMapping-isFixedWidth"/>
-                     <body>cdi:isFixedWidth.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TextMapping-isFixedWidth
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:isFixedWidth.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TextMapping-isFixedWidth-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-isFixedWidth-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -788,7 +1994,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TextMapping-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TextMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TextMapping-identifier"/>
-                     <body>@id.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TextMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TextMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -803,7 +2035,30 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.LocatorMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.LocatorMapping-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.LocatorMapping"/>
-                  <body>Per-field mapping for structured / hierarchical data.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:LocatorMapping
+
+Definition
+..........
+Definition
+==========
+The physical characteristics of an instance variable which appears in a data set using a binary or highly structured text-based encoding (a structured data set).
+
+
+CDIF
+----
+
+Definition
+..........
+Per-field mapping for structured / hierarchical data.
+</body>
                </ownedComment>
                <name>LocatorMapping</name>
                <generalization xmi:id="CDIFManifest.LocatorMapping-generalization-AbstractMapping" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-generalization-AbstractMapping" xmi:type="uml:Generalization">
@@ -812,7 +2067,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.LocatorMapping-locator" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-locator" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.LocatorMapping-locator-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-locator-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.LocatorMapping-locator"/>
-                     <body>cdi:locator.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:LocatorMapping-locator
+
+Definition
+..........
+Logical expression which resolves to the value(s) whose position within the file is being described. May be a query string, a path expressions, etc. Must be meaningful in the context of the systems which are designed to operate on the type of structure of the file (i.e., an XPath expression for an XML file, SQL for relational data, etc.)
+
+
+CDIF
+----
+
+Definition
+..........
+String that can be used by software to locate values of the variable in this physical dataset (DDI-CDI LocatorMapping.locator).
+
+Scope
+.....
+cdi:locator.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.LocatorMapping-locator-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-locator-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>1</value>
@@ -826,7 +2106,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.LocatorMapping-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.LocatorMapping-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.LocatorMapping-identifier"/>
-                     <body>@id.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.LocatorMapping-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#LocatorMapping-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -841,13 +2147,56 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.AbstractDataSet" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractDataSet" xmi:type="uml:Class" isAbstract="true">
                <ownedComment xmi:id="CDIFManifest.AbstractDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractDataSet-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.AbstractDataSet"/>
-                  <body>Abstract supertype for cdi:TabularTextDataSet / cdi:StructuredDataSet co-types.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:AbstractDataSet
+
+
+CDIF
+----
+
+Definition
+..........
+Abstract supertype for cdi:TabularTextDataSet / cdi:StructuredDataSet co-types.
+</body>
                </ownedComment>
                <name>AbstractDataSet</name>
                <ownedAttribute xmi:id="CDIFManifest.AbstractDataSet-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractDataSet-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.AbstractDataSet-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractDataSet-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.AbstractDataSet-identifier"/>
-                     <body>@id - same as the ArchivePart (co-typing).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id - same as the ArchivePart (co-typing).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.AbstractDataSet-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#AbstractDataSet-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -862,7 +2211,39 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.TabularTextDataSet" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet"/>
-                  <body>ArchivePart co-typed cdi:TabularTextDataSet. Carries CSV-style layout attributes.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet
+
+Definition
+..........
+Definition
+==========
+Information describing the physical aspects of a data set which is encoded using a text-based method and which has an essentially tabular structure.
+
+Examples
+========
+A table formatted as a comma separated values (CSV) file; a pipe-delimited ASCII data file such as the tract definitions for the US 2020 Census (found at https://www2.census.gov/geo/docs/maps-data/data/rel2020/tract/tab20_tract20_tract10_natl.txt); any similar file which used fixed-width columns instead of delimiters.
+
+Explanatory notes
+=================
+A tabular text data set is a physical description (e.g. unit segment layout) of the instance variables making up the records in the data set. Each instance variable has a text mapping linking it to the physical layout, with a position index supplied by a physical mapping position object.
+Tabular text data sets are distinct from binary data sets which do not use a text-based encoding, and from more structured text-based data expressed in formats such as XML, JSON, or any of the RDF representations.
+
+
+CDIF
+----
+
+Definition
+..........
+ArchivePart co-typed cdi:TabularTextDataSet. Carries CSV-style layout attributes.
+</body>
                </ownedComment>
                <name>TabularTextDataSet</name>
                <generalization xmi:id="CDIFManifest.TabularTextDataSet-generalization-AbstractDataSet" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-generalization-AbstractDataSet" xmi:type="uml:Generalization">
@@ -871,7 +2252,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-delimiter" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-delimiter" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-delimiter-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-delimiter-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-delimiter"/>
-                     <body>csvw:delimiter.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet-delimiter
+
+Definition
+..........
+The Delimiting character in the data. Must be used if isDelimited is True. "The separator between cells, set by the delimiter property of a dialect description. The default is ,. See the W3C Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-data-model/#encoding). From the "CSV Dialect" specification (https://specs.frictionlessdata.io/csv-dialect/#specification): "delimiter: specifies a one-character string to use as the field separator. Default = ,."
+
+
+CDIF
+----
+
+Definition
+..........
+csvw:delimiter.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-delimiter-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-delimiter-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -885,7 +2287,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-isDelimited" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-isDelimited" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-isDelimited-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-isDelimited-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-isDelimited"/>
-                     <body>cdi:isDelimited.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet-isDelimited
+
+Definition
+..........
+Indicates whether the data are in a delimited format. If "true," the format is delimited, and the isFixedWidth property must be set to "false." If not set to "true," the property isFixedWitdh must be set to "true."
+
+
+CDIF
+----
+
+Definition
+..........
+Schema constraint is that one of {'isDelimited','isFixedWidth'} must be present with a True value; the other one may be present or omitted, but if present must have a false value.
+
+Scope
+.....
+cdi:isDelimited.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-isDelimited-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-isDelimited-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -899,7 +2326,28 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-isFixedWidth" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-isFixedWidth" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-isFixedWidth-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-isFixedWidth-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-isFixedWidth"/>
-                     <body>cdi:isFixedWidth.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet-isFixedWidth
+
+Definition
+..........
+Set to true if the file is fixed-width. If true, isDelimited must be set to false.
+
+
+CDIF
+----
+
+Definition
+..........
+cdi:isFixedWidth.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-isFixedWidth-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-isFixedWidth-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -913,7 +2361,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-headerIsCaseSensitive" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-headerIsCaseSensitive" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-headerIsCaseSensitive-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-headerIsCaseSensitive-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-headerIsCaseSensitive"/>
-                     <body>cdi:headerIsCaseSensitive.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet-headerIsCaseSensitive
+
+Definition
+..........
+If True, the case of the labels in the header is significant. From the "CSV Dialect" specification (http://specs.frictionlessdata.io/csv-dialect/): "caseSensitiveHeader: indicates that case in the header is meaningful. For example, columns CAT and Cat should not be equated. Default = false."
+
+
+CDIF
+----
+
+Definition
+..........
+Whether column header names are case-sensitive. From DDI-CDI PhysicalSegmentLayout.headerIsCaseSensitive.
+
+Scope
+.....
+cdi:headerIsCaseSensitive.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-headerIsCaseSensitive-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-headerIsCaseSensitive-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -927,7 +2400,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-treatConsecutiveDelimitersAsOne" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-treatConsecutiveDelimitersAsOne" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-treatConsecutiveDelimitersAsOne-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-treatConsecutiveDelimitersAsOne-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-treatConsecutiveDelimitersAsOne"/>
-                     <body>cdi:treatConsecutiveDelimitersAsOne.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet-treatConsecutiveDelimitersAsOne
+
+Definition
+..........
+If the value is True, consecutive (adjacent) delimiters are treated as a single delimiter; if the value is False consecutive (adjacent) delimiters indicate a missing value.
+
+
+CDIF
+----
+
+Definition
+..........
+Whether consecutive delimiters should be treated as a single delimiter. From DDI-CDI PhysicalSegmentLayout.treatConsecutiveDelimitersAsOne.
+
+Scope
+.....
+cdi:treatConsecutiveDelimitersAsOne.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-treatConsecutiveDelimitersAsOne-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-treatConsecutiveDelimitersAsOne-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -941,7 +2439,32 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-escapeCharacter" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-escapeCharacter" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-escapeCharacter-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-escapeCharacter-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-escapeCharacter"/>
-                     <body>cdi:escapeCharacter.</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:TabularTextDataSet-escapeCharacter
+
+Definition
+..........
+"The string that is used to escape the quote character within escaped cells, or null" see https://www.w3.org/TR/tabular-data-model/#encoding. From https://www.w3.org/TR/tabular-metadata/ 5.9 Dialect "doubleQuote: A boolean atomic property that, if true, sets the escape character flag to ". If false, to \. The default is true." From http://specs.frictionlessdata.io/csv-dialect/ "doubleQuote: controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = true".
+
+
+CDIF
+----
+
+Definition
+..........
+The character used to escape special characters in the data. From DDI-CDI PhysicalSegmentLayout.escapeCharacter.
+
+Scope
+.....
+cdi:escapeCharacter.
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-escapeCharacter-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-escapeCharacter-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -955,7 +2478,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.TabularTextDataSet-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.TabularTextDataSet-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.TabularTextDataSet-identifier"/>
-                     <body>@id - same as the ArchivePart (co-typing).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id - same as the ArchivePart (co-typing).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.TabularTextDataSet-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#TabularTextDataSet-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -970,7 +2519,34 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
             <packagedElement xmi:id="CDIFManifest.StructuredDataSet" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet" xmi:type="uml:Class">
                <ownedComment xmi:id="CDIFManifest.StructuredDataSet-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-ownedComment" xmi:type="uml:Comment">
                   <annotatedElement xmi:idref="CDIFManifest.StructuredDataSet"/>
-                  <body>ArchivePart co-typed cdi:StructuredDataSet.</body>
+                  <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+cdi:StructuredDataSet
+
+Definition
+..........
+Definition
+==========
+Information describing the physical aspects of a data set using a binary or highly structured text-based encoding. 
+
+Examples 
+========
+NetCDF, HDF5, Parquet or XML data files, each with the means of referencing collections of data points associated to an instance variable via a logical expression. For instance, XPath can be used to navigate an XML data structure and locate the relevant data points.
+
+
+CDIF
+----
+
+Definition
+..........
+ArchivePart co-typed cdi:StructuredDataSet.
+</body>
                </ownedComment>
                <name>StructuredDataSet</name>
                <generalization xmi:id="CDIFManifest.StructuredDataSet-generalization-AbstractDataSet" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-generalization-AbstractDataSet" xmi:type="uml:Generalization">
@@ -979,7 +2555,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.StructuredDataSet-encoding" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-encoding" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.StructuredDataSet-encoding-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-encoding-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.StructuredDataSet-encoding"/>
-                     <body>Encoding-family hint (XML / JSON).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:encoding
+
+Definition
+..........
+A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
+
+Scope
+.....
+Domain: CreativeWork (https://schema.org/CreativeWork).
+Range: MediaObject (https://schema.org/MediaObject).
+
+
+CDIF
+----
+
+Definition
+..........
+Encoding-family hint (XML / JSON).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.StructuredDataSet-encoding-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-encoding-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>
@@ -993,7 +2595,33 @@ Definition from XML Schema Part 2: Datatypes Second Edition: "anyURI" represents
                <ownedAttribute xmi:id="CDIFManifest.StructuredDataSet-identifier" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-identifier" xmi:type="uml:Property">
                   <ownedComment xmi:id="CDIFManifest.StructuredDataSet-identifier-ownedComment" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-identifier-ownedComment" xmi:type="uml:Comment">
                      <annotatedElement xmi:idref="CDIFManifest.StructuredDataSet-identifier"/>
-                     <body>@id - same as the ArchivePart (co-typing).</body>
+                     <body>Documentation
+=============
+
+Original
+--------
+
+Reference
+.........
+schema:identifier
+
+Definition
+..........
+The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+
+Scope
+.....
+Domain: Thing (https://schema.org/Thing).
+Range: PropertyValue (https://schema.org/PropertyValue), Text (https://schema.org/Text), URL (https://schema.org/URL).
+
+
+CDIF
+----
+
+Definition
+..........
+@id - same as the ArchivePart (co-typing).
+</body>
                   </ownedComment>
                   <lowerValue xmi:id="CDIFManifest.StructuredDataSet-identifier-lowerValue" xmi:uuid="https://w3id.org/cdif/manifest/1.1/xmi/#StructuredDataSet-identifier-lowerValue" xmi:type="uml:LiteralInteger">
                      <value>0</value>

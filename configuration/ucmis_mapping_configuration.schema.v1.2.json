@@ -1,0 +1,437 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "ucmis_mapping_configuration.schema.v1.2.json",
+	"title": "JSON Schema for UCMIS mapping configuration (v1.2)",
+	"description": "Backwards-compatible enhancement of the v1.1 schema. All existing valid v1.1 configurations remain valid. New optional fields enable documentation enrichment: `sourceUri` (URI of the source-vocabulary term the element maps to, e.g. skos:prefLabel or https://schema.org/Dataset) and `cdifBookUri` (URL of the cdifbook page/anchor documenting the element). Both fields are consumed by the RST-documentation augmenter (`tools/rst_augment.py`) which composes an ownedComment body for each modelled element combining the source-vocabulary definition, the CDIF JSON-schema description, and the config scope note. See _v1.2_changelog for the precise diff.",
+	"_v1.2_changelog": [
+		"ADD: optional `sourceUri` (string) on class mappings (map/new/merge), attribute definitions (mapAttribute/newAttribute/mergeAttribute), and association mappings (mapped/new). The value is the URI of the term in a source vocabulary (schema.org, SKOS, PROV, DCAT, DCTerms, DQV, DDI-CDI, ...). Both compact-prefix (skos:ConceptScheme) and full URI (http://www.w3.org/2004/02/skos/core#ConceptScheme) forms are accepted. The RST-documentation augmenter uses this URI to look up the source-vocabulary rdfs:comment / skos:definition / prov:definition (and subClassOf / range / domain) which populate the Original section of the emitted ownedComment body. Omit when the element has no upstream vocabulary counterpart (CDIF-internal terms).",
+		"ADD: optional `cdifBookUri` (string) on class mappings, attribute definitions, and association mappings. The value is a URL — typically pointing at a section anchor in the cdifbook — populating the CDIF Reference section of the emitted ownedComment body.",
+		"NOTE: All v1.1 configurations validate unchanged under v1.2 (the new fields are optional and only add to the allowed property set)."
+	],
+	"$comment": "Some details on UCMIS. UCMIS uses the following classes from the UML metamodel: Association, Classifier, Comment, Dependency, Element, Enumeration, Generalization, MultiplicityElement, NamedElement, Package, Property, StructuredClassifier, TypedElement. UCMIS uses the following XMI types: Association, Class, Comment, DataType, Dependency, Enumeration, EnumerationLiteral, Generalization, LiteralInteger, LiteralString, LiteralUnlimitedNatural, Model, Package, PrimitiveType, Property. This configuration addresses only a subset of them. UCMIS uses single inheritance. UCMIS uses binary associations, which can be understood as a triple, consisting of the subject class, the association name as the predicate, and the object class. Associations are located in the package of the object class.",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"description": "Optional JSON Schema reference.",
+			"type": "string"
+		},
+		"_comment": {
+			"type": "string"
+		},
+		"transformation": {
+			"$ref": "#/$defs/transformation_type"
+		},
+		"package": {
+			"$ref": "#/$defs/targetPackage_type"
+		},
+		"mapping": {
+			"$ref": "#/$defs/mapping_type"
+		}
+	},
+	"additionalProperties": false,
+	"$defs": {
+		"transformation_type": {
+			"description": "Generic definition of the transformation. Note: all transformations flatten inheritance. Class attribute and association names may contain inherited names. All definitions, data types used by class attributes, multiplicities of class attributes and association ends, and aggregation kinds of associations are automatically reused in the target model unless they are explicitly overwritten.",
+			"type": "object",
+			"properties": {
+				"_comment": { "type": "string" },
+				"description": { "type": "string" },
+				"version": { "description": "The version of this mapping configuration.", "type": "string" },
+				"sourceModel": { "$ref": "#/$defs/sourceModel_type" },
+				"targetModel": { "$ref": "#/$defs/targetModel_type" },
+				"datatypeSubstitutions": {
+					"title": "Source DataType substitutions (v1.1)",
+					"description": "Map of source-model DataType names to canonical CDIF target types. Applied to every synthetic target class's property whose type points at the named source DataType. The target value may be a UML primitive ('String', 'Integer', 'Boolean', 'Real') or the targetClass name of another mapping (e.g. 'Concept', 'Identifier'). Composition (v1.1 composes) inherits substitutions from base configs and merges them (local wins on key conflict). Use to map DDI-CDI structured DataTypes that are simpler in CDIF: InternationalString/LabelForDisplay/ObjectName -> String (multilingualism via JSON-LD @language tags), ControlledVocabularyEntry/PairedControlledVocabularyEntry -> Concept (skos:Concept reference), NonDdiIdentifier -> Identifier (schema:PropertyValue).",
+					"type": "object",
+					"patternProperties": {
+						"^[A-Z][a-zA-Z]*$": { "$ref": "#/$defs/elementName_type" }
+					},
+					"additionalProperties": false,
+					"default": {}
+				},
+				"excludeDatatypes": {
+					"title": "Source DataTypes to drop entirely (v1.1)",
+					"description": "Source-model DataType names whose corresponding properties on synthetic target classes are dropped. Use for DDI-CDI structured types that have no CDIF representation at all: e.g. BibliographicName, RationaleDefinition, Selector. Composition (v1.1 composes) inherits the union of excludes across the chain.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/elementName_type" },
+					"default": []
+				},
+				"excludeProperties": {
+					"title": "Owner properties to drop (v1.1)",
+					"description": "List of 'ClassName.propertyName' specs. The named property is removed from the target class before the closure/diagram/XMI emit, so a source-map property that is not part of the CDIF profile (e.g. 'RepresentedVariable.takesSubstantiveConceptsFrom') does not appear on the class, in its context diagram, or in the exported XMI. Matched by property name on the named target class.",
+					"type": "array",
+					"items": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*\\.[A-Za-z][A-Za-z0-9]*$" },
+					"default": []
+				}
+			},
+			"required": ["description", "version", "sourceModel", "targetModel"],
+			"additionalProperties": false
+		},
+		"targetPackage_type": {
+			"title": "Target packages",
+			"description": "Defines additional packages in the target model. Each entry specifies a package name, its parent, and a definition.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"_comment": { "type": "string" },
+					"name": { "title": "Package name", "$ref": "#/$defs/elementName_type" },
+					"parent": { "title": "Parent package name or model name", "description": "The name of the parent package or model in the case of a top-level package.", "$ref": "#/$defs/elementName_type" },
+					"definition": { "title": "Definition", "type": "string" }
+				},
+				"required": ["name", "parent", "definition"],
+				"additionalProperties": false
+			}
+		},
+		"sourceModel_type": {
+			"title": "Source model definition",
+			"description": "Identifies the UCMIS source model by name, main package, and URI.",
+			"type": "object",
+			"properties": {
+				"_comment": { "type": "string" },
+				"name": { "$ref": "#/$defs/modelName_type" },
+				"mainPackage": { "title": "Main package name", "description": "The main package in the source model that contains all the mentioned classes and associations, including those within its subpackages.", "$ref": "#/$defs/elementName_type" },
+				"uri": { "title": "URI", "description": "The URI of the model namespace.", "type": "string", "format": "uri" }
+			},
+			"required": ["name", "mainPackage", "uri"],
+			"additionalProperties": false
+		},
+		"targetModel_type": {
+			"title": "Target model definition",
+			"description": "Describes the UCMIS target model by name, URI, and other details.",
+			"type": "object",
+			"properties": {
+				"_comment": { "type": "string" },
+				"acronym": { "title": "Acronym", "$ref": "#/$defs/modelName_type" },
+				"modelTitle": { "title": "Title", "type": "string" },
+				"subTitle": { "title": "Subtitle", "type": "string" },
+				"majorVersion": { "title": "Major version", "type": "string" },
+				"minorVersion": { "title": "Minor version", "type": "string" },
+				"language": { "title": "Language of the definitions in the model", "type": "string" },
+				"uri": { "title": "URI", "description": "The URI of the model namespace.", "type": "string", "format": "uri" },
+				"definition": { "title": "Definition", "type": "string" },
+				"mainPackage": { "title": "Main package name", "description": "The main package in the target model that contains all the mentioned classes and associations, including those within its subpackages.", "$ref": "#/$defs/elementName_type" },
+				"mainPackageDefinition": { "type": "string" },
+				"dataTypesPackage": { "title": "Main package name for data types", "description": "The data types package in the target model that contains all required data types according to the structure in the source model, including those within its subpackages.", "$ref": "#/$defs/elementName_type" },
+				"composes": {
+					"title": "Base configurations this profile composes (v1.1)",
+					"description": "Array of paths to other ucmism2m configuration files (relative to this file) whose target classes and associations are merged into this profile before emit. Mirrors the JSON Schema allOf composition: a CDIF extension profile (Discovery extends Core; DataDescription extends Discovery; DataStructure extends DataDescription) declares its base in this field. Composition is recursive — Discovery -> Core also pulls in Core's composes if present. Merge rules: classes with the same targetClass union their attribute lists (local wins on name conflicts); associations are added when not already present by targetAssociationName.",
+					"type": "array",
+					"items": { "type": "string" },
+					"default": []
+				}
+			},
+			"required": ["acronym", "modelTitle", "subTitle", "majorVersion", "minorVersion", "language", "uri", "definition", "mainPackage", "mainPackageDefinition", "dataTypesPackage"],
+			"additionalProperties": false
+		},
+		"modelName_type": {
+			"title": "Model name",
+			"description": "Must start with a letter; subsequent characters may be letters, digits, or hyphens.",
+			"type": "string",
+			"pattern": "^[a-zA-Z][a-zA-Z0-9-]*$"
+		},
+		"elementName_type": {
+			"title": "Element name",
+			"description": "Only letters in CamelCase are permitted.",
+			"type": "string",
+			"pattern": "^[A-Z][a-zA-Z]*$"
+		},
+		"attributeName_type": {
+			"title": "Attribute name",
+			"description": "Only letters in lowerCamelCase are permitted.",
+			"type": "string",
+			"pattern": "^[a-z][a-zA-Z]*$"
+		},
+		"associationName_type": {
+			"title": "Association name",
+			"description": "This is a type of qualified association name. The underscore is the separator between the names of the association end classes and the association name, which can be understood as subject, predicate and object. Only letters in CamelCase are permitted for class names. Only letters in lowerCamelCase are permitted for pure association names. Association names in UCMIS are always fully qualified triples.",
+			"type": "string",
+			"pattern": "^[A-Z][a-zA-Z]*_[a-z][a-zA-Z]*_[A-Z][a-zA-Z]*$"
+		},
+		"sourceUri_type": {
+			"title": "Source-vocabulary URI (v1.2)",
+			"description": "URI of the term in a source vocabulary (schema.org, SKOS, PROV, DCAT, DCTerms, DQV, DDI-CDI, ...) that the CDIF element maps to. Both compact-prefix (e.g. skos:ConceptScheme) and full URI (http://www.w3.org/2004/02/skos/core#ConceptScheme) forms are accepted. Consumed by the RST-documentation augmenter to populate the Original section of the emitted UML ownedComment body (Reference / Definition / Scope). Omit when the element has no upstream vocabulary counterpart.",
+			"type": "string",
+			"minLength": 1
+		},
+		"cdifBookUri_type": {
+			"title": "cdifbook page or anchor (v1.2)",
+			"description": "URL to the section of the cdifbook that documents this element. Typically points at a fragment anchor, e.g. https://cross-domain-interoperability-framework.github.io/cdifbook/metadata/coreSchemaImplementationNew/#resource-type. Consumed by the RST-documentation augmenter to populate the CDIF Reference section of the emitted UML ownedComment body.",
+			"type": "string",
+			"format": "uri"
+		},
+		"mapping_type": {
+			"title": "Mapping of classes and associations",
+			"description": "Contains the class and association mapping definitions.",
+			"type": "object",
+			"properties": {
+				"_comment": { "type": "string" },
+				"class": { "$ref": "#/$defs/class_type" },
+				"association": { "$ref": "#/$defs/association_type" }
+			},
+			"additionalProperties": false
+		},
+		"class_type": {
+			"title": "Class mappings",
+			"description": "Class mapping definitions. Supports three mapping types: 'map' for direct source-to-target mapping (with optional class rename and per-attribute rename via fromSourceAttributeName), 'new' for target classes with no source equivalent (optional sourceClass for provenance only), and 'merge' for merging two source classes into one target class.",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"type": "object",
+				"oneOf": [
+					{
+						"title": "Mapping type 'map'",
+						"properties": {
+							"_comment": { "type": "string" },
+							"mappingType": { "title": "Direct source-to-target mapping", "const": "map" },
+							"sourceClass": { "title": "Source class", "$ref": "#/$defs/elementName_type" },
+							"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+							"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+							"targetPackage": { "title": "Target package", "$ref": "#/$defs/elementName_type" },
+							"targetClass": { "title": "Target class", "$ref": "#/$defs/elementName_type" },
+							"definitionFrom": { "title": "Source class of definition", "description": "The name of the source class whose definition should be used for the target class definition.", "$ref": "#/$defs/elementName_type" },
+							"isAbstract": { "$ref": "#/$defs/isAbstract_type" },
+							"isDataType": { "$ref": "#/$defs/isDataType_type" },
+							"generalization": { "$ref": "#/$defs/generalization_type" },
+							"attribute": { "$ref": "#/$defs/mapAttribute_type" },
+							"sssom": { "title": "SSSOM Details", "description": "subject_id and object_id are set by the transformation.", "$ref": "#/$defs/sssom_type" }
+						},
+						"required": ["mappingType", "sourceClass", "targetPackage", "targetClass"],
+						"additionalProperties": false
+					},
+					{
+						"title": "Mapping type 'new'",
+						"properties": {
+							"_comment": { "type": "string" },
+							"mappingType": { "title": "Target class with no source equivalent (or no attribute correspondence)", "const": "new" },
+							"sourceClass": {
+								"title": "Optional source class for provenance only (v1.1)",
+								"description": "When present, the engine generates a provenance Dependency Client_dependsOn_Supplier even though attributes are authored entirely fresh. Use when the target class semantically derives from a DDI-CDI class but its attribute vocabulary is different enough that 'map' won't fit.",
+								"$ref": "#/$defs/elementName_type"
+							},
+							"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+							"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+							"targetPackage": { "title": "Target package", "$ref": "#/$defs/elementName_type" },
+							"targetClass": { "title": "Target class", "$ref": "#/$defs/elementName_type" },
+							"definition": { "title": "Definition", "type": "string" },
+							"isAbstract": { "$ref": "#/$defs/isAbstract_type" },
+							"isDataType": { "$ref": "#/$defs/isDataType_type" },
+							"generalization": { "$ref": "#/$defs/generalization_type" },
+							"attribute": { "$ref": "#/$defs/newAttribute_type" },
+							"sssom": { "title": "SSSOM Details", "description": "subject_id and object_id are set by the transformation.", "$ref": "#/$defs/sssom_type" }
+						},
+						"required": ["mappingType", "targetPackage", "targetClass", "definition", "attribute"],
+						"additionalProperties": false
+					},
+					{
+						"title": "Mapping type 'merge'",
+						"properties": {
+							"_comment": { "type": "string" },
+							"mappingType": { "title": "Merging two source classes into one target class", "const": "merge" },
+							"sourceClass": {
+								"title": "Two source classes",
+								"description": "Exactly two source classes to be merged into the target class.",
+								"type": "array",
+								"items": { "title": "Source class", "$ref": "#/$defs/elementName_type" },
+								"minItems": 2,
+								"maxItems": 2
+							},
+							"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+							"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+							"targetPackage": { "title": "Target package", "$ref": "#/$defs/elementName_type" },
+							"targetClass": { "title": "Target class", "$ref": "#/$defs/elementName_type" },
+							"definitionFrom": { "title": "Source class of definition", "description": "The name of the source class whose definition should be used for the target class definition.", "$ref": "#/$defs/elementName_type" },
+							"isAbstract": { "$ref": "#/$defs/isAbstract_type" },
+							"isDataType": { "$ref": "#/$defs/isDataType_type" },
+							"generalization": { "$ref": "#/$defs/generalization_type" },
+							"attribute": { "$ref": "#/$defs/mergeAttribute_type" },
+							"sssom": { "title": "SSSOM Details", "description": "subject_id and object_id are set by the transformation.", "$ref": "#/$defs/sssom_type" }
+						},
+						"required": ["mappingType", "sourceClass", "targetPackage", "targetClass"],
+						"additionalProperties": false
+					}
+				]
+			}
+		},
+		"mapAttribute_type": {
+			"title": "Mapped attribute",
+			"description": "Attribute definition for a mapped class. All properties except 'name' are optional; missing values are used from the source class. In v1.1, optional 'fromSourceAttributeName' lets the source attribute differ from the target attribute name (e.g. DDI-CDI 'name' -> SKOS 'prefLabel').",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"_comment": { "type": "string" },
+					"name": { "title": "Target attribute name", "$ref": "#/$defs/attributeName_type" },
+					"fromSourceAttributeName": {
+						"title": "Source attribute name (v1.1)",
+						"description": "When present, identifies the source attribute that supplies the (default) data type, definition, and multiplicity. When absent, 'name' identifies the source attribute (v1.0 behavior).",
+						"$ref": "#/$defs/attributeName_type"
+					},
+					"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+					"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+					"dataType": { "title": "Data type", "description": "The data type is one of the available types in the source model. This approach doesn't allow to define new data types.", "$ref": "#/$defs/elementName_type" },
+					"definition": { "title": "Definition", "type": "string" },
+					"multiplicity": { "$ref": "#/$defs/multiplicity_type" }
+				},
+				"required": ["name"],
+				"additionalProperties": false
+			}
+		},
+		"mergeAttribute_type": {
+			"title": "Merged class attribute",
+			"description": "Attribute definition for a merged class. Use 'fromSourceClass' to define the origin of the attribute. All properties except 'name' are optional; missing values are used from the respective source class.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"_comment": { "type": "string" },
+					"name": { "$ref": "#/$defs/attributeName_type" },
+					"fromSourceClass": { "title": "Source class of attribute", "description": "Defines the source class from which the attribute should be used in the event of a class merge.", "$ref": "#/$defs/elementName_type" },
+					"fromSourceAttributeName": {
+						"title": "Source attribute name (v1.1)",
+						"description": "Optional; lets the source attribute differ from the target attribute name.",
+						"$ref": "#/$defs/attributeName_type"
+					},
+					"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+					"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+					"dataType": { "title": "Data type", "description": "The data type is one of the available types in the source model.", "$ref": "#/$defs/elementName_type" },
+					"definition": { "title": "Definition", "type": "string" },
+					"multiplicity": { "$ref": "#/$defs/multiplicity_type" }
+				},
+				"required": ["name"],
+				"additionalProperties": false
+			}
+		},
+		"newAttribute_type": {
+			"title": "New attribute",
+			"description": "Attribute definition for a newly created class. All properties are required since no source model exists to inherit values from.",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"type": "object",
+				"properties": {
+					"_comment": { "type": "string" },
+					"name": { "$ref": "#/$defs/attributeName_type" },
+					"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+					"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+					"dataType": { "title": "Data type", "description": "The data type is one of the available types in the source model. This approach doesn't allow to define new data types.", "$ref": "#/$defs/elementName_type" },
+					"definition": { "title": "Definition", "type": "string" },
+					"multiplicity": { "$ref": "#/$defs/multiplicity_type" }
+				},
+				"required": ["name", "dataType", "definition", "multiplicity"],
+				"additionalProperties": false
+			}
+		},
+		"isAbstract_type": {
+			"title": "Abstract flag (v1.1)",
+			"description": "When true the emitted UML class is marked abstract (Class.isAbstract = true). Default false. Use for hierarchy parents like Agent (parent of Person/Organization).",
+			"type": "boolean",
+			"default": false
+		},
+		"isDataType_type": {
+			"title": "DataType flag (v1.1)",
+			"description": "When true the class mapping is emitted as a UML DataType (<packagedElement xmi:type='uml:DataType'>) rather than a uml:Class. Default false. Use for value types with no identity that are referenced as attribute types, e.g. Identifier and Reference.",
+			"type": "boolean",
+			"default": false
+		},
+		"generalization_type": {
+			"title": "Generalization parents (v1.1)",
+			"description": "Names of other target classes in the same configuration that this class generalizes (inherits from). The engine resolves each name to the corresponding target-class xmi:id and emits a <generalization><general xmi:idref=.../></generalization> child. UCMIS uses single inheritance — supplying more than one entry is allowed by the schema but unusual.",
+			"type": "array",
+			"items": { "$ref": "#/$defs/elementName_type" },
+			"default": []
+		},
+		"multiplicity_type": {
+			"title": "Multiplicity",
+			"description": "Permitted values are a single digit (0–9) or * for unlimited.",
+			"type": "object",
+			"properties": {
+				"_comment": { "type": "string" },
+				"lower": { "$ref": "#/$defs/multiplicityRange_type" },
+				"upper": { "$ref": "#/$defs/multiplicityRange_type" }
+			},
+			"required": ["lower", "upper"],
+			"additionalProperties": false
+		},
+		"multiplicityRange_type": {
+			"title": "Multiplicity range",
+			"description": "A single digit (0–9) or * for unlimited. The range is deliberately narrow.",
+			"type": "string",
+			"pattern": "^[0-9*]$"
+		},
+		"sssom_type": {
+			"title": "SSSOM Properties",
+			"description": "These properties are according to the Simple Standard for Sharing Ontological Mappings (SSSOM) documentation at https://mapping-commons.github.io/sssom/linkml-index/. v1.1 accepts either a single object or an array of objects for cases where multiple SSSOM rows apply to the same target element.",
+			"oneOf": [
+				{ "$ref": "#/$defs/sssom_object" },
+				{ "type": "array", "items": { "$ref": "#/$defs/sssom_object" }, "minItems": 1 }
+			]
+		},
+		"sssom_object": {
+			"type": "object",
+			"properties": {
+				"_comment": { "type": "string" },
+				"subject_label": { "type": "string" },
+				"object_label": { "type": "string" },
+				"predicate_id": { "type": "string" },
+				"predicate_label": { "type": "string" },
+				"confidence": {
+					"description": "SSSOM confidence value. v1.1 accepts a number in [0..1] or a string holding that number.",
+					"oneOf": [
+						{ "type": "number", "minimum": 0, "maximum": 1 },
+						{ "type": "string", "pattern": "^(0(\\.[0-9]+)?|1(\\.0+)?)$" }
+					]
+				},
+				"comment": { "type": "string" }
+			},
+			"required": ["predicate_id"],
+			"additionalProperties": false
+		},
+		"association_type": {
+			"title": "Association mapping",
+			"description": "Association mapping definitions. In v1.1 sourceAssociationName is optional: when absent, the association is brand-new and subjectClass + objectClass + targetAssociationName must be supplied. When present, other properties are reused from the source model unless explicitly overridden.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"oneOf": [
+					{
+						"title": "Mapped association (rename or carry over an existing source association)",
+						"properties": {
+							"_comment": { "type": "string" },
+							"sourceAssociationName": { "$ref": "#/$defs/associationName_type" },
+							"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+							"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+							"targetAssociationName": { "$ref": "#/$defs/associationName_type" },
+							"subjectClass": { "$ref": "#/$defs/elementName_type" },
+							"objectClass": { "$ref": "#/$defs/elementName_type" },
+							"definition": { "title": "Definition", "type": "string" },
+							"subjectClassMultiplicity": { "$ref": "#/$defs/multiplicity_type" },
+							"objectClassMultiplicity": { "$ref": "#/$defs/multiplicity_type" },
+							"objectClassAggregationKind": { "title": "Aggregation kind", "description": "Specifies the UML aggregation kind of the object class end of the association.", "enum": ["none", "shared", "composite"] }
+						},
+						"required": ["sourceAssociationName"],
+						"additionalProperties": false
+					},
+					{
+						"title": "New association (v1.1) - no source counterpart",
+						"description": "Use when both ends are newly introduced target classes (e.g. Dataset_has_Distribution). targetAssociationName, subjectClass, objectClass are required; definition is strongly recommended.",
+						"properties": {
+							"_comment": { "type": "string" },
+							"targetAssociationName": { "$ref": "#/$defs/associationName_type" },
+							"sourceUri": { "$ref": "#/$defs/sourceUri_type" },
+							"cdifBookUri": { "$ref": "#/$defs/cdifBookUri_type" },
+							"subjectClass": { "$ref": "#/$defs/elementName_type" },
+							"objectClass": { "$ref": "#/$defs/elementName_type" },
+							"definition": { "title": "Definition", "type": "string" },
+							"subjectClassMultiplicity": { "$ref": "#/$defs/multiplicity_type" },
+							"objectClassMultiplicity": { "$ref": "#/$defs/multiplicity_type" },
+							"objectClassAggregationKind": { "enum": ["none", "shared", "composite"] }
+						},
+						"required": ["targetAssociationName", "subjectClass", "objectClass"],
+						"additionalProperties": false
+					}
+				]
+			}
+		}
+	}
+}

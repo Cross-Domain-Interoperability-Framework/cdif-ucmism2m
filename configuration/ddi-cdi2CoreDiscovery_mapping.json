@@ -1,5 +1,5 @@
 {
-  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "$schema": "ucmis_mapping_configuration.schema.v1.2.json",
   "_comment": "DDI-CDI -> CDIF CoreDiscovery COMPOSITE profile UML. Holds no local class declarations beyond a placeholder anchor - it composes the two upstream profile-module configs (cdifCore + the tight cdifDiscovery) and lets the XMI pipeline merge their class graphs. Mirrors the JSON-Schema allOf at _sources/profiles/cdifCompositeProfile/CoreDiscovery/schema.yaml.",
   "transformation": {
     "description": "DDI-CDI to CDIF CoreDiscovery Composite Profile",
@@ -48,7 +48,11 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "Placeholder.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
         ]
       }

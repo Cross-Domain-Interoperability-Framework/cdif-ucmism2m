@@ -1,5 +1,5 @@
 {
-  "$schema": "ucmis_mapping_configuration.schema.v1.1.json",
+  "$schema": "ucmis_mapping_configuration.schema.v1.2.json",
   "_comment": "DDI-CDI -> CDIF DiscoveryDataDescription COMPOSITE profile UML. This config holds no local class declarations; it just composes the constituent profile-module configs (cdifCore + cdifDiscovery + cdifDataDescription). The result mirrors the JSON-Schema allOf at _sources/profiles/cdifCompositeProfile/DiscoveryDataDescription/schema.yaml. Patterns used in the module configs (abstract unions for hasPhysicalMapping / physical-dataset co-typing, anchor stubs with conformsTo annotations) propagate through composes so the composite diagram is consistent with the modules.",
   "transformation": {
     "description": "DDI-CDI to CDIF DiscoveryDataDescription Composite Profile",
@@ -49,7 +49,11 @@
             "name": "identifier",
             "dataType": "XsdAnyUri",
             "definition": "Placeholder.",
-            "multiplicity": {"lower": "0", "upper": "1"}
+            "multiplicity": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "sourceUri": "schema:identifier"
           }
         ]
       }

@@ -184,10 +184,10 @@ Write-Host "==> Step 5: normalize generated text files to LF"
 # eol=lf`, so every regenerated file shows as modified (CRLF -> LF) even when
 # the content is identical. Rewrite the generated text tree to LF so the working
 # tree matches the repo's LF policy and only real content changes show up.
-$lfExtensions = @('.html', '.pu', '.svg', '.json', '.css', '.js')
+$lfExtensions = @('.html', '.pu', '.svg', '.json', '.css', '.js', '.xmi')
 $utf8NoBom = New-Object System.Text.UTF8Encoding $false
 $normalized = 0
-Get-ChildItem -Path $htmlOut -Recurse -File |
+@($htmlOut, $genDir) | ForEach-Object { Get-ChildItem -Path $_ -Recurse -File } |
     Where-Object { $lfExtensions -contains $_.Extension } |
     ForEach-Object {
         $raw = [System.IO.File]::ReadAllText($_.FullName)
@@ -197,7 +197,7 @@ Get-ChildItem -Path $htmlOut -Recurse -File |
             $normalized++
         }
     }
-Write-Host "    Normalized $normalized file(s) to LF under $htmlOut"
+Write-Host "    Normalized $normalized file(s) to LF under $htmlOut and $genDir"
 
 $indexPath = Join-Path $htmlOut "index.html"
 Write-Host ""
