@@ -716,7 +716,17 @@ CDIF
 
 Definition
 ..........
-Preferred lexical label for this concept. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.
+Preferred lexical label for this concept. A single string,
+a single language-tagged value, or an array of language-tagged values.
+Each language should appear at most once.
+
+**Uniqueness rule.** Each language should appear at most once in the
+set of prefLabel values. Two prefLabel values with duplicate `@language`
+tags are non-conformant. Consumers may reject or arbitrarily pick one.
+
+**Relationship to skos:altLabel.** Alternate labels (acronyms,
+spelling variants, obsolete names) go on `skos:altLabel`, NOT on
+`prefLabel`. A concept has exactly one preferred label per language.
 
 Scope
 .....

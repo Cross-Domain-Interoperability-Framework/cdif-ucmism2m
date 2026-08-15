@@ -170,7 +170,7 @@ CDIF
 
 Definition
 ..........
-Profile module for archive distributions. Marks the catalog record as conformant to the CDIF manifest spec (https://w3id.org/cdif/manifest/1.1) and lets schema:distribution items carry schema:hasPart describing the component files inside an archive (ZIP, etc.). The base schema:distribution anyOf [DataDownload, WebAPI] contributed by cdifCore is preserved — this BB only adds property constraints, no new anyOf branch. (Merged from the previous cdifProfile/cdifArchive BB, which held only the $defs for ArchivePart; everything now lives here.)
+Profile module for packages: the resources that make up a dataset and where to retrieve each of them. Marks the catalog record as conformant to the CDIF manifest spec (https://w3id.org/cdif/manifest/1.1) and declares schema:hasPart in the two places a package needs it — on the Dataset, for parts that are independently accessible at their own addresses, and on a schema:distribution item, for component files inside an archive (ZIP, etc.) that have no address of their own. Both part shapes carry schema:about, so a part that describes another — a codebook, a data dictionary, a metadata sidecar — can say which one. The base schema:distribution anyOf [DataDownload, WebAPI] contributed by cdifCore is preserved — this BB only adds property constraints, no new anyOf branch. (Merged from the previous cdifProfile/cdifArchive BB, which held only the $defs for ArchivePart; everything now lives here.)
 
 Scope
 .....
@@ -430,7 +430,7 @@ CDIF
 
 Definition
 ..........
-For archive-style distributions (e.g. ZIP files containing multiple component files), describes the component files. Each component is typed as schema:MediaObject and may include CDIF data description extensions (cdifTabularData, cdifDataCube) to describe its internal structure.
+Component resources of a package whose parts are independently accessible, each with its own distribution. Parts may differ in content type, format and data structure. For component files inside an archive, which have no address of their own, use schema:hasPart on the distribution instead.
 
 Scope
 .....
@@ -737,7 +737,7 @@ CDIF
 
 Definition
 ..........
-For metadata sidecar files, references the data file this metadata describes.
+The part this one is about. Use it on a part that describes another -- a codebook, a data dictionary, a quality report, a metadata sidecar -- so that a consumer can tell WHICH part it documents rather than only that both are in the package. Equivalent in this use to cito:documents, which is how OAI-ORE packages express the same relationship; schema:subjectOf is the declared inverse.
 
 Scope
 .....

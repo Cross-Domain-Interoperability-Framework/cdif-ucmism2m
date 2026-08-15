@@ -4336,7 +4336,7 @@ CDIF
 
 Definition
 ..........
-In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability
+In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability. URI-shape values MUST be serialized as JSON-LD IRI references ({"@id":"..."}) so they participate in RDF entailment; free-label strings remain valid as strings.
 
 Scope
 .....
@@ -4503,7 +4503,7 @@ CDIF
 
 Definition
 ..........
-In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability
+In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability. URI-shape values MUST be serialized as JSON-LD IRI references ({"@id":"..."}) so they participate in RDF entailment; free-label strings remain valid as strings.
 
 Scope
 .....
@@ -5183,6 +5183,10 @@ CDIF
 
 Definition
 ..........
+Entities the activity used. Per PROV-O each value denotes a prov:Entity. An item may be (1) a string URI or free-text reference, (2) an {@id} reference, (3) an inline entity object carrying an @type that includes prov:Entity plus a schema.org type for the kind of thing used, e.g. ["prov:Entity","schema:Thing"] (instrument), ["prov:Entity","schema:CreativeWork"] (method/protocol), or ["prov:Entity","schema:SoftwareApplication"] (software), or (4) a role-keyed wrapper naming what was used through one of the recognized "used" relations (schema:instrument, bios:computationalTool, prov:reagent). Base leaves the wrapped value loose; profiles/extensions (e.g. cdifProvActivity, adaProduct) pin its shape (Instrument, ComputationalTool, Reagent, ...).
+
+Scope
+.....
 prov:used - an entity (instrument, software, or protocol, by URI) that this activity used.
 </body>
                   </ownedComment>
