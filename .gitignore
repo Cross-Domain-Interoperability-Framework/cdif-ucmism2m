@@ -70,3 +70,5 @@ __pycache__
 
 # general
 test/
+# Scratch planning notes, committed by accident in 7a2baf8
+generated/new 2.txt
