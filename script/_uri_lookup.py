@@ -398,14 +398,27 @@ PROFILE_OVERRIDES = {
     # CONFIG_EDITS_NEEDED below.
     ("cdifDataStructure",  "has"):          "cdi:has_DataStructureComponent",
     ("cdifDataStructure",  "hasComponent"): "cdi:has_DataStructureComponent",
-    ("cdifDataStructure",  "hasPrimaryKey"):"cdi:has_PrimaryKey",
-    ("cdifDataStructure",  "hasForeignKey"):"cdi:has_ForeignKey",
+    # Renamed cdi: -> cdif: on 2026-09-25, same reason as isComposedOf below:
+    # both carry cdif:PrimaryKey / cdif:ForeignKey values composed through
+    # cdi:ComponentPosition, not DDI-CDI's PrimaryKeyComponent /
+    # ForeignKeyComponent, so the prefix has to make the divergence visible.
+    ("cdifDataStructure",  "hasPrimaryKey"):"cdif:has_PrimaryKey",
+    ("cdifDataStructure",  "hasForeignKey"):"cdif:has_ForeignKey",
     # ForeignKey_isComposedOf_RepresentedVariable: per Stephen, this is a CDIF
     # flattening of DDI-CDI's ForeignKey.isComposedOf → ForeignKeyComponent.
     # Value range changed from ForeignKeyComponent to RepresentedVariable → cdif:.
     ("cdifDataStructure",  "isComposedOf"): "cdif:isComposedOf",
     ("cdifDataStructure",  "references"):  "cdi:references",
-    ("cdifDataStructure",  "isDefinedBy_RepresentedVariable"):"cdif:isDefinedBy_RepresentedVariable",
+    # The COMPONENT's property, renamed cdif:isDefinedBy_RepresentedVariable ->
+    # cdif:isDefinedBy_Variable because the old name implied only the superclass
+    # was allowed (see the note above $defs in cdifDataStructureComponent).
+    # Beware: cdif:isDefinedBy_RepresentedVariable still exists and was NOT
+    # renamed -- on cdifInstanceVariable, where it means something narrower (the
+    # RepresentedVariable an InstanceVariable instantiates). So the old value was
+    # not dangling, it resolved to the wrong one of two live properties, which is
+    # why nothing reported it. The UML role name is unchanged; only the CDIF term
+    # it maps to moved.
+    ("cdifDataStructure",  "isDefinedBy_RepresentedVariable"):"cdif:isDefinedBy_Variable",
     ("cdifDataStructure",  "isDefinedBy_DescriptorVariable"): "cdif:isDefinedBy_DescriptorVariable",
 
     # ---- cdifDataDescription ----
