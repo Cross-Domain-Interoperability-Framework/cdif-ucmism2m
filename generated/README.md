@@ -1,6 +1,6 @@
 # Generated profile UML models
 
-This folder holds Eclipse UML2 XMI 2.5.1 files produced by running the Python generator (`metadataBuildingBlocks/tools/uml_to_schema.py --emit-uml`) against the configurations in `../configuration/`. Each file is a standalone UML model for one CDIF profile (or composite), suitable for importing into Enterprise Architect, Papyrus, or any other tool that reads canonical XMI 2.5.1.
+This folder holds Eclipse UML2 XMI 2.5.1 files produced by running the Python generator (`cdif-umlmodel/cdifjsonxmi/uml_to_schema.py --emit-uml`) against the configurations in `../configuration/`. Each file is a standalone UML model for one CDIF profile (or composite), suitable for importing into Enterprise Architect, Papyrus, or any other tool that reads canonical XMI 2.5.1.
 
 ## Current contents (v1.1, 2026-06)
 
@@ -90,7 +90,7 @@ $base = "<repository-root>"
 $profiles = 'cdifCodelist','cdifConceptScheme','cdifCore','cdifDiscovery','cdifDataDescription','cdifDataStructure','cdifManifest','cdifProvenance'
 foreach ($c in $profiles) {
     $out = "$($c.ToLower())_1-1_canonical-unique-names.xmi"
-    python "$base\metadataBuildingBlocks\tools\uml_to_schema.py" `
+    python "$base\cdif-umlmodel\cdifjsonxmi\uml_to_schema.py" `
         --xmi    "$base\..\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi" `
         --config "$base\ucmism2m\configuration\ddi-cdi2${c}_mapping.json" `
         --emit-uml "$base\ucmism2m\generated\$out"
@@ -104,7 +104,7 @@ POSIX equivalent:
 base="<repository-root>"
 for c in cdifCodelist cdifConceptScheme cdifCore cdifDiscovery cdifDataDescription cdifDataStructure cdifManifest cdifProvenance; do
     out="$(echo "$c" | tr '[:upper:]' '[:lower:]')_1-1_canonical-unique-names.xmi"
-    python "$base/metadataBuildingBlocks/tools/uml_to_schema.py" \
+    python "$base/cdif-umlmodel/cdifjsonxmi/uml_to_schema.py" \
         --xmi    "$base/../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi" \
         --config "$base/ucmism2m/configuration/ddi-cdi2${c}_mapping.json" \
         --emit-uml "$base/ucmism2m/generated/$out"

@@ -13,20 +13,21 @@ never reads the profile's JSON Schema. The config is the curated source of truth
 (it carries union-type reductions, abstract supertypes, DDI-CDI provenance). The
 JSON Schema (`resolvedSchema.json`) is used only by the **audit** to detect drift.
 
-## Two repos
+## Repos
 
 | Repo | Holds | This session's commits |
 |---|---|---|
 | `cdif-ucmism2m` (this repo) | configs, schema, scripts, generated XMIs, docs | configs/audit/XMIs |
-| `metadataBuildingBlocks` (sibling) | the generator `tools/uml_to_schema.py` + the building blocks | generator fixes |
+| `cdif-umlmodel` (sibling) | the generator `cdifjsonxmi/uml_to_schema.py` | generator fixes |
+| `metadataBuildingBlocks` (sibling) | the building blocks (`_sources/`, read by the generator and the audit) | |
 
-A full run depends on **both** repos being current. If you change emit behavior,
-it's in `metadataBuildingBlocks/tools/uml_to_schema.py`.
+A full run depends on **all three** repos being current. If you change emit behavior,
+it's in `cdif-umlmodel/cdifjsonxmi/uml_to_schema.py`.
 
 ## Key paths
 
 - **Source XMI (DDI-CDI 1.1beta):** `../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi` (sibling clone, *outside* this repo; a 1.0 copy is in `model/` for reference).
-- **Generator:** `../metadataBuildingBlocks/tools/uml_to_schema.py`
+- **Generator:** `../cdif-umlmodel/cdifjsonxmi/uml_to_schema.py`
 - **Configs:** `configuration/ddi-cdi2cdif<Profile>_mapping.json`
 - **Config schema (v1.1):** `configuration/ucmis_mapping_configuration.schema.v1.1.json`
 - **Audit:** `script/audit_schema_vs_uml.py`
@@ -58,7 +59,7 @@ it's in `metadataBuildingBlocks/tools/uml_to_schema.py`.
    ```
 6. **Regenerate** the profile (and any that `compose` it):
    ```bash
-   python ../metadataBuildingBlocks/tools/uml_to_schema.py \
+   python ../cdif-umlmodel/cdifjsonxmi/uml_to_schema.py \
      --xmi ../../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi \
      --config configuration/ddi-cdi2cdif<Profile>_mapping.json \
      --emit-uml generated/<lower-acronym>_<major>-<minor>_canonical-unique-names.xmi

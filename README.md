@@ -269,7 +269,7 @@ If the transformation fails, an error and stack trace are printed to standard er
 
 ## 4. Alternative: Python generator using `uml_to_schema.py`
 
-Sibling repository `metadataBuildingBlocks/tools/uml_to_schema.py` contains a Python implementation that already does the same kind of UML transformation work for a different downstream purpose (DDI-CDI UML → CDIF building-block JSON Schemas). It has been augmented to ALSO emit Eclipse UML2 XMI for a profile, driven by the same ucmism2m JSON configuration files in `configuration/`. The five CDIF profile UML files in `generated/` were produced by this path.
+Sibling repository `cdif-umlmodel/cdifjsonxmi/uml_to_schema.py` contains a Python implementation that already does the same kind of UML transformation work for a different downstream purpose (DDI-CDI UML → CDIF building-block JSON Schemas). It has been augmented to ALSO emit Eclipse UML2 XMI for a profile, driven by the same ucmism2m JSON configuration files in `configuration/`. The five CDIF profile UML files in `generated/` were produced by this path.
 
 ### 4.1 Why a Python path exists
 
@@ -296,7 +296,7 @@ pip install pyyaml jsonschema
 From any working directory:
 
 ```bash
-python <repo>/metadataBuildingBlocks/tools/uml_to_schema.py \
+python <repo>/cdif-umlmodel/cdifjsonxmi/uml_to_schema.py \
   --xmi    <repo>/../ucmis.m2t/model/ddi-cdi_1-1beta_canonical-unique-names.xmi \
   --config <repo>/ucmism2m/configuration/ddi-cdi2cdifCodelist_mapping.json \
   --emit-uml <repo>/ucmism2m/generated/cdifcodelist_1-0_canonical-unique-names.xmi

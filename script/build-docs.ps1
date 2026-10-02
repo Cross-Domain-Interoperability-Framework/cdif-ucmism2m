@@ -29,7 +29,7 @@ param(
 $ErrorActionPreference = "Stop"
 $python = "C:\Users\smrTu\miniconda3\python.exe"
 $repoRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
-$tool = Join-Path $repoRoot "metadataBuildingBlocks\tools\uml_to_schema.py"
+$tool = Join-Path $repoRoot "cdif-umlmodel\cdifjsonxmi\uml_to_schema.py"
 # DDI-CDI 1.1beta canonical UML (sourced from the UCMIS-M2T reference repo).
 $xmi  = "C:\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
 $configDir = Join-Path $repoRoot "ucmism2m\configuration"

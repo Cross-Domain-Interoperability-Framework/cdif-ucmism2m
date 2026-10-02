@@ -155,7 +155,7 @@ the mapping rationale is traceable.
 All five outputs (JSON Schema BBs, profile UML XMI, EA XMI 1.1, PlantUML, HTML) are produced by one Python script:
 
 ```
-metadataBuildingBlocks/tools/uml_to_schema.py
+cdif-umlmodel/cdifjsonxmi/uml_to_schema.py
 ```
 
 It is a Python alternative to the Eclipse-based UCMIS-M2M (QVTo) + UCMIS-M2T (Acceleo 3.7) toolchain originally published by Joachim Wackerow at https://bitbucket.org/wackerow/ucmis.m2t/. Building those Eclipse projects under modern Eclipse (2026-03) failed due to OSGi/Acceleo runtime incompatibilities; the Python tool replaces them and runs on any Python 3.10+ install.
@@ -225,7 +225,7 @@ python -m http.server 8765
 For iterative work on a single profile (e.g. tweaking the Core config and re-checking the result):
 
 ```powershell
-$tool = "C:\GithubC\CDIF\metadataBuildingBlocks\tools\uml_to_schema.py"
+$tool = "C:\GithubC\CDIF\cdif-umlmodel\cdifjsonxmi\uml_to_schema.py"
 $xmi  = "C:\GithubC\ucmis.m2t\model\ddi-cdi_1-1beta_canonical-unique-names.xmi"
 $jar  = "C:\GithubC\CDIF\metadataBuildingBlocks\tools\plantuml.jar"
 $java = "C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe"

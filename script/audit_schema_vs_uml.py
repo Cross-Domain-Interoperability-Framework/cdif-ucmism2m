@@ -27,7 +27,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO = SCRIPT_DIR.parents[1]                       # .../CDIF
 MBB = REPO / "metadataBuildingBlocks"
-TOOLS = MBB / "tools"
+TOOLS = REPO / "cdif-umlmodel" / "cdifjsonxmi"       # uml_to_schema.py
 CONFIG_DIR = REPO / "ucmism2m" / "configuration"
 GENERATED_DIR = REPO / "ucmism2m" / "generated"
 SOURCES = MBB / "_sources"

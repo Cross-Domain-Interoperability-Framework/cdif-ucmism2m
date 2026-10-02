@@ -24,7 +24,7 @@ from audit_schema_vs_uml import (  # noqa: E402
     extract_schema, covered_from_config, covered_from_xmi, canon, classify,
 )
 
-sys.path.insert(0, str(REPO / "metadataBuildingBlocks" / "tools"))
+sys.path.insert(0, str(REPO / "cdif-umlmodel" / "cdifjsonxmi"))
 from uml_to_schema import _load_with_composition  # noqa: E402
 
 # 6 release profiles: (label, config or None, release schema path, expected XMI slug or None)
